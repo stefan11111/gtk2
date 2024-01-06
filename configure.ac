@@ -1565,38 +1565,6 @@ fi
 GOBJECT_INTROSPECTION_CHECK([0.9.3])
 
 ##################################################
-# Checks for gtk-doc and docbook-tools
-##################################################
-
-GTK_DOC_CHECK([1.11])
-
-AC_CHECK_PROG(DB2HTML, db2html, true, false)
-AM_CONDITIONAL(HAVE_DOCBOOK, $DB2HTML)
-
-AC_ARG_ENABLE(man,
-              [AC_HELP_STRING([--enable-man],
-                              [regenerate man pages from Docbook [default=no]])],,
-              enable_man=no)
-
-if test "${enable_man}" != no; then
-  dnl
-  dnl Check for xsltproc
-  dnl
-  AC_PATH_PROG([XSLTPROC], [xsltproc])
-  if test -z "$XSLTPROC"; then
-    enable_man=no
-  fi
-
-  dnl check for DocBook DTD and stylesheets in the local catalog.
-  JH_CHECK_XML_CATALOG([-//OASIS//DTD DocBook XML V4.1.2//EN],
-     [DocBook XML DTD V4.1.2],,enable_man=no)
-  JH_CHECK_XML_CATALOG([http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl],
-     [DocBook XSL Stylesheets],,enable_man=no)
-fi
-
-AM_CONDITIONAL(ENABLE_MAN, test x$enable_man != xno)
-
-##################################################
 # Check whether MSVC toolset is explicitly set
 ##################################################
 
@@ -1705,16 +1673,6 @@ demos/Makefile
 demos/gtk-demo/Makefile
 demos/gtk-demo/geninclude.pl
 tests/Makefile
-docs/Makefile
-docs/reference/Makefile
-docs/reference/gdk/Makefile
-docs/reference/gdk/version.xml
-docs/reference/gtk/Makefile
-docs/reference/gtk/version.xml
-docs/reference/libgail-util/Makefile
-docs/faq/Makefile
-docs/tools/Makefile
-docs/tutorial/Makefile
 build/Makefile
 gdk/Makefile
 gdk/x11/Makefile
