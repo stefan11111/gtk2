@@ -2,7 +2,7 @@
 include $(top_srcdir)/Makefile.decl
 
 SRC_SUBDIRS = gdk gtk modules   perf
-SUBDIRS = po po-properties $(SRC_SUBDIRS) docs m4macros build
+SUBDIRS = $(SRC_SUBDIRS) docs m4macros build
 
 # require automake 1.4
 AUTOMAKE_OPTIONS = 1.7
@@ -31,8 +31,6 @@ EXTRA_DIST +=			\
 	makefile.msc	\
 	gtk-zip.sh.in		\
 	sanitize-la.sh		\
-	po/README.translators	\
-	po/po2tbl.sed.in	\
 	examples/aspectframe/Makefile  \
 	examples/aspectframe/aspectframe.c  \
 	examples/Makefile  \
@@ -244,15 +242,5 @@ snapshot:
 	$(MAKE) dist distdir=$(PACKAGE)-snap`date +"%Y%m%d"`
 
 DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc --enable-man --disable-rebuilds --enable-introspection
-
-GITIGNOREFILES = \
-	po-properties/Makefile.in.in \
-	po-properties/Makefile.in \
-	po-properties/Makefile \
-	po-properties/*.gmo \
-	po-properties/*.mo \
-	po-properties/POTFILES \
-	po-properties/stamp-it \
-	po-properties/.intltool-merge-cache
 
 -include $(top_srcdir)/git.mk

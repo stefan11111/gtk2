@@ -36,12 +36,6 @@ test-cwd: ${TEST_PROGS}
 	@$(SKIP_GDKTARGET) || test -z "${TEST_PROGS}" || { \
 	  $(XVFB_START) && { set -e; $(TESTS_ENVIRONMENT) ${GTESTER} --verbose ${TEST_PROGS}; }; \
 	}
-# test-recurse: run tests in subdirs
-test-recurse:
-	@ for subdir in $(SUBDIRS) ; do \
-	    test "$$subdir" = "." -o "$$subdir" = "po" -o "$$subdir" = "po-properties" || \
-	    ( cd $$subdir && $(MAKE) $(AM_MAKEFLAGS) test ) || exit $? ; \
-	  done
 # test-report: run tests in subdirs and generate report
 # perf-report: run tests in subdirs with -m perf and generate report
 # full-report: like test-report: with -m perf and -m slow
@@ -51,10 +45,6 @@ test-report perf-report full-report:	${TEST_PROGS}
 	    GTESTER_LOGDIR=`mktemp -d "\`pwd\`/.testlogs-XXXXXX"`; export GTESTER_LOGDIR ; \
 	    ignore_logdir=false ; \
 	  fi ; \
-	  for subdir in $(SUBDIRS) ; do \
-	    test "$$subdir" = "." -o "$$subdir" = "po" -o "$$subdir" = "po-properties" || \
-	    ( cd $$subdir && $(MAKE) $(AM_MAKEFLAGS) $@ ) || exit $? ; \
-	  done ; \
 	  $(SKIP_GDKTARGET) || test -z "${TEST_PROGS}" || { \
 	    case $@ in \
 	    test-report) test_options="-k";; \

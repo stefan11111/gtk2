@@ -510,33 +510,8 @@ if test "$gtk_ok" = "yes"; then
             [Define to 1 if sigsetjmp is available])
 fi
 
-# i18n stuff
-ALL_LINGUAS="`grep -v '^#' "$srcdir/po/LINGUAS" | tr '\n' ' '`"
 AM_GLIB_GNU_GETTEXT
 LIBS="$LIBS $INTLLIBS"
-AC_OUTPUT_COMMANDS([case "$CONFIG_FILES" in *po-properties/Makefile.in*)
-        sed -e "/POTFILES =/r po-properties/POTFILES" po-properties/Makefile.in > po-properties/Makefile
-      esac])
-
-dnl Snippet below is copied from AM_GLIB_GNU_GETTEXT to generate a first
-dnl po-properties/POTFILES during configure; see GNOME #573515.
-dnl
-dnl Generate list of files to be processed by xgettext which will
-dnl be included in po-properties/Makefile.
-test -d po-properties || mkdir po-properties
-if test "x$srcdir" != "x."; then
-  if test "x`echo $srcdir | sed 's@/.*@@'`" = "x"; then
-    popropsrcprefix="$srcdir/"
-  else
-    popropsrcprefix="../$srcdir/"
-  fi
-else
-  popropsrcprefix="../"
-fi
-rm -f po-properties/POTFILES
-sed -e "/^#/d" -e "/^\$/d" -e "s,.*,	$popropsrcprefix& \\\\," -e "\$s/\(.*\) \\\\/\1/" \
-< $srcdir/po-properties/POTFILES.in > po-properties/POTFILES
-dnl (End of adapted AM_GLIB_GNU_GETTEXT snippet.)
 
 AM_GLIB_DEFINE_LOCALEDIR(GTK_LOCALEDIR)
 
@@ -1726,8 +1701,6 @@ gdk-2.0-uninstalled.pc
 gtk+-2.0-uninstalled.pc
 gail-uninstalled.pc
 m4macros/Makefile
-po/Makefile.in
-po-properties/Makefile.in
 demos/Makefile
 demos/gtk-demo/Makefile
 demos/gtk-demo/geninclude.pl

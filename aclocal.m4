@@ -562,22 +562,6 @@ msgstr ""
       fi
     fi
 
-    # We need to process the po/ directory.
-    POSUB=po
-
-    AC_OUTPUT_COMMANDS(
-      [case "$CONFIG_FILES" in *po/Makefile.in*)
-        sed -e "/POTFILES =/r po/POTFILES" po/Makefile.in > po/Makefile
-      esac])
-
-    dnl These rules are solely for the distribution goal.  While doing this
-    dnl we only have to keep exactly one list of the available catalogs
-    dnl in configure.ac.
-    for lang in $ALL_LINGUAS; do
-      GMOFILES="$GMOFILES $lang.gmo"
-      POFILES="$POFILES $lang.po"
-    done
-
     dnl Make all variables we use known to autoconf.
     AC_SUBST(CATALOGS)
     AC_SUBST(CATOBJEXT)
@@ -655,48 +639,6 @@ AU_DEFUN([GLIB_GNU_GETTEXT],
      MKINSTALLDIRS="\$(top_srcdir)/mkinstalldirs"
    fi
    AC_SUBST(MKINSTALLDIRS)
-
-   dnl Generate list of files to be processed by xgettext which will
-   dnl be included in po/Makefile.
-   test -d po || mkdir po
-   if test "x$srcdir" != "x."; then
-     if test "x`echo $srcdir | sed 's@/.*@@'`" = "x"; then
-       posrcprefix="$srcdir/"
-     else
-       posrcprefix="../$srcdir/"
-     fi
-   else
-     posrcprefix="../"
-   fi
-   rm -f po/POTFILES
-   sed -e "/^#/d" -e "/^\$/d" -e "s,.*,	$posrcprefix& \\\\," -e "\$s/\(.*\) \\\\/\1/" \
-	< $srcdir/po/POTFILES.in > po/POTFILES
-  ],
-  [[$0: This macro is deprecated. You should use upstream gettext instead.]])
-
-# AM_GLIB_DEFINE_LOCALEDIR(VARIABLE)
-# -------------------------------
-# Define VARIABLE to the location where catalog files will
-# be installed by po/Makefile.
-glib_DEFUN([GLIB_DEFINE_LOCALEDIR],
-[glib_REQUIRE([GLIB_GNU_GETTEXT])dnl
-glib_save_prefix="$prefix"
-glib_save_exec_prefix="$exec_prefix"
-glib_save_datarootdir="$datarootdir"
-test "x$prefix" = xNONE && prefix=$ac_default_prefix
-test "x$exec_prefix" = xNONE && exec_prefix=$prefix
-datarootdir=`eval echo "${datarootdir}"`
-if test "x$CATOBJEXT" = "x.mo" ; then
-  localedir=`eval echo "${libdir}/locale"`
-else
-  localedir=`eval echo "${datadir}/locale"`
-fi
-prefix="$glib_save_prefix"
-exec_prefix="$glib_save_exec_prefix"
-datarootdir="$glib_save_datarootdir"
-AC_DEFINE_UNQUOTED($1, "$localedir",
-  [Define the location where the catalogs will be installed])
-])
 
 dnl
 dnl Now the definitions that aclocal will find

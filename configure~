@@ -20116,9 +20116,6 @@ $as_echo "#define HAVE_SIGSETJMP 1" >>confdefs.h
 
 fi
 
-# i18n stuff
-ALL_LINGUAS="`grep -v '^#' "$srcdir/po/LINGUAS" | tr '\n' ' '`"
-
    for ac_header in locale.h
 do :
   ac_fn_c_check_header_mongrel "$LINENO" "locale.h" "ac_cv_header_locale_h" "$ac_includes_default"
@@ -20818,67 +20815,6 @@ $as_echo "found xgettext program is not GNU xgettext; ignore it" >&6; }
       fi
     fi
 
-    # We need to process the po/ directory.
-    POSUB=po
-
-    ac_config_commands="$ac_config_commands default-1"
-
-
-                for lang in $ALL_LINGUAS; do
-      GMOFILES="$GMOFILES $lang.gmo"
-      POFILES="$POFILES $lang.po"
-    done
-
-
-
-
-
-
-
-
-
-
-
-
-
-   if test "$gt_cv_have_gettext" = "yes"; then
-     if test "x$ALL_LINGUAS" = "x"; then
-       LINGUAS=
-     else
-       { $as_echo "$as_me:${as_lineno-$LINENO}: checking for catalogs to be installed" >&5
-$as_echo_n "checking for catalogs to be installed... " >&6; }
-       NEW_LINGUAS=
-       for presentlang in $ALL_LINGUAS; do
-         useit=no
-         if test "%UNSET%" != "${LINGUAS-%UNSET%}"; then
-           desiredlanguages="$LINGUAS"
-         else
-           desiredlanguages="$ALL_LINGUAS"
-         fi
-         for desiredlang in $desiredlanguages; do
- 	   # Use the presentlang catalog if desiredlang is
-           #   a. equal to presentlang, or
-           #   b. a variant of presentlang (because in this case,
-           #      presentlang can be used as a fallback for messages
-           #      which are not translated in the desiredlang catalog).
-           case "$desiredlang" in
-             "$presentlang"*) useit=yes;;
-           esac
-         done
-         if test $useit = yes; then
-           NEW_LINGUAS="$NEW_LINGUAS $presentlang"
-         fi
-       done
-       LINGUAS=$NEW_LINGUAS
-       { $as_echo "$as_me:${as_lineno-$LINENO}: result: $LINGUAS" >&5
-$as_echo "$LINGUAS" >&6; }
-     fi
-
-          if test -n "$LINGUAS"; then
-       for lang in $LINGUAS; do CATALOGS="$CATALOGS $lang$CATOBJEXT"; done
-     fi
-   fi
-
             MKINSTALLDIRS=
    if test -n "$ac_aux_dir"; then
      MKINSTALLDIRS="$ac_aux_dir/mkinstalldirs"
@@ -20887,38 +20823,10 @@ $as_echo "$LINGUAS" >&6; }
      MKINSTALLDIRS="\$(top_srcdir)/mkinstalldirs"
    fi
 
-
-         test -d po || mkdir po
-   if test "x$srcdir" != "x."; then
-     if test "x`echo $srcdir | sed 's@/.*@@'`" = "x"; then
-       posrcprefix="$srcdir/"
-     else
-       posrcprefix="../$srcdir/"
-     fi
-   else
-     posrcprefix="../"
-   fi
-   rm -f po/POTFILES
-   sed -e "/^#/d" -e "/^\$/d" -e "s,.*,	$posrcprefix& \\\\," -e "\$s/\(.*\) \\\\/\1/" \
-	< $srcdir/po/POTFILES.in > po/POTFILES
-
 LIBS="$LIBS $INTLLIBS"
 ac_config_commands="$ac_config_commands default-2"
 
 
-test -d po-properties || mkdir po-properties
-if test "x$srcdir" != "x."; then
-  if test "x`echo $srcdir | sed 's@/.*@@'`" = "x"; then
-    popropsrcprefix="$srcdir/"
-  else
-    popropsrcprefix="../$srcdir/"
-  fi
-else
-  popropsrcprefix="../"
-fi
-rm -f po-properties/POTFILES
-sed -e "/^#/d" -e "/^\$/d" -e "s,.*,	$popropsrcprefix& \\\\," -e "\$s/\(.*\) \\\\/\1/" \
-< $srcdir/po-properties/POTFILES.in > po-properties/POTFILES
 
 glib_save_prefix="$prefix"
 glib_save_exec_prefix="$exec_prefix"
@@ -25951,7 +25859,7 @@ fi
 ac_config_commands="$ac_config_commands gdk/gdkconfig.h"
 
 
-ac_config_files="$ac_config_files config.h.win32 gtk-zip.sh Makefile gdk-2.0.pc gtk+-2.0.pc gtk+-unix-print-2.0.pc gail.pc gdk-2.0-uninstalled.pc gtk+-2.0-uninstalled.pc gail-uninstalled.pc m4macros/Makefile po/Makefile.in po-properties/Makefile.in demos/Makefile demos/gtk-demo/Makefile demos/gtk-demo/geninclude.pl tests/Makefile docs/Makefile docs/reference/Makefile docs/reference/gdk/Makefile docs/reference/gdk/version.xml docs/reference/gtk/Makefile docs/reference/gtk/version.xml docs/reference/libgail-util/Makefile docs/faq/Makefile docs/tools/Makefile docs/tutorial/Makefile build/Makefile build/win32/Makefile build/win32/vs9/Makefile build/win32/vs9/gtk-version-paths.vsprops build/win32/vs10/Makefile build/win32/vs10/gtk-version-paths.props build/win32/vs11/Makefile build/win32/vs12/Makefile build/win32/vs14/Makefile build/win32/vs15/Makefile build/win32/vs16/Makefile gdk/Makefile gdk/x11/Makefile gdk/win32/Makefile gdk/win32/rc/Makefile gdk/win32/rc/gdk.rc gdk/quartz/Makefile gdk/directfb/Makefile gdk/tests/Makefile gtk/Makefile gtk/makefile.msc gtk/gtkversion.h gtk/gtk-win32.rc gtk/theme-bits/Makefile gtk/tests/Makefile modules/Makefile modules/other/Makefile modules/other/gail/Makefile modules/other/gail/libgail-util/Makefile modules/other/gail/tests/Makefile modules/engines/Makefile modules/engines/pixbuf/Makefile modules/engines/ms-windows/Makefile modules/engines/ms-windows/Theme/Makefile modules/engines/ms-windows/Theme/gtk-2.0/Makefile modules/input/Makefile modules/printbackends/Makefile modules/printbackends/cups/Makefile modules/printbackends/lpr/Makefile modules/printbackends/file/Makefile modules/printbackends/papi/Makefile modules/printbackends/test/Makefile perf/Makefile"
+ac_config_files="$ac_config_files config.h.win32 gtk-zip.sh Makefile gdk-2.0.pc gtk+-2.0.pc gtk+-unix-print-2.0.pc gail.pc gdk-2.0-uninstalled.pc gtk+-2.0-uninstalled.pc gail-uninstalled.pc m4macros/Makefile demos/Makefile demos/gtk-demo/Makefile demos/gtk-demo/geninclude.pl tests/Makefile docs/Makefile docs/reference/Makefile docs/reference/gdk/Makefile docs/reference/gdk/version.xml docs/reference/gtk/Makefile docs/reference/gtk/version.xml docs/reference/libgail-util/Makefile docs/faq/Makefile docs/tools/Makefile docs/tutorial/Makefile build/Makefile build/win32/Makefile build/win32/vs9/Makefile build/win32/vs9/gtk-version-paths.vsprops build/win32/vs10/Makefile build/win32/vs10/gtk-version-paths.props build/win32/vs11/Makefile build/win32/vs12/Makefile build/win32/vs14/Makefile build/win32/vs15/Makefile build/win32/vs16/Makefile gdk/Makefile gdk/x11/Makefile gdk/win32/Makefile gdk/win32/rc/Makefile gdk/win32/rc/gdk.rc gdk/quartz/Makefile gdk/directfb/Makefile gdk/tests/Makefile gtk/Makefile gtk/makefile.msc gtk/gtkversion.h gtk/gtk-win32.rc gtk/theme-bits/Makefile gtk/tests/Makefile modules/Makefile modules/other/Makefile modules/other/gail/Makefile modules/other/gail/libgail-util/Makefile modules/other/gail/tests/Makefile modules/engines/Makefile modules/engines/pixbuf/Makefile modules/engines/ms-windows/Makefile modules/engines/ms-windows/Theme/Makefile modules/engines/ms-windows/Theme/gtk-2.0/Makefile modules/input/Makefile modules/printbackends/Makefile modules/printbackends/cups/Makefile modules/printbackends/lpr/Makefile modules/printbackends/file/Makefile modules/printbackends/papi/Makefile modules/printbackends/test/Makefile perf/Makefile"
 
 
 cat >confcache <<\_ACEOF
@@ -27360,8 +27268,6 @@ do
     "gtk+-2.0-uninstalled.pc") CONFIG_FILES="$CONFIG_FILES gtk+-2.0-uninstalled.pc" ;;
     "gail-uninstalled.pc") CONFIG_FILES="$CONFIG_FILES gail-uninstalled.pc" ;;
     "m4macros/Makefile") CONFIG_FILES="$CONFIG_FILES m4macros/Makefile" ;;
-    "po/Makefile.in") CONFIG_FILES="$CONFIG_FILES po/Makefile.in" ;;
-    "po-properties/Makefile.in") CONFIG_FILES="$CONFIG_FILES po-properties/Makefile.in" ;;
     "demos/Makefile") CONFIG_FILES="$CONFIG_FILES demos/Makefile" ;;
     "demos/gtk-demo/Makefile") CONFIG_FILES="$CONFIG_FILES demos/gtk-demo/Makefile" ;;
     "demos/gtk-demo/geninclude.pl") CONFIG_FILES="$CONFIG_FILES demos/gtk-demo/geninclude.pl" ;;
@@ -28816,70 +28722,6 @@ postdeps=$lt_postdeps_CXX
 # The library search path used internally by the compiler when linking
 # a shared library.
 compiler_lib_search_path=$lt_compiler_lib_search_path_CXX
-
-# ### END LIBTOOL TAG CONFIG: CXX
-_LT_EOF
-
- ;;
-    "default-1":C) case "$CONFIG_FILES" in *po/Makefile.in*)
-        sed -e "/POTFILES =/r po/POTFILES" po/Makefile.in > po/Makefile
-      esac ;;
-    "default-2":C) case "$CONFIG_FILES" in *po-properties/Makefile.in*)
-        sed -e "/POTFILES =/r po-properties/POTFILES" po-properties/Makefile.in > po-properties/Makefile
-      esac ;;
-    "gdk/gdkconfig.h":C)
-	outfile=gdkconfig.h-tmp
-	cat > $outfile <<\_______EOF
-/* gdkconfig.h
- *
- * This is a generated file.  Please modify `configure.in'
- */
-
-#ifndef GDKCONFIG_H
-#define GDKCONFIG_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif /* __cplusplus */
-
-#ifndef GSEAL
-/* introduce GSEAL() here for all of Gdk and Gtk+ without the need to modify GLib */
-#  ifdef GSEAL_ENABLE
-#    define GSEAL(ident)      _g_sealed__ ## ident
-#  else
-#    define GSEAL(ident)      ident
-#  endif
-#endif /* !GSEAL */
-
-_______EOF
-
-	cat >>$outfile <<_______EOF
-$gdk_windowing
-$gdk_wc
-_______EOF
-
-	cat >>$outfile <<_______EOF
-
-#ifdef __cplusplus
-}
-#endif /* __cplusplus */
-
-#endif /* GDKCONFIG_H */
-_______EOF
-
-
-	if cmp -s $outfile gdk/gdkconfig.h; then
-          { $as_echo "$as_me:${as_lineno-$LINENO}: gdk/gdkconfig.h is unchanged" >&5
-$as_echo "$as_me: gdk/gdkconfig.h is unchanged" >&6;}
-	  rm -f $outfile
-	else
-	  mv $outfile gdk/gdkconfig.h
-	fi
- ;;
-
-  esac
-done # for ac_tag
-
 
 as_fn_exit 0
 _ACEOF

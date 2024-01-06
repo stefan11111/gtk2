@@ -498,7 +498,6 @@ EXTRA_DIST = HACKING makecopyright NEWS.pre-1-0 ChangeLog.pre-1-0 \
 	ChangeLog.pre-2-16 ChangeLog.gtk-async-file-chooser \
 	ChangeLog.gtk-printing README.commits README.win32 \
 	config.h.win32 makefile.msc gtk-zip.sh.in sanitize-la.sh \
-	po/README.translators po/po2tbl.sed.in \
 	examples/aspectframe/Makefile \
 	examples/aspectframe/aspectframe.c examples/Makefile \
 	examples/README.1ST examples/extract.awk examples/extract.sh \
@@ -573,7 +572,7 @@ XVFB_START = \
 	&& DISPLAY=:$$XID && export DISPLAY
 
 SRC_SUBDIRS = gdk gtk modules   perf
-SUBDIRS = po po-properties $(SRC_SUBDIRS) docs m4macros build
+SUBDIRS = $(SRC_SUBDIRS) docs m4macros build
 
 # require automake 1.4
 AUTOMAKE_OPTIONS = 1.7
@@ -615,15 +614,6 @@ DISTCLEANFILES = \
 
 DEFAULT_GDKTARGET = x11
 DISTCHECK_CONFIGURE_FLAGS = --enable-gtk-doc --enable-man --disable-rebuilds --enable-introspection
-GITIGNOREFILES = \
-	po-properties/Makefile.in.in \
-	po-properties/Makefile.in \
-	po-properties/Makefile \
-	po-properties/*.gmo \
-	po-properties/*.mo \
-	po-properties/POTFILES \
-	po-properties/stamp-it \
-	po-properties/.intltool-merge-cache
 
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive
@@ -1176,12 +1166,6 @@ test-cwd: ${TEST_PROGS}
 	@$(SKIP_GDKTARGET) || test -z "${TEST_PROGS}" || { \
 	  $(XVFB_START) && { set -e; $(TESTS_ENVIRONMENT) ${GTESTER} --verbose ${TEST_PROGS}; }; \
 	}
-# test-recurse: run tests in subdirs
-test-recurse:
-	@ for subdir in $(SUBDIRS) ; do \
-	    test "$$subdir" = "." -o "$$subdir" = "po" -o "$$subdir" = "po-properties" || \
-	    ( cd $$subdir && $(MAKE) $(AM_MAKEFLAGS) test ) || exit $? ; \
-	  done
 # test-report: run tests in subdirs and generate report
 # perf-report: run tests in subdirs with -m perf and generate report
 # full-report: like test-report: with -m perf and -m slow
@@ -1191,10 +1175,6 @@ test-report perf-report full-report:	${TEST_PROGS}
 	    GTESTER_LOGDIR=`mktemp -d "\`pwd\`/.testlogs-XXXXXX"`; export GTESTER_LOGDIR ; \
 	    ignore_logdir=false ; \
 	  fi ; \
-	  for subdir in $(SUBDIRS) ; do \
-	    test "$$subdir" = "." -o "$$subdir" = "po" -o "$$subdir" = "po-properties" || \
-	    ( cd $$subdir && $(MAKE) $(AM_MAKEFLAGS) $@ ) || exit $? ; \
-	  done ; \
 	  $(SKIP_GDKTARGET) || test -z "${TEST_PROGS}" || { \
 	    case $@ in \
 	    test-report) test_options="-k";; \
