@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GtkVRuler: GTK+ 2 Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets Vsnapshot">
+<link rel="home" href="index.html" title="GTK+ 2 Reference Manual">
+<link rel="up" href="SpecialObjects.html" title="Special-purpose features">
+<link rel="prev" href="GtkHRuler.html" title="GtkHRuler">
+<link rel="next" href="RecentDocuments.html" title="Recently Used Documents">
+<meta name="generator" content="GTK-Doc V1.33.0 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#GtkVRuler.description" class="shortcut">Description</a></span><span id="nav_hierarchy">  <span class="dim">|</span> 
+                  <a href="#GtkVRuler.object-hierarchy" class="shortcut">Object Hierarchy</a></span><span id="nav_interfaces">  <span class="dim">|</span> 
+                  <a href="#GtkVRuler.implemented-interfaces" class="shortcut">Implemented Interfaces</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="SpecialObjects.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="GtkHRuler.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="RecentDocuments.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="GtkVRuler"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GtkVRuler.top_of_page"></a>GtkVRuler</span></h2>
+<p>GtkVRuler — A vertical ruler</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="GtkVRuler.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_proto_type">
+<col class="functions_proto_name">
+</colgroup>
+<tbody><tr>
+<td class="function_type">
+<a class="link" href="GtkWidget.html" title="GtkWidget"><span class="returnvalue">GtkWidget</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GtkVRuler.html#gtk-vruler-new" title="gtk_vruler_new ()">gtk_vruler_new</a> <span class="c_punctuation">()</span>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GtkVRuler.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="other_proto_type">
+<col class="other_proto_name">
+</colgroup>
+<tbody><tr>
+<td class="datatype_keyword">struct</td>
+<td class="function_name"><a class="link" href="GtkVRuler.html#GtkVRuler-struct" title="struct GtkVRuler">GtkVRuler</a></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GtkVRuler.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="screen">    GObject
+    <span class="lineart">╰──</span> GInitiallyUnowned
+        <span class="lineart">╰──</span> <a class="link" href="GtkObject.html" title="GtkObject">GtkObject</a>
+            <span class="lineart">╰──</span> <a class="link" href="GtkWidget.html" title="GtkWidget">GtkWidget</a>
+                <span class="lineart">╰──</span> <a class="link" href="GtkRuler.html" title="GtkRuler">GtkRuler</a>
+                    <span class="lineart">╰──</span> GtkVRuler
+</pre>
+</div>
+<div class="refsect1">
+<a name="GtkVRuler.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
+<p>
+GtkVRuler implements
+ AtkImplementorIface,  <a class="link" href="GtkBuildable.html" title="GtkBuildable">GtkBuildable</a> and  <a class="link" href="gtk2-Orientable.html#GtkOrientable">GtkOrientable</a>.</p>
+</div>
+<div class="refsect1">
+<a name="GtkVRuler.includes"></a><h2>Includes</h2>
+<pre class="synopsis">#include &lt;gtk/gtk.h&gt;
+</pre>
+</div>
+<div class="refsect1">
+<a name="GtkVRuler.description"></a><h2>Description</h2>
+<div class="note">
+ This widget is considered too specialized/little-used for
+ GTK+, and will be removed in GTK 3.  If your application needs this widget,
+ feel free to use it, as the widget is useful in some applications; it's just
+ not of general interest. However, we are not accepting new features for the
+ widget, and it will move out of the GTK+ distribution.
+</div>
+<p>The VRuler widget is a widget arranged vertically creating a ruler that is
+utilized around other widgets such as a text widget. The ruler is used to show
+the location of the mouse on the window and to show the size of the window in
+specified units. The available units of measurement are GTK_PIXELS, GTK_INCHES
+and GTK_CENTIMETERS. GTK_PIXELS is the default unit of measurement.</p>
+</div>
+<div class="refsect1">
+<a name="GtkVRuler.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="gtk-vruler-new"></a><h3>gtk_vruler_new ()</h3>
+<pre class="programlisting"><a class="link" href="GtkWidget.html" title="GtkWidget"><span class="returnvalue">GtkWidget</span></a> *
+gtk_vruler_new (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<div class="warning"><p><code class="literal">gtk_vruler_new</code> is deprecated and should not be used in newly-written code.</p></div>
+<p>Creates a new vertical ruler</p>
+<div class="refsect3">
+<a name="gtk-vruler-new.returns"></a><h4>Returns</h4>
+<p> a new <a class="link" href="GtkVRuler.html" title="GtkVRuler"><span class="type">GtkVRuler</span></a>.</p>
+<p><em class="parameter"><code>Deprecated</code></em>
+: 2.24: <a class="link" href="GtkRuler.html" title="GtkRuler"><span class="type">GtkRuler</span></a> has been removed from GTK 3 for being
+unmaintained and too specialized. There is no replacement.</p>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="GtkVRuler.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="GtkVRuler-struct"></a><h3>struct GtkVRuler</h3>
+<pre class="programlisting">struct GtkVRuler;</pre>
+<div class="warning"><p><code class="literal">GtkVRuler</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.33.0</div>
+</body>
+</html>

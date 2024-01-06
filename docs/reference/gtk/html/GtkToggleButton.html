@@ -1,0 +1,468 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GtkToggleButton: GTK+ 2 Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets Vsnapshot">
+<link rel="home" href="index.html" title="GTK+ 2 Reference Manual">
+<link rel="up" href="ButtonWidgets.html" title="Buttons and Toggles">
+<link rel="prev" href="GtkRadioButton.html" title="GtkRadioButton">
+<link rel="next" href="GtkLinkButton.html" title="GtkLinkButton">
+<meta name="generator" content="GTK-Doc V1.33.0 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#GtkToggleButton.description" class="shortcut">Description</a></span><span id="nav_hierarchy">  <span class="dim">|</span> 
+                  <a href="#GtkToggleButton.object-hierarchy" class="shortcut">Object Hierarchy</a></span><span id="nav_interfaces">  <span class="dim">|</span> 
+                  <a href="#GtkToggleButton.implemented-interfaces" class="shortcut">Implemented Interfaces</a></span><span id="nav_properties">  <span class="dim">|</span> 
+                  <a href="#GtkToggleButton.properties" class="shortcut">Properties</a></span><span id="nav_signals">  <span class="dim">|</span> 
+                  <a href="#GtkToggleButton.signals" class="shortcut">Signals</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="ButtonWidgets.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="GtkRadioButton.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="GtkLinkButton.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="GtkToggleButton"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GtkToggleButton.top_of_page"></a>GtkToggleButton</span></h2>
+<p>GtkToggleButton</p>
+</td>
+<td class="gallery_image" valign="top" align="right"><img src="toggle-button.png"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="GtkToggleButton.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_proto_type">
+<col class="functions_proto_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<a class="link" href="GtkWidget.html" title="GtkWidget"><span class="returnvalue">GtkWidget</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GtkToggleButton.html#gtk-toggle-button-new" title="gtk_toggle_button_new ()">gtk_toggle_button_new</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GtkWidget.html" title="GtkWidget"><span class="returnvalue">GtkWidget</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GtkToggleButton.html#gtk-toggle-button-new-with-label" title="gtk_toggle_button_new_with_label ()">gtk_toggle_button_new_with_label</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GtkWidget.html" title="GtkWidget"><span class="returnvalue">GtkWidget</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GtkToggleButton.html#gtk-toggle-button-new-with-mnemonic" title="gtk_toggle_button_new_with_mnemonic ()">gtk_toggle_button_new_with_mnemonic</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkToggleButton.html#gtk-toggle-button-set-mode" title="gtk_toggle_button_set_mode ()">gtk_toggle_button_set_mode</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gboolean</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkToggleButton.html#gtk-toggle-button-get-mode" title="gtk_toggle_button_get_mode ()">gtk_toggle_button_get_mode</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkToggleButton.html#gtk-toggle-button-toggled" title="gtk_toggle_button_toggled ()">gtk_toggle_button_toggled</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gboolean</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkToggleButton.html#gtk-toggle-button-get-active" title="gtk_toggle_button_get_active ()">gtk_toggle_button_get_active</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkToggleButton.html#gtk-toggle-button-set-active" title="gtk_toggle_button_set_active ()">gtk_toggle_button_set_active</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gboolean</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkToggleButton.html#gtk-toggle-button-get-inconsistent" title="gtk_toggle_button_get_inconsistent ()">gtk_toggle_button_get_inconsistent</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkToggleButton.html#gtk-toggle-button-set-inconsistent" title="gtk_toggle_button_set_inconsistent ()">gtk_toggle_button_set_inconsistent</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GtkToggleButton.properties"></a><h2>Properties</h2>
+<div class="informaltable"><table class="informaltable" border="0">
+<colgroup>
+<col width="150px" class="properties_type">
+<col width="300px" class="properties_name">
+<col width="200px" class="properties_flags">
+</colgroup>
+<tbody>
+<tr>
+<td class="property_type"><span class="type">gboolean</span></td>
+<td class="property_name"><a class="link" href="GtkToggleButton.html#GtkToggleButton--active" title="The “active” property">active</a></td>
+<td class="property_flags">Read / Write</td>
+</tr>
+<tr>
+<td class="property_type"><span class="type">gboolean</span></td>
+<td class="property_name"><a class="link" href="GtkToggleButton.html#GtkToggleButton--draw-indicator" title="The “draw-indicator” property">draw-indicator</a></td>
+<td class="property_flags">Read / Write</td>
+</tr>
+<tr>
+<td class="property_type"><span class="type">gboolean</span></td>
+<td class="property_name"><a class="link" href="GtkToggleButton.html#GtkToggleButton--inconsistent" title="The “inconsistent” property">inconsistent</a></td>
+<td class="property_flags">Read / Write</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GtkToggleButton.signals"></a><h2>Signals</h2>
+<div class="informaltable"><table class="informaltable" border="0">
+<colgroup>
+<col width="150px" class="signal_proto_type">
+<col width="300px" class="signal_proto_name">
+<col width="200px" class="signal_proto_flags">
+</colgroup>
+<tbody><tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="GtkToggleButton.html#GtkToggleButton-toggled" title="The “toggled” signal">toggled</a></td>
+<td class="signal_flags">Run First</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GtkToggleButton.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="other_proto_type">
+<col class="other_proto_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="datatype_keyword">struct</td>
+<td class="function_name"><a class="link" href="GtkToggleButton.html#GtkToggleButton-struct" title="struct GtkToggleButton">GtkToggleButton</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="GtkToggleButton.html#gtk-toggle-button-set-state" title="gtk_toggle_button_set_state">gtk_toggle_button_set_state</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GtkToggleButton.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="screen">    GObject
+    <span class="lineart">╰──</span> GInitiallyUnowned
+        <span class="lineart">╰──</span> <a class="link" href="GtkObject.html" title="GtkObject">GtkObject</a>
+            <span class="lineart">╰──</span> <a class="link" href="GtkWidget.html" title="GtkWidget">GtkWidget</a>
+                <span class="lineart">╰──</span> <a class="link" href="GtkContainer.html" title="GtkContainer">GtkContainer</a>
+                    <span class="lineart">╰──</span> <a class="link" href="GtkBin.html" title="GtkBin">GtkBin</a>
+                        <span class="lineart">╰──</span> <a class="link" href="GtkButton.html" title="GtkButton">GtkButton</a>
+                            <span class="lineart">╰──</span> GtkToggleButton
+                                <span class="lineart">╰──</span> <a class="link" href="GtkCheckButton.html" title="GtkCheckButton">GtkCheckButton</a>
+</pre>
+</div>
+<div class="refsect1">
+<a name="GtkToggleButton.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
+<p>
+GtkToggleButton implements
+ AtkImplementorIface,  <a class="link" href="GtkBuildable.html" title="GtkBuildable">GtkBuildable</a> and  <a class="link" href="GtkActivatable.html" title="GtkActivatable">GtkActivatable</a>.</p>
+</div>
+<div class="refsect1">
+<a name="GtkToggleButton.includes"></a><h2>Includes</h2>
+<pre class="synopsis">#include &lt;gtk/gtk.h&gt;
+</pre>
+</div>
+<div class="refsect1">
+<a name="GtkToggleButton.description"></a><h2>Description</h2>
+</div>
+<div class="refsect1">
+<a name="GtkToggleButton.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="gtk-toggle-button-new"></a><h3>gtk_toggle_button_new ()</h3>
+<pre class="programlisting"><a class="link" href="GtkWidget.html" title="GtkWidget"><span class="returnvalue">GtkWidget</span></a> *
+gtk_toggle_button_new (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-toggle-button-new-with-label"></a><h3>gtk_toggle_button_new_with_label ()</h3>
+<pre class="programlisting"><a class="link" href="GtkWidget.html" title="GtkWidget"><span class="returnvalue">GtkWidget</span></a> *
+gtk_toggle_button_new_with_label (<em class="parameter"><code>const <span class="type">gchar</span> *label</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-toggle-button-new-with-mnemonic"></a><h3>gtk_toggle_button_new_with_mnemonic ()</h3>
+<pre class="programlisting"><a class="link" href="GtkWidget.html" title="GtkWidget"><span class="returnvalue">GtkWidget</span></a> *
+gtk_toggle_button_new_with_mnemonic (<em class="parameter"><code>const <span class="type">gchar</span> *label</code></em>);</pre>
+<p>Creates a new <a class="link" href="GtkToggleButton.html" title="GtkToggleButton"><span class="type">GtkToggleButton</span></a> containing a label. The label
+will be created using <a class="link" href="GtkLabel.html#gtk-label-new-with-mnemonic" title="gtk_label_new_with_mnemonic ()"><code class="function">gtk_label_new_with_mnemonic()</code></a>, so underscores
+in <em class="parameter"><code>label</code></em>
+ indicate the mnemonic for the button.</p>
+<div class="refsect3">
+<a name="gtk-toggle-button-new-with-mnemonic.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>label</p></td>
+<td class="parameter_description"><p>the text of the button, with an underscore in front of the
+mnemonic character</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>returns</p></td>
+<td class="parameter_description"><p>a new <a class="link" href="GtkToggleButton.html" title="GtkToggleButton"><span class="type">GtkToggleButton</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-toggle-button-set-mode"></a><h3>gtk_toggle_button_set_mode ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_toggle_button_set_mode (<em class="parameter"><code><a class="link" href="GtkToggleButton.html" title="GtkToggleButton"><span class="type">GtkToggleButton</span></a> *toggle_button</code></em>,
+                            <em class="parameter"><code><span class="type">gboolean</span> draw_indicator</code></em>);</pre>
+<p>Sets whether the button is displayed as a separate indicator and label.
+You can call this function on a checkbutton or a radiobutton with
+<em class="parameter"><code>draw_indicator</code></em>
+ = <code class="literal">FALSE</code> to make the button look like a normal button</p>
+<p>This function only affects instances of classes like <a class="link" href="GtkCheckButton.html" title="GtkCheckButton"><span class="type">GtkCheckButton</span></a>
+and <a class="link" href="GtkRadioButton.html" title="GtkRadioButton"><span class="type">GtkRadioButton</span></a> that derive from <a class="link" href="GtkToggleButton.html" title="GtkToggleButton"><span class="type">GtkToggleButton</span></a>,
+not instances of <a class="link" href="GtkToggleButton.html" title="GtkToggleButton"><span class="type">GtkToggleButton</span></a> itself.</p>
+<div class="refsect3">
+<a name="gtk-toggle-button-set-mode.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>toggle_button</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkToggleButton.html" title="GtkToggleButton"><span class="type">GtkToggleButton</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>draw_indicator</p></td>
+<td class="parameter_description"><p>if <code class="literal">TRUE</code>, draw the button as a separate indicator
+and label; if <code class="literal">FALSE</code>, draw the button like a normal button</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-toggle-button-get-mode"></a><h3>gtk_toggle_button_get_mode ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>
+gtk_toggle_button_get_mode (<em class="parameter"><code><a class="link" href="GtkToggleButton.html" title="GtkToggleButton"><span class="type">GtkToggleButton</span></a> *toggle_button</code></em>);</pre>
+<p>Retrieves whether the button is displayed as a separate indicator
+and label. See <a class="link" href="GtkToggleButton.html#gtk-toggle-button-set-mode" title="gtk_toggle_button_set_mode ()"><code class="function">gtk_toggle_button_set_mode()</code></a>.</p>
+<div class="refsect3">
+<a name="gtk-toggle-button-get-mode.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>toggle_button</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkToggleButton.html" title="GtkToggleButton"><span class="type">GtkToggleButton</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-toggle-button-get-mode.returns"></a><h4>Returns</h4>
+<p> <code class="literal">TRUE</code> if the togglebutton is drawn as a separate indicator
+and label.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-toggle-button-toggled"></a><h3>gtk_toggle_button_toggled ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_toggle_button_toggled (<em class="parameter"><code><a class="link" href="GtkToggleButton.html" title="GtkToggleButton"><span class="type">GtkToggleButton</span></a> *toggle_button</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-toggle-button-get-active"></a><h3>gtk_toggle_button_get_active ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>
+gtk_toggle_button_get_active (<em class="parameter"><code><a class="link" href="GtkToggleButton.html" title="GtkToggleButton"><span class="type">GtkToggleButton</span></a> *toggle_button</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-toggle-button-set-active"></a><h3>gtk_toggle_button_set_active ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_toggle_button_set_active (<em class="parameter"><code><a class="link" href="GtkToggleButton.html" title="GtkToggleButton"><span class="type">GtkToggleButton</span></a> *toggle_button</code></em>,
+                              <em class="parameter"><code><span class="type">gboolean</span> is_active</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-toggle-button-get-inconsistent"></a><h3>gtk_toggle_button_get_inconsistent ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>
+gtk_toggle_button_get_inconsistent (<em class="parameter"><code><a class="link" href="GtkToggleButton.html" title="GtkToggleButton"><span class="type">GtkToggleButton</span></a> *toggle_button</code></em>);</pre>
+<p>Gets the value set by <a class="link" href="GtkToggleButton.html#gtk-toggle-button-set-inconsistent" title="gtk_toggle_button_set_inconsistent ()"><code class="function">gtk_toggle_button_set_inconsistent()</code></a>.</p>
+<div class="refsect3">
+<a name="gtk-toggle-button-get-inconsistent.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>toggle_button</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkToggleButton.html" title="GtkToggleButton"><span class="type">GtkToggleButton</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-toggle-button-get-inconsistent.returns"></a><h4>Returns</h4>
+<p> <code class="literal">TRUE</code> if the button is displayed as inconsistent, <code class="literal">FALSE</code> otherwise</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-toggle-button-set-inconsistent"></a><h3>gtk_toggle_button_set_inconsistent ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_toggle_button_set_inconsistent (<em class="parameter"><code><a class="link" href="GtkToggleButton.html" title="GtkToggleButton"><span class="type">GtkToggleButton</span></a> *toggle_button</code></em>,
+                                    <em class="parameter"><code><span class="type">gboolean</span> setting</code></em>);</pre>
+<p>If the user has selected a range of elements (such as some text or
+spreadsheet cells) that are affected by a toggle button, and the
+current values in that range are inconsistent, you may want to
+display the toggle in an "in between" state. This function turns on
+"in between" display.  Normally you would turn off the inconsistent
+state again if the user toggles the toggle button. This has to be
+done manually, <a class="link" href="GtkToggleButton.html#gtk-toggle-button-set-inconsistent" title="gtk_toggle_button_set_inconsistent ()"><code class="function">gtk_toggle_button_set_inconsistent()</code></a> only affects
+visual appearance, it doesn't affect the semantics of the button.</p>
+<div class="refsect3">
+<a name="gtk-toggle-button-set-inconsistent.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>toggle_button</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkToggleButton.html" title="GtkToggleButton"><span class="type">GtkToggleButton</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>setting</p></td>
+<td class="parameter_description"><p><code class="literal">TRUE</code> if state is inconsistent</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="GtkToggleButton.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="GtkToggleButton-struct"></a><h3>struct GtkToggleButton</h3>
+<pre class="programlisting">struct GtkToggleButton;</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-toggle-button-set-state"></a><h3>gtk_toggle_button_set_state</h3>
+<pre class="programlisting">#define gtk_toggle_button_set_state		gtk_toggle_button_set_active
+</pre>
+<div class="warning"><p><code class="literal">gtk_toggle_button_set_state</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+</div>
+<div class="refsect1">
+<a name="GtkToggleButton.property-details"></a><h2>Property Details</h2>
+<div class="refsect2">
+<a name="GtkToggleButton--active"></a><h3>The <code class="literal">“active”</code> property</h3>
+<pre class="programlisting">  “active”                   <span class="type">gboolean</span></pre>
+<p>If the toggle button should be pressed in or not.</p>
+<p>Owner: GtkToggleButton</p>
+<p>Flags: Read / Write</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GtkToggleButton--draw-indicator"></a><h3>The <code class="literal">“draw-indicator”</code> property</h3>
+<pre class="programlisting">  “draw-indicator”           <span class="type">gboolean</span></pre>
+<p>If the toggle part of the button is displayed.</p>
+<p>Owner: GtkToggleButton</p>
+<p>Flags: Read / Write</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GtkToggleButton--inconsistent"></a><h3>The <code class="literal">“inconsistent”</code> property</h3>
+<pre class="programlisting">  “inconsistent”             <span class="type">gboolean</span></pre>
+<p>If the toggle button is in an "in between" state.</p>
+<p>Owner: GtkToggleButton</p>
+<p>Flags: Read / Write</p>
+<p>Default value: FALSE</p>
+</div>
+</div>
+<div class="refsect1">
+<a name="GtkToggleButton.signal-details"></a><h2>Signal Details</h2>
+<div class="refsect2">
+<a name="GtkToggleButton-toggled"></a><h3>The <code class="literal">“toggled”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="GtkToggleButton.html" title="GtkToggleButton"><span class="type">GtkToggleButton</span></a> *togglebutton,
+               <span class="type">gpointer</span>         user_data)</pre>
+<p>Flags: Run First</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.33.0</div>
+</body>
+</html>

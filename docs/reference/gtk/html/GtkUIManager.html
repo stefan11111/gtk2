@@ -1,0 +1,1294 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GtkUIManager: GTK+ 2 Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets Vsnapshot">
+<link rel="home" href="index.html" title="GTK+ 2 Reference Manual">
+<link rel="up" href="Actions.html" title="Action-based menus and toolbars">
+<link rel="prev" href="Actions.html" title="Action-based menus and toolbars">
+<link rel="next" href="GtkActionGroup.html" title="GtkActionGroup">
+<meta name="generator" content="GTK-Doc V1.33.0 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#GtkUIManager.description" class="shortcut">Description</a></span><span id="nav_hierarchy">  <span class="dim">|</span> 
+                  <a href="#GtkUIManager.object-hierarchy" class="shortcut">Object Hierarchy</a></span><span id="nav_interfaces">  <span class="dim">|</span> 
+                  <a href="#GtkUIManager.implemented-interfaces" class="shortcut">Implemented Interfaces</a></span><span id="nav_properties">  <span class="dim">|</span> 
+                  <a href="#GtkUIManager.properties" class="shortcut">Properties</a></span><span id="nav_signals">  <span class="dim">|</span> 
+                  <a href="#GtkUIManager.signals" class="shortcut">Signals</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="Actions.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="Actions.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="GtkActionGroup.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="GtkUIManager"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GtkUIManager.top_of_page"></a>GtkUIManager</span></h2>
+<p>GtkUIManager</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="GtkUIManager.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_proto_type">
+<col class="functions_proto_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="returnvalue">GtkUIManager</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GtkUIManager.html#gtk-ui-manager-new" title="gtk_ui_manager_new ()">gtk_ui_manager_new</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkUIManager.html#gtk-ui-manager-set-add-tearoffs" title="gtk_ui_manager_set_add_tearoffs ()">gtk_ui_manager_set_add_tearoffs</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gboolean</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkUIManager.html#gtk-ui-manager-get-add-tearoffs" title="gtk_ui_manager_get_add_tearoffs ()">gtk_ui_manager_get_add_tearoffs</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkUIManager.html#gtk-ui-manager-insert-action-group" title="gtk_ui_manager_insert_action_group ()">gtk_ui_manager_insert_action_group</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkUIManager.html#gtk-ui-manager-remove-action-group" title="gtk_ui_manager_remove_action_group ()">gtk_ui_manager_remove_action_group</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">GList</span> *
+</td>
+<td class="function_name">
+<a class="link" href="GtkUIManager.html#gtk-ui-manager-get-action-groups" title="gtk_ui_manager_get_action_groups ()">gtk_ui_manager_get_action_groups</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="gtk2-Keyboard-Accelerators.html#GtkAccelGroup"><span class="returnvalue">GtkAccelGroup</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GtkUIManager.html#gtk-ui-manager-get-accel-group" title="gtk_ui_manager_get_accel_group ()">gtk_ui_manager_get_accel_group</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GtkWidget.html" title="GtkWidget"><span class="returnvalue">GtkWidget</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GtkUIManager.html#gtk-ui-manager-get-widget" title="gtk_ui_manager_get_widget ()">gtk_ui_manager_get_widget</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">GSList</span> *
+</td>
+<td class="function_name">
+<a class="link" href="GtkUIManager.html#gtk-ui-manager-get-toplevels" title="gtk_ui_manager_get_toplevels ()">gtk_ui_manager_get_toplevels</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GtkAction.html" title="GtkAction"><span class="returnvalue">GtkAction</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GtkUIManager.html#gtk-ui-manager-get-action" title="gtk_ui_manager_get_action ()">gtk_ui_manager_get_action</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">guint</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkUIManager.html#gtk-ui-manager-add-ui-from-string" title="gtk_ui_manager_add_ui_from_string ()">gtk_ui_manager_add_ui_from_string</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">guint</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkUIManager.html#gtk-ui-manager-new-merge-id" title="gtk_ui_manager_new_merge_id ()">gtk_ui_manager_new_merge_id</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkUIManager.html#gtk-ui-manager-add-ui" title="gtk_ui_manager_add_ui ()">gtk_ui_manager_add_ui</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkUIManager.html#gtk-ui-manager-remove-ui" title="gtk_ui_manager_remove_ui ()">gtk_ui_manager_remove_ui</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gchar</span> *
+</td>
+<td class="function_name">
+<a class="link" href="GtkUIManager.html#gtk-ui-manager-get-ui" title="gtk_ui_manager_get_ui ()">gtk_ui_manager_get_ui</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkUIManager.html#gtk-ui-manager-ensure-update" title="gtk_ui_manager_ensure_update ()">gtk_ui_manager_ensure_update</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GtkUIManager.properties"></a><h2>Properties</h2>
+<div class="informaltable"><table class="informaltable" border="0">
+<colgroup>
+<col width="150px" class="properties_type">
+<col width="300px" class="properties_name">
+<col width="200px" class="properties_flags">
+</colgroup>
+<tbody>
+<tr>
+<td class="property_type"><span class="type">gboolean</span></td>
+<td class="property_name"><a class="link" href="GtkUIManager.html#GtkUIManager--add-tearoffs" title="The “add-tearoffs” property">add-tearoffs</a></td>
+<td class="property_flags">Read / Write</td>
+</tr>
+<tr>
+<td class="property_type">
+<span class="type">char</span> *</td>
+<td class="property_name"><a class="link" href="GtkUIManager.html#GtkUIManager--ui" title="The “ui” property">ui</a></td>
+<td class="property_flags">Read</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GtkUIManager.signals"></a><h2>Signals</h2>
+<div class="informaltable"><table class="informaltable" border="0">
+<colgroup>
+<col width="150px" class="signal_proto_type">
+<col width="300px" class="signal_proto_name">
+<col width="200px" class="signal_proto_flags">
+</colgroup>
+<tbody>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="GtkUIManager.html#GtkUIManager-actions-changed" title="The “actions-changed” signal">actions-changed</a></td>
+<td class="signal_flags">No Recursion</td>
+</tr>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="GtkUIManager.html#GtkUIManager-add-widget" title="The “add-widget” signal">add-widget</a></td>
+<td class="signal_flags">No Recursion</td>
+</tr>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="GtkUIManager.html#GtkUIManager-connect-proxy" title="The “connect-proxy” signal">connect-proxy</a></td>
+<td class="signal_flags">No Recursion</td>
+</tr>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="GtkUIManager.html#GtkUIManager-disconnect-proxy" title="The “disconnect-proxy” signal">disconnect-proxy</a></td>
+<td class="signal_flags">No Recursion</td>
+</tr>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="GtkUIManager.html#GtkUIManager-post-activate" title="The “post-activate” signal">post-activate</a></td>
+<td class="signal_flags">No Recursion</td>
+</tr>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="GtkUIManager.html#GtkUIManager-pre-activate" title="The “pre-activate” signal">pre-activate</a></td>
+<td class="signal_flags">No Recursion</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GtkUIManager.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="other_proto_type">
+<col class="other_proto_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="datatype_keyword">struct</td>
+<td class="function_name"><a class="link" href="GtkUIManager.html#GtkUIManager-struct" title="struct GtkUIManager">GtkUIManager</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="GtkUIManager.html#gtk-ui-manager-add-ui-from-file" title="gtk_ui_manager_add_ui_from_file">gtk_ui_manager_add_ui_from_file</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">enum</td>
+<td class="function_name"><a class="link" href="GtkUIManager.html#GtkUIManagerItemType" title="enum GtkUIManagerItemType">GtkUIManagerItemType</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GtkUIManager.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="screen">    GObject
+    <span class="lineart">╰──</span> GtkUIManager
+</pre>
+</div>
+<div class="refsect1">
+<a name="GtkUIManager.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
+<p>
+GtkUIManager implements
+ <a class="link" href="GtkBuildable.html" title="GtkBuildable">GtkBuildable</a>.</p>
+</div>
+<div class="refsect1">
+<a name="GtkUIManager.includes"></a><h2>Includes</h2>
+<pre class="synopsis">#include &lt;gtk/gtk.h&gt;
+</pre>
+</div>
+<div class="refsect1">
+<a name="GtkUIManager.description"></a><h2>Description</h2>
+</div>
+<div class="refsect1">
+<a name="GtkUIManager.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="gtk-ui-manager-new"></a><h3>gtk_ui_manager_new ()</h3>
+<pre class="programlisting"><a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="returnvalue">GtkUIManager</span></a> *
+gtk_ui_manager_new (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>Creates a new ui manager object.</p>
+<div class="refsect3">
+<a name="gtk-ui-manager-new.returns"></a><h4>Returns</h4>
+<p> a new ui manager object.</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-4.html#api-index-2.4">2.4</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-ui-manager-set-add-tearoffs"></a><h3>gtk_ui_manager_set_add_tearoffs ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_ui_manager_set_add_tearoffs (<em class="parameter"><code><a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a> *self</code></em>,
+                                 <em class="parameter"><code><span class="type">gboolean</span> add_tearoffs</code></em>);</pre>
+<p>Sets the "add_tearoffs" property, which controls whether menus 
+generated by this <a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a> will have tearoff menu items. </p>
+<p>Note that this only affects regular menus. Generated popup 
+menus never have tearoff menu items.</p>
+<div class="refsect3">
+<a name="gtk-ui-manager-set-add-tearoffs.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>add_tearoffs</p></td>
+<td class="parameter_description"><p>whether tearoff menu items are added</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-4.html#api-index-2.4">2.4</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-ui-manager-get-add-tearoffs"></a><h3>gtk_ui_manager_get_add_tearoffs ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>
+gtk_ui_manager_get_add_tearoffs (<em class="parameter"><code><a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a> *self</code></em>);</pre>
+<p>Returns whether menus generated by this <a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a>
+will have tearoff menu items.</p>
+<div class="refsect3">
+<a name="gtk-ui-manager-get-add-tearoffs.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-ui-manager-get-add-tearoffs.returns"></a><h4>Returns</h4>
+<p> whether tearoff menu items are added</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-4.html#api-index-2.4">2.4</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-ui-manager-insert-action-group"></a><h3>gtk_ui_manager_insert_action_group ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_ui_manager_insert_action_group (<em class="parameter"><code><a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a> *self</code></em>,
+                                    <em class="parameter"><code><a class="link" href="GtkActionGroup.html" title="GtkActionGroup"><span class="type">GtkActionGroup</span></a> *action_group</code></em>,
+                                    <em class="parameter"><code><span class="type">gint</span> pos</code></em>);</pre>
+<p>Inserts an action group into the list of action groups associated 
+with <em class="parameter"><code>self</code></em>
+. Actions in earlier groups hide actions with the same 
+name in later groups.</p>
+<div class="refsect3">
+<a name="gtk-ui-manager-insert-action-group.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>action_group</p></td>
+<td class="parameter_description"><p>the action group to be inserted</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>pos</p></td>
+<td class="parameter_description"><p>the position at which the group will be inserted.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-4.html#api-index-2.4">2.4</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-ui-manager-remove-action-group"></a><h3>gtk_ui_manager_remove_action_group ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_ui_manager_remove_action_group (<em class="parameter"><code><a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a> *self</code></em>,
+                                    <em class="parameter"><code><a class="link" href="GtkActionGroup.html" title="GtkActionGroup"><span class="type">GtkActionGroup</span></a> *action_group</code></em>);</pre>
+<p>Removes an action group from the list of action groups associated 
+with <em class="parameter"><code>self</code></em>
+.</p>
+<div class="refsect3">
+<a name="gtk-ui-manager-remove-action-group.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>action_group</p></td>
+<td class="parameter_description"><p>the action group to be removed</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-4.html#api-index-2.4">2.4</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-ui-manager-get-action-groups"></a><h3>gtk_ui_manager_get_action_groups ()</h3>
+<pre class="programlisting"><span class="returnvalue">GList</span> *
+gtk_ui_manager_get_action_groups (<em class="parameter"><code><a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a> *self</code></em>);</pre>
+<p>Returns the list of action groups associated with <em class="parameter"><code>self</code></em>
+.</p>
+<div class="refsect3">
+<a name="gtk-ui-manager-get-action-groups.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-ui-manager-get-action-groups.returns"></a><h4>Returns</h4>
+<p>a <span class="type">GList</span> of
+action groups. The list is owned by GTK+
+and should not be modified. </p>
+<p><span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GtkActionGroup][<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-4.html#api-index-2.4">2.4</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-ui-manager-get-accel-group"></a><h3>gtk_ui_manager_get_accel_group ()</h3>
+<pre class="programlisting"><a class="link" href="gtk2-Keyboard-Accelerators.html#GtkAccelGroup"><span class="returnvalue">GtkAccelGroup</span></a> *
+gtk_ui_manager_get_accel_group (<em class="parameter"><code><a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a> *self</code></em>);</pre>
+<p>Returns the <a class="link" href="gtk2-Keyboard-Accelerators.html#GtkAccelGroup"><span class="type">GtkAccelGroup</span></a> associated with <em class="parameter"><code>self</code></em>
+.</p>
+<div class="refsect3">
+<a name="gtk-ui-manager-get-accel-group.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-ui-manager-get-accel-group.returns"></a><h4>Returns</h4>
+<p>the <a class="link" href="gtk2-Keyboard-Accelerators.html#GtkAccelGroup"><span class="type">GtkAccelGroup</span></a>. </p>
+<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-4.html#api-index-2.4">2.4</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-ui-manager-get-widget"></a><h3>gtk_ui_manager_get_widget ()</h3>
+<pre class="programlisting"><a class="link" href="GtkWidget.html" title="GtkWidget"><span class="returnvalue">GtkWidget</span></a> *
+gtk_ui_manager_get_widget (<em class="parameter"><code><a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a> *self</code></em>,
+                           <em class="parameter"><code>const <span class="type">gchar</span> *path</code></em>);</pre>
+<p>Looks up a widget by following a path. 
+The path consists of the names specified in the XML description of the UI. 
+separated by '/'. Elements which don't have a name or action attribute in 
+the XML (e.g. &lt;popup&gt;) can be addressed by their XML element name 
+(e.g. "popup"). The root element ("/ui") can be omitted in the path.</p>
+<p>Note that the widget found by following a path that ends in a &lt;menu&gt;
+element is the menuitem to which the menu is attached, not the menu itself.</p>
+<p>Also note that the widgets constructed by a ui manager are not tied to 
+the lifecycle of the ui manager. If you add the widgets returned by this 
+function to some container or explicitly ref them, they will survive the
+destruction of the ui manager.</p>
+<div class="refsect3">
+<a name="gtk-ui-manager-get-widget.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>path</p></td>
+<td class="parameter_description"><p>a path</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-ui-manager-get-widget.returns"></a><h4>Returns</h4>
+<p>the widget found by following the path, or <code class="literal">NULL</code> if no widget
+was found. </p>
+<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-4.html#api-index-2.4">2.4</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-ui-manager-get-toplevels"></a><h3>gtk_ui_manager_get_toplevels ()</h3>
+<pre class="programlisting"><span class="returnvalue">GSList</span> *
+gtk_ui_manager_get_toplevels (<em class="parameter"><code><a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a> *self</code></em>,
+                              <em class="parameter"><code><a class="link" href="GtkUIManager.html#GtkUIManagerItemType" title="enum GtkUIManagerItemType"><span class="type">GtkUIManagerItemType</span></a> types</code></em>);</pre>
+<p>Obtains a list of all toplevel widgets of the requested types.</p>
+<div class="refsect3">
+<a name="gtk-ui-manager-get-toplevels.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>types</p></td>
+<td class="parameter_description"><p>specifies the types of toplevel widgets to include. Allowed
+types are <a class="link" href="GtkUIManager.html#GTK-UI-MANAGER-MENUBAR:CAPS"><span class="type">GTK_UI_MANAGER_MENUBAR</span></a>, <a class="link" href="GtkUIManager.html#GTK-UI-MANAGER-TOOLBAR:CAPS"><span class="type">GTK_UI_MANAGER_TOOLBAR</span></a> and
+<a class="link" href="GtkUIManager.html#GTK-UI-MANAGER-POPUP:CAPS"><span class="type">GTK_UI_MANAGER_POPUP</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-ui-manager-get-toplevels.returns"></a><h4>Returns</h4>
+<p>a newly-allocated <span class="type">GSList</span> of
+all toplevel widgets of the requested types.  Free the returned list with <code class="function">g_slist_free()</code>. </p>
+<p><span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GtkWidget][<acronym title="Free data container after the code is done."><span class="acronym">transfer container</span></acronym>]</span></p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-4.html#api-index-2.4">2.4</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-ui-manager-get-action"></a><h3>gtk_ui_manager_get_action ()</h3>
+<pre class="programlisting"><a class="link" href="GtkAction.html" title="GtkAction"><span class="returnvalue">GtkAction</span></a> *
+gtk_ui_manager_get_action (<em class="parameter"><code><a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a> *self</code></em>,
+                           <em class="parameter"><code>const <span class="type">gchar</span> *path</code></em>);</pre>
+<p>Looks up an action by following a path. See <a class="link" href="GtkUIManager.html#gtk-ui-manager-get-widget" title="gtk_ui_manager_get_widget ()"><code class="function">gtk_ui_manager_get_widget()</code></a>
+for more information about paths.</p>
+<div class="refsect3">
+<a name="gtk-ui-manager-get-action.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>path</p></td>
+<td class="parameter_description"><p>a path</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-ui-manager-get-action.returns"></a><h4>Returns</h4>
+<p>the action whose proxy widget is found by following the path,
+or <code class="literal">NULL</code> if no widget was found. </p>
+<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-4.html#api-index-2.4">2.4</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-ui-manager-add-ui-from-string"></a><h3>gtk_ui_manager_add_ui_from_string ()</h3>
+<pre class="programlisting"><span class="returnvalue">guint</span>
+gtk_ui_manager_add_ui_from_string (<em class="parameter"><code><a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a> *self</code></em>,
+                                   <em class="parameter"><code>const <span class="type">gchar</span> *buffer</code></em>,
+                                   <em class="parameter"><code><span class="type">gssize</span> length</code></em>,
+                                   <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<p>Parses a string containing a UI definition and 
+merges it with the current contents of <em class="parameter"><code>self</code></em>
+. An enclosing &lt;ui&gt; 
+element is added if it is missing.</p>
+<div class="refsect3">
+<a name="gtk-ui-manager-add-ui-from-string.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>buffer</p></td>
+<td class="parameter_description"><p>the string to parse</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>length</p></td>
+<td class="parameter_description"><p>the length of <em class="parameter"><code>buffer</code></em>
+(may be -1 if <em class="parameter"><code>buffer</code></em>
+is nul-terminated)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>error</p></td>
+<td class="parameter_description"><p>return location for an error</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-ui-manager-add-ui-from-string.returns"></a><h4>Returns</h4>
+<p> The merge id for the merged UI. The merge id can be used
+to unmerge the UI with <a class="link" href="GtkUIManager.html#gtk-ui-manager-remove-ui" title="gtk_ui_manager_remove_ui ()"><code class="function">gtk_ui_manager_remove_ui()</code></a>. If an error occurred,
+the return value is 0.</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-4.html#api-index-2.4">2.4</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-ui-manager-new-merge-id"></a><h3>gtk_ui_manager_new_merge_id ()</h3>
+<pre class="programlisting"><span class="returnvalue">guint</span>
+gtk_ui_manager_new_merge_id (<em class="parameter"><code><a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a> *self</code></em>);</pre>
+<p>Returns an unused merge id, suitable for use with 
+<a class="link" href="GtkUIManager.html#gtk-ui-manager-add-ui" title="gtk_ui_manager_add_ui ()"><code class="function">gtk_ui_manager_add_ui()</code></a>.</p>
+<div class="refsect3">
+<a name="gtk-ui-manager-new-merge-id.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-ui-manager-new-merge-id.returns"></a><h4>Returns</h4>
+<p> an unused merge id.</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-4.html#api-index-2.4">2.4</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-ui-manager-add-ui"></a><h3>gtk_ui_manager_add_ui ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_ui_manager_add_ui (<em class="parameter"><code><a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a> *self</code></em>,
+                       <em class="parameter"><code><span class="type">guint</span> merge_id</code></em>,
+                       <em class="parameter"><code>const <span class="type">gchar</span> *path</code></em>,
+                       <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>,
+                       <em class="parameter"><code>const <span class="type">gchar</span> *action</code></em>,
+                       <em class="parameter"><code><a class="link" href="GtkUIManager.html#GtkUIManagerItemType" title="enum GtkUIManagerItemType"><span class="type">GtkUIManagerItemType</span></a> type</code></em>,
+                       <em class="parameter"><code><span class="type">gboolean</span> top</code></em>);</pre>
+<p>Adds a UI element to the current contents of <em class="parameter"><code>self</code></em>
+. </p>
+<p>If <em class="parameter"><code>type</code></em>
+ is <a class="link" href="GtkUIManager.html#GTK-UI-MANAGER-AUTO:CAPS"><code class="literal">GTK_UI_MANAGER_AUTO</code></a>, GTK+ inserts a menuitem, toolitem or 
+separator if such an element can be inserted at the place determined by 
+<em class="parameter"><code>path</code></em>
+. Otherwise <em class="parameter"><code>type</code></em>
+ must indicate an element that can be inserted at 
+the place determined by <em class="parameter"><code>path</code></em>
+.</p>
+<p>If <em class="parameter"><code>path</code></em>
+ points to a menuitem or toolitem, the new element will be inserted
+before or after this item, depending on <em class="parameter"><code>top</code></em>
+.</p>
+<div class="refsect3">
+<a name="gtk-ui-manager-add-ui.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>merge_id</p></td>
+<td class="parameter_description"><p>the merge id for the merged UI, see <a class="link" href="GtkUIManager.html#gtk-ui-manager-new-merge-id" title="gtk_ui_manager_new_merge_id ()"><code class="function">gtk_ui_manager_new_merge_id()</code></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>path</p></td>
+<td class="parameter_description"><p>a path</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>name</p></td>
+<td class="parameter_description"><p>the name for the added UI element</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>action</p></td>
+<td class="parameter_description"><p>the name of the action to be proxied, or <code class="literal">NULL</code> to add a separator. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>type</p></td>
+<td class="parameter_description"><p>the type of UI element to add.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>top</p></td>
+<td class="parameter_description"><p>if <code class="literal">TRUE</code>, the UI element is added before its siblings, otherwise it
+is added after its siblings.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-4.html#api-index-2.4">2.4</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-ui-manager-remove-ui"></a><h3>gtk_ui_manager_remove_ui ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_ui_manager_remove_ui (<em class="parameter"><code><a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a> *self</code></em>,
+                          <em class="parameter"><code><span class="type">guint</span> merge_id</code></em>);</pre>
+<p>Unmerges the part of <em class="parameter"><code>self</code></em>
+s content identified by <em class="parameter"><code>merge_id</code></em>
+.</p>
+<div class="refsect3">
+<a name="gtk-ui-manager-remove-ui.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>merge_id</p></td>
+<td class="parameter_description"><p>a merge id as returned by <a class="link" href="GtkUIManager.html#gtk-ui-manager-add-ui-from-string" title="gtk_ui_manager_add_ui_from_string ()"><code class="function">gtk_ui_manager_add_ui_from_string()</code></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-4.html#api-index-2.4">2.4</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-ui-manager-get-ui"></a><h3>gtk_ui_manager_get_ui ()</h3>
+<pre class="programlisting"><span class="returnvalue">gchar</span> *
+gtk_ui_manager_get_ui (<em class="parameter"><code><a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a> *self</code></em>);</pre>
+<p>Creates a UI definition of the merged UI.</p>
+<div class="refsect3">
+<a name="gtk-ui-manager-get-ui.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-ui-manager-get-ui.returns"></a><h4>Returns</h4>
+<p> A newly allocated string containing an XML representation of
+the merged UI.</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-4.html#api-index-2.4">2.4</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-ui-manager-ensure-update"></a><h3>gtk_ui_manager_ensure_update ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_ui_manager_ensure_update (<em class="parameter"><code><a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a> *self</code></em>);</pre>
+<p>Makes sure that all pending updates to the UI have been completed.</p>
+<p>This may occasionally be necessary, since <a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a> updates the 
+UI in an idle function. A typical example where this function is
+useful is to enforce that the menubar and toolbar have been added to 
+the main window before showing it:</p>
+<div class="informalexample">
+  <table class="listing_frame" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+      <tr>
+        <td class="listing_lines" align="right"><pre>1
+2
+3
+4
+5
+6
+7</pre></td>
+        <td class="listing_code"><pre class="programlisting"><span class="n">gtk_container_add</span> <span class="p">(</span><span class="n">GTK_CONTAINER</span> <span class="p">(</span><span class="n">window</span><span class="p">),</span> <span class="n">vbox</span><span class="p">);</span> 
+<span class="n">g_signal_connect</span> <span class="p">(</span><span class="n">merge</span><span class="p">,</span> <span class="s">&quot;add-widget&quot;</span><span class="p">,</span> 
+                  <span class="n">G_CALLBACK</span> <span class="p">(</span><span class="n">add_widget</span><span class="p">),</span> <span class="n">vbox</span><span class="p">);</span>
+<span class="n">gtk_ui_manager_add_ui_from_file</span> <span class="p">(</span><span class="n">merge</span><span class="p">,</span> <span class="s">&quot;my-menus&quot;</span><span class="p">);</span>
+<span class="n">gtk_ui_manager_add_ui_from_file</span> <span class="p">(</span><span class="n">merge</span><span class="p">,</span> <span class="s">&quot;my-toolbars&quot;</span><span class="p">);</span>
+<span class="n">gtk_ui_manager_ensure_update</span> <span class="p">(</span><span class="n">merge</span><span class="p">);</span>  
+<span class="n">gtk_widget_show</span> <span class="p">(</span><span class="n">window</span><span class="p">);</span></pre></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p></p>
+<div class="refsect3">
+<a name="gtk-ui-manager-ensure-update.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-4.html#api-index-2.4">2.4</a></p>
+</div>
+</div>
+<div class="refsect1">
+<a name="GtkUIManager.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="GtkUIManager-struct"></a><h3>struct GtkUIManager</h3>
+<pre class="programlisting">struct GtkUIManager;</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-ui-manager-add-ui-from-file"></a><h3>gtk_ui_manager_add_ui_from_file</h3>
+<pre class="programlisting">#define gtk_ui_manager_add_ui_from_file gtk_ui_manager_add_ui_from_file_utf8
+</pre>
+<p>Parses a file containing a UI definition and
+
+merges it with the current contents of <em class="parameter"><code>self</code></em>
+.</p>
+<div class="refsect3">
+<a name="gtk-ui-manager-add-ui-from-file.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>self</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>filename</p></td>
+<td class="parameter_description"><p>the name of the file to parse </p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>error</p></td>
+<td class="parameter_description"><p>return location for an error</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-ui-manager-add-ui-from-file.returns"></a><h4>Returns</h4>
+<p> The merge id for the merged UI. The merge id can be used
+to unmerge the UI with <a class="link" href="GtkUIManager.html#gtk-ui-manager-remove-ui" title="gtk_ui_manager_remove_ui ()"><code class="function">gtk_ui_manager_remove_ui()</code></a>. If an error occurred,
+the return value is 0.</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-4.html#api-index-2.4">2.4</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GtkUIManagerItemType"></a><h3>enum GtkUIManagerItemType</h3>
+<div class="refsect3">
+<a name="GtkUIManagerItemType.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="enum_members_name">
+<col class="enum_members_description">
+<col width="200px" class="enum_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-UI-MANAGER-AUTO:CAPS"></a>GTK_UI_MANAGER_AUTO</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-UI-MANAGER-MENUBAR:CAPS"></a>GTK_UI_MANAGER_MENUBAR</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-UI-MANAGER-MENU:CAPS"></a>GTK_UI_MANAGER_MENU</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-UI-MANAGER-TOOLBAR:CAPS"></a>GTK_UI_MANAGER_TOOLBAR</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-UI-MANAGER-PLACEHOLDER:CAPS"></a>GTK_UI_MANAGER_PLACEHOLDER</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-UI-MANAGER-POPUP:CAPS"></a>GTK_UI_MANAGER_POPUP</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-UI-MANAGER-MENUITEM:CAPS"></a>GTK_UI_MANAGER_MENUITEM</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-UI-MANAGER-TOOLITEM:CAPS"></a>GTK_UI_MANAGER_TOOLITEM</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-UI-MANAGER-SEPARATOR:CAPS"></a>GTK_UI_MANAGER_SEPARATOR</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-UI-MANAGER-ACCELERATOR:CAPS"></a>GTK_UI_MANAGER_ACCELERATOR</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-UI-MANAGER-POPUP-WITH-ACCELS:CAPS"></a>GTK_UI_MANAGER_POPUP_WITH_ACCELS</p></td>
+<td> </td>
+<td> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="GtkUIManager.property-details"></a><h2>Property Details</h2>
+<div class="refsect2">
+<a name="GtkUIManager--add-tearoffs"></a><h3>The <code class="literal">“add-tearoffs”</code> property</h3>
+<pre class="programlisting">  “add-tearoffs”             <span class="type">gboolean</span></pre>
+<p>The "add-tearoffs" property controls whether generated menus
+
+have tearoff menu items. </p>
+<p>Note that this only affects regular menus. Generated popup
+
+menus never have tearoff menu items.</p>
+<p>Owner: GtkUIManager</p>
+<p>Flags: Read / Write</p>
+<p>Default value: FALSE</p>
+<p class="since">Since: <a class="link" href="api-index-2-4.html#api-index-2.4">2.4</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GtkUIManager--ui"></a><h3>The <code class="literal">“ui”</code> property</h3>
+<pre class="programlisting">  “ui”                       <span class="type">char</span> *</pre>
+<p>An XML string describing the merged UI.</p>
+<p>Owner: GtkUIManager</p>
+<p>Flags: Read</p>
+<p>Default value: "&lt;ui&gt;\n&lt;/ui&gt;\n"</p>
+</div>
+</div>
+<div class="refsect1">
+<a name="GtkUIManager.signal-details"></a><h2>Signal Details</h2>
+<div class="refsect2">
+<a name="GtkUIManager-actions-changed"></a><h3>The <code class="literal">“actions-changed”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a> *merge,
+               <span class="type">gpointer</span>      user_data)</pre>
+<p>The "actions-changed" signal is emitted whenever the set of actions
+changes.</p>
+<div class="refsect3">
+<a name="GtkUIManager-actions-changed.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>merge</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data set when the signal handler was connected.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>Flags: No Recursion</p>
+<p class="since">Since: <a class="link" href="api-index-2-4.html#api-index-2.4">2.4</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GtkUIManager-add-widget"></a><h3>The <code class="literal">“add-widget”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a> *merge,
+               <a class="link" href="GtkWidget.html" title="GtkWidget"><span class="type">GtkWidget</span></a>    *widget,
+               <span class="type">gpointer</span>      user_data)</pre>
+<p>The add_widget signal is emitted for each generated menubar and toolbar.
+It is not emitted for generated popup menus, which can be obtained by
+
+<a class="link" href="GtkUIManager.html#gtk-ui-manager-get-widget" title="gtk_ui_manager_get_widget ()"><code class="function">gtk_ui_manager_get_widget()</code></a>.</p>
+<div class="refsect3">
+<a name="GtkUIManager-add-widget.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>merge</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>widget</p></td>
+<td class="parameter_description"><p>the added widget</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data set when the signal handler was connected.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>Flags: No Recursion</p>
+<p class="since">Since: <a class="link" href="api-index-2-4.html#api-index-2.4">2.4</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GtkUIManager-connect-proxy"></a><h3>The <code class="literal">“connect-proxy”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a> *uimanager,
+               <a class="link" href="GtkAction.html" title="GtkAction"><span class="type">GtkAction</span></a>    *action,
+               <a class="link" href="GtkWidget.html" title="GtkWidget"><span class="type">GtkWidget</span></a>    *proxy,
+               <span class="type">gpointer</span>      user_data)</pre>
+<p>The connect_proxy signal is emitted after connecting a proxy to
+
+an action in the group. </p>
+<p>This is intended for simple customizations for which a custom action
+class would be too clumsy, e.g. showing tooltips for menuitems in the
+statusbar.</p>
+<div class="refsect3">
+<a name="GtkUIManager-connect-proxy.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>uimanager</p></td>
+<td class="parameter_description"><p>the ui manager</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>action</p></td>
+<td class="parameter_description"><p>the action</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>proxy</p></td>
+<td class="parameter_description"><p>the proxy</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data set when the signal handler was connected.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>Flags: No Recursion</p>
+<p class="since">Since: <a class="link" href="api-index-2-4.html#api-index-2.4">2.4</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GtkUIManager-disconnect-proxy"></a><h3>The <code class="literal">“disconnect-proxy”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a> *uimanager,
+               <a class="link" href="GtkAction.html" title="GtkAction"><span class="type">GtkAction</span></a>    *action,
+               <a class="link" href="GtkWidget.html" title="GtkWidget"><span class="type">GtkWidget</span></a>    *proxy,
+               <span class="type">gpointer</span>      user_data)</pre>
+<p>The disconnect_proxy signal is emitted after disconnecting a proxy
+
+from an action in the group.</p>
+<div class="refsect3">
+<a name="GtkUIManager-disconnect-proxy.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>uimanager</p></td>
+<td class="parameter_description"><p>the ui manager</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>action</p></td>
+<td class="parameter_description"><p>the action</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>proxy</p></td>
+<td class="parameter_description"><p>the proxy</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data set when the signal handler was connected.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>Flags: No Recursion</p>
+<p class="since">Since: <a class="link" href="api-index-2-4.html#api-index-2.4">2.4</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GtkUIManager-post-activate"></a><h3>The <code class="literal">“post-activate”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a> *uimanager,
+               <a class="link" href="GtkAction.html" title="GtkAction"><span class="type">GtkAction</span></a>    *action,
+               <span class="type">gpointer</span>      user_data)</pre>
+<p>The post_activate signal is emitted just after the <em class="parameter"><code>action</code></em>
+
+is activated.</p>
+<p>This is intended for applications to get notification
+just after any action is activated.</p>
+<div class="refsect3">
+<a name="GtkUIManager-post-activate.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>uimanager</p></td>
+<td class="parameter_description"><p>the ui manager</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>action</p></td>
+<td class="parameter_description"><p>the action</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data set when the signal handler was connected.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>Flags: No Recursion</p>
+<p class="since">Since: <a class="link" href="api-index-2-4.html#api-index-2.4">2.4</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GtkUIManager-pre-activate"></a><h3>The <code class="literal">“pre-activate”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="GtkUIManager.html" title="GtkUIManager"><span class="type">GtkUIManager</span></a> *uimanager,
+               <a class="link" href="GtkAction.html" title="GtkAction"><span class="type">GtkAction</span></a>    *action,
+               <span class="type">gpointer</span>      user_data)</pre>
+<p>The pre_activate signal is emitted just before the <em class="parameter"><code>action</code></em>
+
+is activated.</p>
+<p>This is intended for applications to get notification
+just before any action is activated.</p>
+<div class="refsect3">
+<a name="GtkUIManager-pre-activate.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>uimanager</p></td>
+<td class="parameter_description"><p>the ui manager</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>action</p></td>
+<td class="parameter_description"><p>the action</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data set when the signal handler was connected.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>Flags: No Recursion</p>
+<p class="since">Since: <a class="link" href="api-index-2-4.html#api-index-2.4">2.4</a></p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.33.0</div>
+</body>
+</html>

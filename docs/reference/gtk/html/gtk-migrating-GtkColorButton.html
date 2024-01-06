@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Migrating from GnomeColorPicker to GtkColorButton: GTK+ 2 Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets Vsnapshot">
+<link rel="home" href="index.html" title="GTK+ 2 Reference Manual">
+<link rel="up" href="migrating.html" title="Part IV. Migrating from Previous Versions of GTK+">
+<link rel="prev" href="gtk-migrating-GtkAboutDialog.html" title="Migrating from GnomeAbout to GtkAboutDialog">
+<link rel="next" href="gtk-migrating-GtkAssistant.html" title="Migrating from GnomeDruid to GtkAssistant">
+<meta name="generator" content="GTK-Doc V1.33.0 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts"></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="migrating.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="gtk-migrating-GtkAboutDialog.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="gtk-migrating-GtkAssistant.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="chapter">
+<div class="titlepage"><div><div><h2 class="title">
+<a name="gtk-migrating-GtkColorButton"></a>Migrating from GnomeColorPicker to GtkColorButton</h2></div></div></div>
+<p>
+    Since version 2.6, GTK+ provides the <a class="link" href="GtkColorButton.html" title="GtkColorButton"><span class="type">GtkColorButton</span></a>
+    widget as a replacement for the <span class="structname">GnomeColorPicker</span> 
+    widget in the libgnomeui library.
+  </p>
+<p>
+   Porting an application from <span class="structname">GnomeColorPicker</span> to 
+   <span class="structname">GtkColorButton</span> is very simple. 
+   <span class="structname">GtkColorButton</span> doesn't support dithering 
+   (since it is rarely needed on modern hardware), and it doesn't have 
+   setters and getters to set the color from floating point or integer 
+    components. So instead of
+   </p>
+<div class="informalexample">
+  <table class="listing_frame" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+      <tr>
+        <td class="listing_lines" align="right"><pre>1
+2
+3</pre></td>
+        <td class="listing_code"><pre class="programlisting"><span class="n">guint</span> <span class="n">red</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="n">blue</span><span class="p">,</span> <span class="n">alpha</span><span class="p">;</span>
+<span class="cm">/* ... */</span>
+<span class="n">gnome_color_picker_set_i8</span> <span class="p">(</span><span class="n">color_picker</span><span class="p">,</span> <span class="n">red</span><span class="p">,</span> <span class="n">green</span><span class="p">,</span> <span class="n">blue</span><span class="p">,</span> <span class="n">alpha</span><span class="p">);</span></pre></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p>   
+   you have to write
+   </p>
+<div class="informalexample">
+  <table class="listing_frame" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+      <tr>
+        <td class="listing_lines" align="right"><pre>1
+2
+3
+4
+5
+6
+7</pre></td>
+        <td class="listing_code"><pre class="programlisting"><span class="n">GdkColor</span> <span class="n">color</span><span class="p">;</span>
+
+<span class="n">color</span><span class="p">.</span><span class="n">red</span> <span class="o">=</span> <span class="n">red</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">;</span>
+<span class="n">color</span><span class="p">.</span><span class="n">green</span> <span class="o">=</span> <span class="n">green</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">;</span>
+<span class="n">color</span><span class="p">.</span><span class="n">blue</span> <span class="o">=</span> <span class="n">blue</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">;</span>
+<span class="n">gtk_color_button_set_color</span> <span class="p">(</span><span class="n">color_picker</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">color</span><span class="p">);</span>
+<span class="n">gtk_color_button_set_alpha</span> <span class="p">(</span><span class="n">color_picker</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">);</span></pre></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p>   
+  and similarly for the setters taking other number formats. For 
+  <code class="function"><code class="function">gnome_color_picker_set_i16()</code></code> no conversion is needed, 
+  for <code class="function"><code class="function">gnome_color_picker_set_d()</code></code>, you need to convert 
+  the color components like this:
+   </p>
+<div class="informalexample">
+  <table class="listing_frame" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+      <tr>
+        <td class="listing_lines" align="right"><pre>1
+2
+3</pre></td>
+        <td class="listing_code"><pre class="programlisting"><span class="n">color</span><span class="p">.</span><span class="n">red</span> <span class="o">=</span> <span class="p">(</span><span class="n">guint16</span><span class="p">)</span> <span class="p">(</span><span class="n">red</span> <span class="o">*</span> <span class="mf">65535.0</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">);</span>
+<span class="n">color</span><span class="p">.</span><span class="n">green</span> <span class="o">=</span> <span class="p">(</span><span class="n">guint16</span><span class="p">)</span> <span class="p">(</span><span class="n">green</span> <span class="o">*</span> <span class="mf">65535.0</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">);</span>
+<span class="n">color</span><span class="p">.</span><span class="n">blue</span> <span class="o">=</span> <span class="p">(</span><span class="n">guint16</span><span class="p">)</span> <span class="p">(</span><span class="n">blue</span> <span class="o">*</span> <span class="mf">65535.0</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">);</span></pre></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p>   
+  </p>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.33.0</div>
+</body>
+</html>

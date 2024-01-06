@@ -1,0 +1,515 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GtkTreeModelSort: GTK+ 2 Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets Vsnapshot">
+<link rel="home" href="index.html" title="GTK+ 2 Reference Manual">
+<link rel="up" href="TreeWidgetObjects.html" title="Tree, List and Icon Grid Widgets">
+<link rel="prev" href="GtkTreeSortable.html" title="GtkTreeSortable">
+<link rel="next" href="GtkTreeModelFilter.html" title="GtkTreeModelFilter">
+<meta name="generator" content="GTK-Doc V1.33.0 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#GtkTreeModelSort.description" class="shortcut">Description</a></span><span id="nav_hierarchy">  <span class="dim">|</span> 
+                  <a href="#GtkTreeModelSort.object-hierarchy" class="shortcut">Object Hierarchy</a></span><span id="nav_interfaces">  <span class="dim">|</span> 
+                  <a href="#GtkTreeModelSort.implemented-interfaces" class="shortcut">Implemented Interfaces</a></span><span id="nav_properties">  <span class="dim">|</span> 
+                  <a href="#GtkTreeModelSort.properties" class="shortcut">Properties</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="TreeWidgetObjects.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="GtkTreeSortable.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="GtkTreeModelFilter.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="GtkTreeModelSort"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GtkTreeModelSort.top_of_page"></a>GtkTreeModelSort</span></h2>
+<p>GtkTreeModelSort</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="GtkTreeModelSort.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_proto_type">
+<col class="functions_proto_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<a class="link" href="GtkTreeModel.html" title="GtkTreeModel"><span class="returnvalue">GtkTreeModel</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GtkTreeModelSort.html#gtk-tree-model-sort-new-with-model" title="gtk_tree_model_sort_new_with_model ()">gtk_tree_model_sort_new_with_model</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GtkTreeModel.html" title="GtkTreeModel"><span class="returnvalue">GtkTreeModel</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GtkTreeModelSort.html#gtk-tree-model-sort-get-model" title="gtk_tree_model_sort_get_model ()">gtk_tree_model_sort_get_model</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GtkTreeModel.html#GtkTreePath"><span class="returnvalue">GtkTreePath</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GtkTreeModelSort.html#gtk-tree-model-sort-convert-child-path-to-path" title="gtk_tree_model_sort_convert_child_path_to_path ()">gtk_tree_model_sort_convert_child_path_to_path</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gboolean</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkTreeModelSort.html#gtk-tree-model-sort-convert-child-iter-to-iter" title="gtk_tree_model_sort_convert_child_iter_to_iter ()">gtk_tree_model_sort_convert_child_iter_to_iter</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GtkTreeModel.html#GtkTreePath"><span class="returnvalue">GtkTreePath</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GtkTreeModelSort.html#gtk-tree-model-sort-convert-path-to-child-path" title="gtk_tree_model_sort_convert_path_to_child_path ()">gtk_tree_model_sort_convert_path_to_child_path</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkTreeModelSort.html#gtk-tree-model-sort-convert-iter-to-child-iter" title="gtk_tree_model_sort_convert_iter_to_child_iter ()">gtk_tree_model_sort_convert_iter_to_child_iter</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkTreeModelSort.html#gtk-tree-model-sort-reset-default-sort-func" title="gtk_tree_model_sort_reset_default_sort_func ()">gtk_tree_model_sort_reset_default_sort_func</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkTreeModelSort.html#gtk-tree-model-sort-clear-cache" title="gtk_tree_model_sort_clear_cache ()">gtk_tree_model_sort_clear_cache</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gboolean</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkTreeModelSort.html#gtk-tree-model-sort-iter-is-valid" title="gtk_tree_model_sort_iter_is_valid ()">gtk_tree_model_sort_iter_is_valid</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GtkTreeModelSort.properties"></a><h2>Properties</h2>
+<div class="informaltable"><table class="informaltable" border="0">
+<colgroup>
+<col width="150px" class="properties_type">
+<col width="300px" class="properties_name">
+<col width="200px" class="properties_flags">
+</colgroup>
+<tbody><tr>
+<td class="property_type">
+<a class="link" href="GtkTreeModel.html" title="GtkTreeModel"><span class="type">GtkTreeModel</span></a> *</td>
+<td class="property_name"><a class="link" href="GtkTreeModelSort.html#GtkTreeModelSort--model" title="The “model” property">model</a></td>
+<td class="property_flags">Read / Write / Construct Only</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GtkTreeModelSort.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="other_proto_type">
+<col class="other_proto_name">
+</colgroup>
+<tbody><tr>
+<td class="datatype_keyword">struct</td>
+<td class="function_name"><a class="link" href="GtkTreeModelSort.html#GtkTreeModelSort-struct" title="struct GtkTreeModelSort">GtkTreeModelSort</a></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GtkTreeModelSort.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="screen">    GObject
+    <span class="lineart">╰──</span> GtkTreeModelSort
+</pre>
+</div>
+<div class="refsect1">
+<a name="GtkTreeModelSort.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
+<p>
+GtkTreeModelSort implements
+ <a class="link" href="GtkTreeModel.html" title="GtkTreeModel">GtkTreeModel</a>,  <a class="link" href="GtkTreeSortable.html" title="GtkTreeSortable">GtkTreeSortable</a> and  <a class="link" href="gtk2-GtkTreeView-drag-and-drop.html#GtkTreeDragSource">GtkTreeDragSource</a>.</p>
+</div>
+<div class="refsect1">
+<a name="GtkTreeModelSort.includes"></a><h2>Includes</h2>
+<pre class="synopsis">#include &lt;gtk/gtk.h&gt;
+</pre>
+</div>
+<div class="refsect1">
+<a name="GtkTreeModelSort.description"></a><h2>Description</h2>
+</div>
+<div class="refsect1">
+<a name="GtkTreeModelSort.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="gtk-tree-model-sort-new-with-model"></a><h3>gtk_tree_model_sort_new_with_model ()</h3>
+<pre class="programlisting"><a class="link" href="GtkTreeModel.html" title="GtkTreeModel"><span class="returnvalue">GtkTreeModel</span></a> *
+gtk_tree_model_sort_new_with_model (<em class="parameter"><code><a class="link" href="GtkTreeModel.html" title="GtkTreeModel"><span class="type">GtkTreeModel</span></a> *child_model</code></em>);</pre>
+<p>Creates a new <a class="link" href="GtkTreeModel.html" title="GtkTreeModel"><span class="type">GtkTreeModel</span></a>, with <em class="parameter"><code>child_model</code></em>
+ as the child model.</p>
+<div class="refsect3">
+<a name="gtk-tree-model-sort-new-with-model.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>child_model</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GtkTreeModel.html" title="GtkTreeModel"><span class="type">GtkTreeModel</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-tree-model-sort-new-with-model.returns"></a><h4>Returns</h4>
+<p>A new <a class="link" href="GtkTreeModel.html" title="GtkTreeModel"><span class="type">GtkTreeModel</span></a>. </p>
+<p><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-tree-model-sort-get-model"></a><h3>gtk_tree_model_sort_get_model ()</h3>
+<pre class="programlisting"><a class="link" href="GtkTreeModel.html" title="GtkTreeModel"><span class="returnvalue">GtkTreeModel</span></a> *
+gtk_tree_model_sort_get_model (<em class="parameter"><code><a class="link" href="GtkTreeModelSort.html" title="GtkTreeModelSort"><span class="type">GtkTreeModelSort</span></a> *tree_model</code></em>);</pre>
+<p>Returns the model the <a class="link" href="GtkTreeModelSort.html" title="GtkTreeModelSort"><span class="type">GtkTreeModelSort</span></a> is sorting.</p>
+<div class="refsect3">
+<a name="gtk-tree-model-sort-get-model.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>tree_model</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkTreeModelSort.html" title="GtkTreeModelSort"><span class="type">GtkTreeModelSort</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-tree-model-sort-get-model.returns"></a><h4>Returns</h4>
+<p>the "child model" being sorted. </p>
+<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-tree-model-sort-convert-child-path-to-path"></a><h3>gtk_tree_model_sort_convert_child_path_to_path ()</h3>
+<pre class="programlisting"><a class="link" href="GtkTreeModel.html#GtkTreePath"><span class="returnvalue">GtkTreePath</span></a> *
+gtk_tree_model_sort_convert_child_path_to_path
+                               (<em class="parameter"><code><a class="link" href="GtkTreeModelSort.html" title="GtkTreeModelSort"><span class="type">GtkTreeModelSort</span></a> *tree_model_sort</code></em>,
+                                <em class="parameter"><code><a class="link" href="GtkTreeModel.html#GtkTreePath"><span class="type">GtkTreePath</span></a> *child_path</code></em>);</pre>
+<p>Converts <em class="parameter"><code>child_path</code></em>
+ to a path relative to <em class="parameter"><code>tree_model_sort</code></em>
+.  That is,
+<em class="parameter"><code>child_path</code></em>
+ points to a path in the child model.  The returned path will
+point to the same row in the sorted model.  If <em class="parameter"><code>child_path</code></em>
+ isn't a valid 
+path on the child model, then <code class="literal">NULL</code> is returned.</p>
+<div class="refsect3">
+<a name="gtk-tree-model-sort-convert-child-path-to-path.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>tree_model_sort</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GtkTreeModelSort.html" title="GtkTreeModelSort"><span class="type">GtkTreeModelSort</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>child_path</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GtkTreeModel.html#GtkTreePath"><span class="type">GtkTreePath</span></a> to convert</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-tree-model-sort-convert-child-path-to-path.returns"></a><h4>Returns</h4>
+<p> A newly allocated <a class="link" href="GtkTreeModel.html#GtkTreePath"><span class="type">GtkTreePath</span></a>, or <code class="literal">NULL</code></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-tree-model-sort-convert-child-iter-to-iter"></a><h3>gtk_tree_model_sort_convert_child_iter_to_iter ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>
+gtk_tree_model_sort_convert_child_iter_to_iter
+                               (<em class="parameter"><code><a class="link" href="GtkTreeModelSort.html" title="GtkTreeModelSort"><span class="type">GtkTreeModelSort</span></a> *tree_model_sort</code></em>,
+                                <em class="parameter"><code><a class="link" href="GtkTreeModel.html#GtkTreeIter"><span class="type">GtkTreeIter</span></a> *sort_iter</code></em>,
+                                <em class="parameter"><code><a class="link" href="GtkTreeModel.html#GtkTreeIter"><span class="type">GtkTreeIter</span></a> *child_iter</code></em>);</pre>
+<p>Sets <em class="parameter"><code>sort_iter</code></em>
+ to point to the row in <em class="parameter"><code>tree_model_sort</code></em>
+ that corresponds to
+the row pointed at by <em class="parameter"><code>child_iter</code></em>
+.  If <em class="parameter"><code>sort_iter</code></em>
+ was not set, <code class="literal">FALSE</code>
+is returned.  Note: a boolean is only returned since 2.14.</p>
+<div class="refsect3">
+<a name="gtk-tree-model-sort-convert-child-iter-to-iter.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>tree_model_sort</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GtkTreeModelSort.html" title="GtkTreeModelSort"><span class="type">GtkTreeModelSort</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>sort_iter</p></td>
+<td class="parameter_description"><p>An uninitialized <a class="link" href="GtkTreeModel.html#GtkTreeIter"><span class="type">GtkTreeIter</span></a>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>child_iter</p></td>
+<td class="parameter_description"><p>A valid <a class="link" href="GtkTreeModel.html#GtkTreeIter"><span class="type">GtkTreeIter</span></a> pointing to a row on the child model</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-tree-model-sort-convert-child-iter-to-iter.returns"></a><h4>Returns</h4>
+<p> <code class="literal">TRUE</code>, if <em class="parameter"><code>sort_iter</code></em>
+was set, i.e. if <em class="parameter"><code>sort_iter</code></em>
+is a
+valid iterator pointer to a visible row in the child model.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-tree-model-sort-convert-path-to-child-path"></a><h3>gtk_tree_model_sort_convert_path_to_child_path ()</h3>
+<pre class="programlisting"><a class="link" href="GtkTreeModel.html#GtkTreePath"><span class="returnvalue">GtkTreePath</span></a> *
+gtk_tree_model_sort_convert_path_to_child_path
+                               (<em class="parameter"><code><a class="link" href="GtkTreeModelSort.html" title="GtkTreeModelSort"><span class="type">GtkTreeModelSort</span></a> *tree_model_sort</code></em>,
+                                <em class="parameter"><code><a class="link" href="GtkTreeModel.html#GtkTreePath"><span class="type">GtkTreePath</span></a> *sorted_path</code></em>);</pre>
+<p>Converts <em class="parameter"><code>sorted_path</code></em>
+ to a path on the child model of <em class="parameter"><code>tree_model_sort</code></em>
+.  
+That is, <em class="parameter"><code>sorted_path</code></em>
+ points to a location in <em class="parameter"><code>tree_model_sort</code></em>
+.  The 
+returned path will point to the same location in the model not being 
+sorted.  If <em class="parameter"><code>sorted_path</code></em>
+ does not point to a location in the child model, 
+<code class="literal">NULL</code> is returned.</p>
+<div class="refsect3">
+<a name="gtk-tree-model-sort-convert-path-to-child-path.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>tree_model_sort</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GtkTreeModelSort.html" title="GtkTreeModelSort"><span class="type">GtkTreeModelSort</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>sorted_path</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GtkTreeModel.html#GtkTreePath"><span class="type">GtkTreePath</span></a> to convert</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-tree-model-sort-convert-path-to-child-path.returns"></a><h4>Returns</h4>
+<p> A newly allocated <a class="link" href="GtkTreeModel.html#GtkTreePath"><span class="type">GtkTreePath</span></a>, or <code class="literal">NULL</code></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-tree-model-sort-convert-iter-to-child-iter"></a><h3>gtk_tree_model_sort_convert_iter_to_child_iter ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_tree_model_sort_convert_iter_to_child_iter
+                               (<em class="parameter"><code><a class="link" href="GtkTreeModelSort.html" title="GtkTreeModelSort"><span class="type">GtkTreeModelSort</span></a> *tree_model_sort</code></em>,
+                                <em class="parameter"><code><a class="link" href="GtkTreeModel.html#GtkTreeIter"><span class="type">GtkTreeIter</span></a> *child_iter</code></em>,
+                                <em class="parameter"><code><a class="link" href="GtkTreeModel.html#GtkTreeIter"><span class="type">GtkTreeIter</span></a> *sorted_iter</code></em>);</pre>
+<p>Sets <em class="parameter"><code>child_iter</code></em>
+ to point to the row pointed to by <em class="parameter"><code>sorted_iter</code></em>
+.</p>
+<div class="refsect3">
+<a name="gtk-tree-model-sort-convert-iter-to-child-iter.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>tree_model_sort</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GtkTreeModelSort.html" title="GtkTreeModelSort"><span class="type">GtkTreeModelSort</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>child_iter</p></td>
+<td class="parameter_description"><p>An uninitialized <a class="link" href="GtkTreeModel.html#GtkTreeIter"><span class="type">GtkTreeIter</span></a>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>sorted_iter</p></td>
+<td class="parameter_description"><p>A valid <a class="link" href="GtkTreeModel.html#GtkTreeIter"><span class="type">GtkTreeIter</span></a> pointing to a row on <em class="parameter"><code>tree_model_sort</code></em>
+.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-tree-model-sort-reset-default-sort-func"></a><h3>gtk_tree_model_sort_reset_default_sort_func ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_tree_model_sort_reset_default_sort_func
+                               (<em class="parameter"><code><a class="link" href="GtkTreeModelSort.html" title="GtkTreeModelSort"><span class="type">GtkTreeModelSort</span></a> *tree_model_sort</code></em>);</pre>
+<p>This resets the default sort function to be in the 'unsorted' state.  That
+is, it is in the same order as the child model. It will re-sort the model
+to be in the same order as the child model only if the <a class="link" href="GtkTreeModelSort.html" title="GtkTreeModelSort"><span class="type">GtkTreeModelSort</span></a>
+is in 'unsorted' state.</p>
+<div class="refsect3">
+<a name="gtk-tree-model-sort-reset-default-sort-func.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>tree_model_sort</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GtkTreeModelSort.html" title="GtkTreeModelSort"><span class="type">GtkTreeModelSort</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-tree-model-sort-clear-cache"></a><h3>gtk_tree_model_sort_clear_cache ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_tree_model_sort_clear_cache (<em class="parameter"><code><a class="link" href="GtkTreeModelSort.html" title="GtkTreeModelSort"><span class="type">GtkTreeModelSort</span></a> *tree_model_sort</code></em>);</pre>
+<p>This function should almost never be called.  It clears the <em class="parameter"><code>tree_model_sort</code></em>
+
+of any cached iterators that haven't been reffed with
+<a class="link" href="GtkTreeModel.html#gtk-tree-model-ref-node" title="gtk_tree_model_ref_node ()"><code class="function">gtk_tree_model_ref_node()</code></a>.  This might be useful if the child model being
+sorted is static (and doesn't change often) and there has been a lot of
+unreffed access to nodes.  As a side effect of this function, all unreffed
+iters will be invalid.</p>
+<div class="refsect3">
+<a name="gtk-tree-model-sort-clear-cache.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>tree_model_sort</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GtkTreeModelSort.html" title="GtkTreeModelSort"><span class="type">GtkTreeModelSort</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-tree-model-sort-iter-is-valid"></a><h3>gtk_tree_model_sort_iter_is_valid ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>
+gtk_tree_model_sort_iter_is_valid (<em class="parameter"><code><a class="link" href="GtkTreeModelSort.html" title="GtkTreeModelSort"><span class="type">GtkTreeModelSort</span></a> *tree_model_sort</code></em>,
+                                   <em class="parameter"><code><a class="link" href="GtkTreeModel.html#GtkTreeIter"><span class="type">GtkTreeIter</span></a> *iter</code></em>);</pre>
+<div class="warning"><p>
+This function is slow. Only use it for debugging and/or testing purposes.
+</p></div>
+<p>Checks if the given iter is a valid iter for this <a class="link" href="GtkTreeModelSort.html" title="GtkTreeModelSort"><span class="type">GtkTreeModelSort</span></a>.</p>
+<div class="refsect3">
+<a name="gtk-tree-model-sort-iter-is-valid.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>tree_model_sort</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GtkTreeModelSort.html" title="GtkTreeModelSort"><span class="type">GtkTreeModelSort</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>iter</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GtkTreeModel.html#GtkTreeIter"><span class="type">GtkTreeIter</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-tree-model-sort-iter-is-valid.returns"></a><h4>Returns</h4>
+<p> <code class="literal">TRUE</code> if the iter is valid, <code class="literal">FALSE</code> if the iter is invalid.</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-2.html#api-index-2.2">2.2</a></p>
+</div>
+</div>
+<div class="refsect1">
+<a name="GtkTreeModelSort.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="GtkTreeModelSort-struct"></a><h3>struct GtkTreeModelSort</h3>
+<pre class="programlisting">struct GtkTreeModelSort;</pre>
+</div>
+</div>
+<div class="refsect1">
+<a name="GtkTreeModelSort.property-details"></a><h2>Property Details</h2>
+<div class="refsect2">
+<a name="GtkTreeModelSort--model"></a><h3>The <code class="literal">“model”</code> property</h3>
+<pre class="programlisting">  “model”                    <a class="link" href="GtkTreeModel.html" title="GtkTreeModel"><span class="type">GtkTreeModel</span></a> *</pre>
+<p>The model for the TreeModelSort to sort.</p>
+<p>Owner: GtkTreeModelSort</p>
+<p>Flags: Read / Write / Construct Only</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.33.0</div>
+</body>
+</html>

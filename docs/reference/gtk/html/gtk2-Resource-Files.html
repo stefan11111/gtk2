@@ -1,0 +1,1164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Resource Files: GTK+ 2 Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets Vsnapshot">
+<link rel="home" href="index.html" title="GTK+ 2 Reference Manual">
+<link rel="up" href="gtkbase.html" title="Part II. GTK+ Core Reference">
+<link rel="prev" href="gtk2-Themeable-Stock-Images.html" title="Themeable Stock Images">
+<link rel="next" href="GtkSettings.html" title="GtkSettings">
+<meta name="generator" content="GTK-Doc V1.33.0 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#gtk2-Resource-Files.description" class="shortcut">Description</a></span><span id="nav_hierarchy">  <span class="dim">|</span> 
+                  <a href="#gtk2-Resource-Files.object-hierarchy" class="shortcut">Object Hierarchy</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="gtkbase.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="gtk2-Themeable-Stock-Images.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="GtkSettings.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="gtk2-Resource-Files"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="gtk2-Resource-Files.top_of_page"></a>Resource Files</span></h2>
+<p>Resource Files</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="gtk2-Resource-Files.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_proto_type">
+<col class="functions_proto_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<span class="returnvalue">GScanner</span> *
+</td>
+<td class="function_name">
+<a class="link" href="gtk2-Resource-Files.html#gtk-rc-scanner-new" title="gtk_rc_scanner_new ()">gtk_rc_scanner_new</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GtkStyle.html" title="GtkStyle"><span class="returnvalue">GtkStyle</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="gtk2-Resource-Files.html#gtk-rc-get-style" title="gtk_rc_get_style ()">gtk_rc_get_style</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GtkStyle.html" title="GtkStyle"><span class="returnvalue">GtkStyle</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="gtk2-Resource-Files.html#gtk-rc-get-style-by-paths" title="gtk_rc_get_style_by_paths ()">gtk_rc_get_style_by_paths</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gtk2-Resource-Files.html#gtk-rc-add-widget-name-style" title="gtk_rc_add_widget_name_style ()">gtk_rc_add_widget_name_style</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gtk2-Resource-Files.html#gtk-rc-add-widget-class-style" title="gtk_rc_add_widget_class_style ()">gtk_rc_add_widget_class_style</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gtk2-Resource-Files.html#gtk-rc-add-class-style" title="gtk_rc_add_class_style ()">gtk_rc_add_class_style</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gtk2-Resource-Files.html#gtk-rc-parse-string" title="gtk_rc_parse_string ()">gtk_rc_parse_string</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gboolean</span>
+</td>
+<td class="function_name">
+<a class="link" href="gtk2-Resource-Files.html#gtk-rc-reparse-all" title="gtk_rc_reparse_all ()">gtk_rc_reparse_all</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gboolean</span>
+</td>
+<td class="function_name">
+<a class="link" href="gtk2-Resource-Files.html#gtk-rc-reparse-all-for-settings" title="gtk_rc_reparse_all_for_settings ()">gtk_rc_reparse_all_for_settings</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gtk2-Resource-Files.html#gtk-rc-reset-styles" title="gtk_rc_reset_styles ()">gtk_rc_reset_styles</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gchar</span> **
+</td>
+<td class="function_name">
+<a class="link" href="gtk2-Resource-Files.html#gtk-rc-get-default-files" title="gtk_rc_get_default_files ()">gtk_rc_get_default_files</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">guint</span>
+</td>
+<td class="function_name">
+<a class="link" href="gtk2-Resource-Files.html#gtk-rc-parse-color" title="gtk_rc_parse_color ()">gtk_rc_parse_color</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">guint</span>
+</td>
+<td class="function_name">
+<a class="link" href="gtk2-Resource-Files.html#gtk-rc-parse-color-full" title="gtk_rc_parse_color_full ()">gtk_rc_parse_color_full</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">guint</span>
+</td>
+<td class="function_name">
+<a class="link" href="gtk2-Resource-Files.html#gtk-rc-parse-state" title="gtk_rc_parse_state ()">gtk_rc_parse_state</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">guint</span>
+</td>
+<td class="function_name">
+<a class="link" href="gtk2-Resource-Files.html#gtk-rc-parse-priority" title="gtk_rc_parse_priority ()">gtk_rc_parse_priority</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gchar</span> *
+</td>
+<td class="function_name">
+<a class="link" href="gtk2-Resource-Files.html#gtk-rc-find-module-in-path" title="gtk_rc_find_module_in_path ()">gtk_rc_find_module_in_path</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gchar</span> *
+</td>
+<td class="function_name">
+<a class="link" href="gtk2-Resource-Files.html#gtk-rc-find-pixmap-in-path" title="gtk_rc_find_pixmap_in_path ()">gtk_rc_find_pixmap_in_path</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gchar</span> *
+</td>
+<td class="function_name">
+<a class="link" href="gtk2-Resource-Files.html#gtk-rc-get-module-dir" title="gtk_rc_get_module_dir ()">gtk_rc_get_module_dir</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gchar</span> *
+</td>
+<td class="function_name">
+<a class="link" href="gtk2-Resource-Files.html#gtk-rc-get-im-module-path" title="gtk_rc_get_im_module_path ()">gtk_rc_get_im_module_path</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gchar</span> *
+</td>
+<td class="function_name">
+<a class="link" href="gtk2-Resource-Files.html#gtk-rc-get-im-module-file" title="gtk_rc_get_im_module_file ()">gtk_rc_get_im_module_file</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gchar</span> *
+</td>
+<td class="function_name">
+<a class="link" href="gtk2-Resource-Files.html#gtk-rc-get-theme-dir" title="gtk_rc_get_theme_dir ()">gtk_rc_get_theme_dir</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="gtk2-Resource-Files.html#GtkRcStyle"><span class="returnvalue">GtkRcStyle</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="gtk2-Resource-Files.html#gtk-rc-style-new" title="gtk_rc_style_new ()">gtk_rc_style_new</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="gtk2-Resource-Files.html#GtkRcStyle"><span class="returnvalue">GtkRcStyle</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="gtk2-Resource-Files.html#gtk-rc-style-copy" title="gtk_rc_style_copy ()">gtk_rc_style_copy</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gtk2-Resource-Files.html#gtk-rc-style-ref" title="gtk_rc_style_ref ()">gtk_rc_style_ref</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gtk2-Resource-Files.html#gtk-rc-style-unref" title="gtk_rc_style_unref ()">gtk_rc_style_unref</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<a name="GtkRcStyle"></a><div class="refsect1">
+<a name="gtk2-Resource-Files.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="other_proto_type">
+<col class="other_proto_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="datatype_keyword"> </td>
+<td class="function_name"><a class="link" href="gtk2-Resource-Files.html#GtkRcStyle-struct" title="GtkRcStyle">GtkRcStyle</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">enum</td>
+<td class="function_name"><a class="link" href="gtk2-Resource-Files.html#GtkRcFlags" title="enum GtkRcFlags">GtkRcFlags</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">enum</td>
+<td class="function_name"><a class="link" href="gtk2-Resource-Files.html#GtkRcTokenType" title="enum GtkRcTokenType">GtkRcTokenType</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="gtk2-Resource-Files.html#gtk-rc-parse" title="gtk_rc_parse">gtk_rc_parse</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="gtk2-Resource-Files.html#gtk-rc-add-default-file" title="gtk_rc_add_default_file">gtk_rc_add_default_file</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="gtk2-Resource-Files.html#gtk-rc-set-default-files" title="gtk_rc_set_default_files">gtk_rc_set_default_files</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="gtk2-Resource-Files.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="screen">    GObject
+    <span class="lineart">╰──</span> GtkRcStyle
+</pre>
+</div>
+<div class="refsect1">
+<a name="gtk2-Resource-Files.includes"></a><h2>Includes</h2>
+<pre class="synopsis">#include &lt;gtk/gtk.h&gt;
+</pre>
+</div>
+<div class="refsect1">
+<a name="gtk2-Resource-Files.description"></a><h2>Description</h2>
+</div>
+<div class="refsect1">
+<a name="gtk2-Resource-Files.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="gtk-rc-scanner-new"></a><h3>gtk_rc_scanner_new ()</h3>
+<pre class="programlisting"><span class="returnvalue">GScanner</span> *
+gtk_rc_scanner_new (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-rc-get-style"></a><h3>gtk_rc_get_style ()</h3>
+<pre class="programlisting"><a class="link" href="GtkStyle.html" title="GtkStyle"><span class="returnvalue">GtkStyle</span></a> *
+gtk_rc_get_style (<em class="parameter"><code><a class="link" href="GtkWidget.html" title="GtkWidget"><span class="type">GtkWidget</span></a> *widget</code></em>);</pre>
+<p>Finds all matching RC styles for a given widget,
+composites them together, and then creates a 
+<a class="link" href="GtkStyle.html" title="GtkStyle"><span class="type">GtkStyle</span></a> representing the composite appearance.
+(GTK+ actually keeps a cache of previously 
+created styles, so a new style may not be
+created.)</p>
+<div class="refsect3">
+<a name="gtk-rc-get-style.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>widget</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkWidget.html" title="GtkWidget"><span class="type">GtkWidget</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-rc-get-style.returns"></a><h4>Returns</h4>
+<p>the resulting style. No refcount is added
+to the returned style, so if you want to save this
+style around, you should add a reference yourself. </p>
+<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-rc-get-style-by-paths"></a><h3>gtk_rc_get_style_by_paths ()</h3>
+<pre class="programlisting"><a class="link" href="GtkStyle.html" title="GtkStyle"><span class="returnvalue">GtkStyle</span></a> *
+gtk_rc_get_style_by_paths (<em class="parameter"><code><a class="link" href="GtkSettings.html" title="GtkSettings"><span class="type">GtkSettings</span></a> *settings</code></em>,
+                           <em class="parameter"><code>const <span class="type">char</span> *widget_path</code></em>,
+                           <em class="parameter"><code>const <span class="type">char</span> *class_path</code></em>,
+                           <em class="parameter"><code><span class="type">GType</span> type</code></em>);</pre>
+<p>Creates up a <a class="link" href="GtkStyle.html" title="GtkStyle"><span class="type">GtkStyle</span></a> from styles defined in a RC file by providing
+the raw components used in matching. This function may be useful
+when creating pseudo-widgets that should be themed like widgets but
+don't actually have corresponding GTK+ widgets. An example of this
+would be items inside a GNOME canvas widget.</p>
+<p>The action of <a class="link" href="gtk2-Resource-Files.html#gtk-rc-get-style" title="gtk_rc_get_style ()"><code class="function">gtk_rc_get_style()</code></a> is similar to:</p>
+<div class="informalexample">
+  <table class="listing_frame" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+      <tr>
+        <td class="listing_lines" align="right"><pre>1
+2
+3
+4
+5</pre></td>
+        <td class="listing_code"><pre class="programlisting"><span class="n">gtk_widget_path</span> <span class="p">(</span><span class="n">widget</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">path</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+<span class="n">gtk_widget_class_path</span> <span class="p">(</span><span class="n">widget</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">class_path</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+<span class="n">gtk_rc_get_style_by_paths</span> <span class="p">(</span><span class="n">gtk_widget_get_settings</span> <span class="p">(</span><span class="n">widget</span><span class="p">),</span> 
+                           <span class="n">path</span><span class="p">,</span> <span class="n">class_path</span><span class="p">,</span>
+                           <span class="n">G_OBJECT_TYPE</span> <span class="p">(</span><span class="n">widget</span><span class="p">));</span></pre></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p></p>
+<div class="refsect3">
+<a name="gtk-rc-get-style-by-paths.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>settings</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkSettings.html" title="GtkSettings"><span class="type">GtkSettings</span></a> object</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>widget_path</p></td>
+<td class="parameter_description"><p>the widget path to use when looking up the
+style, or <code class="literal">NULL</code> if no matching against the widget path should be done. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>class_path</p></td>
+<td class="parameter_description"><p>the class path to use when looking up the style,
+or <code class="literal">NULL</code> if no matching against the class path should be done. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>type</p></td>
+<td class="parameter_description"><p>a type that will be used along with parent types of this type
+when matching against class styles, or <span class="type">G_TYPE_NONE</span></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-rc-get-style-by-paths.returns"></a><h4>Returns</h4>
+<p>A style created by matching with the
+supplied paths, or <code class="literal">NULL</code> if nothing matching was specified and the
+default style should be used. The returned value is owned by GTK+
+as part of an internal cache, so you must call <code class="function">g_object_ref()</code> on
+the returned value if you want to keep a reference to it. </p>
+<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-rc-add-widget-name-style"></a><h3>gtk_rc_add_widget_name_style ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_rc_add_widget_name_style (<em class="parameter"><code><a class="link" href="gtk2-Resource-Files.html#GtkRcStyle"><span class="type">GtkRcStyle</span></a> *rc_style</code></em>,
+                              <em class="parameter"><code>const <span class="type">gchar</span> *pattern</code></em>);</pre>
+<div class="warning"><p><code class="literal">gtk_rc_add_widget_name_style</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-rc-add-widget-class-style"></a><h3>gtk_rc_add_widget_class_style ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_rc_add_widget_class_style (<em class="parameter"><code><a class="link" href="gtk2-Resource-Files.html#GtkRcStyle"><span class="type">GtkRcStyle</span></a> *rc_style</code></em>,
+                               <em class="parameter"><code>const <span class="type">gchar</span> *pattern</code></em>);</pre>
+<div class="warning"><p><code class="literal">gtk_rc_add_widget_class_style</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-rc-add-class-style"></a><h3>gtk_rc_add_class_style ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_rc_add_class_style (<em class="parameter"><code><a class="link" href="gtk2-Resource-Files.html#GtkRcStyle"><span class="type">GtkRcStyle</span></a> *rc_style</code></em>,
+                        <em class="parameter"><code>const <span class="type">gchar</span> *pattern</code></em>);</pre>
+<div class="warning"><p><code class="literal">gtk_rc_add_class_style</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-rc-parse-string"></a><h3>gtk_rc_parse_string ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_rc_parse_string (<em class="parameter"><code>const <span class="type">gchar</span> *rc_string</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-rc-reparse-all"></a><h3>gtk_rc_reparse_all ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>
+gtk_rc_reparse_all (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>If the modification time on any previously read file for the
+default <a class="link" href="GtkSettings.html" title="GtkSettings"><span class="type">GtkSettings</span></a> has changed, discard all style information
+and then reread all previously read RC files.</p>
+<div class="refsect3">
+<a name="gtk-rc-reparse-all.returns"></a><h4>Returns</h4>
+<p>  <code class="literal">TRUE</code> if the files were reread.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-rc-reparse-all-for-settings"></a><h3>gtk_rc_reparse_all_for_settings ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>
+gtk_rc_reparse_all_for_settings (<em class="parameter"><code><a class="link" href="GtkSettings.html" title="GtkSettings"><span class="type">GtkSettings</span></a> *settings</code></em>,
+                                 <em class="parameter"><code><span class="type">gboolean</span> force_load</code></em>);</pre>
+<p>If the modification time on any previously read file
+for the given <a class="link" href="GtkSettings.html" title="GtkSettings"><span class="type">GtkSettings</span></a> has changed, discard all style information
+and then reread all previously read RC files.</p>
+<div class="refsect3">
+<a name="gtk-rc-reparse-all-for-settings.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>settings</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkSettings.html" title="GtkSettings"><span class="type">GtkSettings</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>force_load</p></td>
+<td class="parameter_description"><p>load whether or not anything changed</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-rc-reparse-all-for-settings.returns"></a><h4>Returns</h4>
+<p> <code class="literal">TRUE</code> if the files were reread.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-rc-reset-styles"></a><h3>gtk_rc_reset_styles ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_rc_reset_styles (<em class="parameter"><code><a class="link" href="GtkSettings.html" title="GtkSettings"><span class="type">GtkSettings</span></a> *settings</code></em>);</pre>
+<p>This function recomputes the styles for all widgets that use a
+particular <a class="link" href="GtkSettings.html" title="GtkSettings"><span class="type">GtkSettings</span></a> object. (There is one <a class="link" href="GtkSettings.html" title="GtkSettings"><span class="type">GtkSettings</span></a> object
+per <a href="../html/GdkScreen.html#GdkScreen-struct"><span class="type">GdkScreen</span></a>, see <a class="link" href="GtkSettings.html#gtk-settings-get-for-screen" title="gtk_settings_get_for_screen ()"><code class="function">gtk_settings_get_for_screen()</code></a>); It is useful
+when some global parameter has changed that affects the appearance
+of all widgets, because when a widget gets a new style, it will
+both redraw and recompute any cached information about its
+appearance. As an example, it is used when the default font size
+set by the operating system changes. Note that this function
+doesn't affect widgets that have a style set explicitely on them
+with <a class="link" href="GtkWidget.html#gtk-widget-set-style" title="gtk_widget_set_style ()"><code class="function">gtk_widget_set_style()</code></a>.</p>
+<div class="refsect3">
+<a name="gtk-rc-reset-styles.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>settings</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkSettings.html" title="GtkSettings"><span class="type">GtkSettings</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-4.html#api-index-2.4">2.4</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-rc-get-default-files"></a><h3>gtk_rc_get_default_files ()</h3>
+<pre class="programlisting"><span class="returnvalue">gchar</span> **
+gtk_rc_get_default_files (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>Retrieves the current list of RC files that will be parsed
+at the end of <a class="link" href="gtk2-General.html#gtk-init" title="gtk_init ()"><code class="function">gtk_init()</code></a>.</p>
+<div class="refsect3">
+<a name="gtk-rc-get-default-files.returns"></a><h4>Returns</h4>
+<p>A <code class="literal">NULL</code>-terminated array of filenames.
+This memory is owned by GTK+ and must not be freed by the application.
+If you want to store this information, you should make a copy. </p>
+<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>][<acronym title="Parameter points to an array of items."><span class="acronym">array</span></acronym> zero-terminated=1][<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> filename]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-rc-parse-color"></a><h3>gtk_rc_parse_color ()</h3>
+<pre class="programlisting"><span class="returnvalue">guint</span>
+gtk_rc_parse_color (<em class="parameter"><code><span class="type">GScanner</span> *scanner</code></em>,
+                    <em class="parameter"><code><a href="../html/gdk2-Colormaps-and-Colors.html#GdkColor"><span class="type">GdkColor</span></a> *color</code></em>);</pre>
+<p>Parses a color in the format expected
+in a RC file. </p>
+<p>Note that theme engines should use <a class="link" href="gtk2-Resource-Files.html#gtk-rc-parse-color-full" title="gtk_rc_parse_color_full ()"><code class="function">gtk_rc_parse_color_full()</code></a> in 
+order to support symbolic colors.</p>
+<div class="refsect3">
+<a name="gtk-rc-parse-color.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>scanner</p></td>
+<td class="parameter_description"><p>a <span class="type">GScanner</span></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>color</p></td>
+<td class="parameter_description"><p>a pointer to a <a href="../html/gdk2-Colormaps-and-Colors.html#GdkColor"><span class="type">GdkColor</span></a> structure in which to store
+the result. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-rc-parse-color.returns"></a><h4>Returns</h4>
+<p> <code class="literal">G_TOKEN_NONE</code> if parsing succeeded, otherwise the token
+that was expected but not found</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-rc-parse-color-full"></a><h3>gtk_rc_parse_color_full ()</h3>
+<pre class="programlisting"><span class="returnvalue">guint</span>
+gtk_rc_parse_color_full (<em class="parameter"><code><span class="type">GScanner</span> *scanner</code></em>,
+                         <em class="parameter"><code><a class="link" href="gtk2-Resource-Files.html#GtkRcStyle"><span class="type">GtkRcStyle</span></a> *style</code></em>,
+                         <em class="parameter"><code><a href="../html/gdk2-Colormaps-and-Colors.html#GdkColor"><span class="type">GdkColor</span></a> *color</code></em>);</pre>
+<p>Parses a color in the format expected
+in a RC file. If <em class="parameter"><code>style</code></em>
+ is not <code class="literal">NULL</code>, it will be consulted to resolve
+references to symbolic colors.</p>
+<div class="refsect3">
+<a name="gtk-rc-parse-color-full.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>scanner</p></td>
+<td class="parameter_description"><p>a <span class="type">GScanner</span></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>style</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gtk2-Resource-Files.html#GtkRcStyle"><span class="type">GtkRcStyle</span></a>, or <code class="literal">NULL</code>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>color</p></td>
+<td class="parameter_description"><p>a pointer to a <a href="../html/gdk2-Colormaps-and-Colors.html#GdkColor"><span class="type">GdkColor</span></a> structure in which to store
+the result. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-rc-parse-color-full.returns"></a><h4>Returns</h4>
+<p> <code class="literal">G_TOKEN_NONE</code> if parsing succeeded, otherwise the token
+that was expected but not found</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-12.html#api-index-2.12">2.12</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-rc-parse-state"></a><h3>gtk_rc_parse_state ()</h3>
+<pre class="programlisting"><span class="returnvalue">guint</span>
+gtk_rc_parse_state (<em class="parameter"><code><span class="type">GScanner</span> *scanner</code></em>,
+                    <em class="parameter"><code><a class="link" href="gtk2-Standard-Enumerations.html#GtkStateType" title="enum GtkStateType"><span class="type">GtkStateType</span></a> *state</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-rc-parse-priority"></a><h3>gtk_rc_parse_priority ()</h3>
+<pre class="programlisting"><span class="returnvalue">guint</span>
+gtk_rc_parse_priority (<em class="parameter"><code><span class="type">GScanner</span> *scanner</code></em>,
+                       <em class="parameter"><code><a class="link" href="gtk2-Standard-Enumerations.html#GtkPathPriorityType" title="enum GtkPathPriorityType"><span class="type">GtkPathPriorityType</span></a> *priority</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-rc-find-module-in-path"></a><h3>gtk_rc_find_module_in_path ()</h3>
+<pre class="programlisting"><span class="returnvalue">gchar</span> *
+gtk_rc_find_module_in_path (<em class="parameter"><code>const <span class="type">gchar</span> *module_file</code></em>);</pre>
+<p>Searches for a theme engine in the GTK+ search path. This function
+is not useful for applications and should not be used.</p>
+<div class="refsect3">
+<a name="gtk-rc-find-module-in-path.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>module_file</p></td>
+<td class="parameter_description"><p>name of a theme engine</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-rc-find-module-in-path.returns"></a><h4>Returns</h4>
+<p> The filename, if found (must be freed with <code class="function">g_free()</code>),
+otherwise <code class="literal">NULL</code>.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-rc-find-pixmap-in-path"></a><h3>gtk_rc_find_pixmap_in_path ()</h3>
+<pre class="programlisting"><span class="returnvalue">gchar</span> *
+gtk_rc_find_pixmap_in_path (<em class="parameter"><code><a class="link" href="GtkSettings.html" title="GtkSettings"><span class="type">GtkSettings</span></a> *settings</code></em>,
+                            <em class="parameter"><code><span class="type">GScanner</span> *scanner</code></em>,
+                            <em class="parameter"><code>const <span class="type">gchar</span> *pixmap_file</code></em>);</pre>
+<p>Looks up a file in pixmap path for the specified <a class="link" href="GtkSettings.html" title="GtkSettings"><span class="type">GtkSettings</span></a>.
+If the file is not found, it outputs a warning message using
+<code class="function">g_warning()</code> and returns <code class="literal">NULL</code>.</p>
+<div class="refsect3">
+<a name="gtk-rc-find-pixmap-in-path.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>settings</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkSettings.html" title="GtkSettings"><span class="type">GtkSettings</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>scanner</p></td>
+<td class="parameter_description"><p>Scanner used to get line number information for the
+warning message, or <code class="literal">NULL</code></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>pixmap_file</p></td>
+<td class="parameter_description"><p>name of the pixmap file to locate.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-rc-find-pixmap-in-path.returns"></a><h4>Returns</h4>
+<p> the filename. </p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-rc-get-module-dir"></a><h3>gtk_rc_get_module_dir ()</h3>
+<pre class="programlisting"><span class="returnvalue">gchar</span> *
+gtk_rc_get_module_dir (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>Returns a directory in which GTK+ looks for theme engines.
+For full information about the search for theme engines,
+see the docs for <code class="envar">GTK_PATH</code> in</p>
+<a class="xref" href="gtk-running.html" title="Running GTK+ Applications"><span class="refentrytitle">Running GTK+ Applications</span>(3)</a>.
+<div class="refsect3">
+<a name="gtk-rc-get-module-dir.returns"></a><h4>Returns</h4>
+<p> the directory. (Must be freed with <code class="function">g_free()</code>)</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-rc-get-im-module-path"></a><h3>gtk_rc_get_im_module_path ()</h3>
+<pre class="programlisting"><span class="returnvalue">gchar</span> *
+gtk_rc_get_im_module_path (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>Obtains the path in which to look for IM modules. See the documentation
+of the <code class="envar">GTK_PATH</code>
+environment variable for more details about looking up modules. This
+function is useful solely for utilities supplied with GTK+ and should
+not be used by applications under normal circumstances.</p>
+<div class="refsect3">
+<a name="gtk-rc-get-im-module-path.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>returns</p></td>
+<td class="parameter_description"><p>a newly-allocated string containing the path in which to
+look for IM modules.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-rc-get-im-module-file"></a><h3>gtk_rc_get_im_module_file ()</h3>
+<pre class="programlisting"><span class="returnvalue">gchar</span> *
+gtk_rc_get_im_module_file (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>Obtains the path to the IM modules file. See the documentation
+of the <a class="link" href="gtk-running.html#im-module-file" title="GTK_IM_MODULE_FILE"><code class="envar">GTK_IM_MODULE_FILE</code></a>
+environment variable for more details.</p>
+<div class="refsect3">
+<a name="gtk-rc-get-im-module-file.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>returns</p></td>
+<td class="parameter_description"><p>a newly-allocated string containing the name of the file
+listing the IM modules available for loading</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-rc-get-theme-dir"></a><h3>gtk_rc_get_theme_dir ()</h3>
+<pre class="programlisting"><span class="returnvalue">gchar</span> *
+gtk_rc_get_theme_dir (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-rc-style-new"></a><h3>gtk_rc_style_new ()</h3>
+<pre class="programlisting"><a class="link" href="gtk2-Resource-Files.html#GtkRcStyle"><span class="returnvalue">GtkRcStyle</span></a> *
+gtk_rc_style_new (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-rc-style-copy"></a><h3>gtk_rc_style_copy ()</h3>
+<pre class="programlisting"><a class="link" href="gtk2-Resource-Files.html#GtkRcStyle"><span class="returnvalue">GtkRcStyle</span></a> *
+gtk_rc_style_copy (<em class="parameter"><code><a class="link" href="gtk2-Resource-Files.html#GtkRcStyle"><span class="type">GtkRcStyle</span></a> *orig</code></em>);</pre>
+<p>Makes a copy of the specified <a class="link" href="gtk2-Resource-Files.html#GtkRcStyle"><span class="type">GtkRcStyle</span></a>. This function
+will correctly copy an RC style that is a member of a class
+derived from <a class="link" href="gtk2-Resource-Files.html#GtkRcStyle"><span class="type">GtkRcStyle</span></a>.</p>
+<div class="refsect3">
+<a name="gtk-rc-style-copy.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>orig</p></td>
+<td class="parameter_description"><p>the style to copy</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-rc-style-copy.returns"></a><h4>Returns</h4>
+<p>the resulting <a class="link" href="gtk2-Resource-Files.html#GtkRcStyle"><span class="type">GtkRcStyle</span></a>. </p>
+<p><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-rc-style-ref"></a><h3>gtk_rc_style_ref ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_rc_style_ref (<em class="parameter"><code><a class="link" href="gtk2-Resource-Files.html#GtkRcStyle"><span class="type">GtkRcStyle</span></a> *rc_style</code></em>);</pre>
+<div class="warning"><p><code class="literal">gtk_rc_style_ref</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-rc-style-unref"></a><h3>gtk_rc_style_unref ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_rc_style_unref (<em class="parameter"><code><a class="link" href="gtk2-Resource-Files.html#GtkRcStyle"><span class="type">GtkRcStyle</span></a> *rc_style</code></em>);</pre>
+<div class="warning"><p><code class="literal">gtk_rc_style_unref</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+</div>
+<div class="refsect1">
+<a name="gtk2-Resource-Files.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="GtkRcStyle-struct"></a><h3>GtkRcStyle</h3>
+<pre class="programlisting">typedef struct {
+  gchar *name;
+  gchar *bg_pixmap_name[5];
+  PangoFontDescription *font_desc;
+
+  GtkRcFlags color_flags[5];
+  GdkColor   fg[5];
+  GdkColor   bg[5];
+  GdkColor   text[5];
+  GdkColor   base[5];
+
+  gint xthickness;
+  gint ythickness;
+} GtkRcStyle;
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GtkRcFlags"></a><h3>enum GtkRcFlags</h3>
+<div class="refsect3">
+<a name="GtkRcFlags.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="enum_members_name">
+<col class="enum_members_description">
+<col width="200px" class="enum_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-FG:CAPS"></a>GTK_RC_FG</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-BG:CAPS"></a>GTK_RC_BG</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TEXT:CAPS"></a>GTK_RC_TEXT</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-BASE:CAPS"></a>GTK_RC_BASE</p></td>
+<td> </td>
+<td> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GtkRcTokenType"></a><h3>enum GtkRcTokenType</h3>
+<div class="refsect3">
+<a name="GtkRcTokenType.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="enum_members_name">
+<col class="enum_members_description">
+<col width="200px" class="enum_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-INVALID:CAPS"></a>GTK_RC_TOKEN_INVALID</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-INCLUDE:CAPS"></a>GTK_RC_TOKEN_INCLUDE</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-NORMAL:CAPS"></a>GTK_RC_TOKEN_NORMAL</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-ACTIVE:CAPS"></a>GTK_RC_TOKEN_ACTIVE</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-PRELIGHT:CAPS"></a>GTK_RC_TOKEN_PRELIGHT</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-SELECTED:CAPS"></a>GTK_RC_TOKEN_SELECTED</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-INSENSITIVE:CAPS"></a>GTK_RC_TOKEN_INSENSITIVE</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-FG:CAPS"></a>GTK_RC_TOKEN_FG</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-BG:CAPS"></a>GTK_RC_TOKEN_BG</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-TEXT:CAPS"></a>GTK_RC_TOKEN_TEXT</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-BASE:CAPS"></a>GTK_RC_TOKEN_BASE</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-XTHICKNESS:CAPS"></a>GTK_RC_TOKEN_XTHICKNESS</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-YTHICKNESS:CAPS"></a>GTK_RC_TOKEN_YTHICKNESS</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-FONT:CAPS"></a>GTK_RC_TOKEN_FONT</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-FONTSET:CAPS"></a>GTK_RC_TOKEN_FONTSET</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-FONT-NAME:CAPS"></a>GTK_RC_TOKEN_FONT_NAME</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-BG-PIXMAP:CAPS"></a>GTK_RC_TOKEN_BG_PIXMAP</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-PIXMAP-PATH:CAPS"></a>GTK_RC_TOKEN_PIXMAP_PATH</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-STYLE:CAPS"></a>GTK_RC_TOKEN_STYLE</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-BINDING:CAPS"></a>GTK_RC_TOKEN_BINDING</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-BIND:CAPS"></a>GTK_RC_TOKEN_BIND</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-WIDGET:CAPS"></a>GTK_RC_TOKEN_WIDGET</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-WIDGET-CLASS:CAPS"></a>GTK_RC_TOKEN_WIDGET_CLASS</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-CLASS:CAPS"></a>GTK_RC_TOKEN_CLASS</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-LOWEST:CAPS"></a>GTK_RC_TOKEN_LOWEST</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-GTK:CAPS"></a>GTK_RC_TOKEN_GTK</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-APPLICATION:CAPS"></a>GTK_RC_TOKEN_APPLICATION</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-THEME:CAPS"></a>GTK_RC_TOKEN_THEME</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-RC:CAPS"></a>GTK_RC_TOKEN_RC</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-HIGHEST:CAPS"></a>GTK_RC_TOKEN_HIGHEST</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-ENGINE:CAPS"></a>GTK_RC_TOKEN_ENGINE</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-MODULE-PATH:CAPS"></a>GTK_RC_TOKEN_MODULE_PATH</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-IM-MODULE-PATH:CAPS"></a>GTK_RC_TOKEN_IM_MODULE_PATH</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-IM-MODULE-FILE:CAPS"></a>GTK_RC_TOKEN_IM_MODULE_FILE</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-STOCK:CAPS"></a>GTK_RC_TOKEN_STOCK</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-LTR:CAPS"></a>GTK_RC_TOKEN_LTR</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-RTL:CAPS"></a>GTK_RC_TOKEN_RTL</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-COLOR:CAPS"></a>GTK_RC_TOKEN_COLOR</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-UNBIND:CAPS"></a>GTK_RC_TOKEN_UNBIND</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RC-TOKEN-LAST:CAPS"></a>GTK_RC_TOKEN_LAST</p></td>
+<td> </td>
+<td> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-rc-parse"></a><h3>gtk_rc_parse</h3>
+<pre class="programlisting">#define gtk_rc_parse gtk_rc_parse_utf8
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-rc-add-default-file"></a><h3>gtk_rc_add_default_file</h3>
+<pre class="programlisting">#define gtk_rc_add_default_file gtk_rc_add_default_file_utf8
+</pre>
+<p>Adds a file to the list of files to be parsed at the
+end of <a class="link" href="gtk2-General.html#gtk-init" title="gtk_init ()"><code class="function">gtk_init()</code></a>.</p>
+<div class="refsect3">
+<a name="gtk-rc-add-default-file.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>filename</p></td>
+<td class="parameter_description"><p>the pathname to the file. If <em class="parameter"><code>filename</code></em>
+is not absolute, it
+is searched in the current directory.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-rc-set-default-files"></a><h3>gtk_rc_set_default_files</h3>
+<pre class="programlisting">#define gtk_rc_set_default_files gtk_rc_set_default_files_utf8
+</pre>
+<p>Sets the list of files that GTK+ will read at the
+end of <a class="link" href="gtk2-General.html#gtk-init" title="gtk_init ()"><code class="function">gtk_init()</code></a>.</p>
+<div class="refsect3">
+<a name="gtk-rc-set-default-files.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>filenames</p></td>
+<td class="parameter_description"><p>A <code class="literal">NULL</code>-terminated list of filenames.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.33.0</div>
+</body>
+</html>

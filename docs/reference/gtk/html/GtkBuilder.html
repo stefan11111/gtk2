@@ -1,0 +1,1006 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GtkBuilder: GTK+ 2 Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets Vsnapshot">
+<link rel="home" href="index.html" title="GTK+ 2 Reference Manual">
+<link rel="up" href="Builder.html" title="Interface builder">
+<link rel="prev" href="GtkBuildable.html" title="GtkBuildable">
+<link rel="next" href="DeprecatedObjects.html" title="Deprecated">
+<meta name="generator" content="GTK-Doc V1.33.0 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#GtkBuilder.description" class="shortcut">Description</a></span><span id="nav_hierarchy">  <span class="dim">|</span> 
+                  <a href="#GtkBuilder.object-hierarchy" class="shortcut">Object Hierarchy</a></span><span id="nav_properties">  <span class="dim">|</span> 
+                  <a href="#GtkBuilder.properties" class="shortcut">Properties</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="Builder.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="GtkBuildable.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="DeprecatedObjects.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="GtkBuilder"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GtkBuilder.top_of_page"></a>GtkBuilder</span></h2>
+<p>GtkBuilder</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="GtkBuilder.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_proto_type">
+<col class="functions_proto_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<span class="c_punctuation">(</span><a class="link" href="GtkBuilder.html#GtkBuilderConnectFunc" title="GtkBuilderConnectFunc ()">*GtkBuilderConnectFunc</a><span class="c_punctuation">)</span> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GtkBuilder.html" title="GtkBuilder"><span class="returnvalue">GtkBuilder</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GtkBuilder.html#gtk-builder-new" title="gtk_builder_new ()">gtk_builder_new</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">guint</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkBuilder.html#gtk-builder-add-from-file" title="gtk_builder_add_from_file ()">gtk_builder_add_from_file</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">guint</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkBuilder.html#gtk-builder-add-from-string" title="gtk_builder_add_from_string ()">gtk_builder_add_from_string</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">guint</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkBuilder.html#gtk-builder-add-objects-from-file" title="gtk_builder_add_objects_from_file ()">gtk_builder_add_objects_from_file</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">guint</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkBuilder.html#gtk-builder-add-objects-from-string" title="gtk_builder_add_objects_from_string ()">gtk_builder_add_objects_from_string</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">GObject</span> *
+</td>
+<td class="function_name">
+<a class="link" href="GtkBuilder.html#gtk-builder-get-object" title="gtk_builder_get_object ()">gtk_builder_get_object</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">GSList</span> *
+</td>
+<td class="function_name">
+<a class="link" href="GtkBuilder.html#gtk-builder-get-objects" title="gtk_builder_get_objects ()">gtk_builder_get_objects</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkBuilder.html#gtk-builder-connect-signals" title="gtk_builder_connect_signals ()">gtk_builder_connect_signals</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkBuilder.html#gtk-builder-connect-signals-full" title="gtk_builder_connect_signals_full ()">gtk_builder_connect_signals_full</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkBuilder.html#gtk-builder-set-translation-domain" title="gtk_builder_set_translation_domain ()">gtk_builder_set_translation_domain</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">const <span class="returnvalue">gchar</span> *
+</td>
+<td class="function_name">
+<a class="link" href="GtkBuilder.html#gtk-builder-get-translation-domain" title="gtk_builder_get_translation_domain ()">gtk_builder_get_translation_domain</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">GType</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkBuilder.html#gtk-builder-get-type-from-name" title="gtk_builder_get_type_from_name ()">gtk_builder_get_type_from_name</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gboolean</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkBuilder.html#gtk-builder-value-from-string" title="gtk_builder_value_from_string ()">gtk_builder_value_from_string</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gboolean</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkBuilder.html#gtk-builder-value-from-string-type" title="gtk_builder_value_from_string_type ()">gtk_builder_value_from_string_type</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name">
+<a class="link" href="GtkBuilder.html#GTK-BUILDER-WARN-INVALID-CHILD-TYPE:CAPS" title="GTK_BUILDER_WARN_INVALID_CHILD_TYPE()">GTK_BUILDER_WARN_INVALID_CHILD_TYPE</a><span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GtkBuilder.properties"></a><h2>Properties</h2>
+<div class="informaltable"><table class="informaltable" border="0">
+<colgroup>
+<col width="150px" class="properties_type">
+<col width="300px" class="properties_name">
+<col width="200px" class="properties_flags">
+</colgroup>
+<tbody><tr>
+<td class="property_type">
+<span class="type">char</span> *</td>
+<td class="property_name"><a class="link" href="GtkBuilder.html#GtkBuilder--translation-domain" title="The “translation-domain” property">translation-domain</a></td>
+<td class="property_flags">Read / Write</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GtkBuilder.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="other_proto_type">
+<col class="other_proto_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="datatype_keyword">struct</td>
+<td class="function_name"><a class="link" href="GtkBuilder.html#GtkBuilder-struct" title="struct GtkBuilder">GtkBuilder</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">enum</td>
+<td class="function_name"><a class="link" href="GtkBuilder.html#GtkBuilderError" title="enum GtkBuilderError">GtkBuilderError</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="GtkBuilder.html#GTK-BUILDER-ERROR:CAPS" title="GTK_BUILDER_ERROR">GTK_BUILDER_ERROR</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GtkBuilder.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="screen">    GObject
+    <span class="lineart">╰──</span> GtkBuilder
+</pre>
+</div>
+<div class="refsect1">
+<a name="GtkBuilder.includes"></a><h2>Includes</h2>
+<pre class="synopsis">#include &lt;gtk/gtk.h&gt;
+</pre>
+</div>
+<div class="refsect1">
+<a name="GtkBuilder.description"></a><h2>Description</h2>
+</div>
+<div class="refsect1">
+<a name="GtkBuilder.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="GtkBuilderConnectFunc"></a><h3>GtkBuilderConnectFunc ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+<span class="c_punctuation">(</span>*GtkBuilderConnectFunc<span class="c_punctuation">)</span> (<em class="parameter"><code><a class="link" href="GtkBuilder.html" title="GtkBuilder"><span class="type">GtkBuilder</span></a> *builder</code></em>,
+                          <em class="parameter"><code><span class="type">GObject</span> *object</code></em>,
+                          <em class="parameter"><code>const <span class="type">gchar</span> *signal_name</code></em>,
+                          <em class="parameter"><code>const <span class="type">gchar</span> *handler_name</code></em>,
+                          <em class="parameter"><code><span class="type">GObject</span> *connect_object</code></em>,
+                          <em class="parameter"><code><span class="type">GConnectFlags</span> flags</code></em>,
+                          <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+<p>This is the signature of a function used to connect signals.  It is used
+by the <a class="link" href="GtkBuilder.html#gtk-builder-connect-signals" title="gtk_builder_connect_signals ()"><code class="function">gtk_builder_connect_signals()</code></a> and <a class="link" href="GtkBuilder.html#gtk-builder-connect-signals-full" title="gtk_builder_connect_signals_full ()"><code class="function">gtk_builder_connect_signals_full()</code></a>
+methods.  It is mainly intended for interpreted language bindings, but
+could be useful where the programmer wants more control over the signal
+connection process.</p>
+<div class="refsect3">
+<a name="GtkBuilderConnectFunc.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>builder</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkBuilder.html" title="GtkBuilder"><span class="type">GtkBuilder</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>object</p></td>
+<td class="parameter_description"><p>object to connect a signal to</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>signal_name</p></td>
+<td class="parameter_description"><p>name of the signal</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>handler_name</p></td>
+<td class="parameter_description"><p>name of the handler</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>connect_object</p></td>
+<td class="parameter_description"><p>a <span class="type">GObject</span>, if non-<code class="literal">NULL</code>, use <code class="function">g_signal_connect_object()</code></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>flags</p></td>
+<td class="parameter_description"><p><span class="type">GConnectFlags</span> to use</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-12.html#api-index-2.12">2.12</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-builder-new"></a><h3>gtk_builder_new ()</h3>
+<pre class="programlisting"><a class="link" href="GtkBuilder.html" title="GtkBuilder"><span class="returnvalue">GtkBuilder</span></a> *
+gtk_builder_new (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>Creates a new builder object.</p>
+<div class="refsect3">
+<a name="gtk-builder-new.returns"></a><h4>Returns</h4>
+<p> a new <a class="link" href="GtkBuilder.html" title="GtkBuilder"><span class="type">GtkBuilder</span></a> object</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-12.html#api-index-2.12">2.12</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-builder-add-from-file"></a><h3>gtk_builder_add_from_file ()</h3>
+<pre class="programlisting"><span class="returnvalue">guint</span>
+gtk_builder_add_from_file (<em class="parameter"><code><a class="link" href="GtkBuilder.html" title="GtkBuilder"><span class="type">GtkBuilder</span></a> *builder</code></em>,
+                           <em class="parameter"><code>const <span class="type">gchar</span> *filename</code></em>,
+                           <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<p>Parses a file containing a <GTKDOCLINK HREF="BUILDER-UI">GtkBuilder 
+UI definition</GTKDOCLINK> and merges it with the current contents of <em class="parameter"><code>builder</code></em>
+. </p>
+<p>Upon errors 0 will be returned and <em class="parameter"><code>error</code></em>
+ will be assigned a
+<span class="type">GError</span> from the <a class="link" href="GtkBuilder.html#GTK-BUILDER-ERROR:CAPS" title="GTK_BUILDER_ERROR"><span class="type">GTK_BUILDER_ERROR</span></a>, <span class="type">G_MARKUP_ERROR</span> or <span class="type">G_FILE_ERROR</span> 
+domain.</p>
+<div class="refsect3">
+<a name="gtk-builder-add-from-file.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>builder</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkBuilder.html" title="GtkBuilder"><span class="type">GtkBuilder</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>filename</p></td>
+<td class="parameter_description"><p>the name of the file to parse</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>error</p></td>
+<td class="parameter_description"><p>return location for an error, or <code class="literal">NULL</code>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-builder-add-from-file.returns"></a><h4>Returns</h4>
+<p> A positive value on success, 0 if an error occurred</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-12.html#api-index-2.12">2.12</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-builder-add-from-string"></a><h3>gtk_builder_add_from_string ()</h3>
+<pre class="programlisting"><span class="returnvalue">guint</span>
+gtk_builder_add_from_string (<em class="parameter"><code><a class="link" href="GtkBuilder.html" title="GtkBuilder"><span class="type">GtkBuilder</span></a> *builder</code></em>,
+                             <em class="parameter"><code>const <span class="type">gchar</span> *buffer</code></em>,
+                             <em class="parameter"><code><span class="type">gsize</span> length</code></em>,
+                             <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<p>Parses a string containing a <GTKDOCLINK HREF="BUILDER-UI">GtkBuilder 
+UI definition</GTKDOCLINK> and merges it with the current contents of <em class="parameter"><code>builder</code></em>
+. </p>
+<p>Upon errors 0 will be returned and <em class="parameter"><code>error</code></em>
+ will be assigned a
+<span class="type">GError</span> from the <a class="link" href="GtkBuilder.html#GTK-BUILDER-ERROR:CAPS" title="GTK_BUILDER_ERROR"><span class="type">GTK_BUILDER_ERROR</span></a> or <span class="type">G_MARKUP_ERROR</span> domain.</p>
+<div class="refsect3">
+<a name="gtk-builder-add-from-string.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>builder</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkBuilder.html" title="GtkBuilder"><span class="type">GtkBuilder</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>buffer</p></td>
+<td class="parameter_description"><p>the string to parse</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>length</p></td>
+<td class="parameter_description"><p>the length of <em class="parameter"><code>buffer</code></em>
+(may be -1 if <em class="parameter"><code>buffer</code></em>
+is nul-terminated)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>error</p></td>
+<td class="parameter_description"><p>return location for an error, or <code class="literal">NULL</code>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-builder-add-from-string.returns"></a><h4>Returns</h4>
+<p> A positive value on success, 0 if an error occurred</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-12.html#api-index-2.12">2.12</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-builder-add-objects-from-file"></a><h3>gtk_builder_add_objects_from_file ()</h3>
+<pre class="programlisting"><span class="returnvalue">guint</span>
+gtk_builder_add_objects_from_file (<em class="parameter"><code><a class="link" href="GtkBuilder.html" title="GtkBuilder"><span class="type">GtkBuilder</span></a> *builder</code></em>,
+                                   <em class="parameter"><code>const <span class="type">gchar</span> *filename</code></em>,
+                                   <em class="parameter"><code><span class="type">gchar</span> **object_ids</code></em>,
+                                   <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<p>Parses a file containing a <GTKDOCLINK HREF="BUILDER-UI">GtkBuilder 
+UI definition</GTKDOCLINK> building only the requested objects and merges
+them with the current contents of <em class="parameter"><code>builder</code></em>
+. </p>
+<p>Upon errors 0 will be returned and <em class="parameter"><code>error</code></em>
+ will be assigned a
+<span class="type">GError</span> from the <a class="link" href="GtkBuilder.html#GTK-BUILDER-ERROR:CAPS" title="GTK_BUILDER_ERROR"><span class="type">GTK_BUILDER_ERROR</span></a>, <span class="type">G_MARKUP_ERROR</span> or <span class="type">G_FILE_ERROR</span> 
+domain.</p>
+<div class="note"><p>
+If you are adding an object that depends on an object that is not 
+its child (for instance a <a class="link" href="GtkTreeView.html" title="GtkTreeView"><span class="type">GtkTreeView</span></a> that depends on its
+<a class="link" href="GtkTreeModel.html" title="GtkTreeModel"><span class="type">GtkTreeModel</span></a>), you have to explicitely list all of them in <em class="parameter"><code>object_ids</code></em>. 
+</p></div>
+<div class="refsect3">
+<a name="gtk-builder-add-objects-from-file.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>builder</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkBuilder.html" title="GtkBuilder"><span class="type">GtkBuilder</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>filename</p></td>
+<td class="parameter_description"><p>the name of the file to parse</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>object_ids</p></td>
+<td class="parameter_description"><p>nul-terminated array of objects to build</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>error</p></td>
+<td class="parameter_description"><p>return location for an error, or <code class="literal">NULL</code>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-builder-add-objects-from-file.returns"></a><h4>Returns</h4>
+<p> A positive value on success, 0 if an error occurred</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-14.html#api-index-2.14">2.14</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-builder-add-objects-from-string"></a><h3>gtk_builder_add_objects_from_string ()</h3>
+<pre class="programlisting"><span class="returnvalue">guint</span>
+gtk_builder_add_objects_from_string (<em class="parameter"><code><a class="link" href="GtkBuilder.html" title="GtkBuilder"><span class="type">GtkBuilder</span></a> *builder</code></em>,
+                                     <em class="parameter"><code>const <span class="type">gchar</span> *buffer</code></em>,
+                                     <em class="parameter"><code><span class="type">gsize</span> length</code></em>,
+                                     <em class="parameter"><code><span class="type">gchar</span> **object_ids</code></em>,
+                                     <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<p>Parses a string containing a <GTKDOCLINK HREF="BUILDER-UI">GtkBuilder 
+UI definition</GTKDOCLINK> building only the requested objects and merges
+them with the current contents of <em class="parameter"><code>builder</code></em>
+. </p>
+<p>Upon errors 0 will be returned and <em class="parameter"><code>error</code></em>
+ will be assigned a
+<span class="type">GError</span> from the <a class="link" href="GtkBuilder.html#GTK-BUILDER-ERROR:CAPS" title="GTK_BUILDER_ERROR"><span class="type">GTK_BUILDER_ERROR</span></a> or <span class="type">G_MARKUP_ERROR</span> domain.</p>
+<div class="note"><p>
+If you are adding an object that depends on an object that is not 
+its child (for instance a <a class="link" href="GtkTreeView.html" title="GtkTreeView"><span class="type">GtkTreeView</span></a> that depends on its
+<a class="link" href="GtkTreeModel.html" title="GtkTreeModel"><span class="type">GtkTreeModel</span></a>), you have to explicitely list all of them in <em class="parameter"><code>object_ids</code></em>. 
+</p></div>
+<div class="refsect3">
+<a name="gtk-builder-add-objects-from-string.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>builder</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkBuilder.html" title="GtkBuilder"><span class="type">GtkBuilder</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>buffer</p></td>
+<td class="parameter_description"><p>the string to parse</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>length</p></td>
+<td class="parameter_description"><p>the length of <em class="parameter"><code>buffer</code></em>
+(may be -1 if <em class="parameter"><code>buffer</code></em>
+is nul-terminated)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>object_ids</p></td>
+<td class="parameter_description"><p>nul-terminated array of objects to build</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>error</p></td>
+<td class="parameter_description"><p>return location for an error, or <code class="literal">NULL</code>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-builder-add-objects-from-string.returns"></a><h4>Returns</h4>
+<p> A positive value on success, 0 if an error occurred</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-14.html#api-index-2.14">2.14</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-builder-get-object"></a><h3>gtk_builder_get_object ()</h3>
+<pre class="programlisting"><span class="returnvalue">GObject</span> *
+gtk_builder_get_object (<em class="parameter"><code><a class="link" href="GtkBuilder.html" title="GtkBuilder"><span class="type">GtkBuilder</span></a> *builder</code></em>,
+                        <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>);</pre>
+<p>Gets the object named <em class="parameter"><code>name</code></em>
+. Note that this function does not
+increment the reference count of the returned object.</p>
+<div class="refsect3">
+<a name="gtk-builder-get-object.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>builder</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkBuilder.html" title="GtkBuilder"><span class="type">GtkBuilder</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>name</p></td>
+<td class="parameter_description"><p>name of object to get</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-builder-get-object.returns"></a><h4>Returns</h4>
+<p>the object named <em class="parameter"><code>name</code></em>
+or <code class="literal">NULL</code> if
+it could not be found in the object tree. </p>
+<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-12.html#api-index-2.12">2.12</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-builder-get-objects"></a><h3>gtk_builder_get_objects ()</h3>
+<pre class="programlisting"><span class="returnvalue">GSList</span> *
+gtk_builder_get_objects (<em class="parameter"><code><a class="link" href="GtkBuilder.html" title="GtkBuilder"><span class="type">GtkBuilder</span></a> *builder</code></em>);</pre>
+<p>Gets all objects that have been constructed by <em class="parameter"><code>builder</code></em>
+. Note that 
+this function does not increment the reference counts of the returned
+objects.</p>
+<div class="refsect3">
+<a name="gtk-builder-get-objects.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>builder</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkBuilder.html" title="GtkBuilder"><span class="type">GtkBuilder</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-builder-get-objects.returns"></a><h4>Returns</h4>
+<p>a newly-allocated <span class="type">GSList</span> containing all the objects
+constructed by the <a class="link" href="GtkBuilder.html" title="GtkBuilder"><span class="type">GtkBuilder</span></a> instance. It should be freed by
+<code class="function">g_slist_free()</code>. </p>
+<p><span class="annotation">[<acronym title="Generics and defining elements of containers and arrays."><span class="acronym">element-type</span></acronym> GObject][<acronym title="Free data container after the code is done."><span class="acronym">transfer container</span></acronym>]</span></p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-12.html#api-index-2.12">2.12</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-builder-connect-signals"></a><h3>gtk_builder_connect_signals ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_builder_connect_signals (<em class="parameter"><code><a class="link" href="GtkBuilder.html" title="GtkBuilder"><span class="type">GtkBuilder</span></a> *builder</code></em>,
+                             <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+<p>This method is a simpler variation of <a class="link" href="GtkBuilder.html#gtk-builder-connect-signals-full" title="gtk_builder_connect_signals_full ()"><code class="function">gtk_builder_connect_signals_full()</code></a>.
+It uses <span class="type">GModule</span>'s introspective features (by opening the module <code class="literal">NULL</code>) 
+to look at the application's symbol table. From here it tries to match
+the signal handler names given in the interface description with
+symbols in the application and connects the signals.</p>
+<p>Note that this function will not work correctly if <span class="type">GModule</span> is not
+supported on the platform.</p>
+<p>When compiling applications for Windows, you must declare signal callbacks
+with <span class="type">G_MODULE_EXPORT</span>, or they will not be put in the symbol table.
+On Linux and Unices, this is not necessary; applications should instead
+be compiled with the -Wl,--export-dynamic CFLAGS, and linked against
+gmodule-export-2.0.</p>
+<div class="refsect3">
+<a name="gtk-builder-connect-signals.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>builder</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkBuilder.html" title="GtkBuilder"><span class="type">GtkBuilder</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>a pointer to a structure sent in as user data to all signals</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-12.html#api-index-2.12">2.12</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-builder-connect-signals-full"></a><h3>gtk_builder_connect_signals_full ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_builder_connect_signals_full (<em class="parameter"><code><a class="link" href="GtkBuilder.html" title="GtkBuilder"><span class="type">GtkBuilder</span></a> *builder</code></em>,
+                                  <em class="parameter"><code><a class="link" href="GtkBuilder.html#GtkBuilderConnectFunc" title="GtkBuilderConnectFunc ()"><span class="type">GtkBuilderConnectFunc</span></a> func</code></em>,
+                                  <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+<p>This function can be thought of the interpreted language binding
+version of <a class="link" href="GtkBuilder.html#gtk-builder-connect-signals" title="gtk_builder_connect_signals ()"><code class="function">gtk_builder_connect_signals()</code></a>, except that it does not
+require GModule to function correctly.</p>
+<div class="refsect3">
+<a name="gtk-builder-connect-signals-full.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>builder</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkBuilder.html" title="GtkBuilder"><span class="type">GtkBuilder</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>func</p></td>
+<td class="parameter_description"><p>the function used to connect the signals. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="The callback is valid only during the call to the method."><span class="acronym">scope call</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>arbitrary data that will be passed to the connection function</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-12.html#api-index-2.12">2.12</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-builder-set-translation-domain"></a><h3>gtk_builder_set_translation_domain ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_builder_set_translation_domain (<em class="parameter"><code><a class="link" href="GtkBuilder.html" title="GtkBuilder"><span class="type">GtkBuilder</span></a> *builder</code></em>,
+                                    <em class="parameter"><code>const <span class="type">gchar</span> *domain</code></em>);</pre>
+<p>Sets the translation domain of <em class="parameter"><code>builder</code></em>
+. 
+See <a class="link" href="GtkBuilder.html#GtkBuilder--translation-domain" title="The “translation-domain” property"><span class="type">“translation-domain”</span></a>.</p>
+<div class="refsect3">
+<a name="gtk-builder-set-translation-domain.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>builder</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkBuilder.html" title="GtkBuilder"><span class="type">GtkBuilder</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>domain</p></td>
+<td class="parameter_description"><p>the translation domain or <code class="literal">NULL</code>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-12.html#api-index-2.12">2.12</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-builder-get-translation-domain"></a><h3>gtk_builder_get_translation_domain ()</h3>
+<pre class="programlisting">const <span class="returnvalue">gchar</span> *
+gtk_builder_get_translation_domain (<em class="parameter"><code><a class="link" href="GtkBuilder.html" title="GtkBuilder"><span class="type">GtkBuilder</span></a> *builder</code></em>);</pre>
+<p>Gets the translation domain of <em class="parameter"><code>builder</code></em>
+.</p>
+<div class="refsect3">
+<a name="gtk-builder-get-translation-domain.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>builder</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkBuilder.html" title="GtkBuilder"><span class="type">GtkBuilder</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-builder-get-translation-domain.returns"></a><h4>Returns</h4>
+<p> the translation domain. This string is owned
+by the builder object and must not be modified or freed.</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-12.html#api-index-2.12">2.12</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-builder-get-type-from-name"></a><h3>gtk_builder_get_type_from_name ()</h3>
+<pre class="programlisting"><span class="returnvalue">GType</span>
+gtk_builder_get_type_from_name (<em class="parameter"><code><a class="link" href="GtkBuilder.html" title="GtkBuilder"><span class="type">GtkBuilder</span></a> *builder</code></em>,
+                                <em class="parameter"><code>const <span class="type">char</span> *type_name</code></em>);</pre>
+<p>Looks up a type by name, using the virtual function that 
+<a class="link" href="GtkBuilder.html" title="GtkBuilder"><span class="type">GtkBuilder</span></a> has for that purpose. This is mainly used when
+implementing the <a class="link" href="GtkBuildable.html" title="GtkBuildable"><span class="type">GtkBuildable</span></a> interface on a type.</p>
+<div class="refsect3">
+<a name="gtk-builder-get-type-from-name.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>builder</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkBuilder.html" title="GtkBuilder"><span class="type">GtkBuilder</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>type_name</p></td>
+<td class="parameter_description"><p>type name to lookup</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-builder-get-type-from-name.returns"></a><h4>Returns</h4>
+<p> the <span class="type">GType</span> found for <em class="parameter"><code>type_name</code></em>
+or <span class="type">G_TYPE_INVALID</span>
+if no type was found</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-12.html#api-index-2.12">2.12</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-builder-value-from-string"></a><h3>gtk_builder_value_from_string ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>
+gtk_builder_value_from_string (<em class="parameter"><code><a class="link" href="GtkBuilder.html" title="GtkBuilder"><span class="type">GtkBuilder</span></a> *builder</code></em>,
+                               <em class="parameter"><code><span class="type">GParamSpec</span> *pspec</code></em>,
+                               <em class="parameter"><code>const <span class="type">gchar</span> *string</code></em>,
+                               <em class="parameter"><code><span class="type">GValue</span> *value</code></em>,
+                               <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<p>This function demarshals a value from a string. This function
+calls <code class="function">g_value_init()</code> on the <em class="parameter"><code>value</code></em>
+ argument, so it need not be
+initialised beforehand.</p>
+<p>This function can handle char, uchar, boolean, int, uint, long,
+ulong, enum, flags, float, double, string, <a href="../html/gdk2-Colormaps-and-Colors.html#GdkColor"><span class="type">GdkColor</span></a> and
+<a class="link" href="GtkAdjustment.html" title="GtkAdjustment"><span class="type">GtkAdjustment</span></a> type values. Support for <a class="link" href="GtkWidget.html" title="GtkWidget"><span class="type">GtkWidget</span></a> type values is
+still to come.</p>
+<p>Upon errors <code class="literal">FALSE</code> will be returned and <em class="parameter"><code>error</code></em>
+ will be assigned a
+<span class="type">GError</span> from the <a class="link" href="GtkBuilder.html#GTK-BUILDER-ERROR:CAPS" title="GTK_BUILDER_ERROR"><span class="type">GTK_BUILDER_ERROR</span></a> domain.</p>
+<div class="refsect3">
+<a name="gtk-builder-value-from-string.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>builder</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkBuilder.html" title="GtkBuilder"><span class="type">GtkBuilder</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>pspec</p></td>
+<td class="parameter_description"><p>the <span class="type">GParamSpec</span> for the property</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>string</p></td>
+<td class="parameter_description"><p>the string representation of the value</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>value</p></td>
+<td class="parameter_description"><p>the <span class="type">GValue</span> to store the result in. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>error</p></td>
+<td class="parameter_description"><p>return location for an error, or <code class="literal">NULL</code>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-builder-value-from-string.returns"></a><h4>Returns</h4>
+<p> <code class="literal">TRUE</code> on success</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-12.html#api-index-2.12">2.12</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-builder-value-from-string-type"></a><h3>gtk_builder_value_from_string_type ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>
+gtk_builder_value_from_string_type (<em class="parameter"><code><a class="link" href="GtkBuilder.html" title="GtkBuilder"><span class="type">GtkBuilder</span></a> *builder</code></em>,
+                                    <em class="parameter"><code><span class="type">GType</span> type</code></em>,
+                                    <em class="parameter"><code>const <span class="type">gchar</span> *string</code></em>,
+                                    <em class="parameter"><code><span class="type">GValue</span> *value</code></em>,
+                                    <em class="parameter"><code><span class="type">GError</span> **error</code></em>);</pre>
+<p>Like <a class="link" href="GtkBuilder.html#gtk-builder-value-from-string" title="gtk_builder_value_from_string ()"><code class="function">gtk_builder_value_from_string()</code></a>, this function demarshals 
+a value from a string, but takes a <span class="type">GType</span> instead of <span class="type">GParamSpec</span>.
+This function calls <code class="function">g_value_init()</code> on the <em class="parameter"><code>value</code></em>
+ argument, so it 
+need not be initialised beforehand.</p>
+<p>Upon errors <code class="literal">FALSE</code> will be returned and <em class="parameter"><code>error</code></em>
+ will be assigned a
+<span class="type">GError</span> from the <a class="link" href="GtkBuilder.html#GTK-BUILDER-ERROR:CAPS" title="GTK_BUILDER_ERROR"><span class="type">GTK_BUILDER_ERROR</span></a> domain.</p>
+<div class="refsect3">
+<a name="gtk-builder-value-from-string-type.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>builder</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkBuilder.html" title="GtkBuilder"><span class="type">GtkBuilder</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>type</p></td>
+<td class="parameter_description"><p>the <span class="type">GType</span> of the value</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>string</p></td>
+<td class="parameter_description"><p>the string representation of the value</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>value</p></td>
+<td class="parameter_description"><p>the <span class="type">GValue</span> to store the result in. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>error</p></td>
+<td class="parameter_description"><p>return location for an error, or <code class="literal">NULL</code>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-builder-value-from-string-type.returns"></a><h4>Returns</h4>
+<p> <code class="literal">TRUE</code> on success</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-12.html#api-index-2.12">2.12</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GTK-BUILDER-WARN-INVALID-CHILD-TYPE:CAPS"></a><h3>GTK_BUILDER_WARN_INVALID_CHILD_TYPE()</h3>
+<pre class="programlisting">#define             GTK_BUILDER_WARN_INVALID_CHILD_TYPE(object, type)</pre>
+</div>
+</div>
+<div class="refsect1">
+<a name="GtkBuilder.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="GtkBuilder-struct"></a><h3>struct GtkBuilder</h3>
+<pre class="programlisting">struct GtkBuilder;</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GtkBuilderError"></a><h3>enum GtkBuilderError</h3>
+<div class="refsect3">
+<a name="GtkBuilderError.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="enum_members_name">
+<col class="enum_members_description">
+<col width="200px" class="enum_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-BUILDER-ERROR-INVALID-TYPE-FUNCTION:CAPS"></a>GTK_BUILDER_ERROR_INVALID_TYPE_FUNCTION</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-BUILDER-ERROR-UNHANDLED-TAG:CAPS"></a>GTK_BUILDER_ERROR_UNHANDLED_TAG</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-BUILDER-ERROR-MISSING-ATTRIBUTE:CAPS"></a>GTK_BUILDER_ERROR_MISSING_ATTRIBUTE</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-BUILDER-ERROR-INVALID-ATTRIBUTE:CAPS"></a>GTK_BUILDER_ERROR_INVALID_ATTRIBUTE</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-BUILDER-ERROR-INVALID-TAG:CAPS"></a>GTK_BUILDER_ERROR_INVALID_TAG</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-BUILDER-ERROR-MISSING-PROPERTY-VALUE:CAPS"></a>GTK_BUILDER_ERROR_MISSING_PROPERTY_VALUE</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-BUILDER-ERROR-INVALID-VALUE:CAPS"></a>GTK_BUILDER_ERROR_INVALID_VALUE</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-BUILDER-ERROR-VERSION-MISMATCH:CAPS"></a>GTK_BUILDER_ERROR_VERSION_MISMATCH</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-BUILDER-ERROR-DUPLICATE-ID:CAPS"></a>GTK_BUILDER_ERROR_DUPLICATE_ID</p></td>
+<td> </td>
+<td> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GTK-BUILDER-ERROR:CAPS"></a><h3>GTK_BUILDER_ERROR</h3>
+<pre class="programlisting">#define GTK_BUILDER_ERROR                (gtk_builder_error_quark ())
+</pre>
+</div>
+</div>
+<div class="refsect1">
+<a name="GtkBuilder.property-details"></a><h2>Property Details</h2>
+<div class="refsect2">
+<a name="GtkBuilder--translation-domain"></a><h3>The <code class="literal">“translation-domain”</code> property</h3>
+<pre class="programlisting">  “translation-domain”       <span class="type">char</span> *</pre>
+<p>The translation domain used when translating property values that
+have been marked as translatable in interface descriptions.
+If the translation domain is <code class="literal">NULL</code>, <a class="link" href="GtkBuilder.html" title="GtkBuilder"><span class="type">GtkBuilder</span></a> uses <code class="function">gettext()</code>,
+otherwise <code class="function">g_dgettext()</code>.</p>
+<p>Owner: GtkBuilder</p>
+<p>Flags: Read / Write</p>
+<p>Default value: NULL</p>
+<p class="since">Since: <a class="link" href="api-index-2-12.html#api-index-2.12">2.12</a></p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.33.0</div>
+</body>
+</html>

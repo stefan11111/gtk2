@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Migrating from GtkCombo to GtkComboBoxEntry: GTK+ 2 Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets Vsnapshot">
+<link rel="home" href="index.html" title="GTK+ 2 Reference Manual">
+<link rel="up" href="gtk-migrating-GtkComboBox.html" title="Migrating from GtkOptionMenu and GtkCombo to GtkComboBox and GtkComboBoxEntry">
+<link rel="prev" href="gtk-migrating-GtkComboBox.html" title="Migrating from GtkOptionMenu and GtkCombo to GtkComboBox and GtkComboBoxEntry">
+<link rel="next" href="new-features-GtkComboBox.html" title="New features">
+<meta name="generator" content="GTK-Doc V1.33.0 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts"></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="gtk-migrating-GtkComboBox.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="gtk-migrating-GtkComboBox.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="new-features-GtkComboBox.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="section">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="migrating-GtkCombo"></a>Migrating from GtkCombo to GtkComboBoxEntry</h2></div></div></div>
+<p>
+      Here is an example of a simple, but typical use of a <a class="link" href="GtkCombo.html" title="GtkCombo"><span class="type">GtkCombo</span></a>:
+      </p>
+<div class="informalexample">
+  <table class="listing_frame" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+      <tr>
+        <td class="listing_lines" align="right"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></td>
+        <td class="listing_code"><pre class="programlisting"><span class="n">GtkWidget</span> <span class="o">*</span><span class="n">combo</span><span class="p">;</span>
+<span class="n">GList</span> <span class="o">*</span><span class="n">items</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+
+<span class="n">items</span> <span class="o">=</span> <span class="n">g_list_append</span> <span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="s">&quot;First Item&quot;</span><span class="p">);</span>
+<span class="n">items</span> <span class="o">=</span> <span class="n">g_list_append</span> <span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="s">&quot;Second Item&quot;</span><span class="p">);</span>
+<span class="n">items</span> <span class="o">=</span> <span class="n">g_list_append</span> <span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="s">&quot;Third Item&quot;</span><span class="p">);</span>
+
+<span class="n">combo</span> <span class="o">=</span> <span class="n">gtk_combo_new</span> <span class="p">();</span>
+<span class="n">gtk_combo_set_popdown_strings</span> <span class="p">(</span><span class="n">GTK_COMBO</span> <span class="p">(</span><span class="n">combo</span><span class="p">),</span> <span class="n">items</span><span class="p">);</span></pre></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p>
+      In order to react to the user's selection, connect to the <span class="type">“changed”</span>
+      signal on the combo and use 
+      <code class="literal">gtk_entry_get_text (GTK_ENTRY (combo-&gt;entry))</code>
+      to retrieve the selected text.
+    </p>
+<p>
+      And here is how it would be done using <a class="link" href="GtkComboBoxEntry.html" title="GtkComboBoxEntry"><span class="type">GtkComboBoxEntry</span></a>:
+      </p>
+<div class="informalexample">
+  <table class="listing_frame" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+      <tr>
+        <td class="listing_lines" align="right"><pre>1
+2
+3
+4
+5</pre></td>
+        <td class="listing_code"><pre class="programlisting"><span class="n">combo_box</span> <span class="o">=</span> <span class="n">gtk_combo_box_text_new_with_entry</span> <span class="p">();</span>
+
+<span class="n">gtk_combo_box_text_append</span> <span class="p">(</span><span class="n">GTK_COMBO_BOX_TEXT</span> <span class="p">(</span><span class="n">combo_box</span><span class="p">),</span> <span class="s">&quot;First Item&quot;</span><span class="p">);</span>
+<span class="n">gtk_combo_box_text_append</span> <span class="p">(</span><span class="n">GTK_COMBO_BOX_TEXT</span> <span class="p">(</span><span class="n">combo_box</span><span class="p">),</span> <span class="s">&quot;Second Item&quot;</span><span class="p">);</span>
+<span class="n">gtk_combo_box_text_append</span> <span class="p">(</span><span class="n">GTK_COMBO_BOX_TEXT</span> <span class="p">(</span><span class="n">combo_box</span><span class="p">),</span> <span class="s">&quot;Third Item&quot;</span><span class="p">);</span></pre></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p>
+      In order to react to the user's selection, connect to the <a class="link" href="GtkComboBox.html#GtkComboBox-changed" title="The “changed” signal"><span class="type">“changed”</span></a>
+      signal on the combo and use 
+      <code class="literal">gtk_entry_get_text (GTK_ENTRY (GTK_BIN (combo_box)-&gt;child))</code>
+      to retrieve the selected text.
+    </p>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.33.0</div>
+</body>
+</html>

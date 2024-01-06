@@ -1,0 +1,1480 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GtkSpinButton: GTK+ 2 Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets Vsnapshot">
+<link rel="home" href="index.html" title="GTK+ 2 Reference Manual">
+<link rel="up" href="NumericEntry.html" title="Numeric/Text Data Entry">
+<link rel="prev" href="GtkVScale.html" title="GtkVScale">
+<link rel="next" href="GtkEditable.html" title="GtkEditable">
+<meta name="generator" content="GTK-Doc V1.33.0 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#GtkSpinButton.description" class="shortcut">Description</a></span><span id="nav_hierarchy">  <span class="dim">|</span> 
+                  <a href="#GtkSpinButton.object-hierarchy" class="shortcut">Object Hierarchy</a></span><span id="nav_interfaces">  <span class="dim">|</span> 
+                  <a href="#GtkSpinButton.implemented-interfaces" class="shortcut">Implemented Interfaces</a></span><span id="nav_properties">  <span class="dim">|</span> 
+                  <a href="#GtkSpinButton.properties" class="shortcut">Properties</a></span><span id="nav_style_properties">  <span class="dim">|</span> 
+                  <a href="#GtkSpinButton.style-properties" class="shortcut">Style Properties</a></span><span id="nav_signals">  <span class="dim">|</span> 
+                  <a href="#GtkSpinButton.signals" class="shortcut">Signals</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="NumericEntry.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="GtkVScale.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="GtkEditable.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="GtkSpinButton"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GtkSpinButton.top_of_page"></a>GtkSpinButton</span></h2>
+<p>GtkSpinButton</p>
+</td>
+<td class="gallery_image" valign="top" align="right"><img src="spinbutton.png"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="GtkSpinButton.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_proto_type">
+<col class="functions_proto_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkSpinButton.html#gtk-spin-button-configure" title="gtk_spin_button_configure ()">gtk_spin_button_configure</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GtkWidget.html" title="GtkWidget"><span class="returnvalue">GtkWidget</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GtkSpinButton.html#gtk-spin-button-new" title="gtk_spin_button_new ()">gtk_spin_button_new</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GtkWidget.html" title="GtkWidget"><span class="returnvalue">GtkWidget</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GtkSpinButton.html#gtk-spin-button-new-with-range" title="gtk_spin_button_new_with_range ()">gtk_spin_button_new_with_range</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkSpinButton.html#gtk-spin-button-set-adjustment" title="gtk_spin_button_set_adjustment ()">gtk_spin_button_set_adjustment</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GtkAdjustment.html" title="GtkAdjustment"><span class="returnvalue">GtkAdjustment</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GtkSpinButton.html#gtk-spin-button-get-adjustment" title="gtk_spin_button_get_adjustment ()">gtk_spin_button_get_adjustment</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkSpinButton.html#gtk-spin-button-set-digits" title="gtk_spin_button_set_digits ()">gtk_spin_button_set_digits</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkSpinButton.html#gtk-spin-button-set-increments" title="gtk_spin_button_set_increments ()">gtk_spin_button_set_increments</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkSpinButton.html#gtk-spin-button-set-range" title="gtk_spin_button_set_range ()">gtk_spin_button_set_range</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gint</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkSpinButton.html#gtk-spin-button-get-value-as-int" title="gtk_spin_button_get_value_as_int ()">gtk_spin_button_get_value_as_int</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkSpinButton.html#gtk-spin-button-set-value" title="gtk_spin_button_set_value ()">gtk_spin_button_set_value</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkSpinButton.html#gtk-spin-button-set-update-policy" title="gtk_spin_button_set_update_policy ()">gtk_spin_button_set_update_policy</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkSpinButton.html#gtk-spin-button-set-numeric" title="gtk_spin_button_set_numeric ()">gtk_spin_button_set_numeric</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkSpinButton.html#gtk-spin-button-spin" title="gtk_spin_button_spin ()">gtk_spin_button_spin</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkSpinButton.html#gtk-spin-button-set-wrap" title="gtk_spin_button_set_wrap ()">gtk_spin_button_set_wrap</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkSpinButton.html#gtk-spin-button-set-snap-to-ticks" title="gtk_spin_button_set_snap_to_ticks ()">gtk_spin_button_set_snap_to_ticks</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkSpinButton.html#gtk-spin-button-update" title="gtk_spin_button_update ()">gtk_spin_button_update</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">guint</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkSpinButton.html#gtk-spin-button-get-digits" title="gtk_spin_button_get_digits ()">gtk_spin_button_get_digits</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkSpinButton.html#gtk-spin-button-get-increments" title="gtk_spin_button_get_increments ()">gtk_spin_button_get_increments</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gboolean</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkSpinButton.html#gtk-spin-button-get-numeric" title="gtk_spin_button_get_numeric ()">gtk_spin_button_get_numeric</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkSpinButton.html#gtk-spin-button-get-range" title="gtk_spin_button_get_range ()">gtk_spin_button_get_range</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gboolean</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkSpinButton.html#gtk-spin-button-get-snap-to-ticks" title="gtk_spin_button_get_snap_to_ticks ()">gtk_spin_button_get_snap_to_ticks</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GtkSpinButton.html#GtkSpinButtonUpdatePolicy" title="enum GtkSpinButtonUpdatePolicy"><span class="returnvalue">GtkSpinButtonUpdatePolicy</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GtkSpinButton.html#gtk-spin-button-get-update-policy" title="gtk_spin_button_get_update_policy ()">gtk_spin_button_get_update_policy</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gdouble</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkSpinButton.html#gtk-spin-button-get-value" title="gtk_spin_button_get_value ()">gtk_spin_button_get_value</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gboolean</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkSpinButton.html#gtk-spin-button-get-wrap" title="gtk_spin_button_get_wrap ()">gtk_spin_button_get_wrap</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GtkSpinButton.properties"></a><h2>Properties</h2>
+<div class="informaltable"><table class="informaltable" border="0">
+<colgroup>
+<col width="150px" class="properties_type">
+<col width="300px" class="properties_name">
+<col width="200px" class="properties_flags">
+</colgroup>
+<tbody>
+<tr>
+<td class="property_type">
+<a class="link" href="GtkAdjustment.html" title="GtkAdjustment"><span class="type">GtkAdjustment</span></a> *</td>
+<td class="property_name"><a class="link" href="GtkSpinButton.html#GtkSpinButton--adjustment" title="The “adjustment” property">adjustment</a></td>
+<td class="property_flags">Read / Write</td>
+</tr>
+<tr>
+<td class="property_type"><span class="type">double</span></td>
+<td class="property_name"><a class="link" href="GtkSpinButton.html#GtkSpinButton--climb-rate" title="The “climb-rate” property">climb-rate</a></td>
+<td class="property_flags">Read / Write</td>
+</tr>
+<tr>
+<td class="property_type"><span class="type">guint</span></td>
+<td class="property_name"><a class="link" href="GtkSpinButton.html#GtkSpinButton--digits" title="The “digits” property">digits</a></td>
+<td class="property_flags">Read / Write</td>
+</tr>
+<tr>
+<td class="property_type"><span class="type">gboolean</span></td>
+<td class="property_name"><a class="link" href="GtkSpinButton.html#GtkSpinButton--numeric" title="The “numeric” property">numeric</a></td>
+<td class="property_flags">Read / Write</td>
+</tr>
+<tr>
+<td class="property_type"><span class="type">gboolean</span></td>
+<td class="property_name"><a class="link" href="GtkSpinButton.html#GtkSpinButton--snap-to-ticks" title="The “snap-to-ticks” property">snap-to-ticks</a></td>
+<td class="property_flags">Read / Write</td>
+</tr>
+<tr>
+<td class="property_type"><a class="link" href="GtkSpinButton.html#GtkSpinButtonUpdatePolicy" title="enum GtkSpinButtonUpdatePolicy"><span class="type">GtkSpinButtonUpdatePolicy</span></a></td>
+<td class="property_name"><a class="link" href="GtkSpinButton.html#GtkSpinButton--update-policy" title="The “update-policy” property">update-policy</a></td>
+<td class="property_flags">Read / Write</td>
+</tr>
+<tr>
+<td class="property_type"><span class="type">double</span></td>
+<td class="property_name"><a class="link" href="GtkSpinButton.html#GtkSpinButton--value" title="The “value” property">value</a></td>
+<td class="property_flags">Read / Write</td>
+</tr>
+<tr>
+<td class="property_type"><span class="type">gboolean</span></td>
+<td class="property_name"><a class="link" href="GtkSpinButton.html#GtkSpinButton--wrap" title="The “wrap” property">wrap</a></td>
+<td class="property_flags">Read / Write</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GtkSpinButton.style-properties"></a><h2>Style Properties</h2>
+<div class="informaltable"><table class="informaltable" border="0">
+<colgroup>
+<col width="150px" class="style_properties_type">
+<col width="300px" class="style_properties_name">
+<col width="200px" class="style_properties_flags">
+</colgroup>
+<tbody><tr>
+<td class="property_type"><a class="link" href="gtk2-Standard-Enumerations.html#GtkShadowType" title="enum GtkShadowType"><span class="type">GtkShadowType</span></a></td>
+<td class="property_name"><a class="link" href="GtkSpinButton.html#GtkSpinButton--s-shadow-type" title="The “shadow-type” style property">shadow-type</a></td>
+<td class="property_flags">Read</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GtkSpinButton.signals"></a><h2>Signals</h2>
+<div class="informaltable"><table class="informaltable" border="0">
+<colgroup>
+<col width="150px" class="signal_proto_type">
+<col width="300px" class="signal_proto_name">
+<col width="200px" class="signal_proto_flags">
+</colgroup>
+<tbody>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="GtkSpinButton.html#GtkSpinButton-change-value" title="The “change-value” signal">change-value</a></td>
+<td class="signal_flags">Action</td>
+</tr>
+<tr>
+<td class="signal_type"><span class="returnvalue">int</span></td>
+<td class="signal_name"><a class="link" href="GtkSpinButton.html#GtkSpinButton-input" title="The “input” signal">input</a></td>
+<td class="signal_flags">Run Last</td>
+</tr>
+<tr>
+<td class="signal_type"><span class="returnvalue">gboolean</span></td>
+<td class="signal_name"><a class="link" href="GtkSpinButton.html#GtkSpinButton-output" title="The “output” signal">output</a></td>
+<td class="signal_flags">Run Last</td>
+</tr>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="GtkSpinButton.html#GtkSpinButton-value-changed" title="The “value-changed” signal">value-changed</a></td>
+<td class="signal_flags">Run Last</td>
+</tr>
+<tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="GtkSpinButton.html#GtkSpinButton-wrapped" title="The “wrapped” signal">wrapped</a></td>
+<td class="signal_flags">Run Last</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GtkSpinButton.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="other_proto_type">
+<col class="other_proto_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="datatype_keyword">struct</td>
+<td class="function_name"><a class="link" href="GtkSpinButton.html#GtkSpinButton-struct" title="struct GtkSpinButton">GtkSpinButton</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">enum</td>
+<td class="function_name"><a class="link" href="GtkSpinButton.html#GtkSpinButtonUpdatePolicy" title="enum GtkSpinButtonUpdatePolicy">GtkSpinButtonUpdatePolicy</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">enum</td>
+<td class="function_name"><a class="link" href="GtkSpinButton.html#GtkSpinType" title="enum GtkSpinType">GtkSpinType</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="GtkSpinButton.html#gtk-spin-button-get-value-as-float" title="gtk_spin_button_get_value_as_float">gtk_spin_button_get_value_as_float</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="GtkSpinButton.html#GTK-INPUT-ERROR:CAPS" title="GTK_INPUT_ERROR">GTK_INPUT_ERROR</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GtkSpinButton.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="screen">    GObject
+    <span class="lineart">╰──</span> GInitiallyUnowned
+        <span class="lineart">╰──</span> <a class="link" href="GtkObject.html" title="GtkObject">GtkObject</a>
+            <span class="lineart">╰──</span> <a class="link" href="GtkWidget.html" title="GtkWidget">GtkWidget</a>
+                <span class="lineart">╰──</span> <a class="link" href="GtkEntry.html" title="GtkEntry">GtkEntry</a>
+                    <span class="lineart">╰──</span> GtkSpinButton
+</pre>
+</div>
+<div class="refsect1">
+<a name="GtkSpinButton.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
+<p>
+GtkSpinButton implements
+ AtkImplementorIface,  <a class="link" href="GtkBuildable.html" title="GtkBuildable">GtkBuildable</a>,  <a class="link" href="GtkEditable.html" title="GtkEditable">GtkEditable</a> and  <a class="link" href="GtkCellEditable.html" title="GtkCellEditable">GtkCellEditable</a>.</p>
+</div>
+<div class="refsect1">
+<a name="GtkSpinButton.includes"></a><h2>Includes</h2>
+<pre class="synopsis">#include &lt;gtk/gtk.h&gt;
+</pre>
+</div>
+<div class="refsect1">
+<a name="GtkSpinButton.description"></a><h2>Description</h2>
+</div>
+<div class="refsect1">
+<a name="GtkSpinButton.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="gtk-spin-button-configure"></a><h3>gtk_spin_button_configure ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_spin_button_configure (<em class="parameter"><code><a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a> *spin_button</code></em>,
+                           <em class="parameter"><code><a class="link" href="GtkAdjustment.html" title="GtkAdjustment"><span class="type">GtkAdjustment</span></a> *adjustment</code></em>,
+                           <em class="parameter"><code><span class="type">gdouble</span> climb_rate</code></em>,
+                           <em class="parameter"><code><span class="type">guint</span> digits</code></em>);</pre>
+<p>Changes the properties of an existing spin button. The adjustment, climb rate,
+and number of decimal places are all changed accordingly, after this function call.</p>
+<div class="refsect3">
+<a name="gtk-spin-button-configure.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>spin_button</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>adjustment</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkAdjustment.html" title="GtkAdjustment"><span class="type">GtkAdjustment</span></a>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>climb_rate</p></td>
+<td class="parameter_description"><p>the new climb rate.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>digits</p></td>
+<td class="parameter_description"><p>the number of decimal places to display in the spin button.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-spin-button-new"></a><h3>gtk_spin_button_new ()</h3>
+<pre class="programlisting"><a class="link" href="GtkWidget.html" title="GtkWidget"><span class="returnvalue">GtkWidget</span></a> *
+gtk_spin_button_new (<em class="parameter"><code><a class="link" href="GtkAdjustment.html" title="GtkAdjustment"><span class="type">GtkAdjustment</span></a> *adjustment</code></em>,
+                     <em class="parameter"><code><span class="type">gdouble</span> climb_rate</code></em>,
+                     <em class="parameter"><code><span class="type">guint</span> digits</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-spin-button-new-with-range"></a><h3>gtk_spin_button_new_with_range ()</h3>
+<pre class="programlisting"><a class="link" href="GtkWidget.html" title="GtkWidget"><span class="returnvalue">GtkWidget</span></a> *
+gtk_spin_button_new_with_range (<em class="parameter"><code><span class="type">gdouble</span> min</code></em>,
+                                <em class="parameter"><code><span class="type">gdouble</span> max</code></em>,
+                                <em class="parameter"><code><span class="type">gdouble</span> step</code></em>);</pre>
+<p>This is a convenience constructor that allows creation of a numeric 
+<a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a> without manually creating an adjustment. The value is 
+initially set to the minimum value and a page increment of 10 * <em class="parameter"><code>step</code></em>
+
+is the default. The precision of the spin button is equivalent to the 
+precision of <em class="parameter"><code>step</code></em>
+. </p>
+<p>Note that the way in which the precision is derived works best if <em class="parameter"><code>step</code></em>
+ 
+is a power of ten. If the resulting precision is not suitable for your 
+needs, use <a class="link" href="GtkSpinButton.html#gtk-spin-button-set-digits" title="gtk_spin_button_set_digits ()"><code class="function">gtk_spin_button_set_digits()</code></a> to correct it.</p>
+<div class="refsect3">
+<a name="gtk-spin-button-new-with-range.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>min</p></td>
+<td class="parameter_description"><p>Minimum allowable value</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>max</p></td>
+<td class="parameter_description"><p>Maximum allowable value</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>step</p></td>
+<td class="parameter_description"><p>Increment added or subtracted by spinning the widget</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-spin-button-new-with-range.returns"></a><h4>Returns</h4>
+<p> The new spin button as a <a class="link" href="GtkWidget.html" title="GtkWidget"><span class="type">GtkWidget</span></a>.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-spin-button-set-adjustment"></a><h3>gtk_spin_button_set_adjustment ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_spin_button_set_adjustment (<em class="parameter"><code><a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a> *spin_button</code></em>,
+                                <em class="parameter"><code><a class="link" href="GtkAdjustment.html" title="GtkAdjustment"><span class="type">GtkAdjustment</span></a> *adjustment</code></em>);</pre>
+<p>Replaces the <a class="link" href="GtkAdjustment.html" title="GtkAdjustment"><span class="type">GtkAdjustment</span></a> associated with <em class="parameter"><code>spin_button</code></em>
+.</p>
+<div class="refsect3">
+<a name="gtk-spin-button-set-adjustment.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>spin_button</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>adjustment</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkAdjustment.html" title="GtkAdjustment"><span class="type">GtkAdjustment</span></a> to replace the existing adjustment</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-spin-button-get-adjustment"></a><h3>gtk_spin_button_get_adjustment ()</h3>
+<pre class="programlisting"><a class="link" href="GtkAdjustment.html" title="GtkAdjustment"><span class="returnvalue">GtkAdjustment</span></a> *
+gtk_spin_button_get_adjustment (<em class="parameter"><code><a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a> *spin_button</code></em>);</pre>
+<p>Get the adjustment associated with a <a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a></p>
+<div class="refsect3">
+<a name="gtk-spin-button-get-adjustment.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>spin_button</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-spin-button-get-adjustment.returns"></a><h4>Returns</h4>
+<p>the <a class="link" href="GtkAdjustment.html" title="GtkAdjustment"><span class="type">GtkAdjustment</span></a> of <em class="parameter"><code>spin_button</code></em>
+. </p>
+<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-spin-button-set-digits"></a><h3>gtk_spin_button_set_digits ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_spin_button_set_digits (<em class="parameter"><code><a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a> *spin_button</code></em>,
+                            <em class="parameter"><code><span class="type">guint</span> digits</code></em>);</pre>
+<p>Set the precision to be displayed by <em class="parameter"><code>spin_button</code></em>
+. Up to 20 digit precision
+is allowed.</p>
+<div class="refsect3">
+<a name="gtk-spin-button-set-digits.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>spin_button</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>digits</p></td>
+<td class="parameter_description"><p>the number of digits after the decimal point to be displayed for the spin button's value</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-spin-button-set-increments"></a><h3>gtk_spin_button_set_increments ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_spin_button_set_increments (<em class="parameter"><code><a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a> *spin_button</code></em>,
+                                <em class="parameter"><code><span class="type">gdouble</span> step</code></em>,
+                                <em class="parameter"><code><span class="type">gdouble</span> page</code></em>);</pre>
+<p>Sets the step and page increments for spin_button.  This affects how 
+quickly the value changes when the spin button's arrows are activated.</p>
+<div class="refsect3">
+<a name="gtk-spin-button-set-increments.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>spin_button</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>step</p></td>
+<td class="parameter_description"><p>increment applied for a button 1 press.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>page</p></td>
+<td class="parameter_description"><p>increment applied for a button 2 press.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-spin-button-set-range"></a><h3>gtk_spin_button_set_range ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_spin_button_set_range (<em class="parameter"><code><a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a> *spin_button</code></em>,
+                           <em class="parameter"><code><span class="type">gdouble</span> min</code></em>,
+                           <em class="parameter"><code><span class="type">gdouble</span> max</code></em>);</pre>
+<p>Sets the minimum and maximum allowable values for <em class="parameter"><code>spin_button</code></em>
+</p>
+<div class="refsect3">
+<a name="gtk-spin-button-set-range.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>spin_button</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>min</p></td>
+<td class="parameter_description"><p>minimum allowable value</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>max</p></td>
+<td class="parameter_description"><p>maximum allowable value</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-spin-button-get-value-as-int"></a><h3>gtk_spin_button_get_value_as_int ()</h3>
+<pre class="programlisting"><span class="returnvalue">gint</span>
+gtk_spin_button_get_value_as_int (<em class="parameter"><code><a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a> *spin_button</code></em>);</pre>
+<p>Get the value <em class="parameter"><code>spin_button</code></em>
+ represented as an integer.</p>
+<div class="refsect3">
+<a name="gtk-spin-button-get-value-as-int.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>spin_button</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-spin-button-get-value-as-int.returns"></a><h4>Returns</h4>
+<p> the value of <em class="parameter"><code>spin_button</code></em>
+</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-spin-button-set-value"></a><h3>gtk_spin_button_set_value ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_spin_button_set_value (<em class="parameter"><code><a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a> *spin_button</code></em>,
+                           <em class="parameter"><code><span class="type">gdouble</span> value</code></em>);</pre>
+<p>Set the value of <em class="parameter"><code>spin_button</code></em>
+.</p>
+<div class="refsect3">
+<a name="gtk-spin-button-set-value.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>spin_button</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>value</p></td>
+<td class="parameter_description"><p>the new value</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-spin-button-set-update-policy"></a><h3>gtk_spin_button_set_update_policy ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_spin_button_set_update_policy (<em class="parameter"><code><a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a> *spin_button</code></em>,
+                                   <em class="parameter"><code><a class="link" href="GtkSpinButton.html#GtkSpinButtonUpdatePolicy" title="enum GtkSpinButtonUpdatePolicy"><span class="type">GtkSpinButtonUpdatePolicy</span></a> policy</code></em>);</pre>
+<p>Sets the update behavior of a spin button. This determines whether the
+spin button is always updated or only when a valid value is set.</p>
+<div class="refsect3">
+<a name="gtk-spin-button-set-update-policy.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>spin_button</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a> </p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>policy</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkSpinButton.html#GtkSpinButtonUpdatePolicy" title="enum GtkSpinButtonUpdatePolicy"><span class="type">GtkSpinButtonUpdatePolicy</span></a> value</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-spin-button-set-numeric"></a><h3>gtk_spin_button_set_numeric ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_spin_button_set_numeric (<em class="parameter"><code><a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a> *spin_button</code></em>,
+                             <em class="parameter"><code><span class="type">gboolean</span> numeric</code></em>);</pre>
+<p>Sets the flag that determines if non-numeric text can be typed into
+the spin button.</p>
+<div class="refsect3">
+<a name="gtk-spin-button-set-numeric.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>spin_button</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a> </p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>numeric</p></td>
+<td class="parameter_description"><p>flag indicating if only numeric entry is allowed. </p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-spin-button-spin"></a><h3>gtk_spin_button_spin ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_spin_button_spin (<em class="parameter"><code><a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a> *spin_button</code></em>,
+                      <em class="parameter"><code><a class="link" href="GtkSpinButton.html#GtkSpinType" title="enum GtkSpinType"><span class="type">GtkSpinType</span></a> direction</code></em>,
+                      <em class="parameter"><code><span class="type">gdouble</span> increment</code></em>);</pre>
+<p>Increment or decrement a spin button's value in a specified direction
+by a specified amount.</p>
+<div class="refsect3">
+<a name="gtk-spin-button-spin.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>spin_button</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a> </p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>direction</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkSpinButton.html#GtkSpinType" title="enum GtkSpinType"><span class="type">GtkSpinType</span></a> indicating the direction to spin.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>increment</p></td>
+<td class="parameter_description"><p>step increment to apply in the specified direction.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-spin-button-set-wrap"></a><h3>gtk_spin_button_set_wrap ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_spin_button_set_wrap (<em class="parameter"><code><a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a> *spin_button</code></em>,
+                          <em class="parameter"><code><span class="type">gboolean</span> wrap</code></em>);</pre>
+<p>Sets the flag that determines if a spin button value wraps around to the
+opposite limit when the upper or lower limit of the range is exceeded.</p>
+<div class="refsect3">
+<a name="gtk-spin-button-set-wrap.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>spin_button</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a> </p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>wrap</p></td>
+<td class="parameter_description"><p>a flag indicating if wrapping behavior is performed.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-spin-button-set-snap-to-ticks"></a><h3>gtk_spin_button_set_snap_to_ticks ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_spin_button_set_snap_to_ticks (<em class="parameter"><code><a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a> *spin_button</code></em>,
+                                   <em class="parameter"><code><span class="type">gboolean</span> snap_to_ticks</code></em>);</pre>
+<p>Sets the policy as to whether values are corrected to the nearest step 
+increment when a spin button is activated after providing an invalid value.</p>
+<div class="refsect3">
+<a name="gtk-spin-button-set-snap-to-ticks.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>spin_button</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a> </p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>snap_to_ticks</p></td>
+<td class="parameter_description"><p>a flag indicating if invalid values should be corrected.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-spin-button-update"></a><h3>gtk_spin_button_update ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_spin_button_update (<em class="parameter"><code><a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a> *spin_button</code></em>);</pre>
+<p>Manually force an update of the spin button.</p>
+<div class="refsect3">
+<a name="gtk-spin-button-update.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>spin_button</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a> </p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-spin-button-get-digits"></a><h3>gtk_spin_button_get_digits ()</h3>
+<pre class="programlisting"><span class="returnvalue">guint</span>
+gtk_spin_button_get_digits (<em class="parameter"><code><a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a> *spin_button</code></em>);</pre>
+<p>Fetches the precision of <em class="parameter"><code>spin_button</code></em>
+. See <a class="link" href="GtkSpinButton.html#gtk-spin-button-set-digits" title="gtk_spin_button_set_digits ()"><code class="function">gtk_spin_button_set_digits()</code></a>.</p>
+<div class="refsect3">
+<a name="gtk-spin-button-get-digits.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>spin_button</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-spin-button-get-digits.returns"></a><h4>Returns</h4>
+<p> the current precision</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-spin-button-get-increments"></a><h3>gtk_spin_button_get_increments ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_spin_button_get_increments (<em class="parameter"><code><a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a> *spin_button</code></em>,
+                                <em class="parameter"><code><span class="type">gdouble</span> *step</code></em>,
+                                <em class="parameter"><code><span class="type">gdouble</span> *page</code></em>);</pre>
+<p>Gets the current step and page the increments used by <em class="parameter"><code>spin_button</code></em>
+. See
+<a class="link" href="GtkSpinButton.html#gtk-spin-button-set-increments" title="gtk_spin_button_set_increments ()"><code class="function">gtk_spin_button_set_increments()</code></a>.</p>
+<div class="refsect3">
+<a name="gtk-spin-button-get-increments.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>spin_button</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>step</p></td>
+<td class="parameter_description"><p>location to store step increment, or <code class="literal">NULL</code>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym>][<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>page</p></td>
+<td class="parameter_description"><p>location to store page increment, or <code class="literal">NULL</code>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym>][<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-spin-button-get-numeric"></a><h3>gtk_spin_button_get_numeric ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>
+gtk_spin_button_get_numeric (<em class="parameter"><code><a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a> *spin_button</code></em>);</pre>
+<p>Returns whether non-numeric text can be typed into the spin button.
+See <a class="link" href="GtkSpinButton.html#gtk-spin-button-set-numeric" title="gtk_spin_button_set_numeric ()"><code class="function">gtk_spin_button_set_numeric()</code></a>.</p>
+<div class="refsect3">
+<a name="gtk-spin-button-get-numeric.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>spin_button</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-spin-button-get-numeric.returns"></a><h4>Returns</h4>
+<p> <code class="literal">TRUE</code> if only numeric text can be entered</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-spin-button-get-range"></a><h3>gtk_spin_button_get_range ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_spin_button_get_range (<em class="parameter"><code><a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a> *spin_button</code></em>,
+                           <em class="parameter"><code><span class="type">gdouble</span> *min</code></em>,
+                           <em class="parameter"><code><span class="type">gdouble</span> *max</code></em>);</pre>
+<p>Gets the range allowed for <em class="parameter"><code>spin_button</code></em>
+. See
+<a class="link" href="GtkSpinButton.html#gtk-spin-button-set-range" title="gtk_spin_button_set_range ()"><code class="function">gtk_spin_button_set_range()</code></a>.</p>
+<div class="refsect3">
+<a name="gtk-spin-button-get-range.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>spin_button</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>min</p></td>
+<td class="parameter_description"><p>location to store minimum allowed value, or <code class="literal">NULL</code>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym>][<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>max</p></td>
+<td class="parameter_description"><p>location to store maximum allowed value, or <code class="literal">NULL</code>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym>][<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-spin-button-get-snap-to-ticks"></a><h3>gtk_spin_button_get_snap_to_ticks ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>
+gtk_spin_button_get_snap_to_ticks (<em class="parameter"><code><a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a> *spin_button</code></em>);</pre>
+<p>Returns whether the values are corrected to the nearest step. See
+<a class="link" href="GtkSpinButton.html#gtk-spin-button-set-snap-to-ticks" title="gtk_spin_button_set_snap_to_ticks ()"><code class="function">gtk_spin_button_set_snap_to_ticks()</code></a>.</p>
+<div class="refsect3">
+<a name="gtk-spin-button-get-snap-to-ticks.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>spin_button</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-spin-button-get-snap-to-ticks.returns"></a><h4>Returns</h4>
+<p> <code class="literal">TRUE</code> if values are snapped to the nearest step.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-spin-button-get-update-policy"></a><h3>gtk_spin_button_get_update_policy ()</h3>
+<pre class="programlisting"><a class="link" href="GtkSpinButton.html#GtkSpinButtonUpdatePolicy" title="enum GtkSpinButtonUpdatePolicy"><span class="returnvalue">GtkSpinButtonUpdatePolicy</span></a>
+gtk_spin_button_get_update_policy (<em class="parameter"><code><a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a> *spin_button</code></em>);</pre>
+<p>Gets the update behavior of a spin button. See
+<a class="link" href="GtkSpinButton.html#gtk-spin-button-set-update-policy" title="gtk_spin_button_set_update_policy ()"><code class="function">gtk_spin_button_set_update_policy()</code></a>.</p>
+<div class="refsect3">
+<a name="gtk-spin-button-get-update-policy.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>spin_button</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-spin-button-get-update-policy.returns"></a><h4>Returns</h4>
+<p> the current update policy</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-spin-button-get-value"></a><h3>gtk_spin_button_get_value ()</h3>
+<pre class="programlisting"><span class="returnvalue">gdouble</span>
+gtk_spin_button_get_value (<em class="parameter"><code><a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a> *spin_button</code></em>);</pre>
+<p>Get the value in the <em class="parameter"><code>spin_button</code></em>
+.</p>
+<div class="refsect3">
+<a name="gtk-spin-button-get-value.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>spin_button</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-spin-button-get-value.returns"></a><h4>Returns</h4>
+<p> the value of <em class="parameter"><code>spin_button</code></em>
+</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-spin-button-get-wrap"></a><h3>gtk_spin_button_get_wrap ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>
+gtk_spin_button_get_wrap (<em class="parameter"><code><a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a> *spin_button</code></em>);</pre>
+<p>Returns whether the spin button's value wraps around to the
+opposite limit when the upper or lower limit of the range is
+exceeded. See <a class="link" href="GtkSpinButton.html#gtk-spin-button-set-wrap" title="gtk_spin_button_set_wrap ()"><code class="function">gtk_spin_button_set_wrap()</code></a>.</p>
+<div class="refsect3">
+<a name="gtk-spin-button-get-wrap.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>spin_button</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-spin-button-get-wrap.returns"></a><h4>Returns</h4>
+<p> <code class="literal">TRUE</code> if the spin button wraps around</p>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="GtkSpinButton.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="GtkSpinButton-struct"></a><h3>struct GtkSpinButton</h3>
+<pre class="programlisting">struct GtkSpinButton;</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GtkSpinButtonUpdatePolicy"></a><h3>enum GtkSpinButtonUpdatePolicy</h3>
+<div class="refsect3">
+<a name="GtkSpinButtonUpdatePolicy.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="enum_members_name">
+<col class="enum_members_description">
+<col width="200px" class="enum_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-UPDATE-ALWAYS:CAPS"></a>GTK_UPDATE_ALWAYS</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-UPDATE-IF-VALID:CAPS"></a>GTK_UPDATE_IF_VALID</p></td>
+<td> </td>
+<td> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GtkSpinType"></a><h3>enum GtkSpinType</h3>
+<div class="refsect3">
+<a name="GtkSpinType.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="enum_members_name">
+<col class="enum_members_description">
+<col width="200px" class="enum_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-SPIN-STEP-FORWARD:CAPS"></a>GTK_SPIN_STEP_FORWARD</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-SPIN-STEP-BACKWARD:CAPS"></a>GTK_SPIN_STEP_BACKWARD</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-SPIN-PAGE-FORWARD:CAPS"></a>GTK_SPIN_PAGE_FORWARD</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-SPIN-PAGE-BACKWARD:CAPS"></a>GTK_SPIN_PAGE_BACKWARD</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-SPIN-HOME:CAPS"></a>GTK_SPIN_HOME</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-SPIN-END:CAPS"></a>GTK_SPIN_END</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-SPIN-USER-DEFINED:CAPS"></a>GTK_SPIN_USER_DEFINED</p></td>
+<td> </td>
+<td> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-spin-button-get-value-as-float"></a><h3>gtk_spin_button_get_value_as_float</h3>
+<pre class="programlisting">#define gtk_spin_button_get_value_as_float gtk_spin_button_get_value
+</pre>
+<div class="warning"><p><code class="literal">gtk_spin_button_get_value_as_float</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GTK-INPUT-ERROR:CAPS"></a><h3>GTK_INPUT_ERROR</h3>
+<pre class="programlisting">#define GTK_INPUT_ERROR -1
+</pre>
+</div>
+</div>
+<div class="refsect1">
+<a name="GtkSpinButton.property-details"></a><h2>Property Details</h2>
+<div class="refsect2">
+<a name="GtkSpinButton--adjustment"></a><h3>The <code class="literal">“adjustment”</code> property</h3>
+<pre class="programlisting">  “adjustment”               <a class="link" href="GtkAdjustment.html" title="GtkAdjustment"><span class="type">GtkAdjustment</span></a> *</pre>
+<p>The adjustment that holds the value of the spinbutton.</p>
+<p>Owner: GtkSpinButton</p>
+<p>Flags: Read / Write</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GtkSpinButton--climb-rate"></a><h3>The <code class="literal">“climb-rate”</code> property</h3>
+<pre class="programlisting">  “climb-rate”               <span class="type">double</span></pre>
+<p>The acceleration rate when you hold down a button.</p>
+<p>Owner: GtkSpinButton</p>
+<p>Flags: Read / Write</p>
+<p>Allowed values: &gt;= 0</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GtkSpinButton--digits"></a><h3>The <code class="literal">“digits”</code> property</h3>
+<pre class="programlisting">  “digits”                   <span class="type">guint</span></pre>
+<p>The number of decimal places to display.</p>
+<p>Owner: GtkSpinButton</p>
+<p>Flags: Read / Write</p>
+<p>Allowed values: &lt;= 20</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GtkSpinButton--numeric"></a><h3>The <code class="literal">“numeric”</code> property</h3>
+<pre class="programlisting">  “numeric”                  <span class="type">gboolean</span></pre>
+<p>Whether non-numeric characters should be ignored.</p>
+<p>Owner: GtkSpinButton</p>
+<p>Flags: Read / Write</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GtkSpinButton--snap-to-ticks"></a><h3>The <code class="literal">“snap-to-ticks”</code> property</h3>
+<pre class="programlisting">  “snap-to-ticks”            <span class="type">gboolean</span></pre>
+<p>Whether erroneous values are automatically changed to a spin button's nearest step increment.</p>
+<p>Owner: GtkSpinButton</p>
+<p>Flags: Read / Write</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GtkSpinButton--update-policy"></a><h3>The <code class="literal">“update-policy”</code> property</h3>
+<pre class="programlisting">  “update-policy”            <a class="link" href="GtkSpinButton.html#GtkSpinButtonUpdatePolicy" title="enum GtkSpinButtonUpdatePolicy"><span class="type">GtkSpinButtonUpdatePolicy</span></a></pre>
+<p>Whether the spin button should update always, or only when the value is legal.</p>
+<p>Owner: GtkSpinButton</p>
+<p>Flags: Read / Write</p>
+<p>Default value: GTK_UPDATE_ALWAYS</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GtkSpinButton--value"></a><h3>The <code class="literal">“value”</code> property</h3>
+<pre class="programlisting">  “value”                    <span class="type">double</span></pre>
+<p>Reads the current value, or sets a new value.</p>
+<p>Owner: GtkSpinButton</p>
+<p>Flags: Read / Write</p>
+<p>Default value: 0</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GtkSpinButton--wrap"></a><h3>The <code class="literal">“wrap”</code> property</h3>
+<pre class="programlisting">  “wrap”                     <span class="type">gboolean</span></pre>
+<p>Whether a spin button should wrap upon reaching its limits.</p>
+<p>Owner: GtkSpinButton</p>
+<p>Flags: Read / Write</p>
+<p>Default value: FALSE</p>
+</div>
+</div>
+<div class="refsect1">
+<a name="GtkSpinButton.style-property-details"></a><h2>Style Property Details</h2>
+<div class="refsect2">
+<a name="GtkSpinButton--s-shadow-type"></a><h3>The <code class="literal">“shadow-type”</code> style property</h3>
+<pre class="programlisting">  “shadow-type”              <a class="link" href="gtk2-Standard-Enumerations.html#GtkShadowType" title="enum GtkShadowType"><span class="type">GtkShadowType</span></a></pre>
+<p>Style of bevel around the spin button.</p>
+<p>Owner: GtkSpinButton</p>
+<p>Flags: Read</p>
+<p>Default value: GTK_SHADOW_IN</p>
+</div>
+</div>
+<div class="refsect1">
+<a name="GtkSpinButton.signal-details"></a><h2>Signal Details</h2>
+<div class="refsect2">
+<a name="GtkSpinButton-change-value"></a><h3>The <code class="literal">“change-value”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a> *spinbutton,
+               <a class="link" href="gtk2-Standard-Enumerations.html#GtkScrollType" title="enum GtkScrollType"><span class="type">GtkScrollType</span></a>  arg1,
+               <span class="type">gpointer</span>       user_data)</pre>
+<p>Flags: Action</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GtkSpinButton-input"></a><h3>The <code class="literal">“input”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">int</span>
+user_function (<a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a> *spinbutton,
+               <span class="type">gpointer</span>       arg1,
+               <span class="type">gpointer</span>       user_data)</pre>
+<p>Flags: Run Last</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GtkSpinButton-output"></a><h3>The <code class="literal">“output”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>
+user_function (<a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a> *spin_button,
+               <span class="type">gpointer</span>       user_data)</pre>
+<p>The ::output signal can be used to change to formatting
+of the value that is displayed in the spin buttons entry.</p>
+<div class="informalexample">
+  <table class="listing_frame" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+      <tr>
+        <td class="listing_lines" align="right"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17</pre></td>
+        <td class="listing_code"><pre class="programlisting"><span class="cm">/* show leading zeros */</span>
+<span class="k">static</span> <span class="n">gboolean</span>
+<span class="nf">on_output</span> <span class="p">(</span><span class="n">GtkSpinButton</span> <span class="o">*</span><span class="n">spin</span><span class="p">,</span>
+           <span class="n">gpointer</span>       <span class="n">data</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="n">GtkAdjustment</span> <span class="o">*</span><span class="n">adj</span><span class="p">;</span>
+   <span class="n">gchar</span> <span class="o">*</span><span class="n">text</span><span class="p">;</span>
+   <span class="kt">int</span> <span class="n">value</span><span class="p">;</span>
+
+   <span class="n">adj</span> <span class="o">=</span> <span class="n">gtk_spin_button_get_adjustment</span> <span class="p">(</span><span class="n">spin</span><span class="p">);</span>
+   <span class="n">value</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">gtk_adjustment_get_value</span> <span class="p">(</span><span class="n">adj</span><span class="p">);</span>
+   <span class="n">text</span> <span class="o">=</span> <span class="n">g_strdup_printf</span> <span class="p">(</span><span class="s">&quot;%02d&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">);</span>
+   <span class="n">gtk_entry_set_text</span> <span class="p">(</span><span class="n">GTK_ENTRY</span> <span class="p">(</span><span class="n">spin</span><span class="p">),</span> <span class="n">text</span><span class="p">);</span>
+   <span class="n">g_free</span> <span class="p">(</span><span class="n">text</span><span class="p">);</span>
+
+   <span class="k">return</span> <span class="n">TRUE</span><span class="p">;</span>
+<span class="p">}</span></pre></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p></p>
+<div class="refsect3">
+<a name="GtkSpinButton-output.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>spin_button</p></td>
+<td class="parameter_description"><p>the object which received the signal</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data set when the signal handler was connected.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="GtkSpinButton-output.returns"></a><h4>Returns</h4>
+<p> <code class="literal">TRUE</code> if the value has been displayed.</p>
+</div>
+<p>Flags: Run Last</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GtkSpinButton-value-changed"></a><h3>The <code class="literal">“value-changed”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a> *spinbutton,
+               <span class="type">gpointer</span>       user_data)</pre>
+<p>Flags: Run Last</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GtkSpinButton-wrapped"></a><h3>The <code class="literal">“wrapped”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="GtkSpinButton.html" title="GtkSpinButton"><span class="type">GtkSpinButton</span></a> *spinbutton,
+               <span class="type">gpointer</span>       user_data)</pre>
+<p>The wrapped signal is emitted right after the spinbutton wraps
+from its maximum to minimum value or vice-versa.</p>
+<div class="refsect3">
+<a name="GtkSpinButton-wrapped.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>spinbutton</p></td>
+<td class="parameter_description"><p>the object which received the signal</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>user_data</p></td>
+<td class="parameter_description"><p>user data set when the signal handler was connected.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p>Flags: Run Last</p>
+<p class="since">Since: <a class="link" href="api-index-2-10.html#api-index-2.10">2.10</a></p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.33.0</div>
+</body>
+</html>

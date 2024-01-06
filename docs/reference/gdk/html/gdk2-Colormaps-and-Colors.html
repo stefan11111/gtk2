@@ -1,0 +1,1201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Colormaps and Colors: GDK 2 Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets Vsnapshot">
+<link rel="home" href="index.html" title="GDK 2 Reference Manual">
+<link rel="up" href="reference.html" title="API Reference">
+<link rel="prev" href="gdk2-Pixbufs.html" title="Pixbufs">
+<link rel="next" href="gdk2-Visuals.html" title="Visuals">
+<meta name="generator" content="GTK-Doc V1.33.0 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#gdk2-Colormaps-and-Colors.description" class="shortcut">Description</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="reference.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="gdk2-Pixbufs.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="gdk2-Visuals.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="gdk2-Colormaps-and-Colors"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="gdk2-Colormaps-and-Colors.top_of_page"></a>Colormaps and Colors</span></h2>
+<p>Colormaps and Colors</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="gdk2-Colormaps-and-Colors.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_proto_type">
+<col class="functions_proto_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="returnvalue">GdkColormap</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-colormap-new" title="gdk_colormap_new ()">gdk_colormap_new</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="returnvalue">GdkColormap</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-colormap-ref" title="gdk_colormap_ref ()">gdk_colormap_ref</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-colormap-unref" title="gdk_colormap_unref ()">gdk_colormap_unref</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="returnvalue">GdkColormap</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-colormap-get-system" title="gdk_colormap_get_system ()">gdk_colormap_get_system</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gint</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-colormap-get-system-size" title="gdk_colormap_get_system_size ()">gdk_colormap_get_system_size</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-colormap-change" title="gdk_colormap_change ()">gdk_colormap_change</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gint</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-colormap-alloc-colors" title="gdk_colormap_alloc_colors ()">gdk_colormap_alloc_colors</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gboolean</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-colormap-alloc-color" title="gdk_colormap_alloc_color ()">gdk_colormap_alloc_color</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-colormap-free-colors" title="gdk_colormap_free_colors ()">gdk_colormap_free_colors</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-colormap-query-color" title="gdk_colormap_query_color ()">gdk_colormap_query_color</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="gdk2-Visuals.html#GdkVisual" title="GdkVisual"><span class="returnvalue">GdkVisual</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-colormap-get-visual" title="gdk_colormap_get_visual ()">gdk_colormap_get_visual</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GdkScreen.html" title="GdkScreen"><span class="returnvalue">GdkScreen</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-colormap-get-screen" title="gdk_colormap_get_screen ()">gdk_colormap_get_screen</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-colors-store" title="gdk_colors_store ()">gdk_colors_store</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="returnvalue">GdkColor</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-color-copy" title="gdk_color_copy ()">gdk_color_copy</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-color-free" title="gdk_color_free ()">gdk_color_free</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gint</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-colors-alloc" title="gdk_colors_alloc ()">gdk_colors_alloc</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-colors-free" title="gdk_colors_free ()">gdk_colors_free</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gint</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-color-white" title="gdk_color_white ()">gdk_color_white</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gint</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-color-black" title="gdk_color_black ()">gdk_color_black</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gboolean</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-color-parse" title="gdk_color_parse ()">gdk_color_parse</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gint</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-color-alloc" title="gdk_color_alloc ()">gdk_color_alloc</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gint</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-color-change" title="gdk_color_change ()">gdk_color_change</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gboolean</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-color-equal" title="gdk_color_equal ()">gdk_color_equal</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">guint</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-color-hash" title="gdk_color_hash ()">gdk_color_hash</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gchar</span> *
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-color-to-string" title="gdk_color_to_string ()">gdk_color_to_string</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="gdk2-Colormaps-and-Colors.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="other_proto_type">
+<col class="other_proto_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="datatype_keyword"> </td>
+<td class="function_name"><a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor">GdkColor</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword"> </td>
+<td class="function_name"><a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap">GdkColormap</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="gdk2-Colormaps-and-Colors.includes"></a><h2>Includes</h2>
+<pre class="synopsis">#include &lt;gdk/gdk.h&gt;
+</pre>
+</div>
+<div class="refsect1">
+<a name="gdk2-Colormaps-and-Colors.description"></a><h2>Description</h2>
+</div>
+<div class="refsect1">
+<a name="gdk2-Colormaps-and-Colors.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="gdk-colormap-new"></a><h3>gdk_colormap_new ()</h3>
+<pre class="programlisting"><a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="returnvalue">GdkColormap</span></a> *
+gdk_colormap_new (<em class="parameter"><code><a class="link" href="gdk2-Visuals.html#GdkVisual" title="GdkVisual"><span class="type">GdkVisual</span></a> *visual</code></em>,
+                  <em class="parameter"><code><span class="type">gboolean</span> allocate</code></em>);</pre>
+<p>Creates a new colormap for the given visual.</p>
+<div class="refsect3">
+<a name="gdk-colormap-new.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>visual</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Visuals.html#GdkVisual" title="GdkVisual"><span class="type">GdkVisual</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>allocate</p></td>
+<td class="parameter_description"><p>if <code class="literal">TRUE</code>, the newly created colormap will be
+a private colormap, and all colors in it will be
+allocated for the applications use.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gdk-colormap-new.returns"></a><h4>Returns</h4>
+<p> the new <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="type">GdkColormap</span></a>.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-colormap-ref"></a><h3>gdk_colormap_ref ()</h3>
+<pre class="programlisting"><a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="returnvalue">GdkColormap</span></a> *
+gdk_colormap_ref (<em class="parameter"><code><a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="type">GdkColormap</span></a> *cmap</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_colormap_ref</code> has been deprecated since version 2.0 and should not be used in newly-written code.</p>
+<p>Use <code class="function">g_object_ref()</code> instead.</p>
+</div>
+<p>Deprecated function; use <code class="function">g_object_ref()</code> instead.</p>
+<div class="refsect3">
+<a name="gdk-colormap-ref.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>cmap</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="type">GdkColormap</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gdk-colormap-ref.returns"></a><h4>Returns</h4>
+<p> the colormap</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-colormap-unref"></a><h3>gdk_colormap_unref ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_colormap_unref (<em class="parameter"><code><a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="type">GdkColormap</span></a> *cmap</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_colormap_unref</code> has been deprecated since version 2.0 and should not be used in newly-written code.</p>
+<p>Use <code class="function">g_object_unref()</code> instead.</p>
+</div>
+<p>Deprecated function; use <code class="function">g_object_unref()</code> instead.</p>
+<div class="refsect3">
+<a name="gdk-colormap-unref.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>cmap</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="type">GdkColormap</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-colormap-get-system"></a><h3>gdk_colormap_get_system ()</h3>
+<pre class="programlisting"><a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="returnvalue">GdkColormap</span></a> *
+gdk_colormap_get_system (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>Gets the system's default colormap for the default screen. (See
+<code class="function">gdk_colormap_get_system_for_screen()</code>)</p>
+<div class="refsect3">
+<a name="gdk-colormap-get-system.returns"></a><h4>Returns</h4>
+<p> the default colormap.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-colormap-get-system-size"></a><h3>gdk_colormap_get_system_size ()</h3>
+<pre class="programlisting"><span class="returnvalue">gint</span>
+gdk_colormap_get_system_size (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<div class="warning"><p><code class="literal">gdk_colormap_get_system_size</code> is deprecated and should not be used in newly-written code.</p></div>
+<p>Returns the size of the system's default colormap.
+(See the description of struct <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="type">GdkColormap</span></a> for an
+explanation of the size of a colormap.)</p>
+<div class="refsect3">
+<a name="gdk-colormap-get-system-size.returns"></a><h4>Returns</h4>
+<p> the size of the system's default colormap.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-colormap-change"></a><h3>gdk_colormap_change ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_colormap_change (<em class="parameter"><code><a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="type">GdkColormap</span></a> *colormap</code></em>,
+                     <em class="parameter"><code><span class="type">gint</span> ncolors</code></em>);</pre>
+<div class="warning"><p><code class="literal">gdk_colormap_change</code> is deprecated and should not be used in newly-written code.</p></div>
+<p>Changes the value of the first <em class="parameter"><code>ncolors</code></em>
+ in a private colormap
+to match the values in the <em class="structfield"><code>colors</code></em>
+array in the colormap. This function is obsolete and
+should not be used. See <a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-color-change" title="gdk_color_change ()"><code class="function">gdk_color_change()</code></a>.</p>
+<div class="refsect3">
+<a name="gdk-colormap-change.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>colormap</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="type">GdkColormap</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>ncolors</p></td>
+<td class="parameter_description"><p>the number of colors to change.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-colormap-alloc-colors"></a><h3>gdk_colormap_alloc_colors ()</h3>
+<pre class="programlisting"><span class="returnvalue">gint</span>
+gdk_colormap_alloc_colors (<em class="parameter"><code><a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="type">GdkColormap</span></a> *colormap</code></em>,
+                           <em class="parameter"><code><a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a> *colors</code></em>,
+                           <em class="parameter"><code><span class="type">gint</span> n_colors</code></em>,
+                           <em class="parameter"><code><span class="type">gboolean</span> writeable</code></em>,
+                           <em class="parameter"><code><span class="type">gboolean</span> best_match</code></em>,
+                           <em class="parameter"><code><span class="type">gboolean</span> *success</code></em>);</pre>
+<p>Allocates colors from a colormap.</p>
+<div class="refsect3">
+<a name="gdk-colormap-alloc-colors.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>colormap</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="type">GdkColormap</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>colors</p></td>
+<td class="parameter_description"><p>The color values to allocate. On return, the pixel
+values for allocated colors will be filled in.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>n_colors</p></td>
+<td class="parameter_description"><p>The number of colors in <em class="parameter"><code>colors</code></em>
+.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>writeable</p></td>
+<td class="parameter_description"><p>If <code class="literal">TRUE</code>, the colors are allocated writeable
+(their values can later be changed using <a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-color-change" title="gdk_color_change ()"><code class="function">gdk_color_change()</code></a>).
+Writeable colors cannot be shared between applications.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>best_match</p></td>
+<td class="parameter_description"><p>If <code class="literal">TRUE</code>, GDK will attempt to do matching against
+existing colors if the colors cannot be allocated as requested.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>success</p></td>
+<td class="parameter_description"><p>An array of length <em class="parameter"><code>ncolors</code></em>
+. On return, this
+indicates whether the corresponding color in <em class="parameter"><code>colors</code></em>
+was
+successfully allocated or not.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gdk-colormap-alloc-colors.returns"></a><h4>Returns</h4>
+<p> The number of colors that were not successfully
+allocated.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-colormap-alloc-color"></a><h3>gdk_colormap_alloc_color ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>
+gdk_colormap_alloc_color (<em class="parameter"><code><a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="type">GdkColormap</span></a> *colormap</code></em>,
+                          <em class="parameter"><code><a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a> *color</code></em>,
+                          <em class="parameter"><code><span class="type">gboolean</span> writeable</code></em>,
+                          <em class="parameter"><code><span class="type">gboolean</span> best_match</code></em>);</pre>
+<p>Allocates a single color from a colormap.</p>
+<div class="refsect3">
+<a name="gdk-colormap-alloc-color.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>colormap</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="type">GdkColormap</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>color</p></td>
+<td class="parameter_description"><p>the color to allocate. On return the
+<em class="structfield"><code>pixel</code></em> field will be
+filled in if allocation succeeds.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>writeable</p></td>
+<td class="parameter_description"><p>If <code class="literal">TRUE</code>, the color is allocated writeable
+(their values can later be changed using <a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-color-change" title="gdk_color_change ()"><code class="function">gdk_color_change()</code></a>).
+Writeable colors cannot be shared between applications.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>best_match</p></td>
+<td class="parameter_description"><p>If <code class="literal">TRUE</code>, GDK will attempt to do matching against
+existing colors if the color cannot be allocated as requested.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gdk-colormap-alloc-color.returns"></a><h4>Returns</h4>
+<p> <code class="literal">TRUE</code> if the allocation succeeded.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-colormap-free-colors"></a><h3>gdk_colormap_free_colors ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_colormap_free_colors (<em class="parameter"><code><a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="type">GdkColormap</span></a> *colormap</code></em>,
+                          <em class="parameter"><code>const <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a> *colors</code></em>,
+                          <em class="parameter"><code><span class="type">gint</span> n_colors</code></em>);</pre>
+<p>Frees previously allocated colors.</p>
+<div class="refsect3">
+<a name="gdk-colormap-free-colors.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>colormap</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="type">GdkColormap</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>colors</p></td>
+<td class="parameter_description"><p>the colors to free.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>n_colors</p></td>
+<td class="parameter_description"><p>the number of colors in <em class="parameter"><code>colors</code></em>
+.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-colormap-query-color"></a><h3>gdk_colormap_query_color ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_colormap_query_color (<em class="parameter"><code><a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="type">GdkColormap</span></a> *colormap</code></em>,
+                          <em class="parameter"><code><span class="type">gulong</span> pixel</code></em>,
+                          <em class="parameter"><code><a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a> *result</code></em>);</pre>
+<p>Locates the RGB color in <em class="parameter"><code>colormap</code></em>
+ corresponding to the given
+hardware pixel <em class="parameter"><code>pixel</code></em>
+. <em class="parameter"><code>pixel</code></em>
+ must be a valid pixel in the
+colormap; it's a programmer error to call this function with a
+pixel which is not in the colormap. Hardware pixels are normally
+obtained from <a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-colormap-alloc-colors" title="gdk_colormap_alloc_colors ()"><code class="function">gdk_colormap_alloc_colors()</code></a>, or from a <a class="link" href="gdk2-Images.html#GdkImage" title="GdkImage"><span class="type">GdkImage</span></a>. (A
+<a class="link" href="gdk2-Images.html#GdkImage" title="GdkImage"><span class="type">GdkImage</span></a> contains image data in hardware format, a <a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-The-GdkPixbuf-Structure.html#GdkPixbuf-struct"><span class="type">GdkPixbuf</span></a>
+contains image data in a canonical 24-bit RGB format.)</p>
+<p>This function is rarely useful; it's used for example to
+implement the eyedropper feature in <span class="type">GtkColorSelection</span>.</p>
+<div class="refsect3">
+<a name="gdk-colormap-query-color.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>colormap</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="type">GdkColormap</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>pixel</p></td>
+<td class="parameter_description"><p>pixel value in hardware display format</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>result</p></td>
+<td class="parameter_description"><p><a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a> with red, green, blue fields initialized</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-colormap-get-visual"></a><h3>gdk_colormap_get_visual ()</h3>
+<pre class="programlisting"><a class="link" href="gdk2-Visuals.html#GdkVisual" title="GdkVisual"><span class="returnvalue">GdkVisual</span></a> *
+gdk_colormap_get_visual (<em class="parameter"><code><a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="type">GdkColormap</span></a> *colormap</code></em>);</pre>
+<p>Returns the visual for which a given colormap was created.</p>
+<div class="refsect3">
+<a name="gdk-colormap-get-visual.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>colormap</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="type">GdkColormap</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gdk-colormap-get-visual.returns"></a><h4>Returns</h4>
+<p> the visual of the colormap.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-colormap-get-screen"></a><h3>gdk_colormap_get_screen ()</h3>
+<pre class="programlisting"><a class="link" href="GdkScreen.html" title="GdkScreen"><span class="returnvalue">GdkScreen</span></a> *
+gdk_colormap_get_screen (<em class="parameter"><code><a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="type">GdkColormap</span></a> *cmap</code></em>);</pre>
+<p>Gets the screen for which this colormap was created.</p>
+<div class="refsect3">
+<a name="gdk-colormap-get-screen.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>cmap</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="type">GdkColormap</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gdk-colormap-get-screen.returns"></a><h4>Returns</h4>
+<p> the screen for which this colormap was created.</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-2.html#api-index-2.2">2.2</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-colors-store"></a><h3>gdk_colors_store ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_colors_store (<em class="parameter"><code><a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="type">GdkColormap</span></a> *colormap</code></em>,
+                  <em class="parameter"><code><a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a> *colors</code></em>,
+                  <em class="parameter"><code><span class="type">gint</span> ncolors</code></em>);</pre>
+<div class="warning"><p><code class="literal">gdk_colors_store</code> is deprecated and should not be used in newly-written code.</p></div>
+<p>Changes the value of the first <em class="parameter"><code>ncolors</code></em>
+ colors in
+a private colormap. This function is obsolete and
+should not be used. See <a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-color-change" title="gdk_color_change ()"><code class="function">gdk_color_change()</code></a>.</p>
+<div class="refsect3">
+<a name="gdk-colors-store.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>colormap</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="type">GdkColormap</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>colors</p></td>
+<td class="parameter_description"><p>the new color values.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>ncolors</p></td>
+<td class="parameter_description"><p>the number of colors to change.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-color-copy"></a><h3>gdk_color_copy ()</h3>
+<pre class="programlisting"><a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="returnvalue">GdkColor</span></a> *
+gdk_color_copy (<em class="parameter"><code>const <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a> *color</code></em>);</pre>
+<p>Makes a copy of a color structure. The result
+must be freed using <a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-color-free" title="gdk_color_free ()"><code class="function">gdk_color_free()</code></a>.</p>
+<div class="refsect3">
+<a name="gdk-color-copy.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>color</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gdk-color-copy.returns"></a><h4>Returns</h4>
+<p> a copy of <em class="parameter"><code>color</code></em>
+.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-color-free"></a><h3>gdk_color_free ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_color_free (<em class="parameter"><code><a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a> *color</code></em>);</pre>
+<p>Frees a color structure created with 
+<a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-color-copy" title="gdk_color_copy ()"><code class="function">gdk_color_copy()</code></a>.</p>
+<div class="refsect3">
+<a name="gdk-color-free.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>color</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-colors-alloc"></a><h3>gdk_colors_alloc ()</h3>
+<pre class="programlisting"><span class="returnvalue">gint</span>
+gdk_colors_alloc (<em class="parameter"><code><a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="type">GdkColormap</span></a> *colormap</code></em>,
+                  <em class="parameter"><code><span class="type">gboolean</span> contiguous</code></em>,
+                  <em class="parameter"><code><span class="type">gulong</span> *planes</code></em>,
+                  <em class="parameter"><code><span class="type">gint</span> nplanes</code></em>,
+                  <em class="parameter"><code><span class="type">gulong</span> *pixels</code></em>,
+                  <em class="parameter"><code><span class="type">gint</span> npixels</code></em>);</pre>
+<div class="warning"><p><code class="literal">gdk_colors_alloc</code> is deprecated and should not be used in newly-written code.</p></div>
+<p>Allocates colors from a colormap. This function
+is obsolete. See <a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-colormap-alloc-colors" title="gdk_colormap_alloc_colors ()"><code class="function">gdk_colormap_alloc_colors()</code></a>.
+For full documentation of the fields, see 
+the Xlib documentation for <code class="function"><code class="function">XAllocColorCells()</code></code>.</p>
+<div class="refsect3">
+<a name="gdk-colors-alloc.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>colormap</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="type">GdkColormap</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>contiguous</p></td>
+<td class="parameter_description"><p>if <code class="literal">TRUE</code>, the colors should be allocated
+in contiguous color cells.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>planes</p></td>
+<td class="parameter_description"><p>an array in which to store the plane masks.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>nplanes</p></td>
+<td class="parameter_description"><p>the number of planes to allocate. (Or zero,
+to indicate that the color allocation should not be planar.)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>pixels</p></td>
+<td class="parameter_description"><p>an array into which to store allocated pixel values.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>npixels</p></td>
+<td class="parameter_description"><p>the number of pixels in each plane to allocate.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gdk-colors-alloc.returns"></a><h4>Returns</h4>
+<p> <code class="literal">TRUE</code> if the allocation was successful</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-colors-free"></a><h3>gdk_colors_free ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_colors_free (<em class="parameter"><code><a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="type">GdkColormap</span></a> *colormap</code></em>,
+                 <em class="parameter"><code><span class="type">gulong</span> *pixels</code></em>,
+                 <em class="parameter"><code><span class="type">gint</span> npixels</code></em>,
+                 <em class="parameter"><code><span class="type">gulong</span> planes</code></em>);</pre>
+<div class="warning"><p><code class="literal">gdk_colors_free</code> is deprecated and should not be used in newly-written code.</p></div>
+<p>Frees colors allocated with <a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-colors-alloc" title="gdk_colors_alloc ()"><code class="function">gdk_colors_alloc()</code></a>. This
+function is obsolete. See <a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-colormap-free-colors" title="gdk_colormap_free_colors ()"><code class="function">gdk_colormap_free_colors()</code></a>.</p>
+<div class="refsect3">
+<a name="gdk-colors-free.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>colormap</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="type">GdkColormap</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>pixels</p></td>
+<td class="parameter_description"><p>the pixel values of the colors to free.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>npixels</p></td>
+<td class="parameter_description"><p>the number of values in <em class="parameter"><code>pixels</code></em>
+.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>planes</p></td>
+<td class="parameter_description"><p>the plane masks for all planes to free, OR'd together.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-color-white"></a><h3>gdk_color_white ()</h3>
+<pre class="programlisting"><span class="returnvalue">gint</span>
+gdk_color_white (<em class="parameter"><code><a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="type">GdkColormap</span></a> *colormap</code></em>,
+                 <em class="parameter"><code><a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a> *color</code></em>);</pre>
+<div class="warning"><p><code class="literal">gdk_color_white</code> is deprecated and should not be used in newly-written code.</p></div>
+<p>Returns the white color for a given colormap. The resulting
+value has already allocated been allocated.</p>
+<div class="refsect3">
+<a name="gdk-color-white.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>colormap</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="type">GdkColormap</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>color</p></td>
+<td class="parameter_description"><p>the location to store the color.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gdk-color-white.returns"></a><h4>Returns</h4>
+<p> <code class="literal">TRUE</code> if the allocation succeeded.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-color-black"></a><h3>gdk_color_black ()</h3>
+<pre class="programlisting"><span class="returnvalue">gint</span>
+gdk_color_black (<em class="parameter"><code><a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="type">GdkColormap</span></a> *colormap</code></em>,
+                 <em class="parameter"><code><a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a> *color</code></em>);</pre>
+<div class="warning"><p><code class="literal">gdk_color_black</code> is deprecated and should not be used in newly-written code.</p></div>
+<p>Returns the black color for a given colormap. The resulting
+value has already been allocated.</p>
+<div class="refsect3">
+<a name="gdk-color-black.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>colormap</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="type">GdkColormap</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>color</p></td>
+<td class="parameter_description"><p>the location to store the color.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gdk-color-black.returns"></a><h4>Returns</h4>
+<p> <code class="literal">TRUE</code> if the allocation succeeded.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-color-parse"></a><h3>gdk_color_parse ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>
+gdk_color_parse (<em class="parameter"><code>const <span class="type">gchar</span> *spec</code></em>,
+                 <em class="parameter"><code><a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a> *color</code></em>);</pre>
+<p>Parses a textual specification of a color and fill in the
+<em class="structfield"><code>red</code></em>, <em class="structfield"><code>green</code></em>,
+and <em class="structfield"><code>blue</code></em> fields of a <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a>
+structure. The color is <span class="emphasis"><em>not</em></span> allocated, you
+must call <a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-colormap-alloc-color" title="gdk_colormap_alloc_color ()"><code class="function">gdk_colormap_alloc_color()</code></a> yourself. The string can
+either one of a large set of standard names. (Taken from the X11
+<code class="filename">rgb.txt</code> file), or it can be a hex value in the
+form '#rgb' '#rrggbb' '#rrrgggbbb' or
+'#rrrrggggbbbb' where 'r', 'g' and 'b' are hex digits of the
+red, green, and blue components of the color, respectively. (White
+in the four forms is '#fff' '#ffffff' '#fffffffff' and
+'#ffffffffffff')</p>
+<div class="refsect3">
+<a name="gdk-color-parse.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>spec</p></td>
+<td class="parameter_description"><p>the string specifying the color.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>color</p></td>
+<td class="parameter_description"><p>the <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a> to fill in. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gdk-color-parse.returns"></a><h4>Returns</h4>
+<p> <code class="literal">TRUE</code> if the parsing succeeded.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-color-alloc"></a><h3>gdk_color_alloc ()</h3>
+<pre class="programlisting"><span class="returnvalue">gint</span>
+gdk_color_alloc (<em class="parameter"><code><a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="type">GdkColormap</span></a> *colormap</code></em>,
+                 <em class="parameter"><code><a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a> *color</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_color_alloc</code> has been deprecated since version 2.2 and should not be used in newly-written code.</p>
+<p>Use <a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-colormap-alloc-color" title="gdk_colormap_alloc_color ()"><code class="function">gdk_colormap_alloc_color()</code></a> instead.</p>
+</div>
+<p>Allocates a single color from a colormap.</p>
+<div class="refsect3">
+<a name="gdk-color-alloc.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>colormap</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="type">GdkColormap</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>color</p></td>
+<td class="parameter_description"><p>The color to allocate. On return, the
+<em class="structfield"><code>pixel</code></em> field will be filled in.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gdk-color-alloc.returns"></a><h4>Returns</h4>
+<p> <code class="literal">TRUE</code> if the allocation succeeded.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-color-change"></a><h3>gdk_color_change ()</h3>
+<pre class="programlisting"><span class="returnvalue">gint</span>
+gdk_color_change (<em class="parameter"><code><a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="type">GdkColormap</span></a> *colormap</code></em>,
+                  <em class="parameter"><code><a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a> *color</code></em>);</pre>
+<div class="warning"><p><code class="literal">gdk_color_change</code> is deprecated and should not be used in newly-written code.</p></div>
+<p>Changes the value of a color that has already
+been allocated. If <em class="parameter"><code>colormap</code></em>
+ is not a private
+colormap, then the color must have been allocated
+using <a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-colormap-alloc-colors" title="gdk_colormap_alloc_colors ()"><code class="function">gdk_colormap_alloc_colors()</code></a> with the 
+<em class="parameter"><code>writeable</code></em>
+ set to <code class="literal">TRUE</code>.</p>
+<div class="refsect3">
+<a name="gdk-color-change.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>colormap</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="type">GdkColormap</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>color</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a>, with the color to change
+in the <em class="structfield"><code>pixel</code></em> field,
+and the new value in the remaining fields.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gdk-color-change.returns"></a><h4>Returns</h4>
+<p> <code class="literal">TRUE</code> if the color was successfully changed.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-color-equal"></a><h3>gdk_color_equal ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>
+gdk_color_equal (<em class="parameter"><code>const <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a> *colora</code></em>,
+                 <em class="parameter"><code>const <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a> *colorb</code></em>);</pre>
+<p>Compares two colors.</p>
+<div class="refsect3">
+<a name="gdk-color-equal.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>colora</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>colorb</p></td>
+<td class="parameter_description"><p>another <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gdk-color-equal.returns"></a><h4>Returns</h4>
+<p> <code class="literal">TRUE</code> if the two colors compare equal</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-color-hash"></a><h3>gdk_color_hash ()</h3>
+<pre class="programlisting"><span class="returnvalue">guint</span>
+gdk_color_hash (<em class="parameter"><code>const <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a> *colora</code></em>);</pre>
+<p>A hash function suitable for using for a hash
+table that stores <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a>'s.</p>
+<div class="refsect3">
+<a name="gdk-color-hash.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>colora</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gdk-color-hash.returns"></a><h4>Returns</h4>
+<p> The hash function applied to <em class="parameter"><code>colora</code></em>
+</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-color-to-string"></a><h3>gdk_color_to_string ()</h3>
+<pre class="programlisting"><span class="returnvalue">gchar</span> *
+gdk_color_to_string (<em class="parameter"><code>const <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a> *color</code></em>);</pre>
+<p>Returns a textual specification of <em class="parameter"><code>color</code></em>
+ in the hexadecimal form
+<code class="literal">#rrrrggggbbbb</code>, where <code class="literal">r</code>,
+<code class="literal">g</code> and <code class="literal">b</code> are hex digits
+representing the red, green and blue components respectively.</p>
+<div class="refsect3">
+<a name="gdk-color-to-string.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>color</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gdk-color-to-string.returns"></a><h4>Returns</h4>
+<p> a newly-allocated text string</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-12.html#api-index-2.12">2.12</a></p>
+</div>
+</div>
+<div class="refsect1">
+<a name="gdk2-Colormaps-and-Colors.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="GdkColor"></a><h3>GdkColor</h3>
+<pre class="programlisting">typedef struct {
+  guint32 pixel;
+  guint16 red;
+  guint16 green;
+  guint16 blue;
+} GdkColor;
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GdkColormap"></a><h3>GdkColormap</h3>
+<pre class="programlisting">typedef struct {
+  gint      GSEAL (size);
+  GdkColor *GSEAL (colors);
+} GdkColormap;
+</pre>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.33.0</div>
+</body>
+</html>

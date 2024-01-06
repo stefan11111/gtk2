@@ -1,0 +1,454 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GtkLinkButton: GTK+ 2 Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets Vsnapshot">
+<link rel="home" href="index.html" title="GTK+ 2 Reference Manual">
+<link rel="up" href="ButtonWidgets.html" title="Buttons and Toggles">
+<link rel="prev" href="GtkToggleButton.html" title="GtkToggleButton">
+<link rel="next" href="GtkScaleButton.html" title="GtkScaleButton">
+<meta name="generator" content="GTK-Doc V1.33.0 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#GtkLinkButton.description" class="shortcut">Description</a></span><span id="nav_hierarchy">  <span class="dim">|</span> 
+                  <a href="#GtkLinkButton.object-hierarchy" class="shortcut">Object Hierarchy</a></span><span id="nav_interfaces">  <span class="dim">|</span> 
+                  <a href="#GtkLinkButton.implemented-interfaces" class="shortcut">Implemented Interfaces</a></span><span id="nav_properties">  <span class="dim">|</span> 
+                  <a href="#GtkLinkButton.properties" class="shortcut">Properties</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="ButtonWidgets.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="GtkToggleButton.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="GtkScaleButton.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="GtkLinkButton"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GtkLinkButton.top_of_page"></a>GtkLinkButton</span></h2>
+<p>GtkLinkButton</p>
+</td>
+<td class="gallery_image" valign="top" align="right"><img src="link-button.png"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="GtkLinkButton.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_proto_type">
+<col class="functions_proto_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<a class="link" href="GtkWidget.html" title="GtkWidget"><span class="returnvalue">GtkWidget</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GtkLinkButton.html#gtk-link-button-new" title="gtk_link_button_new ()">gtk_link_button_new</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GtkWidget.html" title="GtkWidget"><span class="returnvalue">GtkWidget</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GtkLinkButton.html#gtk-link-button-new-with-label" title="gtk_link_button_new_with_label ()">gtk_link_button_new_with_label</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">const <span class="returnvalue">gchar</span> *
+</td>
+<td class="function_name">
+<a class="link" href="GtkLinkButton.html#gtk-link-button-get-uri" title="gtk_link_button_get_uri ()">gtk_link_button_get_uri</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkLinkButton.html#gtk-link-button-set-uri" title="gtk_link_button_set_uri ()">gtk_link_button_set_uri</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<span class="c_punctuation">(</span><a class="link" href="GtkLinkButton.html#GtkLinkButtonUriFunc" title="GtkLinkButtonUriFunc ()">*GtkLinkButtonUriFunc</a><span class="c_punctuation">)</span> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GtkLinkButton.html#GtkLinkButtonUriFunc" title="GtkLinkButtonUriFunc ()"><span class="returnvalue">GtkLinkButtonUriFunc</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="GtkLinkButton.html#gtk-link-button-set-uri-hook" title="gtk_link_button_set_uri_hook ()">gtk_link_button_set_uri_hook</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gboolean</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkLinkButton.html#gtk-link-button-get-visited" title="gtk_link_button_get_visited ()">gtk_link_button_get_visited</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkLinkButton.html#gtk-link-button-set-visited" title="gtk_link_button_set_visited ()">gtk_link_button_set_visited</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GtkLinkButton.properties"></a><h2>Properties</h2>
+<div class="informaltable"><table class="informaltable" border="0">
+<colgroup>
+<col width="150px" class="properties_type">
+<col width="300px" class="properties_name">
+<col width="200px" class="properties_flags">
+</colgroup>
+<tbody>
+<tr>
+<td class="property_type">
+<span class="type">char</span> *</td>
+<td class="property_name"><a class="link" href="GtkLinkButton.html#GtkLinkButton--uri" title="The “uri” property">uri</a></td>
+<td class="property_flags">Read / Write</td>
+</tr>
+<tr>
+<td class="property_type"><span class="type">gboolean</span></td>
+<td class="property_name"><a class="link" href="GtkLinkButton.html#GtkLinkButton--visited" title="The “visited” property">visited</a></td>
+<td class="property_flags">Read / Write</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GtkLinkButton.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="other_proto_type">
+<col class="other_proto_name">
+</colgroup>
+<tbody><tr>
+<td class="datatype_keyword">struct</td>
+<td class="function_name"><a class="link" href="GtkLinkButton.html#GtkLinkButton-struct" title="struct GtkLinkButton">GtkLinkButton</a></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GtkLinkButton.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="screen">    GObject
+    <span class="lineart">╰──</span> GInitiallyUnowned
+        <span class="lineart">╰──</span> <a class="link" href="GtkObject.html" title="GtkObject">GtkObject</a>
+            <span class="lineart">╰──</span> <a class="link" href="GtkWidget.html" title="GtkWidget">GtkWidget</a>
+                <span class="lineart">╰──</span> <a class="link" href="GtkContainer.html" title="GtkContainer">GtkContainer</a>
+                    <span class="lineart">╰──</span> <a class="link" href="GtkBin.html" title="GtkBin">GtkBin</a>
+                        <span class="lineart">╰──</span> <a class="link" href="GtkButton.html" title="GtkButton">GtkButton</a>
+                            <span class="lineart">╰──</span> GtkLinkButton
+</pre>
+</div>
+<div class="refsect1">
+<a name="GtkLinkButton.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
+<p>
+GtkLinkButton implements
+ AtkImplementorIface,  <a class="link" href="GtkBuildable.html" title="GtkBuildable">GtkBuildable</a> and  <a class="link" href="GtkActivatable.html" title="GtkActivatable">GtkActivatable</a>.</p>
+</div>
+<div class="refsect1">
+<a name="GtkLinkButton.includes"></a><h2>Includes</h2>
+<pre class="synopsis">#include &lt;gtk/gtk.h&gt;
+</pre>
+</div>
+<div class="refsect1">
+<a name="GtkLinkButton.description"></a><h2>Description</h2>
+</div>
+<div class="refsect1">
+<a name="GtkLinkButton.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="gtk-link-button-new"></a><h3>gtk_link_button_new ()</h3>
+<pre class="programlisting"><a class="link" href="GtkWidget.html" title="GtkWidget"><span class="returnvalue">GtkWidget</span></a> *
+gtk_link_button_new (<em class="parameter"><code>const <span class="type">gchar</span> *uri</code></em>);</pre>
+<p>Creates a new <a class="link" href="GtkLinkButton.html" title="GtkLinkButton"><span class="type">GtkLinkButton</span></a> with the URI as its text.</p>
+<div class="refsect3">
+<a name="gtk-link-button-new.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p>a valid URI</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-link-button-new.returns"></a><h4>Returns</h4>
+<p> a new link button widget.</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-10.html#api-index-2.10">2.10</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-link-button-new-with-label"></a><h3>gtk_link_button_new_with_label ()</h3>
+<pre class="programlisting"><a class="link" href="GtkWidget.html" title="GtkWidget"><span class="returnvalue">GtkWidget</span></a> *
+gtk_link_button_new_with_label (<em class="parameter"><code>const <span class="type">gchar</span> *uri</code></em>,
+                                <em class="parameter"><code>const <span class="type">gchar</span> *label</code></em>);</pre>
+<p>Creates a new <a class="link" href="GtkLinkButton.html" title="GtkLinkButton"><span class="type">GtkLinkButton</span></a> containing a label.</p>
+<div class="refsect3">
+<a name="gtk-link-button-new-with-label.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p>a valid URI</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>label</p></td>
+<td class="parameter_description"><p>the text of the button. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-link-button-new-with-label.returns"></a><h4>Returns</h4>
+<p>a new link button widget. </p>
+<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-10.html#api-index-2.10">2.10</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-link-button-get-uri"></a><h3>gtk_link_button_get_uri ()</h3>
+<pre class="programlisting">const <span class="returnvalue">gchar</span> *
+gtk_link_button_get_uri (<em class="parameter"><code><a class="link" href="GtkLinkButton.html" title="GtkLinkButton"><span class="type">GtkLinkButton</span></a> *link_button</code></em>);</pre>
+<p>Retrieves the URI set using <a class="link" href="GtkLinkButton.html#gtk-link-button-set-uri" title="gtk_link_button_set_uri ()"><code class="function">gtk_link_button_set_uri()</code></a>.</p>
+<div class="refsect3">
+<a name="gtk-link-button-get-uri.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>link_button</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkLinkButton.html" title="GtkLinkButton"><span class="type">GtkLinkButton</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-link-button-get-uri.returns"></a><h4>Returns</h4>
+<p> a valid URI.  The returned string is owned by the link button
+and should not be modified or freed.</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-10.html#api-index-2.10">2.10</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-link-button-set-uri"></a><h3>gtk_link_button_set_uri ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_link_button_set_uri (<em class="parameter"><code><a class="link" href="GtkLinkButton.html" title="GtkLinkButton"><span class="type">GtkLinkButton</span></a> *link_button</code></em>,
+                         <em class="parameter"><code>const <span class="type">gchar</span> *uri</code></em>);</pre>
+<p>Sets <em class="parameter"><code>uri</code></em>
+ as the URI where the <a class="link" href="GtkLinkButton.html" title="GtkLinkButton"><span class="type">GtkLinkButton</span></a> points. As a side-effect
+this unsets the 'visited' state of the button.</p>
+<div class="refsect3">
+<a name="gtk-link-button-set-uri.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>link_button</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkLinkButton.html" title="GtkLinkButton"><span class="type">GtkLinkButton</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>uri</p></td>
+<td class="parameter_description"><p>a valid URI</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-10.html#api-index-2.10">2.10</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GtkLinkButtonUriFunc"></a><h3>GtkLinkButtonUriFunc ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+<span class="c_punctuation">(</span>*GtkLinkButtonUriFunc<span class="c_punctuation">)</span> (<em class="parameter"><code><a class="link" href="GtkLinkButton.html" title="GtkLinkButton"><span class="type">GtkLinkButton</span></a> *button</code></em>,
+                         <em class="parameter"><code>const <span class="type">gchar</span> *link_</code></em>,
+                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-link-button-set-uri-hook"></a><h3>gtk_link_button_set_uri_hook ()</h3>
+<pre class="programlisting"><a class="link" href="GtkLinkButton.html#GtkLinkButtonUriFunc" title="GtkLinkButtonUriFunc ()"><span class="returnvalue">GtkLinkButtonUriFunc</span></a>
+gtk_link_button_set_uri_hook (<em class="parameter"><code><a class="link" href="GtkLinkButton.html#GtkLinkButtonUriFunc" title="GtkLinkButtonUriFunc ()"><span class="type">GtkLinkButtonUriFunc</span></a> func</code></em>,
+                              <em class="parameter"><code><span class="type">gpointer</span> data</code></em>,
+                              <em class="parameter"><code><span class="type">GDestroyNotify</span> destroy</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gtk_link_button_set_uri_hook</code> has been deprecated since version 2.24 and should not be used in newly-written code.</p>
+<p>Use the <a class="link" href="GtkButton.html#GtkButton-clicked" title="The “clicked” signal"><span class="type">“clicked”</span></a> signal instead</p>
+</div>
+<p>Sets <em class="parameter"><code>func</code></em>
+ as the function that should be invoked every time a user clicks
+a <a class="link" href="GtkLinkButton.html" title="GtkLinkButton"><span class="type">GtkLinkButton</span></a>. This function is called before every callback registered
+for the "clicked" signal.</p>
+<p>If no uri hook has been set, GTK+ defaults to calling <a class="link" href="gtk2-Filesystem-utilities.html#gtk-show-uri" title="gtk_show_uri ()"><code class="function">gtk_show_uri()</code></a>.</p>
+<div class="refsect3">
+<a name="gtk-link-button-set-uri-hook.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>func</p></td>
+<td class="parameter_description"><p>a function called each time a <a class="link" href="GtkLinkButton.html" title="GtkLinkButton"><span class="type">GtkLinkButton</span></a> is clicked, or <code class="literal">NULL</code>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>data</p></td>
+<td class="parameter_description"><p>user data to be passed to <em class="parameter"><code>func</code></em>
+, or <code class="literal">NULL</code>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>destroy</p></td>
+<td class="parameter_description"><p>a <span class="type">GDestroyNotify</span> that gets called when <em class="parameter"><code>data</code></em>
+is no longer needed, or <code class="literal">NULL</code>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-link-button-set-uri-hook.returns"></a><h4>Returns</h4>
+<p> the previously set hook function.</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-10.html#api-index-2.10">2.10</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-link-button-get-visited"></a><h3>gtk_link_button_get_visited ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>
+gtk_link_button_get_visited (<em class="parameter"><code><a class="link" href="GtkLinkButton.html" title="GtkLinkButton"><span class="type">GtkLinkButton</span></a> *link_button</code></em>);</pre>
+<p>Retrieves the 'visited' state of the URI where the <a class="link" href="GtkLinkButton.html" title="GtkLinkButton"><span class="type">GtkLinkButton</span></a>
+points. The button becomes visited when it is clicked. If the URI
+is changed on the button, the 'visited' state is unset again.</p>
+<p>The state may also be changed using <a class="link" href="GtkLinkButton.html#gtk-link-button-set-visited" title="gtk_link_button_set_visited ()"><code class="function">gtk_link_button_set_visited()</code></a>.</p>
+<div class="refsect3">
+<a name="gtk-link-button-get-visited.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>link_button</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkLinkButton.html" title="GtkLinkButton"><span class="type">GtkLinkButton</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-link-button-get-visited.returns"></a><h4>Returns</h4>
+<p> <code class="literal">TRUE</code> if the link has been visited, <code class="literal">FALSE</code> otherwise</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-14.html#api-index-2.14">2.14</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-link-button-set-visited"></a><h3>gtk_link_button_set_visited ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_link_button_set_visited (<em class="parameter"><code><a class="link" href="GtkLinkButton.html" title="GtkLinkButton"><span class="type">GtkLinkButton</span></a> *link_button</code></em>,
+                             <em class="parameter"><code><span class="type">gboolean</span> visited</code></em>);</pre>
+<p>Sets the 'visited' state of the URI where the <a class="link" href="GtkLinkButton.html" title="GtkLinkButton"><span class="type">GtkLinkButton</span></a>
+points.  See <a class="link" href="GtkLinkButton.html#gtk-link-button-get-visited" title="gtk_link_button_get_visited ()"><code class="function">gtk_link_button_get_visited()</code></a> for more details.</p>
+<div class="refsect3">
+<a name="gtk-link-button-set-visited.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>link_button</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkLinkButton.html" title="GtkLinkButton"><span class="type">GtkLinkButton</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>visited</p></td>
+<td class="parameter_description"><p>the new 'visited' state</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-14.html#api-index-2.14">2.14</a></p>
+</div>
+</div>
+<div class="refsect1">
+<a name="GtkLinkButton.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="GtkLinkButton-struct"></a><h3>struct GtkLinkButton</h3>
+<pre class="programlisting">struct GtkLinkButton;</pre>
+</div>
+</div>
+<div class="refsect1">
+<a name="GtkLinkButton.property-details"></a><h2>Property Details</h2>
+<div class="refsect2">
+<a name="GtkLinkButton--uri"></a><h3>The <code class="literal">“uri”</code> property</h3>
+<pre class="programlisting">  “uri”                      <span class="type">char</span> *</pre>
+<p>The URI bound to this button.</p>
+<p>Owner: GtkLinkButton</p>
+<p>Flags: Read / Write</p>
+<p>Default value: NULL</p>
+<p class="since">Since: <a class="link" href="api-index-2-10.html#api-index-2.10">2.10</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GtkLinkButton--visited"></a><h3>The <code class="literal">“visited”</code> property</h3>
+<pre class="programlisting">  “visited”                  <span class="type">gboolean</span></pre>
+<p>The 'visited' state of this button. A visited link is drawn in a
+different color.</p>
+<p>Owner: GtkLinkButton</p>
+<p>Flags: Read / Write</p>
+<p>Default value: FALSE</p>
+<p class="since">Since: <a class="link" href="api-index-2-14.html#api-index-2.14">2.14</a></p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.33.0</div>
+</body>
+</html>
