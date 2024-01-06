@@ -852,25 +852,11 @@ gtk_print_backend_cups_dispose (GObject *object)
     {
       if (backend_cups->avahi_service_browser_subscription_ids[i] > 0)
         {
-          g_dbus_connection_signal_unsubscribe (backend_cups->dbus_connection,
-                                                backend_cups->avahi_service_browser_subscription_ids[i]);
           backend_cups->avahi_service_browser_subscription_ids[i] = 0;
         }
 
       if (backend_cups->avahi_service_browser_paths[i])
         {
-          g_dbus_connection_call (backend_cups->dbus_connection,
-                                  AVAHI_BUS,
-                                  backend_cups->avahi_service_browser_paths[i],
-                                  AVAHI_SERVICE_BROWSER_IFACE,
-                                  "Free",
-                                  NULL,
-                                  NULL,
-                                  G_DBUS_CALL_FLAGS_NONE,
-                                  -1,
-                                  NULL,
-                                  NULL,
-                                  NULL);
           g_free (backend_cups->avahi_service_browser_paths[i]);
           backend_cups->avahi_service_browser_paths[i] = NULL;
         }
@@ -878,8 +864,6 @@ gtk_print_backend_cups_dispose (GObject *object)
 
   if (backend_cups->avahi_service_browser_subscription_id > 0)
     {
-      g_dbus_connection_signal_unsubscribe (backend_cups->dbus_connection,
-                                            backend_cups->avahi_service_browser_subscription_id);
       backend_cups->avahi_service_browser_subscription_id = 0;
     }
 #endif
@@ -2641,106 +2625,6 @@ avahi_service_resolver_cb (GObject      *source_object,
                            GAsyncResult *res,
                            gpointer      user_data)
 {
-  AvahiConnectionTestData *data;
-  GtkPrintBackendCups     *backend;
-  const gchar             *name;
-  const gchar             *host;
-  const gchar             *type;
-  const gchar             *domain;
-  const gchar             *address;
-  const gchar             *protocol_string;
-  GVariant                *output;
-  GVariant                *txt;
-  GVariant                *child;
-  guint32                  flags;
-  guint16                  port;
-  GError                  *error = NULL;
-  gchar                   *suffix = NULL;
-  gchar                   *tmp;
-  gint                     interface;
-  gint                     protocol;
-  gint                     aprotocol;
-  gint                     i, j;
-
-  output = g_dbus_connection_call_finish (G_DBUS_CONNECTION (source_object),
-                                          res,
-                                          &error);
-  if (output)
-    {
-      backend = GTK_PRINT_BACKEND_CUPS (user_data);
-
-      g_variant_get (output, "(ii&s&s&s&si&sq@aayu)",
-                     &interface,
-                     &protocol,
-                     &name,
-                     &type,
-                     &domain,
-                     &host,
-                     &aprotocol,
-                     &address,
-                     &port,
-                     &txt,
-                     &flags);
-
-      for (i = 0; i < g_variant_n_children (txt); i++)
-        {
-          child = g_variant_get_child_value (txt, i);
-
-          tmp = g_new0 (gchar, g_variant_n_children (child) + 1);
-          for (j = 0; j < g_variant_n_children (child); j++)
-            {
-              tmp[j] = g_variant_get_byte (g_variant_get_child_value (child, j));
-            }
-
-          if (g_str_has_prefix (tmp, "rp="))
-            {
-              suffix = g_strdup (tmp + 3);
-              g_free (tmp);
-              break;
-            }
-
-          g_free (tmp);
-        }
-
-      if (suffix)
-        {
-          if (g_strcmp0 (type, "_ipp._tcp") == 0)
-            protocol_string = "ipp";
-          else
-            protocol_string = "ipps";
-
-          data = g_new0 (AvahiConnectionTestData, 1);
-
-          if (aprotocol == AVAHI_PROTO_INET6)
-            data->printer_uri = g_strdup_printf ("%s://[%s]:%u/%s", protocol_string, address, port, suffix);
-          else
-            data->printer_uri = g_strdup_printf ("%s://%s:%u/%s", protocol_string, address, port, suffix);
-
-          data->host = g_strdup (address);
-          data->port = port;
-          data->name = g_strdup (name);
-          data->type = g_strdup (type);
-          data->domain = g_strdup (domain);
-          data->backend = backend;
-
-          /* It can happen that the address is not reachable */
-          g_socket_client_connect_to_host_async (g_socket_client_new (),
-                                                 address,
-                                                 port,
-                                                 backend->avahi_cancellable,
-                                                 avahi_connection_test_cb,
-                                                 data);
-          g_free (suffix);
-        }
-
-      g_variant_unref (output);
-    }
-  else
-    {
-      if (!g_error_matches (error, G_IO_ERROR, G_IO_ERROR_CANCELLED))
-        g_warning ("%s", error->message);
-      g_error_free (error);
-    }
 }
 
 static void
@@ -2770,31 +2654,7 @@ avahi_service_browser_signal_handler (GDBusConnection *connection,
                      &domain,
                      &flags);
 
-      if (g_strcmp0 (type, "_ipp._tcp") == 0 ||
-          g_strcmp0 (type, "_ipps._tcp") == 0)
-        {
-          g_dbus_connection_call (backend->dbus_connection,
-                                  AVAHI_BUS,
-                                  "/",
-                                  AVAHI_SERVER_IFACE,
-                                  "ResolveService",
-                                  g_variant_new ("(iisssiu)",
-                                                 interface,
-                                                 protocol,
-                                                 name,
-                                                 type,
-                                                 domain,
-                                                 AVAHI_PROTO_UNSPEC,
-                                                 0),
-                                  G_VARIANT_TYPE ("(iissssisqaayu)"),
-                                  G_DBUS_CALL_FLAGS_NONE,
-                                  -1,
-                                  backend->avahi_cancellable,
-                                  avahi_service_resolver_cb,
-                                  user_data);
-        }
-    }
-  else if (g_strcmp0 (signal_name, "ItemRemove") == 0)
+  if (g_strcmp0 (signal_name, "ItemRemove") == 0)
     {
       GtkPrinterCups *printer;
       GList          *list;
@@ -2844,60 +2704,6 @@ avahi_service_browser_new_cb (GObject      *source_object,
                               GAsyncResult *res,
                               gpointer      user_data)
 {
-  GtkPrintBackendCups *cups_backend;
-  GVariant            *output;
-  GError              *error = NULL;
-  gint                 i;
-
-  output = g_dbus_connection_call_finish (G_DBUS_CONNECTION (source_object),
-                                          res,
-                                          &error);
-  if (output)
-    {
-      cups_backend = GTK_PRINT_BACKEND_CUPS (user_data);
-      i = cups_backend->avahi_service_browser_paths[0] ? 1 : 0;
-
-      g_variant_get (output, "(o)", &cups_backend->avahi_service_browser_paths[i]);
-
-      cups_backend->avahi_service_browser_subscription_ids[i] =
-        g_dbus_connection_signal_subscribe (cups_backend->dbus_connection,
-                                            NULL,
-                                            AVAHI_SERVICE_BROWSER_IFACE,
-                                            NULL,
-                                            cups_backend->avahi_service_browser_paths[i],
-                                            NULL,
-                                            G_DBUS_SIGNAL_FLAGS_NONE,
-                                            avahi_service_browser_signal_handler,
-                                            user_data,
-                                            NULL);
-
-      /*
-       * The general subscription for all service browsers is not needed
-       * now because we are already subscribed to service browsers
-       * specific to _ipp._tcp and _ipps._tcp services.
-       */
-      if (cups_backend->avahi_service_browser_paths[0] &&
-          cups_backend->avahi_service_browser_paths[1] &&
-          cups_backend->avahi_service_browser_subscription_id > 0)
-        {
-          g_dbus_connection_signal_unsubscribe (cups_backend->dbus_connection,
-                                                cups_backend->avahi_service_browser_subscription_id);
-          cups_backend->avahi_service_browser_subscription_id = 0;
-        }
-
-      g_variant_unref (output);
-    }
-  else
-    {
-      /*
-       * The creation of ServiceBrowser fails with G_IO_ERROR_DBUS_ERROR
-       * if Avahi is disabled.
-       */
-      if (!g_error_matches (error, G_IO_ERROR, G_IO_ERROR_DBUS_ERROR) &&
-          !g_error_matches (error, G_IO_ERROR, G_IO_ERROR_CANCELLED))
-        g_warning ("%s", error->message);
-      g_error_free (error);
-    }
 }
 
 static void
@@ -2905,85 +2711,12 @@ avahi_create_browsers (GObject      *source_object,
                        GAsyncResult *res,
                        gpointer      user_data)
 {
-  GDBusConnection     *dbus_connection;
-  GtkPrintBackendCups *cups_backend;
-  GError              *error = NULL;
-
-  dbus_connection = g_bus_get_finish (res, &error);
-  if (!dbus_connection)
-    {
-      if (!g_error_matches (error, G_IO_ERROR, G_IO_ERROR_CANCELLED))
-        g_warning ("Couldn't connect to D-Bus system bus, %s", error->message);
-
-      g_error_free (error);
-      return;
-    }
-
-  cups_backend = GTK_PRINT_BACKEND_CUPS (user_data);
-  cups_backend->dbus_connection = dbus_connection;
-
-  /*
-   * We need to subscribe to signals of service browser before
-   * we actually create it because it starts to emit them right
-   * after its creation.
-   */
-  cups_backend->avahi_service_browser_subscription_id =
-    g_dbus_connection_signal_subscribe  (cups_backend->dbus_connection,
-                                         NULL,
-                                         AVAHI_SERVICE_BROWSER_IFACE,
-                                         NULL,
-                                         NULL,
-                                         NULL,
-                                         G_DBUS_SIGNAL_FLAGS_NONE,
-                                         avahi_service_browser_signal_handler,
-                                         cups_backend,
-                                         NULL);
-
-  /*
-   * Create service browsers for _ipp._tcp and _ipps._tcp services.
-   */
-  g_dbus_connection_call (cups_backend->dbus_connection,
-                          AVAHI_BUS,
-                          "/",
-                          AVAHI_SERVER_IFACE,
-                          "ServiceBrowserNew",
-                          g_variant_new ("(iissu)",
-                                         AVAHI_IF_UNSPEC,
-                                         AVAHI_PROTO_UNSPEC,
-                                         "_ipp._tcp",
-                                         "",
-                                         0),
-                          G_VARIANT_TYPE ("(o)"),
-                          G_DBUS_CALL_FLAGS_NONE,
-                          -1,
-                          cups_backend->avahi_cancellable,
-                          avahi_service_browser_new_cb,
-                          cups_backend);
-
-  g_dbus_connection_call (cups_backend->dbus_connection,
-                          AVAHI_BUS,
-                          "/",
-                          AVAHI_SERVER_IFACE,
-                          "ServiceBrowserNew",
-                          g_variant_new ("(iissu)",
-                                         AVAHI_IF_UNSPEC,
-                                         AVAHI_PROTO_UNSPEC,
-                                         "_ipps._tcp",
-                                         "",
-                                         0),
-                          G_VARIANT_TYPE ("(o)"),
-                          G_DBUS_CALL_FLAGS_NONE,
-                          -1,
-                          cups_backend->avahi_cancellable,
-                          avahi_service_browser_new_cb,
-                          cups_backend);
 }
 
 static void
 avahi_request_printer_list (GtkPrintBackendCups *cups_backend)
 {
   cups_backend->avahi_cancellable = g_cancellable_new ();
-  g_bus_get (G_BUS_TYPE_SYSTEM, cups_backend->avahi_cancellable, avahi_create_browsers, cups_backend);
 }
 #endif
 

@@ -52,7 +52,7 @@ struct _GtkSearchEngineTrackerClass
 
 GType            _gtk_search_engine_tracker_get_type (void);
 
-GtkSearchEngine* _gtk_search_engine_tracker_new      (void);
+void* _gtk_search_engine_tracker_new      (void);
 
 G_END_DECLS
 
