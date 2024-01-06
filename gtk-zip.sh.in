@@ -53,6 +53,7 @@ lib/gtk-2.0/include
 lib/pkgconfig
 share/aclocal
 share/gtk-2.0
+share/gtk-doc
 EOF
 
 zip -r $DEVZIP share/doc/gtk+-dev-@GTK_VERSION@

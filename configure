@@ -668,7 +668,21 @@ ENABLE_MAN_TRUE
 XMLCATALOG
 XML_CATALOG_FILE
 XSLTPROC
+HAVE_DOCBOOK_FALSE
+HAVE_DOCBOOK_TRUE
 DB2HTML
+GTK_DOC_USE_REBASE_FALSE
+GTK_DOC_USE_REBASE_TRUE
+GTK_DOC_USE_LIBTOOL_FALSE
+GTK_DOC_USE_LIBTOOL_TRUE
+GTK_DOC_BUILD_PDF_FALSE
+GTK_DOC_BUILD_PDF_TRUE
+GTK_DOC_BUILD_HTML_FALSE
+GTK_DOC_BUILD_HTML_TRUE
+ENABLE_GTK_DOC_FALSE
+ENABLE_GTK_DOC_TRUE
+HAVE_GTK_DOC_FALSE
+HAVE_GTK_DOC_TRUE
 GTKDOC_DEPS_LIBS
 GTKDOC_DEPS_CFLAGS
 HTML_DIR
@@ -1019,6 +1033,9 @@ enable_papi
 enable_test_print_backend
 enable_introspection
 with_html_dir
+enable_gtk_doc
+enable_gtk_doc_html
+enable_gtk_doc_pdf
 enable_man
 with_xml_catalog
 enable_year2038
@@ -1730,6 +1747,10 @@ Optional Features:
                           build test print backend
   --enable-introspection=[no/auto/yes]
                           Enable introspection for this build
+  --enable-gtk-doc        use gtk-doc to build documentation [[default=no]]
+  --enable-gtk-doc-html   build documentation in html format [[default=yes]]
+  --enable-gtk-doc-pdf    build documentation in pdf format [[default=no]]
+  --enable-man            regenerate man pages from Docbook [default=no]
   --enable-year2038       support timestamps after 2038
 
 Optional Packages:
@@ -1748,6 +1769,7 @@ Optional Packages:
   --with-included-immodules=MODULE1,MODULE2,...
                           build the specified input methods into gtk
   --with-x                use the X Window System
+  --with-html-dir=PATH    path to installed docs
   --with-xml-catalog=CATALOG
                           path to xml catalog to use
 
@@ -27232,6 +27254,657 @@ fi
 
 
 
+
+##################################################
+# Checks for gtk-doc and docbook-tools
+##################################################
+
+
+
+
+  gtk_doc_requires="gtk-doc >= 1.11"
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for gtk-doc" >&5
+printf %s "checking for gtk-doc... " >&6; }
+  if test -n "$PKG_CONFIG" && \
+    { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"\$gtk_doc_requires\""; } >&5
+  ($PKG_CONFIG --exists --print-errors "$gtk_doc_requires") 2>&5
+  ac_status=$?
+  printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+  test $ac_status = 0; }; then
+  have_gtk_doc=yes
+else
+  have_gtk_doc=no
+fi
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $have_gtk_doc" >&5
+printf "%s\n" "$have_gtk_doc" >&6; }
+
+  if test "$have_gtk_doc" = "no"; then
+      { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING:
+  You will not be able to create source packages with 'make dist'
+  because $gtk_doc_requires is not found." >&5
+printf "%s\n" "$as_me: WARNING:
+  You will not be able to create source packages with 'make dist'
+  because $gtk_doc_requires is not found." >&2;}
+  fi
+
+            # Extract the first word of "gtkdoc-check", so it can be a program name with args.
+set dummy gtkdoc-check; ac_word=$2
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+printf %s "checking for $ac_word... " >&6; }
+if test ${ac_cv_prog_GTKDOC_CHECK+y}
+then :
+  printf %s "(cached) " >&6
+else case e in #(
+  e) if test -n "$GTKDOC_CHECK"; then
+  ac_cv_prog_GTKDOC_CHECK="$GTKDOC_CHECK" # Let the user override the test.
+else
+as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  case $as_dir in #(((
+    '') as_dir=./ ;;
+    */) ;;
+    *) as_dir=$as_dir/ ;;
+  esac
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir$ac_word$ac_exec_ext"; then
+    ac_cv_prog_GTKDOC_CHECK="gtkdoc-check.test"
+    printf "%s\n" "$as_me:${as_lineno-$LINENO}: found $as_dir$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+fi ;;
+esac
+fi
+GTKDOC_CHECK=$ac_cv_prog_GTKDOC_CHECK
+if test -n "$GTKDOC_CHECK"; then
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $GTKDOC_CHECK" >&5
+printf "%s\n" "$GTKDOC_CHECK" >&6; }
+else
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+fi
+
+
+  # Extract the first word of "gtkdoc-check", so it can be a program name with args.
+set dummy gtkdoc-check; ac_word=$2
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+printf %s "checking for $ac_word... " >&6; }
+if test ${ac_cv_path_GTKDOC_CHECK_PATH+y}
+then :
+  printf %s "(cached) " >&6
+else case e in #(
+  e) case $GTKDOC_CHECK_PATH in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_GTKDOC_CHECK_PATH="$GTKDOC_CHECK_PATH" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  case $as_dir in #(((
+    '') as_dir=./ ;;
+    */) ;;
+    *) as_dir=$as_dir/ ;;
+  esac
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir$ac_word$ac_exec_ext"; then
+    ac_cv_path_GTKDOC_CHECK_PATH="$as_dir$ac_word$ac_exec_ext"
+    printf "%s\n" "$as_me:${as_lineno-$LINENO}: found $as_dir$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+  ;;
+esac ;;
+esac
+fi
+GTKDOC_CHECK_PATH=$ac_cv_path_GTKDOC_CHECK_PATH
+if test -n "$GTKDOC_CHECK_PATH"; then
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $GTKDOC_CHECK_PATH" >&5
+printf "%s\n" "$GTKDOC_CHECK_PATH" >&6; }
+else
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+fi
+
+
+  for ac_prog in gtkdoc-rebase
+do
+  # Extract the first word of "$ac_prog", so it can be a program name with args.
+set dummy $ac_prog; ac_word=$2
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+printf %s "checking for $ac_word... " >&6; }
+if test ${ac_cv_path_GTKDOC_REBASE+y}
+then :
+  printf %s "(cached) " >&6
+else case e in #(
+  e) case $GTKDOC_REBASE in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_GTKDOC_REBASE="$GTKDOC_REBASE" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  case $as_dir in #(((
+    '') as_dir=./ ;;
+    */) ;;
+    *) as_dir=$as_dir/ ;;
+  esac
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir$ac_word$ac_exec_ext"; then
+    ac_cv_path_GTKDOC_REBASE="$as_dir$ac_word$ac_exec_ext"
+    printf "%s\n" "$as_me:${as_lineno-$LINENO}: found $as_dir$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+  ;;
+esac ;;
+esac
+fi
+GTKDOC_REBASE=$ac_cv_path_GTKDOC_REBASE
+if test -n "$GTKDOC_REBASE"; then
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $GTKDOC_REBASE" >&5
+printf "%s\n" "$GTKDOC_REBASE" >&6; }
+else
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+fi
+
+
+  test -n "$GTKDOC_REBASE" && break
+done
+test -n "$GTKDOC_REBASE" || GTKDOC_REBASE="true"
+
+  # Extract the first word of "gtkdoc-mkpdf", so it can be a program name with args.
+set dummy gtkdoc-mkpdf; ac_word=$2
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+printf %s "checking for $ac_word... " >&6; }
+if test ${ac_cv_path_GTKDOC_MKPDF+y}
+then :
+  printf %s "(cached) " >&6
+else case e in #(
+  e) case $GTKDOC_MKPDF in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_GTKDOC_MKPDF="$GTKDOC_MKPDF" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  case $as_dir in #(((
+    '') as_dir=./ ;;
+    */) ;;
+    *) as_dir=$as_dir/ ;;
+  esac
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir$ac_word$ac_exec_ext"; then
+    ac_cv_path_GTKDOC_MKPDF="$as_dir$ac_word$ac_exec_ext"
+    printf "%s\n" "$as_me:${as_lineno-$LINENO}: found $as_dir$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+  ;;
+esac ;;
+esac
+fi
+GTKDOC_MKPDF=$ac_cv_path_GTKDOC_MKPDF
+if test -n "$GTKDOC_MKPDF"; then
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $GTKDOC_MKPDF" >&5
+printf "%s\n" "$GTKDOC_MKPDF" >&6; }
+else
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+fi
+
+
+
+
+# Check whether --with-html-dir was given.
+if test ${with_html_dir+y}
+then :
+  withval=$with_html_dir;
+else case e in #(
+  e) with_html_dir='${datadir}/gtk-doc/html' ;;
+esac
+fi
+
+  HTML_DIR="$with_html_dir"
+
+
+    # Check whether --enable-gtk-doc was given.
+if test ${enable_gtk_doc+y}
+then :
+  enableval=$enable_gtk_doc;
+else case e in #(
+  e) enable_gtk_doc=no ;;
+esac
+fi
+
+
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking whether to build gtk-doc documentation" >&5
+printf %s "checking whether to build gtk-doc documentation... " >&6; }
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $enable_gtk_doc" >&5
+printf "%s\n" "$enable_gtk_doc" >&6; }
+
+  if test "x$enable_gtk_doc" = "xyes" && test "$have_gtk_doc" = "no"; then
+    as_fn_error $? "
+  You must have $gtk_doc_requires installed to build documentation for
+  $PACKAGE_NAME. Please install gtk-doc or disable building the
+  documentation by adding '--disable-gtk-doc' to '$0'." "$LINENO" 5
+  fi
+
+    if test "x$PACKAGE_NAME" != "xglib"; then
+
+pkg_failed=no
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for glib-2.0 >= 2.10.0 gobject-2.0  >= 2.10.0" >&5
+printf %s "checking for glib-2.0 >= 2.10.0 gobject-2.0  >= 2.10.0... " >&6; }
+
+if test -n "$GTKDOC_DEPS_CFLAGS"; then
+    pkg_cv_GTKDOC_DEPS_CFLAGS="$GTKDOC_DEPS_CFLAGS"
+ elif test -n "$PKG_CONFIG"; then
+    if test -n "$PKG_CONFIG" && \
+    { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"glib-2.0 >= 2.10.0 gobject-2.0  >= 2.10.0\""; } >&5
+  ($PKG_CONFIG --exists --print-errors "glib-2.0 >= 2.10.0 gobject-2.0  >= 2.10.0") 2>&5
+  ac_status=$?
+  printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+  test $ac_status = 0; }; then
+  pkg_cv_GTKDOC_DEPS_CFLAGS=`$PKG_CONFIG --cflags "glib-2.0 >= 2.10.0 gobject-2.0  >= 2.10.0" 2>/dev/null`
+		      test "x$?" != "x0" && pkg_failed=yes
+else
+  pkg_failed=yes
+fi
+ else
+    pkg_failed=untried
+fi
+if test -n "$GTKDOC_DEPS_LIBS"; then
+    pkg_cv_GTKDOC_DEPS_LIBS="$GTKDOC_DEPS_LIBS"
+ elif test -n "$PKG_CONFIG"; then
+    if test -n "$PKG_CONFIG" && \
+    { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"glib-2.0 >= 2.10.0 gobject-2.0  >= 2.10.0\""; } >&5
+  ($PKG_CONFIG --exists --print-errors "glib-2.0 >= 2.10.0 gobject-2.0  >= 2.10.0") 2>&5
+  ac_status=$?
+  printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+  test $ac_status = 0; }; then
+  pkg_cv_GTKDOC_DEPS_LIBS=`$PKG_CONFIG --libs "glib-2.0 >= 2.10.0 gobject-2.0  >= 2.10.0" 2>/dev/null`
+		      test "x$?" != "x0" && pkg_failed=yes
+else
+  pkg_failed=yes
+fi
+ else
+    pkg_failed=untried
+fi
+
+
+
+if test $pkg_failed = yes; then
+        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+
+if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
+        _pkg_short_errors_supported=yes
+else
+        _pkg_short_errors_supported=no
+fi
+        if test $_pkg_short_errors_supported = yes; then
+                GTKDOC_DEPS_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "glib-2.0 >= 2.10.0 gobject-2.0  >= 2.10.0" 2>&1`
+        else
+                GTKDOC_DEPS_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "glib-2.0 >= 2.10.0 gobject-2.0  >= 2.10.0" 2>&1`
+        fi
+        # Put the nasty error message in config.log where it belongs
+        echo "$GTKDOC_DEPS_PKG_ERRORS" >&5
+
+        :
+elif test $pkg_failed = untried; then
+        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+        :
+else
+        GTKDOC_DEPS_CFLAGS=$pkg_cv_GTKDOC_DEPS_CFLAGS
+        GTKDOC_DEPS_LIBS=$pkg_cv_GTKDOC_DEPS_LIBS
+        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+printf "%s\n" "yes" >&6; }
+
+fi
+  fi
+
+    # Check whether --enable-gtk-doc-html was given.
+if test ${enable_gtk_doc_html+y}
+then :
+  enableval=$enable_gtk_doc_html;
+else case e in #(
+  e) enable_gtk_doc_html=yes ;;
+esac
+fi
+
+    # Check whether --enable-gtk-doc-pdf was given.
+if test ${enable_gtk_doc_pdf+y}
+then :
+  enableval=$enable_gtk_doc_pdf;
+else case e in #(
+  e) enable_gtk_doc_pdf=no ;;
+esac
+fi
+
+
+  if test -z "$GTKDOC_MKPDF"; then
+    enable_gtk_doc_pdf=no
+  fi
+
+  if test -z "$AM_DEFAULT_VERBOSITY"; then
+    AM_DEFAULT_VERBOSITY=1
+  fi
+
+
+   if test x$have_gtk_doc = xyes; then
+  HAVE_GTK_DOC_TRUE=
+  HAVE_GTK_DOC_FALSE='#'
+else
+  HAVE_GTK_DOC_TRUE='#'
+  HAVE_GTK_DOC_FALSE=
+fi
+
+   if test x$enable_gtk_doc = xyes; then
+  ENABLE_GTK_DOC_TRUE=
+  ENABLE_GTK_DOC_FALSE='#'
+else
+  ENABLE_GTK_DOC_TRUE='#'
+  ENABLE_GTK_DOC_FALSE=
+fi
+
+   if test x$enable_gtk_doc_html = xyes; then
+  GTK_DOC_BUILD_HTML_TRUE=
+  GTK_DOC_BUILD_HTML_FALSE='#'
+else
+  GTK_DOC_BUILD_HTML_TRUE='#'
+  GTK_DOC_BUILD_HTML_FALSE=
+fi
+
+   if test x$enable_gtk_doc_pdf = xyes; then
+  GTK_DOC_BUILD_PDF_TRUE=
+  GTK_DOC_BUILD_PDF_FALSE='#'
+else
+  GTK_DOC_BUILD_PDF_TRUE='#'
+  GTK_DOC_BUILD_PDF_FALSE=
+fi
+
+   if test -n "$LIBTOOL"; then
+  GTK_DOC_USE_LIBTOOL_TRUE=
+  GTK_DOC_USE_LIBTOOL_FALSE='#'
+else
+  GTK_DOC_USE_LIBTOOL_TRUE='#'
+  GTK_DOC_USE_LIBTOOL_FALSE=
+fi
+
+   if test -n "$GTKDOC_REBASE"; then
+  GTK_DOC_USE_REBASE_TRUE=
+  GTK_DOC_USE_REBASE_FALSE='#'
+else
+  GTK_DOC_USE_REBASE_TRUE='#'
+  GTK_DOC_USE_REBASE_FALSE=
+fi
+
+
+
+# Extract the first word of "db2html", so it can be a program name with args.
+set dummy db2html; ac_word=$2
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+printf %s "checking for $ac_word... " >&6; }
+if test ${ac_cv_prog_DB2HTML+y}
+then :
+  printf %s "(cached) " >&6
+else case e in #(
+  e) if test -n "$DB2HTML"; then
+  ac_cv_prog_DB2HTML="$DB2HTML" # Let the user override the test.
+else
+as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  case $as_dir in #(((
+    '') as_dir=./ ;;
+    */) ;;
+    *) as_dir=$as_dir/ ;;
+  esac
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir$ac_word$ac_exec_ext"; then
+    ac_cv_prog_DB2HTML="true"
+    printf "%s\n" "$as_me:${as_lineno-$LINENO}: found $as_dir$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+  test -z "$ac_cv_prog_DB2HTML" && ac_cv_prog_DB2HTML="false"
+fi ;;
+esac
+fi
+DB2HTML=$ac_cv_prog_DB2HTML
+if test -n "$DB2HTML"; then
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $DB2HTML" >&5
+printf "%s\n" "$DB2HTML" >&6; }
+else
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+fi
+
+
+ if $DB2HTML; then
+  HAVE_DOCBOOK_TRUE=
+  HAVE_DOCBOOK_FALSE='#'
+else
+  HAVE_DOCBOOK_TRUE='#'
+  HAVE_DOCBOOK_FALSE=
+fi
+
+
+# Check whether --enable-man was given.
+if test ${enable_man+y}
+then :
+  enableval=$enable_man;
+else case e in #(
+  e) enable_man=no ;;
+esac
+fi
+
+
+if test "${enable_man}" != no; then
+        # Extract the first word of "xsltproc", so it can be a program name with args.
+set dummy xsltproc; ac_word=$2
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+printf %s "checking for $ac_word... " >&6; }
+if test ${ac_cv_path_XSLTPROC+y}
+then :
+  printf %s "(cached) " >&6
+else case e in #(
+  e) case $XSLTPROC in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_XSLTPROC="$XSLTPROC" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  case $as_dir in #(((
+    '') as_dir=./ ;;
+    */) ;;
+    *) as_dir=$as_dir/ ;;
+  esac
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir$ac_word$ac_exec_ext"; then
+    ac_cv_path_XSLTPROC="$as_dir$ac_word$ac_exec_ext"
+    printf "%s\n" "$as_me:${as_lineno-$LINENO}: found $as_dir$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+  ;;
+esac ;;
+esac
+fi
+XSLTPROC=$ac_cv_path_XSLTPROC
+if test -n "$XSLTPROC"; then
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $XSLTPROC" >&5
+printf "%s\n" "$XSLTPROC" >&6; }
+else
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+fi
+
+
+  if test -z "$XSLTPROC"; then
+    enable_man=no
+  fi
+
+
+  # check for the presence of the XML catalog
+
+# Check whether --with-xml-catalog was given.
+if test ${with_xml_catalog+y}
+then :
+  withval=$with_xml_catalog;
+else case e in #(
+  e) with_xml_catalog=/etc/xml/catalog ;;
+esac
+fi
+
+  jh_found_xmlcatalog=true
+  XML_CATALOG_FILE="$with_xml_catalog"
+
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for XML catalog ($XML_CATALOG_FILE)" >&5
+printf %s "checking for XML catalog ($XML_CATALOG_FILE)... " >&6; }
+  if test -f "$XML_CATALOG_FILE"; then
+    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: found" >&5
+printf "%s\n" "found" >&6; }
+  else
+    jh_found_xmlcatalog=false
+    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: not found" >&5
+printf "%s\n" "not found" >&6; }
+  fi
+
+  # check for the xmlcatalog program
+  # Extract the first word of "xmlcatalog", so it can be a program name with args.
+set dummy xmlcatalog; ac_word=$2
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+printf %s "checking for $ac_word... " >&6; }
+if test ${ac_cv_path_XMLCATALOG+y}
+then :
+  printf %s "(cached) " >&6
+else case e in #(
+  e) case $XMLCATALOG in
+  [\\/]* | ?:[\\/]*)
+  ac_cv_path_XMLCATALOG="$XMLCATALOG" # Let the user override the test with a path.
+  ;;
+  *)
+  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+for as_dir in $PATH
+do
+  IFS=$as_save_IFS
+  case $as_dir in #(((
+    '') as_dir=./ ;;
+    */) ;;
+    *) as_dir=$as_dir/ ;;
+  esac
+    for ac_exec_ext in '' $ac_executable_extensions; do
+  if as_fn_executable_p "$as_dir$ac_word$ac_exec_ext"; then
+    ac_cv_path_XMLCATALOG="$as_dir$ac_word$ac_exec_ext"
+    printf "%s\n" "$as_me:${as_lineno-$LINENO}: found $as_dir$ac_word$ac_exec_ext" >&5
+    break 2
+  fi
+done
+  done
+IFS=$as_save_IFS
+
+  test -z "$ac_cv_path_XMLCATALOG" && ac_cv_path_XMLCATALOG="no"
+  ;;
+esac ;;
+esac
+fi
+XMLCATALOG=$ac_cv_path_XMLCATALOG
+if test -n "$XMLCATALOG"; then
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $XMLCATALOG" >&5
+printf "%s\n" "$XMLCATALOG" >&6; }
+else
+  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: no" >&5
+printf "%s\n" "no" >&6; }
+fi
+
+
+  if test "x$XMLCATALOG" = xno; then
+    jh_found_xmlcatalog=false
+  fi
+
+  if $jh_found_xmlcatalog; then
+    :
+  else
+    :
+  fi
+
+
+    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for DocBook XML DTD V4.1.2 in XML catalog" >&5
+printf %s "checking for DocBook XML DTD V4.1.2 in XML catalog... " >&6; }
+  if $jh_found_xmlcatalog && \
+     { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$XMLCATALOG --noout \"\$XML_CATALOG_FILE\" \"-//OASIS//DTD DocBook XML V4.1.2//EN\" >&2"; } >&5
+  ($XMLCATALOG --noout "$XML_CATALOG_FILE" "-//OASIS//DTD DocBook XML V4.1.2//EN" >&2) 2>&5
+  ac_status=$?
+  printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+  test $ac_status = 0; }; then
+    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: found" >&5
+printf "%s\n" "found" >&6; }
+      else
+    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: not found" >&5
+printf "%s\n" "not found" >&6; }
+    enable_man=no
+  fi
+
+
+    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for DocBook XSL Stylesheets in XML catalog" >&5
+printf %s "checking for DocBook XSL Stylesheets in XML catalog... " >&6; }
+  if $jh_found_xmlcatalog && \
+     { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$XMLCATALOG --noout \"\$XML_CATALOG_FILE\" \"http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl\" >&2"; } >&5
+  ($XMLCATALOG --noout "$XML_CATALOG_FILE" "http://docbook.sourceforge.net/release/xsl/current/manpages/docbook.xsl" >&2) 2>&5
+  ac_status=$?
+  printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+  test $ac_status = 0; }; then
+    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: found" >&5
+printf "%s\n" "found" >&6; }
+      else
+    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: not found" >&5
+printf "%s\n" "not found" >&6; }
+    enable_man=no
+  fi
+
+fi
+
+ if test x$enable_man != xno; then
+  ENABLE_MAN_TRUE=
+  ENABLE_MAN_FALSE='#'
+else
+  ENABLE_MAN_TRUE='#'
+  ENABLE_MAN_FALSE=
+fi
+
+
 ##################################################
 # Check whether MSVC toolset is explicitly set
 ##################################################
@@ -27260,7 +27933,7 @@ fi
 ac_config_commands="$ac_config_commands gdk/gdkconfig.h"
 
 
-ac_config_files="$ac_config_files config.h.win32 gtk-zip.sh Makefile gdk-2.0.pc gtk+-2.0.pc gtk+-unix-print-2.0.pc gail.pc gdk-2.0-uninstalled.pc gtk+-2.0-uninstalled.pc gail-uninstalled.pc m4macros/Makefile demos/Makefile demos/gtk-demo/Makefile demos/gtk-demo/geninclude.pl tests/Makefile build/Makefile build/win32/Makefile build/win32/vs9/Makefile build/win32/vs9/gtk-version-paths.vsprops build/win32/vs10/Makefile build/win32/vs10/gtk-version-paths.props build/win32/vs11/Makefile build/win32/vs12/Makefile build/win32/vs14/Makefile build/win32/vs15/Makefile build/win32/vs16/Makefile gdk/Makefile gdk/x11/Makefile gdk/win32/Makefile gdk/win32/rc/Makefile gdk/win32/rc/gdk.rc gdk/quartz/Makefile gdk/directfb/Makefile gdk/tests/Makefile gtk/Makefile gtk/makefile.msc gtk/gtkversion.h gtk/gtk-win32.rc gtk/theme-bits/Makefile gtk/tests/Makefile modules/Makefile modules/other/Makefile modules/other/gail/Makefile modules/other/gail/libgail-util/Makefile modules/other/gail/tests/Makefile modules/engines/Makefile modules/engines/pixbuf/Makefile modules/engines/ms-windows/Makefile modules/engines/ms-windows/Theme/Makefile modules/engines/ms-windows/Theme/gtk-2.0/Makefile modules/input/Makefile modules/printbackends/Makefile modules/printbackends/cups/Makefile modules/printbackends/lpr/Makefile modules/printbackends/file/Makefile modules/printbackends/papi/Makefile modules/printbackends/test/Makefile perf/Makefile"
+ac_config_files="$ac_config_files config.h.win32 gtk-zip.sh Makefile gdk-2.0.pc gtk+-2.0.pc gtk+-unix-print-2.0.pc gail.pc gdk-2.0-uninstalled.pc gtk+-2.0-uninstalled.pc gail-uninstalled.pc m4macros/Makefile demos/Makefile demos/gtk-demo/Makefile demos/gtk-demo/geninclude.pl tests/Makefile docs/Makefile docs/reference/Makefile docs/reference/gdk/Makefile docs/reference/gdk/version.xml docs/reference/gtk/Makefile docs/reference/gtk/version.xml docs/reference/libgail-util/Makefile docs/faq/Makefile docs/tools/Makefile docs/tutorial/Makefile build/Makefile build/win32/Makefile build/win32/vs9/Makefile build/win32/vs9/gtk-version-paths.vsprops build/win32/vs10/Makefile build/win32/vs10/gtk-version-paths.props build/win32/vs11/Makefile build/win32/vs12/Makefile build/win32/vs14/Makefile build/win32/vs15/Makefile build/win32/vs16/Makefile gdk/Makefile gdk/x11/Makefile gdk/win32/Makefile gdk/win32/rc/Makefile gdk/win32/rc/gdk.rc gdk/quartz/Makefile gdk/directfb/Makefile gdk/tests/Makefile gtk/Makefile gtk/makefile.msc gtk/gtkversion.h gtk/gtk-win32.rc gtk/theme-bits/Makefile gtk/tests/Makefile modules/Makefile modules/other/Makefile modules/other/gail/Makefile modules/other/gail/libgail-util/Makefile modules/other/gail/tests/Makefile modules/engines/Makefile modules/engines/pixbuf/Makefile modules/engines/ms-windows/Makefile modules/engines/ms-windows/Theme/Makefile modules/engines/ms-windows/Theme/gtk-2.0/Makefile modules/input/Makefile modules/printbackends/Makefile modules/printbackends/cups/Makefile modules/printbackends/lpr/Makefile modules/printbackends/file/Makefile modules/printbackends/papi/Makefile modules/printbackends/test/Makefile perf/Makefile"
 
 
 cat >confcache <<\_ACEOF
@@ -27606,6 +28279,33 @@ if test -z "${HAVE_INTROSPECTION_TRUE}" && test -z "${HAVE_INTROSPECTION_FALSE}"
   as_fn_error $? "conditional \"HAVE_INTROSPECTION\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
+if test -z "${HAVE_GTK_DOC_TRUE}" && test -z "${HAVE_GTK_DOC_FALSE}"; then
+  as_fn_error $? "conditional \"HAVE_GTK_DOC\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
+if test -z "${ENABLE_GTK_DOC_TRUE}" && test -z "${ENABLE_GTK_DOC_FALSE}"; then
+  as_fn_error $? "conditional \"ENABLE_GTK_DOC\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
+if test -z "${GTK_DOC_BUILD_HTML_TRUE}" && test -z "${GTK_DOC_BUILD_HTML_FALSE}"; then
+  as_fn_error $? "conditional \"GTK_DOC_BUILD_HTML\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
+if test -z "${GTK_DOC_BUILD_PDF_TRUE}" && test -z "${GTK_DOC_BUILD_PDF_FALSE}"; then
+  as_fn_error $? "conditional \"GTK_DOC_BUILD_PDF\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
+if test -z "${GTK_DOC_USE_LIBTOOL_TRUE}" && test -z "${GTK_DOC_USE_LIBTOOL_FALSE}"; then
+  as_fn_error $? "conditional \"GTK_DOC_USE_LIBTOOL\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
+if test -z "${GTK_DOC_USE_REBASE_TRUE}" && test -z "${GTK_DOC_USE_REBASE_FALSE}"; then
+  as_fn_error $? "conditional \"GTK_DOC_USE_REBASE\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
+if test -z "${HAVE_DOCBOOK_TRUE}" && test -z "${HAVE_DOCBOOK_FALSE}"; then
+  as_fn_error $? "conditional \"HAVE_DOCBOOK\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${ENABLE_MAN_TRUE}" && test -z "${ENABLE_MAN_FALSE}"; then
   as_fn_error $? "conditional \"ENABLE_MAN\" was never defined.
@@ -28652,6 +29352,16 @@ do
     "demos/gtk-demo/Makefile") CONFIG_FILES="$CONFIG_FILES demos/gtk-demo/Makefile" ;;
     "demos/gtk-demo/geninclude.pl") CONFIG_FILES="$CONFIG_FILES demos/gtk-demo/geninclude.pl" ;;
     "tests/Makefile") CONFIG_FILES="$CONFIG_FILES tests/Makefile" ;;
+    "docs/Makefile") CONFIG_FILES="$CONFIG_FILES docs/Makefile" ;;
+    "docs/reference/Makefile") CONFIG_FILES="$CONFIG_FILES docs/reference/Makefile" ;;
+    "docs/reference/gdk/Makefile") CONFIG_FILES="$CONFIG_FILES docs/reference/gdk/Makefile" ;;
+    "docs/reference/gdk/version.xml") CONFIG_FILES="$CONFIG_FILES docs/reference/gdk/version.xml" ;;
+    "docs/reference/gtk/Makefile") CONFIG_FILES="$CONFIG_FILES docs/reference/gtk/Makefile" ;;
+    "docs/reference/gtk/version.xml") CONFIG_FILES="$CONFIG_FILES docs/reference/gtk/version.xml" ;;
+    "docs/reference/libgail-util/Makefile") CONFIG_FILES="$CONFIG_FILES docs/reference/libgail-util/Makefile" ;;
+    "docs/faq/Makefile") CONFIG_FILES="$CONFIG_FILES docs/faq/Makefile" ;;
+    "docs/tools/Makefile") CONFIG_FILES="$CONFIG_FILES docs/tools/Makefile" ;;
+    "docs/tutorial/Makefile") CONFIG_FILES="$CONFIG_FILES docs/tutorial/Makefile" ;;
     "build/Makefile") CONFIG_FILES="$CONFIG_FILES build/Makefile" ;;
     "build/win32/Makefile") CONFIG_FILES="$CONFIG_FILES build/win32/Makefile" ;;
     "build/win32/vs9/Makefile") CONFIG_FILES="$CONFIG_FILES build/win32/vs9/Makefile" ;;
