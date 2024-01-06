@@ -1,0 +1,548 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Signals: GTK+ 2 Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets Vsnapshot">
+<link rel="home" href="index.html" title="GTK+ 2 Reference Manual">
+<link rel="up" href="gtkbase.html" title="Part II. GTK+ Core Reference">
+<link rel="prev" href="gtk2-Feature-Test-Macros.html" title="Feature Test Macros">
+<link rel="next" href="gtk2-Types.html" title="Types">
+<meta name="generator" content="GTK-Doc V1.33.0 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#gtk2-Signals.description" class="shortcut">Description</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="gtkbase.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="gtk2-Feature-Test-Macros.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="gtk2-Types.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="gtk2-Signals"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="gtk2-Signals.top_of_page"></a>Signals</span></h2>
+<p>Signals</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="gtk2-Signals.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_proto_type">
+<col class="functions_proto_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<span class="returnvalue">guint</span>
+</td>
+<td class="function_name">
+<a class="link" href="gtk2-Signals.html#gtk-signal-new" title="gtk_signal_new ()">gtk_signal_new</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">guint</span>
+</td>
+<td class="function_name">
+<a class="link" href="gtk2-Signals.html#gtk-signal-newv" title="gtk_signal_newv ()">gtk_signal_newv</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name">
+<a class="link" href="gtk2-Signals.html#gtk-signal-lookup" title="gtk_signal_lookup()">gtk_signal_lookup</a><span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name">
+<a class="link" href="gtk2-Signals.html#gtk-signal-name" title="gtk_signal_name()">gtk_signal_name</a><span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gtk2-Signals.html#gtk-signal-emit" title="gtk_signal_emit ()">gtk_signal_emit</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gtk2-Signals.html#gtk-signal-emit-by-name" title="gtk_signal_emit_by_name ()">gtk_signal_emit_by_name</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gtk2-Signals.html#gtk-signal-emitv" title="gtk_signal_emitv ()">gtk_signal_emitv</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gtk2-Signals.html#gtk-signal-emitv-by-name" title="gtk_signal_emitv_by_name ()">gtk_signal_emitv_by_name</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name">
+<a class="link" href="gtk2-Signals.html#gtk-signal-emit-stop" title="gtk_signal_emit_stop()">gtk_signal_emit_stop</a><span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gtk2-Signals.html#gtk-signal-emit-stop-by-name" title="gtk_signal_emit_stop_by_name ()">gtk_signal_emit_stop_by_name</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name">
+<a class="link" href="gtk2-Signals.html#gtk-signal-connect" title="gtk_signal_connect()">gtk_signal_connect</a><span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name">
+<a class="link" href="gtk2-Signals.html#gtk-signal-connect-after" title="gtk_signal_connect_after()">gtk_signal_connect_after</a><span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name">
+<a class="link" href="gtk2-Signals.html#gtk-signal-connect-object" title="gtk_signal_connect_object()">gtk_signal_connect_object</a><span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name">
+<a class="link" href="gtk2-Signals.html#gtk-signal-connect-object-after" title="gtk_signal_connect_object_after()">gtk_signal_connect_object_after</a><span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gulong</span>
+</td>
+<td class="function_name">
+<a class="link" href="gtk2-Signals.html#gtk-signal-connect-full" title="gtk_signal_connect_full ()">gtk_signal_connect_full</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gtk2-Signals.html#gtk-signal-connect-while-alive" title="gtk_signal_connect_while_alive ()">gtk_signal_connect_while_alive</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gtk2-Signals.html#gtk-signal-connect-object-while-alive" title="gtk_signal_connect_object_while_alive ()">gtk_signal_connect_object_while_alive</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name">
+<a class="link" href="gtk2-Signals.html#gtk-signal-disconnect" title="gtk_signal_disconnect()">gtk_signal_disconnect</a><span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name">
+<a class="link" href="gtk2-Signals.html#gtk-signal-disconnect-by-func" title="gtk_signal_disconnect_by_func()">gtk_signal_disconnect_by_func</a><span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name">
+<a class="link" href="gtk2-Signals.html#gtk-signal-disconnect-by-data" title="gtk_signal_disconnect_by_data()">gtk_signal_disconnect_by_data</a><span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name">
+<a class="link" href="gtk2-Signals.html#gtk-signal-handler-block" title="gtk_signal_handler_block()">gtk_signal_handler_block</a><span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name">
+<a class="link" href="gtk2-Signals.html#gtk-signal-handler-block-by-func" title="gtk_signal_handler_block_by_func()">gtk_signal_handler_block_by_func</a><span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name">
+<a class="link" href="gtk2-Signals.html#gtk-signal-handler-block-by-data" title="gtk_signal_handler_block_by_data()">gtk_signal_handler_block_by_data</a><span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name">
+<a class="link" href="gtk2-Signals.html#gtk-signal-handler-unblock" title="gtk_signal_handler_unblock()">gtk_signal_handler_unblock</a><span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name">
+<a class="link" href="gtk2-Signals.html#gtk-signal-handler-unblock-by-func" title="gtk_signal_handler_unblock_by_func()">gtk_signal_handler_unblock_by_func</a><span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name">
+<a class="link" href="gtk2-Signals.html#gtk-signal-handler-unblock-by-data" title="gtk_signal_handler_unblock_by_data()">gtk_signal_handler_unblock_by_data</a><span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name">
+<a class="link" href="gtk2-Signals.html#gtk-signal-handler-pending" title="gtk_signal_handler_pending()">gtk_signal_handler_pending</a><span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name">
+<a class="link" href="gtk2-Signals.html#gtk-signal-handler-pending-by-func" title="gtk_signal_handler_pending_by_func()">gtk_signal_handler_pending_by_func</a><span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="gtk2-Signals.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="other_proto_type">
+<col class="other_proto_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="gtk2-Signals.html#GTK-SIGNAL-OFFSET:CAPS" title="GTK_SIGNAL_OFFSET">GTK_SIGNAL_OFFSET</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">enum</td>
+<td class="function_name"><a class="link" href="gtk2-Signals.html#GtkSignalRunType" title="enum GtkSignalRunType">GtkSignalRunType</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="gtk2-Signals.html#gtk-signal-default-marshaller" title="gtk_signal_default_marshaller">gtk_signal_default_marshaller</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="gtk2-Signals.includes"></a><h2>Includes</h2>
+<pre class="synopsis">#include &lt;gtk/gtk.h&gt;
+</pre>
+</div>
+<div class="refsect1">
+<a name="gtk2-Signals.description"></a><h2>Description</h2>
+</div>
+<div class="refsect1">
+<a name="gtk2-Signals.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="gtk-signal-new"></a><h3>gtk_signal_new ()</h3>
+<pre class="programlisting"><span class="returnvalue">guint</span>
+gtk_signal_new (<em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>,
+                <em class="parameter"><code><a class="link" href="gtk2-Signals.html#GtkSignalRunType" title="enum GtkSignalRunType"><span class="type">GtkSignalRunType</span></a> signal_flags</code></em>,
+                <em class="parameter"><code><span class="type">GType</span> object_type</code></em>,
+                <em class="parameter"><code><span class="type">guint</span> function_offset</code></em>,
+                <em class="parameter"><code><span class="type">GSignalCMarshaller</span> marshaller</code></em>,
+                <em class="parameter"><code><span class="type">GType</span> return_val</code></em>,
+                <em class="parameter"><code><span class="type">guint</span> n_args</code></em>,
+                <em class="parameter"><code>...</code></em>);</pre>
+<div class="warning"><p><code class="literal">gtk_signal_new</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-signal-newv"></a><h3>gtk_signal_newv ()</h3>
+<pre class="programlisting"><span class="returnvalue">guint</span>
+gtk_signal_newv (<em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>,
+                 <em class="parameter"><code><a class="link" href="gtk2-Signals.html#GtkSignalRunType" title="enum GtkSignalRunType"><span class="type">GtkSignalRunType</span></a> signal_flags</code></em>,
+                 <em class="parameter"><code><span class="type">GType</span> object_type</code></em>,
+                 <em class="parameter"><code><span class="type">guint</span> function_offset</code></em>,
+                 <em class="parameter"><code><span class="type">GSignalCMarshaller</span> marshaller</code></em>,
+                 <em class="parameter"><code><span class="type">GType</span> return_val</code></em>,
+                 <em class="parameter"><code><span class="type">guint</span> n_args</code></em>,
+                 <em class="parameter"><code><span class="type">GType</span> *args</code></em>);</pre>
+<div class="warning"><p><code class="literal">gtk_signal_newv</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-signal-lookup"></a><h3>gtk_signal_lookup()</h3>
+<pre class="programlisting">#define             gtk_signal_lookup(name,object_type)</pre>
+<div class="warning"><p><code class="literal">gtk_signal_lookup</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-signal-name"></a><h3>gtk_signal_name()</h3>
+<pre class="programlisting">#define             gtk_signal_name(signal_id)</pre>
+<div class="warning"><p><code class="literal">gtk_signal_name</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-signal-emit"></a><h3>gtk_signal_emit ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_signal_emit (<em class="parameter"><code><a class="link" href="GtkObject.html" title="GtkObject"><span class="type">GtkObject</span></a> *object</code></em>,
+                 <em class="parameter"><code><span class="type">guint</span> signal_id</code></em>,
+                 <em class="parameter"><code>...</code></em>);</pre>
+<div class="warning"><p><code class="literal">gtk_signal_emit</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-signal-emit-by-name"></a><h3>gtk_signal_emit_by_name ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_signal_emit_by_name (<em class="parameter"><code><a class="link" href="GtkObject.html" title="GtkObject"><span class="type">GtkObject</span></a> *object</code></em>,
+                         <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>,
+                         <em class="parameter"><code>...</code></em>);</pre>
+<div class="warning"><p><code class="literal">gtk_signal_emit_by_name</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-signal-emitv"></a><h3>gtk_signal_emitv ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_signal_emitv (<em class="parameter"><code><a class="link" href="GtkObject.html" title="GtkObject"><span class="type">GtkObject</span></a> *object</code></em>,
+                  <em class="parameter"><code><span class="type">guint</span> signal_id</code></em>,
+                  <em class="parameter"><code><a class="link" href="gtk2-Types.html#GtkArg" title="struct GtkArg"><span class="type">GtkArg</span></a> *args</code></em>);</pre>
+<div class="warning"><p><code class="literal">gtk_signal_emitv</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-signal-emitv-by-name"></a><h3>gtk_signal_emitv_by_name ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_signal_emitv_by_name (<em class="parameter"><code><a class="link" href="GtkObject.html" title="GtkObject"><span class="type">GtkObject</span></a> *object</code></em>,
+                          <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>,
+                          <em class="parameter"><code><a class="link" href="gtk2-Types.html#GtkArg" title="struct GtkArg"><span class="type">GtkArg</span></a> *args</code></em>);</pre>
+<div class="warning"><p><code class="literal">gtk_signal_emitv_by_name</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-signal-emit-stop"></a><h3>gtk_signal_emit_stop()</h3>
+<pre class="programlisting">#define             gtk_signal_emit_stop(object,signal_id)</pre>
+<div class="warning"><p><code class="literal">gtk_signal_emit_stop</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-signal-emit-stop-by-name"></a><h3>gtk_signal_emit_stop_by_name ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_signal_emit_stop_by_name (<em class="parameter"><code><a class="link" href="GtkObject.html" title="GtkObject"><span class="type">GtkObject</span></a> *object</code></em>,
+                              <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>);</pre>
+<div class="warning"><p><code class="literal">gtk_signal_emit_stop_by_name</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-signal-connect"></a><h3>gtk_signal_connect()</h3>
+<pre class="programlisting">#define             gtk_signal_connect(object,name,func,func_data)</pre>
+<div class="warning"><p><code class="literal">gtk_signal_connect</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-signal-connect-after"></a><h3>gtk_signal_connect_after()</h3>
+<pre class="programlisting">#define             gtk_signal_connect_after(object,name,func,func_data)</pre>
+<div class="warning"><p><code class="literal">gtk_signal_connect_after</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-signal-connect-object"></a><h3>gtk_signal_connect_object()</h3>
+<pre class="programlisting">#define             gtk_signal_connect_object(object,name,func,slot_object)</pre>
+<div class="warning"><p><code class="literal">gtk_signal_connect_object</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-signal-connect-object-after"></a><h3>gtk_signal_connect_object_after()</h3>
+<pre class="programlisting">#define             gtk_signal_connect_object_after(object,name,func,slot_object)</pre>
+<div class="warning"><p><code class="literal">gtk_signal_connect_object_after</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-signal-connect-full"></a><h3>gtk_signal_connect_full ()</h3>
+<pre class="programlisting"><span class="returnvalue">gulong</span>
+gtk_signal_connect_full (<em class="parameter"><code><a class="link" href="GtkObject.html" title="GtkObject"><span class="type">GtkObject</span></a> *object</code></em>,
+                         <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>,
+                         <em class="parameter"><code><span class="type">GCallback</span> func</code></em>,
+                         <em class="parameter"><code><a class="link" href="gtk2-Types.html#GtkCallbackMarshal" title="GtkCallbackMarshal ()"><span class="type">GtkCallbackMarshal</span></a> unsupported</code></em>,
+                         <em class="parameter"><code><span class="type">gpointer</span> data</code></em>,
+                         <em class="parameter"><code><span class="type">GDestroyNotify</span> destroy_func</code></em>,
+                         <em class="parameter"><code><span class="type">gint</span> object_signal</code></em>,
+                         <em class="parameter"><code><span class="type">gint</span> after</code></em>);</pre>
+<div class="warning"><p><code class="literal">gtk_signal_connect_full</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-signal-connect-while-alive"></a><h3>gtk_signal_connect_while_alive ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_signal_connect_while_alive (<em class="parameter"><code><a class="link" href="GtkObject.html" title="GtkObject"><span class="type">GtkObject</span></a> *object</code></em>,
+                                <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>,
+                                <em class="parameter"><code><span class="type">GCallback</span> func</code></em>,
+                                <em class="parameter"><code><span class="type">gpointer</span> func_data</code></em>,
+                                <em class="parameter"><code><a class="link" href="GtkObject.html" title="GtkObject"><span class="type">GtkObject</span></a> *alive_object</code></em>);</pre>
+<div class="warning"><p><code class="literal">gtk_signal_connect_while_alive</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-signal-connect-object-while-alive"></a><h3>gtk_signal_connect_object_while_alive ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_signal_connect_object_while_alive (<em class="parameter"><code><a class="link" href="GtkObject.html" title="GtkObject"><span class="type">GtkObject</span></a> *object</code></em>,
+                                       <em class="parameter"><code>const <span class="type">gchar</span> *name</code></em>,
+                                       <em class="parameter"><code><span class="type">GCallback</span> func</code></em>,
+                                       <em class="parameter"><code><a class="link" href="GtkObject.html" title="GtkObject"><span class="type">GtkObject</span></a> *alive_object</code></em>);</pre>
+<div class="warning"><p><code class="literal">gtk_signal_connect_object_while_alive</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-signal-disconnect"></a><h3>gtk_signal_disconnect()</h3>
+<pre class="programlisting">#define             gtk_signal_disconnect(object,handler_id)</pre>
+<div class="warning"><p><code class="literal">gtk_signal_disconnect</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-signal-disconnect-by-func"></a><h3>gtk_signal_disconnect_by_func()</h3>
+<pre class="programlisting">#define             gtk_signal_disconnect_by_func(object,func,data)</pre>
+<div class="warning"><p><code class="literal">gtk_signal_disconnect_by_func</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-signal-disconnect-by-data"></a><h3>gtk_signal_disconnect_by_data()</h3>
+<pre class="programlisting">#define             gtk_signal_disconnect_by_data(object,data)</pre>
+<div class="warning"><p><code class="literal">gtk_signal_disconnect_by_data</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-signal-handler-block"></a><h3>gtk_signal_handler_block()</h3>
+<pre class="programlisting">#define             gtk_signal_handler_block(object,handler_id)</pre>
+<div class="warning"><p><code class="literal">gtk_signal_handler_block</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-signal-handler-block-by-func"></a><h3>gtk_signal_handler_block_by_func()</h3>
+<pre class="programlisting">#define             gtk_signal_handler_block_by_func(object,func,data)</pre>
+<div class="warning"><p><code class="literal">gtk_signal_handler_block_by_func</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-signal-handler-block-by-data"></a><h3>gtk_signal_handler_block_by_data()</h3>
+<pre class="programlisting">#define             gtk_signal_handler_block_by_data(object,data)</pre>
+<div class="warning"><p><code class="literal">gtk_signal_handler_block_by_data</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-signal-handler-unblock"></a><h3>gtk_signal_handler_unblock()</h3>
+<pre class="programlisting">#define             gtk_signal_handler_unblock(object,handler_id)</pre>
+<div class="warning"><p><code class="literal">gtk_signal_handler_unblock</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-signal-handler-unblock-by-func"></a><h3>gtk_signal_handler_unblock_by_func()</h3>
+<pre class="programlisting">#define             gtk_signal_handler_unblock_by_func(object,func,data)</pre>
+<div class="warning"><p><code class="literal">gtk_signal_handler_unblock_by_func</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-signal-handler-unblock-by-data"></a><h3>gtk_signal_handler_unblock_by_data()</h3>
+<pre class="programlisting">#define             gtk_signal_handler_unblock_by_data(object,data)</pre>
+<div class="warning"><p><code class="literal">gtk_signal_handler_unblock_by_data</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-signal-handler-pending"></a><h3>gtk_signal_handler_pending()</h3>
+<pre class="programlisting">#define             gtk_signal_handler_pending(object,signal_id,may_be_blocked)</pre>
+<div class="warning"><p><code class="literal">gtk_signal_handler_pending</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-signal-handler-pending-by-func"></a><h3>gtk_signal_handler_pending_by_func()</h3>
+<pre class="programlisting">#define             gtk_signal_handler_pending_by_func(object,signal_id,may_be_blocked,func,data)</pre>
+<div class="warning"><p><code class="literal">gtk_signal_handler_pending_by_func</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+</div>
+<div class="refsect1">
+<a name="gtk2-Signals.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="GTK-SIGNAL-OFFSET:CAPS"></a><h3>GTK_SIGNAL_OFFSET</h3>
+<pre class="programlisting">#define GTK_SIGNAL_OFFSET	                      G_STRUCT_OFFSET
+</pre>
+<div class="warning"><p><code class="literal">GTK_SIGNAL_OFFSET</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GtkSignalRunType"></a><h3>enum GtkSignalRunType</h3>
+<div class="warning"><p><code class="literal">GtkSignalRunType</code> is deprecated and should not be used in newly-written code.</p></div>
+<div class="refsect3">
+<a name="GtkSignalRunType.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="enum_members_name">
+<col class="enum_members_description">
+<col width="200px" class="enum_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RUN-FIRST:CAPS"></a>GTK_RUN_FIRST</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RUN-LAST:CAPS"></a>GTK_RUN_LAST</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RUN-BOTH:CAPS"></a>GTK_RUN_BOTH</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RUN-NO-RECURSE:CAPS"></a>GTK_RUN_NO_RECURSE</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RUN-ACTION:CAPS"></a>GTK_RUN_ACTION</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RUN-NO-HOOKS:CAPS"></a>GTK_RUN_NO_HOOKS</p></td>
+<td> </td>
+<td> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-signal-default-marshaller"></a><h3>gtk_signal_default_marshaller</h3>
+<pre class="programlisting">#define gtk_signal_default_marshaller g_cclosure_marshal_VOID__VOID
+</pre>
+<div class="warning"><p><code class="literal">gtk_signal_default_marshaller</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.33.0</div>
+</body>
+</html>

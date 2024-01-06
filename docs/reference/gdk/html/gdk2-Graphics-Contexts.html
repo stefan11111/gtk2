@@ -1,0 +1,1898 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Graphics Contexts: GDK 2 Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets Vsnapshot">
+<link rel="home" href="index.html" title="GDK 2 Reference Manual">
+<link rel="up" href="reference.html" title="API Reference">
+<link rel="prev" href="gdk2-Points-Rectangles-and-Regions.html" title="Points, Rectangles and Regions">
+<link rel="next" href="gdk2-Drawing-Primitives.html" title="Drawing Primitives">
+<meta name="generator" content="GTK-Doc V1.33.0 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#gdk2-Graphics-Contexts.description" class="shortcut">Description</a></span><span id="nav_hierarchy">  <span class="dim">|</span> 
+                  <a href="#gdk2-Graphics-Contexts.object-hierarchy" class="shortcut">Object Hierarchy</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="reference.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="gdk2-Points-Rectangles-and-Regions.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="gdk2-Drawing-Primitives.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="gdk2-Graphics-Contexts"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="gdk2-Graphics-Contexts.top_of_page"></a>Graphics Contexts</span></h2>
+<p>Graphics Contexts</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="gdk2-Graphics-Contexts.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_proto_type">
+<col class="functions_proto_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="returnvalue">GdkGC</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-new" title="gdk_gc_new ()">gdk_gc_new</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="returnvalue">GdkGC</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-new-with-values" title="gdk_gc_new_with_values ()">gdk_gc_new_with_values</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GdkScreen.html" title="GdkScreen"><span class="returnvalue">GdkScreen</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-get-screen" title="gdk_gc_get_screen ()">gdk_gc_get_screen</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="returnvalue">GdkGC</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-ref" title="gdk_gc_ref ()">gdk_gc_ref</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-unref" title="gdk_gc_unref ()">gdk_gc_unref</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-set-values" title="gdk_gc_set_values ()">gdk_gc_set_values</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-get-values" title="gdk_gc_get_values ()">gdk_gc_get_values</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-set-foreground" title="gdk_gc_set_foreground ()">gdk_gc_set_foreground</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-set-background" title="gdk_gc_set_background ()">gdk_gc_set_background</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-set-rgb-fg-color" title="gdk_gc_set_rgb_fg_color ()">gdk_gc_set_rgb_fg_color</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-set-rgb-bg-color" title="gdk_gc_set_rgb_bg_color ()">gdk_gc_set_rgb_bg_color</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-set-font" title="gdk_gc_set_font ()">gdk_gc_set_font</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-set-function" title="gdk_gc_set_function ()">gdk_gc_set_function</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-set-fill" title="gdk_gc_set_fill ()">gdk_gc_set_fill</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-set-tile" title="gdk_gc_set_tile ()">gdk_gc_set_tile</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-set-stipple" title="gdk_gc_set_stipple ()">gdk_gc_set_stipple</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-set-ts-origin" title="gdk_gc_set_ts_origin ()">gdk_gc_set_ts_origin</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-set-clip-origin" title="gdk_gc_set_clip_origin ()">gdk_gc_set_clip_origin</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-set-clip-mask" title="gdk_gc_set_clip_mask ()">gdk_gc_set_clip_mask</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-set-clip-rectangle" title="gdk_gc_set_clip_rectangle ()">gdk_gc_set_clip_rectangle</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-set-clip-region" title="gdk_gc_set_clip_region ()">gdk_gc_set_clip_region</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-set-subwindow" title="gdk_gc_set_subwindow ()">gdk_gc_set_subwindow</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-set-exposures" title="gdk_gc_set_exposures ()">gdk_gc_set_exposures</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-set-line-attributes" title="gdk_gc_set_line_attributes ()">gdk_gc_set_line_attributes</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-set-dashes" title="gdk_gc_set_dashes ()">gdk_gc_set_dashes</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-copy" title="gdk_gc_copy ()">gdk_gc_copy</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-set-colormap" title="gdk_gc_set_colormap ()">gdk_gc_set_colormap</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="returnvalue">GdkColormap</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-get-colormap" title="gdk_gc_get_colormap ()">gdk_gc_get_colormap</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-offset" title="gdk_gc_offset ()">gdk_gc_offset</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<a name="GdkGC"></a><div class="refsect1">
+<a name="gdk2-Graphics-Contexts.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="other_proto_type">
+<col class="other_proto_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="datatype_keyword"> </td>
+<td class="function_name"><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC-struct" title="GdkGC">GdkGC</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">struct</td>
+<td class="function_name"><a class="link" href="gdk2-Graphics-Contexts.html#GdkGCValues" title="struct GdkGCValues">GdkGCValues</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">enum</td>
+<td class="function_name"><a class="link" href="gdk2-Graphics-Contexts.html#GdkGCValuesMask" title="enum GdkGCValuesMask">GdkGCValuesMask</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">enum</td>
+<td class="function_name"><a class="link" href="gdk2-Graphics-Contexts.html#GdkFunction" title="enum GdkFunction">GdkFunction</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-destroy" title="gdk_gc_destroy">gdk_gc_destroy</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">enum</td>
+<td class="function_name"><a class="link" href="gdk2-Graphics-Contexts.html#GdkFill" title="enum GdkFill">GdkFill</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">enum</td>
+<td class="function_name"><a class="link" href="gdk2-Graphics-Contexts.html#GdkSubwindowMode" title="enum GdkSubwindowMode">GdkSubwindowMode</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">enum</td>
+<td class="function_name"><a class="link" href="gdk2-Graphics-Contexts.html#GdkLineStyle" title="enum GdkLineStyle">GdkLineStyle</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">enum</td>
+<td class="function_name"><a class="link" href="gdk2-Graphics-Contexts.html#GdkCapStyle" title="enum GdkCapStyle">GdkCapStyle</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">enum</td>
+<td class="function_name"><a class="link" href="gdk2-Graphics-Contexts.html#GdkJoinStyle" title="enum GdkJoinStyle">GdkJoinStyle</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="gdk2-Graphics-Contexts.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="screen">    GObject
+    <span class="lineart">╰──</span> GdkGC
+</pre>
+</div>
+<div class="refsect1">
+<a name="gdk2-Graphics-Contexts.includes"></a><h2>Includes</h2>
+<pre class="synopsis">#include &lt;gdk/gdk.h&gt;
+</pre>
+</div>
+<div class="refsect1">
+<a name="gdk2-Graphics-Contexts.description"></a><h2>Description</h2>
+</div>
+<div class="refsect1">
+<a name="gdk2-Graphics-Contexts.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="gdk-gc-new"></a><h3>gdk_gc_new ()</h3>
+<pre class="programlisting"><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="returnvalue">GdkGC</span></a> *
+gdk_gc_new (<em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *drawable</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_gc_new</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>Use Cairo for rendering.</p>
+</div>
+<p>Create a new graphics context with default values.</p>
+<div class="refsect3">
+<a name="gdk-gc-new.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>drawable</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a>. The created GC must always be used
+with drawables of the same depth as this one.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gdk-gc-new.returns"></a><h4>Returns</h4>
+<p> the new graphics context.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-gc-new-with-values"></a><h3>gdk_gc_new_with_values ()</h3>
+<pre class="programlisting"><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="returnvalue">GdkGC</span></a> *
+gdk_gc_new_with_values (<em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *drawable</code></em>,
+                        <em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGCValues" title="struct GdkGCValues"><span class="type">GdkGCValues</span></a> *values</code></em>,
+                        <em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGCValuesMask" title="enum GdkGCValuesMask"><span class="type">GdkGCValuesMask</span></a> values_mask</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_gc_new_with_values</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>Use Cairo for rendering.</p>
+</div>
+<p>Create a new GC with the given initial values.</p>
+<div class="refsect3">
+<a name="gdk-gc-new-with-values.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>drawable</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a>. The created GC must always be used
+with drawables of the same depth as this one.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>values</p></td>
+<td class="parameter_description"><p>a structure containing initial values for the GC.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>values_mask</p></td>
+<td class="parameter_description"><p>a bit mask indicating which fields in <em class="parameter"><code>values</code></em>
+are set.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gdk-gc-new-with-values.returns"></a><h4>Returns</h4>
+<p> the new graphics context.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-gc-get-screen"></a><h3>gdk_gc_get_screen ()</h3>
+<pre class="programlisting"><a class="link" href="GdkScreen.html" title="GdkScreen"><span class="returnvalue">GdkScreen</span></a> *
+gdk_gc_get_screen (<em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>);</pre>
+<div class="warning"><p><code class="literal">gdk_gc_get_screen</code> is deprecated and should not be used in newly-written code.</p></div>
+<p>Gets the <a class="link" href="GdkScreen.html" title="GdkScreen"><span class="type">GdkScreen</span></a> for which <em class="parameter"><code>gc</code></em>
+ was created</p>
+<div class="refsect3">
+<a name="gdk-gc-get-screen.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gdk-gc-get-screen.returns"></a><h4>Returns</h4>
+<p> the <a class="link" href="GdkScreen.html" title="GdkScreen"><span class="type">GdkScreen</span></a> for <em class="parameter"><code>gc</code></em>
+.</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-2.html#api-index-2.2">2.2</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-gc-ref"></a><h3>gdk_gc_ref ()</h3>
+<pre class="programlisting"><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="returnvalue">GdkGC</span></a> *
+gdk_gc_ref (<em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_gc_ref</code> has been deprecated since version 2.0 and should not be used in newly-written code.</p>
+<p>Use <code class="function">g_object_ref()</code> instead.</p>
+</div>
+<p>Deprecated function; use <code class="function">g_object_ref()</code> instead.</p>
+<div class="refsect3">
+<a name="gdk-gc-ref.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gdk-gc-ref.returns"></a><h4>Returns</h4>
+<p> the gc.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-gc-unref"></a><h3>gdk_gc_unref ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_gc_unref (<em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_gc_unref</code> has been deprecated since version 2.0 and should not be used in newly-written code.</p>
+<p>Use <code class="function">g_object_unref()</code> instead.</p>
+</div>
+<p>Decrement the reference count of <em class="parameter"><code>gc</code></em>
+.</p>
+<div class="refsect3">
+<a name="gdk-gc-unref.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-gc-set-values"></a><h3>gdk_gc_set_values ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_gc_set_values (<em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                   <em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGCValues" title="struct GdkGCValues"><span class="type">GdkGCValues</span></a> *values</code></em>,
+                   <em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGCValuesMask" title="enum GdkGCValuesMask"><span class="type">GdkGCValuesMask</span></a> values_mask</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_gc_set_values</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>Use Cairo for rendering.</p>
+</div>
+<p>Sets attributes of a graphics context in bulk. For each flag set in
+<em class="parameter"><code>values_mask</code></em>
+, the corresponding field will be read from <em class="parameter"><code>values</code></em>
+ and
+set as the new value for <em class="parameter"><code>gc</code></em>
+. If you're only setting a few values
+on <em class="parameter"><code>gc</code></em>
+, calling individual "setter" functions is likely more
+convenient.</p>
+<div class="refsect3">
+<a name="gdk-gc-set-values.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>values</p></td>
+<td class="parameter_description"><p>struct containing the new values</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>values_mask</p></td>
+<td class="parameter_description"><p>mask indicating which struct fields are to be used</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-gc-get-values"></a><h3>gdk_gc_get_values ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_gc_get_values (<em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                   <em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGCValues" title="struct GdkGCValues"><span class="type">GdkGCValues</span></a> *values</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_gc_get_values</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>Use Cairo for rendering.</p>
+</div>
+<p>Retrieves the current values from a graphics context. Note that 
+only the pixel values of the <em class="parameter"><code>values-&gt;foreground</code></em>
+ and <em class="parameter"><code>values-&gt;background</code></em>
+
+are filled, use <a class="link" href="gdk2-Colormaps-and-Colors.html#gdk-colormap-query-color" title="gdk_colormap_query_color ()"><code class="function">gdk_colormap_query_color()</code></a> to obtain the rgb values
+if you need them.</p>
+<div class="refsect3">
+<a name="gdk-gc-get-values.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>values</p></td>
+<td class="parameter_description"><p>the <a class="link" href="gdk2-Graphics-Contexts.html#GdkGCValues" title="struct GdkGCValues"><span class="type">GdkGCValues</span></a> structure in which to store the results.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-gc-set-foreground"></a><h3>gdk_gc_set_foreground ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_gc_set_foreground (<em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                       <em class="parameter"><code>const <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a> *color</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_gc_set_foreground</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>Use <a class="link" href="gdk2-Cairo-Interaction.html#gdk-cairo-set-source-color" title="gdk_cairo_set_source_color ()"><code class="function">gdk_cairo_set_source_color()</code></a> to use a <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a>
+as the source in Cairo.</p>
+</div>
+<p>Sets the foreground color for a graphics context.
+Note that this function uses <em class="parameter"><code>color-&gt;pixel</code></em>
+, use 
+<a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-set-rgb-fg-color" title="gdk_gc_set_rgb_fg_color ()"><code class="function">gdk_gc_set_rgb_fg_color()</code></a> to specify the foreground 
+color as red, green, blue components.</p>
+<div class="refsect3">
+<a name="gdk-gc-set-foreground.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>color</p></td>
+<td class="parameter_description"><p>the new foreground color.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-gc-set-background"></a><h3>gdk_gc_set_background ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_gc_set_background (<em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                       <em class="parameter"><code>const <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a> *color</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_gc_set_background</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>Use <a class="link" href="gdk2-Cairo-Interaction.html#gdk-cairo-set-source-color" title="gdk_cairo_set_source_color ()"><code class="function">gdk_cairo_set_source_color()</code></a> to use a <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a>
+as the source in Cairo. Note that if you want to draw a background and a
+foreground in Cairo, you need to call drawing functions (like <a href="/usr/share/gtk-doc/html/cairo/cairo-cairo-t.html#cairo-fill"><code class="function">cairo_fill()</code></a>)
+twice.</p>
+</div>
+<p>Sets the background color for a graphics context.
+Note that this function uses <em class="parameter"><code>color-&gt;pixel</code></em>
+, use 
+<a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-set-rgb-bg-color" title="gdk_gc_set_rgb_bg_color ()"><code class="function">gdk_gc_set_rgb_bg_color()</code></a> to specify the background 
+color as red, green, blue components.</p>
+<div class="refsect3">
+<a name="gdk-gc-set-background.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>color</p></td>
+<td class="parameter_description"><p>the new background color.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-gc-set-rgb-fg-color"></a><h3>gdk_gc_set_rgb_fg_color ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_gc_set_rgb_fg_color (<em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                         <em class="parameter"><code>const <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a> *color</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_gc_set_rgb_fg_color</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>Use <a class="link" href="gdk2-Cairo-Interaction.html#gdk-cairo-set-source-color" title="gdk_cairo_set_source_color ()"><code class="function">gdk_cairo_set_source_color()</code></a> instead.</p>
+</div>
+<p>Set the foreground color of a GC using an unallocated color. The
+pixel value for the color will be determined using GdkRGB. If the
+colormap for the GC has not previously been initialized for GdkRGB,
+then for pseudo-color colormaps (colormaps with a small modifiable
+number of colors), a colorcube will be allocated in the colormap.</p>
+<p>Calling this function for a GC without a colormap is an error.</p>
+<div class="refsect3">
+<a name="gdk-gc-set-rgb-fg-color.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>color</p></td>
+<td class="parameter_description"><p>an unallocated <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-gc-set-rgb-bg-color"></a><h3>gdk_gc_set_rgb_bg_color ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_gc_set_rgb_bg_color (<em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                         <em class="parameter"><code>const <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a> *color</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_gc_set_rgb_bg_color</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>Use <a class="link" href="gdk2-Cairo-Interaction.html#gdk-cairo-set-source-color" title="gdk_cairo_set_source_color ()"><code class="function">gdk_cairo_set_source_color()</code></a> instead.</p>
+</div>
+<p>Set the background color of a GC using an unallocated color. The
+pixel value for the color will be determined using GdkRGB. If the
+colormap for the GC has not previously been initialized for GdkRGB,
+then for pseudo-color colormaps (colormaps with a small modifiable
+number of colors), a colorcube will be allocated in the colormap.</p>
+<p>Calling this function for a GC without a colormap is an error.</p>
+<div class="refsect3">
+<a name="gdk-gc-set-rgb-bg-color.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>color</p></td>
+<td class="parameter_description"><p>an unallocated <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-gc-set-font"></a><h3>gdk_gc_set_font ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_gc_set_font (<em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                 <em class="parameter"><code><a class="link" href="gdk2-Fonts.html#GdkFont" title="GdkFont"><span class="type">GdkFont</span></a> *font</code></em>);</pre>
+<div class="warning"><p><code class="literal">gdk_gc_set_font</code> is deprecated and should not be used in newly-written code.</p></div>
+<p>Sets the font for a graphics context. (Note that
+all text-drawing functions in GDK take a <em class="parameter"><code>font</code></em>
+
+argument; the value set here is used when that
+argument is <code class="literal">NULL</code>.)</p>
+<div class="refsect3">
+<a name="gdk-gc-set-font.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>font</p></td>
+<td class="parameter_description"><p>the new font. </p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-gc-set-function"></a><h3>gdk_gc_set_function ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_gc_set_function (<em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                     <em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkFunction" title="enum GdkFunction"><span class="type">GdkFunction</span></a> function</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_gc_set_function</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>Use <a href="/usr/share/gtk-doc/html/cairo/cairo-cairo-t.html#cairo-set-operator"><code class="function">cairo_set_operator()</code></a> with Cairo.</p>
+</div>
+<p>Determines how the current pixel values and the
+pixel values being drawn are combined to produce
+the final pixel values.</p>
+<div class="refsect3">
+<a name="gdk-gc-set-function.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>function</p></td>
+<td class="parameter_description"><p>the <a class="link" href="gdk2-Graphics-Contexts.html#GdkFunction" title="enum GdkFunction"><span class="type">GdkFunction</span></a> to use</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-gc-set-fill"></a><h3>gdk_gc_set_fill ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_gc_set_fill (<em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                 <em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkFill" title="enum GdkFill"><span class="type">GdkFill</span></a> fill</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_gc_set_fill</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>You can achieve tiling in Cairo by using
+<a href="/usr/share/gtk-doc/html/cairo/cairo-cairo-pattern-t.html#cairo-pattern-set-extend"><code class="function">cairo_pattern_set_extend()</code></a> on the source. For stippling, see the
+deprecation comments on <a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-set-stipple" title="gdk_gc_set_stipple ()"><code class="function">gdk_gc_set_stipple()</code></a>.</p>
+</div>
+<p>Set the fill mode for a graphics context.</p>
+<div class="refsect3">
+<a name="gdk-gc-set-fill.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>fill</p></td>
+<td class="parameter_description"><p>the new fill mode.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-gc-set-tile"></a><h3>gdk_gc_set_tile ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_gc_set_tile (<em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                 <em class="parameter"><code><a class="link" href="gdk2-Bitmaps-and-Pixmaps.html#GdkPixmap"><span class="type">GdkPixmap</span></a> *tile</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_gc_set_tile</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>The following code snippet sets a tiling <a class="link" href="gdk2-Bitmaps-and-Pixmaps.html#GdkPixmap"><span class="type">GdkPixmap</span></a>
+as the source in Cairo:</p>
+<div class="informalexample">
+  <table class="listing_frame" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+      <tr>
+        <td class="listing_lines" align="right"><pre>1</pre></td>
+        <td class="listing_code"><pre class="programlisting"><span class="n">cairo_pattern_set_extend</span> <span class="p">(</span><span class="n">cairo_get_source</span> <span class="p">(</span><span class="n">cr</span><span class="p">),</span> <span class="n">CAIRO_EXTEND_REPEAT</span><span class="p">);]</span><span class="o">|</span></pre></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</div>
+<p>Set a tile pixmap for a graphics context.
+This will only be used if the fill mode
+is <a class="link" href="gdk2-Graphics-Contexts.html#GDK-TILED:CAPS"><code class="literal">GDK_TILED</code></a>.</p>
+<div class="refsect3">
+<a name="gdk-gc-set-tile.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>tile</p></td>
+<td class="parameter_description"><p>the new tile pixmap.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-gc-set-stipple"></a><h3>gdk_gc_set_stipple ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_gc_set_stipple (<em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                    <em class="parameter"><code><a class="link" href="gdk2-Bitmaps-and-Pixmaps.html#GdkPixmap"><span class="type">GdkPixmap</span></a> *stipple</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_gc_set_stipple</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>Stippling has no direct replacement in Cairo. If you
+want to achieve an identical look, you can use the stipple bitmap as a
+mask. Most likely, this involves rendering the source to an intermediate
+surface using <a href="/usr/share/gtk-doc/html/cairo/cairo-cairo-t.html#cairo-push-group"><code class="function">cairo_push_group()</code></a> first, so that you can then use
+<a href="/usr/share/gtk-doc/html/cairo/cairo-cairo-t.html#cairo-mask"><code class="function">cairo_mask()</code></a> to achieve the stippled look.</p>
+</div>
+<p>Set the stipple bitmap for a graphics context. The
+stipple will only be used if the fill mode is
+<a class="link" href="gdk2-Graphics-Contexts.html#GDK-STIPPLED:CAPS"><code class="literal">GDK_STIPPLED</code></a> or <a class="link" href="gdk2-Graphics-Contexts.html#GDK-OPAQUE-STIPPLED:CAPS"><code class="literal">GDK_OPAQUE_STIPPLED</code></a>.</p>
+<div class="refsect3">
+<a name="gdk-gc-set-stipple.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>stipple</p></td>
+<td class="parameter_description"><p>the new stipple bitmap.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-gc-set-ts-origin"></a><h3>gdk_gc_set_ts_origin ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_gc_set_ts_origin (<em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                      <em class="parameter"><code><span class="type">gint</span> x</code></em>,
+                      <em class="parameter"><code><span class="type">gint</span> y</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_gc_set_ts_origin</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>You can set the origin for tiles and stipples in Cairo
+by changing the source's matrix using <a href="/usr/share/gtk-doc/html/cairo/cairo-cairo-pattern-t.html#cairo-pattern-set-matrix"><code class="function">cairo_pattern_set_matrix()</code></a>. Or you
+can specify it with <a class="link" href="gdk2-Cairo-Interaction.html#gdk-cairo-set-source-pixmap" title="gdk_cairo_set_source_pixmap ()"><code class="function">gdk_cairo_set_source_pixmap()</code></a> as shown in the example
+for <a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-set-tile" title="gdk_gc_set_tile ()"><code class="function">gdk_gc_set_tile()</code></a>.</p>
+</div>
+<p>Set the origin when using tiles or stipples with
+the GC. The tile or stipple will be aligned such
+that the upper left corner of the tile or stipple
+will coincide with this point.</p>
+<div class="refsect3">
+<a name="gdk-gc-set-ts-origin.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>x</p></td>
+<td class="parameter_description"><p>the x-coordinate of the origin.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>y</p></td>
+<td class="parameter_description"><p>the y-coordinate of the origin.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-gc-set-clip-origin"></a><h3>gdk_gc_set_clip_origin ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_gc_set_clip_origin (<em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                        <em class="parameter"><code><span class="type">gint</span> x</code></em>,
+                        <em class="parameter"><code><span class="type">gint</span> y</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_gc_set_clip_origin</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>Use <a href="/usr/share/gtk-doc/html/cairo/cairo-Transformations.html#cairo-translate"><code class="function">cairo_translate()</code></a> before applying the clip path in
+Cairo.</p>
+</div>
+<p>Sets the origin of the clip mask. The coordinates are
+interpreted relative to the upper-left corner of
+the destination drawable of the current operation.</p>
+<div class="refsect3">
+<a name="gdk-gc-set-clip-origin.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>x</p></td>
+<td class="parameter_description"><p>the x-coordinate of the origin.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>y</p></td>
+<td class="parameter_description"><p>the y-coordinate of the origin.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-gc-set-clip-mask"></a><h3>gdk_gc_set_clip_mask ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_gc_set_clip_mask (<em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                      <em class="parameter"><code><a class="link" href="gdk2-Bitmaps-and-Pixmaps.html#GdkBitmap" title="GdkBitmap"><span class="type">GdkBitmap</span></a> *mask</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_gc_set_clip_mask</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>Use <a href="/usr/share/gtk-doc/html/cairo/cairo-cairo-t.html#cairo-mask"><code class="function">cairo_mask()</code></a> instead.</p>
+</div>
+<p>Sets the clip mask for a graphics context from a bitmap.
+The clip mask is interpreted relative to the clip
+origin. (See <a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-set-clip-origin" title="gdk_gc_set_clip_origin ()"><code class="function">gdk_gc_set_clip_origin()</code></a>).</p>
+<div class="refsect3">
+<a name="gdk-gc-set-clip-mask.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>the <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>mask</p></td>
+<td class="parameter_description"><p>a bitmap.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-gc-set-clip-rectangle"></a><h3>gdk_gc_set_clip_rectangle ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_gc_set_clip_rectangle (<em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                           <em class="parameter"><code>const <a class="link" href="gdk2-Points-Rectangles-and-Regions.html#GdkRectangle" title="struct GdkRectangle"><span class="type">GdkRectangle</span></a> *rectangle</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_gc_set_clip_rectangle</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>Use <a href="/usr/share/gtk-doc/html/cairo/cairo-Paths.html#cairo-rectangle"><code class="function">cairo_rectangle()</code></a> and <a href="/usr/share/gtk-doc/html/cairo/cairo-cairo-t.html#cairo-clip"><code class="function">cairo_clip()</code></a> in Cairo.</p>
+</div>
+<p>Sets the clip mask for a graphics context from a
+rectangle. The clip mask is interpreted relative to the clip
+origin. (See <a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-set-clip-origin" title="gdk_gc_set_clip_origin ()"><code class="function">gdk_gc_set_clip_origin()</code></a>).</p>
+<div class="refsect3">
+<a name="gdk-gc-set-clip-rectangle.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>rectangle</p></td>
+<td class="parameter_description"><p>the rectangle to clip to.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-gc-set-clip-region"></a><h3>gdk_gc_set_clip_region ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_gc_set_clip_region (<em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                        <em class="parameter"><code>const <a class="link" href="gdk2-Points-Rectangles-and-Regions.html#GdkRegion" title="GdkRegion"><span class="type">GdkRegion</span></a> *region</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_gc_set_clip_region</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>Use <a class="link" href="gdk2-Cairo-Interaction.html#gdk-cairo-region" title="gdk_cairo_region ()"><code class="function">gdk_cairo_region()</code></a> and <a href="/usr/share/gtk-doc/html/cairo/cairo-cairo-t.html#cairo-clip"><code class="function">cairo_clip()</code></a> in Cairo.</p>
+</div>
+<p>Sets the clip mask for a graphics context from a region structure.
+The clip mask is interpreted relative to the clip origin. (See
+<a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-set-clip-origin" title="gdk_gc_set_clip_origin ()"><code class="function">gdk_gc_set_clip_origin()</code></a>).</p>
+<div class="refsect3">
+<a name="gdk-gc-set-clip-region.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>region</p></td>
+<td class="parameter_description"><p>the <a class="link" href="gdk2-Points-Rectangles-and-Regions.html#GdkRegion" title="GdkRegion"><span class="type">GdkRegion</span></a>. </p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-gc-set-subwindow"></a><h3>gdk_gc_set_subwindow ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_gc_set_subwindow (<em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                      <em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkSubwindowMode" title="enum GdkSubwindowMode"><span class="type">GdkSubwindowMode</span></a> mode</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_gc_set_subwindow</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>There is no replacement. If you need to control
+subwindows, you must use drawing operations of the underlying window
+system manually. Cairo will always use <a class="link" href="gdk2-Graphics-Contexts.html#GDK-INCLUDE-INFERIORS:CAPS"><code class="literal">GDK_INCLUDE_INFERIORS</code></a> on sources
+and masks and <a class="link" href="gdk2-Graphics-Contexts.html#GDK-CLIP-BY-CHILDREN:CAPS"><code class="literal">GDK_CLIP_BY_CHILDREN</code></a> on targets.</p>
+</div>
+<p>Sets how drawing with this GC on a window will affect child
+windows of that window.</p>
+<div class="refsect3">
+<a name="gdk-gc-set-subwindow.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>mode</p></td>
+<td class="parameter_description"><p>the subwindow mode.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-gc-set-exposures"></a><h3>gdk_gc_set_exposures ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_gc_set_exposures (<em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                      <em class="parameter"><code><span class="type">gboolean</span> exposures</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_gc_set_exposures</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>There is no replacement. If you need to control
+exposures, you must use drawing operations of the underlying window
+system or use <a class="link" href="gdk2-Windows.html#gdk-window-invalidate-rect" title="gdk_window_invalidate_rect ()"><code class="function">gdk_window_invalidate_rect()</code></a>. Cairo will never
+generate exposures.</p>
+</div>
+<p>Sets whether copying non-visible portions of a drawable
+using this graphics context generate exposure events
+for the corresponding regions of the destination
+drawable. (See <a class="link" href="gdk2-Drawing-Primitives.html#gdk-draw-drawable" title="gdk_draw_drawable ()"><code class="function">gdk_draw_drawable()</code></a>).</p>
+<div class="refsect3">
+<a name="gdk-gc-set-exposures.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>exposures</p></td>
+<td class="parameter_description"><p>if <code class="literal">TRUE</code>, exposure events will be generated.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-gc-set-line-attributes"></a><h3>gdk_gc_set_line_attributes ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_gc_set_line_attributes (<em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                            <em class="parameter"><code><span class="type">gint</span> line_width</code></em>,
+                            <em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkLineStyle" title="enum GdkLineStyle"><span class="type">GdkLineStyle</span></a> line_style</code></em>,
+                            <em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkCapStyle" title="enum GdkCapStyle"><span class="type">GdkCapStyle</span></a> cap_style</code></em>,
+                            <em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkJoinStyle" title="enum GdkJoinStyle"><span class="type">GdkJoinStyle</span></a> join_style</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_gc_set_line_attributes</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>Use the Cairo functions <a href="/usr/share/gtk-doc/html/cairo/cairo-cairo-t.html#cairo-set-line-width"><code class="function">cairo_set_line_width()</code></a>,
+<a href="/usr/share/gtk-doc/html/cairo/cairo-cairo-t.html#cairo-set-line-join"><code class="function">cairo_set_line_join()</code></a>, <a href="/usr/share/gtk-doc/html/cairo/cairo-cairo-t.html#cairo-set-line-cap"><code class="function">cairo_set_line_cap()</code></a> and <a href="/usr/share/gtk-doc/html/cairo/cairo-cairo-t.html#cairo-set-dash"><code class="function">cairo_set_dash()</code></a>
+to affect the stroking behavior in Cairo. Keep in mind that the default
+attributes of a <a href="/usr/share/gtk-doc/html/cairo/cairo-cairo-t.html#cairo-t"><span class="type">cairo_t</span></a> are different from the default attributes of
+a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>.</p>
+</div>
+<p>Sets various attributes of how lines are drawn. See
+the corresponding members of <a class="link" href="gdk2-Graphics-Contexts.html#GdkGCValues" title="struct GdkGCValues"><span class="type">GdkGCValues</span></a> for full
+explanations of the arguments.</p>
+<div class="refsect3">
+<a name="gdk-gc-set-line-attributes.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>line_width</p></td>
+<td class="parameter_description"><p>the width of lines.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>line_style</p></td>
+<td class="parameter_description"><p>the dash-style for lines.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>cap_style</p></td>
+<td class="parameter_description"><p>the manner in which the ends of lines are drawn.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>join_style</p></td>
+<td class="parameter_description"><p>the in which lines are joined together.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-gc-set-dashes"></a><h3>gdk_gc_set_dashes ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_gc_set_dashes (<em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                   <em class="parameter"><code><span class="type">gint</span> dash_offset</code></em>,
+                   <em class="parameter"><code><span class="type">gint8</span> dash_list[]</code></em>,
+                   <em class="parameter"><code><span class="type">gint</span> n</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_gc_set_dashes</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>Use <a href="/usr/share/gtk-doc/html/cairo/cairo-cairo-t.html#cairo-set-dash"><code class="function">cairo_set_dash()</code></a> to set the dash in Cairo.</p>
+</div>
+<p>Sets the way dashed-lines are drawn. Lines will be
+drawn with alternating on and off segments of the
+lengths specified in <em class="parameter"><code>dash_list</code></em>
+. The manner in
+which the on and off segments are drawn is determined
+by the <em class="parameter"><code>line_style</code></em>
+ value of the GC. (This can
+be changed with <a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-set-line-attributes" title="gdk_gc_set_line_attributes ()"><code class="function">gdk_gc_set_line_attributes()</code></a>.)</p>
+<p>The <em class="parameter"><code>dash_offset</code></em>
+ defines the phase of the pattern, 
+specifying how many pixels into the dash-list the pattern 
+should actually begin.</p>
+<div class="refsect3">
+<a name="gdk-gc-set-dashes.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>dash_offset</p></td>
+<td class="parameter_description"><p>the phase of the dash pattern.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>dash_list</p></td>
+<td class="parameter_description"><p>an array of dash lengths.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>n</p></td>
+<td class="parameter_description"><p>the number of elements in <em class="parameter"><code>dash_list</code></em>
+.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-gc-copy"></a><h3>gdk_gc_copy ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_gc_copy (<em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *dst_gc</code></em>,
+             <em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *src_gc</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_gc_copy</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>Use Cairo for drawing. <a href="/usr/share/gtk-doc/html/cairo/cairo-cairo-t.html#cairo-save"><code class="function">cairo_save()</code></a> and <a href="/usr/share/gtk-doc/html/cairo/cairo-cairo-t.html#cairo-restore"><code class="function">cairo_restore()</code></a>
+can be helpful in cases where you'd have copied a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>.</p>
+</div>
+<p>Copy the set of values from one graphics context
+onto another graphics context.</p>
+<div class="refsect3">
+<a name="gdk-gc-copy.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>dst_gc</p></td>
+<td class="parameter_description"><p>the destination graphics context.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>src_gc</p></td>
+<td class="parameter_description"><p>the source graphics context.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-gc-set-colormap"></a><h3>gdk_gc_set_colormap ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_gc_set_colormap (<em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                     <em class="parameter"><code><a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="type">GdkColormap</span></a> *colormap</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_gc_set_colormap</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>There is no replacement. Cairo handles colormaps
+automatically, so there is no need to care about them.</p>
+</div>
+<p>Sets the colormap for the GC to the given colormap. The depth
+of the colormap's visual must match the depth of the drawable
+for which the GC was created.</p>
+<div class="refsect3">
+<a name="gdk-gc-set-colormap.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>colormap</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="type">GdkColormap</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-gc-get-colormap"></a><h3>gdk_gc_get_colormap ()</h3>
+<pre class="programlisting"><a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="returnvalue">GdkColormap</span></a> *
+gdk_gc_get_colormap (<em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_gc_get_colormap</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>There is no replacement. Cairo handles colormaps
+automatically, so there is no need to care about them.</p>
+</div>
+<p>Retrieves the colormap for a given GC, if it exists.
+A GC will have a colormap if the drawable for which it was created
+has a colormap, or if a colormap was set explicitely with
+gdk_gc_set_colormap.</p>
+<div class="refsect3">
+<a name="gdk-gc-get-colormap.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gdk-gc-get-colormap.returns"></a><h4>Returns</h4>
+<p> the colormap of <em class="parameter"><code>gc</code></em>
+, or <code class="literal">NULL</code> if <em class="parameter"><code>gc</code></em>
+doesn't have one.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-gc-offset"></a><h3>gdk_gc_offset ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_gc_offset (<em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+               <em class="parameter"><code><span class="type">gint</span> x_offset</code></em>,
+               <em class="parameter"><code><span class="type">gint</span> y_offset</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_gc_offset</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>There is no direct replacement, as this is just a
+convenience function for gdk_gc_set_ts_origin and <a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-set-clip-origin" title="gdk_gc_set_clip_origin ()"><code class="function">gdk_gc_set_clip_origin()</code></a>.</p>
+</div>
+<p>Offset attributes such as the clip and tile-stipple origins
+of the GC so that drawing at x - x_offset, y - y_offset with
+the offset GC  has the same effect as drawing at x, y with the original
+GC.</p>
+<div class="refsect3">
+<a name="gdk-gc-offset.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>x_offset</p></td>
+<td class="parameter_description"><p>amount by which to offset the GC in the X direction</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>y_offset</p></td>
+<td class="parameter_description"><p>amount by which to offset the GC in the Y direction</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="refsect1">
+<a name="gdk2-Graphics-Contexts.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="GdkGC-struct"></a><h3>GdkGC</h3>
+<pre class="programlisting">typedef struct _GdkGC GdkGC;</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GdkGCValues"></a><h3>struct GdkGCValues</h3>
+<pre class="programlisting">struct GdkGCValues {
+  GdkColor	    foreground;
+  GdkColor	    background;
+  GdkFont	   *font;
+  GdkFunction	    function;
+  GdkFill	    fill;
+  GdkPixmap	   *tile;
+  GdkPixmap	   *stipple;
+  GdkPixmap	   *clip_mask;
+  GdkSubwindowMode  subwindow_mode;
+  gint		    ts_x_origin;
+  gint		    ts_y_origin;
+  gint		    clip_x_origin;
+  gint		    clip_y_origin;
+  gint		    graphics_exposures;
+  gint		    line_width;
+  GdkLineStyle	    line_style;
+  GdkCapStyle	    cap_style;
+  GdkJoinStyle	    join_style;
+};
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GdkGCValuesMask"></a><h3>enum GdkGCValuesMask</h3>
+<div class="refsect3">
+<a name="GdkGCValuesMask.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="enum_members_name">
+<col class="enum_members_description">
+<col width="200px" class="enum_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-GC-FOREGROUND:CAPS"></a>GDK_GC_FOREGROUND</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-GC-BACKGROUND:CAPS"></a>GDK_GC_BACKGROUND</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-GC-FONT:CAPS"></a>GDK_GC_FONT</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-GC-FUNCTION:CAPS"></a>GDK_GC_FUNCTION</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-GC-FILL:CAPS"></a>GDK_GC_FILL</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-GC-TILE:CAPS"></a>GDK_GC_TILE</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-GC-STIPPLE:CAPS"></a>GDK_GC_STIPPLE</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-GC-CLIP-MASK:CAPS"></a>GDK_GC_CLIP_MASK</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-GC-SUBWINDOW:CAPS"></a>GDK_GC_SUBWINDOW</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-GC-TS-X-ORIGIN:CAPS"></a>GDK_GC_TS_X_ORIGIN</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-GC-TS-Y-ORIGIN:CAPS"></a>GDK_GC_TS_Y_ORIGIN</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-GC-CLIP-X-ORIGIN:CAPS"></a>GDK_GC_CLIP_X_ORIGIN</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-GC-CLIP-Y-ORIGIN:CAPS"></a>GDK_GC_CLIP_Y_ORIGIN</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-GC-EXPOSURES:CAPS"></a>GDK_GC_EXPOSURES</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-GC-LINE-WIDTH:CAPS"></a>GDK_GC_LINE_WIDTH</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-GC-LINE-STYLE:CAPS"></a>GDK_GC_LINE_STYLE</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-GC-CAP-STYLE:CAPS"></a>GDK_GC_CAP_STYLE</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-GC-JOIN-STYLE:CAPS"></a>GDK_GC_JOIN_STYLE</p></td>
+<td> </td>
+<td> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GdkFunction"></a><h3>enum GdkFunction</h3>
+<div class="refsect3">
+<a name="GdkFunction.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="enum_members_name">
+<col class="enum_members_description">
+<col width="200px" class="enum_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-COPY:CAPS"></a>GDK_COPY</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-INVERT:CAPS"></a>GDK_INVERT</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-XOR:CAPS"></a>GDK_XOR</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-CLEAR:CAPS"></a>GDK_CLEAR</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-AND:CAPS"></a>GDK_AND</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-AND-REVERSE:CAPS"></a>GDK_AND_REVERSE</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-AND-INVERT:CAPS"></a>GDK_AND_INVERT</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-NOOP:CAPS"></a>GDK_NOOP</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-OR:CAPS"></a>GDK_OR</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-EQUIV:CAPS"></a>GDK_EQUIV</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-OR-REVERSE:CAPS"></a>GDK_OR_REVERSE</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-COPY-INVERT:CAPS"></a>GDK_COPY_INVERT</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-OR-INVERT:CAPS"></a>GDK_OR_INVERT</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-NAND:CAPS"></a>GDK_NAND</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-NOR:CAPS"></a>GDK_NOR</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-SET:CAPS"></a>GDK_SET</p></td>
+<td> </td>
+<td> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-gc-destroy"></a><h3>gdk_gc_destroy</h3>
+<pre class="programlisting">#define gdk_gc_destroy                 g_object_unref
+</pre>
+<div class="warning"><p><code class="literal">gdk_gc_destroy</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GdkFill"></a><h3>enum GdkFill</h3>
+<div class="refsect3">
+<a name="GdkFill.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="enum_members_name">
+<col class="enum_members_description">
+<col width="200px" class="enum_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-SOLID:CAPS"></a>GDK_SOLID</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-TILED:CAPS"></a>GDK_TILED</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-STIPPLED:CAPS"></a>GDK_STIPPLED</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-OPAQUE-STIPPLED:CAPS"></a>GDK_OPAQUE_STIPPLED</p></td>
+<td> </td>
+<td> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GdkSubwindowMode"></a><h3>enum GdkSubwindowMode</h3>
+<div class="refsect3">
+<a name="GdkSubwindowMode.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="enum_members_name">
+<col class="enum_members_description">
+<col width="200px" class="enum_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-CLIP-BY-CHILDREN:CAPS"></a>GDK_CLIP_BY_CHILDREN</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-INCLUDE-INFERIORS:CAPS"></a>GDK_INCLUDE_INFERIORS</p></td>
+<td> </td>
+<td> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GdkLineStyle"></a><h3>enum GdkLineStyle</h3>
+<div class="refsect3">
+<a name="GdkLineStyle.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="enum_members_name">
+<col class="enum_members_description">
+<col width="200px" class="enum_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-LINE-SOLID:CAPS"></a>GDK_LINE_SOLID</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-LINE-ON-OFF-DASH:CAPS"></a>GDK_LINE_ON_OFF_DASH</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-LINE-DOUBLE-DASH:CAPS"></a>GDK_LINE_DOUBLE_DASH</p></td>
+<td> </td>
+<td> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GdkCapStyle"></a><h3>enum GdkCapStyle</h3>
+<div class="refsect3">
+<a name="GdkCapStyle.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="enum_members_name">
+<col class="enum_members_description">
+<col width="200px" class="enum_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-CAP-NOT-LAST:CAPS"></a>GDK_CAP_NOT_LAST</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-CAP-BUTT:CAPS"></a>GDK_CAP_BUTT</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-CAP-ROUND:CAPS"></a>GDK_CAP_ROUND</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-CAP-PROJECTING:CAPS"></a>GDK_CAP_PROJECTING</p></td>
+<td> </td>
+<td> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GdkJoinStyle"></a><h3>enum GdkJoinStyle</h3>
+<div class="refsect3">
+<a name="GdkJoinStyle.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="enum_members_name">
+<col class="enum_members_description">
+<col width="200px" class="enum_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-JOIN-MITER:CAPS"></a>GDK_JOIN_MITER</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-JOIN-ROUND:CAPS"></a>GDK_JOIN_ROUND</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GDK-JOIN-BEVEL:CAPS"></a>GDK_JOIN_BEVEL</p></td>
+<td> </td>
+<td> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.33.0</div>
+</body>
+</html>

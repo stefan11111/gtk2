@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Migrating from GnomeHRef to GtkLinkButton: GTK+ 2 Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets Vsnapshot">
+<link rel="home" href="index.html" title="GTK+ 2 Reference Manual">
+<link rel="up" href="migrating.html" title="Part IV. Migrating from Previous Versions of GTK+">
+<link rel="prev" href="gtkrecent-advanced.html" title="Advanced usage">
+<link rel="next" href="gtk-migrating-GtkBuilder.html" title="Migrating from libglade to GtkBuilder">
+<meta name="generator" content="GTK-Doc V1.33.0 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts"></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="migrating.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="gtkrecent-advanced.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="gtk-migrating-GtkBuilder.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="chapter">
+<div class="titlepage"><div><div><h2 class="title">
+<a name="gtk-migrating-GtkLinkButton"></a>Migrating from GnomeHRef to GtkLinkButton</h2></div></div></div>
+<p>
+    Since version 2.10, GTK+ provides the <a class="link" href="GtkLinkButton.html" title="GtkLinkButton"><span class="type">GtkLinkButton</span></a> widget as a
+    replacement for the <span class="structname">GnomeHRef</span> widget
+    in the libgnomeui library.
+  </p>
+<p>
+    Porting an application from <span class="structname">GnomeHRef</span> to
+    <a class="link" href="GtkLinkButton.html" title="GtkLinkButton"><span class="type">GtkLinkButton</span></a> is very simple. <a class="link" href="GtkLinkButton.html" title="GtkLinkButton"><span class="type">GtkLinkButton</span></a> does not have a
+    default action for <a class="link" href="GtkButton.html#GtkButton-clicked" title="The “clicked” signal"><span class="type">“clicked”</span></a> signal. So instead of simply 
+    creating the widget
+    </p>
+<div class="informalexample">
+  <table class="listing_frame" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+      <tr>
+        <td class="listing_lines" align="right"><pre>1
+2
+3</pre></td>
+        <td class="listing_code"><pre class="programlisting"><span class="n">GtkWidget</span> <span class="o">*</span><span class="n">button</span><span class="p">;</span>
+
+<span class="n">button</span> <span class="o">=</span> <span class="n">gnome_href_new</span> <span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">);</span></pre></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p>
+    you will have to handle the activation of the <a class="link" href="GtkLinkButton.html" title="GtkLinkButton"><span class="type">GtkLinkButton</span></a>, using
+    the ::clicked signal for instance
+    </p>
+<div class="informalexample">
+  <table class="listing_frame" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+      <tr>
+        <td class="listing_lines" align="right"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17</pre></td>
+        <td class="listing_code"><pre class="programlisting"><span class="k">static</span> <span class="kt">void</span>
+<span class="nf">link_button_clicked_cb</span> <span class="p">(</span><span class="n">GtkWidget</span> <span class="o">*</span><span class="n">widget</span><span class="p">,</span>
+                        <span class="n">gpointer</span>   <span class="n">data</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">const</span> <span class="n">gchar</span> <span class="o">*</span><span class="n">link</span><span class="p">;</span>
+
+	<span class="n">link</span> <span class="o">=</span> <span class="n">gtk_link_button_get_uri</span> <span class="p">(</span><span class="n">GTK_LINK_BUTTON</span> <span class="p">(</span><span class="n">widget</span><span class="p">));</span>
+	<span class="n">open_browser_at_url</span> <span class="p">(</span><span class="n">link</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/* ... */</span>
+
+  <span class="n">GtkWidget</span> <span class="o">*</span><span class="n">button</span><span class="p">;</span>
+
+	<span class="n">button</span> <span class="o">=</span> <span class="n">gtk_link_button_new</span> <span class="p">(</span><span class="n">url</span><span class="p">);</span>
+	<span class="n">g_signal_connect</span> <span class="p">(</span><span class="n">button</span><span class="p">,</span> <span class="s">&quot;clicked&quot;</span><span class="p">,</span>
+	                  <span class="n">G_CALLBACK</span> <span class="p">(</span><span class="n">link_button_clicked_cb</span><span class="p">),</span> <span class="nb">NULL</span><span class="p">);</span></pre></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p>
+    If you have more than one <a class="link" href="GtkLinkButton.html" title="GtkLinkButton"><span class="type">GtkLinkButton</span></a> instead of connecting
+    a signal to each one, you can use a "hook function" which will be
+    called whenever a user activates a link button
+    </p>
+<div class="informalexample">
+  <table class="listing_frame" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+      <tr>
+        <td class="listing_lines" align="right"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15</pre></td>
+        <td class="listing_code"><pre class="programlisting"><span class="k">static</span> <span class="kt">void</span>
+<span class="nf">link_button_hook</span> <span class="p">(</span><span class="n">GtkLinkButton</span> <span class="o">*</span><span class="n">button</span><span class="p">,</span>
+                  <span class="k">const</span> <span class="n">gchar</span>   <span class="o">*</span><span class="n">link</span><span class="p">,</span>
+			<span class="n">gpointer</span>       <span class="n">user_data</span><span class="p">)</span>
+
+<span class="p">{</span>
+  <span class="n">open_browser_at_url</span> <span class="p">(</span><span class="n">link</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/* ... */</span>
+
+  <span class="n">GtkWidget</span> <span class="o">*</span><span class="n">button1</span> <span class="o">=</span> <span class="n">gtk_link_button_new</span> <span class="p">(</span><span class="n">uri1</span><span class="p">);</span>
+	<span class="n">GtkWidget</span> <span class="o">*</span><span class="n">button2</span> <span class="o">=</span> <span class="n">gtk_link_button_new</span> <span class="p">(</span><span class="n">uri2</span><span class="p">);</span>
+
+  <span class="n">gtk_link_button_set_uri_hook</span> <span class="p">(</span><span class="n">link_button_hook</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span></pre></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p>
+
+  </p>
+<p>
+    Starting with GTK+ 2.16, it is no longer necessary to set up a uri hook
+    manually, since GTK+ now defaults to calling <a class="link" href="gtk2-Filesystem-utilities.html#gtk-show-uri" title="gtk_show_uri ()"><code class="function">gtk_show_uri()</code></a> if no uri
+    hook has been set.
+  </p>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.33.0</div>
+</body>
+</html>

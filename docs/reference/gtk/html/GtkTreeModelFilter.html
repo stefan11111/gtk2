@@ -1,0 +1,763 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GtkTreeModelFilter: GTK+ 2 Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets Vsnapshot">
+<link rel="home" href="index.html" title="GTK+ 2 Reference Manual">
+<link rel="up" href="TreeWidgetObjects.html" title="Tree, List and Icon Grid Widgets">
+<link rel="prev" href="GtkTreeModelSort.html" title="GtkTreeModelSort">
+<link rel="next" href="GtkCellLayout.html" title="GtkCellLayout">
+<meta name="generator" content="GTK-Doc V1.33.0 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#GtkTreeModelFilter.description" class="shortcut">Description</a></span><span id="nav_hierarchy">  <span class="dim">|</span> 
+                  <a href="#GtkTreeModelFilter.object-hierarchy" class="shortcut">Object Hierarchy</a></span><span id="nav_interfaces">  <span class="dim">|</span> 
+                  <a href="#GtkTreeModelFilter.implemented-interfaces" class="shortcut">Implemented Interfaces</a></span><span id="nav_properties">  <span class="dim">|</span> 
+                  <a href="#GtkTreeModelFilter.properties" class="shortcut">Properties</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="TreeWidgetObjects.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="GtkTreeModelSort.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="GtkCellLayout.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="GtkTreeModelFilter"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GtkTreeModelFilter.top_of_page"></a>GtkTreeModelFilter</span></h2>
+<p>GtkTreeModelFilter</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="GtkTreeModelFilter.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_proto_type">
+<col class="functions_proto_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gboolean</span>
+</td>
+<td class="function_name">
+<span class="c_punctuation">(</span><a class="link" href="GtkTreeModelFilter.html#GtkTreeModelFilterVisibleFunc" title="GtkTreeModelFilterVisibleFunc ()">*GtkTreeModelFilterVisibleFunc</a><span class="c_punctuation">)</span> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<span class="c_punctuation">(</span><a class="link" href="GtkTreeModelFilter.html#GtkTreeModelFilterModifyFunc" title="GtkTreeModelFilterModifyFunc ()">*GtkTreeModelFilterModifyFunc</a><span class="c_punctuation">)</span> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GtkTreeModel.html" title="GtkTreeModel"><span class="returnvalue">GtkTreeModel</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GtkTreeModelFilter.html#gtk-tree-model-filter-new" title="gtk_tree_model_filter_new ()">gtk_tree_model_filter_new</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkTreeModelFilter.html#gtk-tree-model-filter-set-visible-func" title="gtk_tree_model_filter_set_visible_func ()">gtk_tree_model_filter_set_visible_func</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkTreeModelFilter.html#gtk-tree-model-filter-set-modify-func" title="gtk_tree_model_filter_set_modify_func ()">gtk_tree_model_filter_set_modify_func</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkTreeModelFilter.html#gtk-tree-model-filter-set-visible-column" title="gtk_tree_model_filter_set_visible_column ()">gtk_tree_model_filter_set_visible_column</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GtkTreeModel.html" title="GtkTreeModel"><span class="returnvalue">GtkTreeModel</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GtkTreeModelFilter.html#gtk-tree-model-filter-get-model" title="gtk_tree_model_filter_get_model ()">gtk_tree_model_filter_get_model</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gboolean</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkTreeModelFilter.html#gtk-tree-model-filter-convert-child-iter-to-iter" title="gtk_tree_model_filter_convert_child_iter_to_iter ()">gtk_tree_model_filter_convert_child_iter_to_iter</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkTreeModelFilter.html#gtk-tree-model-filter-convert-iter-to-child-iter" title="gtk_tree_model_filter_convert_iter_to_child_iter ()">gtk_tree_model_filter_convert_iter_to_child_iter</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GtkTreeModel.html#GtkTreePath"><span class="returnvalue">GtkTreePath</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GtkTreeModelFilter.html#gtk-tree-model-filter-convert-child-path-to-path" title="gtk_tree_model_filter_convert_child_path_to_path ()">gtk_tree_model_filter_convert_child_path_to_path</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GtkTreeModel.html#GtkTreePath"><span class="returnvalue">GtkTreePath</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GtkTreeModelFilter.html#gtk-tree-model-filter-convert-path-to-child-path" title="gtk_tree_model_filter_convert_path_to_child_path ()">gtk_tree_model_filter_convert_path_to_child_path</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkTreeModelFilter.html#gtk-tree-model-filter-refilter" title="gtk_tree_model_filter_refilter ()">gtk_tree_model_filter_refilter</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkTreeModelFilter.html#gtk-tree-model-filter-clear-cache" title="gtk_tree_model_filter_clear_cache ()">gtk_tree_model_filter_clear_cache</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GtkTreeModelFilter.properties"></a><h2>Properties</h2>
+<div class="informaltable"><table class="informaltable" border="0">
+<colgroup>
+<col width="150px" class="properties_type">
+<col width="300px" class="properties_name">
+<col width="200px" class="properties_flags">
+</colgroup>
+<tbody>
+<tr>
+<td class="property_type">
+<a class="link" href="GtkTreeModel.html" title="GtkTreeModel"><span class="type">GtkTreeModel</span></a> *</td>
+<td class="property_name"><a class="link" href="GtkTreeModelFilter.html#GtkTreeModelFilter--child-model" title="The “child-model” property">child-model</a></td>
+<td class="property_flags">Read / Write / Construct Only</td>
+</tr>
+<tr>
+<td class="property_type">
+<a class="link" href="GtkTreeModel.html#GtkTreePath"><span class="type">GtkTreePath</span></a> *</td>
+<td class="property_name"><a class="link" href="GtkTreeModelFilter.html#GtkTreeModelFilter--virtual-root" title="The “virtual-root” property">virtual-root</a></td>
+<td class="property_flags">Read / Write / Construct Only</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GtkTreeModelFilter.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="other_proto_type">
+<col class="other_proto_name">
+</colgroup>
+<tbody><tr>
+<td class="datatype_keyword">struct</td>
+<td class="function_name"><a class="link" href="GtkTreeModelFilter.html#GtkTreeModelFilter-struct" title="struct GtkTreeModelFilter">GtkTreeModelFilter</a></td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GtkTreeModelFilter.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="screen">    GObject
+    <span class="lineart">╰──</span> GtkTreeModelFilter
+</pre>
+</div>
+<div class="refsect1">
+<a name="GtkTreeModelFilter.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
+<p>
+GtkTreeModelFilter implements
+ <a class="link" href="GtkTreeModel.html" title="GtkTreeModel">GtkTreeModel</a> and  <a class="link" href="gtk2-GtkTreeView-drag-and-drop.html#GtkTreeDragSource">GtkTreeDragSource</a>.</p>
+</div>
+<div class="refsect1">
+<a name="GtkTreeModelFilter.includes"></a><h2>Includes</h2>
+<pre class="synopsis">#include &lt;gtk/gtk.h&gt;
+</pre>
+</div>
+<div class="refsect1">
+<a name="GtkTreeModelFilter.description"></a><h2>Description</h2>
+</div>
+<div class="refsect1">
+<a name="GtkTreeModelFilter.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="GtkTreeModelFilterVisibleFunc"></a><h3>GtkTreeModelFilterVisibleFunc ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>
+<span class="c_punctuation">(</span>*GtkTreeModelFilterVisibleFunc<span class="c_punctuation">)</span> (<em class="parameter"><code><a class="link" href="GtkTreeModel.html" title="GtkTreeModel"><span class="type">GtkTreeModel</span></a> *model</code></em>,
+                                  <em class="parameter"><code><a class="link" href="GtkTreeModel.html#GtkTreeIter"><span class="type">GtkTreeIter</span></a> *iter</code></em>,
+                                  <em class="parameter"><code><span class="type">gpointer</span> data</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GtkTreeModelFilterModifyFunc"></a><h3>GtkTreeModelFilterModifyFunc ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+<span class="c_punctuation">(</span>*GtkTreeModelFilterModifyFunc<span class="c_punctuation">)</span> (<em class="parameter"><code><a class="link" href="GtkTreeModel.html" title="GtkTreeModel"><span class="type">GtkTreeModel</span></a> *model</code></em>,
+                                 <em class="parameter"><code><a class="link" href="GtkTreeModel.html#GtkTreeIter"><span class="type">GtkTreeIter</span></a> *iter</code></em>,
+                                 <em class="parameter"><code><span class="type">GValue</span> *value</code></em>,
+                                 <em class="parameter"><code><span class="type">gint</span> column</code></em>,
+                                 <em class="parameter"><code><span class="type">gpointer</span> data</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-tree-model-filter-new"></a><h3>gtk_tree_model_filter_new ()</h3>
+<pre class="programlisting"><a class="link" href="GtkTreeModel.html" title="GtkTreeModel"><span class="returnvalue">GtkTreeModel</span></a> *
+gtk_tree_model_filter_new (<em class="parameter"><code><a class="link" href="GtkTreeModel.html" title="GtkTreeModel"><span class="type">GtkTreeModel</span></a> *child_model</code></em>,
+                           <em class="parameter"><code><a class="link" href="GtkTreeModel.html#GtkTreePath"><span class="type">GtkTreePath</span></a> *root</code></em>);</pre>
+<p>Creates a new <a class="link" href="GtkTreeModel.html" title="GtkTreeModel"><span class="type">GtkTreeModel</span></a>, with <em class="parameter"><code>child_model</code></em>
+ as the child_model
+and <em class="parameter"><code>root</code></em>
+ as the virtual root.</p>
+<div class="refsect3">
+<a name="gtk-tree-model-filter-new.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>child_model</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GtkTreeModel.html" title="GtkTreeModel"><span class="type">GtkTreeModel</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>root</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GtkTreeModel.html#GtkTreePath"><span class="type">GtkTreePath</span></a> or <code class="literal">NULL</code>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-tree-model-filter-new.returns"></a><h4>Returns</h4>
+<p>A new <a class="link" href="GtkTreeModel.html" title="GtkTreeModel"><span class="type">GtkTreeModel</span></a>. </p>
+<p><span class="annotation">[<acronym title="Free data after the code is done."><span class="acronym">transfer full</span></acronym>]</span></p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-4.html#api-index-2.4">2.4</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-tree-model-filter-set-visible-func"></a><h3>gtk_tree_model_filter_set_visible_func ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_tree_model_filter_set_visible_func
+                               (<em class="parameter"><code><a class="link" href="GtkTreeModelFilter.html" title="GtkTreeModelFilter"><span class="type">GtkTreeModelFilter</span></a> *filter</code></em>,
+                                <em class="parameter"><code><a class="link" href="GtkTreeModelFilter.html#GtkTreeModelFilterVisibleFunc" title="GtkTreeModelFilterVisibleFunc ()"><span class="type">GtkTreeModelFilterVisibleFunc</span></a> func</code></em>,
+                                <em class="parameter"><code><span class="type">gpointer</span> data</code></em>,
+                                <em class="parameter"><code><span class="type">GDestroyNotify</span> destroy</code></em>);</pre>
+<p>Sets the visible function used when filtering the <em class="parameter"><code>filter</code></em>
+ to be <em class="parameter"><code>func</code></em>
+. The
+function should return <code class="literal">TRUE</code> if the given row should be visible and
+<code class="literal">FALSE</code> otherwise.</p>
+<p>If the condition calculated by the function changes over time (e.g. because
+it depends on some global parameters), you must call 
+<a class="link" href="GtkTreeModelFilter.html#gtk-tree-model-filter-refilter" title="gtk_tree_model_filter_refilter ()"><code class="function">gtk_tree_model_filter_refilter()</code></a> to keep the visibility information of 
+the model uptodate.</p>
+<p>Note that <em class="parameter"><code>func</code></em>
+ is called whenever a row is inserted, when it may still be
+empty. The visible function should therefore take special care of empty
+rows, like in the example below.</p>
+<div class="informalexample">
+  <table class="listing_frame" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+      <tr>
+        <td class="listing_lines" align="right"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16</pre></td>
+        <td class="listing_code"><pre class="programlisting"><span class="k">static</span> <span class="n">gboolean</span>
+<span class="nf">visible_func</span> <span class="p">(</span><span class="n">GtkTreeModel</span> <span class="o">*</span><span class="n">model</span><span class="p">,</span>
+              <span class="n">GtkTreeIter</span>  <span class="o">*</span><span class="n">iter</span><span class="p">,</span>
+              <span class="n">gpointer</span>      <span class="n">data</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="cm">/* Visible if row is non-empty and first column is &quot;HI&quot; */</span>
+  <span class="n">gchar</span> <span class="o">*</span><span class="n">str</span><span class="p">;</span>
+  <span class="n">gboolean</span> <span class="n">visible</span> <span class="o">=</span> <span class="n">FALSE</span><span class="p">;</span>
+
+  <span class="n">gtk_tree_model_get</span> <span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">iter</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">str</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">str</span> <span class="o">&amp;&amp;</span> <span class="n">strcmp</span> <span class="p">(</span><span class="n">str</span><span class="p">,</span> <span class="s">&quot;HI&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">visible</span> <span class="o">=</span> <span class="n">TRUE</span><span class="p">;</span>
+  <span class="n">g_free</span> <span class="p">(</span><span class="n">str</span><span class="p">);</span>
+
+  <span class="k">return</span> <span class="n">visible</span><span class="p">;</span>
+<span class="p">}</span></pre></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="refsect3">
+<a name="gtk-tree-model-filter-set-visible-func.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>filter</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GtkTreeModelFilter.html" title="GtkTreeModelFilter"><span class="type">GtkTreeModelFilter</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>func</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GtkTreeModelFilter.html#GtkTreeModelFilterVisibleFunc" title="GtkTreeModelFilterVisibleFunc ()"><span class="type">GtkTreeModelFilterVisibleFunc</span></a>, the visible function.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>data</p></td>
+<td class="parameter_description"><p>User data to pass to the visible function, or <code class="literal">NULL</code>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>destroy</p></td>
+<td class="parameter_description"><p>Destroy notifier of <em class="parameter"><code>data</code></em>
+, or <code class="literal">NULL</code>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-4.html#api-index-2.4">2.4</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-tree-model-filter-set-modify-func"></a><h3>gtk_tree_model_filter_set_modify_func ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_tree_model_filter_set_modify_func (<em class="parameter"><code><a class="link" href="GtkTreeModelFilter.html" title="GtkTreeModelFilter"><span class="type">GtkTreeModelFilter</span></a> *filter</code></em>,
+                                       <em class="parameter"><code><span class="type">gint</span> n_columns</code></em>,
+                                       <em class="parameter"><code><span class="type">GType</span> *types</code></em>,
+                                       <em class="parameter"><code><a class="link" href="GtkTreeModelFilter.html#GtkTreeModelFilterModifyFunc" title="GtkTreeModelFilterModifyFunc ()"><span class="type">GtkTreeModelFilterModifyFunc</span></a> func</code></em>,
+                                       <em class="parameter"><code><span class="type">gpointer</span> data</code></em>,
+                                       <em class="parameter"><code><span class="type">GDestroyNotify</span> destroy</code></em>);</pre>
+<p>With the <em class="parameter"><code>n_columns</code></em>
+ and <em class="parameter"><code>types</code></em>
+ parameters, you give an array of column
+types for this model (which will be exposed to the parent model/view).
+The <em class="parameter"><code>func</code></em>
+, <em class="parameter"><code>data</code></em>
+ and <em class="parameter"><code>destroy</code></em>
+ parameters are for specifying the modify
+function. The modify function will get called for <span class="emphasis"><em>each</em></span>
+data access, the goal of the modify function is to return the data which 
+should be displayed at the location specified using the parameters of the 
+modify function.</p>
+<div class="refsect3">
+<a name="gtk-tree-model-filter-set-modify-func.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>filter</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GtkTreeModelFilter.html" title="GtkTreeModelFilter"><span class="type">GtkTreeModelFilter</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>n_columns</p></td>
+<td class="parameter_description"><p>The number of columns in the filter model.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>types</p></td>
+<td class="parameter_description"><p>The <span class="type">GType</span>s of the columns. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Parameter points to an array of items."><span class="acronym">array</span></acronym> length=n_columns]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>func</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GtkTreeModelFilter.html#GtkTreeModelFilterModifyFunc" title="GtkTreeModelFilterModifyFunc ()"><span class="type">GtkTreeModelFilterModifyFunc</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>data</p></td>
+<td class="parameter_description"><p>User data to pass to the modify function, or <code class="literal">NULL</code>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>destroy</p></td>
+<td class="parameter_description"><p>Destroy notifier of <em class="parameter"><code>data</code></em>
+, or <code class="literal">NULL</code>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-4.html#api-index-2.4">2.4</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-tree-model-filter-set-visible-column"></a><h3>gtk_tree_model_filter_set_visible_column ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_tree_model_filter_set_visible_column
+                               (<em class="parameter"><code><a class="link" href="GtkTreeModelFilter.html" title="GtkTreeModelFilter"><span class="type">GtkTreeModelFilter</span></a> *filter</code></em>,
+                                <em class="parameter"><code><span class="type">gint</span> column</code></em>);</pre>
+<p>Sets <em class="parameter"><code>column</code></em>
+ of the child_model to be the column where <em class="parameter"><code>filter</code></em>
+ should
+look for visibility information. <em class="parameter"><code>columns</code></em>
+ should be a column of type
+<code class="literal">G_TYPE_BOOLEAN</code>, where <code class="literal">TRUE</code> means that a row is visible, and <code class="literal">FALSE</code>
+if not.</p>
+<div class="refsect3">
+<a name="gtk-tree-model-filter-set-visible-column.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>filter</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GtkTreeModelFilter.html" title="GtkTreeModelFilter"><span class="type">GtkTreeModelFilter</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>column</p></td>
+<td class="parameter_description"><p>A <span class="type">gint</span> which is the column containing the visible information.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-4.html#api-index-2.4">2.4</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-tree-model-filter-get-model"></a><h3>gtk_tree_model_filter_get_model ()</h3>
+<pre class="programlisting"><a class="link" href="GtkTreeModel.html" title="GtkTreeModel"><span class="returnvalue">GtkTreeModel</span></a> *
+gtk_tree_model_filter_get_model (<em class="parameter"><code><a class="link" href="GtkTreeModelFilter.html" title="GtkTreeModelFilter"><span class="type">GtkTreeModelFilter</span></a> *filter</code></em>);</pre>
+<p>Returns a pointer to the child model of <em class="parameter"><code>filter</code></em>
+.</p>
+<div class="refsect3">
+<a name="gtk-tree-model-filter-get-model.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>filter</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GtkTreeModelFilter.html" title="GtkTreeModelFilter"><span class="type">GtkTreeModelFilter</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-tree-model-filter-get-model.returns"></a><h4>Returns</h4>
+<p>A pointer to a <a class="link" href="GtkTreeModel.html" title="GtkTreeModel"><span class="type">GtkTreeModel</span></a>. </p>
+<p><span class="annotation">[<acronym title="Don't free data after the code is done."><span class="acronym">transfer none</span></acronym>]</span></p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-4.html#api-index-2.4">2.4</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-tree-model-filter-convert-child-iter-to-iter"></a><h3>gtk_tree_model_filter_convert_child_iter_to_iter ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>
+gtk_tree_model_filter_convert_child_iter_to_iter
+                               (<em class="parameter"><code><a class="link" href="GtkTreeModelFilter.html" title="GtkTreeModelFilter"><span class="type">GtkTreeModelFilter</span></a> *filter</code></em>,
+                                <em class="parameter"><code><a class="link" href="GtkTreeModel.html#GtkTreeIter"><span class="type">GtkTreeIter</span></a> *filter_iter</code></em>,
+                                <em class="parameter"><code><a class="link" href="GtkTreeModel.html#GtkTreeIter"><span class="type">GtkTreeIter</span></a> *child_iter</code></em>);</pre>
+<p>Sets <em class="parameter"><code>filter_iter</code></em>
+ to point to the row in <em class="parameter"><code>filter</code></em>
+ that corresponds to the
+row pointed at by <em class="parameter"><code>child_iter</code></em>
+.  If <em class="parameter"><code>filter_iter</code></em>
+ was not set, <code class="literal">FALSE</code> is
+returned.</p>
+<div class="refsect3">
+<a name="gtk-tree-model-filter-convert-child-iter-to-iter.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>filter</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GtkTreeModelFilter.html" title="GtkTreeModelFilter"><span class="type">GtkTreeModelFilter</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>filter_iter</p></td>
+<td class="parameter_description"><p>An uninitialized <a class="link" href="GtkTreeModel.html#GtkTreeIter"><span class="type">GtkTreeIter</span></a>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>child_iter</p></td>
+<td class="parameter_description"><p>A valid <a class="link" href="GtkTreeModel.html#GtkTreeIter"><span class="type">GtkTreeIter</span></a> pointing to a row on the child model.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-tree-model-filter-convert-child-iter-to-iter.returns"></a><h4>Returns</h4>
+<p> <code class="literal">TRUE</code>, if <em class="parameter"><code>filter_iter</code></em>
+was set, i.e. if <em class="parameter"><code>child_iter</code></em>
+is a
+valid iterator pointing to a visible row in child model.</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-4.html#api-index-2.4">2.4</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-tree-model-filter-convert-iter-to-child-iter"></a><h3>gtk_tree_model_filter_convert_iter_to_child_iter ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_tree_model_filter_convert_iter_to_child_iter
+                               (<em class="parameter"><code><a class="link" href="GtkTreeModelFilter.html" title="GtkTreeModelFilter"><span class="type">GtkTreeModelFilter</span></a> *filter</code></em>,
+                                <em class="parameter"><code><a class="link" href="GtkTreeModel.html#GtkTreeIter"><span class="type">GtkTreeIter</span></a> *child_iter</code></em>,
+                                <em class="parameter"><code><a class="link" href="GtkTreeModel.html#GtkTreeIter"><span class="type">GtkTreeIter</span></a> *filter_iter</code></em>);</pre>
+<p>Sets <em class="parameter"><code>child_iter</code></em>
+ to point to the row pointed to by <em class="parameter"><code>filter_iter</code></em>
+.</p>
+<div class="refsect3">
+<a name="gtk-tree-model-filter-convert-iter-to-child-iter.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>filter</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GtkTreeModelFilter.html" title="GtkTreeModelFilter"><span class="type">GtkTreeModelFilter</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>child_iter</p></td>
+<td class="parameter_description"><p>An uninitialized <a class="link" href="GtkTreeModel.html#GtkTreeIter"><span class="type">GtkTreeIter</span></a>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>filter_iter</p></td>
+<td class="parameter_description"><p>A valid <a class="link" href="GtkTreeModel.html#GtkTreeIter"><span class="type">GtkTreeIter</span></a> pointing to a row on <em class="parameter"><code>filter</code></em>
+.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-4.html#api-index-2.4">2.4</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-tree-model-filter-convert-child-path-to-path"></a><h3>gtk_tree_model_filter_convert_child_path_to_path ()</h3>
+<pre class="programlisting"><a class="link" href="GtkTreeModel.html#GtkTreePath"><span class="returnvalue">GtkTreePath</span></a> *
+gtk_tree_model_filter_convert_child_path_to_path
+                               (<em class="parameter"><code><a class="link" href="GtkTreeModelFilter.html" title="GtkTreeModelFilter"><span class="type">GtkTreeModelFilter</span></a> *filter</code></em>,
+                                <em class="parameter"><code><a class="link" href="GtkTreeModel.html#GtkTreePath"><span class="type">GtkTreePath</span></a> *child_path</code></em>);</pre>
+<p>Converts <em class="parameter"><code>child_path</code></em>
+ to a path relative to <em class="parameter"><code>filter</code></em>
+. That is, <em class="parameter"><code>child_path</code></em>
+
+points to a path in the child model. The rerturned path will point to the
+same row in the filtered model. If <em class="parameter"><code>child_path</code></em>
+ isn't a valid path on the
+child model or points to a row which is not visible in <em class="parameter"><code>filter</code></em>
+, then <code class="literal">NULL</code>
+is returned.</p>
+<div class="refsect3">
+<a name="gtk-tree-model-filter-convert-child-path-to-path.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>filter</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GtkTreeModelFilter.html" title="GtkTreeModelFilter"><span class="type">GtkTreeModelFilter</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>child_path</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GtkTreeModel.html#GtkTreePath"><span class="type">GtkTreePath</span></a> to convert.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-tree-model-filter-convert-child-path-to-path.returns"></a><h4>Returns</h4>
+<p> A newly allocated <a class="link" href="GtkTreeModel.html#GtkTreePath"><span class="type">GtkTreePath</span></a>, or <code class="literal">NULL</code>.</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-4.html#api-index-2.4">2.4</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-tree-model-filter-convert-path-to-child-path"></a><h3>gtk_tree_model_filter_convert_path_to_child_path ()</h3>
+<pre class="programlisting"><a class="link" href="GtkTreeModel.html#GtkTreePath"><span class="returnvalue">GtkTreePath</span></a> *
+gtk_tree_model_filter_convert_path_to_child_path
+                               (<em class="parameter"><code><a class="link" href="GtkTreeModelFilter.html" title="GtkTreeModelFilter"><span class="type">GtkTreeModelFilter</span></a> *filter</code></em>,
+                                <em class="parameter"><code><a class="link" href="GtkTreeModel.html#GtkTreePath"><span class="type">GtkTreePath</span></a> *filter_path</code></em>);</pre>
+<p>Converts <em class="parameter"><code>filter_path</code></em>
+ to a path on the child model of <em class="parameter"><code>filter</code></em>
+. That is,
+<em class="parameter"><code>filter_path</code></em>
+ points to a location in <em class="parameter"><code>filter</code></em>
+. The returned path will
+point to the same location in the model not being filtered. If <em class="parameter"><code>filter_path</code></em>
+
+does not point to a location in the child model, <code class="literal">NULL</code> is returned.</p>
+<div class="refsect3">
+<a name="gtk-tree-model-filter-convert-path-to-child-path.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>filter</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GtkTreeModelFilter.html" title="GtkTreeModelFilter"><span class="type">GtkTreeModelFilter</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>filter_path</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GtkTreeModel.html#GtkTreePath"><span class="type">GtkTreePath</span></a> to convert.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gtk-tree-model-filter-convert-path-to-child-path.returns"></a><h4>Returns</h4>
+<p> A newly allocated <a class="link" href="GtkTreeModel.html#GtkTreePath"><span class="type">GtkTreePath</span></a>, or <code class="literal">NULL</code>.</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-4.html#api-index-2.4">2.4</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-tree-model-filter-refilter"></a><h3>gtk_tree_model_filter_refilter ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_tree_model_filter_refilter (<em class="parameter"><code><a class="link" href="GtkTreeModelFilter.html" title="GtkTreeModelFilter"><span class="type">GtkTreeModelFilter</span></a> *filter</code></em>);</pre>
+<p>Emits ::row_changed for each row in the child model, which causes
+the filter to re-evaluate whether a row is visible or not.</p>
+<div class="refsect3">
+<a name="gtk-tree-model-filter-refilter.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>filter</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GtkTreeModelFilter.html" title="GtkTreeModelFilter"><span class="type">GtkTreeModelFilter</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-4.html#api-index-2.4">2.4</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-tree-model-filter-clear-cache"></a><h3>gtk_tree_model_filter_clear_cache ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_tree_model_filter_clear_cache (<em class="parameter"><code><a class="link" href="GtkTreeModelFilter.html" title="GtkTreeModelFilter"><span class="type">GtkTreeModelFilter</span></a> *filter</code></em>);</pre>
+<p>This function should almost never be called. It clears the <em class="parameter"><code>filter</code></em>
+
+of any cached iterators that haven't been reffed with
+<a class="link" href="GtkTreeModel.html#gtk-tree-model-ref-node" title="gtk_tree_model_ref_node ()"><code class="function">gtk_tree_model_ref_node()</code></a>. This might be useful if the child model
+being filtered is static (and doesn't change often) and there has been
+a lot of unreffed access to nodes. As a side effect of this function,
+all unreffed iters will be invalid.</p>
+<div class="refsect3">
+<a name="gtk-tree-model-filter-clear-cache.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>filter</p></td>
+<td class="parameter_description"><p>A <a class="link" href="GtkTreeModelFilter.html" title="GtkTreeModelFilter"><span class="type">GtkTreeModelFilter</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-4.html#api-index-2.4">2.4</a></p>
+</div>
+</div>
+<div class="refsect1">
+<a name="GtkTreeModelFilter.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="GtkTreeModelFilter-struct"></a><h3>struct GtkTreeModelFilter</h3>
+<pre class="programlisting">struct GtkTreeModelFilter;</pre>
+</div>
+</div>
+<div class="refsect1">
+<a name="GtkTreeModelFilter.property-details"></a><h2>Property Details</h2>
+<div class="refsect2">
+<a name="GtkTreeModelFilter--child-model"></a><h3>The <code class="literal">“child-model”</code> property</h3>
+<pre class="programlisting">  “child-model”              <a class="link" href="GtkTreeModel.html" title="GtkTreeModel"><span class="type">GtkTreeModel</span></a> *</pre>
+<p>The model for the filtermodel to filter.</p>
+<p>Owner: GtkTreeModelFilter</p>
+<p>Flags: Read / Write / Construct Only</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GtkTreeModelFilter--virtual-root"></a><h3>The <code class="literal">“virtual-root”</code> property</h3>
+<pre class="programlisting">  “virtual-root”             <a class="link" href="GtkTreeModel.html#GtkTreePath"><span class="type">GtkTreePath</span></a> *</pre>
+<p>The virtual root (relative to the child model) for this filtermodel.</p>
+<p>Owner: GtkTreeModelFilter</p>
+<p>Flags: Read / Write / Construct Only</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.33.0</div>
+</body>
+</html>

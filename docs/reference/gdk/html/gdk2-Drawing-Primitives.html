@@ -1,0 +1,2479 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Drawing Primitives: GDK 2 Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets Vsnapshot">
+<link rel="home" href="index.html" title="GDK 2 Reference Manual">
+<link rel="up" href="reference.html" title="API Reference">
+<link rel="prev" href="gdk2-Graphics-Contexts.html" title="Graphics Contexts">
+<link rel="next" href="gdk2-Bitmaps-and-Pixmaps.html" title="Bitmaps and Pixmaps">
+<meta name="generator" content="GTK-Doc V1.33.0 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#gdk2-Drawing-Primitives.description" class="shortcut">Description</a></span><span id="nav_hierarchy">  <span class="dim">|</span> 
+                  <a href="#gdk2-Drawing-Primitives.object-hierarchy" class="shortcut">Object Hierarchy</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="reference.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="gdk2-Graphics-Contexts.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="gdk2-Bitmaps-and-Pixmaps.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="gdk2-Drawing-Primitives"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="gdk2-Drawing-Primitives.top_of_page"></a>Drawing Primitives</span></h2>
+<p>Drawing Primitives</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="gdk2-Drawing-Primitives.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_proto_type">
+<col class="functions_proto_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="returnvalue">GdkDrawable</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-drawable-ref" title="gdk_drawable_ref ()">gdk_drawable_ref</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-drawable-unref" title="gdk_drawable_unref ()">gdk_drawable_unref</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-drawable-set-data" title="gdk_drawable_set_data ()">gdk_drawable_set_data</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gpointer</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-drawable-get-data" title="gdk_drawable_get_data ()">gdk_drawable_get_data</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GdkDisplay.html" title="GdkDisplay"><span class="returnvalue">GdkDisplay</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-drawable-get-display" title="gdk_drawable_get_display ()">gdk_drawable_get_display</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GdkScreen.html" title="GdkScreen"><span class="returnvalue">GdkScreen</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-drawable-get-screen" title="gdk_drawable_get_screen ()">gdk_drawable_get_screen</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="gdk2-Visuals.html#GdkVisual" title="GdkVisual"><span class="returnvalue">GdkVisual</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-drawable-get-visual" title="gdk_drawable_get_visual ()">gdk_drawable_get_visual</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-drawable-set-colormap" title="gdk_drawable_set_colormap ()">gdk_drawable_set_colormap</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="returnvalue">GdkColormap</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-drawable-get-colormap" title="gdk_drawable_get_colormap ()">gdk_drawable_get_colormap</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gint</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-drawable-get-depth" title="gdk_drawable_get_depth ()">gdk_drawable_get_depth</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-drawable-get-size" title="gdk_drawable_get_size ()">gdk_drawable_get_size</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="gdk2-Points-Rectangles-and-Regions.html#GdkRegion" title="GdkRegion"><span class="returnvalue">GdkRegion</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-drawable-get-clip-region" title="gdk_drawable_get_clip_region ()">gdk_drawable_get_clip_region</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="gdk2-Points-Rectangles-and-Regions.html#GdkRegion" title="GdkRegion"><span class="returnvalue">GdkRegion</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-drawable-get-visible-region" title="gdk_drawable_get_visible_region ()">gdk_drawable_get_visible_region</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-draw-point" title="gdk_draw_point ()">gdk_draw_point</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-draw-points" title="gdk_draw_points ()">gdk_draw_points</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-draw-line" title="gdk_draw_line ()">gdk_draw_line</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-draw-lines" title="gdk_draw_lines ()">gdk_draw_lines</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-draw-pixbuf" title="gdk_draw_pixbuf ()">gdk_draw_pixbuf</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-draw-segments" title="gdk_draw_segments ()">gdk_draw_segments</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-draw-rectangle" title="gdk_draw_rectangle ()">gdk_draw_rectangle</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-draw-arc" title="gdk_draw_arc ()">gdk_draw_arc</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-draw-polygon" title="gdk_draw_polygon ()">gdk_draw_polygon</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-draw-trapezoids" title="gdk_draw_trapezoids ()">gdk_draw_trapezoids</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-draw-glyphs" title="gdk_draw_glyphs ()">gdk_draw_glyphs</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-draw-glyphs-transformed" title="gdk_draw_glyphs_transformed ()">gdk_draw_glyphs_transformed</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-draw-layout-line" title="gdk_draw_layout_line ()">gdk_draw_layout_line</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-draw-layout-line-with-colors" title="gdk_draw_layout_line_with_colors ()">gdk_draw_layout_line_with_colors</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-draw-layout" title="gdk_draw_layout ()">gdk_draw_layout</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-draw-layout-with-colors" title="gdk_draw_layout_with_colors ()">gdk_draw_layout_with_colors</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-draw-string" title="gdk_draw_string ()">gdk_draw_string</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-draw-text" title="gdk_draw_text ()">gdk_draw_text</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-draw-text-wc" title="gdk_draw_text_wc ()">gdk_draw_text_wc</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-draw-drawable" title="gdk_draw_drawable ()">gdk_draw_drawable</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-draw-image" title="gdk_draw_image ()">gdk_draw_image</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="gdk2-Images.html#GdkImage" title="GdkImage"><span class="returnvalue">GdkImage</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-drawable-get-image" title="gdk_drawable_get_image ()">gdk_drawable_get_image</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="gdk2-Images.html#GdkImage" title="GdkImage"><span class="returnvalue">GdkImage</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-drawable-copy-to-image" title="gdk_drawable_copy_to_image ()">gdk_drawable_copy_to_image</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<a name="GdkDrawable"></a><div class="refsect1">
+<a name="gdk2-Drawing-Primitives.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="other_proto_type">
+<col class="other_proto_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="datatype_keyword"> </td>
+<td class="function_name"><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable-struct" title="GdkDrawable">GdkDrawable</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">struct</td>
+<td class="function_name"><a class="link" href="gdk2-Drawing-Primitives.html#GdkSegment" title="struct GdkSegment">GdkSegment</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">struct</td>
+<td class="function_name"><a class="link" href="gdk2-Drawing-Primitives.html#GdkTrapezoid" title="struct GdkTrapezoid">GdkTrapezoid</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="gdk2-Drawing-Primitives.html#gdk-draw-pixmap" title="gdk_draw_pixmap">gdk_draw_pixmap</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="gdk2-Drawing-Primitives.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="screen">    GObject
+    <span class="lineart">╰──</span> GdkDrawable
+        <span class="lineart">├──</span> <a class="link" href="gdk2-Windows.html#GdkWindow">GdkWindow</a>
+        <span class="lineart">╰──</span> <a class="link" href="gdk2-Bitmaps-and-Pixmaps.html#GdkPixmap">GdkPixmap</a>
+</pre>
+</div>
+<div class="refsect1">
+<a name="gdk2-Drawing-Primitives.includes"></a><h2>Includes</h2>
+<pre class="synopsis">#include &lt;gdk/gdk.h&gt;
+</pre>
+</div>
+<div class="refsect1">
+<a name="gdk2-Drawing-Primitives.description"></a><h2>Description</h2>
+</div>
+<div class="refsect1">
+<a name="gdk2-Drawing-Primitives.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="gdk-drawable-ref"></a><h3>gdk_drawable_ref ()</h3>
+<pre class="programlisting"><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="returnvalue">GdkDrawable</span></a> *
+gdk_drawable_ref (<em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *drawable</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_drawable_ref</code> has been deprecated since version 2.0 and should not be used in newly-written code.</p>
+<p>Use <code class="function">g_object_ref()</code> instead.</p>
+</div>
+<p>Deprecated equivalent of calling <code class="function">g_object_ref()</code> on <em class="parameter"><code>drawable</code></em>
+.
+(Drawables were not objects in previous versions of GDK.)</p>
+<div class="refsect3">
+<a name="gdk-drawable-ref.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>drawable</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gdk-drawable-ref.returns"></a><h4>Returns</h4>
+<p> the same <em class="parameter"><code>drawable</code></em>
+passed in</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-drawable-unref"></a><h3>gdk_drawable_unref ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_drawable_unref (<em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *drawable</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_drawable_unref</code> has been deprecated since version 2.0 and should not be used in newly-written code.</p>
+<p>Use <code class="function">g_object_unref()</code> instead.</p>
+</div>
+<p>Deprecated equivalent of calling <code class="function">g_object_unref()</code> on <em class="parameter"><code>drawable</code></em>
+.</p>
+<div class="refsect3">
+<a name="gdk-drawable-unref.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>drawable</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-drawable-set-data"></a><h3>gdk_drawable_set_data ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_drawable_set_data (<em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *drawable</code></em>,
+                       <em class="parameter"><code>const <span class="type">gchar</span> *key</code></em>,
+                       <em class="parameter"><code><span class="type">gpointer</span> data</code></em>,
+                       <em class="parameter"><code><span class="type">GDestroyNotify</span> destroy_func</code></em>);</pre>
+<div class="warning"><p><code class="literal">gdk_drawable_set_data</code> is deprecated and should not be used in newly-written code.</p></div>
+<p>This function is equivalent to <code class="function">g_object_set_data()</code>,
+the <span class="type">GObject</span> variant should be used instead.</p>
+<div class="refsect3">
+<a name="gdk-drawable-set-data.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>drawable</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>key</p></td>
+<td class="parameter_description"><p>name to store the data under</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>data</p></td>
+<td class="parameter_description"><p>arbitrary data</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>destroy_func</p></td>
+<td class="parameter_description"><p>function to free <em class="parameter"><code>data</code></em>
+, or <code class="literal">NULL</code>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-drawable-get-data"></a><h3>gdk_drawable_get_data ()</h3>
+<pre class="programlisting"><span class="returnvalue">gpointer</span>
+gdk_drawable_get_data (<em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *drawable</code></em>,
+                       <em class="parameter"><code>const <span class="type">gchar</span> *key</code></em>);</pre>
+<div class="warning"><p><code class="literal">gdk_drawable_get_data</code> is deprecated and should not be used in newly-written code.</p></div>
+<p>Equivalent to <code class="function">g_object_get_data()</code>; the <span class="type">GObject</span> variant should be
+used instead.</p>
+<div class="refsect3">
+<a name="gdk-drawable-get-data.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>drawable</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>key</p></td>
+<td class="parameter_description"><p>name the data was stored under</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gdk-drawable-get-data.returns"></a><h4>Returns</h4>
+<p> the data stored at <em class="parameter"><code>key</code></em>
+</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-drawable-get-display"></a><h3>gdk_drawable_get_display ()</h3>
+<pre class="programlisting"><a class="link" href="GdkDisplay.html" title="GdkDisplay"><span class="returnvalue">GdkDisplay</span></a> *
+gdk_drawable_get_display (<em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *drawable</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_drawable_get_display</code> has been deprecated since version 2.24 and should not be used in newly-written code.</p>
+<p>Use <a class="link" href="gdk2-Windows.html#gdk-window-get-display" title="gdk_window_get_display ()"><code class="function">gdk_window_get_display()</code></a> instead</p>
+</div>
+<p>Gets the <a class="link" href="GdkDisplay.html" title="GdkDisplay"><span class="type">GdkDisplay</span></a> associated with a <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a>.</p>
+<div class="refsect3">
+<a name="gdk-drawable-get-display.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>drawable</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gdk-drawable-get-display.returns"></a><h4>Returns</h4>
+<p> the <a class="link" href="GdkDisplay.html" title="GdkDisplay"><span class="type">GdkDisplay</span></a> associated with <em class="parameter"><code>drawable</code></em>
+</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-2.html#api-index-2.2">2.2</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-drawable-get-screen"></a><h3>gdk_drawable_get_screen ()</h3>
+<pre class="programlisting"><a class="link" href="GdkScreen.html" title="GdkScreen"><span class="returnvalue">GdkScreen</span></a> *
+gdk_drawable_get_screen (<em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *drawable</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_drawable_get_screen</code> has been deprecated since version 2.24 and should not be used in newly-written code.</p>
+<p>Use <a class="link" href="gdk2-Windows.html#gdk-window-get-screen" title="gdk_window_get_screen ()"><code class="function">gdk_window_get_screen()</code></a> instead</p>
+</div>
+<p>Gets the <a class="link" href="GdkScreen.html" title="GdkScreen"><span class="type">GdkScreen</span></a> associated with a <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a>.</p>
+<div class="refsect3">
+<a name="gdk-drawable-get-screen.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>drawable</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gdk-drawable-get-screen.returns"></a><h4>Returns</h4>
+<p> the <a class="link" href="GdkScreen.html" title="GdkScreen"><span class="type">GdkScreen</span></a> associated with <em class="parameter"><code>drawable</code></em>
+</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-2.html#api-index-2.2">2.2</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-drawable-get-visual"></a><h3>gdk_drawable_get_visual ()</h3>
+<pre class="programlisting"><a class="link" href="gdk2-Visuals.html#GdkVisual" title="GdkVisual"><span class="returnvalue">GdkVisual</span></a> *
+gdk_drawable_get_visual (<em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *drawable</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_drawable_get_visual</code> has been deprecated since version 2.24 and should not be used in newly-written code.</p>
+<p>Use <a class="link" href="gdk2-Windows.html#gdk-window-get-visual" title="gdk_window_get_visual ()"><code class="function">gdk_window_get_visual()</code></a></p>
+</div>
+<p>Gets the <a class="link" href="gdk2-Visuals.html#GdkVisual" title="GdkVisual"><span class="type">GdkVisual</span></a> describing the pixel format of <em class="parameter"><code>drawable</code></em>
+.</p>
+<div class="refsect3">
+<a name="gdk-drawable-get-visual.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>drawable</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gdk-drawable-get-visual.returns"></a><h4>Returns</h4>
+<p> a <a class="link" href="gdk2-Visuals.html#GdkVisual" title="GdkVisual"><span class="type">GdkVisual</span></a></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-drawable-set-colormap"></a><h3>gdk_drawable_set_colormap ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_drawable_set_colormap (<em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *drawable</code></em>,
+                           <em class="parameter"><code><a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="type">GdkColormap</span></a> *colormap</code></em>);</pre>
+<p>Sets the colormap associated with <em class="parameter"><code>drawable</code></em>
+. Normally this will
+happen automatically when the drawable is created; you only need to
+use this function if the drawable-creating function did not have a
+way to determine the colormap, and you then use drawable operations
+that require a colormap. The colormap for all drawables and
+graphics contexts you intend to use together should match. i.e.
+when using a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> to draw to a drawable, or copying one drawable
+to another, the colormaps should match.</p>
+<div class="refsect3">
+<a name="gdk-drawable-set-colormap.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>drawable</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>colormap</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="type">GdkColormap</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-drawable-get-colormap"></a><h3>gdk_drawable_get_colormap ()</h3>
+<pre class="programlisting"><a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColormap" title="GdkColormap"><span class="returnvalue">GdkColormap</span></a> *
+gdk_drawable_get_colormap (<em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *drawable</code></em>);</pre>
+<p>Gets the colormap for <em class="parameter"><code>drawable</code></em>
+, if one is set; returns
+<code class="literal">NULL</code> otherwise.</p>
+<div class="refsect3">
+<a name="gdk-drawable-get-colormap.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>drawable</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gdk-drawable-get-colormap.returns"></a><h4>Returns</h4>
+<p> the colormap, or <code class="literal">NULL</code></p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-drawable-get-depth"></a><h3>gdk_drawable_get_depth ()</h3>
+<pre class="programlisting"><span class="returnvalue">gint</span>
+gdk_drawable_get_depth (<em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *drawable</code></em>);</pre>
+<p>Obtains the bit depth of the drawable, that is, the number of bits
+that make up a pixel in the drawable's visual. Examples are 8 bits
+per pixel, 24 bits per pixel, etc.</p>
+<div class="refsect3">
+<a name="gdk-drawable-get-depth.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>drawable</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gdk-drawable-get-depth.returns"></a><h4>Returns</h4>
+<p> number of bits per pixel</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-drawable-get-size"></a><h3>gdk_drawable_get_size ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_drawable_get_size (<em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *drawable</code></em>,
+                       <em class="parameter"><code><span class="type">gint</span> *width</code></em>,
+                       <em class="parameter"><code><span class="type">gint</span> *height</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_drawable_get_size</code> has been deprecated since version 2.24 and should not be used in newly-written code.</p>
+<p>Use <a class="link" href="gdk2-Windows.html#gdk-window-get-width" title="gdk_window_get_width ()"><code class="function">gdk_window_get_width()</code></a> and <a class="link" href="gdk2-Windows.html#gdk-window-get-height" title="gdk_window_get_height ()"><code class="function">gdk_window_get_height()</code></a> for
+            <a href="gdk2-Windows.html#GdkWindow"><span class="type">GdkWindows</span></a>. Use <a class="link" href="gdk2-Bitmaps-and-Pixmaps.html#gdk-pixmap-get-size" title="gdk_pixmap_get_size ()"><code class="function">gdk_pixmap_get_size()</code></a> for <a href="gdk2-Bitmaps-and-Pixmaps.html#GdkPixmap"><span class="type">GdkPixmaps</span></a>.</p>
+</div>
+<p>Fills *<em class="parameter"><code>width</code></em>
+ and *<em class="parameter"><code>height</code></em>
+ with the size of <em class="parameter"><code>drawable</code></em>
+.
+<em class="parameter"><code>width</code></em>
+ or <em class="parameter"><code>height</code></em>
+ can be <code class="literal">NULL</code> if you only want the other one.</p>
+<p>On the X11 platform, if <em class="parameter"><code>drawable</code></em>
+ is a <a class="link" href="gdk2-Windows.html#GdkWindow"><span class="type">GdkWindow</span></a>, the returned
+size is the size reported in the most-recently-processed configure
+event, rather than the current size on the X server.</p>
+<div class="refsect3">
+<a name="gdk-drawable-get-size.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>drawable</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>width</p></td>
+<td class="parameter_description"><p>location to store drawable's width, or <code class="literal">NULL</code>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym>][<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>height</p></td>
+<td class="parameter_description"><p>location to store drawable's height, or <code class="literal">NULL</code>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="Parameter for returning results. Default is transfer full."><span class="acronym">out</span></acronym>][<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-drawable-get-clip-region"></a><h3>gdk_drawable_get_clip_region ()</h3>
+<pre class="programlisting"><a class="link" href="gdk2-Points-Rectangles-and-Regions.html#GdkRegion" title="GdkRegion"><span class="returnvalue">GdkRegion</span></a> *
+gdk_drawable_get_clip_region (<em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *drawable</code></em>);</pre>
+<p>Computes the region of a drawable that potentially can be written
+to by drawing primitives. This region will not take into account
+the clip region for the GC, and may also not take into account
+other factors such as if the window is obscured by other windows,
+but no area outside of this region will be affected by drawing
+primitives.</p>
+<div class="refsect3">
+<a name="gdk-drawable-get-clip-region.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>drawable</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gdk-drawable-get-clip-region.returns"></a><h4>Returns</h4>
+<p> a <a class="link" href="gdk2-Points-Rectangles-and-Regions.html#GdkRegion" title="GdkRegion"><span class="type">GdkRegion</span></a>. This must be freed with <a class="link" href="gdk2-Points-Rectangles-and-Regions.html#gdk-region-destroy" title="gdk_region_destroy ()"><code class="function">gdk_region_destroy()</code></a>
+when you are done.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-drawable-get-visible-region"></a><h3>gdk_drawable_get_visible_region ()</h3>
+<pre class="programlisting"><a class="link" href="gdk2-Points-Rectangles-and-Regions.html#GdkRegion" title="GdkRegion"><span class="returnvalue">GdkRegion</span></a> *
+gdk_drawable_get_visible_region (<em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *drawable</code></em>);</pre>
+<p>Computes the region of a drawable that is potentially visible.
+This does not necessarily take into account if the window is
+obscured by other windows, but no area outside of this region
+is visible.</p>
+<div class="refsect3">
+<a name="gdk-drawable-get-visible-region.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>drawable</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gdk-drawable-get-visible-region.returns"></a><h4>Returns</h4>
+<p> a <a class="link" href="gdk2-Points-Rectangles-and-Regions.html#GdkRegion" title="GdkRegion"><span class="type">GdkRegion</span></a>. This must be freed with <a class="link" href="gdk2-Points-Rectangles-and-Regions.html#gdk-region-destroy" title="gdk_region_destroy ()"><code class="function">gdk_region_destroy()</code></a>
+when you are done.</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-draw-point"></a><h3>gdk_draw_point ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_draw_point (<em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *drawable</code></em>,
+                <em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                <em class="parameter"><code><span class="type">gint</span> x</code></em>,
+                <em class="parameter"><code><span class="type">gint</span> y</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_draw_point</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>Use <a href="/usr/share/gtk-doc/html/cairo/cairo-Paths.html#cairo-rectangle"><code class="function">cairo_rectangle()</code></a> and <a href="/usr/share/gtk-doc/html/cairo/cairo-cairo-t.html#cairo-fill"><code class="function">cairo_fill()</code></a> or 
+<a href="/usr/share/gtk-doc/html/cairo/cairo-Paths.html#cairo-move-to"><code class="function">cairo_move_to()</code></a> and <a href="/usr/share/gtk-doc/html/cairo/cairo-cairo-t.html#cairo-stroke"><code class="function">cairo_stroke()</code></a> instead.</p>
+</div>
+<p>Draws a point, using the foreground color and other attributes of 
+the <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>.</p>
+<div class="refsect3">
+<a name="gdk-draw-point.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>drawable</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> (a <a class="link" href="gdk2-Windows.html#GdkWindow"><span class="type">GdkWindow</span></a> or a <a class="link" href="gdk2-Bitmaps-and-Pixmaps.html#GdkPixmap"><span class="type">GdkPixmap</span></a>).</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>x</p></td>
+<td class="parameter_description"><p>the x coordinate of the point.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>y</p></td>
+<td class="parameter_description"><p>the y coordinate of the point.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-draw-points"></a><h3>gdk_draw_points ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_draw_points (<em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *drawable</code></em>,
+                 <em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                 <em class="parameter"><code>const <a class="link" href="gdk2-Points-Rectangles-and-Regions.html#GdkPoint" title="struct GdkPoint"><span class="type">GdkPoint</span></a> *points</code></em>,
+                 <em class="parameter"><code><span class="type">gint</span> n_points</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_draw_points</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>Use <em class="parameter"><code>n_points</code></em>
+ calls to <a href="/usr/share/gtk-doc/html/cairo/cairo-Paths.html#cairo-rectangle"><code class="function">cairo_rectangle()</code></a> and
+<a href="/usr/share/gtk-doc/html/cairo/cairo-cairo-t.html#cairo-fill"><code class="function">cairo_fill()</code></a> instead.</p>
+</div>
+<p>Draws a number of points, using the foreground color and other 
+attributes of the <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>.</p>
+<div class="refsect3">
+<a name="gdk-draw-points.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>drawable</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> (a <a class="link" href="gdk2-Windows.html#GdkWindow"><span class="type">GdkWindow</span></a> or a <a class="link" href="gdk2-Bitmaps-and-Pixmaps.html#GdkPixmap"><span class="type">GdkPixmap</span></a>).</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>points</p></td>
+<td class="parameter_description"><p>an array of <a class="link" href="gdk2-Points-Rectangles-and-Regions.html#GdkPoint" title="struct GdkPoint"><span class="type">GdkPoint</span></a> structures.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>n_points</p></td>
+<td class="parameter_description"><p>the number of points to be drawn.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-draw-line"></a><h3>gdk_draw_line ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_draw_line (<em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *drawable</code></em>,
+               <em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+               <em class="parameter"><code><span class="type">gint</span> x1_</code></em>,
+               <em class="parameter"><code><span class="type">gint</span> y1_</code></em>,
+               <em class="parameter"><code><span class="type">gint</span> x2_</code></em>,
+               <em class="parameter"><code><span class="type">gint</span> y2_</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_draw_line</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>Use <a href="/usr/share/gtk-doc/html/cairo/cairo-Paths.html#cairo-line-to"><code class="function">cairo_line_to()</code></a> and <a href="/usr/share/gtk-doc/html/cairo/cairo-cairo-t.html#cairo-stroke"><code class="function">cairo_stroke()</code></a> instead.
+Be aware that the default line width in Cairo is 2 pixels and that your
+coordinates need to describe the center of the line. To draw a single
+pixel wide pixel-aligned line, you would use:</p>
+<div class="informalexample">
+  <table class="listing_frame" border="0" cellpadding="0" cellspacing="0">
+    <tbody>
+      <tr>
+        <td class="listing_lines" align="right"><pre>1
+2
+3
+4
+5
+6</pre></td>
+        <td class="listing_code"><pre class="programlisting"><span class="n">cairo_set_line_cap</span> <span class="p">(</span><span class="n">cr</span><span class="p">,</span> <span class="n">CAIRO_LINE_CAP_SQUARE</span><span class="p">);</span>
+<span class="n">cairo_move_to</span> <span class="p">(</span><span class="n">cr</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">);</span>
+<span class="n">cairo_line_to</span> <span class="p">(</span><span class="n">cr</span><span class="p">,</span> <span class="mf">9.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">);</span>
+<span class="n">cairo_stroke</span> <span class="p">(</span><span class="n">cr</span><span class="p">);]</span><span class="o">|</span>
+<span class="n">See</span> <span class="n">also</span> <span class="o">&lt;</span><span class="n">ulink</span> <span class="n">url</span><span class="o">=</span><span class="s">&quot;http://cairographics.org/FAQ/#sharp_lines&quot;</span><span class="o">&gt;</span><span class="n">the</span> <span class="n">Cairo</span>
+<span class="n">FAQ</span><span class="o">&lt;/</span><span class="n">ulink</span><span class="o">&gt;</span> <span class="n">on</span> <span class="n">this</span> <span class="n">topic</span><span class="p">.</span></pre></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+</div>
+<p>Draws a line, using the foreground color and other attributes of 
+the <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>.</p>
+<div class="refsect3">
+<a name="gdk-draw-line.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>drawable</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> (a <a class="link" href="gdk2-Windows.html#GdkWindow"><span class="type">GdkWindow</span></a> or a <a class="link" href="gdk2-Bitmaps-and-Pixmaps.html#GdkPixmap"><span class="type">GdkPixmap</span></a>). </p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>x1_</p></td>
+<td class="parameter_description"><p>the x coordinate of the start point.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>y1_</p></td>
+<td class="parameter_description"><p>the y coordinate of the start point.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>x2_</p></td>
+<td class="parameter_description"><p>the x coordinate of the end point.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>y2_</p></td>
+<td class="parameter_description"><p>the y coordinate of the end point.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-draw-lines"></a><h3>gdk_draw_lines ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_draw_lines (<em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *drawable</code></em>,
+                <em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                <em class="parameter"><code>const <a class="link" href="gdk2-Points-Rectangles-and-Regions.html#GdkPoint" title="struct GdkPoint"><span class="type">GdkPoint</span></a> *points</code></em>,
+                <em class="parameter"><code><span class="type">gint</span> n_points</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_draw_lines</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>Use <a href="/usr/share/gtk-doc/html/cairo/cairo-Paths.html#cairo-line-to"><code class="function">cairo_line_to()</code></a> and <a href="/usr/share/gtk-doc/html/cairo/cairo-cairo-t.html#cairo-stroke"><code class="function">cairo_stroke()</code></a> instead. See the
+documentation of <a class="link" href="gdk2-Drawing-Primitives.html#gdk-draw-line" title="gdk_draw_line ()"><code class="function">gdk_draw_line()</code></a> for notes on line drawing with Cairo.</p>
+</div>
+<p>Draws a series of lines connecting the given points.
+The way in which joins between lines are draw is determined by the
+<a class="link" href="gdk2-Graphics-Contexts.html#GdkCapStyle" title="enum GdkCapStyle"><span class="type">GdkCapStyle</span></a> value in the <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>. This can be set with
+<a class="link" href="gdk2-Graphics-Contexts.html#gdk-gc-set-line-attributes" title="gdk_gc_set_line_attributes ()"><code class="function">gdk_gc_set_line_attributes()</code></a>.</p>
+<div class="refsect3">
+<a name="gdk-draw-lines.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>drawable</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> (a <a class="link" href="gdk2-Windows.html#GdkWindow"><span class="type">GdkWindow</span></a> or a <a class="link" href="gdk2-Bitmaps-and-Pixmaps.html#GdkPixmap"><span class="type">GdkPixmap</span></a>).</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>points</p></td>
+<td class="parameter_description"><p>an array of <a class="link" href="gdk2-Points-Rectangles-and-Regions.html#GdkPoint" title="struct GdkPoint"><span class="type">GdkPoint</span></a> structures specifying the endpoints of the</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>n_points</p></td>
+<td class="parameter_description"><p>the size of the <em class="parameter"><code>points</code></em>
+array.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-draw-pixbuf"></a><h3>gdk_draw_pixbuf ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_draw_pixbuf (<em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *drawable</code></em>,
+                 <em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                 <em class="parameter"><code>const <a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-The-GdkPixbuf-Structure.html#GdkPixbuf-struct"><span class="type">GdkPixbuf</span></a> *pixbuf</code></em>,
+                 <em class="parameter"><code><span class="type">gint</span> src_x</code></em>,
+                 <em class="parameter"><code><span class="type">gint</span> src_y</code></em>,
+                 <em class="parameter"><code><span class="type">gint</span> dest_x</code></em>,
+                 <em class="parameter"><code><span class="type">gint</span> dest_y</code></em>,
+                 <em class="parameter"><code><span class="type">gint</span> width</code></em>,
+                 <em class="parameter"><code><span class="type">gint</span> height</code></em>,
+                 <em class="parameter"><code><a class="link" href="gdk2-GdkRGB.html#GdkRgbDither" title="enum GdkRgbDither"><span class="type">GdkRgbDither</span></a> dither</code></em>,
+                 <em class="parameter"><code><span class="type">gint</span> x_dither</code></em>,
+                 <em class="parameter"><code><span class="type">gint</span> y_dither</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_draw_pixbuf</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>Use <a class="link" href="gdk2-Cairo-Interaction.html#gdk-cairo-set-source-pixbuf" title="gdk_cairo_set_source_pixbuf ()"><code class="function">gdk_cairo_set_source_pixbuf()</code></a> and <a href="/usr/share/gtk-doc/html/cairo/cairo-cairo-t.html#cairo-paint"><code class="function">cairo_paint()</code></a> or
+<a href="/usr/share/gtk-doc/html/cairo/cairo-Paths.html#cairo-rectangle"><code class="function">cairo_rectangle()</code></a> and <a href="/usr/share/gtk-doc/html/cairo/cairo-cairo-t.html#cairo-fill"><code class="function">cairo_fill()</code></a> instead.</p>
+</div>
+<p>Renders a rectangular portion of a pixbuf to a drawable.  The destination
+drawable must have a colormap. All windows have a colormap, however, pixmaps
+only have colormap by default if they were created with a non-<code class="literal">NULL</code> window 
+argument. Otherwise a colormap must be set on them with 
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-drawable-set-colormap" title="gdk_drawable_set_colormap ()"><code class="function">gdk_drawable_set_colormap()</code></a>.</p>
+<p>On older X servers, rendering pixbufs with an alpha channel involves round 
+trips to the X server, and may be somewhat slow.</p>
+<p>If GDK is built with the Sun mediaLib library, the gdk_draw_pixbuf
+function is accelerated using mediaLib, which provides hardware
+acceleration on Intel, AMD, and Sparc chipsets.  If desired, mediaLib
+support can be turned off by setting the GDK_DISABLE_MEDIALIB environment
+variable.</p>
+<div class="refsect3">
+<a name="gdk-draw-pixbuf.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>drawable</p></td>
+<td class="parameter_description"><p>Destination drawable.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>, used for clipping, or <code class="literal">NULL</code>. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>pixbuf</p></td>
+<td class="parameter_description"><p>a <a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-The-GdkPixbuf-Structure.html#GdkPixbuf-struct"><span class="type">GdkPixbuf</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>src_x</p></td>
+<td class="parameter_description"><p>Source X coordinate within pixbuf.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>src_y</p></td>
+<td class="parameter_description"><p>Source Y coordinates within pixbuf.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>dest_x</p></td>
+<td class="parameter_description"><p>Destination X coordinate within drawable.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>dest_y</p></td>
+<td class="parameter_description"><p>Destination Y coordinate within drawable.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>width</p></td>
+<td class="parameter_description"><p>Width of region to render, in pixels, or -1 to use pixbuf width.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>height</p></td>
+<td class="parameter_description"><p>Height of region to render, in pixels, or -1 to use pixbuf height.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>dither</p></td>
+<td class="parameter_description"><p>Dithering mode for <span class="type">GdkRGB</span>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>x_dither</p></td>
+<td class="parameter_description"><p>X offset for dither.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>y_dither</p></td>
+<td class="parameter_description"><p>Y offset for dither.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-2.html#api-index-2.2">2.2</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-draw-segments"></a><h3>gdk_draw_segments ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_draw_segments (<em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *drawable</code></em>,
+                   <em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                   <em class="parameter"><code>const <a class="link" href="gdk2-Drawing-Primitives.html#GdkSegment" title="struct GdkSegment"><span class="type">GdkSegment</span></a> *segs</code></em>,
+                   <em class="parameter"><code><span class="type">gint</span> n_segs</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_draw_segments</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>Use <a href="/usr/share/gtk-doc/html/cairo/cairo-Paths.html#cairo-move-to"><code class="function">cairo_move_to()</code></a>, <a href="/usr/share/gtk-doc/html/cairo/cairo-Paths.html#cairo-line-to"><code class="function">cairo_line_to()</code></a> and <a href="/usr/share/gtk-doc/html/cairo/cairo-cairo-t.html#cairo-stroke"><code class="function">cairo_stroke()</code></a>
+instead. See the documentation of <a class="link" href="gdk2-Drawing-Primitives.html#gdk-draw-line" title="gdk_draw_line ()"><code class="function">gdk_draw_line()</code></a> for notes on line drawing
+with Cairo.</p>
+</div>
+<p>Draws a number of unconnected lines.</p>
+<div class="refsect3">
+<a name="gdk-draw-segments.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>drawable</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> (a <a class="link" href="gdk2-Windows.html#GdkWindow"><span class="type">GdkWindow</span></a> or a <a class="link" href="gdk2-Bitmaps-and-Pixmaps.html#GdkPixmap"><span class="type">GdkPixmap</span></a>).</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>segs</p></td>
+<td class="parameter_description"><p>an array of <a class="link" href="gdk2-Drawing-Primitives.html#GdkSegment" title="struct GdkSegment"><span class="type">GdkSegment</span></a> structures specifying the start and
+end points of the lines to be drawn.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>n_segs</p></td>
+<td class="parameter_description"><p>the number of line segments to draw, i.e. the size of the
+<em class="parameter"><code>segs</code></em>
+array.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-draw-rectangle"></a><h3>gdk_draw_rectangle ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_draw_rectangle (<em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *drawable</code></em>,
+                    <em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                    <em class="parameter"><code><span class="type">gboolean</span> filled</code></em>,
+                    <em class="parameter"><code><span class="type">gint</span> x</code></em>,
+                    <em class="parameter"><code><span class="type">gint</span> y</code></em>,
+                    <em class="parameter"><code><span class="type">gint</span> width</code></em>,
+                    <em class="parameter"><code><span class="type">gint</span> height</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_draw_rectangle</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>Use <a href="/usr/share/gtk-doc/html/cairo/cairo-Paths.html#cairo-rectangle"><code class="function">cairo_rectangle()</code></a> and <a href="/usr/share/gtk-doc/html/cairo/cairo-cairo-t.html#cairo-fill"><code class="function">cairo_fill()</code></a> or <a href="/usr/share/gtk-doc/html/cairo/cairo-cairo-t.html#cairo-stroke"><code class="function">cairo_stroke()</code></a>
+instead. For stroking, the same caveats for converting code apply as for
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-draw-line" title="gdk_draw_line ()"><code class="function">gdk_draw_line()</code></a>.</p>
+</div>
+<p>Draws a rectangular outline or filled rectangle, using the foreground color
+and other attributes of the <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>.</p>
+<p>A rectangle drawn filled is 1 pixel smaller in both dimensions than a 
+rectangle outlined. Calling 
+<code class="literal">gdk_draw_rectangle (window, gc, TRUE, 0, 0, 20, 20)</code> 
+results in a filled rectangle 20 pixels wide and 20 pixels high. Calling
+<code class="literal">gdk_draw_rectangle (window, gc, FALSE, 0, 0, 20, 20)</code> 
+results in an outlined rectangle with corners at (0, 0), (0, 20), (20, 20),
+and (20, 0), which makes it 21 pixels wide and 21 pixels high.</p>
+<div class="refsect3">
+<a name="gdk-draw-rectangle.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>drawable</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> (a <a class="link" href="gdk2-Windows.html#GdkWindow"><span class="type">GdkWindow</span></a> or a <a class="link" href="gdk2-Bitmaps-and-Pixmaps.html#GdkPixmap"><span class="type">GdkPixmap</span></a>).</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>filled</p></td>
+<td class="parameter_description"><p><code class="literal">TRUE</code> if the rectangle should be filled.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>x</p></td>
+<td class="parameter_description"><p>the x coordinate of the left edge of the rectangle.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>y</p></td>
+<td class="parameter_description"><p>the y coordinate of the top edge of the rectangle.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>width</p></td>
+<td class="parameter_description"><p>the width of the rectangle.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>height</p></td>
+<td class="parameter_description"><p>the height of the rectangle.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-draw-arc"></a><h3>gdk_draw_arc ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_draw_arc (<em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *drawable</code></em>,
+              <em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+              <em class="parameter"><code><span class="type">gboolean</span> filled</code></em>,
+              <em class="parameter"><code><span class="type">gint</span> x</code></em>,
+              <em class="parameter"><code><span class="type">gint</span> y</code></em>,
+              <em class="parameter"><code><span class="type">gint</span> width</code></em>,
+              <em class="parameter"><code><span class="type">gint</span> height</code></em>,
+              <em class="parameter"><code><span class="type">gint</span> angle1</code></em>,
+              <em class="parameter"><code><span class="type">gint</span> angle2</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_draw_arc</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>Use <a href="/usr/share/gtk-doc/html/cairo/cairo-Paths.html#cairo-arc"><code class="function">cairo_arc()</code></a> and <a href="/usr/share/gtk-doc/html/cairo/cairo-cairo-t.html#cairo-fill"><code class="function">cairo_fill()</code></a> or <a href="/usr/share/gtk-doc/html/cairo/cairo-cairo-t.html#cairo-stroke"><code class="function">cairo_stroke()</code></a>
+instead. Note that arcs just like any drawing operation in Cairo are
+antialiased unless you call <a href="/usr/share/gtk-doc/html/cairo/cairo-cairo-t.html#cairo-set-antialias"><code class="function">cairo_set_antialias()</code></a>.</p>
+</div>
+<p>Draws an arc or a filled 'pie slice'. The arc is defined by the bounding
+rectangle of the entire ellipse, and the start and end angles of the part 
+of the ellipse to be drawn.</p>
+<div class="refsect3">
+<a name="gdk-draw-arc.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>drawable</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> (a <a class="link" href="gdk2-Windows.html#GdkWindow"><span class="type">GdkWindow</span></a> or a <a class="link" href="gdk2-Bitmaps-and-Pixmaps.html#GdkPixmap"><span class="type">GdkPixmap</span></a>).</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>filled</p></td>
+<td class="parameter_description"><p><code class="literal">TRUE</code> if the arc should be filled, producing a 'pie slice'.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>x</p></td>
+<td class="parameter_description"><p>the x coordinate of the left edge of the bounding rectangle.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>y</p></td>
+<td class="parameter_description"><p>the y coordinate of the top edge of the bounding rectangle.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>width</p></td>
+<td class="parameter_description"><p>the width of the bounding rectangle.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>height</p></td>
+<td class="parameter_description"><p>the height of the bounding rectangle.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>angle1</p></td>
+<td class="parameter_description"><p>the start angle of the arc, relative to the 3 o'clock position,
+counter-clockwise, in 1/64ths of a degree.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>angle2</p></td>
+<td class="parameter_description"><p>the end angle of the arc, relative to <em class="parameter"><code>angle1</code></em>
+, in 1/64ths
+of a degree.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-draw-polygon"></a><h3>gdk_draw_polygon ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_draw_polygon (<em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *drawable</code></em>,
+                  <em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                  <em class="parameter"><code><span class="type">gboolean</span> filled</code></em>,
+                  <em class="parameter"><code>const <a class="link" href="gdk2-Points-Rectangles-and-Regions.html#GdkPoint" title="struct GdkPoint"><span class="type">GdkPoint</span></a> *points</code></em>,
+                  <em class="parameter"><code><span class="type">gint</span> n_points</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_draw_polygon</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>Use <a href="/usr/share/gtk-doc/html/cairo/cairo-Paths.html#cairo-line-to"><code class="function">cairo_line_to()</code></a> or <a href="/usr/share/gtk-doc/html/cairo/cairo-Paths.html#cairo-append-path"><code class="function">cairo_append_path()</code></a> and
+<a href="/usr/share/gtk-doc/html/cairo/cairo-cairo-t.html#cairo-fill"><code class="function">cairo_fill()</code></a> or <a href="/usr/share/gtk-doc/html/cairo/cairo-cairo-t.html#cairo-stroke"><code class="function">cairo_stroke()</code></a> instead.</p>
+</div>
+<p>Draws an outlined or filled polygon.</p>
+<div class="refsect3">
+<a name="gdk-draw-polygon.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>drawable</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> (a <a class="link" href="gdk2-Windows.html#GdkWindow"><span class="type">GdkWindow</span></a> or a <a class="link" href="gdk2-Bitmaps-and-Pixmaps.html#GdkPixmap"><span class="type">GdkPixmap</span></a>).</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>filled</p></td>
+<td class="parameter_description"><p><code class="literal">TRUE</code> if the polygon should be filled. The polygon is closed
+automatically, connecting the last point to the first point if
+necessary.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>points</p></td>
+<td class="parameter_description"><p>an array of <a class="link" href="gdk2-Points-Rectangles-and-Regions.html#GdkPoint" title="struct GdkPoint"><span class="type">GdkPoint</span></a> structures specifying the points making
+up the polygon.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>n_points</p></td>
+<td class="parameter_description"><p>the number of points.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-draw-trapezoids"></a><h3>gdk_draw_trapezoids ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_draw_trapezoids (<em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *drawable</code></em>,
+                     <em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                     <em class="parameter"><code>const <a class="link" href="gdk2-Drawing-Primitives.html#GdkTrapezoid" title="struct GdkTrapezoid"><span class="type">GdkTrapezoid</span></a> *trapezoids</code></em>,
+                     <em class="parameter"><code><span class="type">gint</span> n_trapezoids</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_draw_trapezoids</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>Use Cairo path contruction functions and <a href="/usr/share/gtk-doc/html/cairo/cairo-cairo-t.html#cairo-fill"><code class="function">cairo_fill()</code></a>
+instead.</p>
+</div>
+<p>Draws a set of anti-aliased trapezoids. The trapezoids are
+combined using saturation addition, then drawn over the background
+as a set. This is low level functionality used internally to implement
+rotated underlines and backgrouds when rendering a PangoLayout and is
+likely not useful for applications.</p>
+<div class="refsect3">
+<a name="gdk-draw-trapezoids.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>drawable</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>trapezoids</p></td>
+<td class="parameter_description"><p>an array of <a class="link" href="gdk2-Drawing-Primitives.html#GdkTrapezoid" title="struct GdkTrapezoid"><span class="type">GdkTrapezoid</span></a> structures</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>n_trapezoids</p></td>
+<td class="parameter_description"><p>the number of trapezoids to draw</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-6.html#api-index-2.6">2.6</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-draw-glyphs"></a><h3>gdk_draw_glyphs ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_draw_glyphs (<em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *drawable</code></em>,
+                 <em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                 <em class="parameter"><code><a href="https://developer.gnome.org/pango/pango-Fonts.html#PangoFont-struct"><span class="type">PangoFont</span></a> *font</code></em>,
+                 <em class="parameter"><code><span class="type">gint</span> x</code></em>,
+                 <em class="parameter"><code><span class="type">gint</span> y</code></em>,
+                 <em class="parameter"><code><a href="https://developer.gnome.org/pango/pango-Glyph-Storage.html#PangoGlyphString-struct"><span class="type">PangoGlyphString</span></a> *glyphs</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_draw_glyphs</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>Use <code class="function">pango_cairo_show_glyphs()</code> instead.</p>
+</div>
+<p>This is a low-level function; 99% of text rendering should be done
+using <a class="link" href="gdk2-Drawing-Primitives.html#gdk-draw-layout" title="gdk_draw_layout ()"><code class="function">gdk_draw_layout()</code></a> instead.</p>
+<p>A glyph is a single image in a font. This function draws a sequence of
+glyphs.  To obtain a sequence of glyphs you have to understand a
+lot about internationalized text handling, which you don't want to
+understand; thus, use <a class="link" href="gdk2-Drawing-Primitives.html#gdk-draw-layout" title="gdk_draw_layout ()"><code class="function">gdk_draw_layout()</code></a> instead of this function,
+<a class="link" href="gdk2-Drawing-Primitives.html#gdk-draw-layout" title="gdk_draw_layout ()"><code class="function">gdk_draw_layout()</code></a> handles the details.</p>
+<div class="refsect3">
+<a name="gdk-draw-glyphs.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>drawable</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>font</p></td>
+<td class="parameter_description"><p>font to be used</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>x</p></td>
+<td class="parameter_description"><p>X coordinate of baseline origin</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>y</p></td>
+<td class="parameter_description"><p>Y coordinate of baseline origin</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>glyphs</p></td>
+<td class="parameter_description"><p>the glyph string to draw</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-draw-glyphs-transformed"></a><h3>gdk_draw_glyphs_transformed ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_draw_glyphs_transformed (<em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *drawable</code></em>,
+                             <em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                             <em class="parameter"><code>const <a href="https://developer.gnome.org/pango/pango-Glyph-Storage.html#PangoMatrix-struct"><span class="type">PangoMatrix</span></a> *matrix</code></em>,
+                             <em class="parameter"><code><a href="https://developer.gnome.org/pango/pango-Fonts.html#PangoFont-struct"><span class="type">PangoFont</span></a> *font</code></em>,
+                             <em class="parameter"><code><span class="type">gint</span> x</code></em>,
+                             <em class="parameter"><code><span class="type">gint</span> y</code></em>,
+                             <em class="parameter"><code><a href="https://developer.gnome.org/pango/pango-Glyph-Storage.html#PangoGlyphString-struct"><span class="type">PangoGlyphString</span></a> *glyphs</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_draw_glyphs_transformed</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>Use <code class="function">pango_cairo_show_glyphs()</code> instead.</p>
+</div>
+<p>Renders a <a href="https://developer.gnome.org/pango/pango-Glyph-Storage.html#PangoGlyphString-struct"><span class="type">PangoGlyphString</span></a> onto a drawable, possibly
+transforming the layed-out coordinates through a transformation
+matrix. Note that the transformation matrix for <em class="parameter"><code>font</code></em>
+ is not
+changed, so to produce correct rendering results, the <em class="parameter"><code>font</code></em>
+
+must have been loaded using a <a href="https://developer.gnome.org/pango/pango-Contexts.html#PangoContext-struct"><span class="type">PangoContext</span></a> with an identical
+transformation matrix to that passed in to this function.</p>
+<p>See also <a class="link" href="gdk2-Drawing-Primitives.html#gdk-draw-glyphs" title="gdk_draw_glyphs ()"><code class="function">gdk_draw_glyphs()</code></a>, <a class="link" href="gdk2-Drawing-Primitives.html#gdk-draw-layout" title="gdk_draw_layout ()"><code class="function">gdk_draw_layout()</code></a>.</p>
+<div class="refsect3">
+<a name="gdk-draw-glyphs-transformed.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>drawable</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>matrix</p></td>
+<td class="parameter_description"><p>a <a href="https://developer.gnome.org/pango/pango-Glyph-Storage.html#PangoMatrix-struct"><span class="type">PangoMatrix</span></a>, or <code class="literal">NULL</code> to use an identity transformation. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>font</p></td>
+<td class="parameter_description"><p>the font in which to draw the string</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>x</p></td>
+<td class="parameter_description"><p>the x position of the start of the string (in Pango
+units in user space coordinates)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>y</p></td>
+<td class="parameter_description"><p>the y position of the baseline (in Pango units
+in user space coordinates)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>glyphs</p></td>
+<td class="parameter_description"><p>the glyph string to draw</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-6.html#api-index-2.6">2.6</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-draw-layout-line"></a><h3>gdk_draw_layout_line ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_draw_layout_line (<em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *drawable</code></em>,
+                      <em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                      <em class="parameter"><code><span class="type">gint</span> x</code></em>,
+                      <em class="parameter"><code><span class="type">gint</span> y</code></em>,
+                      <em class="parameter"><code><a href="https://developer.gnome.org/pango/pango-Layout-Objects.html#PangoLayoutLine-struct"><span class="type">PangoLayoutLine</span></a> *line</code></em>);</pre>
+<div class="warning"><p><code class="literal">gdk_draw_layout_line</code> is deprecated and should not be used in newly-written code.</p></div>
+<p>Render a <a href="https://developer.gnome.org/pango/pango-Layout-Objects.html#PangoLayoutLine-struct"><span class="type">PangoLayoutLine</span></a> onto an GDK drawable</p>
+<p>If the layout's <a href="https://developer.gnome.org/pango/pango-Contexts.html#PangoContext-struct"><span class="type">PangoContext</span></a> has a transformation matrix set, then
+<em class="parameter"><code>x</code></em>
+ and <em class="parameter"><code>y</code></em>
+ specify the position of the left edge of the baseline
+(left is in before-tranform user coordinates) in after-transform
+device coordinates.</p>
+<div class="refsect3">
+<a name="gdk-draw-layout-line.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>drawable</p></td>
+<td class="parameter_description"><p>the drawable on which to draw the line</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>base graphics to use</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>x</p></td>
+<td class="parameter_description"><p>the x position of start of string (in pixels)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>y</p></td>
+<td class="parameter_description"><p>the y position of baseline (in pixels)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>line</p></td>
+<td class="parameter_description"><p>a <a href="https://developer.gnome.org/pango/pango-Layout-Objects.html#PangoLayoutLine-struct"><span class="type">PangoLayoutLine</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-draw-layout-line-with-colors"></a><h3>gdk_draw_layout_line_with_colors ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_draw_layout_line_with_colors (<em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *drawable</code></em>,
+                                  <em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                                  <em class="parameter"><code><span class="type">gint</span> x</code></em>,
+                                  <em class="parameter"><code><span class="type">gint</span> y</code></em>,
+                                  <em class="parameter"><code><a href="https://developer.gnome.org/pango/pango-Layout-Objects.html#PangoLayoutLine-struct"><span class="type">PangoLayoutLine</span></a> *line</code></em>,
+                                  <em class="parameter"><code>const <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a> *foreground</code></em>,
+                                  <em class="parameter"><code>const <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a> *background</code></em>);</pre>
+<div class="warning"><p><code class="literal">gdk_draw_layout_line_with_colors</code> is deprecated and should not be used in newly-written code.</p></div>
+<p>Render a <a href="https://developer.gnome.org/pango/pango-Layout-Objects.html#PangoLayoutLine-struct"><span class="type">PangoLayoutLine</span></a> onto a <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a>, overriding the
+layout's normal colors with <em class="parameter"><code>foreground</code></em>
+ and/or <em class="parameter"><code>background</code></em>
+.
+<em class="parameter"><code>foreground</code></em>
+ and <em class="parameter"><code>background</code></em>
+ need not be allocated.</p>
+<p>If the layout's <a href="https://developer.gnome.org/pango/pango-Contexts.html#PangoContext-struct"><span class="type">PangoContext</span></a> has a transformation matrix set, then
+<em class="parameter"><code>x</code></em>
+ and <em class="parameter"><code>y</code></em>
+ specify the position of the left edge of the baseline
+(left is in before-tranform user coordinates) in after-transform
+device coordinates.</p>
+<div class="refsect3">
+<a name="gdk-draw-layout-line-with-colors.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>drawable</p></td>
+<td class="parameter_description"><p>the drawable on which to draw the line</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>base graphics to use</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>x</p></td>
+<td class="parameter_description"><p>the x position of start of string (in pixels)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>y</p></td>
+<td class="parameter_description"><p>the y position of baseline (in pixels)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>line</p></td>
+<td class="parameter_description"><p>a <a href="https://developer.gnome.org/pango/pango-Layout-Objects.html#PangoLayoutLine-struct"><span class="type">PangoLayoutLine</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>foreground</p></td>
+<td class="parameter_description"><p>foreground override color, or <code class="literal">NULL</code> for none. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>background</p></td>
+<td class="parameter_description"><p>background override color, or <code class="literal">NULL</code> for none. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-draw-layout"></a><h3>gdk_draw_layout ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_draw_layout (<em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *drawable</code></em>,
+                 <em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                 <em class="parameter"><code><span class="type">gint</span> x</code></em>,
+                 <em class="parameter"><code><span class="type">gint</span> y</code></em>,
+                 <em class="parameter"><code><a href="https://developer.gnome.org/pango/pango-Layout-Objects.html#PangoLayout-struct"><span class="type">PangoLayout</span></a> *layout</code></em>);</pre>
+<div class="warning"><p><code class="literal">gdk_draw_layout</code> is deprecated and should not be used in newly-written code.</p></div>
+<p>Render a <a href="https://developer.gnome.org/pango/pango-Layout-Objects.html#PangoLayout-struct"><span class="type">PangoLayout</span></a> onto a GDK drawable</p>
+<p>If the layout's <a href="https://developer.gnome.org/pango/pango-Contexts.html#PangoContext-struct"><span class="type">PangoContext</span></a> has a transformation matrix set, then
+<em class="parameter"><code>x</code></em>
+ and <em class="parameter"><code>y</code></em>
+ specify the position of the top left corner of the
+bounding box (in device space) of the transformed layout.</p>
+<p>If you're using GTK+, the usual way to obtain a <a href="https://developer.gnome.org/pango/pango-Layout-Objects.html#PangoLayout-struct"><span class="type">PangoLayout</span></a>
+is <a href="https://developer.gnome.org/gtk4/GtkWidget.html#gtk-widget-create-pango-layout"><code class="function">gtk_widget_create_pango_layout()</code></a>.</p>
+<div class="refsect3">
+<a name="gdk-draw-layout.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>drawable</p></td>
+<td class="parameter_description"><p>the drawable on which to draw string</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>base graphics context to use</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>x</p></td>
+<td class="parameter_description"><p>the X position of the left of the layout (in pixels)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>y</p></td>
+<td class="parameter_description"><p>the Y position of the top of the layout (in pixels)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>layout</p></td>
+<td class="parameter_description"><p>a <a href="https://developer.gnome.org/pango/pango-Layout-Objects.html#PangoLayout-struct"><span class="type">PangoLayout</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-draw-layout-with-colors"></a><h3>gdk_draw_layout_with_colors ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_draw_layout_with_colors (<em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *drawable</code></em>,
+                             <em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                             <em class="parameter"><code><span class="type">gint</span> x</code></em>,
+                             <em class="parameter"><code><span class="type">gint</span> y</code></em>,
+                             <em class="parameter"><code><a href="https://developer.gnome.org/pango/pango-Layout-Objects.html#PangoLayout-struct"><span class="type">PangoLayout</span></a> *layout</code></em>,
+                             <em class="parameter"><code>const <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a> *foreground</code></em>,
+                             <em class="parameter"><code>const <a class="link" href="gdk2-Colormaps-and-Colors.html#GdkColor" title="GdkColor"><span class="type">GdkColor</span></a> *background</code></em>);</pre>
+<div class="warning"><p><code class="literal">gdk_draw_layout_with_colors</code> is deprecated and should not be used in newly-written code.</p></div>
+<p>Render a <a href="https://developer.gnome.org/pango/pango-Layout-Objects.html#PangoLayout-struct"><span class="type">PangoLayout</span></a> onto a <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a>, overriding the
+layout's normal colors with <em class="parameter"><code>foreground</code></em>
+ and/or <em class="parameter"><code>background</code></em>
+.
+<em class="parameter"><code>foreground</code></em>
+ and <em class="parameter"><code>background</code></em>
+ need not be allocated.</p>
+<p>If the layout's <a href="https://developer.gnome.org/pango/pango-Contexts.html#PangoContext-struct"><span class="type">PangoContext</span></a> has a transformation matrix set, then
+<em class="parameter"><code>x</code></em>
+ and <em class="parameter"><code>y</code></em>
+ specify the position of the top left corner of the
+bounding box (in device space) of the transformed layout.</p>
+<p>If you're using GTK+, the ususal way to obtain a <a href="https://developer.gnome.org/pango/pango-Layout-Objects.html#PangoLayout-struct"><span class="type">PangoLayout</span></a>
+is <a href="https://developer.gnome.org/gtk4/GtkWidget.html#gtk-widget-create-pango-layout"><code class="function">gtk_widget_create_pango_layout()</code></a>.</p>
+<div class="refsect3">
+<a name="gdk-draw-layout-with-colors.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>drawable</p></td>
+<td class="parameter_description"><p>the drawable on which to draw string</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>base graphics context to use</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>x</p></td>
+<td class="parameter_description"><p>the X position of the left of the layout (in pixels)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>y</p></td>
+<td class="parameter_description"><p>the Y position of the top of the layout (in pixels)</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>layout</p></td>
+<td class="parameter_description"><p>a <a href="https://developer.gnome.org/pango/pango-Layout-Objects.html#PangoLayout-struct"><span class="type">PangoLayout</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>foreground</p></td>
+<td class="parameter_description"><p>foreground override color, or <code class="literal">NULL</code> for none. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>background</p></td>
+<td class="parameter_description"><p>background override color, or <code class="literal">NULL</code> for none. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-draw-string"></a><h3>gdk_draw_string ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_draw_string (<em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *drawable</code></em>,
+                 <em class="parameter"><code><a class="link" href="gdk2-Fonts.html#GdkFont" title="GdkFont"><span class="type">GdkFont</span></a> *font</code></em>,
+                 <em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                 <em class="parameter"><code><span class="type">gint</span> x</code></em>,
+                 <em class="parameter"><code><span class="type">gint</span> y</code></em>,
+                 <em class="parameter"><code>const <span class="type">gchar</span> *string</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_draw_string</code> has been deprecated since version 2.4 and should not be used in newly-written code.</p>
+<p>Use <a class="link" href="gdk2-Drawing-Primitives.html#gdk-draw-layout" title="gdk_draw_layout ()"><code class="function">gdk_draw_layout()</code></a> instead.</p>
+</div>
+<p>Draws a string of characters in the given font or fontset.</p>
+<div class="refsect3">
+<a name="gdk-draw-string.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>drawable</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> (a <a class="link" href="gdk2-Windows.html#GdkWindow"><span class="type">GdkWindow</span></a> or a <a class="link" href="gdk2-Bitmaps-and-Pixmaps.html#GdkPixmap"><span class="type">GdkPixmap</span></a>).</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>font</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Fonts.html#GdkFont" title="GdkFont"><span class="type">GdkFont</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>x</p></td>
+<td class="parameter_description"><p>the x coordinate of the left edge of the text.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>y</p></td>
+<td class="parameter_description"><p>the y coordinate of the baseline of the text.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>string</p></td>
+<td class="parameter_description"><p>the string of characters to draw.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-draw-text"></a><h3>gdk_draw_text ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_draw_text (<em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *drawable</code></em>,
+               <em class="parameter"><code><a class="link" href="gdk2-Fonts.html#GdkFont" title="GdkFont"><span class="type">GdkFont</span></a> *font</code></em>,
+               <em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+               <em class="parameter"><code><span class="type">gint</span> x</code></em>,
+               <em class="parameter"><code><span class="type">gint</span> y</code></em>,
+               <em class="parameter"><code>const <span class="type">gchar</span> *text</code></em>,
+               <em class="parameter"><code><span class="type">gint</span> text_length</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_draw_text</code> has been deprecated since version 2.4 and should not be used in newly-written code.</p>
+<p>Use <a class="link" href="gdk2-Drawing-Primitives.html#gdk-draw-layout" title="gdk_draw_layout ()"><code class="function">gdk_draw_layout()</code></a> instead.</p>
+</div>
+<p>Draws a number of characters in the given font or fontset.</p>
+<div class="refsect3">
+<a name="gdk-draw-text.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>drawable</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> (a <a class="link" href="gdk2-Windows.html#GdkWindow"><span class="type">GdkWindow</span></a> or a <a class="link" href="gdk2-Bitmaps-and-Pixmaps.html#GdkPixmap"><span class="type">GdkPixmap</span></a>).</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>font</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Fonts.html#GdkFont" title="GdkFont"><span class="type">GdkFont</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>x</p></td>
+<td class="parameter_description"><p>the x coordinate of the left edge of the text.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>y</p></td>
+<td class="parameter_description"><p>the y coordinate of the baseline of the text.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>text</p></td>
+<td class="parameter_description"><p>the characters to draw.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>text_length</p></td>
+<td class="parameter_description"><p>the number of characters of <em class="parameter"><code>text</code></em>
+to draw.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-draw-text-wc"></a><h3>gdk_draw_text_wc ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_draw_text_wc (<em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *drawable</code></em>,
+                  <em class="parameter"><code><a class="link" href="gdk2-Fonts.html#GdkFont" title="GdkFont"><span class="type">GdkFont</span></a> *font</code></em>,
+                  <em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                  <em class="parameter"><code><span class="type">gint</span> x</code></em>,
+                  <em class="parameter"><code><span class="type">gint</span> y</code></em>,
+                  <em class="parameter"><code>const <a class="link" href="gdk2-Fonts.html#GdkWChar" title="GdkWChar"><span class="type">GdkWChar</span></a> *text</code></em>,
+                  <em class="parameter"><code><span class="type">gint</span> text_length</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_draw_text_wc</code> has been deprecated since version 2.4 and should not be used in newly-written code.</p>
+<p>Use <a class="link" href="gdk2-Drawing-Primitives.html#gdk-draw-layout" title="gdk_draw_layout ()"><code class="function">gdk_draw_layout()</code></a> instead.</p>
+</div>
+<p>Draws a number of wide characters using the given font of fontset.
+If the font is a 1-byte font, the string is converted into 1-byte 
+characters (discarding the high bytes) before output.</p>
+<div class="refsect3">
+<a name="gdk-draw-text-wc.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>drawable</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> (a <a class="link" href="gdk2-Windows.html#GdkWindow"><span class="type">GdkWindow</span></a> or a <a class="link" href="gdk2-Bitmaps-and-Pixmaps.html#GdkPixmap"><span class="type">GdkPixmap</span></a>).</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>font</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Fonts.html#GdkFont" title="GdkFont"><span class="type">GdkFont</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>x</p></td>
+<td class="parameter_description"><p>the x coordinate of the left edge of the text.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>y</p></td>
+<td class="parameter_description"><p>the y coordinate of the baseline of the text.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>text</p></td>
+<td class="parameter_description"><p>the wide characters to draw.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>text_length</p></td>
+<td class="parameter_description"><p>the number of characters to draw.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-draw-drawable"></a><h3>gdk_draw_drawable ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_draw_drawable (<em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *drawable</code></em>,
+                   <em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                   <em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *src</code></em>,
+                   <em class="parameter"><code><span class="type">gint</span> xsrc</code></em>,
+                   <em class="parameter"><code><span class="type">gint</span> ysrc</code></em>,
+                   <em class="parameter"><code><span class="type">gint</span> xdest</code></em>,
+                   <em class="parameter"><code><span class="type">gint</span> ydest</code></em>,
+                   <em class="parameter"><code><span class="type">gint</span> width</code></em>,
+                   <em class="parameter"><code><span class="type">gint</span> height</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_draw_drawable</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>Use <a class="link" href="gdk2-Cairo-Interaction.html#gdk-cairo-set-source-pixmap" title="gdk_cairo_set_source_pixmap ()"><code class="function">gdk_cairo_set_source_pixmap()</code></a>, <a href="/usr/share/gtk-doc/html/cairo/cairo-Paths.html#cairo-rectangle"><code class="function">cairo_rectangle()</code></a>
+and <a href="/usr/share/gtk-doc/html/cairo/cairo-cairo-t.html#cairo-fill"><code class="function">cairo_fill()</code></a> to draw pixmap on top of other drawables. Also keep
+in mind that the limitations on allowed sources do not apply to Cairo.</p>
+</div>
+<p>Copies the <em class="parameter"><code>width</code></em>
+ x <em class="parameter"><code>height</code></em>
+ region of <em class="parameter"><code>src</code></em>
+ at coordinates (<em class="parameter"><code>xsrc</code></em>
+,
+<em class="parameter"><code>ysrc</code></em>
+) to coordinates (<em class="parameter"><code>xdest</code></em>
+, <em class="parameter"><code>ydest</code></em>
+) in <em class="parameter"><code>drawable</code></em>
+.
+<em class="parameter"><code>width</code></em>
+ and/or <em class="parameter"><code>height</code></em>
+ may be given as -1, in which case the entire
+<em class="parameter"><code>src</code></em>
+ drawable will be copied.</p>
+<p>Most fields in <em class="parameter"><code>gc</code></em>
+ are not used for this operation, but notably the
+clip mask or clip region will be honored.</p>
+<p>The source and destination drawables must have the same visual and
+colormap, or errors will result. (On X11, failure to match
+visual/colormap results in a BadMatch error from the X server.)
+A common cause of this problem is an attempt to draw a bitmap to
+a color drawable. The way to draw a bitmap is to set the bitmap as 
+the stipple on the <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>, set the fill mode to <a class="link" href="gdk2-Graphics-Contexts.html#GDK-STIPPLED:CAPS"><code class="literal">GDK_STIPPLED</code></a>, and 
+then draw the rectangle.</p>
+<div class="refsect3">
+<a name="gdk-draw-drawable.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>drawable</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> sharing the drawable's visual and colormap</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>src</p></td>
+<td class="parameter_description"><p>the source <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a>, which may be the same as <em class="parameter"><code>drawable</code></em>
+</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>xsrc</p></td>
+<td class="parameter_description"><p>X position in <em class="parameter"><code>src</code></em>
+of rectangle to draw</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>ysrc</p></td>
+<td class="parameter_description"><p>Y position in <em class="parameter"><code>src</code></em>
+of rectangle to draw</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>xdest</p></td>
+<td class="parameter_description"><p>X position in <em class="parameter"><code>drawable</code></em>
+where the rectangle should be drawn</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>ydest</p></td>
+<td class="parameter_description"><p>Y position in <em class="parameter"><code>drawable</code></em>
+where the rectangle should be drawn</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>width</p></td>
+<td class="parameter_description"><p>width of rectangle to draw, or -1 for entire <em class="parameter"><code>src</code></em>
+width</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>height</p></td>
+<td class="parameter_description"><p>height of rectangle to draw, or -1 for entire <em class="parameter"><code>src</code></em>
+height</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-draw-image"></a><h3>gdk_draw_image ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gdk_draw_image (<em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *drawable</code></em>,
+                <em class="parameter"><code><a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a> *gc</code></em>,
+                <em class="parameter"><code><a class="link" href="gdk2-Images.html#GdkImage" title="GdkImage"><span class="type">GdkImage</span></a> *image</code></em>,
+                <em class="parameter"><code><span class="type">gint</span> xsrc</code></em>,
+                <em class="parameter"><code><span class="type">gint</span> ysrc</code></em>,
+                <em class="parameter"><code><span class="type">gint</span> xdest</code></em>,
+                <em class="parameter"><code><span class="type">gint</span> ydest</code></em>,
+                <em class="parameter"><code><span class="type">gint</span> width</code></em>,
+                <em class="parameter"><code><span class="type">gint</span> height</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_draw_image</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>Do not use <a class="link" href="gdk2-Images.html#GdkImage" title="GdkImage"><span class="type">GdkImage</span></a> anymore, instead use Cairo image
+surfaces.</p>
+</div>
+<p>Draws a <a class="link" href="gdk2-Images.html#GdkImage" title="GdkImage"><span class="type">GdkImage</span></a> onto a drawable.
+The depth of the <a class="link" href="gdk2-Images.html#GdkImage" title="GdkImage"><span class="type">GdkImage</span></a> must match the depth of the <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a>.</p>
+<div class="refsect3">
+<a name="gdk-draw-image.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>drawable</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> (a <a class="link" href="gdk2-Windows.html#GdkWindow"><span class="type">GdkWindow</span></a> or a <a class="link" href="gdk2-Bitmaps-and-Pixmaps.html#GdkPixmap"><span class="type">GdkPixmap</span></a>).</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>gc</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Graphics-Contexts.html#GdkGC"><span class="type">GdkGC</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>image</p></td>
+<td class="parameter_description"><p>the <a class="link" href="gdk2-Images.html#GdkImage" title="GdkImage"><span class="type">GdkImage</span></a> to draw.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>xsrc</p></td>
+<td class="parameter_description"><p>the left edge of the source rectangle within <em class="parameter"><code>image</code></em>
+.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>ysrc</p></td>
+<td class="parameter_description"><p>the top of the source rectangle within <em class="parameter"><code>image</code></em>
+.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>xdest</p></td>
+<td class="parameter_description"><p>the x coordinate of the destination within <em class="parameter"><code>drawable</code></em>
+.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>ydest</p></td>
+<td class="parameter_description"><p>the y coordinate of the destination within <em class="parameter"><code>drawable</code></em>
+.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>width</p></td>
+<td class="parameter_description"><p>the width of the area to be copied, or -1 to make the area
+extend to the right edge of <em class="parameter"><code>image</code></em>
+.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>height</p></td>
+<td class="parameter_description"><p>the height of the area to be copied, or -1 to make the area
+extend to the bottom edge of <em class="parameter"><code>image</code></em>
+.</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-drawable-get-image"></a><h3>gdk_drawable_get_image ()</h3>
+<pre class="programlisting"><a class="link" href="gdk2-Images.html#GdkImage" title="GdkImage"><span class="returnvalue">GdkImage</span></a> *
+gdk_drawable_get_image (<em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *drawable</code></em>,
+                        <em class="parameter"><code><span class="type">gint</span> x</code></em>,
+                        <em class="parameter"><code><span class="type">gint</span> y</code></em>,
+                        <em class="parameter"><code><span class="type">gint</span> width</code></em>,
+                        <em class="parameter"><code><span class="type">gint</span> height</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_drawable_get_image</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>Use <em class="parameter"><code>drawable</code></em>
+ as the source and draw to a Cairo image
+surface if you want to download contents to the client.</p>
+</div>
+<p>A <a class="link" href="gdk2-Images.html#GdkImage" title="GdkImage"><span class="type">GdkImage</span></a> stores client-side image data (pixels). In contrast,
+<a class="link" href="gdk2-Bitmaps-and-Pixmaps.html#GdkPixmap"><span class="type">GdkPixmap</span></a> and <a class="link" href="gdk2-Windows.html#GdkWindow"><span class="type">GdkWindow</span></a> are server-side
+objects. <a class="link" href="gdk2-Drawing-Primitives.html#gdk-drawable-get-image" title="gdk_drawable_get_image ()"><code class="function">gdk_drawable_get_image()</code></a> obtains the pixels from a
+server-side drawable as a client-side <a class="link" href="gdk2-Images.html#GdkImage" title="GdkImage"><span class="type">GdkImage</span></a>.  The format of a
+<a class="link" href="gdk2-Images.html#GdkImage" title="GdkImage"><span class="type">GdkImage</span></a> depends on the <a class="link" href="gdk2-Visuals.html#GdkVisual" title="GdkVisual"><span class="type">GdkVisual</span></a> of the current display, which
+makes manipulating <a class="link" href="gdk2-Images.html#GdkImage" title="GdkImage"><span class="type">GdkImage</span></a> extremely difficult; therefore, in
+most cases you should use <a class="link" href="gdk2-Pixbufs.html#gdk-pixbuf-get-from-drawable" title="gdk_pixbuf_get_from_drawable ()"><code class="function">gdk_pixbuf_get_from_drawable()</code></a> instead of
+this lower-level function. A <a href="http://library.gnome.org/devel/gdk-pixbuf/unstable/gdk-pixbuf-The-GdkPixbuf-Structure.html#GdkPixbuf-struct"><span class="type">GdkPixbuf</span></a> contains image data in a
+canonicalized RGB format, rather than a display-dependent format.
+Of course, there's a convenience vs. speed tradeoff here, so you'll
+want to think about what makes sense for your application.</p>
+<p><em class="parameter"><code>x</code></em>
+, <em class="parameter"><code>y</code></em>
+, <em class="parameter"><code>width</code></em>
+, and <em class="parameter"><code>height</code></em>
+ define the region of <em class="parameter"><code>drawable</code></em>
+ to
+obtain as an image.</p>
+<p>You would usually copy image data to the client side if you intend
+to examine the values of individual pixels, for example to darken
+an image or add a red tint. It would be prohibitively slow to
+make a round-trip request to the windowing system for each pixel,
+so instead you get all of them at once, modify them, then copy
+them all back at once.</p>
+<p>If the X server or other windowing system backend is on the local
+machine, this function may use shared memory to avoid copying
+the image data.</p>
+<p>If the source drawable is a <a class="link" href="gdk2-Windows.html#GdkWindow"><span class="type">GdkWindow</span></a> and partially offscreen
+or obscured, then the obscured portions of the returned image
+will contain undefined data.</p>
+<div class="refsect3">
+<a name="gdk-drawable-get-image.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>drawable</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>x</p></td>
+<td class="parameter_description"><p>x coordinate on <em class="parameter"><code>drawable</code></em>
+</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>y</p></td>
+<td class="parameter_description"><p>y coordinate on <em class="parameter"><code>drawable</code></em>
+</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>width</p></td>
+<td class="parameter_description"><p>width of region to get</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>height</p></td>
+<td class="parameter_description"><p>height or region to get</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gdk-drawable-get-image.returns"></a><h4>Returns</h4>
+<p> a <a class="link" href="gdk2-Images.html#GdkImage" title="GdkImage"><span class="type">GdkImage</span></a> containing the contents of <em class="parameter"><code>drawable</code></em>
+</p>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-drawable-copy-to-image"></a><h3>gdk_drawable_copy_to_image ()</h3>
+<pre class="programlisting"><a class="link" href="gdk2-Images.html#GdkImage" title="GdkImage"><span class="returnvalue">GdkImage</span></a> *
+gdk_drawable_copy_to_image (<em class="parameter"><code><a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a> *drawable</code></em>,
+                            <em class="parameter"><code><a class="link" href="gdk2-Images.html#GdkImage" title="GdkImage"><span class="type">GdkImage</span></a> *image</code></em>,
+                            <em class="parameter"><code><span class="type">gint</span> src_x</code></em>,
+                            <em class="parameter"><code><span class="type">gint</span> src_y</code></em>,
+                            <em class="parameter"><code><span class="type">gint</span> dest_x</code></em>,
+                            <em class="parameter"><code><span class="type">gint</span> dest_y</code></em>,
+                            <em class="parameter"><code><span class="type">gint</span> width</code></em>,
+                            <em class="parameter"><code><span class="type">gint</span> height</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">gdk_drawable_copy_to_image</code> has been deprecated since version 2.22 and should not be used in newly-written code.</p>
+<p>Use <em class="parameter"><code>drawable</code></em>
+ as the source and draw to a Cairo image
+surface if you want to download contents to the client.</p>
+</div>
+<p>Copies a portion of <em class="parameter"><code>drawable</code></em>
+ into the client side image structure
+<em class="parameter"><code>image</code></em>
+. If <em class="parameter"><code>image</code></em>
+ is <code class="literal">NULL</code>, creates a new image of size <em class="parameter"><code>width</code></em>
+ x <em class="parameter"><code>height</code></em>
+
+and copies into that. See <a class="link" href="gdk2-Drawing-Primitives.html#gdk-drawable-get-image" title="gdk_drawable_get_image ()"><code class="function">gdk_drawable_get_image()</code></a> for further details.</p>
+<div class="refsect3">
+<a name="gdk-drawable-copy-to-image.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>drawable</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>image</p></td>
+<td class="parameter_description"><p>a <a class="link" href="gdk2-Drawing-Primitives.html#GdkDrawable"><span class="type">GdkDrawable</span></a>, or <code class="literal">NULL</code> if a new <em class="parameter"><code>image</code></em>
+should be created. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL is OK, both for passing and for returning."><span class="acronym">allow-none</span></acronym>]</span></td>
+</tr>
+<tr>
+<td class="parameter_name"><p>src_x</p></td>
+<td class="parameter_description"><p>x coordinate on <em class="parameter"><code>drawable</code></em>
+</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>src_y</p></td>
+<td class="parameter_description"><p>y coordinate on <em class="parameter"><code>drawable</code></em>
+</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>dest_x</p></td>
+<td class="parameter_description"><p>x coordinate within <em class="parameter"><code>image</code></em>
+. Must be 0 if <em class="parameter"><code>image</code></em>
+is <code class="literal">NULL</code></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>dest_y</p></td>
+<td class="parameter_description"><p>y coordinate within <em class="parameter"><code>image</code></em>
+. Must be 0 if <em class="parameter"><code>image</code></em>
+is <code class="literal">NULL</code></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>width</p></td>
+<td class="parameter_description"><p>width of region to get</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>height</p></td>
+<td class="parameter_description"><p>height or region to get</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="gdk-drawable-copy-to-image.returns"></a><h4>Returns</h4>
+<p> <em class="parameter"><code>image</code></em>
+, or a new a <a class="link" href="gdk2-Images.html#GdkImage" title="GdkImage"><span class="type">GdkImage</span></a> containing the contents
+of <em class="parameter"><code>drawable</code></em>
+</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-4.html#api-index-2.4">2.4</a></p>
+</div>
+</div>
+<div class="refsect1">
+<a name="gdk2-Drawing-Primitives.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="GdkDrawable-struct"></a><h3>GdkDrawable</h3>
+<pre class="programlisting">typedef struct _GdkDrawable GdkDrawable;</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GdkSegment"></a><h3>struct GdkSegment</h3>
+<pre class="programlisting">struct GdkSegment {
+  gint x1;
+  gint y1;
+  gint x2;
+  gint y2;
+};
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GdkTrapezoid"></a><h3>struct GdkTrapezoid</h3>
+<pre class="programlisting">struct GdkTrapezoid {
+  double y1, x11, x21, y2, x12, x22;
+};
+</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gdk-draw-pixmap"></a><h3>gdk_draw_pixmap</h3>
+<pre class="programlisting">#define gdk_draw_pixmap                gdk_draw_drawable
+</pre>
+<div class="warning"><p><code class="literal">gdk_draw_pixmap</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.33.0</div>
+</body>
+</html>

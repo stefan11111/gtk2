@@ -1,0 +1,703 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GtkObject: GTK+ 2 Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets Vsnapshot">
+<link rel="home" href="index.html" title="GTK+ 2 Reference Manual">
+<link rel="up" href="AbstractObjects.html" title="Abstract Base Classes">
+<link rel="prev" href="GtkMisc.html" title="GtkMisc">
+<link rel="next" href="GtkPaned.html" title="GtkPaned">
+<meta name="generator" content="GTK-Doc V1.33.0 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#GtkObject.description" class="shortcut">Description</a></span><span id="nav_hierarchy">  <span class="dim">|</span> 
+                  <a href="#GtkObject.object-hierarchy" class="shortcut">Object Hierarchy</a></span><span id="nav_properties">  <span class="dim">|</span> 
+                  <a href="#GtkObject.properties" class="shortcut">Properties</a></span><span id="nav_signals">  <span class="dim">|</span> 
+                  <a href="#GtkObject.signals" class="shortcut">Signals</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="AbstractObjects.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="GtkMisc.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="GtkPaned.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="GtkObject"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GtkObject.top_of_page"></a>GtkObject</span></h2>
+<p>GtkObject</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="GtkObject.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_proto_type">
+<col class="functions_proto_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name">
+<a class="link" href="GtkObject.html#GTK-OBJECT-FLAGS:CAPS" title="GTK_OBJECT_FLAGS()">GTK_OBJECT_FLAGS</a><span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name">
+<a class="link" href="GtkObject.html#GTK-OBJECT-FLOATING:CAPS" title="GTK_OBJECT_FLOATING()">GTK_OBJECT_FLOATING</a><span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GtkObject.html" title="GtkObject"><span class="returnvalue">GtkObject</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GtkObject.html#gtk-object-new" title="gtk_object_new ()">gtk_object_new</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkObject.html#gtk-object-sink" title="gtk_object_sink ()">gtk_object_sink</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a class="link" href="GtkObject.html" title="GtkObject"><span class="returnvalue">GtkObject</span></a> *
+</td>
+<td class="function_name">
+<a class="link" href="GtkObject.html#gtk-object-ref" title="gtk_object_ref ()">gtk_object_ref</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkObject.html#gtk-object-unref" title="gtk_object_unref ()">gtk_object_unref</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkObject.html#gtk-object-weakref" title="gtk_object_weakref ()">gtk_object_weakref</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkObject.html#gtk-object-weakunref" title="gtk_object_weakunref ()">gtk_object_weakunref</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkObject.html#gtk-object-destroy" title="gtk_object_destroy ()">gtk_object_destroy</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkObject.html#gtk-object-get" title="gtk_object_get ()">gtk_object_get</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkObject.html#gtk-object-set" title="gtk_object_set ()">gtk_object_set</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkObject.html#gtk-object-set-data" title="gtk_object_set_data ()">gtk_object_set_data</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkObject.html#gtk-object-set-data-full" title="gtk_object_set_data_full ()">gtk_object_set_data_full</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkObject.html#gtk-object-remove-data" title="gtk_object_remove_data ()">gtk_object_remove_data</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gpointer</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkObject.html#gtk-object-get-data" title="gtk_object_get_data ()">gtk_object_get_data</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkObject.html#gtk-object-remove-no-notify" title="gtk_object_remove_no_notify ()">gtk_object_remove_no_notify</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkObject.html#gtk-object-set-user-data" title="gtk_object_set_user_data ()">gtk_object_set_user_data</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gpointer</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkObject.html#gtk-object-get-user-data" title="gtk_object_get_user_data ()">gtk_object_get_user_data</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkObject.html#gtk-object-add-arg-type" title="gtk_object_add_arg_type ()">gtk_object_add_arg_type</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkObject.html#gtk-object-set-data-by-id" title="gtk_object_set_data_by_id ()">gtk_object_set_data_by_id</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkObject.html#gtk-object-set-data-by-id-full" title="gtk_object_set_data_by_id_full ()">gtk_object_set_data_by_id_full</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">gpointer</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkObject.html#gtk-object-get-data-by-id" title="gtk_object_get_data_by_id ()">gtk_object_get_data_by_id</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkObject.html#gtk-object-remove-data-by-id" title="gtk_object_remove_data_by_id ()">gtk_object_remove_data_by_id</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<span class="returnvalue">void</span>
+</td>
+<td class="function_name">
+<a class="link" href="GtkObject.html#gtk-object-remove-no-notify-by-id" title="gtk_object_remove_no_notify_by_id ()">gtk_object_remove_no_notify_by_id</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GtkObject.properties"></a><h2>Properties</h2>
+<div class="informaltable"><table class="informaltable" border="0">
+<colgroup>
+<col width="150px" class="properties_type">
+<col width="300px" class="properties_name">
+<col width="200px" class="properties_flags">
+</colgroup>
+<tbody><tr>
+<td class="property_type"><span class="type">gpointer</span></td>
+<td class="property_name"><a class="link" href="GtkObject.html#GtkObject--user-data" title="The “user-data” property">user-data</a></td>
+<td class="property_flags">Read / Write</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GtkObject.signals"></a><h2>Signals</h2>
+<div class="informaltable"><table class="informaltable" border="0">
+<colgroup>
+<col width="150px" class="signal_proto_type">
+<col width="300px" class="signal_proto_name">
+<col width="200px" class="signal_proto_flags">
+</colgroup>
+<tbody><tr>
+<td class="signal_type"><span class="returnvalue">void</span></td>
+<td class="signal_name"><a class="link" href="GtkObject.html#GtkObject-destroy" title="The “destroy” signal">destroy</a></td>
+<td class="signal_flags">No Hooks</td>
+</tr></tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GtkObject.other"></a><h2>Types and Values</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="other_proto_type">
+<col class="other_proto_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="datatype_keyword"> </td>
+<td class="function_name"><a class="link" href="GtkObject.html#GtkObject-struct" title="GtkObject">GtkObject</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="GtkObject.html#GTK-OBJECT-TYPE:CAPS" title="GTK_OBJECT_TYPE">GTK_OBJECT_TYPE</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="GtkObject.html#GTK-OBJECT-TYPE-NAME:CAPS" title="GTK_OBJECT_TYPE_NAME">GTK_OBJECT_TYPE_NAME</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">enum</td>
+<td class="function_name"><a class="link" href="GtkObject.html#GtkObjectFlags" title="enum GtkObjectFlags">GtkObjectFlags</a></td>
+</tr>
+<tr>
+<td class="datatype_keyword">enum</td>
+<td class="function_name"><a class="link" href="GtkObject.html#GtkArgFlags" title="enum GtkArgFlags">GtkArgFlags</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="GtkObject.html#gtk-object-data-try-key" title="gtk_object_data_try_key">gtk_object_data_try_key</a></td>
+</tr>
+<tr>
+<td class="define_keyword">#define</td>
+<td class="function_name"><a class="link" href="GtkObject.html#gtk-object-data-force-id" title="gtk_object_data_force_id">gtk_object_data_force_id</a></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="GtkObject.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="screen">    GObject
+    <span class="lineart">╰──</span> GInitiallyUnowned
+        <span class="lineart">╰──</span> GtkObject
+            <span class="lineart">├──</span> <a class="link" href="GtkWidget.html" title="GtkWidget">GtkWidget</a>
+            <span class="lineart">├──</span> <a class="link" href="GtkAdjustment.html" title="GtkAdjustment">GtkAdjustment</a>
+            <span class="lineart">├──</span> <a class="link" href="GtkCellRenderer.html" title="GtkCellRenderer">GtkCellRenderer</a>
+            <span class="lineart">├──</span> <a class="link" href="gtk2-gtkfilefilter.html#GtkFileFilter">GtkFileFilter</a>
+            <span class="lineart">├──</span> <a class="link" href="GtkItemFactory.html" title="GtkItemFactory">GtkItemFactory</a>
+            <span class="lineart">├──</span> <a class="link" href="GtkTooltips.html" title="GtkTooltips">GtkTooltips</a>
+            <span class="lineart">├──</span> <a class="link" href="GtkTreeViewColumn.html" title="GtkTreeViewColumn">GtkTreeViewColumn</a>
+            <span class="lineart">╰──</span> <a class="link" href="GtkRecentFilter.html" title="GtkRecentFilter">GtkRecentFilter</a>
+</pre>
+</div>
+<div class="refsect1">
+<a name="GtkObject.includes"></a><h2>Includes</h2>
+<pre class="synopsis">#include &lt;gtk/gtk.h&gt;
+</pre>
+</div>
+<div class="refsect1">
+<a name="GtkObject.description"></a><h2>Description</h2>
+</div>
+<div class="refsect1">
+<a name="GtkObject.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="GTK-OBJECT-FLAGS:CAPS"></a><h3>GTK_OBJECT_FLAGS()</h3>
+<pre class="programlisting">#define GTK_OBJECT_FLAGS(obj)		  (GTK_OBJECT (obj)-&gt;flags)
+</pre>
+<div class="warning"><p><code class="literal">GTK_OBJECT_FLAGS</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GTK-OBJECT-FLOATING:CAPS"></a><h3>GTK_OBJECT_FLOATING()</h3>
+<pre class="programlisting">#define GTK_OBJECT_FLOATING(obj)	  (g_object_is_floating (obj))
+</pre>
+<div class="warning"><p><code class="literal">GTK_OBJECT_FLOATING</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-object-new"></a><h3>gtk_object_new ()</h3>
+<pre class="programlisting"><a class="link" href="GtkObject.html" title="GtkObject"><span class="returnvalue">GtkObject</span></a> *
+gtk_object_new (<em class="parameter"><code><span class="type">GType</span> type</code></em>,
+                <em class="parameter"><code>const <span class="type">gchar</span> *first_property_name</code></em>,
+                <em class="parameter"><code>...</code></em>);</pre>
+<div class="warning"><p><code class="literal">gtk_object_new</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-object-sink"></a><h3>gtk_object_sink ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_object_sink (<em class="parameter"><code><a class="link" href="GtkObject.html" title="GtkObject"><span class="type">GtkObject</span></a> *object</code></em>);</pre>
+<div class="warning"><p><code class="literal">gtk_object_sink</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-object-ref"></a><h3>gtk_object_ref ()</h3>
+<pre class="programlisting"><a class="link" href="GtkObject.html" title="GtkObject"><span class="returnvalue">GtkObject</span></a> *
+gtk_object_ref (<em class="parameter"><code><a class="link" href="GtkObject.html" title="GtkObject"><span class="type">GtkObject</span></a> *object</code></em>);</pre>
+<div class="warning"><p><code class="literal">gtk_object_ref</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-object-unref"></a><h3>gtk_object_unref ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_object_unref (<em class="parameter"><code><a class="link" href="GtkObject.html" title="GtkObject"><span class="type">GtkObject</span></a> *object</code></em>);</pre>
+<div class="warning"><p><code class="literal">gtk_object_unref</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-object-weakref"></a><h3>gtk_object_weakref ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_object_weakref (<em class="parameter"><code><a class="link" href="GtkObject.html" title="GtkObject"><span class="type">GtkObject</span></a> *object</code></em>,
+                    <em class="parameter"><code><span class="type">GDestroyNotify</span> notify</code></em>,
+                    <em class="parameter"><code><span class="type">gpointer</span> data</code></em>);</pre>
+<div class="warning"><p><code class="literal">gtk_object_weakref</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-object-weakunref"></a><h3>gtk_object_weakunref ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_object_weakunref (<em class="parameter"><code><a class="link" href="GtkObject.html" title="GtkObject"><span class="type">GtkObject</span></a> *object</code></em>,
+                      <em class="parameter"><code><span class="type">GDestroyNotify</span> notify</code></em>,
+                      <em class="parameter"><code><span class="type">gpointer</span> data</code></em>);</pre>
+<div class="warning"><p><code class="literal">gtk_object_weakunref</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-object-destroy"></a><h3>gtk_object_destroy ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_object_destroy (<em class="parameter"><code><a class="link" href="GtkObject.html" title="GtkObject"><span class="type">GtkObject</span></a> *object</code></em>);</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-object-get"></a><h3>gtk_object_get ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_object_get (<em class="parameter"><code><a class="link" href="GtkObject.html" title="GtkObject"><span class="type">GtkObject</span></a> *object</code></em>,
+                <em class="parameter"><code>const <span class="type">gchar</span> *first_property_name</code></em>,
+                <em class="parameter"><code>...</code></em>);</pre>
+<div class="warning"><p><code class="literal">gtk_object_get</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-object-set"></a><h3>gtk_object_set ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_object_set (<em class="parameter"><code><a class="link" href="GtkObject.html" title="GtkObject"><span class="type">GtkObject</span></a> *object</code></em>,
+                <em class="parameter"><code>const <span class="type">gchar</span> *first_property_name</code></em>,
+                <em class="parameter"><code>...</code></em>);</pre>
+<div class="warning"><p><code class="literal">gtk_object_set</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-object-set-data"></a><h3>gtk_object_set_data ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_object_set_data (<em class="parameter"><code><a class="link" href="GtkObject.html" title="GtkObject"><span class="type">GtkObject</span></a> *object</code></em>,
+                     <em class="parameter"><code>const <span class="type">gchar</span> *key</code></em>,
+                     <em class="parameter"><code><span class="type">gpointer</span> data</code></em>);</pre>
+<div class="warning"><p><code class="literal">gtk_object_set_data</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-object-set-data-full"></a><h3>gtk_object_set_data_full ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_object_set_data_full (<em class="parameter"><code><a class="link" href="GtkObject.html" title="GtkObject"><span class="type">GtkObject</span></a> *object</code></em>,
+                          <em class="parameter"><code>const <span class="type">gchar</span> *key</code></em>,
+                          <em class="parameter"><code><span class="type">gpointer</span> data</code></em>,
+                          <em class="parameter"><code><span class="type">GDestroyNotify</span> destroy</code></em>);</pre>
+<div class="warning"><p><code class="literal">gtk_object_set_data_full</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-object-remove-data"></a><h3>gtk_object_remove_data ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_object_remove_data (<em class="parameter"><code><a class="link" href="GtkObject.html" title="GtkObject"><span class="type">GtkObject</span></a> *object</code></em>,
+                        <em class="parameter"><code>const <span class="type">gchar</span> *key</code></em>);</pre>
+<div class="warning"><p><code class="literal">gtk_object_remove_data</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-object-get-data"></a><h3>gtk_object_get_data ()</h3>
+<pre class="programlisting"><span class="returnvalue">gpointer</span>
+gtk_object_get_data (<em class="parameter"><code><a class="link" href="GtkObject.html" title="GtkObject"><span class="type">GtkObject</span></a> *object</code></em>,
+                     <em class="parameter"><code>const <span class="type">gchar</span> *key</code></em>);</pre>
+<div class="warning"><p><code class="literal">gtk_object_get_data</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-object-remove-no-notify"></a><h3>gtk_object_remove_no_notify ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_object_remove_no_notify (<em class="parameter"><code><a class="link" href="GtkObject.html" title="GtkObject"><span class="type">GtkObject</span></a> *object</code></em>,
+                             <em class="parameter"><code>const <span class="type">gchar</span> *key</code></em>);</pre>
+<div class="warning"><p><code class="literal">gtk_object_remove_no_notify</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-object-set-user-data"></a><h3>gtk_object_set_user_data ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_object_set_user_data (<em class="parameter"><code><a class="link" href="GtkObject.html" title="GtkObject"><span class="type">GtkObject</span></a> *object</code></em>,
+                          <em class="parameter"><code><span class="type">gpointer</span> data</code></em>);</pre>
+<div class="warning"><p><code class="literal">gtk_object_set_user_data</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-object-get-user-data"></a><h3>gtk_object_get_user_data ()</h3>
+<pre class="programlisting"><span class="returnvalue">gpointer</span>
+gtk_object_get_user_data (<em class="parameter"><code><a class="link" href="GtkObject.html" title="GtkObject"><span class="type">GtkObject</span></a> *object</code></em>);</pre>
+<div class="warning"><p><code class="literal">gtk_object_get_user_data</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-object-add-arg-type"></a><h3>gtk_object_add_arg_type ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_object_add_arg_type (<em class="parameter"><code>const <span class="type">gchar</span> *arg_name</code></em>,
+                         <em class="parameter"><code><span class="type">GType</span> arg_type</code></em>,
+                         <em class="parameter"><code><span class="type">guint</span> arg_flags</code></em>,
+                         <em class="parameter"><code><span class="type">guint</span> arg_id</code></em>);</pre>
+<div class="warning"><p><code class="literal">gtk_object_add_arg_type</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-object-set-data-by-id"></a><h3>gtk_object_set_data_by_id ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_object_set_data_by_id (<em class="parameter"><code><a class="link" href="GtkObject.html" title="GtkObject"><span class="type">GtkObject</span></a> *object</code></em>,
+                           <em class="parameter"><code><span class="type">GQuark</span> data_id</code></em>,
+                           <em class="parameter"><code><span class="type">gpointer</span> data</code></em>);</pre>
+<div class="warning"><p><code class="literal">gtk_object_set_data_by_id</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-object-set-data-by-id-full"></a><h3>gtk_object_set_data_by_id_full ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_object_set_data_by_id_full (<em class="parameter"><code><a class="link" href="GtkObject.html" title="GtkObject"><span class="type">GtkObject</span></a> *object</code></em>,
+                                <em class="parameter"><code><span class="type">GQuark</span> data_id</code></em>,
+                                <em class="parameter"><code><span class="type">gpointer</span> data</code></em>,
+                                <em class="parameter"><code><span class="type">GDestroyNotify</span> destroy</code></em>);</pre>
+<div class="warning"><p><code class="literal">gtk_object_set_data_by_id_full</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-object-get-data-by-id"></a><h3>gtk_object_get_data_by_id ()</h3>
+<pre class="programlisting"><span class="returnvalue">gpointer</span>
+gtk_object_get_data_by_id (<em class="parameter"><code><a class="link" href="GtkObject.html" title="GtkObject"><span class="type">GtkObject</span></a> *object</code></em>,
+                           <em class="parameter"><code><span class="type">GQuark</span> data_id</code></em>);</pre>
+<div class="warning"><p><code class="literal">gtk_object_get_data_by_id</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-object-remove-data-by-id"></a><h3>gtk_object_remove_data_by_id ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_object_remove_data_by_id (<em class="parameter"><code><a class="link" href="GtkObject.html" title="GtkObject"><span class="type">GtkObject</span></a> *object</code></em>,
+                              <em class="parameter"><code><span class="type">GQuark</span> data_id</code></em>);</pre>
+<div class="warning"><p><code class="literal">gtk_object_remove_data_by_id</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-object-remove-no-notify-by-id"></a><h3>gtk_object_remove_no_notify_by_id ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+gtk_object_remove_no_notify_by_id (<em class="parameter"><code><a class="link" href="GtkObject.html" title="GtkObject"><span class="type">GtkObject</span></a> *object</code></em>,
+                                   <em class="parameter"><code><span class="type">GQuark</span> key_id</code></em>);</pre>
+<div class="warning"><p><code class="literal">gtk_object_remove_no_notify_by_id</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+</div>
+<div class="refsect1">
+<a name="GtkObject.other_details"></a><h2>Types and Values</h2>
+<div class="refsect2">
+<a name="GtkObject-struct"></a><h3>GtkObject</h3>
+<pre class="programlisting">typedef struct _GtkObject GtkObject;</pre>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GTK-OBJECT-TYPE:CAPS"></a><h3>GTK_OBJECT_TYPE</h3>
+<pre class="programlisting">#define GTK_OBJECT_TYPE                   G_OBJECT_TYPE
+</pre>
+<div class="warning">
+<p><code class="literal">GTK_OBJECT_TYPE</code> has been deprecated since version 2.20 and should not be used in newly-written code.</p>
+<p>Use <code class="function">G_OBJECT_TYPE()</code> instead.</p>
+</div>
+<p>Gets the type of an object.</p>
+<div class="refsect3">
+<a name="GTK-OBJECT-TYPE.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>object</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkObject.html" title="GtkObject"><span class="type">GtkObject</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GTK-OBJECT-TYPE-NAME:CAPS"></a><h3>GTK_OBJECT_TYPE_NAME</h3>
+<pre class="programlisting">#define GTK_OBJECT_TYPE_NAME              G_OBJECT_TYPE_NAME
+</pre>
+<div class="warning">
+<p><code class="literal">GTK_OBJECT_TYPE_NAME</code> has been deprecated since version 2.20 and should not be used in newly-written code.</p>
+<p>Use <code class="function">G_OBJECT_TYPE_NAME()</code> instead.</p>
+</div>
+<p>Gets the name of an object's type.</p>
+<div class="refsect3">
+<a name="GTK-OBJECT-TYPE-NAME.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody><tr>
+<td class="parameter_name"><p>object</p></td>
+<td class="parameter_description"><p>a <a class="link" href="GtkObject.html" title="GtkObject"><span class="type">GtkObject</span></a>.</p></td>
+<td class="parameter_annotations"> </td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GtkObjectFlags"></a><h3>enum GtkObjectFlags</h3>
+<div class="warning"><p><code class="literal">GtkObjectFlags</code> is deprecated and should not be used in newly-written code.</p></div>
+<div class="refsect3">
+<a name="GtkObjectFlags.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="enum_members_name">
+<col class="enum_members_description">
+<col width="200px" class="enum_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-IN-DESTRUCTION:CAPS"></a>GTK_IN_DESTRUCTION</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-FLOATING:CAPS"></a>GTK_FLOATING</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RESERVED-1:CAPS"></a>GTK_RESERVED_1</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-RESERVED-2:CAPS"></a>GTK_RESERVED_2</p></td>
+<td> </td>
+<td> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GtkArgFlags"></a><h3>enum GtkArgFlags</h3>
+<div class="warning"><p><code class="literal">GtkArgFlags</code> is deprecated and should not be used in newly-written code.</p></div>
+<div class="refsect3">
+<a name="GtkArgFlags.members"></a><h4>Members</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="300px" class="enum_members_name">
+<col class="enum_members_description">
+<col width="200px" class="enum_members_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-ARG-READABLE:CAPS"></a>GTK_ARG_READABLE</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-ARG-WRITABLE:CAPS"></a>GTK_ARG_WRITABLE</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-ARG-CONSTRUCT:CAPS"></a>GTK_ARG_CONSTRUCT</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-ARG-CONSTRUCT-ONLY:CAPS"></a>GTK_ARG_CONSTRUCT_ONLY</p></td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td class="enum_member_name"><p><a name="GTK-ARG-CHILD-ARG:CAPS"></a>GTK_ARG_CHILD_ARG</p></td>
+<td> </td>
+<td> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-object-data-try-key"></a><h3>gtk_object_data_try_key</h3>
+<pre class="programlisting">#define gtk_object_data_try_key	    g_quark_try_string
+</pre>
+<div class="warning"><p><code class="literal">gtk_object_data_try_key</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gtk-object-data-force-id"></a><h3>gtk_object_data_force_id</h3>
+<pre class="programlisting">#define gtk_object_data_force_id    g_quark_from_string
+</pre>
+<div class="warning"><p><code class="literal">gtk_object_data_force_id</code> is deprecated and should not be used in newly-written code.</p></div>
+</div>
+</div>
+<div class="refsect1">
+<a name="GtkObject.property-details"></a><h2>Property Details</h2>
+<div class="refsect2">
+<a name="GtkObject--user-data"></a><h3>The <code class="literal">“user-data”</code> property</h3>
+<pre class="programlisting">  “user-data”                <span class="type">gpointer</span></pre>
+<p>Anonymous User Data Pointer.</p>
+<p>Owner: GtkObject</p>
+<p>Flags: Read / Write</p>
+</div>
+</div>
+<div class="refsect1">
+<a name="GtkObject.signal-details"></a><h2>Signal Details</h2>
+<div class="refsect2">
+<a name="GtkObject-destroy"></a><h3>The <code class="literal">“destroy”</code> signal</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>
+user_function (<a class="link" href="GtkObject.html" title="GtkObject"><span class="type">GtkObject</span></a> *object,
+               <span class="type">gpointer</span>   user_data)</pre>
+<p>Flags: No Hooks</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.33.0</div>
+</body>
+</html>
