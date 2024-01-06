@@ -1718,9 +1718,6 @@ docs/tutorial/Makefile
 build/Makefile
 gdk/Makefile
 gdk/x11/Makefile
-gdk/win32/Makefile
-gdk/win32/rc/Makefile
-gdk/win32/rc/gdk.rc
 gdk/quartz/Makefile
 gdk/directfb/Makefile
 gdk/tests/Makefile
