@@ -1338,17 +1338,6 @@ else
 ])
 fi
 
-if $PKG_CONFIG --uninstalled $ATK_PACKAGES; then
-        :
-else
-	gtk_save_LIBS="$LIBS"
-        LIBS="$ATK_LIBS $LIBS"
-        AC_TRY_LINK_FUNC(atk_object_get_type, : , AC_MSG_ERROR([
-                *** Cannot link to Accessibility Toolkit. Accessibility Toolkit is required
-                *** to build GTK+]))
-        LIBS="$gtk_save_LIBS"
-fi
-
 GTK_PACKAGES="atk cairo gdk-pixbuf-2.0 gio-2.0"
 if test "x$gdktarget" = "xx11"; then
   GTK_PACKAGES="$GTK_PACKAGES pangoft2"

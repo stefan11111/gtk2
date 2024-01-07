@@ -24466,31 +24466,7 @@ if $PKG_CONFIG --uninstalled $ATK_PACKAGES; then
 else
 	gtk_save_LIBS="$LIBS"
         LIBS="$ATK_LIBS $LIBS"
-        cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
 
-/* Override any GCC internal prototype to avoid an error.
-   Use char because int might match the return type of a GCC
-   builtin and then its argument prototype would still apply.  */
-#ifdef __cplusplus
-extern "C"
-#endif
-char atk_object_get_type ();
-int
-main ()
-{
-return atk_object_get_type ();
-  ;
-  return 0;
-}
-_ACEOF
-if ac_fn_c_try_link "$LINENO"; then :
-  :
-else
-  as_fn_error $? "
-                *** Cannot link to Accessibility Toolkit. Accessibility Toolkit is required
-                *** to build GTK+" "$LINENO" 5
-fi
 rm -f core conftest.err conftest.$ac_objext \
     conftest$ac_exeext conftest.$ac_ext
         LIBS="$gtk_save_LIBS"
