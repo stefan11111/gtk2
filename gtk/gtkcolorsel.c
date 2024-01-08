@@ -188,9 +188,9 @@ static void     default_noscreen_change_palette_func    (const GdkColor    *colo
 static void     default_change_palette_func             (GdkScreen	   *screen,
 							 const GdkColor    *colors,
 							 gint               n_colors);
-static void     make_control_relations                  (AtkObject         *atk_obj,
+static void     make_control_relations                  (void         *atk_obj,
                                                          GtkWidget         *widget);
-static void     make_all_relations                      (AtkObject         *atk_obj,
+static void     make_all_relations                      (void         *atk_obj,
                                                          ColorSelectionPrivate *priv);
 
 static void 	hsv_changed                             (GtkWidget         *hsv,
@@ -334,7 +334,7 @@ gtk_color_selection_init (GtkColorSelection *colorsel)
   GtkWidget *picker_image;
   gint i, j;
   ColorSelectionPrivate *priv;
-  AtkObject *atk_obj;
+  void *atk_obj;
   GList *focus_chain = NULL;
   
   gtk_widget_push_composite_child ();
@@ -498,12 +498,6 @@ gtk_color_selection_init (GtkColorSelection *colorsel)
     }
 
   atk_obj = gtk_widget_get_accessible (priv->triangle_colorsel);
-  if (GTK_IS_ACCESSIBLE (atk_obj))
-    {
-      atk_object_set_name (atk_obj, _("Color Wheel"));
-      atk_object_set_role (gtk_widget_get_accessible (GTK_WIDGET (colorsel)), ATK_ROLE_COLOR_CHOOSER);
-      make_all_relations (atk_obj, priv);
-    } 
 
   gtk_widget_pop_composite_child ();
 }
@@ -2920,26 +2914,15 @@ gtk_color_selection_set_change_palette_with_screen_hook (GtkColorSelectionChange
 }
 
 static void
-make_control_relations (AtkObject *atk_obj,
+make_control_relations (void *atk_obj,
                         GtkWidget *widget)
 {
-  AtkObject *obj;
-
-  obj = gtk_widget_get_accessible (widget);
-  atk_object_add_relationship (atk_obj, ATK_RELATION_CONTROLLED_BY, obj);
-  atk_object_add_relationship (obj, ATK_RELATION_CONTROLLER_FOR, atk_obj);
 }
 
 static void
-make_all_relations (AtkObject *atk_obj,
+make_all_relations (void *atk_obj,
                     ColorSelectionPrivate *priv)
 {
-  make_control_relations (atk_obj, priv->hue_spinbutton);
-  make_control_relations (atk_obj, priv->sat_spinbutton);
-  make_control_relations (atk_obj, priv->val_spinbutton);
-  make_control_relations (atk_obj, priv->red_spinbutton);
-  make_control_relations (atk_obj, priv->green_spinbutton);
-  make_control_relations (atk_obj, priv->blue_spinbutton);
 }
 
 #define __GTK_COLOR_SELECTION_C__

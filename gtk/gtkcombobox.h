@@ -145,7 +145,7 @@ gchar        *gtk_combo_box_get_active_text  (GtkComboBox     *combo_box);
 /* programmatic control */
 void          gtk_combo_box_popup            (GtkComboBox     *combo_box);
 void          gtk_combo_box_popdown          (GtkComboBox     *combo_box);
-AtkObject*    gtk_combo_box_get_popup_accessible (GtkComboBox *combo_box);
+void*    gtk_combo_box_get_popup_accessible (GtkComboBox *combo_box);
 
 
 G_END_DECLS

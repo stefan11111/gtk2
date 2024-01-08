@@ -416,7 +416,7 @@ setup_type (GtkMessageDialog *dialog,
 {
   GtkMessageDialogPrivate *priv = GTK_MESSAGE_DIALOG_GET_PRIVATE (dialog);
   const gchar *stock_id = NULL;
-  AtkObject *atk_obj;
+  void *atk_obj;
  
   priv->message_type = type;
 
@@ -450,18 +450,6 @@ setup_type (GtkMessageDialog *dialog,
     gtk_image_set_from_stock (GTK_IMAGE (dialog->image), stock_id,
                               GTK_ICON_SIZE_DIALOG);
       
-  atk_obj = gtk_widget_get_accessible (GTK_WIDGET (dialog));
-  if (GTK_IS_ACCESSIBLE (atk_obj))
-    {
-      atk_object_set_role (atk_obj, ATK_ROLE_ALERT);
-      if (stock_id)
-        {
-          GtkStockItem item;
-
-          gtk_stock_lookup (stock_id, &item);
-          atk_object_set_name (atk_obj, item.label);
-        }
-    }
 }
 
 static void 

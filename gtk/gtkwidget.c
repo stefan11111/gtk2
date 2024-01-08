@@ -306,9 +306,9 @@ static gint		gtk_widget_event_internal		(GtkWidget	  *widget,
 static gboolean		gtk_widget_real_mnemonic_activate	(GtkWidget	  *widget,
 								 gboolean	   group_cycling);
 static void		gtk_widget_aux_info_destroy		(GtkWidgetAuxInfo *aux_info);
-static AtkObject*	gtk_widget_real_get_accessible		(GtkWidget	  *widget);
+static void*	gtk_widget_real_get_accessible		(GtkWidget	  *widget);
 static void		gtk_widget_accessible_interface_init	(AtkImplementorIface *iface);
-static AtkObject*	gtk_widget_ref_accessible		(AtkImplementor *implementor);
+static void*	gtk_widget_ref_accessible		(AtkImplementor *implementor);
 static void             gtk_widget_invalidate_widget_windows    (GtkWidget        *widget,
 								 GdkRegion        *region);
 static GdkScreen *      gtk_widget_get_screen_unchecked         (GtkWidget        *widget);
@@ -10233,7 +10233,7 @@ gtk_requisition_get_type (void)
  *
  * Returns: (transfer none): the #AtkObject associated with @widget
  */
-AtkObject*
+void*
 gtk_widget_get_accessible (GtkWidget *widget)
 {
   GtkWidgetClass *klass;
@@ -10247,16 +10247,16 @@ gtk_widget_get_accessible (GtkWidget *widget)
   return klass->get_accessible (widget);
 }
 
-static AtkObject* 
+static void* 
 gtk_widget_real_get_accessible (GtkWidget *widget)
 {
-  AtkObject* accessible;
+  void* accessible;
 
   accessible = g_object_get_qdata (G_OBJECT (widget), 
                                    quark_accessible_object);
   if (!accessible)
   {
-    AtkObjectFactory *factory;
+    void *factory;
     AtkRegistry *default_registry;
 
     default_registry = atk_get_default_registry ();
@@ -10282,10 +10282,10 @@ gtk_widget_accessible_interface_init (AtkImplementorIface *iface)
   iface->ref_accessible = gtk_widget_ref_accessible;
 }
 
-static AtkObject*
+static void*
 gtk_widget_ref_accessible (AtkImplementor *implementor)
 {
-  AtkObject *accessible;
+  void *accessible;
 
   accessible = gtk_widget_get_accessible (GTK_WIDGET (implementor));
   if (accessible)
@@ -10405,12 +10405,12 @@ gtk_widget_buildable_parser_finished (GtkBuildable *buildable,
 				      quark_builder_atk_relations);
   if (atk_relations)
     {
-      AtkObject *accessible;
+      void *accessible;
       AtkRelationSet *relation_set;
       GSList *l;
       GObject *target;
       AtkRelationType relation_type;
-      AtkObject *target_accessible;
+      void *target_accessible;
 
       accessible = gtk_widget_get_accessible (GTK_WIDGET (buildable));
       relation_set = atk_object_ref_relation_set (accessible);
@@ -10760,7 +10760,7 @@ gtk_widget_buildable_custom_finished (GtkBuildable *buildable,
 
       if (a11y_data->actions)
 	{
-	  AtkObject *accessible;
+	  void *accessible;
 	  AtkAction *action;
 	  gint i, n_actions;
 	  GSList *l;
