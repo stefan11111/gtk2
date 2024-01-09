@@ -47,8 +47,6 @@
 
 #include "config.h"
 
-#include <atk/atk.h>
-
 #include "gtkassistant.h"
 
 #include "gtkaccessible.h"
@@ -143,7 +141,7 @@ static void     gtk_assistant_get_child_property (GtkContainer      *container,
 						  GValue            *value,
 						  GParamSpec        *pspec);
 
-static AtkObject *gtk_assistant_get_accessible   (GtkWidget         *widget);
+static void *gtk_assistant_get_accessible   (GtkWidget         *widget);
 
 static void       gtk_assistant_buildable_interface_init     (GtkBuildableIface *iface);
 static GObject   *gtk_assistant_buildable_get_internal_child (GtkBuildable  *buildable,
@@ -2315,7 +2313,7 @@ gtk_assistant_commit (GtkAssistant *assistant)
 /* accessible implementation */
 
 static gint
-gtk_assistant_accessible_get_n_children (AtkObject *accessible)
+gtk_assistant_accessible_get_n_children (void *accessible)
 {
   GtkAssistant *assistant;
   GtkWidget *widget;
@@ -2331,15 +2329,15 @@ gtk_assistant_accessible_get_n_children (AtkObject *accessible)
 }
 
 
-static AtkObject *
-gtk_assistant_accessible_ref_child (AtkObject *accessible,
+static void *
+gtk_assistant_accessible_ref_child (void *accessible,
 				    gint       index)
 {
   GtkAssistant *assistant;
   GtkAssistantPrivate *priv;
   GtkWidget *widget, *child;
   gint n_pages;
-  AtkObject *obj;
+  void *obj;
   const gchar *title;
 
   widget = GTK_ACCESSIBLE (accessible)->widget;
@@ -2369,63 +2367,19 @@ gtk_assistant_accessible_ref_child (AtkObject *accessible,
   
   obj = gtk_widget_get_accessible (child);
 
-  if (title)
-    atk_object_set_name (obj, title);
-
   return g_object_ref (obj);
-}
-
-static void
-gtk_assistant_accessible_class_init (AtkObjectClass *class)
-{
-  class->get_n_children = gtk_assistant_accessible_get_n_children;
-  class->ref_child = gtk_assistant_accessible_ref_child;
 }
 
 static GType
 gtk_assistant_accessible_get_type (void)
 {
-  static GType type = 0;
-  
-  if (!type)
-    {
-      /*
-       * Figure out the size of the class and instance
-       * we are deriving from
-       */
-      AtkObjectFactory *factory;
-      GType derived_type;
-      GTypeQuery query;
-      GType derived_atk_type;
-
-      derived_type = g_type_parent (GTK_TYPE_ASSISTANT);
-      factory = atk_registry_get_factory (atk_get_default_registry (),
-					  derived_type);
-      derived_atk_type = atk_object_factory_get_accessible_type (factory);
-      g_type_query (derived_atk_type, &query);
-
-      type = g_type_register_static_simple (derived_atk_type,
-					    I_("GtkAssistantAccessible"),
-					    query.class_size,
-					    (GClassInitFunc) gtk_assistant_accessible_class_init,
-					    query.instance_size,
-					    NULL, 0);
-    }
-
-  return type;
+  return G_TYPE_INVALID;
 }
 
-static AtkObject *
+static void* *
 gtk_assistant_accessible_new (GObject *obj)
 {
-  AtkObject *accessible;
-
-  g_return_val_if_fail (GTK_IS_ASSISTANT (obj), NULL);
-
-  accessible = g_object_new (gtk_assistant_accessible_get_type (), NULL);
-  atk_object_initialize (accessible, obj);
-
-  return accessible;
+  return NULL;
 }
 
 static GType
@@ -2434,69 +2388,21 @@ gtk_assistant_accessible_factory_get_accessible_type (void)
   return gtk_assistant_accessible_get_type ();
 }
 
-static AtkObject*
+static void*
 gtk_assistant_accessible_factory_create_accessible (GObject *obj)
 {
   return gtk_assistant_accessible_new (obj);
 }
 
-static void
-gtk_assistant_accessible_factory_class_init (AtkObjectFactoryClass *class)
-{
-  class->create_accessible = gtk_assistant_accessible_factory_create_accessible;
-  class->get_accessible_type = gtk_assistant_accessible_factory_get_accessible_type;
-}
-
 static GType
 gtk_assistant_accessible_factory_get_type (void)
 {
-  static GType type = 0;
-
-  if (!type)
-    {
-      type = g_type_register_static_simple (ATK_TYPE_OBJECT_FACTORY,
-					    I_("GtkAssistantAccessibleFactory"),
-					    sizeof (AtkObjectFactoryClass),
-					    (GClassInitFunc) gtk_assistant_accessible_factory_class_init,
-					    sizeof (AtkObjectFactory),
-					    NULL, 0);
-    }
-
-  return type;
+  return G_TYPE_INVALID;
 }
 
-static AtkObject *
+static void *
 gtk_assistant_get_accessible (GtkWidget *widget)
 {
-  static gboolean first_time = TRUE;
-
-  if (first_time)
-    {
-      AtkObjectFactory *factory;
-      AtkRegistry *registry;
-      GType derived_type;
-      GType derived_atk_type;
-
-      /*
-       * Figure out whether accessibility is enabled by looking at the
-       * type of the accessible object which would be created for
-       * the parent type of GtkAssistant.
-       */
-      derived_type = g_type_parent (GTK_TYPE_ASSISTANT);
-
-      registry = atk_get_default_registry ();
-      factory = atk_registry_get_factory (registry,
-					  derived_type);
-      derived_atk_type = atk_object_factory_get_accessible_type (factory);
-      if (g_type_is_a (derived_atk_type, GTK_TYPE_ACCESSIBLE))
-	{
-	  atk_registry_set_factory_type (registry,
-					 GTK_TYPE_ASSISTANT,
-					 gtk_assistant_accessible_factory_get_type ());
-	}
-      first_time = FALSE;
-    }
-
   return GTK_WIDGET_CLASS (gtk_assistant_parent_class)->get_accessible (widget);
 }
 
