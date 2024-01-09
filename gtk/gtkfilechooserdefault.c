@@ -3588,8 +3588,6 @@ shortcuts_list_create (GtkFileChooserDefault *impl)
 		    G_CALLBACK (shortcuts_popup_menu_cb), impl);
   g_signal_connect (impl->browse_shortcuts_tree_view, "button-press-event",
 		    G_CALLBACK (shortcuts_button_press_event_cb), impl);
-  /* Accessible object name for the file chooser's shortcuts pane */
-  atk_object_set_name (gtk_widget_get_accessible (impl->browse_shortcuts_tree_view), _("Places"));
 
   gtk_tree_view_set_model (GTK_TREE_VIEW (impl->browse_shortcuts_tree_view), impl->shortcuts_pane_filter_model);
 
@@ -4281,7 +4279,6 @@ create_file_list (GtkFileChooserDefault *impl)
   g_object_set_data (G_OBJECT (impl->browse_files_tree_view), "fmq-name", "file_list");
 #endif
   g_object_set_data (G_OBJECT (impl->browse_files_tree_view), I_("GtkFileChooserDefault"), impl);
-  atk_object_set_name (gtk_widget_get_accessible (impl->browse_files_tree_view), _("Files"));
 
   gtk_tree_view_set_rules_hint (GTK_TREE_VIEW (impl->browse_files_tree_view), TRUE);
   gtk_container_add (GTK_CONTAINER (swin), impl->browse_files_tree_view);
@@ -4705,7 +4702,6 @@ location_button_create (GtkFileChooserDefault *impl)
   str = _("Type a file name");
 
   gtk_widget_set_tooltip_text (impl->location_button, str);
-  atk_object_set_name (gtk_widget_get_accessible (impl->location_button), str);
 }
 
 typedef enum {
