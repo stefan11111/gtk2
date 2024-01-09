@@ -1180,7 +1180,7 @@ gtk_info_bar_set_message_type (GtkInfoBar     *info_bar,
                                GtkMessageType  message_type)
 {
   GtkInfoBarPrivate *priv;
-  AtkObject *atk_obj;
+  void *atk_obj;
 
   g_return_if_fail (GTK_IS_INFO_BAR (info_bar));
 
@@ -1192,47 +1192,6 @@ gtk_info_bar_set_message_type (GtkInfoBar     *info_bar,
 
       gtk_info_bar_update_colors (info_bar);
       gtk_widget_queue_draw (GTK_WIDGET (info_bar));
-
-      atk_obj = gtk_widget_get_accessible (GTK_WIDGET (info_bar));
-      if (GTK_IS_ACCESSIBLE (atk_obj))
-        {
-          GtkStockItem item;
-          const char *stock_id = NULL;
-
-          atk_object_set_role (atk_obj, ATK_ROLE_ALERT);
-
-          switch (message_type)
-            {
-            case GTK_MESSAGE_INFO:
-              stock_id = GTK_STOCK_DIALOG_INFO;
-              break;
-
-            case GTK_MESSAGE_QUESTION:
-              stock_id = GTK_STOCK_DIALOG_QUESTION;
-              break;
-
-            case GTK_MESSAGE_WARNING:
-              stock_id = GTK_STOCK_DIALOG_WARNING;
-              break;
-
-            case GTK_MESSAGE_ERROR:
-              stock_id = GTK_STOCK_DIALOG_ERROR;
-              break;
-
-            case GTK_MESSAGE_OTHER:
-              break;
-
-            default:
-              g_warning ("Unknown GtkMessageType %u", message_type);
-              break;
-            }
-
-          if (stock_id)
-            {
-              gtk_stock_lookup (stock_id, &item);
-              atk_object_set_name (atk_obj, item.label);
-            }
-        }
 
       g_object_notify (G_OBJECT (info_bar), "message-type");
     }

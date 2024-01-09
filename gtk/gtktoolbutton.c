@@ -975,7 +975,7 @@ gtk_tool_button_set_label (GtkToolButton *button,
 {
   gchar *old_label;
   gchar *elided_label;
-  AtkObject *accessible;
+  void *accessible;
   
   g_return_if_fail (GTK_IS_TOOL_BUTTON (button));
 
@@ -988,7 +988,6 @@ gtk_tool_button_set_label (GtkToolButton *button,
     {
       elided_label = _gtk_toolbar_elide_underscores (label);
       accessible = gtk_widget_get_accessible (GTK_WIDGET (button->priv->button));
-      atk_object_set_name (accessible, elided_label);
       g_free (elided_label);
     }
 

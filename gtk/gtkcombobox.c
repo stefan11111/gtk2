@@ -6078,10 +6078,10 @@ gtk_combo_box_set_title (GtkComboBox *combo_box,
  *
  * Since: 2.6
  */
-AtkObject*
+void*
 gtk_combo_box_get_popup_accessible (GtkComboBox *combo_box)
 {
-  AtkObject *atk_obj;
+  void *atk_obj;
 
   g_return_val_if_fail (GTK_IS_COMBO_BOX (combo_box), NULL);
 

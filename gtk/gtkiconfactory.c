@@ -2736,7 +2736,6 @@ icon_source_start_element (GMarkupParseContext *context,
   IconFactoryParserData *parser_data;
   IconSourceParserData *source_data;
   gchar *error_msg;
-  GQuark error_domain;
 
   parser_data = (IconFactoryParserData*)user_data;
 
@@ -2745,7 +2744,6 @@ icon_source_start_element (GMarkupParseContext *context,
       if (strcmp (element_name, "sources") != 0)
 	{
 	  error_msg = g_strdup_printf ("Unexpected element %s, expected <sources>", element_name);
-	  error_domain = GTK_BUILDER_ERROR_INVALID_TAG;
 	  goto error;
 	}
       parser_data->in_source = TRUE;
@@ -2756,7 +2754,6 @@ icon_source_start_element (GMarkupParseContext *context,
       if (strcmp (element_name, "source") != 0)
 	{
 	  error_msg = g_strdup_printf ("Unexpected element %s, expected <source>", element_name);
-	  error_domain = GTK_BUILDER_ERROR_INVALID_TAG;
 	  goto error;
 	}
     }
@@ -2797,7 +2794,6 @@ icon_source_start_element (GMarkupParseContext *context,
 	{
 	  error_msg = g_strdup_printf ("'%s' is not a valid attribute of <%s>",
 				       names[i], "source");
-	  error_domain = GTK_BUILDER_ERROR_INVALID_ATTRIBUTE;
 	  goto error;
 	}
     }
@@ -2805,7 +2801,6 @@ icon_source_start_element (GMarkupParseContext *context,
   if (!stock_id)
     {
       error_msg = g_strdup_printf ("<source> requires a stock_id");
-      error_domain = GTK_BUILDER_ERROR_MISSING_ATTRIBUTE;
       goto error;
     }
 

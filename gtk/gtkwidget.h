@@ -37,7 +37,6 @@
 #include <gtk/gtkadjustment.h>
 #include <gtk/gtkstyle.h>
 #include <gtk/gtksettings.h>
-#include <atk/atk.h>
 
 G_BEGIN_DECLS
 
@@ -784,7 +783,7 @@ struct _GtkWidgetClass
   
   /* accessibility support 
    */
-  AtkObject*   (*get_accessible)     (GtkWidget *widget);
+  void*   (*get_accessible)     (GtkWidget *widget);
 
   void         (*screen_changed)     (GtkWidget *widget,
                                       GdkScreen *previous_screen);
@@ -1100,7 +1099,7 @@ GdkPixmap *   gtk_widget_get_snapshot    (GtkWidget    *widget,
 #endif /* GTK_DISABLE_DEPRECATED */
 
 /* Accessibility support */
-AtkObject*       gtk_widget_get_accessible               (GtkWidget          *widget);
+void*       gtk_widget_get_accessible               (GtkWidget          *widget);
 
 /* The following functions must not be called on an already
  * realized widget. Because it is possible that somebody
