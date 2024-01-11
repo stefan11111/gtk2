@@ -2,7 +2,7 @@
 include $(top_srcdir)/Makefile.decl
 
 SRC_SUBDIRS = gdk gtk modules   perf
-SUBDIRS = $(SRC_SUBDIRS) docs m4macros build
+SUBDIRS = $(SRC_SUBDIRS) m4macros build
 
 # require automake 1.4
 AUTOMAKE_OPTIONS = 1.7
@@ -48,8 +48,6 @@ MAINTAINERCLEANFILES = \
 	$(srcdir)/missing \
 	$(srcdir)/mkinstalldirs \
 	$(srcdir)/omf.make \
-	$(srcdir)/xmldocs.make \
-	$(srcdir)/gtk-doc.make \
 	$(srcdir)/ChangeLog \
 	`find "$(srcdir)" -type f -name Makefile.in -print`
 

@@ -1651,15 +1651,6 @@ gdk-2.0-uninstalled.pc
 gtk+-2.0-uninstalled.pc
 m4macros/Makefile
 tests/Makefile
-docs/Makefile
-docs/reference/Makefile
-docs/reference/gdk/Makefile
-docs/reference/gdk/version.xml
-docs/reference/gtk/Makefile
-docs/reference/gtk/version.xml
-docs/faq/Makefile
-docs/tools/Makefile
-docs/tutorial/Makefile
 build/Makefile
 gdk/Makefile
 gdk/x11/Makefile
