@@ -1676,7 +1676,6 @@ gtk/gtk-win32.rc
 gtk/theme-bits/Makefile
 gtk/tests/Makefile
 modules/Makefile
-modules/other/Makefile
 modules/engines/Makefile
 modules/engines/pixbuf/Makefile
 modules/engines/ms-windows/Makefile
