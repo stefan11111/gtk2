@@ -1968,7 +1968,7 @@ EXTRA_DIST = gtkquartz.h $(gtk_private_h_sources) $(gtk_extra_sources) \
 	$(gtk_built_sources) $(STOCK_ICONS) $(STOCK_ICONS) \
 	$(GENERATED_ICONS) line-arrow.xbm line-wrap.xbm tree_plus.xbm \
 	tree_minus.xbm tree_minus.xpm tree_plus.xpm \
-	gtk-builder-convert gtk-win32.rc gtk-win32.rc.in \
+	gtk-win32.rc gtk-win32.rc.in \
 	gtkwin32embed.h gtkwin32embedwidget.h gtkwin32embedwidget.c \
 	gtkprint-win32.h gtkprint-win32.c gtksearchenginequartz.h \
 	gtkrc.default gtkrc.key.default gtkrc.key.emacs gtkrc.key.mac \
@@ -2516,7 +2516,7 @@ LDADDS = \
 @HAVE_INTROSPECTION_TRUE@gir_DATA = $(INTROSPECTION_GIRS)
 @HAVE_INTROSPECTION_TRUE@typelibsdir = $(libdir)/girepository-1.0
 @HAVE_INTROSPECTION_TRUE@typelibs_DATA = $(INTROSPECTION_GIRS:.gir=.typelib)
-bin_SCRIPTS = gtk-builder-convert
+bin_SCRIPTS =
 
 # Workaround for UAC silliness: programs with "update" in their name
 # are believed to be installers and require elevated privileges to be

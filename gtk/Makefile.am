@@ -1091,7 +1091,7 @@ endif
 bin_PROGRAMS = \
 	gtk-query-immodules-2.0
 
-bin_SCRIPTS = gtk-builder-convert
+bin_SCRIPTS =
 
 if OS_WIN32
 
@@ -1454,7 +1454,6 @@ EXTRA_DIST +=                   \
 	tree_minus.xbm          \
 	tree_minus.xpm		\
 	tree_plus.xpm		\
-	gtk-builder-convert	\
 	gtk-win32.rc		\
 	gtk-win32.rc.in		\
 	gtkwin32embed.h		\

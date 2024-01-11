@@ -37,7 +37,6 @@ zip -r -D $ZIP share/doc/gtk+-@GTK_VERSION@
 rm $DEVZIP
 zip -r -D $DEVZIP -@ <<EOF
 include/gtk-2.0
-bin/gtk-builder-convert
 bin/gtk-demo.exe
 bin/gtk-update-icon-cache.exe
 share/man
