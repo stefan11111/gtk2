@@ -1,5 +1,5 @@
 include $(top_srcdir)/Makefile.decl
 
-SUBDIRS = gail
+SUBDIRS =
 
 -include $(top_srcdir)/git.mk

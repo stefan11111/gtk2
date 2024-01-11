@@ -101,14 +101,6 @@ LT_CURRENT_MINUS_AGE=m4_eval(lt_current - lt_age)
 AC_SUBST(LT_VERSION_INFO)
 AC_SUBST(LT_CURRENT_MINUS_AGE)
 
-m4_define([gail_lt_current],[18])
-m4_define([gail_lt_revision],[1])
-m4_define([gail_lt_age],[0])
-m4_define([gail_lt_version_info],[gail_lt_current:gail_lt_revision:gail_lt_age])
-m4_define([gail_lt_current_minus_age],[m4_eval(gail_lt_current - gail_lt_age)])
-AC_SUBST([GAIL_LT_VERSION_INFO],[gail_lt_version_info])
-AC_SUBST([GAIL_LT_CURRENT_MINUS_AGE],[gail_lt_current_minus_age])
-
 GETTEXT_PACKAGE=gtk20
 AC_SUBST(GETTEXT_PACKAGE)
 AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE",
@@ -1373,36 +1365,6 @@ AC_SUBST(GTK_XIM_FLAGS)
 GDK_PIXBUF_LIBS=`$PKG_CONFIG --libs gdk-pixbuf-2.0`
 AC_SUBST(GDK_PIXBUF_LIBS)
 
-########################
-# Checks needed for gail
-########################
-
-old_LIBS="$LIBS"
-dnl Checks for inet libraries:
-AC_SEARCH_LIBS(gethostent, nsl)
-AC_SEARCH_LIBS(setsockopt, socket)
-AC_SEARCH_LIBS(connect, inet)
-
-dnl check for the sockaddr_un.sun_len member
-AC_CHECK_MEMBER([struct sockaddr_un.sun_len],
-		[struct_sockaddr_un_sun_len=true],
-		[struct_sockaddr_un_suin_len=false],
-		[#include <sys/types.h>
-		 #include <sys/un.h>]
-		)
-case $struct_sockaddr_un_sun_len in 
-	true)
-		AC_DEFINE_UNQUOTED(HAVE_SOCKADDR_UN_SUN_LEN, 1,
-		                   [Have the sockaddr_un.sun_len member])
-		;;
-	*)
-		;;
-esac
-
-GAIL_INET_LIBS="$LIBS"
-AC_SUBST([GAIL_INET_LIBS])
-
-LIBS="$old_LIBS"
 
 ################################################################
 # Printing system checks
@@ -1685,10 +1647,8 @@ Makefile
 gdk-2.0.pc
 gtk+-2.0.pc
 gtk+-unix-print-2.0.pc
-gail.pc
 gdk-2.0-uninstalled.pc
 gtk+-2.0-uninstalled.pc
-gail-uninstalled.pc
 m4macros/Makefile
 demos/Makefile
 demos/gtk-demo/Makefile
@@ -1700,7 +1660,6 @@ docs/reference/gdk/Makefile
 docs/reference/gdk/version.xml
 docs/reference/gtk/Makefile
 docs/reference/gtk/version.xml
-docs/reference/libgail-util/Makefile
 docs/faq/Makefile
 docs/tools/Makefile
 docs/tutorial/Makefile
@@ -1718,9 +1677,6 @@ gtk/theme-bits/Makefile
 gtk/tests/Makefile
 modules/Makefile
 modules/other/Makefile
-modules/other/gail/Makefile
-modules/other/gail/libgail-util/Makefile
-modules/other/gail/tests/Makefile
 modules/engines/Makefile
 modules/engines/pixbuf/Makefile
 modules/engines/ms-windows/Makefile

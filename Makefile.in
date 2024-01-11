@@ -107,8 +107,8 @@ am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
 mkinstalldirs = $(install_sh) -d
 CONFIG_HEADER = config.h
 CONFIG_CLEAN_FILES = config.h.win32 gtk-zip.sh gdk-2.0.pc gtk+-2.0.pc \
-	gtk+-unix-print-2.0.pc gail.pc gdk-2.0-uninstalled.pc \
-	gtk+-2.0-uninstalled.pc gail-uninstalled.pc
+	gtk+-unix-print-2.0.pc gdk-2.0-uninstalled.pc \
+	gtk+-2.0-uninstalled.pc
 CONFIG_CLEAN_VPATH_FILES =
 AM_V_P = $(am__v_P_@AM_V@)
 am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
@@ -194,8 +194,8 @@ am__define_uniq_tagged_files = \
   done | $(am__uniquify_input)`
 DIST_SUBDIRS = $(SUBDIRS)
 am__DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/config.h.in \
-	$(srcdir)/config.h.win32.in $(srcdir)/gail-uninstalled.pc.in \
-	$(srcdir)/gail.pc.in $(srcdir)/gdk-2.0-uninstalled.pc.in \
+	$(srcdir)/config.h.win32.in \
+	$(srcdir)/gdk-2.0-uninstalled.pc.in \
 	$(srcdir)/gdk-2.0.pc.in $(srcdir)/gtk+-2.0-uninstalled.pc.in \
 	$(srcdir)/gtk+-2.0.pc.in $(srcdir)/gtk+-unix-print-2.0.pc.in \
 	$(srcdir)/gtk-zip.sh.in $(top_srcdir)/Makefile.decl AUTHORS \
@@ -300,9 +300,6 @@ EXEEXT = @EXEEXT@
 EXE_MANIFEST_ARCHITECTURE = @EXE_MANIFEST_ARCHITECTURE@
 FGREP = @FGREP@
 FILECMD = @FILECMD@
-GAIL_INET_LIBS = @GAIL_INET_LIBS@
-GAIL_LT_CURRENT_MINUS_AGE = @GAIL_LT_CURRENT_MINUS_AGE@
-GAIL_LT_VERSION_INFO = @GAIL_LT_VERSION_INFO@
 GDK_DEP_CFLAGS = @GDK_DEP_CFLAGS@
 GDK_DEP_LIBS = @GDK_DEP_LIBS@
 GDK_EXTRA_CFLAGS = @GDK_EXTRA_CFLAGS@
@@ -554,15 +551,13 @@ MAINTAINERCLEANFILES = \
 GDKTARGET = @gdktarget@
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = gdk-$(GDKTARGET)-2.0.pc gtk+-$(GDKTARGET)-2.0.pc \
-	gail.pc $(am__append_1)
+	 $(am__append_1)
 DISTCLEANFILES = \
 	gtk+-unix-print-2.0.pc			\
 	gtk+-$(GDKTARGET)-2.0.pc		\
 	gdk-$(GDKTARGET)-2.0.pc			\
-	gail.pc					\
 	gtk+-$(GDKTARGET)-2.0-uninstalled.pc	\
 	gdk-$(GDKTARGET)-2.0-uninstalled.pc	\
-	gail-uninstalled.pc 			\
 	config.lt
 
 DEFAULT_GDKTARGET = x11
@@ -631,13 +626,9 @@ gtk+-2.0.pc: $(top_builddir)/config.status $(srcdir)/gtk+-2.0.pc.in
 	cd $(top_builddir) && $(SHELL) ./config.status $@
 gtk+-unix-print-2.0.pc: $(top_builddir)/config.status $(srcdir)/gtk+-unix-print-2.0.pc.in
 	cd $(top_builddir) && $(SHELL) ./config.status $@
-gail.pc: $(top_builddir)/config.status $(srcdir)/gail.pc.in
-	cd $(top_builddir) && $(SHELL) ./config.status $@
 gdk-2.0-uninstalled.pc: $(top_builddir)/config.status $(srcdir)/gdk-2.0-uninstalled.pc.in
 	cd $(top_builddir) && $(SHELL) ./config.status $@
 gtk+-2.0-uninstalled.pc: $(top_builddir)/config.status $(srcdir)/gtk+-2.0-uninstalled.pc.in
-	cd $(top_builddir) && $(SHELL) ./config.status $@
-gail-uninstalled.pc: $(top_builddir)/config.status $(srcdir)/gail-uninstalled.pc.in
 	cd $(top_builddir) && $(SHELL) ./config.status $@
 
 mostlyclean-libtool:

@@ -714,7 +714,6 @@ CUPS_API_MAJOR
 CUPS_CONFIG
 HAVE_CUPS_FALSE
 HAVE_CUPS_TRUE
-GAIL_INET_LIBS
 GDK_PIXBUF_LIBS
 GTK_XIM_FLAGS
 GTK_DEBUG_FLAGS
@@ -917,8 +916,6 @@ build_vendor
 build_cpu
 build
 GETTEXT_PACKAGE
-GAIL_LT_CURRENT_MINUS_AGE
-GAIL_LT_VERSION_INFO
 LT_CURRENT_MINUS_AGE
 LT_VERSION_INFO
 GTK_BINARY_VERSION
@@ -4119,9 +4116,6 @@ LT_CURRENT_MINUS_AGE=0
 
 
 
-GAIL_LT_VERSION_INFO=18:1:0
-
-GAIL_LT_CURRENT_MINUS_AGE=18
 
 
 GETTEXT_PACKAGE=gtk20
@@ -26460,239 +26454,6 @@ CAIRO_PREFIX="`pkg-config --variable=prefix cairo`"
 GDK_PIXBUF_LIBS=`$PKG_CONFIG --libs gdk-pixbuf-2.0`
 
 
-########################
-# Checks needed for gail
-########################
-
-old_LIBS="$LIBS"
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for library containing gethostent" >&5
-printf %s "checking for library containing gethostent... " >&6; }
-if test ${ac_cv_search_gethostent+y}
-then :
-  printf %s "(cached) " >&6
-else case e in #(
-  e) ac_func_search_save_LIBS=$LIBS
-cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-
-/* Override any GCC internal prototype to avoid an error.
-   Use char because int might match the return type of a GCC
-   builtin and then its argument prototype would still apply.
-   The 'extern "C"' is for builds by C++ compilers;
-   although this is not generally supported in C code supporting it here
-   has little cost and some practical benefit (sr 110532).  */
-#ifdef __cplusplus
-extern "C"
-#endif
-char gethostent (void);
-int
-main (void)
-{
-return gethostent ();
-  ;
-  return 0;
-}
-_ACEOF
-for ac_lib in '' nsl
-do
-  if test -z "$ac_lib"; then
-    ac_res="none required"
-  else
-    ac_res=-l$ac_lib
-    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
-  fi
-  if ac_fn_c_try_link "$LINENO"
-then :
-  ac_cv_search_gethostent=$ac_res
-fi
-rm -f core conftest.err conftest.$ac_objext conftest.beam \
-    conftest$ac_exeext
-  if test ${ac_cv_search_gethostent+y}
-then :
-  break
-fi
-done
-if test ${ac_cv_search_gethostent+y}
-then :
-
-else case e in #(
-  e) ac_cv_search_gethostent=no ;;
-esac
-fi
-rm conftest.$ac_ext
-LIBS=$ac_func_search_save_LIBS ;;
-esac
-fi
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_cv_search_gethostent" >&5
-printf "%s\n" "$ac_cv_search_gethostent" >&6; }
-ac_res=$ac_cv_search_gethostent
-if test "$ac_res" != no
-then :
-  test "$ac_res" = "none required" || LIBS="$ac_res $LIBS"
-
-fi
-
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for library containing setsockopt" >&5
-printf %s "checking for library containing setsockopt... " >&6; }
-if test ${ac_cv_search_setsockopt+y}
-then :
-  printf %s "(cached) " >&6
-else case e in #(
-  e) ac_func_search_save_LIBS=$LIBS
-cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-
-/* Override any GCC internal prototype to avoid an error.
-   Use char because int might match the return type of a GCC
-   builtin and then its argument prototype would still apply.
-   The 'extern "C"' is for builds by C++ compilers;
-   although this is not generally supported in C code supporting it here
-   has little cost and some practical benefit (sr 110532).  */
-#ifdef __cplusplus
-extern "C"
-#endif
-char setsockopt (void);
-int
-main (void)
-{
-return setsockopt ();
-  ;
-  return 0;
-}
-_ACEOF
-for ac_lib in '' socket
-do
-  if test -z "$ac_lib"; then
-    ac_res="none required"
-  else
-    ac_res=-l$ac_lib
-    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
-  fi
-  if ac_fn_c_try_link "$LINENO"
-then :
-  ac_cv_search_setsockopt=$ac_res
-fi
-rm -f core conftest.err conftest.$ac_objext conftest.beam \
-    conftest$ac_exeext
-  if test ${ac_cv_search_setsockopt+y}
-then :
-  break
-fi
-done
-if test ${ac_cv_search_setsockopt+y}
-then :
-
-else case e in #(
-  e) ac_cv_search_setsockopt=no ;;
-esac
-fi
-rm conftest.$ac_ext
-LIBS=$ac_func_search_save_LIBS ;;
-esac
-fi
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_cv_search_setsockopt" >&5
-printf "%s\n" "$ac_cv_search_setsockopt" >&6; }
-ac_res=$ac_cv_search_setsockopt
-if test "$ac_res" != no
-then :
-  test "$ac_res" = "none required" || LIBS="$ac_res $LIBS"
-
-fi
-
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for library containing connect" >&5
-printf %s "checking for library containing connect... " >&6; }
-if test ${ac_cv_search_connect+y}
-then :
-  printf %s "(cached) " >&6
-else case e in #(
-  e) ac_func_search_save_LIBS=$LIBS
-cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-
-/* Override any GCC internal prototype to avoid an error.
-   Use char because int might match the return type of a GCC
-   builtin and then its argument prototype would still apply.
-   The 'extern "C"' is for builds by C++ compilers;
-   although this is not generally supported in C code supporting it here
-   has little cost and some practical benefit (sr 110532).  */
-#ifdef __cplusplus
-extern "C"
-#endif
-char connect (void);
-int
-main (void)
-{
-return connect ();
-  ;
-  return 0;
-}
-_ACEOF
-for ac_lib in '' inet
-do
-  if test -z "$ac_lib"; then
-    ac_res="none required"
-  else
-    ac_res=-l$ac_lib
-    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
-  fi
-  if ac_fn_c_try_link "$LINENO"
-then :
-  ac_cv_search_connect=$ac_res
-fi
-rm -f core conftest.err conftest.$ac_objext conftest.beam \
-    conftest$ac_exeext
-  if test ${ac_cv_search_connect+y}
-then :
-  break
-fi
-done
-if test ${ac_cv_search_connect+y}
-then :
-
-else case e in #(
-  e) ac_cv_search_connect=no ;;
-esac
-fi
-rm conftest.$ac_ext
-LIBS=$ac_func_search_save_LIBS ;;
-esac
-fi
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ac_cv_search_connect" >&5
-printf "%s\n" "$ac_cv_search_connect" >&6; }
-ac_res=$ac_cv_search_connect
-if test "$ac_res" != no
-then :
-  test "$ac_res" = "none required" || LIBS="$ac_res $LIBS"
-
-fi
-
-
-ac_fn_c_check_member "$LINENO" "struct sockaddr_un" "sun_len" "ac_cv_member_struct_sockaddr_un_sun_len" "#include <sys/types.h>
-		 #include <sys/un.h>
-
-"
-if test "x$ac_cv_member_struct_sockaddr_un_sun_len" = xyes
-then :
-  struct_sockaddr_un_sun_len=true
-else case e in #(
-  e) struct_sockaddr_un_suin_len=false ;;
-esac
-fi
-
-case $struct_sockaddr_un_sun_len in
-	true)
-
-printf "%s\n" "#define HAVE_SOCKADDR_UN_SUN_LEN 1" >>confdefs.h
-
-		;;
-	*)
-		;;
-esac
-
-GAIL_INET_LIBS="$LIBS"
-
-
-LIBS="$old_LIBS"
 
 ################################################################
 # Printing system checks
@@ -27904,7 +27665,7 @@ fi
 ac_config_commands="$ac_config_commands gdk/gdkconfig.h"
 
 
-ac_config_files="$ac_config_files config.h.win32 gtk-zip.sh Makefile gdk-2.0.pc gtk+-2.0.pc gtk+-unix-print-2.0.pc gail.pc gdk-2.0-uninstalled.pc gtk+-2.0-uninstalled.pc gail-uninstalled.pc m4macros/Makefile demos/Makefile demos/gtk-demo/Makefile demos/gtk-demo/geninclude.pl tests/Makefile docs/Makefile docs/reference/Makefile docs/reference/gdk/Makefile docs/reference/gdk/version.xml docs/reference/gtk/Makefile docs/reference/gtk/version.xml docs/reference/libgail-util/Makefile docs/faq/Makefile docs/tools/Makefile docs/tutorial/Makefile build/Makefile build/win32/Makefile build/win32/vs9/Makefile build/win32/vs9/gtk-version-paths.vsprops build/win32/vs10/Makefile build/win32/vs10/gtk-version-paths.props build/win32/vs11/Makefile build/win32/vs12/Makefile build/win32/vs14/Makefile build/win32/vs15/Makefile build/win32/vs16/Makefile gdk/Makefile gdk/x11/Makefile gdk/quartz/Makefile gdk/directfb/Makefile gdk/tests/Makefile gtk/Makefile gtk/makefile.msc gtk/gtkversion.h gtk/gtk-win32.rc gtk/theme-bits/Makefile gtk/tests/Makefile modules/Makefile modules/other/Makefile modules/other/gail/Makefile modules/other/gail/libgail-util/Makefile modules/other/gail/tests/Makefile modules/engines/Makefile modules/engines/pixbuf/Makefile modules/engines/ms-windows/Makefile modules/engines/ms-windows/Theme/Makefile modules/engines/ms-windows/Theme/gtk-2.0/Makefile modules/input/Makefile modules/printbackends/Makefile modules/printbackends/cups/Makefile modules/printbackends/lpr/Makefile modules/printbackends/file/Makefile modules/printbackends/papi/Makefile modules/printbackends/test/Makefile perf/Makefile"
+ac_config_files="$ac_config_files config.h.win32 gtk-zip.sh Makefile gdk-2.0.pc gtk+-2.0.pc gtk+-unix-print-2.0.pc gdk-2.0-uninstalled.pc gtk+-2.0-uninstalled.pc m4macros/Makefile demos/Makefile demos/gtk-demo/Makefile demos/gtk-demo/geninclude.pl tests/Makefile docs/Makefile docs/reference/Makefile docs/reference/gdk/Makefile docs/reference/gdk/version.xml docs/reference/gtk/Makefile docs/reference/gtk/version.xml docs/faq/Makefile docs/tools/Makefile docs/tutorial/Makefile build/Makefile build/win32/Makefile build/win32/vs9/Makefile build/win32/vs9/gtk-version-paths.vsprops build/win32/vs10/Makefile build/win32/vs10/gtk-version-paths.props build/win32/vs11/Makefile build/win32/vs12/Makefile build/win32/vs14/Makefile build/win32/vs15/Makefile build/win32/vs16/Makefile gdk/Makefile gdk/x11/Makefile gdk/quartz/Makefile gdk/directfb/Makefile gdk/tests/Makefile gtk/Makefile gtk/makefile.msc gtk/gtkversion.h gtk/gtk-win32.rc gtk/theme-bits/Makefile gtk/tests/Makefile modules/Makefile modules/other/Makefile modules/engines/Makefile modules/engines/pixbuf/Makefile modules/engines/ms-windows/Makefile modules/engines/ms-windows/Theme/Makefile modules/engines/ms-windows/Theme/gtk-2.0/Makefile modules/input/Makefile modules/printbackends/Makefile modules/printbackends/cups/Makefile modules/printbackends/lpr/Makefile modules/printbackends/file/Makefile modules/printbackends/papi/Makefile modules/printbackends/test/Makefile perf/Makefile"
 
 
 cat >confcache <<\_ACEOF
@@ -29314,10 +29075,8 @@ do
     "gdk-2.0.pc") CONFIG_FILES="$CONFIG_FILES gdk-2.0.pc" ;;
     "gtk+-2.0.pc") CONFIG_FILES="$CONFIG_FILES gtk+-2.0.pc" ;;
     "gtk+-unix-print-2.0.pc") CONFIG_FILES="$CONFIG_FILES gtk+-unix-print-2.0.pc" ;;
-    "gail.pc") CONFIG_FILES="$CONFIG_FILES gail.pc" ;;
     "gdk-2.0-uninstalled.pc") CONFIG_FILES="$CONFIG_FILES gdk-2.0-uninstalled.pc" ;;
     "gtk+-2.0-uninstalled.pc") CONFIG_FILES="$CONFIG_FILES gtk+-2.0-uninstalled.pc" ;;
-    "gail-uninstalled.pc") CONFIG_FILES="$CONFIG_FILES gail-uninstalled.pc" ;;
     "m4macros/Makefile") CONFIG_FILES="$CONFIG_FILES m4macros/Makefile" ;;
     "demos/Makefile") CONFIG_FILES="$CONFIG_FILES demos/Makefile" ;;
     "demos/gtk-demo/Makefile") CONFIG_FILES="$CONFIG_FILES demos/gtk-demo/Makefile" ;;
@@ -29329,7 +29088,6 @@ do
     "docs/reference/gdk/version.xml") CONFIG_FILES="$CONFIG_FILES docs/reference/gdk/version.xml" ;;
     "docs/reference/gtk/Makefile") CONFIG_FILES="$CONFIG_FILES docs/reference/gtk/Makefile" ;;
     "docs/reference/gtk/version.xml") CONFIG_FILES="$CONFIG_FILES docs/reference/gtk/version.xml" ;;
-    "docs/reference/libgail-util/Makefile") CONFIG_FILES="$CONFIG_FILES docs/reference/libgail-util/Makefile" ;;
     "docs/faq/Makefile") CONFIG_FILES="$CONFIG_FILES docs/faq/Makefile" ;;
     "docs/tools/Makefile") CONFIG_FILES="$CONFIG_FILES docs/tools/Makefile" ;;
     "docs/tutorial/Makefile") CONFIG_FILES="$CONFIG_FILES docs/tutorial/Makefile" ;;
@@ -29357,9 +29115,6 @@ do
     "gtk/tests/Makefile") CONFIG_FILES="$CONFIG_FILES gtk/tests/Makefile" ;;
     "modules/Makefile") CONFIG_FILES="$CONFIG_FILES modules/Makefile" ;;
     "modules/other/Makefile") CONFIG_FILES="$CONFIG_FILES modules/other/Makefile" ;;
-    "modules/other/gail/Makefile") CONFIG_FILES="$CONFIG_FILES modules/other/gail/Makefile" ;;
-    "modules/other/gail/libgail-util/Makefile") CONFIG_FILES="$CONFIG_FILES modules/other/gail/libgail-util/Makefile" ;;
-    "modules/other/gail/tests/Makefile") CONFIG_FILES="$CONFIG_FILES modules/other/gail/tests/Makefile" ;;
     "modules/engines/Makefile") CONFIG_FILES="$CONFIG_FILES modules/engines/Makefile" ;;
     "modules/engines/pixbuf/Makefile") CONFIG_FILES="$CONFIG_FILES modules/engines/pixbuf/Makefile" ;;
     "modules/engines/ms-windows/Makefile") CONFIG_FILES="$CONFIG_FILES modules/engines/ms-windows/Makefile" ;;
