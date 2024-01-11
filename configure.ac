@@ -1650,9 +1650,6 @@ gtk+-unix-print-2.0.pc
 gdk-2.0-uninstalled.pc
 gtk+-2.0-uninstalled.pc
 m4macros/Makefile
-demos/Makefile
-demos/gtk-demo/Makefile
-demos/gtk-demo/geninclude.pl
 tests/Makefile
 docs/Makefile
 docs/reference/Makefile
