@@ -719,7 +719,6 @@ GTK_XIM_FLAGS
 GTK_DEBUG_FLAGS
 CAIRO_PREFIX
 PANGO_PREFIX
-ATK_PREFIX
 GLIB_PREFIX
 GTK_DEP_CFLAGS
 GTK_DEP_LIBS
@@ -20672,7 +20671,7 @@ if test "x$GCC" = "xyes"; then
   fi
 fi
 
-CPPFLAGS="$CPPFLAGS -DG_DISABLE_SINGLE_INCLUDES -DATK_DISABLE_SINGLE_INCLUDES -DGDK_PIXBUF_DISABLE_SINGLE_INCLUDES -DGTK_DISABLE_SINGLE_INCLUDES"
+CPPFLAGS="$CPPFLAGS -DG_DISABLE_SINGLE_INCLUDES -DGDK_PIXBUF_DISABLE_SINGLE_INCLUDES -DGTK_DISABLE_SINGLE_INCLUDES"
 
 # Ensure MSVC-compatible struct packing convention is used when
 # compiling for Win32 with gcc.
@@ -20856,19 +20855,19 @@ printf "%s\n" "no" >&6; }
 fi
 
 pkg_failed=no
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for glib-2.0 >= 2.28.0    atk >= 1.29.2    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0" >&5
-printf %s "checking for glib-2.0 >= 2.28.0    atk >= 1.29.2    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0... " >&6; }
+{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for glib-2.0 >= 2.28.0    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0" >&5
+printf %s "checking for glib-2.0 >= 2.28.0    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0... " >&6; }
 
 if test -n "$BASE_DEPENDENCIES_CFLAGS"; then
     pkg_cv_BASE_DEPENDENCIES_CFLAGS="$BASE_DEPENDENCIES_CFLAGS"
  elif test -n "$PKG_CONFIG"; then
     if test -n "$PKG_CONFIG" && \
-    { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"glib-2.0 >= 2.28.0    atk >= 1.29.2    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0\""; } >&5
-  ($PKG_CONFIG --exists --print-errors "glib-2.0 >= 2.28.0    atk >= 1.29.2    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0") 2>&5
+    { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"glib-2.0 >= 2.28.0    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0\""; } >&5
+  ($PKG_CONFIG --exists --print-errors "glib-2.0 >= 2.28.0    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0") 2>&5
   ac_status=$?
   printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
   test $ac_status = 0; }; then
-  pkg_cv_BASE_DEPENDENCIES_CFLAGS=`$PKG_CONFIG --cflags "glib-2.0 >= 2.28.0    atk >= 1.29.2    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0" 2>/dev/null`
+  pkg_cv_BASE_DEPENDENCIES_CFLAGS=`$PKG_CONFIG --cflags "glib-2.0 >= 2.28.0    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0" 2>/dev/null`
 		      test "x$?" != "x0" && pkg_failed=yes
 else
   pkg_failed=yes
@@ -20880,12 +20879,12 @@ if test -n "$BASE_DEPENDENCIES_LIBS"; then
     pkg_cv_BASE_DEPENDENCIES_LIBS="$BASE_DEPENDENCIES_LIBS"
  elif test -n "$PKG_CONFIG"; then
     if test -n "$PKG_CONFIG" && \
-    { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"glib-2.0 >= 2.28.0    atk >= 1.29.2    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0\""; } >&5
-  ($PKG_CONFIG --exists --print-errors "glib-2.0 >= 2.28.0    atk >= 1.29.2    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0") 2>&5
+    { { printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"glib-2.0 >= 2.28.0    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0\""; } >&5
+  ($PKG_CONFIG --exists --print-errors "glib-2.0 >= 2.28.0    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0") 2>&5
   ac_status=$?
   printf "%s\n" "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
   test $ac_status = 0; }; then
-  pkg_cv_BASE_DEPENDENCIES_LIBS=`$PKG_CONFIG --libs "glib-2.0 >= 2.28.0    atk >= 1.29.2    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0" 2>/dev/null`
+  pkg_cv_BASE_DEPENDENCIES_LIBS=`$PKG_CONFIG --libs "glib-2.0 >= 2.28.0    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0" 2>/dev/null`
 		      test "x$?" != "x0" && pkg_failed=yes
 else
   pkg_failed=yes
@@ -20906,14 +20905,14 @@ else
         _pkg_short_errors_supported=no
 fi
         if test $_pkg_short_errors_supported = yes; then
-                BASE_DEPENDENCIES_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "glib-2.0 >= 2.28.0    atk >= 1.29.2    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0" 2>&1`
+                BASE_DEPENDENCIES_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "glib-2.0 >= 2.28.0    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0" 2>&1`
         else
-                BASE_DEPENDENCIES_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "glib-2.0 >= 2.28.0    atk >= 1.29.2    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0" 2>&1`
+                BASE_DEPENDENCIES_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "glib-2.0 >= 2.28.0    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0" 2>&1`
         fi
         # Put the nasty error message in config.log where it belongs
         echo "$BASE_DEPENDENCIES_PKG_ERRORS" >&5
 
-        as_fn_error $? "Package requirements (glib-2.0 >= 2.28.0    atk >= 1.29.2    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0) were not met:
+        as_fn_error $? "Package requirements (glib-2.0 >= 2.28.0    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0) were not met:
 
 $BASE_DEPENDENCIES_PKG_ERRORS
 
@@ -26381,74 +26380,6 @@ fi
 
 
 
-
-
-
-
-########################################
-# Check for Accessibility Toolkit flags
-########################################
-
-ATK_PACKAGES=atk
-{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking ATK flags" >&5
-printf %s "checking ATK flags... " >&6; }
-if $PKG_CONFIG --exists $ATK_PACKAGES ; then
-        ATK_CFLAGS=`$PKG_CONFIG --cflags $ATK_PACKAGES`
-        ATK_LIBS=`$PKG_CONFIG --libs $ATK_PACKAGES`
-
-        { printf "%s\n" "$as_me:${as_lineno-$LINENO}: result: $ATK_CFLAGS $ATK_LIBS" >&5
-printf "%s\n" "$ATK_CFLAGS $ATK_LIBS" >&6; }
-else
-        as_fn_error $? "
-*** Accessibility Toolkit not found. Accessibility Toolkit is required
-*** to build GTK+.
-" "$LINENO" 5
-fi
-
-if $PKG_CONFIG --uninstalled $ATK_PACKAGES; then
-        :
-else
-	gtk_save_LIBS="$LIBS"
-        LIBS="$ATK_LIBS $LIBS"
-
-rm -f core conftest.err conftest.$ac_objext conftest.beam \
-    conftest$ac_exeext conftest.$ac_ext
-        LIBS="$gtk_save_LIBS"
-fi
-
-GTK_PACKAGES="atk cairo gdk-pixbuf-2.0 gio-2.0"
-if test "x$gdktarget" = "xx11"; then
-  GTK_PACKAGES="$GTK_PACKAGES pangoft2"
-fi
-GTK_EXTRA_LIBS=
-GTK_EXTRA_CFLAGS=
-GTK_DEP_LIBS="$GDK_EXTRA_LIBS $GTK_DEP_LIBS_FOR_X `$PKG_CONFIG --libs $PANGO_PACKAGES $GTK_PACKAGES_FOR_X $GTK_PACKAGES` $GTK_EXTRA_LIBS $MATH_LIB"
-GTK_DEP_CFLAGS="`$PKG_CONFIG --cflags  gthread-2.0 $GDK_PACKAGES $GTK_PACKAGES` $GDK_EXTRA_CFLAGS $GTK_EXTRA_CFLAGS"
-
-if test x"$os_win32" = xyes; then
-  GTK_EXTRA_CFLAGS="$msnative_struct"
-fi
-
-GLIB_PREFIX="`$PKG_CONFIG --variable=prefix glib-2.0`"
-ATK_PREFIX="`$PKG_CONFIG --variable=prefix atk`"
-PANGO_PREFIX="`$PKG_CONFIG --variable=prefix pango`"
-CAIRO_PREFIX="`pkg-config --variable=prefix cairo`"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-GDK_PIXBUF_LIBS=`$PKG_CONFIG --libs gdk-pixbuf-2.0`
 
 
 
