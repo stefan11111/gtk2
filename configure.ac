@@ -34,7 +34,6 @@ m4_define([gtk_binary_version], [2.10.0])
 # required versions of other packages
 m4_define([glib_required_version], [2.28.0])
 m4_define([pango_required_version], [1.20])
-m4_define([atk_required_version], [1.29.2])
 m4_define([cairo_required_version], [1.6])
 m4_define([gdk_pixbuf_required_version], [2.21.0])
 
@@ -316,7 +315,7 @@ if test "x$GCC" = "xyes"; then
 fi
 changequote([,])dnl
 
-CPPFLAGS="$CPPFLAGS -DG_DISABLE_SINGLE_INCLUDES -DATK_DISABLE_SINGLE_INCLUDES -DGDK_PIXBUF_DISABLE_SINGLE_INCLUDES -DGTK_DISABLE_SINGLE_INCLUDES"
+CPPFLAGS="$CPPFLAGS -DG_DISABLE_SINGLE_INCLUDES -DGDK_PIXBUF_DISABLE_SINGLE_INCLUDES -DGTK_DISABLE_SINGLE_INCLUDES"
 
 # Ensure MSVC-compatible struct packing convention is used when
 # compiling for Win32 with gcc.
@@ -364,7 +363,6 @@ ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS"
 ## annoying to construct
 PKG_CHECK_MODULES(BASE_DEPENDENCIES,
   [glib-2.0 >= glib_required_version dnl
-   atk >= atk_required_version dnl
    pango >= pango_required_version dnl
    cairo >= cairo_required_version dnl
    gdk-pixbuf-2.0 >= gdk_pixbuf_required_version])
@@ -1314,23 +1312,10 @@ AC_SUBST(GDK_DEP_CFLAGS)
 
 ########################################
 # Check for Accessibility Toolkit flags
+# Apparently does more that that. Removing this section breaks included dirs for various headers, like cairo.h
 ########################################
 
-ATK_PACKAGES=atk
-AC_MSG_CHECKING(ATK flags)
-if $PKG_CONFIG --exists $ATK_PACKAGES ; then
-        ATK_CFLAGS=`$PKG_CONFIG --cflags $ATK_PACKAGES`
-        ATK_LIBS=`$PKG_CONFIG --libs $ATK_PACKAGES`
-
-        AC_MSG_RESULT($ATK_CFLAGS $ATK_LIBS)
-else
-        AC_MSG_ERROR([
-*** Accessibility Toolkit not found. Accessibility Toolkit is required
-*** to build GTK+.
-])
-fi
-
-GTK_PACKAGES="atk cairo gdk-pixbuf-2.0 gio-2.0"
+GTK_PACKAGES="cairo gdk-pixbuf-2.0 gio-2.0"
 if test "x$gdktarget" = "xx11"; then
   GTK_PACKAGES="$GTK_PACKAGES pangoft2"
 fi
@@ -1344,7 +1329,6 @@ if test x"$os_win32" = xyes; then
 fi
 
 GLIB_PREFIX="`$PKG_CONFIG --variable=prefix glib-2.0`"
-ATK_PREFIX="`$PKG_CONFIG --variable=prefix atk`"
 PANGO_PREFIX="`$PKG_CONFIG --variable=prefix pango`"
 CAIRO_PREFIX="`pkg-config --variable=prefix cairo`"
 
@@ -1355,7 +1339,6 @@ AC_SUBST(GTK_DEP_LIBS)
 AC_SUBST(GTK_DEP_CFLAGS)
 
 AC_SUBST(GLIB_PREFIX)
-AC_SUBST(ATK_PREFIX)
 AC_SUBST(PANGO_PREFIX)
 AC_SUBST(CAIRO_PREFIX)
 
