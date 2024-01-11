@@ -1004,7 +1004,7 @@ Gtk_2_0_gir_MSVC_FILES =		\
 	gtktypebuiltins.c
 
 Gtk_2_0_gir_MSVC_EXPORT_PACKAGES = $(Gtk_2_0_gir_EXPORT_PACKAGES)
-Gtk_2_0_gir_MSVC_INCLUDE_GIRS = Atk-1.0
+Gtk_2_0_gir_MSVC_INCLUDE_GIRS =
 Gtk_2_0_gir_MSVC_LIBS = gtk-win32-2.0 gdk-win32-2.0
 Gtk_2_0_gir_MSVC_CFLAGS = $(GTK_MSVC_GIR_CFLAGS)
 Gtk_2_0_gir_MSVC_SCANNERFLAGS =	\
@@ -1065,7 +1065,7 @@ Gtk_2_0_gir_SCANNERFLAGS = --include-uninstalled=$(top_builddir)/gdk/Gdk-2.0.gir
 if USE_X11
 Gtk_2_0_gir_SCANNERFLAGS += --add-include-path=$(top_builddir)/gdk/x11
 endif
-Gtk_2_0_gir_INCLUDES = Atk-1.0
+Gtk_2_0_gir_INCLUDES =
 Gtk_2_0_gir_CFLAGS = \
 		$(INCLUDES) \
 		-UGDK_DISABLE_DEPRECATED \
@@ -1091,7 +1091,7 @@ endif
 bin_PROGRAMS = \
 	gtk-query-immodules-2.0
 
-bin_SCRIPTS = gtk-builder-convert
+bin_SCRIPTS =
 
 if OS_WIN32
 
@@ -1454,7 +1454,6 @@ EXTRA_DIST +=                   \
 	tree_minus.xbm          \
 	tree_minus.xpm		\
 	tree_plus.xpm		\
-	gtk-builder-convert	\
 	gtk-win32.rc		\
 	gtk-win32.rc.in		\
 	gtkwin32embed.h		\

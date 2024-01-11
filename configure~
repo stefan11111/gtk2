@@ -693,13 +693,11 @@ CUPS_API_MAJOR
 CUPS_CONFIG
 HAVE_CUPS_FALSE
 HAVE_CUPS_TRUE
-GAIL_INET_LIBS
 GDK_PIXBUF_LIBS
 GTK_XIM_FLAGS
 GTK_DEBUG_FLAGS
 CAIRO_PREFIX
 PANGO_PREFIX
-ATK_PREFIX
 GLIB_PREFIX
 GTK_DEP_CFLAGS
 GTK_DEP_LIBS
@@ -895,8 +893,6 @@ build_vendor
 build_cpu
 build
 GETTEXT_PACKAGE
-GAIL_LT_CURRENT_MINUS_AGE
-GAIL_LT_VERSION_INFO
 LT_CURRENT_MINUS_AGE
 LT_VERSION_INFO
 GTK_BINARY_VERSION
@@ -1732,9 +1728,6 @@ Optional Packages:
   --with-included-immodules=MODULE1,MODULE2,...
                           build the specified input methods into gtk
   --with-x                use the X Window System
-  --with-html-dir=PATH    path to installed docs
-  --with-xml-catalog=CATALOG
-                          path to xml catalog to use
 
 Some influential environment variables:
   CC          C compiler command
@@ -3509,9 +3502,6 @@ LT_CURRENT_MINUS_AGE=0
 
 
 
-GAIL_LT_VERSION_INFO=18:1:0
-
-GAIL_LT_CURRENT_MINUS_AGE=18
 
 
 GETTEXT_PACKAGE=gtk20
@@ -19332,7 +19322,7 @@ if test "x$GCC" = "xyes"; then
   fi
 fi
 
-CPPFLAGS="$CPPFLAGS -DG_DISABLE_SINGLE_INCLUDES -DATK_DISABLE_SINGLE_INCLUDES -DGDK_PIXBUF_DISABLE_SINGLE_INCLUDES -DGTK_DISABLE_SINGLE_INCLUDES"
+CPPFLAGS="$CPPFLAGS -DG_DISABLE_SINGLE_INCLUDES -DGDK_PIXBUF_DISABLE_SINGLE_INCLUDES -DGTK_DISABLE_SINGLE_INCLUDES"
 
 # Ensure MSVC-compatible struct packing convention is used when
 # compiling for Win32 with gcc.
@@ -19511,12 +19501,12 @@ if test -n "$BASE_DEPENDENCIES_CFLAGS"; then
     pkg_cv_BASE_DEPENDENCIES_CFLAGS="$BASE_DEPENDENCIES_CFLAGS"
  elif test -n "$PKG_CONFIG"; then
     if test -n "$PKG_CONFIG" && \
-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"glib-2.0 >= 2.28.0    atk >= 1.29.2    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0\""; } >&5
-  ($PKG_CONFIG --exists --print-errors "glib-2.0 >= 2.28.0    atk >= 1.29.2    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0") 2>&5
+    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"glib-2.0 >= 2.28.0    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0\""; } >&5
+  ($PKG_CONFIG --exists --print-errors "glib-2.0 >= 2.28.0    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0") 2>&5
   ac_status=$?
   $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
   test $ac_status = 0; }; then
-  pkg_cv_BASE_DEPENDENCIES_CFLAGS=`$PKG_CONFIG --cflags "glib-2.0 >= 2.28.0    atk >= 1.29.2    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0" 2>/dev/null`
+  pkg_cv_BASE_DEPENDENCIES_CFLAGS=`$PKG_CONFIG --cflags "glib-2.0 >= 2.28.0    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0" 2>/dev/null`
 		      test "x$?" != "x0" && pkg_failed=yes
 else
   pkg_failed=yes
@@ -19528,12 +19518,12 @@ if test -n "$BASE_DEPENDENCIES_LIBS"; then
     pkg_cv_BASE_DEPENDENCIES_LIBS="$BASE_DEPENDENCIES_LIBS"
  elif test -n "$PKG_CONFIG"; then
     if test -n "$PKG_CONFIG" && \
-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"glib-2.0 >= 2.28.0    atk >= 1.29.2    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0\""; } >&5
-  ($PKG_CONFIG --exists --print-errors "glib-2.0 >= 2.28.0    atk >= 1.29.2    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0") 2>&5
+    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"glib-2.0 >= 2.28.0    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0\""; } >&5
+  ($PKG_CONFIG --exists --print-errors "glib-2.0 >= 2.28.0    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0") 2>&5
   ac_status=$?
   $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
   test $ac_status = 0; }; then
-  pkg_cv_BASE_DEPENDENCIES_LIBS=`$PKG_CONFIG --libs "glib-2.0 >= 2.28.0    atk >= 1.29.2    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0" 2>/dev/null`
+  pkg_cv_BASE_DEPENDENCIES_LIBS=`$PKG_CONFIG --libs "glib-2.0 >= 2.28.0    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0" 2>/dev/null`
 		      test "x$?" != "x0" && pkg_failed=yes
 else
   pkg_failed=yes
@@ -19554,14 +19544,14 @@ else
         _pkg_short_errors_supported=no
 fi
         if test $_pkg_short_errors_supported = yes; then
-	        BASE_DEPENDENCIES_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "glib-2.0 >= 2.28.0    atk >= 1.29.2    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0" 2>&1`
+	        BASE_DEPENDENCIES_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "glib-2.0 >= 2.28.0    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0" 2>&1`
         else
-	        BASE_DEPENDENCIES_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "glib-2.0 >= 2.28.0    atk >= 1.29.2    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0" 2>&1`
+	        BASE_DEPENDENCIES_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "glib-2.0 >= 2.28.0    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0" 2>&1`
         fi
 	# Put the nasty error message in config.log where it belongs
 	echo "$BASE_DEPENDENCIES_PKG_ERRORS" >&5
 
-	as_fn_error $? "Package requirements (glib-2.0 >= 2.28.0    atk >= 1.29.2    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0) were not met:
+	as_fn_error $? "Package requirements (glib-2.0 >= 2.28.0    pango >= 1.20    cairo >= 1.6    gdk-pixbuf-2.0 >= 2.21.0) were not met:
 
 $BASE_DEPENDENCIES_PKG_ERRORS
 
@@ -24441,273 +24431,6 @@ fi
 
 
 
-########################################
-# Check for Accessibility Toolkit flags
-########################################
-
-ATK_PACKAGES=atk
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking ATK flags" >&5
-$as_echo_n "checking ATK flags... " >&6; }
-if $PKG_CONFIG --exists $ATK_PACKAGES ; then
-        ATK_CFLAGS=`$PKG_CONFIG --cflags $ATK_PACKAGES`
-        ATK_LIBS=`$PKG_CONFIG --libs $ATK_PACKAGES`
-
-        { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ATK_CFLAGS $ATK_LIBS" >&5
-$as_echo "$ATK_CFLAGS $ATK_LIBS" >&6; }
-else
-        as_fn_error $? "
-*** Accessibility Toolkit not found. Accessibility Toolkit is required
-*** to build GTK+.
-" "$LINENO" 5
-fi
-
-if $PKG_CONFIG --uninstalled $ATK_PACKAGES; then
-        :
-else
-	gtk_save_LIBS="$LIBS"
-        LIBS="$ATK_LIBS $LIBS"
-
-rm -f core conftest.err conftest.$ac_objext \
-    conftest$ac_exeext conftest.$ac_ext
-        LIBS="$gtk_save_LIBS"
-fi
-
-GTK_PACKAGES="atk cairo gdk-pixbuf-2.0 gio-2.0"
-if test "x$gdktarget" = "xx11"; then
-  GTK_PACKAGES="$GTK_PACKAGES pangoft2"
-fi
-GTK_EXTRA_LIBS=
-GTK_EXTRA_CFLAGS=
-GTK_DEP_LIBS="$GDK_EXTRA_LIBS $GTK_DEP_LIBS_FOR_X `$PKG_CONFIG --libs $PANGO_PACKAGES $GTK_PACKAGES_FOR_X $GTK_PACKAGES` $GTK_EXTRA_LIBS $MATH_LIB"
-GTK_DEP_CFLAGS="`$PKG_CONFIG --cflags  gthread-2.0 $GDK_PACKAGES $GTK_PACKAGES` $GDK_EXTRA_CFLAGS $GTK_EXTRA_CFLAGS"
-
-if test x"$os_win32" = xyes; then
-  GTK_EXTRA_CFLAGS="$msnative_struct"
-fi
-
-GLIB_PREFIX="`$PKG_CONFIG --variable=prefix glib-2.0`"
-ATK_PREFIX="`$PKG_CONFIG --variable=prefix atk`"
-PANGO_PREFIX="`$PKG_CONFIG --variable=prefix pango`"
-CAIRO_PREFIX="`pkg-config --variable=prefix cairo`"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-GDK_PIXBUF_LIBS=`$PKG_CONFIG --libs gdk-pixbuf-2.0`
-
-
-########################
-# Checks needed for gail
-########################
-
-old_LIBS="$LIBS"
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for library containing gethostent" >&5
-$as_echo_n "checking for library containing gethostent... " >&6; }
-if ${ac_cv_search_gethostent+:} false; then :
-  $as_echo_n "(cached) " >&6
-else
-  ac_func_search_save_LIBS=$LIBS
-cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-
-/* Override any GCC internal prototype to avoid an error.
-   Use char because int might match the return type of a GCC
-   builtin and then its argument prototype would still apply.  */
-#ifdef __cplusplus
-extern "C"
-#endif
-char gethostent ();
-int
-main ()
-{
-return gethostent ();
-  ;
-  return 0;
-}
-_ACEOF
-for ac_lib in '' nsl; do
-  if test -z "$ac_lib"; then
-    ac_res="none required"
-  else
-    ac_res=-l$ac_lib
-    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
-  fi
-  if ac_fn_c_try_link "$LINENO"; then :
-  ac_cv_search_gethostent=$ac_res
-fi
-rm -f core conftest.err conftest.$ac_objext \
-    conftest$ac_exeext
-  if ${ac_cv_search_gethostent+:} false; then :
-  break
-fi
-done
-if ${ac_cv_search_gethostent+:} false; then :
-
-else
-  ac_cv_search_gethostent=no
-fi
-rm conftest.$ac_ext
-LIBS=$ac_func_search_save_LIBS
-fi
-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_search_gethostent" >&5
-$as_echo "$ac_cv_search_gethostent" >&6; }
-ac_res=$ac_cv_search_gethostent
-if test "$ac_res" != no; then :
-  test "$ac_res" = "none required" || LIBS="$ac_res $LIBS"
-
-fi
-
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for library containing setsockopt" >&5
-$as_echo_n "checking for library containing setsockopt... " >&6; }
-if ${ac_cv_search_setsockopt+:} false; then :
-  $as_echo_n "(cached) " >&6
-else
-  ac_func_search_save_LIBS=$LIBS
-cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-
-/* Override any GCC internal prototype to avoid an error.
-   Use char because int might match the return type of a GCC
-   builtin and then its argument prototype would still apply.  */
-#ifdef __cplusplus
-extern "C"
-#endif
-char setsockopt ();
-int
-main ()
-{
-return setsockopt ();
-  ;
-  return 0;
-}
-_ACEOF
-for ac_lib in '' socket; do
-  if test -z "$ac_lib"; then
-    ac_res="none required"
-  else
-    ac_res=-l$ac_lib
-    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
-  fi
-  if ac_fn_c_try_link "$LINENO"; then :
-  ac_cv_search_setsockopt=$ac_res
-fi
-rm -f core conftest.err conftest.$ac_objext \
-    conftest$ac_exeext
-  if ${ac_cv_search_setsockopt+:} false; then :
-  break
-fi
-done
-if ${ac_cv_search_setsockopt+:} false; then :
-
-else
-  ac_cv_search_setsockopt=no
-fi
-rm conftest.$ac_ext
-LIBS=$ac_func_search_save_LIBS
-fi
-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_search_setsockopt" >&5
-$as_echo "$ac_cv_search_setsockopt" >&6; }
-ac_res=$ac_cv_search_setsockopt
-if test "$ac_res" != no; then :
-  test "$ac_res" = "none required" || LIBS="$ac_res $LIBS"
-
-fi
-
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for library containing connect" >&5
-$as_echo_n "checking for library containing connect... " >&6; }
-if ${ac_cv_search_connect+:} false; then :
-  $as_echo_n "(cached) " >&6
-else
-  ac_func_search_save_LIBS=$LIBS
-cat confdefs.h - <<_ACEOF >conftest.$ac_ext
-/* end confdefs.h.  */
-
-/* Override any GCC internal prototype to avoid an error.
-   Use char because int might match the return type of a GCC
-   builtin and then its argument prototype would still apply.  */
-#ifdef __cplusplus
-extern "C"
-#endif
-char connect ();
-int
-main ()
-{
-return connect ();
-  ;
-  return 0;
-}
-_ACEOF
-for ac_lib in '' inet; do
-  if test -z "$ac_lib"; then
-    ac_res="none required"
-  else
-    ac_res=-l$ac_lib
-    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
-  fi
-  if ac_fn_c_try_link "$LINENO"; then :
-  ac_cv_search_connect=$ac_res
-fi
-rm -f core conftest.err conftest.$ac_objext \
-    conftest$ac_exeext
-  if ${ac_cv_search_connect+:} false; then :
-  break
-fi
-done
-if ${ac_cv_search_connect+:} false; then :
-
-else
-  ac_cv_search_connect=no
-fi
-rm conftest.$ac_ext
-LIBS=$ac_func_search_save_LIBS
-fi
-{ $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_search_connect" >&5
-$as_echo "$ac_cv_search_connect" >&6; }
-ac_res=$ac_cv_search_connect
-if test "$ac_res" != no; then :
-  test "$ac_res" = "none required" || LIBS="$ac_res $LIBS"
-
-fi
-
-
-ac_fn_c_check_member "$LINENO" "struct sockaddr_un" "sun_len" "ac_cv_member_struct_sockaddr_un_sun_len" "#include <sys/types.h>
-		 #include <sys/un.h>
-
-"
-if test "x$ac_cv_member_struct_sockaddr_un_sun_len" = xyes; then :
-  struct_sockaddr_un_sun_len=true
-else
-  struct_sockaddr_un_suin_len=false
-fi
-
-case $struct_sockaddr_un_sun_len in
-	true)
-
-cat >>confdefs.h <<_ACEOF
-#define HAVE_SOCKADDR_UN_SUN_LEN 1
-_ACEOF
-
-		;;
-	*)
-		;;
-esac
-
-GAIL_INET_LIBS="$LIBS"
-
-
-LIBS="$old_LIBS"
-
 ################################################################
 # Printing system checks
 ################################################################
@@ -25835,7 +25558,7 @@ fi
 ac_config_commands="$ac_config_commands gdk/gdkconfig.h"
 
 
-ac_config_files="$ac_config_files config.h.win32 gtk-zip.sh Makefile gdk-2.0.pc gtk+-2.0.pc gtk+-unix-print-2.0.pc gail.pc gdk-2.0-uninstalled.pc gtk+-2.0-uninstalled.pc gail-uninstalled.pc m4macros/Makefile demos/Makefile demos/gtk-demo/Makefile demos/gtk-demo/geninclude.pl tests/Makefile docs/Makefile docs/reference/Makefile docs/reference/gdk/Makefile docs/reference/gdk/version.xml docs/reference/gtk/Makefile docs/reference/gtk/version.xml docs/reference/libgail-util/Makefile docs/faq/Makefile docs/tools/Makefile docs/tutorial/Makefile build/Makefile build/win32/Makefile build/win32/vs9/Makefile build/win32/vs9/gtk-version-paths.vsprops build/win32/vs10/Makefile build/win32/vs10/gtk-version-paths.props build/win32/vs11/Makefile build/win32/vs12/Makefile build/win32/vs14/Makefile build/win32/vs15/Makefile build/win32/vs16/Makefile gdk/Makefile gdk/x11/Makefile gdk/quartz/Makefile gdk/directfb/Makefile gdk/tests/Makefile gtk/Makefile gtk/makefile.msc gtk/gtkversion.h gtk/gtk-win32.rc gtk/theme-bits/Makefile gtk/tests/Makefile modules/Makefile modules/other/Makefile modules/other/gail/Makefile modules/other/gail/libgail-util/Makefile modules/other/gail/tests/Makefile modules/engines/Makefile modules/engines/pixbuf/Makefile modules/engines/ms-windows/Makefile modules/engines/ms-windows/Theme/Makefile modules/engines/ms-windows/Theme/gtk-2.0/Makefile modules/input/Makefile modules/printbackends/Makefile modules/printbackends/cups/Makefile modules/printbackends/lpr/Makefile modules/printbackends/file/Makefile modules/printbackends/papi/Makefile modules/printbackends/test/Makefile perf/Makefile"
+ac_config_files="$ac_config_files config.h.win32 gtk-zip.sh Makefile gdk-2.0.pc gtk+-2.0.pc gtk+-unix-print-2.0.pc gdk-2.0-uninstalled.pc gtk+-2.0-uninstalled.pc m4macros/Makefile tests/Makefile build/Makefile build/win32/Makefile build/win32/vs9/Makefile build/win32/vs9/gtk-version-paths.vsprops build/win32/vs10/Makefile build/win32/vs10/gtk-version-paths.props build/win32/vs11/Makefile build/win32/vs12/Makefile build/win32/vs14/Makefile build/win32/vs15/Makefile build/win32/vs16/Makefile gdk/Makefile gdk/x11/Makefile gdk/quartz/Makefile gdk/directfb/Makefile gdk/tests/Makefile gtk/Makefile gtk/makefile.msc gtk/gtkversion.h gtk/gtk-win32.rc gtk/theme-bits/Makefile gtk/tests/Makefile modules/Makefile modules/other/Makefile modules/engines/Makefile modules/engines/pixbuf/Makefile modules/engines/ms-windows/Makefile modules/engines/ms-windows/Theme/Makefile modules/engines/ms-windows/Theme/gtk-2.0/Makefile modules/input/Makefile modules/printbackends/Makefile modules/printbackends/cups/Makefile modules/printbackends/lpr/Makefile modules/printbackends/file/Makefile modules/printbackends/papi/Makefile modules/printbackends/test/Makefile perf/Makefile"
 
 
 cat >confcache <<\_ACEOF
@@ -27239,25 +26962,10 @@ do
     "gdk-2.0.pc") CONFIG_FILES="$CONFIG_FILES gdk-2.0.pc" ;;
     "gtk+-2.0.pc") CONFIG_FILES="$CONFIG_FILES gtk+-2.0.pc" ;;
     "gtk+-unix-print-2.0.pc") CONFIG_FILES="$CONFIG_FILES gtk+-unix-print-2.0.pc" ;;
-    "gail.pc") CONFIG_FILES="$CONFIG_FILES gail.pc" ;;
     "gdk-2.0-uninstalled.pc") CONFIG_FILES="$CONFIG_FILES gdk-2.0-uninstalled.pc" ;;
     "gtk+-2.0-uninstalled.pc") CONFIG_FILES="$CONFIG_FILES gtk+-2.0-uninstalled.pc" ;;
-    "gail-uninstalled.pc") CONFIG_FILES="$CONFIG_FILES gail-uninstalled.pc" ;;
     "m4macros/Makefile") CONFIG_FILES="$CONFIG_FILES m4macros/Makefile" ;;
-    "demos/Makefile") CONFIG_FILES="$CONFIG_FILES demos/Makefile" ;;
-    "demos/gtk-demo/Makefile") CONFIG_FILES="$CONFIG_FILES demos/gtk-demo/Makefile" ;;
-    "demos/gtk-demo/geninclude.pl") CONFIG_FILES="$CONFIG_FILES demos/gtk-demo/geninclude.pl" ;;
     "tests/Makefile") CONFIG_FILES="$CONFIG_FILES tests/Makefile" ;;
-    "docs/Makefile") CONFIG_FILES="$CONFIG_FILES docs/Makefile" ;;
-    "docs/reference/Makefile") CONFIG_FILES="$CONFIG_FILES docs/reference/Makefile" ;;
-    "docs/reference/gdk/Makefile") CONFIG_FILES="$CONFIG_FILES docs/reference/gdk/Makefile" ;;
-    "docs/reference/gdk/version.xml") CONFIG_FILES="$CONFIG_FILES docs/reference/gdk/version.xml" ;;
-    "docs/reference/gtk/Makefile") CONFIG_FILES="$CONFIG_FILES docs/reference/gtk/Makefile" ;;
-    "docs/reference/gtk/version.xml") CONFIG_FILES="$CONFIG_FILES docs/reference/gtk/version.xml" ;;
-    "docs/reference/libgail-util/Makefile") CONFIG_FILES="$CONFIG_FILES docs/reference/libgail-util/Makefile" ;;
-    "docs/faq/Makefile") CONFIG_FILES="$CONFIG_FILES docs/faq/Makefile" ;;
-    "docs/tools/Makefile") CONFIG_FILES="$CONFIG_FILES docs/tools/Makefile" ;;
-    "docs/tutorial/Makefile") CONFIG_FILES="$CONFIG_FILES docs/tutorial/Makefile" ;;
     "build/Makefile") CONFIG_FILES="$CONFIG_FILES build/Makefile" ;;
     "build/win32/Makefile") CONFIG_FILES="$CONFIG_FILES build/win32/Makefile" ;;
     "build/win32/vs9/Makefile") CONFIG_FILES="$CONFIG_FILES build/win32/vs9/Makefile" ;;
@@ -27282,9 +26990,6 @@ do
     "gtk/tests/Makefile") CONFIG_FILES="$CONFIG_FILES gtk/tests/Makefile" ;;
     "modules/Makefile") CONFIG_FILES="$CONFIG_FILES modules/Makefile" ;;
     "modules/other/Makefile") CONFIG_FILES="$CONFIG_FILES modules/other/Makefile" ;;
-    "modules/other/gail/Makefile") CONFIG_FILES="$CONFIG_FILES modules/other/gail/Makefile" ;;
-    "modules/other/gail/libgail-util/Makefile") CONFIG_FILES="$CONFIG_FILES modules/other/gail/libgail-util/Makefile" ;;
-    "modules/other/gail/tests/Makefile") CONFIG_FILES="$CONFIG_FILES modules/other/gail/tests/Makefile" ;;
     "modules/engines/Makefile") CONFIG_FILES="$CONFIG_FILES modules/engines/Makefile" ;;
     "modules/engines/pixbuf/Makefile") CONFIG_FILES="$CONFIG_FILES modules/engines/pixbuf/Makefile" ;;
     "modules/engines/ms-windows/Makefile") CONFIG_FILES="$CONFIG_FILES modules/engines/ms-windows/Makefile" ;;

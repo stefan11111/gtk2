@@ -2,7 +2,7 @@
 include $(top_srcdir)/Makefile.decl
 
 SRC_SUBDIRS = gdk gtk modules   perf
-SUBDIRS = $(SRC_SUBDIRS) docs m4macros build
+SUBDIRS = $(SRC_SUBDIRS) m4macros build
 
 # require automake 1.4
 AUTOMAKE_OPTIONS = 1.7
@@ -48,8 +48,6 @@ MAINTAINERCLEANFILES = \
 	$(srcdir)/missing \
 	$(srcdir)/mkinstalldirs \
 	$(srcdir)/omf.make \
-	$(srcdir)/xmldocs.make \
-	$(srcdir)/gtk-doc.make \
 	$(srcdir)/ChangeLog \
 	`find "$(srcdir)" -type f -name Makefile.in -print`
 
@@ -73,7 +71,7 @@ gdk-$(GDKTARGET)-2.0-uninstalled.pc: gdk-2.0-uninstalled.pc
 	cp gdk-2.0-uninstalled.pc gdk-$(GDKTARGET)-2.0-uninstalled.pc
 
 pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA= gdk-$(GDKTARGET)-2.0.pc gtk+-$(GDKTARGET)-2.0.pc gail.pc
+pkgconfig_DATA= gdk-$(GDKTARGET)-2.0.pc gtk+-$(GDKTARGET)-2.0.pc
 
 if OS_UNIX
 pkgconfig_DATA += gtk+-unix-print-2.0.pc
@@ -83,10 +81,8 @@ DISTCLEANFILES =				\
 	gtk+-unix-print-2.0.pc			\
 	gtk+-$(GDKTARGET)-2.0.pc		\
 	gdk-$(GDKTARGET)-2.0.pc			\
-	gail.pc					\
 	gtk+-$(GDKTARGET)-2.0-uninstalled.pc	\
 	gdk-$(GDKTARGET)-2.0-uninstalled.pc	\
-	gail-uninstalled.pc 			\
 	config.lt
 
 distclean-local:

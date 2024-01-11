@@ -156,7 +156,7 @@ am__define_uniq_tagged_files = \
   unique=`for i in $$list; do \
     if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
   done | $(am__uniquify_input)`
-DIST_SUBDIRS = input engines other printbackends
+DIST_SUBDIRS = input engines printbackends
 am__DIST_COMMON = $(srcdir)/Makefile.in $(top_srcdir)/Makefile.decl
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 am__relativize = \
@@ -189,7 +189,6 @@ AMTAR = @AMTAR@
 AM_DEFAULT_VERBOSITY = @AM_DEFAULT_VERBOSITY@
 AR = @AR@
 AS = @AS@
-ATK_PREFIX = @ATK_PREFIX@
 AUTOCONF = @AUTOCONF@
 AUTOHEADER = @AUTOHEADER@
 AUTOMAKE = @AUTOMAKE@
@@ -239,9 +238,6 @@ EXEEXT = @EXEEXT@
 EXE_MANIFEST_ARCHITECTURE = @EXE_MANIFEST_ARCHITECTURE@
 FGREP = @FGREP@
 FILECMD = @FILECMD@
-GAIL_INET_LIBS = @GAIL_INET_LIBS@
-GAIL_LT_CURRENT_MINUS_AGE = @GAIL_LT_CURRENT_MINUS_AGE@
-GAIL_LT_VERSION_INFO = @GAIL_LT_VERSION_INFO@
 GDK_DEP_CFLAGS = @GDK_DEP_CFLAGS@
 GDK_DEP_LIBS = @GDK_DEP_LIBS@
 GDK_EXTRA_CFLAGS = @GDK_EXTRA_CFLAGS@
@@ -456,7 +452,7 @@ XVFB_START = \
 	|| { echo "Gtk+Tests:ERROR: Failed to start Xvfb environment for X11 target tests."; exit 1; } \
 	&& DISPLAY=:$$XID && export DISPLAY
 
-SUBDIRS = input engines other $(am__append_1)
+SUBDIRS = input engines $(am__append_1)
 all: all-recursive
 
 .SUFFIXES:

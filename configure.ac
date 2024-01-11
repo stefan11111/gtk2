@@ -34,7 +34,6 @@ m4_define([gtk_binary_version], [2.10.0])
 # required versions of other packages
 m4_define([glib_required_version], [2.28.0])
 m4_define([pango_required_version], [1.20])
-m4_define([atk_required_version], [1.29.2])
 m4_define([cairo_required_version], [1.6])
 m4_define([gdk_pixbuf_required_version], [2.21.0])
 
@@ -100,14 +99,6 @@ LT_VERSION_INFO="lt_current:lt_revision:lt_age"
 LT_CURRENT_MINUS_AGE=m4_eval(lt_current - lt_age)
 AC_SUBST(LT_VERSION_INFO)
 AC_SUBST(LT_CURRENT_MINUS_AGE)
-
-m4_define([gail_lt_current],[18])
-m4_define([gail_lt_revision],[1])
-m4_define([gail_lt_age],[0])
-m4_define([gail_lt_version_info],[gail_lt_current:gail_lt_revision:gail_lt_age])
-m4_define([gail_lt_current_minus_age],[m4_eval(gail_lt_current - gail_lt_age)])
-AC_SUBST([GAIL_LT_VERSION_INFO],[gail_lt_version_info])
-AC_SUBST([GAIL_LT_CURRENT_MINUS_AGE],[gail_lt_current_minus_age])
 
 GETTEXT_PACKAGE=gtk20
 AC_SUBST(GETTEXT_PACKAGE)
@@ -324,7 +315,7 @@ if test "x$GCC" = "xyes"; then
 fi
 changequote([,])dnl
 
-CPPFLAGS="$CPPFLAGS -DG_DISABLE_SINGLE_INCLUDES -DATK_DISABLE_SINGLE_INCLUDES -DGDK_PIXBUF_DISABLE_SINGLE_INCLUDES -DGTK_DISABLE_SINGLE_INCLUDES"
+CPPFLAGS="$CPPFLAGS -DG_DISABLE_SINGLE_INCLUDES -DGDK_PIXBUF_DISABLE_SINGLE_INCLUDES -DGTK_DISABLE_SINGLE_INCLUDES"
 
 # Ensure MSVC-compatible struct packing convention is used when
 # compiling for Win32 with gcc.
@@ -372,7 +363,6 @@ ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS"
 ## annoying to construct
 PKG_CHECK_MODULES(BASE_DEPENDENCIES,
   [glib-2.0 >= glib_required_version dnl
-   atk >= atk_required_version dnl
    pango >= pango_required_version dnl
    cairo >= cairo_required_version dnl
    gdk-pixbuf-2.0 >= gdk_pixbuf_required_version])
@@ -1322,23 +1312,10 @@ AC_SUBST(GDK_DEP_CFLAGS)
 
 ########################################
 # Check for Accessibility Toolkit flags
+# Apparently does more that that. Removing this section breaks included dirs for various headers, like cairo.h
 ########################################
 
-ATK_PACKAGES=atk
-AC_MSG_CHECKING(ATK flags)
-if $PKG_CONFIG --exists $ATK_PACKAGES ; then
-        ATK_CFLAGS=`$PKG_CONFIG --cflags $ATK_PACKAGES`
-        ATK_LIBS=`$PKG_CONFIG --libs $ATK_PACKAGES`
-
-        AC_MSG_RESULT($ATK_CFLAGS $ATK_LIBS)
-else
-        AC_MSG_ERROR([
-*** Accessibility Toolkit not found. Accessibility Toolkit is required
-*** to build GTK+.
-])
-fi
-
-GTK_PACKAGES="atk cairo gdk-pixbuf-2.0 gio-2.0"
+GTK_PACKAGES="cairo gdk-pixbuf-2.0 gio-2.0"
 if test "x$gdktarget" = "xx11"; then
   GTK_PACKAGES="$GTK_PACKAGES pangoft2"
 fi
@@ -1352,7 +1329,6 @@ if test x"$os_win32" = xyes; then
 fi
 
 GLIB_PREFIX="`$PKG_CONFIG --variable=prefix glib-2.0`"
-ATK_PREFIX="`$PKG_CONFIG --variable=prefix atk`"
 PANGO_PREFIX="`$PKG_CONFIG --variable=prefix pango`"
 CAIRO_PREFIX="`pkg-config --variable=prefix cairo`"
 
@@ -1363,7 +1339,6 @@ AC_SUBST(GTK_DEP_LIBS)
 AC_SUBST(GTK_DEP_CFLAGS)
 
 AC_SUBST(GLIB_PREFIX)
-AC_SUBST(ATK_PREFIX)
 AC_SUBST(PANGO_PREFIX)
 AC_SUBST(CAIRO_PREFIX)
 
@@ -1373,36 +1348,6 @@ AC_SUBST(GTK_XIM_FLAGS)
 GDK_PIXBUF_LIBS=`$PKG_CONFIG --libs gdk-pixbuf-2.0`
 AC_SUBST(GDK_PIXBUF_LIBS)
 
-########################
-# Checks needed for gail
-########################
-
-old_LIBS="$LIBS"
-dnl Checks for inet libraries:
-AC_SEARCH_LIBS(gethostent, nsl)
-AC_SEARCH_LIBS(setsockopt, socket)
-AC_SEARCH_LIBS(connect, inet)
-
-dnl check for the sockaddr_un.sun_len member
-AC_CHECK_MEMBER([struct sockaddr_un.sun_len],
-		[struct_sockaddr_un_sun_len=true],
-		[struct_sockaddr_un_suin_len=false],
-		[#include <sys/types.h>
-		 #include <sys/un.h>]
-		)
-case $struct_sockaddr_un_sun_len in 
-	true)
-		AC_DEFINE_UNQUOTED(HAVE_SOCKADDR_UN_SUN_LEN, 1,
-		                   [Have the sockaddr_un.sun_len member])
-		;;
-	*)
-		;;
-esac
-
-GAIL_INET_LIBS="$LIBS"
-AC_SUBST([GAIL_INET_LIBS])
-
-LIBS="$old_LIBS"
 
 ################################################################
 # Printing system checks
@@ -1685,25 +1630,10 @@ Makefile
 gdk-2.0.pc
 gtk+-2.0.pc
 gtk+-unix-print-2.0.pc
-gail.pc
 gdk-2.0-uninstalled.pc
 gtk+-2.0-uninstalled.pc
-gail-uninstalled.pc
 m4macros/Makefile
-demos/Makefile
-demos/gtk-demo/Makefile
-demos/gtk-demo/geninclude.pl
 tests/Makefile
-docs/Makefile
-docs/reference/Makefile
-docs/reference/gdk/Makefile
-docs/reference/gdk/version.xml
-docs/reference/gtk/Makefile
-docs/reference/gtk/version.xml
-docs/reference/libgail-util/Makefile
-docs/faq/Makefile
-docs/tools/Makefile
-docs/tutorial/Makefile
 build/Makefile
 gdk/Makefile
 gdk/x11/Makefile
@@ -1717,10 +1647,6 @@ gtk/gtk-win32.rc
 gtk/theme-bits/Makefile
 gtk/tests/Makefile
 modules/Makefile
-modules/other/Makefile
-modules/other/gail/Makefile
-modules/other/gail/libgail-util/Makefile
-modules/other/gail/tests/Makefile
 modules/engines/Makefile
 modules/engines/pixbuf/Makefile
 modules/engines/ms-windows/Makefile

@@ -1723,7 +1723,6 @@ AMTAR = @AMTAR@
 AM_DEFAULT_VERBOSITY = @AM_DEFAULT_VERBOSITY@
 AR = @AR@
 AS = @AS@
-ATK_PREFIX = @ATK_PREFIX@
 AUTOCONF = @AUTOCONF@
 AUTOHEADER = @AUTOHEADER@
 AUTOMAKE = @AUTOMAKE@
@@ -1968,7 +1967,7 @@ EXTRA_DIST = gtkquartz.h $(gtk_private_h_sources) $(gtk_extra_sources) \
 	$(gtk_built_sources) $(STOCK_ICONS) $(STOCK_ICONS) \
 	$(GENERATED_ICONS) line-arrow.xbm line-wrap.xbm tree_plus.xbm \
 	tree_minus.xbm tree_minus.xpm tree_plus.xpm \
-	gtk-builder-convert gtk-win32.rc gtk-win32.rc.in \
+	gtk-win32.rc gtk-win32.rc.in \
 	gtkwin32embed.h gtkwin32embedwidget.h gtkwin32embedwidget.c \
 	gtkprint-win32.h gtkprint-win32.c gtksearchenginequartz.h \
 	gtkrc.default gtkrc.key.default gtkrc.key.emacs gtkrc.key.mac \
@@ -2452,7 +2451,7 @@ _headers_destdir = $(subst /,\\,$(_headers_dest_posix))
 @HAVE_INTROSPECTION_TRUE@	gtktypebuiltins.c
 
 @HAVE_INTROSPECTION_TRUE@Gtk_2_0_gir_MSVC_EXPORT_PACKAGES = $(Gtk_2_0_gir_EXPORT_PACKAGES)
-@HAVE_INTROSPECTION_TRUE@Gtk_2_0_gir_MSVC_INCLUDE_GIRS = Atk-1.0
+@HAVE_INTROSPECTION_TRUE@Gtk_2_0_gir_MSVC_INCLUDE_GIRS =
 @HAVE_INTROSPECTION_TRUE@Gtk_2_0_gir_MSVC_LIBS = gtk-win32-2.0 gdk-win32-2.0
 @HAVE_INTROSPECTION_TRUE@Gtk_2_0_gir_MSVC_CFLAGS = $(GTK_MSVC_GIR_CFLAGS)
 @HAVE_INTROSPECTION_TRUE@Gtk_2_0_gir_MSVC_SCANNERFLAGS = \
@@ -2502,7 +2501,7 @@ LDADDS = \
 
 @HAVE_INTROSPECTION_TRUE@Gtk_2_0_gir_SCANNERFLAGS = --include-uninstalled=$(top_builddir)/gdk/Gdk-2.0.gir \
 @HAVE_INTROSPECTION_TRUE@	$(am__append_15)
-@HAVE_INTROSPECTION_TRUE@Gtk_2_0_gir_INCLUDES = Atk-1.0
+@HAVE_INTROSPECTION_TRUE@Gtk_2_0_gir_INCLUDES =
 @HAVE_INTROSPECTION_TRUE@Gtk_2_0_gir_CFLAGS = \
 @HAVE_INTROSPECTION_TRUE@		$(INCLUDES) \
 @HAVE_INTROSPECTION_TRUE@		-UGDK_DISABLE_DEPRECATED \
@@ -2516,7 +2515,7 @@ LDADDS = \
 @HAVE_INTROSPECTION_TRUE@gir_DATA = $(INTROSPECTION_GIRS)
 @HAVE_INTROSPECTION_TRUE@typelibsdir = $(libdir)/girepository-1.0
 @HAVE_INTROSPECTION_TRUE@typelibs_DATA = $(INTROSPECTION_GIRS:.gir=.typelib)
-bin_SCRIPTS = gtk-builder-convert
+bin_SCRIPTS =
 
 # Workaround for UAC silliness: programs with "update" in their name
 # are believed to be installers and require elevated privileges to be
