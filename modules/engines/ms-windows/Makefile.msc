@@ -22,7 +22,6 @@ OBJS = \
 GTK_CFLAGS=\
 	-I$(GTK_DIR)/include/gtk-2.0 \
 	-I$(GTK_DIR)/lib/gtk-2.0/include \
-	-I$(GTK_DIR)/include/atk-1.0 \
 	-I$(GTK_DIR)/include/pango-1.0 \
 	-I$(GTK_DIR)/include/glib-2.0 \
 	-I$(GTK_DIR)/lib/glib-2.0/include
@@ -32,7 +31,6 @@ GTK_LDFLAGS=/libpath:$(GTK_DIR)/lib
 GTK_LIBS= \
 	gtk-win32-2.0.lib \
 	gdk-win32-2.0.lib \
-	atk-1.0.lib \
 	gdk_pixbuf-2.0.lib \
 	pangowin32-1.0.lib \
 	pango-1.0.lib \
