@@ -673,34 +673,6 @@ class GtkBuilderConverter(object):
             widget.getAttributeNode("constructor").value = parent_id
         node.removeAttribute("id")
 
-    def _convert_accessibility(self, node):
-        objectNode = node.parentNode
-        parent_id = objectNode.getAttribute("id")
-
-        properties = {}
-        for node in node.childNodes:
-            if node.nodeName == 'atkproperty':
-                node.tagName = 'property'
-                properties[node.getAttribute('name')] = node
-                node.parentNode.removeChild(node)
-            elif node.nodeName == 'atkrelation':
-                node.tagName = 'relation'
-                relation_type = node.getAttribute('type')
-                relation_type = relation_type.replace('_', '-')
-                node.setAttribute('type', relation_type)
-            elif node.nodeName == 'atkaction':
-                node.tagName = 'action'
-
-        if properties:
-            child = self._dom.createElement('child')
-            child.setAttribute("internal-child", "accessible")
-
-            atkobject = self._create_object(
-                "AtkObject", None,
-                template='a11y-%s' % (parent_id,),
-                properties=properties)
-            child.appendChild(atkobject)
-            objectNode.appendChild(child)
 
     def _strip_root(self, root_name):
         for widget in self._dom.getElementsByTagName("widget"):
