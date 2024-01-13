@@ -155,7 +155,7 @@ am__define_uniq_tagged_files = \
   unique=`for i in $$list; do \
     if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
   done | $(am__uniquify_input)`
-DIST_SUBDIRS = ms-windows pixbuf
+DIST_SUBDIRS = pixbuf
 am__DIST_COMMON = $(srcdir)/Makefile.in $(top_srcdir)/Makefile.decl
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 am__relativize = \
@@ -356,7 +356,6 @@ SHELL = @SHELL@
 STRIP = @STRIP@
 USE_NLS = @USE_NLS@
 VERSION = @VERSION@
-WINDRES = @WINDRES@
 XGETTEXT = @XGETTEXT@
 XMKMF = @XMKMF@
 XMLCATALOG = @XMLCATALOG@
@@ -454,8 +453,7 @@ XVFB_START = \
 	|| { echo "Gtk+Tests:ERROR: Failed to start Xvfb environment for X11 target tests."; exit 1; } \
 	&& DISPLAY=:$$XID && export DISPLAY
 
-@USE_WIN32_TRUE@wimp = ms-windows
-SUBDIRS = $(wimp) pixbuf
+SUBDIRS = pixbuf
 all: all-recursive
 
 .SUFFIXES:
