@@ -308,7 +308,6 @@ static gboolean		gtk_widget_real_mnemonic_activate	(GtkWidget	  *widget,
 static void		gtk_widget_aux_info_destroy		(GtkWidgetAuxInfo *aux_info);
 static void*	gtk_widget_real_get_accessible		(GtkWidget	  *widget);
 static void		gtk_widget_accessible_interface_init	(void *iface);
-static void*	gtk_widget_ref_accessible		(void *implementor);
 static void             gtk_widget_invalidate_widget_windows    (GtkWidget        *widget,
 								 GdkRegion        *region);
 static GdkScreen *      gtk_widget_get_screen_unchecked         (GtkWidget        *widget);
@@ -10262,17 +10261,6 @@ gtk_widget_real_get_accessible (GtkWidget *widget)
 static void
 gtk_widget_accessible_interface_init (void *iface)
 {
-}
-
-static void*
-gtk_widget_ref_accessible (void *implementor)
-{
-  void *accessible;
-
-  accessible = gtk_widget_get_accessible (GTK_WIDGET (implementor));
-  if (accessible)
-    g_object_ref (accessible);
-  return accessible;
 }
 
 /*

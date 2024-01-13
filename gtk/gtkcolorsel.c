@@ -188,11 +188,6 @@ static void     default_noscreen_change_palette_func    (const GdkColor    *colo
 static void     default_change_palette_func             (GdkScreen	   *screen,
 							 const GdkColor    *colors,
 							 gint               n_colors);
-static void     make_control_relations                  (void         *atk_obj,
-                                                         GtkWidget         *widget);
-static void     make_all_relations                      (void         *atk_obj,
-                                                         ColorSelectionPrivate *priv);
-
 static void 	hsv_changed                             (GtkWidget         *hsv,
 							 gpointer           data);
 static void 	get_screen_color                        (GtkWidget         *button);
@@ -2911,18 +2906,6 @@ gtk_color_selection_set_change_palette_with_screen_hook (GtkColorSelectionChange
   change_palette_hook = func;
 
   return old;
-}
-
-static void
-make_control_relations (void *atk_obj,
-                        GtkWidget *widget)
-{
-}
-
-static void
-make_all_relations (void *atk_obj,
-                    ColorSelectionPrivate *priv)
-{
 }
 
 #define __GTK_COLOR_SELECTION_C__

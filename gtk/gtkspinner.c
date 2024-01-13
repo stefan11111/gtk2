@@ -94,7 +94,6 @@ static void gtk_spinner_set_property   (GObject         *object,
 static void gtk_spinner_set_active     (GtkSpinner      *spinner,
                                         gboolean         active);
 static void *gtk_spinner_get_accessible      (GtkWidget *widget);
-static GType      gtk_spinner_accessible_get_type (void);
 
 static void
 gtk_spinner_class_init (GtkSpinnerClass *klass)
@@ -388,78 +387,6 @@ gtk_spinner_set_active (GtkSpinner *spinner, gboolean active)
           gtk_spinner_remove_timeout (spinner);
         }
     }
-}
-
-static GType
-gtk_spinner_accessible_factory_get_accessible_type (void)
-{
-  return gtk_spinner_accessible_get_type ();
-}
-
-static void *
-gtk_spinner_accessible_new (GObject *obj)
-{
-  return NULL;
-}
-
-static void*
-gtk_spinner_accessible_factory_create_accessible (GObject *obj)
-{
-  return NULL;
-}
-
-static void
-gtk_spinner_accessible_factory_class_init (void *klass)
-{
-}
-
-static GType
-gtk_spinner_accessible_factory_get_type (void)
-{
-  return G_TYPE_INVALID;
-}
-
-static void *a11y_parent_class = NULL;
-
-static void
-gtk_spinner_accessible_initialize (void *accessible,
-                                   gpointer   widget)
-{
-}
-
-static void
-gtk_spinner_accessible_class_init (void *klass)
-{
-}
-
-static void
-gtk_spinner_accessible_image_get_size (void *image,
-                                       gint     *width,
-                                       gint     *height)
-{
-  GtkWidget *widget;
-
-  widget = GTK_ACCESSIBLE (image)->widget;
-  if (!widget)
-    {
-      *width = *height = 0;
-    }
-  else
-    {
-      *width = widget->allocation.width;
-      *height = widget->allocation.height;
-    }
-}
-
-static void
-gtk_spinner_accessible_image_interface_init (void *iface)
-{
-}
-
-static GType
-gtk_spinner_accessible_get_type (void)
-{
-  return G_TYPE_INVALID;
 }
 
 static void *

@@ -1649,9 +1649,6 @@ gtk/tests/Makefile
 modules/Makefile
 modules/engines/Makefile
 modules/engines/pixbuf/Makefile
-modules/engines/ms-windows/Makefile
-modules/engines/ms-windows/Theme/Makefile
-modules/engines/ms-windows/Theme/gtk-2.0/Makefile
 modules/input/Makefile
 modules/printbackends/Makefile
 modules/printbackends/cups/Makefile
