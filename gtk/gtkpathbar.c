@@ -126,15 +126,6 @@ static void gtk_path_bar_update_button_appearance (GtkPathBar       *path_bar,
 						   ButtonData       *button_data,
 						   gboolean          current_dir);
 
-static void
-on_slider_unmap (GtkWidget  *widget,
-		 GtkPathBar *path_bar)
-{
-  if (path_bar->timer &&
-      ((widget == path_bar->up_slider_button && path_bar->scrolling_up) ||
-       (widget == path_bar->down_slider_button && path_bar->scrolling_down)))
-    gtk_path_bar_stop_scrolling (path_bar);
-}
 
 static GtkWidget *
 get_slider_button (GtkPathBar  *path_bar,
