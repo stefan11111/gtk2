@@ -33,6 +33,12 @@ endif
 endif
 endif
 
+# manually remove if wanted
+# grep for DISABLE_PRINTING_BACKENDS to easly find
+GTK_PRINT_BACKENDS=
+
+# disable print backends
+
 GTK_BASE_CFLAGS_DEFINES =				\
 	-DGTK_VERSION=\"$(GTK_VERSION)\"		\
 	-DGTK_BINARY_VERSION=\"$(GTK_BINARY_VERSION)\"	\
