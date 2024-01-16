@@ -33,6 +33,12 @@ endif
 endif
 endif
 
+# manually remove if wanted
+# grep for DISABLE_PRINTING_BACKENDS to easly find
+GTK_PRINT_BACKENDS=
+
+# disable print backends
+
 GTK_BASE_CFLAGS_DEFINES =				\
 	-DGTK_VERSION=\"$(GTK_VERSION)\"		\
 	-DGTK_BINARY_VERSION=\"$(GTK_BINARY_VERSION)\"	\
@@ -65,51 +71,16 @@ INCLUDES =						\
 
 gtarget=$(gdktarget)
 
-if PLATFORM_WIN32
-no_undefined = -no-undefined
-endif
-
-if OS_WIN32
-gtk_def = gtk.def
-gtk_win32_symbols = -export-symbols gtk.def
-
-gtk_win32_res = gtk-win32-res.o
-gtk_win32_res_ldflag = -Wl,gtk-win32-res.o
-
-gtk-win32-res.o : gtk-win32.rc
-	$(WINDRES) gtk-win32.rc $@
-
-install-def-file: gtk.def
-	$(mkinstalldirs) $(DESTDIR)$(libdir)
-	$(INSTALL) gtk.def $(DESTDIR)$(libdir)/gtk-win32-2.0.def
-uninstall-def-file:
-	-rm $(DESTDIR)$(libdir)/gtk-win32-2.0.def
-else
 install-def-file:
 uninstall-def-file:
-endif
-
-if MS_LIB_AVAILABLE
-noinst_DATA = gtk-win32-$(GTK_API_VERSION).lib
-
-gtk-win32-$(GTK_API_VERSION).lib: libgtk-win32-$(GTK_API_VERSION).la gtk.def
-	lib -machine:@LIB_EXE_MACHINE_FLAG@ -name:libgtk-win32-$(GTK_API_VERSION)-@LT_CURRENT_MINUS_AGE@.dll -def:gtk.def -out:$@
 
 install-ms-lib:
-	$(mkinstalldirs) $(DESTDIR)$(libdir)
-	$(INSTALL) gtk-win32-$(GTK_API_VERSION).lib $(DESTDIR)$(libdir)
-
 uninstall-ms-lib:
-	-rm $(DESTDIR)$(libdir)/gtk-win32-$(GTK_API_VERSION).lib
-else
-install-ms-lib:
-uninstall-ms-lib:
-endif
 
 # gtk.def has to be put in builddir and should not be included in a source
 # tarball because it differs in 32-bit and 64-bit Windows builds.
 gtk.def: gtk.symbols
-	(echo -e EXPORTS; $(CPP) -P -DINCLUDE_VARIABLES -DG_OS_WIN32 -DALL_FILES - <$(srcdir)/gtk.symbols | sed -e '/^$$/d' -e 's/^/	/' -e 's/G_GNUC_[^ ]*//g') > gtk.def
+	(echo -e EXPORTS; $(CPP) -P -DINCLUDE_VARIABLES -DALL_FILES - <$(srcdir)/gtk.symbols | sed -e '/^$$/d' -e 's/^/	/' -e 's/G_GNUC_[^ ]*//g') > gtk.def
 
 gtkalias.h: gtk.symbols
 	  $(PERL) $(srcdir)/makegtkalias.pl < $(srcdir)/gtk.symbols > gtkalias.h
@@ -720,27 +691,12 @@ gtk_private_h_sources += \
 gtk_c_sources += $(gtk_os_unix_c_sources)
 endif
 
-gtk_os_win32_c_sources = \
-	gtkprint-win32.c		\
-	gtkprintoperation-win32.c
-gtk_all_c_sources += $(gtk_os_win32_c_sources)
-if OS_WIN32
-gtk_private_h_sources += gtkprint-win32.h
-gtk_c_sources += $(gtk_os_win32_c_sources)
-endif
-
 gtk_use_x11_c_sources = \
 	gtkplug-x11.c   \
 	gtksocket-x11.c \
 	gtkxembed.c     \
 	gtktrayicon-x11.c \
 	gtkmountoperation-x11.c
-gtk_use_win32_c_sources = \
-	gtkplug-win32.c   \
-	gtksocket-win32.c \
-	gtkwin32embed.c   \
-	gtkwin32embedwidget.c \
-	gtkmountoperation-stub.c
 gtk_use_quartz_c_sources =	\
 	gtksearchenginequartz.c	\
 	gtkplug-stub.c		\
@@ -750,14 +706,10 @@ gtk_use_stub_c_sources = \
 	gtkplug-stub.c   \
 	gtksocket-stub.c \
 	gtkmountoperation-stub.c
-gtk_all_c_sources += $(gtk_use_x11_c_sources) $(gtk_use_win32_c_sources) $(gtk_use_stub_c_sources)
+gtk_all_c_sources += $(gtk_use_x11_c_sources) $(gtk_use_stub_c_sources)
 if USE_X11
 gtk_private_h_sources += gtkxembed.h gtktrayicon.h xembed.h
 gtk_c_sources += $(gtk_use_x11_c_sources)
-else
-if USE_WIN32
-gtk_private_h_sources += gtkwin32embed.h gtkwin32embedwidget.h
-gtk_c_sources += $(gtk_use_win32_c_sources)
 else
 if USE_QUARTZ
 libgtk_quartz_2_0_la_CFLAGS = "-xobjective-c"
@@ -765,7 +717,6 @@ gtk_private_h_sources += gtksearchenginequartz.h
 gtk_c_sources += $(gtk_use_quartz_c_sources)
 else
 gtk_c_sources += $(gtk_use_stub_c_sources)
-endif
 endif
 endif
 
@@ -911,29 +862,22 @@ gtkunixprintincludedir = $(includedir)/gtk-unix-print-2.0/gtk
 gtkunixprintinclude_HEADERS = $(gtk_unix_print_public_h_sources)
 
 libgtk_x11_2_0_la_SOURCES = $(gtk_c_sources)
-libgtk_win32_2_0_la_SOURCES = $(gtk_c_sources)
 libgtk_quartz_2_0_la_SOURCES = $(gtk_c_sources)
 libgtk_directfb_2_0_la_SOURCES = $(gtk_c_sources)
 
 libgtk_x11_2_0_la_LDFLAGS = $(libtool_opts)
-libgtk_win32_2_0_la_LDFLAGS = $(libtool_opts) -Wl,-luuid
 libgtk_quartz_2_0_la_LDFLAGS = $(libtool_opts)
 libgtk_directfb_2_0_la_LDFLAGS = $(libtool_opts)
 
 libgtk_x11_2_0_la_LIBADD = $(libadd)
-libgtk_win32_2_0_la_LIBADD = $(libadd) -lole32 -lgdi32 -lcomdlg32 -lwinspool -lcomctl32
 libgtk_quartz_2_0_la_LIBADD = $(libadd)
 libgtk_directfb_2_0_la_LIBADD = $(libadd)
 
 libgtk_x11_2_0_la_DEPENDENCIES = $(deps)
-libgtk_win32_2_0_la_DEPENDENCIES = $(gtk_def) $(gtk_win32_res) $(deps)
 libgtk_quartz_2_0_la_DEPENDENCIES = $(deps)
 libgtk_directfb_2_0_la_DEPENDENCIES = $(deps)
 
-if USE_WIN32
-libgtk_target_ldflags = $(gtk_win32_res_ldflag) $(gtk_win32_symbols)
-endif
-EXTRA_LTLIBRARIES = libgtk-x11-2.0.la libgtk-win32-2.0.la libgtk-quartz-2.0.la libgtk-directfb-2.0.la
+EXTRA_LTLIBRARIES = libgtk-x11-2.0.la libgtk-quartz-2.0.la libgtk-directfb-2.0.la
 
 install-exec-hook: 
 if DISABLE_EXPLICIT_DEPS
@@ -951,76 +895,7 @@ install-mac-key-theme:
 uninstall-mac-key-theme:
 endif
 
-# -------------- MSVC Projects ----------------
-MSVCPROJS = gtk
-
-gtk_FILES = $(gtk_base_c_sources) $(gtk_os_win32_c_sources) $(gtk_use_win32_c_sources)
-gtk_EXCLUDES = gtkdummy
-
-gtk_HEADERS_DIR = $(libgtkincludedir)
-gtk_HEADERS_INST = $(gtkinclude_HEADERS)
-gtk_HEADERS_EXCLUDES = gtkdummy
-
-include $(top_srcdir)/build/Makefile.msvcproj
-
-if HAVE_INTROSPECTION
-# Introspection Items for MSVC
-MSVC_INTROSPECT_GIRS = Gtk-2.0.gir
-
-GTK_MSVC_GIR_CFLAGS =				\
-	$(GTK_BASE_CFLAGS_DEFINES)				\
-	-DGTK_LIBDIR=\\\"/dummy/lib\\\"				\
-	-DGTK_DATADIR=\\\"/dummy/share\\\"			\
-	-DGTK_DATA_PREFIX=\\\"/dummy\\\"			\
-	-DGTK_SYSCONFDIR=\\\"/dummy/etc\\\"			\
-	-DGTK_HOST=\\\"'$$$$(AT_PLAT)'-pc-vs'$$$$(VSVER)'\\\"	\
-	-DGTK_PRINT_BACKENDS=\\\"file\\\"			\
-	-DINCLUDE_IM_am_et			\
-	-DINCLUDE_IM_cedilla			\
-	-DINCLUDE_IM_cyrillic_translit		\
-	-DINCLUDE_IM_ime			\
-	-DINCLUDE_IM_inuktitu			\
-	-DINCLUDE_IM_ipa			\
-	-DINCLUDE_IM_multipress			\
-	-DINCLUDE_IM_thai			\
-	-DINCLUDE_IM_ti_er			\
-	-DINCLUDE_IM_ti_et			\
-	-DINCLUDE_IM_viqr			\
-	-UGDK_DISABLE_DEPRECATED		\
-	-UGTK_DISABLE_DEPRECATED		\
-	-DGTK_TEXT_USE_INTERNAL_UNSUPPORTED_API	\
-	-I../.. -I../../gtk -I../../gdk
-
-INTROSPECTION_INTERMEDIATE_ITEMS = \
-	$(top_builddir)/build/win32/Gtk-2.0.gir.msvc.introspect		\
-	$(top_builddir)/build/win32/Gtk_2_0_gir_list
-
-Gtk_2_0_gir_MSVC_FILES =		\
-	$(gtkinclude_HEADERS)		\
-	$(gtk_base_c_sources)		\
-	$(gtk_os_win32_c_sources)	\
-	$(gtk_use_win32_c_sources)	\
-	gtktypebuiltins.h		\
-	gtktypebuiltins.c
-
-Gtk_2_0_gir_MSVC_EXPORT_PACKAGES = $(Gtk_2_0_gir_EXPORT_PACKAGES)
-Gtk_2_0_gir_MSVC_INCLUDE_GIRS =
-Gtk_2_0_gir_MSVC_LIBS = gtk-win32-2.0 gdk-win32-2.0
-Gtk_2_0_gir_MSVC_CFLAGS = $(GTK_MSVC_GIR_CFLAGS)
-Gtk_2_0_gir_MSVC_SCANNERFLAGS =	\
-	--warn-all	\
-	--include-uninstalled='./vs$$$$(VSVER)/$$$$(CFG)/$$$$(PLAT)/bin/Gdk-2.0.gir'
-
-include $(top_srcdir)/build/Makefile.msvc-introspection
-
-else
-INTROSPECTION_INTERMEDIATE_ITEMS =
-
-endif
-
 dist-hook:	\
-	$(top_builddir)/build/win32/vs9/gtk.vcproj	\
-	$(top_builddir)/build/win32/vs9/gtk.headers	\
 	$(INTROSPECTION_INTERMEDIATE_ITEMS)
 
 # Install a RC file for the default GTK+ theme, and key themes
@@ -1092,44 +967,6 @@ bin_PROGRAMS = \
 	gtk-query-immodules-2.0
 
 bin_SCRIPTS =
-
-if OS_WIN32
-
-# Workaround for UAC silliness: programs with "update" in their name
-# are believed to be installers and require elevated privileges to be
-# used... Embed a manifest file into executable to tell Windows that
-# gtk-update-icon-cache.exe doesn't require any special privileges.
-
-GTK_UPDATE_ICON_CACHE_MANIFEST = gtk-update-icon-cache.exe.manifest
-GTK_UPDATE_ICON_CACHE_RC = gtk-update-icon-cache.rc
-GTK_UPDATE_ICON_CACHE_MANIFEST_OBJECT = gtk-update-icon-cache_manifest.o
-
-$(GTK_UPDATE_ICON_CACHE_MANIFEST):
-	(echo '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' ; \
-	 echo '<assembly xmlns="urn:schemas-microsoft-com:asm.v1" manifestVersion="1.0">' ; \
-	 echo '  <assemblyIdentity version="1.0.0.0"' ; \
-	 echo '     processorArchitecture="'$(EXE_MANIFEST_ARCHITECTURE)'"' ; \
-	 echo '     name="gtk-update-icon-cache.exe"' ; \
-	 echo '     type="win32"/>' ; \
-	 echo '  <!-- Identify the application security requirements. -->' ; \
-	 echo '  <trustInfo xmlns="urn:schemas-microsoft-com:asm.v3">' ; \
-	 echo '    <security>' ; \
-	 echo '      <requestedPrivileges>' ; \
-	 echo '        <requestedExecutionLevel' ; \
-	 echo '          level="asInvoker"' ; \
-	 echo '          uiAccess="false"/>' ; \
-	 echo '        </requestedPrivileges>' ; \
-	 echo '       </security>' ; \
-	 echo '  </trustInfo>' ; \
-	 echo '</assembly>' ) >$@
-
-$(GTK_UPDATE_ICON_CACHE_RC):
-	(echo -e '#include <winbase.h>\nCREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST '$(GTK_UPDATE_ICON_CACHE_MANIFEST)) >$@
-
-$(GTK_UPDATE_ICON_CACHE_MANIFEST_OBJECT): $(GTK_UPDATE_ICON_CACHE_RC) $(GTK_UPDATE_ICON_CACHE_MANIFEST)
-	$(WINDRES) --input $< --output $@ --output-format=coff
-
-endif
 
 gtk_query_immodules_2_0_DEPENDENCIES = $(DEPS)
 gtk_query_immodules_2_0_LDADD = $(LDADDS) $(GMODULE_LIBS)
@@ -1454,13 +1291,6 @@ EXTRA_DIST +=                   \
 	tree_minus.xbm          \
 	tree_minus.xpm		\
 	tree_plus.xpm		\
-	gtk-win32.rc		\
-	gtk-win32.rc.in		\
-	gtkwin32embed.h		\
-	gtkwin32embedwidget.h	\
-	gtkwin32embedwidget.c	\
-	gtkprint-win32.h	\
-	gtkprint-win32.c	\
 	gtksearchenginequartz.h \
 	gtkrc.default		\
 	gtkrc.key.default	\
