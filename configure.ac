@@ -816,7 +816,7 @@ for immodule in $included_immodules; do
    AC_MSG_ERROR([the specified input method $immodule does not exist])
  fi
 
- INCLUDED_IMMODULE_OBJ="$INCLUDED_IMMODULE_OBJ ../modules/input/libstatic-im-$immodule.la"
+ INCLUDED_IMMODULE_OBJ="$INCLUDED_IMMODULE_OBJ"
  INCLUDED_IMMODULE_DEFINE="$INCLUDED_IMMODULE_DEFINE -DINCLUDE_IM_$immodule_underscores"
  eval INCLUDE_$immodule_underscores=yes
 done
@@ -1649,7 +1649,6 @@ gtk/tests/Makefile
 modules/Makefile
 modules/engines/Makefile
 modules/engines/pixbuf/Makefile
-modules/input/Makefile
 modules/printbackends/Makefile
 modules/printbackends/cups/Makefile
 modules/printbackends/lpr/Makefile
