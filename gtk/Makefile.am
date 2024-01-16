@@ -967,8 +967,6 @@ gtk_HEADERS_DIR = $(libgtkincludedir)
 gtk_HEADERS_INST = $(gtkinclude_HEADERS)
 gtk_HEADERS_EXCLUDES = gtkdummy
 
-include $(top_srcdir)/build/Makefile.msvcproj
-
 if HAVE_INTROSPECTION
 # Introspection Items for MSVC
 MSVC_INTROSPECT_GIRS = Gtk-2.0.gir
@@ -1016,8 +1014,6 @@ Gtk_2_0_gir_MSVC_CFLAGS = $(GTK_MSVC_GIR_CFLAGS)
 Gtk_2_0_gir_MSVC_SCANNERFLAGS =	\
 	--warn-all	\
 	--include-uninstalled='./vs$$$$(VSVER)/$$$$(CFG)/$$$$(PLAT)/bin/Gdk-2.0.gir'
-
-include $(top_srcdir)/build/Makefile.msvc-introspection
 
 else
 INTROSPECTION_INTERMEDIATE_ITEMS =

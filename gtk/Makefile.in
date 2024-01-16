@@ -1689,8 +1689,7 @@ TEST_LOG_COMPILE = $(TEST_LOG_COMPILER) $(AM_TEST_LOG_FLAGS) \
 am__DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/gtk-win32.rc.in \
 	$(srcdir)/gtkversion.h.in $(srcdir)/makefile.msc.in \
 	$(top_srcdir)/Makefile.decl \
-	$(top_srcdir)/build/Makefile.msvc-introspection \
-	$(top_srcdir)/build/Makefile.msvcproj $(top_srcdir)/depcomp \
+	$(top_srcdir)/depcomp \
 	$(top_srcdir)/test-driver
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
 am__relativize = \
@@ -2787,7 +2786,7 @@ all: $(BUILT_SOURCES)
 
 .SUFFIXES:
 .SUFFIXES: .c .lo .log .o .obj .test .test$(EXEEXT) .trs
-$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am $(top_srcdir)/Makefile.decl $(top_srcdir)/build/Makefile.msvcproj $(top_srcdir)/build/Makefile.msvc-introspection $(am__configure_deps)
+$(srcdir)/Makefile.in: @MAINTAINER_MODE_TRUE@ $(srcdir)/Makefile.am $(top_srcdir)/Makefile.decl $(am__configure_deps)
 	@for dep in $?; do \
 	  case '$(am__configure_deps)' in \
 	    *$$dep*) \
@@ -2807,7 +2806,7 @@ Makefile: $(srcdir)/Makefile.in $(top_builddir)/config.status
 	    echo ' cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@ $(am__maybe_remake_depfiles)'; \
 	    cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@ $(am__maybe_remake_depfiles);; \
 	esac;
-$(top_srcdir)/Makefile.decl $(top_srcdir)/build/Makefile.msvcproj $(top_srcdir)/build/Makefile.msvc-introspection $(am__empty):
+$(top_srcdir)/Makefile.decl $(am__empty):
 
 $(top_builddir)/config.status: $(top_srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh

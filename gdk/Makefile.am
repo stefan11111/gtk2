@@ -384,8 +384,6 @@ gdk_HEADERS_DIR = $(gdkincludedir)
 gdk_HEADERS_INST = $(gdkinclude_HEADERS)
 gdk_HEADERS_EXCLUDES = gdkdummy
 
-include $(top_srcdir)/build/Makefile.msvcproj
-
 if HAVE_INTROSPECTION
 # Introspection Items for MSVC
 MSVC_INTROSPECT_GIRS = Gdk-2.0.gir
@@ -404,8 +402,6 @@ Gdk_2_0_gir_MSVC_INCLUDE_GIRS = $(Gdk_2_0_gir_INCLUDES)
 Gdk_2_0_gir_MSVC_LIBS = gdk-win32-2.0
 Gdk_2_0_gir_MSVC_CFLAGS = $(BASE_MSVC_GIR_CFLAGS)
 Gdk_2_0_gir_MSVC_SCANNERFLAGS = $(Gdk_2_0_gir_SCANNERFLAGS)
-
-include $(top_srcdir)/build/Makefile.msvc-introspection
 
 else
 INTROSPECTION_INTERMEDIATE_ITEMS =
