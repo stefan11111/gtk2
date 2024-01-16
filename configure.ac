@@ -1647,8 +1647,6 @@ gtk/gtk-win32.rc
 gtk/theme-bits/Makefile
 gtk/tests/Makefile
 modules/Makefile
-modules/engines/Makefile
-modules/engines/pixbuf/Makefile
 modules/printbackends/Makefile
 modules/printbackends/cups/Makefile
 modules/printbackends/lpr/Makefile
