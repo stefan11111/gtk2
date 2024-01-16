@@ -139,8 +139,6 @@ endif
 
 im_ime_la_LDFLAGS = -rpath $(moduledir) -avoid-version -module $(no_undefined)
 im_ime_la_SOURCES = \
-	gtkimcontextime.c \
-	gtkimcontextime.h \
 	imime.c 	  \
 	imm-extra.h
 libstatic_im_ime_la_SOURCES = $(im_ime_la_SOURCES)

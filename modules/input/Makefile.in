@@ -172,7 +172,7 @@ im_cyrillic_translit_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC \
 @BUILD_DYNAMIC_MODULES_TRUE@@INCLUDE_IM_CYRILLIC_TRANSLIT_FALSE@am_im_cyrillic_translit_la_rpath = -rpath \
 @BUILD_DYNAMIC_MODULES_TRUE@@INCLUDE_IM_CYRILLIC_TRANSLIT_FALSE@	$(moduledir)
 im_ime_la_DEPENDENCIES = $(am__DEPENDENCIES_2)
-am_im_ime_la_OBJECTS = gtkimcontextime.lo imime.lo
+am_im_ime_la_OBJECTS = imime.lo
 im_ime_la_OBJECTS = $(am_im_ime_la_OBJECTS)
 im_ime_la_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
@@ -278,7 +278,7 @@ libstatic_im_cyrillic_translit_la_OBJECTS =  \
 	$(am_libstatic_im_cyrillic_translit_la_OBJECTS)
 @INCLUDE_IM_CYRILLIC_TRANSLIT_TRUE@am_libstatic_im_cyrillic_translit_la_rpath =
 libstatic_im_ime_la_DEPENDENCIES =
-am__objects_4 = gtkimcontextime.lo imime.lo
+am__objects_4 = imime.lo
 am_libstatic_im_ime_la_OBJECTS = $(am__objects_4)
 libstatic_im_ime_la_OBJECTS = $(am_libstatic_im_ime_la_OBJECTS)
 @INCLUDE_IM_IME_TRUE@@USE_WIN32_TRUE@am_libstatic_im_ime_la_rpath =
@@ -345,8 +345,7 @@ am__v_at_1 =
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__maybe_remake_depfiles = depfiles
-am__depfiles_remade = ./$(DEPDIR)/gtkimcontextime.Plo \
-	./$(DEPDIR)/gtkimcontextthai.Plo \
+am__depfiles_remade = ./$(DEPDIR)/gtkimcontextthai.Plo \
 	./$(DEPDIR)/gtkimcontextxim.Plo \
 	./$(DEPDIR)/im_multipress_la-gtkimcontextmultipress.Plo \
 	./$(DEPDIR)/im_multipress_la-immultipress.Plo \
@@ -806,8 +805,6 @@ im_ipa_la_LIBADD = $(LDADDS)
 @INCLUDE_IM_IPA_FALSE@IPA_MODULE = im-ipa.la
 im_ime_la_LDFLAGS = -rpath $(moduledir) -avoid-version -module $(no_undefined)
 im_ime_la_SOURCES = \
-	gtkimcontextime.c \
-	gtkimcontextime.h \
 	imime.c 	  \
 	imm-extra.h
 
@@ -1036,7 +1033,6 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gtkimcontextime.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gtkimcontextthai.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/gtkimcontextxim.Plo@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/im_multipress_la-gtkimcontextmultipress.Plo@am__quote@ # am--include-marker
@@ -1277,7 +1273,6 @@ clean-am: clean-generic clean-libtool clean-moduleLTLIBRARIES \
 	clean-noinstLTLIBRARIES mostlyclean-am
 
 distclean: distclean-am
-		-rm -f ./$(DEPDIR)/gtkimcontextime.Plo
 	-rm -f ./$(DEPDIR)/gtkimcontextthai.Plo
 	-rm -f ./$(DEPDIR)/gtkimcontextxim.Plo
 	-rm -f ./$(DEPDIR)/im_multipress_la-gtkimcontextmultipress.Plo
@@ -1344,7 +1339,6 @@ install-ps-am:
 installcheck-am:
 
 maintainer-clean: maintainer-clean-am
-		-rm -f ./$(DEPDIR)/gtkimcontextime.Plo
 	-rm -f ./$(DEPDIR)/gtkimcontextthai.Plo
 	-rm -f ./$(DEPDIR)/gtkimcontextxim.Plo
 	-rm -f ./$(DEPDIR)/im_multipress_la-gtkimcontextmultipress.Plo
