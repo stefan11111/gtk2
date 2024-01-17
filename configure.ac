@@ -1624,7 +1624,6 @@ fi
 ])
 
 AC_CONFIG_FILES([
-config.h.win32
 Makefile
 gdk-2.0.pc
 gtk+-2.0.pc
