@@ -27593,7 +27593,7 @@ fi
 ac_config_commands="$ac_config_commands gdk/gdkconfig.h"
 
 
-ac_config_files="$ac_config_files config.h.win32 gtk-zip.sh Makefile gdk-2.0.pc gtk+-2.0.pc gtk+-unix-print-2.0.pc gdk-2.0-uninstalled.pc gtk+-2.0-uninstalled.pc m4macros/Makefile build/Makefile gdk/Makefile gdk/x11/Makefile gdk/quartz/Makefile gdk/directfb/Makefile gtk/Makefile gtk/makefile.msc gtk/gtkversion.h gtk/gtk-win32.rc gtk/theme-bits/Makefile modules/Makefile modules/printbackends/Makefile modules/printbackends/cups/Makefile modules/printbackends/lpr/Makefile modules/printbackends/file/Makefile modules/printbackends/papi/Makefile modules/printbackends/test/Makefile perf/Makefile"
+ac_config_files="$ac_config_files config.h.win32 Makefile gdk-2.0.pc gtk+-2.0.pc gtk+-unix-print-2.0.pc gdk-2.0-uninstalled.pc gtk+-2.0-uninstalled.pc m4macros/Makefile build/Makefile gdk/Makefile gdk/x11/Makefile gdk/quartz/Makefile gdk/directfb/Makefile gtk/Makefile gtk/makefile.msc gtk/gtkversion.h gtk/gtk-win32.rc gtk/theme-bits/Makefile modules/Makefile modules/printbackends/Makefile modules/printbackends/cups/Makefile modules/printbackends/lpr/Makefile modules/printbackends/file/Makefile modules/printbackends/papi/Makefile modules/printbackends/test/Makefile perf/Makefile"
 
 
 cat >confcache <<\_ACEOF
@@ -28998,7 +28998,6 @@ do
     "default-2") CONFIG_COMMANDS="$CONFIG_COMMANDS default-2" ;;
     "gdk/gdkconfig.h") CONFIG_COMMANDS="$CONFIG_COMMANDS gdk/gdkconfig.h" ;;
     "config.h.win32") CONFIG_FILES="$CONFIG_FILES config.h.win32" ;;
-    "gtk-zip.sh") CONFIG_FILES="$CONFIG_FILES gtk-zip.sh" ;;
     "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
     "gdk-2.0.pc") CONFIG_FILES="$CONFIG_FILES gdk-2.0.pc" ;;
     "gtk+-2.0.pc") CONFIG_FILES="$CONFIG_FILES gtk+-2.0.pc" ;;

@@ -29,7 +29,6 @@ EXTRA_DIST +=			\
 	README.win32		\
 	config.h.win32		\
 	makefile.msc	\
-	gtk-zip.sh.in		\
 	sanitize-la.sh
 
 MAINTAINERCLEANFILES = \
