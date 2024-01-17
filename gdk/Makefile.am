@@ -10,7 +10,7 @@ INTROSPECTION_COMPILER_ARGS = \
    --includedir=.
 
 SUBDIRS = $(gdktarget) . 
-DIST_SUBDIRS = x11 quartz directfb tests
+DIST_SUBDIRS = x11 quartz directfb
 
 CLEANFILES =
 
