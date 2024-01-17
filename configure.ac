@@ -1624,8 +1624,6 @@ fi
 ])
 
 AC_CONFIG_FILES([
-config.h.win32
-gtk-zip.sh
 Makefile
 gdk-2.0.pc
 gtk+-2.0.pc
@@ -1633,18 +1631,15 @@ gtk+-unix-print-2.0.pc
 gdk-2.0-uninstalled.pc
 gtk+-2.0-uninstalled.pc
 m4macros/Makefile
-tests/Makefile
 build/Makefile
 gdk/Makefile
 gdk/x11/Makefile
 gdk/quartz/Makefile
 gdk/directfb/Makefile
-gdk/tests/Makefile
 gtk/Makefile
 gtk/makefile.msc
 gtk/gtkversion.h
 gtk/theme-bits/Makefile
-gtk/tests/Makefile
 modules/Makefile
 modules/printbackends/Makefile
 modules/printbackends/cups/Makefile
