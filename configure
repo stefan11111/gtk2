@@ -27593,7 +27593,7 @@ fi
 ac_config_commands="$ac_config_commands gdk/gdkconfig.h"
 
 
-ac_config_files="$ac_config_files config.h.win32 gtk-zip.sh Makefile gdk-2.0.pc gtk+-2.0.pc gtk+-unix-print-2.0.pc gdk-2.0-uninstalled.pc gtk+-2.0-uninstalled.pc m4macros/Makefile tests/Makefile build/Makefile gdk/Makefile gdk/x11/Makefile gdk/quartz/Makefile gdk/directfb/Makefile gdk/tests/Makefile gtk/Makefile gtk/makefile.msc gtk/gtkversion.h gtk/gtk-win32.rc gtk/theme-bits/Makefile gtk/tests/Makefile modules/Makefile modules/printbackends/Makefile modules/printbackends/cups/Makefile modules/printbackends/lpr/Makefile modules/printbackends/file/Makefile modules/printbackends/papi/Makefile modules/printbackends/test/Makefile perf/Makefile"
+ac_config_files="$ac_config_files config.h.win32 gtk-zip.sh Makefile gdk-2.0.pc gtk+-2.0.pc gtk+-unix-print-2.0.pc gdk-2.0-uninstalled.pc gtk+-2.0-uninstalled.pc m4macros/Makefile build/Makefile gdk/Makefile gdk/x11/Makefile gdk/quartz/Makefile gdk/directfb/Makefile gtk/Makefile gtk/makefile.msc gtk/gtkversion.h gtk/gtk-win32.rc gtk/theme-bits/Makefile modules/Makefile modules/printbackends/Makefile modules/printbackends/cups/Makefile modules/printbackends/lpr/Makefile modules/printbackends/file/Makefile modules/printbackends/papi/Makefile modules/printbackends/test/Makefile perf/Makefile"
 
 
 cat >confcache <<\_ACEOF
@@ -29006,19 +29006,16 @@ do
     "gdk-2.0-uninstalled.pc") CONFIG_FILES="$CONFIG_FILES gdk-2.0-uninstalled.pc" ;;
     "gtk+-2.0-uninstalled.pc") CONFIG_FILES="$CONFIG_FILES gtk+-2.0-uninstalled.pc" ;;
     "m4macros/Makefile") CONFIG_FILES="$CONFIG_FILES m4macros/Makefile" ;;
-    "tests/Makefile") CONFIG_FILES="$CONFIG_FILES tests/Makefile" ;;
     "build/Makefile") CONFIG_FILES="$CONFIG_FILES build/Makefile" ;;
     "gdk/Makefile") CONFIG_FILES="$CONFIG_FILES gdk/Makefile" ;;
     "gdk/x11/Makefile") CONFIG_FILES="$CONFIG_FILES gdk/x11/Makefile" ;;
     "gdk/quartz/Makefile") CONFIG_FILES="$CONFIG_FILES gdk/quartz/Makefile" ;;
     "gdk/directfb/Makefile") CONFIG_FILES="$CONFIG_FILES gdk/directfb/Makefile" ;;
-    "gdk/tests/Makefile") CONFIG_FILES="$CONFIG_FILES gdk/tests/Makefile" ;;
     "gtk/Makefile") CONFIG_FILES="$CONFIG_FILES gtk/Makefile" ;;
     "gtk/makefile.msc") CONFIG_FILES="$CONFIG_FILES gtk/makefile.msc" ;;
     "gtk/gtkversion.h") CONFIG_FILES="$CONFIG_FILES gtk/gtkversion.h" ;;
     "gtk/gtk-win32.rc") CONFIG_FILES="$CONFIG_FILES gtk/gtk-win32.rc" ;;
     "gtk/theme-bits/Makefile") CONFIG_FILES="$CONFIG_FILES gtk/theme-bits/Makefile" ;;
-    "gtk/tests/Makefile") CONFIG_FILES="$CONFIG_FILES gtk/tests/Makefile" ;;
     "modules/Makefile") CONFIG_FILES="$CONFIG_FILES modules/Makefile" ;;
     "modules/printbackends/Makefile") CONFIG_FILES="$CONFIG_FILES modules/printbackends/Makefile" ;;
     "modules/printbackends/cups/Makefile") CONFIG_FILES="$CONFIG_FILES modules/printbackends/cups/Makefile" ;;
