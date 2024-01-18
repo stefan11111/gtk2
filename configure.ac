@@ -1632,12 +1632,6 @@ gdk/directfb/Makefile
 gtk/Makefile
 gtk/makefile.msc
 gtk/gtkversion.h
-modules/Makefile
-modules/printbackends/Makefile
-modules/printbackends/cups/Makefile
-modules/printbackends/lpr/Makefile
-modules/printbackends/file/Makefile
-modules/printbackends/papi/Makefile
 ])
 
 AC_OUTPUT
