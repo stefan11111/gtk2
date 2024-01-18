@@ -16,8 +16,8 @@ else
 GTK_PRINT_PREVIEW_COMMAND="evince --unlink-tempfile --preview --print-settings %s %f"
 endif
 
-SUBDIRS = theme-bits . 
-DIST_SUBDIRS=theme-bits
+SUBDIRS = .
+DIST_SUBDIRS=
 
 if HAVE_PAPI_CUPS
 GTK_PRINT_BACKENDS=file,papi,cups
