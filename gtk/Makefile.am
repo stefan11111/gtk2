@@ -19,22 +19,8 @@ endif
 SUBDIRS = .
 DIST_SUBDIRS=
 
-if HAVE_PAPI_CUPS
-GTK_PRINT_BACKENDS=file,papi,cups
-else
-if HAVE_CUPS
-GTK_PRINT_BACKENDS=file,cups
-else
-if HAVE_PAPI
-GTK_PRINT_BACKENDS=file,papi
-else
-GTK_PRINT_BACKENDS=file,lpr
-endif
-endif
-endif
+# no printing backends
 
-# manually remove if wanted
-# grep for DISABLE_PRINTING_BACKENDS to easly find
 GTK_PRINT_BACKENDS=
 
 # disable print backends
