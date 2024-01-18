@@ -9,8 +9,8 @@ INTROSPECTION_COMPILER_ARGS = \
    --includedir=$(srcdir) \
    --includedir=.
 
-SUBDIRS = $(gdktarget) . 
-DIST_SUBDIRS = x11 quartz directfb
+SUBDIRS = $(gdktarget) .
+DIST_SUBDIRS = x11 directfb
 
 CLEANFILES =
 
@@ -176,10 +176,6 @@ libgdk_x11_2_0_la_SOURCES = $(common_sources)
 libgdk_x11_2_0_la_LIBADD = x11/libgdk-x11.la $(GDK_DEP_LIBS)
 libgdk_x11_2_0_la_LDFLAGS = $(LDADD)
 
-libgdk_quartz_2_0_la_SOURCES = $(common_sources) gdkkeynames.c
-libgdk_quartz_2_0_la_LIBADD = quartz/libgdk-quartz.la $(GDK_DEP_LIBS)
-libgdk_quartz_2_0_la_LDFLAGS = $(LDADD)
-
 if HAVE_INTROSPECTION
 
 base_introspection_files = 		\
@@ -281,7 +277,7 @@ endif
 
 lib_LTLIBRARIES = $(gdktargetlib)
 
-EXTRA_LTLIBRARIES = libgdk-x11-2.0.la libgdk-quartz-2.0.la libgdk-directfb-2.0.la
+EXTRA_LTLIBRARIES = libgdk-x11-2.0.la libgdk-directfb-2.0.la
 
 MAINTAINERCLEANFILES = $(gdk_built_sources) stamp-gdkenumtypes.h
 EXTRA_DIST += $(gdk_built_sources)

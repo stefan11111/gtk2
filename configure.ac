@@ -249,13 +249,13 @@ else
   gdktarget=x11
 fi
 
-AC_ARG_WITH(gdktarget, [  --with-gdktarget=[[x11/win32/quartz/directfb]] select non-default GDK target],
+AC_ARG_WITH(gdktarget, [  --with-gdktarget=[[x11/directfb]] select non-default GDK target],
 	gdktarget=$with_gdktarget)
 
 AC_SUBST(gdktarget)
 case $gdktarget in
-  x11|win32|quartz|directfb) ;;
-  *) AC_MSG_ERROR([Invalid target for GDK: use x11, quartz, directfb or win32.]);;
+  x11|directfb) ;;
+  *) AC_MSG_ERROR([Invalid target for GDK: use x11 or directfb.]);;
 esac
 
 gdktargetlib=libgdk-$gdktarget-$GTK_API_VERSION.la
@@ -782,12 +782,6 @@ else
 fi
 
 all_immodules="am-et,cedilla,cyrillic-translit"
-if test "$gdktarget" = "win32"; then
-   all_immodules="${all_immodules},ime"
-fi
-if test "$gdktarget" = "quartz"; then
-   all_immodules="${all_immodules},quartz"
-fi
 all_immodules="${all_immodules},inuktitut,ipa,multipress,thai,ti-er,ti-et,viqr"
 if test "$gdktarget" = "x11"; then
    all_immodules="${all_immodules},xim"
@@ -1634,20 +1628,16 @@ m4macros/Makefile
 build/Makefile
 gdk/Makefile
 gdk/x11/Makefile
-gdk/quartz/Makefile
 gdk/directfb/Makefile
 gtk/Makefile
 gtk/makefile.msc
 gtk/gtkversion.h
-gtk/theme-bits/Makefile
 modules/Makefile
 modules/printbackends/Makefile
 modules/printbackends/cups/Makefile
 modules/printbackends/lpr/Makefile
 modules/printbackends/file/Makefile
 modules/printbackends/papi/Makefile
-modules/printbackends/test/Makefile
-perf/Makefile
 ])
 
 AC_OUTPUT
