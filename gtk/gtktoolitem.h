@@ -114,7 +114,7 @@ gboolean        gtk_tool_item_get_is_important         (GtkToolItem *tool_item);
 void            gtk_tool_item_set_is_important         (GtkToolItem *tool_item,
 							gboolean     is_important);
 
-PangoEllipsizeMode gtk_tool_item_get_ellipsize_mode    (GtkToolItem *tool_item);
+void* gtk_tool_item_get_ellipsize_mode    (GtkToolItem *tool_item);
 GtkIconSize     gtk_tool_item_get_icon_size            (GtkToolItem *tool_item);
 GtkOrientation  gtk_tool_item_get_orientation          (GtkToolItem *tool_item);
 GtkToolbarStyle gtk_tool_item_get_toolbar_style        (GtkToolItem *tool_item);

@@ -139,8 +139,8 @@ void     gtk_label_set_justify                    (GtkLabel         *label,
 						   GtkJustification  jtype);
 GtkJustification gtk_label_get_justify            (GtkLabel         *label);
 void     gtk_label_set_ellipsize		  (GtkLabel         *label,
-						   PangoEllipsizeMode mode);
-PangoEllipsizeMode gtk_label_get_ellipsize        (GtkLabel         *label);
+						   void* mode);
+void* gtk_label_get_ellipsize        (GtkLabel         *label);
 void     gtk_label_set_width_chars		  (GtkLabel         *label,
 						   gint              n_chars);
 gint     gtk_label_get_width_chars                (GtkLabel         *label);

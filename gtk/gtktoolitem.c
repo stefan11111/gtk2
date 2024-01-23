@@ -711,12 +711,12 @@ gtk_tool_item_new (void)
  * #GtkToolItem should call this function to find out how text should
  * be ellipsized.
  *
- * Return value: a #PangoEllipsizeMode indicating how text in @tool_item
+ * Return value: a #void* indicating how text in @tool_item
  * should be ellipsized.
  *
  * Since: 2.20
  **/
-PangoEllipsizeMode
+void*
 gtk_tool_item_get_ellipsize_mode (GtkToolItem *tool_item)
 {
   GtkWidget *parent;
