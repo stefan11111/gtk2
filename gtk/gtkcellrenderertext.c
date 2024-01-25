@@ -136,7 +136,7 @@ struct _GtkCellRendererTextPrivate
   
   gulong focus_out_id;
   PangoLanguage *language;
-  PangoEllipsizeMode ellipsize;
+  void* ellipsize;
   PangoWrapMode wrap_mode;
   PangoAlignment align;
   
@@ -1441,11 +1441,6 @@ get_layout (GtkCellRendererText *celltext,
 
   if (celltext->rise_set)
     add_attr (attr_list, pango_attr_rise_new (celltext->rise));
-
-  if (priv->ellipsize_set)
-    pango_layout_set_ellipsize (layout, priv->ellipsize);
-  else
-    pango_layout_set_ellipsize (layout, PANGO_ELLIPSIZE_NONE);
 
   if (priv->wrap_width != -1)
     {

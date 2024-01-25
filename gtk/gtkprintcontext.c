@@ -102,7 +102,7 @@ _gtk_print_context_new (GtkPrintOperation *op)
   return context;
 }
 
-static PangoFontMap *
+static void *
 _gtk_print_context_get_fontmap (GtkPrintContext *context)
 {
   return pango_cairo_font_map_get_default ();
@@ -448,7 +448,7 @@ _gtk_print_context_set_hard_margins (GtkPrintContext *context,
  *
  * Since: 2.10
  */
-PangoFontMap *
+void *
 gtk_print_context_get_pango_fontmap (GtkPrintContext *context)
 {
   g_return_val_if_fail (GTK_IS_PRINT_CONTEXT (context), NULL);
@@ -467,10 +467,10 @@ gtk_print_context_get_pango_fontmap (GtkPrintContext *context)
  * 
  * Since: 2.10
  */
-PangoContext *
+void *
 gtk_print_context_create_pango_context (GtkPrintContext *context)
 {
-  PangoContext *pango_context;
+  void *pango_context;
   cairo_font_options_t *options;
 
   g_return_val_if_fail (GTK_IS_PRINT_CONTEXT (context), NULL);
@@ -501,11 +501,11 @@ gtk_print_context_create_pango_context (GtkPrintContext *context)
  *
  * Since: 2.10
  */
-PangoLayout *
+void *
 gtk_print_context_create_pango_layout (GtkPrintContext *context)
 {
-  PangoContext *pango_context;
-  PangoLayout *layout;
+  void *pango_context;
+  void *layout;
 
   g_return_val_if_fail (GTK_IS_PRINT_CONTEXT (context), NULL);
 

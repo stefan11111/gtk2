@@ -2619,7 +2619,7 @@ gtk_label_get_justify (GtkLabel *label)
 /**
  * gtk_label_set_ellipsize:
  * @label: a #GtkLabel
- * @mode: a #PangoEllipsizeMode
+ * @mode: a #void*
  *
  * Sets the mode used to ellipsize (add an ellipsis: "...") to the text 
  * if there is not enough space to render the entire string.
@@ -2628,12 +2628,12 @@ gtk_label_get_justify (GtkLabel *label)
  **/
 void
 gtk_label_set_ellipsize (GtkLabel          *label,
-			 PangoEllipsizeMode mode)
+			 void* mode)
 {
   g_return_if_fail (GTK_IS_LABEL (label));
   g_return_if_fail (mode >= PANGO_ELLIPSIZE_NONE && mode <= PANGO_ELLIPSIZE_END);
   
-  if ((PangoEllipsizeMode) label->ellipsize != mode)
+  if ((void*) label->ellipsize != mode)
     {
       label->ellipsize = mode;
 
@@ -2651,11 +2651,11 @@ gtk_label_set_ellipsize (GtkLabel          *label,
  *
  * Returns the ellipsizing position of the label. See gtk_label_set_ellipsize().
  *
- * Return value: #PangoEllipsizeMode
+ * Return value: #void*
  *
  * Since: 2.6
  **/
-PangoEllipsizeMode
+void*
 gtk_label_get_ellipsize (GtkLabel *label)
 {
   g_return_val_if_fail (GTK_IS_LABEL (label), PANGO_ELLIPSIZE_NONE);

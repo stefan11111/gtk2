@@ -29,7 +29,6 @@
 #endif
 
 #include <gtk/gtkenums.h>
-#include <pango/pango.h>
 #include <gtk/gtksizegroup.h>
 
 
@@ -70,7 +69,7 @@ struct _GtkToolShellIface
   void               (*rebuild_menu)         (GtkToolShell *shell);
   GtkOrientation     (*get_text_orientation) (GtkToolShell *shell);
   gfloat             (*get_text_alignment)   (GtkToolShell *shell);
-  PangoEllipsizeMode (*get_ellipsize_mode)   (GtkToolShell *shell);
+  void*              (*get_ellipsize_mode)   (GtkToolShell *shell);
   GtkSizeGroup *     (*get_text_size_group)  (GtkToolShell *shell);
 };
 
@@ -83,7 +82,7 @@ GtkReliefStyle     gtk_tool_shell_get_relief_style     (GtkToolShell *shell);
 void               gtk_tool_shell_rebuild_menu         (GtkToolShell *shell);
 GtkOrientation     gtk_tool_shell_get_text_orientation (GtkToolShell *shell);
 gfloat             gtk_tool_shell_get_text_alignment   (GtkToolShell *shell);
-PangoEllipsizeMode gtk_tool_shell_get_ellipsize_mode   (GtkToolShell *shell);
+void*              gtk_tool_shell_get_ellipsize_mode   (GtkToolShell *shell);
 GtkSizeGroup *     gtk_tool_shell_get_text_size_group  (GtkToolShell *shell);
 
 G_END_DECLS
