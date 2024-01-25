@@ -145,7 +145,7 @@ struct _GtkPrintBackendCups
   gchar      *username;
   gboolean    authentication_lock;
 #ifdef HAVE_CUPS_API_1_6
-  GDBusConnection *dbus_connection;
+  void *dbus_connection;
   gchar           *avahi_default_printer;
   guint            avahi_service_browser_subscription_id;
   guint            avahi_service_browser_subscription_ids[2];
@@ -2628,7 +2628,7 @@ avahi_service_resolver_cb (GObject      *source_object,
 }
 
 static void
-avahi_service_browser_signal_handler (GDBusConnection *connection,
+avahi_service_browser_signal_handler (void *connection,
                                       const gchar     *sender_name,
                                       const gchar     *object_path,
                                       const gchar     *interface_name,
@@ -2636,67 +2636,6 @@ avahi_service_browser_signal_handler (GDBusConnection *connection,
                                       GVariant        *parameters,
                                       gpointer         user_data)
 {
-  GtkPrintBackendCups *backend = GTK_PRINT_BACKEND_CUPS (user_data);
-  gchar               *name;
-  gchar               *type;
-  gchar               *domain;
-  guint                flags;
-  gint                 interface;
-  gint                 protocol;
-
-  if (g_strcmp0 (signal_name, "ItemNew") == 0)
-    {
-      g_variant_get (parameters, "(ii&s&s&su)",
-                     &interface,
-                     &protocol,
-                     &name,
-                     &type,
-                     &domain,
-                     &flags);
-
-  if (g_strcmp0 (signal_name, "ItemRemove") == 0)
-    {
-      GtkPrinterCups *printer;
-      GList          *list;
-      GList          *iter;
-
-      g_variant_get (parameters, "(ii&s&s&su)",
-                     &interface,
-                     &protocol,
-                     &name,
-                     &type,
-                     &domain,
-                     &flags);
-
-      if (g_strcmp0 (type, "_ipp._tcp") == 0 ||
-          g_strcmp0 (type, "_ipps._tcp") == 0)
-        {
-          list = gtk_print_backend_get_printer_list (GTK_PRINT_BACKEND (backend));
-          for (iter = list; iter; iter = iter->next)
-            {
-              printer = GTK_PRINTER_CUPS (iter->data);
-              if (g_strcmp0 (printer->avahi_name, name) == 0 &&
-                  g_strcmp0 (printer->avahi_type, type) == 0 &&
-                  g_strcmp0 (printer->avahi_domain, domain) == 0)
-                {
-                  if (g_strcmp0 (gtk_printer_get_name (GTK_PRINTER (printer)),
-                                 backend->avahi_default_printer) == 0)
-                    {
-                      g_free (backend->avahi_default_printer);
-                      backend->avahi_default_printer = NULL;
-                    }
-
-                  g_signal_emit_by_name (backend, "printer-removed", printer);
-                  gtk_print_backend_remove_printer (GTK_PRINT_BACKEND (backend),
-                                                    GTK_PRINTER (printer));
-                  g_signal_emit_by_name (backend, "printer-list-changed");
-                  break;
-                }
-            }
-        }
-
-      g_list_free (list);
-    }
 }
 
 static void
