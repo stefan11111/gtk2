@@ -142,8 +142,8 @@ gdouble               gtk_progress_bar_get_pulse_step (GtkProgressBar *pbar);
 
 GtkProgressBarOrientation gtk_progress_bar_get_orientation (GtkProgressBar *pbar);
 void               gtk_progress_bar_set_ellipsize (GtkProgressBar     *pbar,
-						   void*  mode);
-void* gtk_progress_bar_get_ellipsize (GtkProgressBar     *pbar);
+						   PangoEllipsizeMode  mode);
+PangoEllipsizeMode gtk_progress_bar_get_ellipsize (GtkProgressBar     *pbar);
 
 
 #ifndef GTK_DISABLE_DEPRECATED
