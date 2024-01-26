@@ -214,7 +214,7 @@ gtk_tool_shell_get_text_alignment (GtkToolShell *shell)
  *
  * Since: 2.20
  **/
-void *
+PangoEllipsizeMode
 gtk_tool_shell_get_ellipsize_mode (GtkToolShell *shell)
 {
   GtkToolShellIface *iface = GTK_TOOL_SHELL_GET_IFACE (shell);
@@ -222,7 +222,7 @@ gtk_tool_shell_get_ellipsize_mode (GtkToolShell *shell)
   if (iface->get_ellipsize_mode)
     return GTK_TOOL_SHELL_GET_IFACE (shell)->get_ellipsize_mode (shell);
 
-  return NULL;
+  return PANGO_ELLIPSIZE_NONE;
 }
 
 /**

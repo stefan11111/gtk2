@@ -88,7 +88,7 @@ struct _GtkToolItemGroupPrivate
   GtkExpanderStyle   expander_style;
   gint               expander_size;
   gint               header_spacing;
-  void* ellipsize;
+  PangoEllipsizeMode ellipsize;
 
   gulong             focus_set_id;
   GtkWidget         *toplevel;
@@ -153,7 +153,7 @@ gtk_tool_item_group_get_icon_size (GtkToolShell *shell)
   return GTK_ICON_SIZE_SMALL_TOOLBAR;
 }
 
-static void*
+static PangoEllipsizeMode
 gtk_tool_item_group_get_ellipsize_mode (GtkToolShell *shell)
 {
   return GTK_TOOL_ITEM_GROUP (shell)->priv->ellipsize;
@@ -1897,7 +1897,7 @@ gtk_tool_item_group_set_collapsed (GtkToolItemGroup *group,
 /**
  * gtk_tool_item_group_set_ellipsize:
  * @group: a #GtkToolItemGroup
- * @ellipsize: the #void* labels in @group should use
+ * @ellipsize: the #PangoEllipsizeMode labels in @group should use
  *
  * Sets the ellipsization mode which should be used by labels in @group.
  *
@@ -1905,7 +1905,7 @@ gtk_tool_item_group_set_collapsed (GtkToolItemGroup *group,
  */
 void
 gtk_tool_item_group_set_ellipsize (GtkToolItemGroup   *group,
-                                   void*  ellipsize)
+                                   PangoEllipsizeMode  ellipsize)
 {
   g_return_if_fail (GTK_IS_TOOL_ITEM_GROUP (group));
 
@@ -1988,11 +1988,11 @@ gtk_tool_item_group_get_collapsed (GtkToolItemGroup *group)
  *
  * Gets the ellipsization mode of @group.
  *
- * Returns: the #void* of @group
+ * Returns: the #PangoEllipsizeMode of @group
  *
  * Since: 2.20
  */
-void*
+PangoEllipsizeMode
 gtk_tool_item_group_get_ellipsize (GtkToolItemGroup *group)
 {
   g_return_val_if_fail (GTK_IS_TOOL_ITEM_GROUP (group), DEFAULT_ELLIPSIZE);

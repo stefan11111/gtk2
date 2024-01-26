@@ -68,14 +68,14 @@ void                  gtk_tool_item_group_set_label_widget  (GtkToolItemGroup   
 void                  gtk_tool_item_group_set_collapsed      (GtkToolItemGroup  *group,
                                                              gboolean            collapsed);
 void                  gtk_tool_item_group_set_ellipsize     (GtkToolItemGroup   *group,
-                                                             void*  ellipsize);
+                                                             PangoEllipsizeMode  ellipsize);
 void                  gtk_tool_item_group_set_header_relief (GtkToolItemGroup   *group,
                                                              GtkReliefStyle      style);
 
 const gchar *         gtk_tool_item_group_get_label         (GtkToolItemGroup   *group);
 GtkWidget            *gtk_tool_item_group_get_label_widget  (GtkToolItemGroup   *group);
 gboolean              gtk_tool_item_group_get_collapsed     (GtkToolItemGroup   *group);
-void*    gtk_tool_item_group_get_ellipsize     (GtkToolItemGroup   *group);
+PangoEllipsizeMode    gtk_tool_item_group_get_ellipsize     (GtkToolItemGroup   *group);
 GtkReliefStyle        gtk_tool_item_group_get_header_relief (GtkToolItemGroup   *group);
 
 void                  gtk_tool_item_group_insert            (GtkToolItemGroup   *group,
