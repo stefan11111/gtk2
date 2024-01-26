@@ -7,7 +7,9 @@ Further debloating is tricky to do because it would either break api, break actu
 IMPORTANT: Printing backends are disabled by default and need patching to work.
 Grep for DISABLE_PRINTING_BACKENDS to enable.
 
-There is also a patch to enable printing in the print-patches directory.
+There is also a patch to enable printing in the print-patches directory named enable-printing.patch.
+
+There is also a patch to remove printing backends in the print-patches directory named remove-printing.patch.
 
 Here are some text files I removed from the main repo: https://github.com/stefan11111/gtk2-textfiles
 
