@@ -19,7 +19,7 @@ quartz (apple) support
 
 ms-windows engine
 
-engines modules (pixbuf)
+engine modules (pixbuf)
 
 immodules
 
