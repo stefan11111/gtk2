@@ -88,6 +88,11 @@ static const int gdk_ndebug_keys = G_N_ELEMENTS (gdk_debug_keys);
 
 #endif /* G_ENABLE_DEBUG */
 
+gchar* __attribute__((weak)) g_string_free_and_steal(GString         *string)
+{
+    return NULL;
+}
+
 #ifdef G_ENABLE_DEBUG
 static gboolean
 gdk_arg_debug_cb (const char *key, const char *value, gpointer user_data, GError **error)
