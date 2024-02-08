@@ -35,7 +35,7 @@ endif
 
 # manually remove if wanted
 # grep for DISABLE_PRINTING_BACKENDS to easly find
-GTK_PRINT_BACKENDS=
+#GTK_PRINT_BACKENDS=
 
 # disable print backends
 
