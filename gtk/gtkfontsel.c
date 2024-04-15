@@ -296,7 +296,6 @@ gtk_font_selection_init (GtkFontSelection *fontsel)
   GtkListStore *model;
   GtkTreeViewColumn *column;
   GList *focus_chain = NULL;
-  void *atk_obj;
 
   gtk_widget_push_composite_child ();
 
@@ -480,7 +479,6 @@ gtk_font_selection_init (GtkFontSelection *fontsel)
 
   g_signal_connect (gtk_tree_view_get_selection (GTK_TREE_VIEW (fontsel->size_list)), "changed",
 		    G_CALLBACK (gtk_font_selection_select_size), fontsel);
-  atk_obj = gtk_widget_get_accessible (fontsel->size_list);  
 
   vbox = gtk_vbox_new (FALSE, 6);
   gtk_widget_show (vbox);

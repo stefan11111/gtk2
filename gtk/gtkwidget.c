@@ -114,9 +114,6 @@
  *     <relation target="label1" type="labelled-by"/>
  *   </accessibility>
  *   <child internal-child="accessible">
- *     <object class="AtkObject" id="a11y-button1">
- *       <property name="AtkObject::name">Clickable Button</property>
- *     </object>
  *   </child>
  * </object>
  * ]]></programlisting>
@@ -10217,18 +10214,6 @@ gtk_requisition_get_type (void)
  *
  * Returns the accessible object that describes the widget to an
  * assistive technology. 
- * 
- * If no accessibility library is loaded (i.e. no ATK implementation library is 
- * loaded via <envar>GTK_MODULES</envar> or via another application library, 
- * such as libgnome), then this #AtkObject instance may be a no-op. Likewise, 
- * if no class-specific #AtkObject implementation is available for the widget 
- * instance in question, it will inherit an #AtkObject implementation from the 
- * first ancestor class for which such an implementation is defined.
- *
- * The documentation of the <ulink url="http://developer.gnome.org/doc/API/2.0/atk/index.html">ATK</ulink>
- * library contains more information about accessible objects and their uses.
- *
- * Returns: (transfer none): the #AtkObject associated with @widget
  */
 void*
 gtk_widget_get_accessible (GtkWidget *widget)
@@ -10255,7 +10240,7 @@ gtk_widget_real_get_accessible (GtkWidget *widget)
 }
 
 /*
- * Initialize a AtkImplementorIface instance's virtual pointers as
+ * Initialize a ImplementorIface instance's virtual pointers as
  * appropriate to this implementor's class (GtkWidget).
  */
 static void
@@ -10268,7 +10253,6 @@ gtk_widget_accessible_interface_init (void *iface)
  */
 static GQuark		 quark_builder_has_default = 0;
 static GQuark		 quark_builder_has_focus = 0;
-static GQuark		 quark_builder_atk_relations = 0;
 static GQuark            quark_builder_set_name = 0;
 
 static void
@@ -10276,7 +10260,6 @@ gtk_widget_buildable_interface_init (GtkBuildableIface *iface)
 {
   quark_builder_has_default = g_quark_from_static_string ("gtk-builder-has-default");
   quark_builder_has_focus = g_quark_from_static_string ("gtk-builder-has-focus");
-  quark_builder_atk_relations = g_quark_from_static_string ("gtk-builder-atk-relations");
   quark_builder_set_name = g_quark_from_static_string ("gtk-builder-set-name");
 
   iface->set_name = gtk_widget_buildable_set_name;
@@ -10333,8 +10316,6 @@ static void
 gtk_widget_buildable_parser_finished (GtkBuildable *buildable,
 				      GtkBuilder   *builder)
 {
-  GSList *atk_relations;
-
   if (g_object_get_qdata (G_OBJECT (buildable), quark_builder_has_default))
     gtk_widget_grab_default (GTK_WIDGET (buildable));
   if (g_object_get_qdata (G_OBJECT (buildable), quark_builder_has_focus))
@@ -10516,10 +10497,6 @@ gtk_widget_buildable_custom_finished (GtkBuildable *buildable,
 
       _gtk_widget_buildable_finish_accelerator (GTK_WIDGET (buildable), toplevel, user_data);
     }
-
-      if (a11y_data->relations)
-	g_object_set_qdata (G_OBJECT (buildable), quark_builder_atk_relations,
-			    a11y_data->relations);
 
       g_slice_free (AccessibilitySubParserData, a11y_data);
 }

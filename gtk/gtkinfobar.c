@@ -1180,7 +1180,6 @@ gtk_info_bar_set_message_type (GtkInfoBar     *info_bar,
                                GtkMessageType  message_type)
 {
   GtkInfoBarPrivate *priv;
-  void *atk_obj;
 
   g_return_if_fail (GTK_IS_INFO_BAR (info_bar));
 

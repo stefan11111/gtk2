@@ -329,7 +329,6 @@ gtk_color_selection_init (GtkColorSelection *colorsel)
   GtkWidget *picker_image;
   gint i, j;
   ColorSelectionPrivate *priv;
-  void *atk_obj;
   GList *focus_chain = NULL;
   
   gtk_widget_push_composite_child ();
@@ -491,8 +490,6 @@ gtk_color_selection_init (GtkColorSelection *colorsel)
     {
       gtk_widget_hide (priv->palette_frame);
     }
-
-  atk_obj = gtk_widget_get_accessible (priv->triangle_colorsel);
 
   gtk_widget_pop_composite_child ();
 }
