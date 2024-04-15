@@ -156,7 +156,6 @@ send_event_handler (Display *dpy,
   else if (dpy->last_request_read == state->get_input_focus_req)
     {
       xGetInputFocusReply replbuf;
-      xGetInputFocusReply *repl;
       
       if (rep->generic.type != X_Error)
 	{
