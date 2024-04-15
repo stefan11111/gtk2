@@ -401,13 +401,6 @@ gtk_widget_get_type (void)
 	NULL,		/* value_table */
       };
 
-      const GInterfaceInfo accessibility_info =
-      {
-	(GInterfaceInitFunc) gtk_widget_accessible_interface_init,
-	(GInterfaceFinalizeFunc) NULL,
-	NULL /* interface data */
-      };
-
       const GInterfaceInfo buildable_info =
       {
 	(GInterfaceInitFunc) gtk_widget_buildable_interface_init,

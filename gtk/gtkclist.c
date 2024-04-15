@@ -6094,24 +6094,12 @@ static void
 vadjustment_changed (GtkAdjustment *adjustment,
 		     gpointer       data)
 {
-  GtkCList *clist;
-
-  g_return_if_fail (adjustment != NULL);
-  g_return_if_fail (data != NULL);
-
-  clist = GTK_CLIST (data);
 }
 
 static void
 hadjustment_changed (GtkAdjustment *adjustment,
 		     gpointer       data)
 {
-  GtkCList *clist;
-
-  g_return_if_fail (adjustment != NULL);
-  g_return_if_fail (data != NULL);
-
-  clist = GTK_CLIST (data);
 }
 
 static void

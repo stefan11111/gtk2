@@ -985,12 +985,9 @@ gdk_offscreen_window_show (GdkWindow *window,
 static void
 gdk_offscreen_window_hide (GdkWindow *window)
 {
-  GdkWindowObject *private;
   GdkDisplay *display;
 
   g_return_if_fail (window != NULL);
-
-  private = (GdkWindowObject*) window;
 
   /* May need to break grabs on children */
   display = gdk_drawable_get_display (window);

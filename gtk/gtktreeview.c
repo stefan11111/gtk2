@@ -9332,7 +9332,7 @@ _gtk_tree_view_column_start_drag (GtkTreeView       *tree_view,
 {
   GdkEvent *send_event;
   GtkAllocation allocation;
-  gint x, y, width, height;
+  gint x, y;
   GdkScreen *screen = gtk_widget_get_screen (GTK_WIDGET (tree_view));
   GdkDisplay *display = gdk_screen_get_display (screen);
 
@@ -9414,8 +9414,6 @@ _gtk_tree_view_column_start_drag (GtkTreeView       *tree_view,
   gdk_window_show (tree_view->priv->drag_window);
 
   gdk_window_get_origin (tree_view->priv->header_window, &x, &y);
-  width = gdk_window_get_width (tree_view->priv->header_window);
-  height = gdk_window_get_height (tree_view->priv->header_window);
 
   gtk_widget_grab_focus (GTK_WIDGET (tree_view));
   while (gtk_events_pending ())

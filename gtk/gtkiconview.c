@@ -4419,15 +4419,13 @@ static void
 gtk_icon_view_scroll_to_item (GtkIconView     *icon_view, 
 			      GtkIconViewItem *item)
 {
-  gint x, y, width, height;
+  gint x, y;
   gint focus_width;
 
   gtk_widget_style_get (GTK_WIDGET (icon_view),
 			"focus-line-width", &focus_width,
 			NULL);
 
-  width = gdk_window_get_width (icon_view->priv->bin_window);
-  height = gdk_window_get_height (icon_view->priv->bin_window);
   gdk_window_get_position (icon_view->priv->bin_window, &x, &y);
   
   if (y + item->y - focus_width < 0)

@@ -1170,7 +1170,6 @@ gtk_tooltip_show_tooltip (GdkDisplay *display)
 
   GdkWindow *window;
   GtkWidget *tooltip_widget;
-  GtkWidget *pointer_widget;
   GtkTooltip *tooltip;
   gboolean has_tooltip;
   gboolean return_value = FALSE;
@@ -1181,7 +1180,7 @@ gtk_tooltip_show_tooltip (GdkDisplay *display)
   if (tooltip->keyboard_mode_enabled)
     {
       x = y = -1;
-      pointer_widget = tooltip_widget = tooltip->keyboard_widget;
+      tooltip_widget = tooltip->keyboard_widget;
     }
   else
     {
@@ -1198,9 +1197,7 @@ gtk_tooltip_show_tooltip (GdkDisplay *display)
       tooltip->last_x = tx;
       tooltip->last_y = ty;
 
-      pointer_widget = tooltip_widget = _gtk_widget_find_at_coords (window,
-                                                                    x, y,
-                                                                    &x, &y);
+      tooltip_widget = _gtk_widget_find_at_coords (window, x, y, &x, &y);
     }
 
   if (!tooltip_widget)

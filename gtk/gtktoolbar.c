@@ -1452,7 +1452,6 @@ gtk_toolbar_size_allocate (GtkWidget     *widget,
   GtkRequisition arrow_requisition;
   gboolean overflowing;
   gboolean size_changed;
-  gdouble elapsed;
   GtkAllocation item_area;
   GtkShadowType shadow_type;
   
@@ -1736,7 +1735,6 @@ gtk_toolbar_size_allocate (GtkWidget     *widget,
 	}
     }
 
-  elapsed = g_timer_elapsed (priv->timer, NULL);
   for (list = priv->content, i = 0; list != NULL; list = list->next, ++i)
     {
       ToolbarContent *content = list->data;
