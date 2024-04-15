@@ -131,7 +131,21 @@ static GtkWidget *
 get_slider_button (GtkPathBar  *path_bar,
 		   GtkArrowType arrow_type)
 {
-  return NULL;
+  GtkWidget *button;
+
+  gtk_widget_push_composite_child ();
+
+  button = gtk_button_new ();
+
+  gtk_button_set_focus_on_click (GTK_BUTTON (button), FALSE);
+  gtk_container_add (GTK_CONTAINER (button),
+                     gtk_arrow_new (arrow_type, GTK_SHADOW_OUT));
+  gtk_container_add (GTK_CONTAINER (path_bar), button);
+  gtk_widget_show_all (button);
+
+  gtk_widget_pop_composite_child ();
+
+  return button;
 }
 
 static void
@@ -1412,7 +1426,6 @@ make_directory_button (GtkPathBar  *path_bar,
 		       gboolean     current_dir,
 		       gboolean     file_is_hidden)
 {
-  void *atk_obj;
   GtkWidget *child = NULL;
   GtkWidget *label_alignment = NULL;
   ButtonData *button_data;
@@ -1423,7 +1436,6 @@ make_directory_button (GtkPathBar  *path_bar,
 
   button_data->type = find_button_type (path_bar, file);
   button_data->button = gtk_toggle_button_new ();
-  atk_obj = gtk_widget_get_accessible (button_data->button);
   gtk_button_set_focus_on_click (GTK_BUTTON (button_data->button), FALSE);
 
   switch (button_data->type)
