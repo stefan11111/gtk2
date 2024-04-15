@@ -3152,7 +3152,6 @@ gtk_icon_view_paint_item (GtkIconView     *icon_view,
   GdkRectangle cell_area, box;
   GList *l;
   gint i;
-  GtkStateType state;
   GtkCellRendererState flags;
       
   if (icon_view->priv->model == NULL)
@@ -3169,15 +3168,10 @@ gtk_icon_view_paint_item (GtkIconView     *icon_view,
   if (item->selected)
     {
       flags = GTK_CELL_RENDERER_SELECTED;
-      if (gtk_widget_has_focus (GTK_WIDGET (icon_view)))
-	state = GTK_STATE_SELECTED;
-      else
-	state = GTK_STATE_ACTIVE;
     }
   else
     {
       flags = 0;
-      state = GTK_STATE_NORMAL;
     }
   
 #ifdef DEBUG_ICON_VIEW
@@ -3408,15 +3402,11 @@ gtk_icon_view_set_cursor_item (GtkIconView     *icon_view,
 			       GtkIconViewItem *item,
 			       gint             cursor_cell)
 {
-  void *obj;
-  void *item_obj;
-  void *cursor_item_obj;
 
   if (icon_view->priv->cursor_item == item &&
       (cursor_cell < 0 || cursor_cell == icon_view->priv->cursor_cell))
     return;
 
-  obj = gtk_widget_get_accessible (GTK_WIDGET (icon_view));
   if (icon_view->priv->cursor_item != NULL)
     {
       gtk_icon_view_queue_draw_item (icon_view, icon_view->priv->cursor_item);
@@ -7617,10 +7607,6 @@ gtk_icon_view_set_reorderable (GtkIconView *icon_view,
   g_object_notify (G_OBJECT (icon_view), "reorderable");
 }
 
-
-/* Accessibility Support */
-
-static GQuark accessible_private_data_quark = 0;
 
 #define GTK_ICON_VIEW_ITEM_ACCESSIBLE(obj)      (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_ICON_VIEW_ITEM_ACCESSIBLE, GtkIconViewItemAccessible))
 #define GTK_IS_ICON_VIEW_ITEM_ACCESSIBLE(obj)   (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_ICON_VIEW_ITEM_ACCESSIBLE))

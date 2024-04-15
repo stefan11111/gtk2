@@ -635,14 +635,12 @@ gdk_x11_display_set_cursor_theme (GdkDisplay  *display,
 				  const gchar *theme,
 				  const gint   size)
 {
-  GdkDisplayX11 *display_x11;
   Display *xdisplay;
   gchar *old_theme;
   gint old_size;
 
   g_return_if_fail (GDK_IS_DISPLAY (display));
 
-  display_x11 = GDK_DISPLAY_X11 (display);
   xdisplay = GDK_DISPLAY_XDISPLAY (display);
 
   old_theme = XcursorGetTheme (xdisplay);

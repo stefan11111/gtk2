@@ -625,13 +625,11 @@ gdk_display_pointer_ungrab (GdkDisplay *display,
 			    guint32     time_)
 {
   Display *xdisplay;
-  GdkDisplayX11 *display_x11;
   GdkPointerGrabInfo *grab;
   unsigned long serial;
 
   g_return_if_fail (GDK_IS_DISPLAY (display));
 
-  display_x11 = GDK_DISPLAY_X11 (display);
   xdisplay = GDK_DISPLAY_XDISPLAY (display);
 
   serial = NextRequest (xdisplay);
@@ -667,11 +665,9 @@ gdk_display_keyboard_ungrab (GdkDisplay *display,
 			     guint32     time)
 {
   Display *xdisplay;
-  GdkDisplayX11 *display_x11;
   
   g_return_if_fail (GDK_IS_DISPLAY (display));
 
-  display_x11 = GDK_DISPLAY_X11 (display);
   xdisplay = GDK_DISPLAY_XDISPLAY (display);
   
   XUngrabKeyboard (xdisplay, time);
