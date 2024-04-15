@@ -163,7 +163,7 @@ send_event_handler (Display *dpy,
 	  /* Actually does nothing, since there are no additional bytes
 	   * to read, but maintain good form.
 	   */
-	  repl = (xGetInputFocusReply *)
+
 	    _XGetAsyncReply(dpy, (char *)&replbuf, rep, buf, len,
 			    (sizeof(xGetInputFocusReply) - sizeof(xReply)) >> 2,
 			    True);
@@ -275,9 +275,6 @@ _gdk_x11_send_client_message_async (GdkDisplay           *display,
    * XSync (dpy, 0)
    */
   {
-    xReq *req;
-    
-    GetEmptyReq(GetInputFocus, req);
     state->get_input_focus_req = dpy->request;
   }
   
@@ -309,14 +306,13 @@ set_input_focus_handler (Display *dpy,
   if (dpy->last_request_read == state->get_input_focus_req)
     {
       xGetInputFocusReply replbuf;
-      xGetInputFocusReply *repl;
       
       if (rep->generic.type != X_Error)
 	{
 	  /* Actually does nothing, since there are no additional bytes
 	   * to read, but maintain good form.
 	   */
-	  repl = (xGetInputFocusReply *)
+
 	    _XGetAsyncReply(dpy, (char *)&replbuf, rep, buf, len,
 			    (sizeof(xGetInputFocusReply) - sizeof(xReply)) >> 2,
 			    True);
@@ -368,9 +364,6 @@ _gdk_x11_set_input_focus_safe (GdkDisplay             *display,
    * XSync (dpy, 0)
    */
   {
-    xReq *req;
-    
-    GetEmptyReq(GetInputFocus, req);
     state->get_input_focus_req = dpy->request;
   }
   
@@ -778,14 +771,13 @@ roundtrip_handler (Display *dpy,
   if (dpy->last_request_read == state->get_input_focus_req)
     {
       xGetInputFocusReply replbuf;
-      xGetInputFocusReply *repl;
       
       if (rep->generic.type != X_Error)
 	{
 	  /* Actually does nothing, since there are no additional bytes
 	   * to read, but maintain good form.
 	   */
-	  repl = (xGetInputFocusReply *)
+
 	    _XGetAsyncReply(dpy, (char *)&replbuf, rep, buf, len,
 			    (sizeof(xGetInputFocusReply) - sizeof(xReply)) >> 2,
 			    True);
@@ -831,9 +823,6 @@ _gdk_x11_roundtrip_async (GdkDisplay           *display,
    * XSync (dpy, 0)
    */
   {
-    xReq *req;
-    
-    GetEmptyReq(GetInputFocus, req);
     state->get_input_focus_req = dpy->request;
   }
   

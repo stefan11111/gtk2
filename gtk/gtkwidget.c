@@ -304,7 +304,6 @@ static gboolean		gtk_widget_real_mnemonic_activate	(GtkWidget	  *widget,
 								 gboolean	   group_cycling);
 static void		gtk_widget_aux_info_destroy		(GtkWidgetAuxInfo *aux_info);
 static void*	gtk_widget_real_get_accessible		(GtkWidget	  *widget);
-static void		gtk_widget_accessible_interface_init	(void *iface);
 static void             gtk_widget_invalidate_widget_windows    (GtkWidget        *widget,
 								 GdkRegion        *region);
 static GdkScreen *      gtk_widget_get_screen_unchecked         (GtkWidget        *widget);
@@ -10236,10 +10235,6 @@ gtk_widget_real_get_accessible (GtkWidget *widget)
  * Initialize a ImplementorIface instance's virtual pointers as
  * appropriate to this implementor's class (GtkWidget).
  */
-static void
-gtk_widget_accessible_interface_init (void *iface)
-{
-}
 
 /*
  * GtkBuildable implementation

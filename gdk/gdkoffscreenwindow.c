@@ -985,6 +985,7 @@ gdk_offscreen_window_show (GdkWindow *window,
 static void
 gdk_offscreen_window_hide (GdkWindow *window)
 {
+#if 0
   GdkDisplay *display;
 
   g_return_if_fail (window != NULL);
@@ -1008,6 +1009,7 @@ gdk_offscreen_window_hide (GdkWindow *window)
 	  gdk_display_pointer_ungrab (display, GDK_CURRENT_TIME);
 	}
     }
+#endif
 #endif
 }
 

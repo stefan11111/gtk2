@@ -2229,12 +2229,9 @@ _gtk_tool_item_group_item_size_request (GtkToolItemGroup *group,
   GList *it;
   gint rows = 0;
   gboolean new_row = TRUE;
-  GtkOrientation orientation;
 
   g_return_if_fail (GTK_IS_TOOL_ITEM_GROUP (group));
   g_return_if_fail (NULL != item_size);
-
-  orientation = gtk_tool_shell_get_orientation (GTK_TOOL_SHELL (group));
 
   item_size->width = item_size->height = 0;
 

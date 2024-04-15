@@ -3884,7 +3884,6 @@ gtk_entry_motion_notify (GtkWidget      *widget,
   GtkEntry *entry = GTK_ENTRY (widget);
   GtkEntryPrivate *priv = GTK_ENTRY_GET_PRIVATE (entry);
   EntryIconInfo *icon_info = NULL;
-  GdkDragContext *context;
   gint tmp_pos;
   gint i;
 
@@ -3907,11 +3906,11 @@ gtk_entry_motion_notify (GtkWidget      *widget,
             {
               icon_info->in_drag = TRUE;
               icon_info->pressed = FALSE;
-              context = gtk_drag_begin (widget,
-                                        icon_info->target_list,
-                                        icon_info->actions,
-                                        1,
-                                        (GdkEvent*)event);
+              gtk_drag_begin (widget,
+                              icon_info->target_list,
+                              icon_info->actions,
+                              1,
+                              (GdkEvent*)event);
             }
 
           return TRUE;

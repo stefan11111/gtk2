@@ -296,13 +296,6 @@ static gint
 gtk_tree_button_release (GtkWidget      *widget,
 			 GdkEventButton *event)
 {
-  GtkTree *tree;
-  
-  g_return_val_if_fail (GTK_IS_TREE (widget), FALSE);
-  g_return_val_if_fail (event != NULL, FALSE);
-  
-  tree = GTK_TREE (widget);
-  
   return TRUE;
 }
 
