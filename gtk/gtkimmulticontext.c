@@ -517,26 +517,6 @@ activate_cb (GtkWidget         *menuitem,
     }
 }
 
-static int
-pathnamecmp (const char *a,
-	     const char *b)
-{
-#ifndef G_OS_WIN32
-  return strcmp (a, b);
-#else
-  /* Ignore case insensitivity, probably not that relevant here. Just
-   * make sure slash and backslash compare equal.
-   */
-  while (*a && *b)
-    if ((G_IS_DIR_SEPARATOR (*a) && G_IS_DIR_SEPARATOR (*b)) ||
-	*a == *b)
-      a++, b++;
-    else
-      return (*a - *b);
-  return (*a - *b);
-#endif
-}
-
 /**
  * gtk_im_multicontext_append_menuitems:
  * @context: a #GtkIMMulticontext
