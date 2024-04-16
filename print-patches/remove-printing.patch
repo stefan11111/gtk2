@@ -2218,7 +2218,7 @@ index 985f0d2..0000000
 -#include <cairo-ps.h>
 -
 -#include <glib/gstdio.h>
--#include <glib/gi18n-lib.h>
+-#include "gtk/gtkintl.h"
 -#include <gmodule.h>
 -
 -#include <gtk/gtk.h>
@@ -8037,7 +8037,7 @@ index 20d157d..0000000
 -#include <cairo-ps.h>
 -#include <cairo-svg.h>
 -
--#include <glib/gi18n-lib.h>
+-#include "gtk/gtkintl.h"
 -
 -#include "gtk/gtk.h"
 -#include "gtk/gtkprinter-private.h"
@@ -8936,7 +8936,7 @@ index 0ee856c..0000000
 -#include <cairo.h>
 -#include <cairo-ps.h>
 -
--#include <glib/gi18n-lib.h>
+-#include "gtk/gtkintl.h"
 -
 -#include <gtk/gtk.h>
 -#include "gtkprinter-private.h"
@@ -9523,7 +9523,7 @@ index d349010..0000000
 -#include <cairo.h>
 -#include <cairo-ps.h>
 -
--#include <glib/gi18n-lib.h>
+-#include "gtk/gtkintl.h"
 -
 -#include "gtk.h"
 -#include "gtkprintbackendpapi.h"

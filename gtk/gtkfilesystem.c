@@ -24,7 +24,7 @@
 
 #include <string.h>
 
-#include <glib/gi18n-lib.h>
+#include "gtk/gtkintl.h"
 
 #include "gtkfilechooser.h"
 #include "gtkfilesystem.h"
