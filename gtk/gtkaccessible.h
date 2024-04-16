@@ -39,7 +39,7 @@ typedef struct _GtkAccessible                GtkAccessible;
 typedef struct _GtkAccessibleClass           GtkAccessibleClass;
 
   /*
-   * This object is a thin wrapper, in the GTK+ namespace, for AtkObject
+   * This object is a thin wrapper, in the GTK+ namespace
    */
 struct _GtkAccessible
 {

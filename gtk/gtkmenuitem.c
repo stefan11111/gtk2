@@ -1415,12 +1415,10 @@ gtk_real_menu_item_activate (GtkMenuItem *menu_item)
 static void
 gtk_real_menu_item_activate_item (GtkMenuItem *menu_item)
 {
-  GtkMenuItemPrivate *priv;
   GtkWidget *widget;
 
   g_return_if_fail (GTK_IS_MENU_ITEM (menu_item));
 
-  priv   = GET_PRIVATE (menu_item);
   widget = GTK_WIDGET (menu_item);
   
   if (widget->parent &&
@@ -1431,8 +1429,6 @@ gtk_real_menu_item_activate_item (GtkMenuItem *menu_item)
 				      widget, TRUE);
       else
 	{
-	  GtkMenuShell *menu_shell = GTK_MENU_SHELL (widget->parent);
-
 	  gtk_menu_shell_select_item (GTK_MENU_SHELL (widget->parent), widget);
 	  _gtk_menu_item_popup_submenu (widget, FALSE);
 

@@ -127,9 +127,6 @@ cb_query_tooltip (GtkWidget  *button,
   GtkAdjustment *adj;
   gdouble val;
   char *str;
-  void *image;
-
-  image = GTK_IMAGE (gtk_widget_get_accessible (button));
 
   adj = gtk_scale_button_get_adjustment (scale_button);
   val = gtk_scale_button_get_value (scale_button);

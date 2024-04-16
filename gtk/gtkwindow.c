@@ -979,11 +979,8 @@ gtk_window_set_property (GObject      *object,
 			 GParamSpec   *pspec)
 {
   GtkWindow  *window;
-  GtkWindowPrivate *priv;
   
   window = GTK_WINDOW (object);
-
-  priv = GTK_WINDOW_GET_PRIVATE (window);
 
   switch (prop_id)
     {

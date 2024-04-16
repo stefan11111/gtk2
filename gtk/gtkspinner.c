@@ -315,11 +315,8 @@ gtk_spinner_unrealize (GtkWidget *widget)
 static void
 gtk_spinner_screen_changed (GtkWidget* widget, GdkScreen* old_screen)
 {
-  GtkSpinner *spinner;
   GdkScreen* new_screen;
   GdkColormap* colormap;
-
-  spinner = GTK_SPINNER (widget);
 
   new_screen = gtk_widget_get_screen (widget);
   colormap = gdk_screen_get_rgba_colormap (new_screen);

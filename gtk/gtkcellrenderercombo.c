@@ -267,10 +267,6 @@ gtk_cell_renderer_combo_set_property (GObject      *object,
     {
     case PROP_MODEL:
       {
-        GtkCellRendererComboPrivate *priv;
-
-        priv = GTK_CELL_RENDERER_COMBO_GET_PRIVATE (cell);
-
         if (cell->model)
           g_object_unref (cell->model);
         cell->model = GTK_TREE_MODEL (g_value_get_object (value));

@@ -3884,7 +3884,6 @@ gtk_entry_motion_notify (GtkWidget      *widget,
   GtkEntry *entry = GTK_ENTRY (widget);
   GtkEntryPrivate *priv = GTK_ENTRY_GET_PRIVATE (entry);
   EntryIconInfo *icon_info = NULL;
-  GdkDragContext *context;
   gint tmp_pos;
   gint i;
 
@@ -3907,11 +3906,11 @@ gtk_entry_motion_notify (GtkWidget      *widget,
             {
               icon_info->in_drag = TRUE;
               icon_info->pressed = FALSE;
-              context = gtk_drag_begin (widget,
-                                        icon_info->target_list,
-                                        icon_info->actions,
-                                        1,
-                                        (GdkEvent*)event);
+              gtk_drag_begin (widget,
+                              icon_info->target_list,
+                              icon_info->actions,
+                              1,
+                              (GdkEvent*)event);
             }
 
           return TRUE;
@@ -4754,7 +4753,6 @@ gtk_entry_move_cursor (GtkEntry       *entry,
 		       gboolean        extend_selection)
 {
   gint new_pos = entry->current_pos;
-  GtkEntryPrivate *priv;
 
   _gtk_entry_reset_im_context (entry);
 
@@ -4793,7 +4791,6 @@ gtk_entry_move_cursor (GtkEntry       *entry,
 	case GTK_MOVEMENT_DISPLAY_LINE_ENDS:
 	case GTK_MOVEMENT_PARAGRAPH_ENDS:
 	case GTK_MOVEMENT_BUFFER_ENDS:
-	  priv = GTK_ENTRY_GET_PRIVATE (entry);
 	  new_pos = count < 0 ? 0 : gtk_entry_buffer_get_length (get_buffer (entry));
 	  break;
 
@@ -4861,7 +4858,6 @@ gtk_entry_move_cursor (GtkEntry       *entry,
 	case GTK_MOVEMENT_DISPLAY_LINE_ENDS:
 	case GTK_MOVEMENT_PARAGRAPH_ENDS:
 	case GTK_MOVEMENT_BUFFER_ENDS:
-	  priv = GTK_ENTRY_GET_PRIVATE (entry);
 	  new_pos = count < 0 ? 0 : gtk_entry_buffer_get_length (get_buffer (entry));
           if (entry->current_pos == new_pos)
             gtk_widget_error_bell (GTK_WIDGET (entry));
@@ -6829,11 +6825,9 @@ gtk_entry_set_text (GtkEntry    *entry,
 {
   gint tmp_pos;
   GtkEntryCompletion *completion;
-  GtkEntryPrivate *priv;
 
   g_return_if_fail (GTK_IS_ENTRY (entry));
   g_return_if_fail (text != NULL);
-  priv = GTK_ENTRY_GET_PRIVATE (entry);
 
   /* Actually setting the text will affect the cursor and selection;
    * if the contents don't actually change, this will look odd to the user.
@@ -6868,12 +6862,10 @@ void
 gtk_entry_append_text (GtkEntry *entry,
 		       const gchar *text)
 {
-  GtkEntryPrivate *priv;
   gint tmp_pos;
 
   g_return_if_fail (GTK_IS_ENTRY (entry));
   g_return_if_fail (text != NULL);
-  priv = GTK_ENTRY_GET_PRIVATE (entry);
 
   tmp_pos = gtk_entry_buffer_get_length (get_buffer (entry));
   gtk_editable_insert_text (GTK_EDITABLE (entry), text, -1, &tmp_pos);
@@ -9271,10 +9263,6 @@ blink_cb (gpointer data)
 static void
 gtk_entry_check_cursor_blink (GtkEntry *entry)
 {
-  GtkEntryPrivate *priv; 
-  
-  priv = GTK_ENTRY_GET_PRIVATE (entry);
-
   if (cursor_blinks (entry))
     {
       if (!entry->blink_timeout)

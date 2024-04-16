@@ -6081,16 +6081,6 @@ gtk_combo_box_set_title (GtkComboBox *combo_box,
 void*
 gtk_combo_box_get_popup_accessible (GtkComboBox *combo_box)
 {
-  void *atk_obj;
-
-  g_return_val_if_fail (GTK_IS_COMBO_BOX (combo_box), NULL);
-
-  if (combo_box->priv->popup_widget)
-    {
-      atk_obj = gtk_widget_get_accessible (combo_box->priv->popup_widget);
-      return atk_obj;
-    }
-
   return NULL;
 }
 

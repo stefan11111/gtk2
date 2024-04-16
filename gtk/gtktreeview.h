@@ -360,7 +360,7 @@ void gtk_tree_view_convert_bin_window_to_tree_coords   (GtkTreeView *tree_view,
 							gint        *tx,
 							gint        *ty);
 
-/* This function should really never be used.  It is just for use by ATK.
+/* This function should really never be used.
  */
 typedef void (* GtkTreeDestroyCountFunc)  (GtkTreeView             *tree_view,
 					   GtkTreePath             *path,

@@ -1478,7 +1478,7 @@ fi
 #  is exported
 #
 # We are using gmodule-no-export now, but I'm leaving the stripping
-# code in place for now, since pango and atk still require gmodule.
+# code in place for now, since pango still require gmodule.
 export SED
 export_dynamic=`(./libtool --config; echo eval echo \\$export_dynamic_flag_spec) | sh`
 if test -n "$export_dynamic"; then

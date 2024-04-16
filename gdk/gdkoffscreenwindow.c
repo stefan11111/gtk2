@@ -899,7 +899,6 @@ gdk_offscreen_window_move_resize_internal (GdkWindow *window,
 {
   GdkWindowObject *private = (GdkWindowObject *)window;
   GdkOffscreenWindow *offscreen;
-  gint dx, dy, dw, dh;
   GdkGC *gc;
   GdkPixmap *old_pixmap;
 
@@ -912,11 +911,6 @@ gdk_offscreen_window_move_resize_internal (GdkWindow *window,
 
   if (private->destroyed)
     return;
-
-  dx = x - private->x;
-  dy = y - private->y;
-  dw = width - private->width;
-  dh = height - private->height;
 
   private->x = x;
   private->y = y;
@@ -959,9 +953,6 @@ gdk_offscreen_window_move_resize (GdkWindow *window,
 				  gint       height)
 {
   GdkWindowObject *private = (GdkWindowObject *)window;
-  GdkOffscreenWindow *offscreen;
-
-  offscreen = GDK_OFFSCREEN_WINDOW (private->impl);
 
   if (!with_move)
     {
@@ -994,14 +985,10 @@ gdk_offscreen_window_show (GdkWindow *window,
 static void
 gdk_offscreen_window_hide (GdkWindow *window)
 {
-  GdkWindowObject *private;
-  GdkOffscreenWindow *offscreen;
+#if 0
   GdkDisplay *display;
 
   g_return_if_fail (window != NULL);
-
-  private = (GdkWindowObject*) window;
-  offscreen = GDK_OFFSCREEN_WINDOW (private->impl);
 
   /* May need to break grabs on children */
   display = gdk_drawable_get_display (window);
@@ -1022,6 +1009,7 @@ gdk_offscreen_window_hide (GdkWindow *window)
 	  gdk_display_pointer_ungrab (display, GDK_CURRENT_TIME);
 	}
     }
+#endif
 #endif
 }
 

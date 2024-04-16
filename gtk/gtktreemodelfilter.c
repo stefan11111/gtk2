@@ -1313,8 +1313,6 @@ gtk_tree_model_filter_row_changed (GtkTreeModel *c_model,
   /* make sure the new item has been pulled in */
   if (!filter->priv->root)
     {
-      FilterLevel *root;
-
       gtk_tree_model_filter_build_level (filter, NULL, -1, TRUE);
 
       /* We will only proceed below if the item is found.  If the item
@@ -1322,8 +1320,6 @@ gtk_tree_model_filter_row_changed (GtkTreeModel *c_model,
        * for it.
        */
       signals_emitted = TRUE;
-
-      root = FILTER_LEVEL (filter->priv->root);
     }
 
   gtk_tree_model_filter_increment_stamp (filter);

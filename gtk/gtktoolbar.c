@@ -1452,7 +1452,6 @@ gtk_toolbar_size_allocate (GtkWidget     *widget,
   GtkRequisition arrow_requisition;
   gboolean overflowing;
   gboolean size_changed;
-  gdouble elapsed;
   GtkAllocation item_area;
   GtkShadowType shadow_type;
   
@@ -1736,7 +1735,6 @@ gtk_toolbar_size_allocate (GtkWidget     *widget,
 	}
     }
 
-  elapsed = g_timer_elapsed (priv->timer, NULL);
   for (list = priv->content, i = 0; list != NULL; list = list->next, ++i)
     {
       ToolbarContent *content = list->data;
@@ -3789,7 +3787,6 @@ internal_insert_element (GtkToolbar          *toolbar,
 			 gboolean             use_stock)
 {
   GtkWidget *box;
-  ToolbarContent *content;
   char *free_me = NULL;
 
   GtkWidget *child_widget;
@@ -3899,8 +3896,8 @@ internal_insert_element (GtkToolbar          *toolbar,
 			    tooltip_text, tooltip_private_text);
     }
   
-  content = toolbar_content_new_compatibility (toolbar, type, child_widget,
-					       child_icon, child_label, position);
+  toolbar_content_new_compatibility (toolbar, type, child_widget,
+				     child_icon, child_label, position);
   
   g_free (free_me);
   

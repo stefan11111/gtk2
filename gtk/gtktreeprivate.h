@@ -194,7 +194,7 @@ struct _GtkTreeViewPrivate
   gint last_extra_space_per_column;
   gint last_number_of_expand_columns;
 
-  /* ATK Hack */
+  /* Hack */
   GtkTreeDestroyCountFunc destroy_count_func;
   gpointer destroy_count_data;
   GDestroyNotify destroy_count_destroy;
