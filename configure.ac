@@ -516,7 +516,7 @@ AC_TRY_RUN([#include <math.h>
      AC_MSG_RESULT(none needed),
      gtk_save_CFLAGS="$CFLAGS"
      CFLAGS="$CFLAGS -std1"
-     AC_TRY_RUN([#include <math.h>
+     [AC_TRY_RUN([#include <math.h>
 	         int main (void) { return (log(1) != log(1.)); }],
          AC_MSG_RESULT(-std1),
          AC_MSG_RESULT()
@@ -524,7 +524,7 @@ AC_TRY_RUN([#include <math.h>
          AC_MSG_WARN(
                 [No ANSI prototypes found in library. (-std1 didn't work.)]),
 	 true
-     ),
+     )],
      AC_MSG_RESULT(none needed)
 )
 LIBS=$gtk_save_LIBS
