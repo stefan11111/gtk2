@@ -500,11 +500,6 @@ if test "$gtk_ok" = "yes"; then
             [Define to 1 if sigsetjmp is available])
 fi
 
-AM_GLIB_GNU_GETTEXT
-LIBS="$LIBS $INTLLIBS"
-
-AM_GLIB_DEFINE_LOCALEDIR(GTK_LOCALEDIR)
-
 dnl The DU4 header files don't provide library prototypes unless 
 dnl -std1 is given to the native cc.
 AC_MSG_CHECKING([for extra flags to get ANSI library prototypes])
