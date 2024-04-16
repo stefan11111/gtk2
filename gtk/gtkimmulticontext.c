@@ -517,26 +517,6 @@ activate_cb (GtkWidget         *menuitem,
     }
 }
 
-static int
-pathnamecmp (const char *a,
-	     const char *b)
-{
-#ifndef G_OS_WIN32
-  return strcmp (a, b);
-#else
-  /* Ignore case insensitivity, probably not that relevant here. Just
-   * make sure slash and backslash compare equal.
-   */
-  while (*a && *b)
-    if ((G_IS_DIR_SEPARATOR (*a) && G_IS_DIR_SEPARATOR (*b)) ||
-	*a == *b)
-      a++, b++;
-    else
-      return (*a - *b);
-  return (*a - *b);
-#endif
-}
-
 /**
  * gtk_im_multicontext_append_menuitems:
  * @context: a #GtkIMMulticontext
@@ -585,58 +565,7 @@ gtk_im_multicontext_append_menuitems (GtkIMMulticontext *context,
   for (i = 0; i < n_contexts; i++)
     {
       const gchar *translated_name;
-#ifdef ENABLE_NLS
-      if (contexts[i]->domain && contexts[i]->domain[0])
-	{
-	  if (strcmp (contexts[i]->domain, GETTEXT_PACKAGE) == 0)
-	    {
-	      /* Same translation domain as GTK+ */
-	      if (!(contexts[i]->domain_dirname && contexts[i]->domain_dirname[0]) ||
-		  pathnamecmp (contexts[i]->domain_dirname, GTK_LOCALEDIR) == 0)
-		{
-		  /* Empty or NULL, domain directory, or same as
-		   * GTK+. Input method may have a name in the GTK+
-		   * message catalog.
-		   */
-		  translated_name = _(contexts[i]->context_name);
-		}
-	      else
-		{
-		  /* Separate domain directory but the same
-		   * translation domain as GTK+. We can't call
-		   * bindtextdomain() as that would make GTK+ forget
-		   * its own messages.
-		   */
-		  g_warning ("Input method %s should not use GTK's translation domain %s",
-			     contexts[i]->context_id, GETTEXT_PACKAGE);
-		  /* Try translating the name in GTK+'s domain */
-		  translated_name = _(contexts[i]->context_name);
-		}
-	    }
-	  else if (contexts[i]->domain_dirname && contexts[i]->domain_dirname[0])
-	    /* Input method has own translation domain and message catalog */
-	    {
-	      bindtextdomain (contexts[i]->domain,
-			      contexts[i]->domain_dirname);
-#ifdef HAVE_BIND_TEXTDOMAIN_CODESET
-	      bind_textdomain_codeset (contexts[i]->domain, "UTF-8");
-#endif
-	      translated_name = g_dgettext (contexts[i]->domain, contexts[i]->context_name);
-	    }
-	  else
-	    {
-	      /* Different translation domain, but no domain directory */
-	      translated_name = contexts[i]->context_name;
-	    }
-	}
-      else
-	/* Empty or NULL domain. We assume that input method does not
-	 * want a translated name in this case.
-	 */
-	translated_name = contexts[i]->context_name;
-#else
       translated_name = contexts[i]->context_name;
-#endif
       menuitem = gtk_radio_menu_item_new_with_label (group,
 						     translated_name);
       
