@@ -1643,11 +1643,7 @@ gtk_about_dialog_get_translator_credits (GtkAboutDialog *about)
  *
  * The intended use for this string is to display the translator
  * of the language which is currently used in the user interface.
- * Using gettext(), a simple way to achieve that is to mark the
- * string for translation:
- * |[
- *  gtk_about_dialog_set_translator_credits (about, _("translator-credits"));
- * ]|
+ *
  * It is a good idea to use the customary msgid "translator-credits" for this
  * purpose, since translators will already know the purpose of that msgid, and
  * since #GtkAboutDialog will detect if "translator-credits" is untranslated
@@ -2240,7 +2236,6 @@ display_credits_dialog (GtkWidget *button,
   if (priv->documenters != NULL)
     add_credits_page (about, dialog, notebook, _("Documented by"), priv->documenters);
 
-  /* Don't show an untranslated gettext msgid */
   if (priv->translator_credits != NULL &&
       strcmp (priv->translator_credits, "translator_credits") != 0 &&
       strcmp (priv->translator_credits, "translator-credits") != 0)

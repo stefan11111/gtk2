@@ -137,9 +137,13 @@ gboolean  _gtk_builder_flags_from_string (GType       type,
 					  const char *string,
 					  guint      *value,
 					  GError    **error);
+/*
 gchar * _gtk_builder_parser_translate (const gchar *domain,
 				       const gchar *context,
 				       const gchar *text);
+*/
+/* gchar * _gtk_builder_parser_translate { return g_strdup(text); } */
+
 gchar *   _gtk_builder_get_absolute_filename (GtkBuilder *builder,
 					      const gchar *string);
 

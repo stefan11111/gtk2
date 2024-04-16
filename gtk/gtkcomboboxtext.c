@@ -212,21 +212,6 @@ item_text (GMarkupParseContext *context,
 
   string = g_strndup (text, text_len);
 
-  if (data->translatable && text_len)
-    {
-      gchar *translated;
-
-      /* FIXME: This will not use the domain set in the .ui file,
-       * since the parser is not telling the builder about the domain.
-       * However, it will work for gtk_builder_set_translation_domain() calls.
-       */
-      translated = _gtk_builder_parser_translate (data->domain,
-						  data->context,
-						  string);
-      g_free (string);
-      string = translated;
-    }
-
   data->string = string;
 }
 

@@ -1708,12 +1708,7 @@ gtk_scale_buildable_custom_finished (GtkBuildable *buildable,
         {
           MarkData *mdata = m->data;
 
-          if (mdata->translatable && mdata->markup->len)
-            markup = _gtk_builder_parser_translate (gtk_builder_get_translation_domain (builder),
-                                                    mdata->context,
-                                                    mdata->markup->str);
-          else
-            markup = mdata->markup->str;
+          markup = mdata->markup->str;
 
           gtk_scale_add_mark (scale, mdata->value, mdata->position, markup);
 

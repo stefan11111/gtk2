@@ -55,7 +55,7 @@
  * GtkIMContextInfo:
  * @context_id: The unique identification string of the input method.
  * @context_name: The human-readable name of the input method.
- * @domain: Translation domain to be used with dgettext()
+ * @domain: Translation domain
  * @domain_dirname: Name of locale directory for use with bindtextdomain()
  * @default_locales: A colon-separated list of locales where this input method
  *   should be the default. The asterisk "*" sets the default for all locales.
@@ -525,12 +525,8 @@ _gtk_im_module_list (const GtkIMContextInfo ***contexts,
 		GtkIMContextInfo simple_context_info = {
     SIMPLE_ID,
     N_("Simple"),
-    GETTEXT_PACKAGE,
-#ifdef GTK_LOCALEDIR
-    GTK_LOCALEDIR,
-#else
     "",
-#endif
+    "",
     ""
   };
 

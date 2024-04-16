@@ -14,6 +14,4 @@
 
 #define C_(String1, String2) (String2)
 
-#define GETTEXT_PACKAGE ""
-
 #endif

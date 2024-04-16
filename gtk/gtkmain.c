@@ -707,28 +707,13 @@ do_pre_parse_initialization (int    *argc,
 }
 
 static void
-gettext_initialization (void)
-{
-  setlocale_initialization ();
-
-#ifdef ENABLE_NLS
-  bindtextdomain (GETTEXT_PACKAGE, GTK_LOCALEDIR);
-  bindtextdomain (GETTEXT_PACKAGE "-properties", GTK_LOCALEDIR);
-#    ifdef HAVE_BIND_TEXTDOMAIN_CODESET
-  bind_textdomain_codeset (GETTEXT_PACKAGE, "UTF-8");
-  bind_textdomain_codeset (GETTEXT_PACKAGE "-properties", "UTF-8");
-#    endif
-#endif  
-}
-
-static void
 do_post_parse_initialization (int    *argc,
 			      char ***argv)
 {
   if (gtk_initialized)
     return;
 
-  gettext_initialization ();
+  setlocale_initialization ();
 
 #ifdef SIGPIPE
   signal (SIGPIPE, SIG_IGN);
@@ -849,7 +834,7 @@ gtk_get_option_group (gboolean open_default_display)
   GOptionGroup *group;
   OptionGroupInfo *info;
 
-  gettext_initialization ();
+  setlocale_initialization ();
 
   info = g_new0 (OptionGroupInfo, 1);
   info->open_default_display = open_default_display;
@@ -859,7 +844,7 @@ gtk_get_option_group (gboolean open_default_display)
 
   gdk_add_option_entries_libgtk_only (group);
   g_option_group_add_entries (group, gtk_args);
-  g_option_group_set_translation_domain (group, GETTEXT_PACKAGE);
+  g_option_group_set_translation_domain (group, "");
   
   return group;
 }
@@ -876,7 +861,7 @@ gtk_get_option_group (gboolean open_default_display)
  *    of #GOptionEntry<!-- -->s describing the options of your program
  * @translation_domain: a translation domain to use for translating
  *    the <option>--help</option> output for the options in @entries
- *    and the @parameter_string with gettext(), or %NULL
+ *    and the @parameter_string with %NULL
  * @error: a return location for errors 
  *
  * This function does the same work as gtk_init_check(). 
@@ -905,7 +890,7 @@ gtk_init_with_args (int            *argc,
   if (gtk_initialized)
     return gdk_display_open_default_libgtk_only () != NULL;
 
-  gettext_initialization ();
+  setlocale_initialization ();
 
   if (!check_setugid ())
     return FALSE;
@@ -956,7 +941,7 @@ gtk_parse_args (int    *argc,
   if (gtk_initialized)
     return TRUE;
 
-  gettext_initialization ();
+  setlocale_initialization ();
 
   if (!check_setugid ())
     return FALSE;

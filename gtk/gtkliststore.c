@@ -2258,20 +2258,6 @@ list_store_text (GMarkupParseContext *context,
   info = data->columns[i];
 
   string = g_strndup (text, text_len);
-  if (info->translatable && text_len)
-    {
-      gchar *translated;
-
-      /* FIXME: This will not use the domain set in the .ui file,
-       * since the parser is not telling the builder about the domain.
-       * However, it will work for gtk_builder_set_translation_domain() calls.
-       */
-      translated = _gtk_builder_parser_translate (data->domain,
-						  info->context,
-						  string);
-      g_free (string);
-      string = translated;
-    }
 
   if (!gtk_builder_value_from_string_type (data->builder,
 					   data->column_types[info->id],

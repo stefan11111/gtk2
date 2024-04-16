@@ -203,7 +203,7 @@ gtk_stock_lookup (const gchar  *stock_id,
 	  if (translate != NULL && translate->func != NULL)
 	    item->label = (* translate->func) (item->label, translate->data);
 	  else
-	    item->label = (gchar *) g_dgettext (item->translation_domain, item->label);
+	    item->label = (gchar *) item->label;
 	}
     }
 
@@ -312,134 +312,134 @@ static const GtkStockItem builtin_items [] =
 {
   /* KEEP IN SYNC with gtkiconfactory.c stock icons, when appropriate */ 
  
-  { GTK_STOCK_DIALOG_INFO, NC_("Stock label", "Information"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_DIALOG_WARNING, NC_("Stock label", "Warning"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_DIALOG_ERROR, NC_("Stock label", "Error"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_DIALOG_QUESTION, NC_("Stock label", "Question"), 0, 0, GETTEXT_PACKAGE },
+  { GTK_STOCK_DIALOG_INFO, NC_("Stock label", "Information"), 0, 0, "" },
+  { GTK_STOCK_DIALOG_WARNING, NC_("Stock label", "Warning"), 0, 0, "" },
+  { GTK_STOCK_DIALOG_ERROR, NC_("Stock label", "Error"), 0, 0, "" },
+  { GTK_STOCK_DIALOG_QUESTION, NC_("Stock label", "Question"), 0, 0, "" },
 
   /*  FIXME these need accelerators when appropriate, and
    * need the mnemonics to be rationalized
    */
-  { GTK_STOCK_ABOUT, NC_("Stock label", "_About"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_ADD, NC_("Stock label", "_Add"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_APPLY, NC_("Stock label", "_Apply"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_BOLD, NC_("Stock label", "_Bold"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_CANCEL, NC_("Stock label", "_Cancel"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_CDROM, NC_("Stock label", "_CD-Rom"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_CLEAR, NC_("Stock label", "_Clear"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_CLOSE, NC_("Stock label", "_Close"), GTK_DEFAULT_ACCEL_MOD_MASK_VIRTUAL, 'w', GETTEXT_PACKAGE },
-  { GTK_STOCK_CONNECT, NC_("Stock label", "C_onnect"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_CONVERT, NC_("Stock label", "_Convert"), 0, 0, GETTEXT_PACKAGE },
-   { GTK_STOCK_COPY, NC_("Stock label", "_Copy"), GTK_DEFAULT_ACCEL_MOD_MASK_VIRTUAL, 'c', GETTEXT_PACKAGE },
-  { GTK_STOCK_CUT, NC_("Stock label", "Cu_t"), GTK_DEFAULT_ACCEL_MOD_MASK_VIRTUAL, 'x', GETTEXT_PACKAGE },
-  { GTK_STOCK_DELETE, NC_("Stock label", "_Delete"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_DISCARD, NC_("Stock label", "_Discard"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_DISCONNECT, NC_("Stock label", "_Disconnect"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_EXECUTE, NC_("Stock label", "_Execute"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_EDIT, NC_("Stock label", "_Edit"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_FIND, NC_("Stock label", "_Find"), GTK_DEFAULT_ACCEL_MOD_MASK_VIRTUAL, 'f', GETTEXT_PACKAGE },
-  { GTK_STOCK_FIND_AND_REPLACE, NC_("Stock label", "Find and _Replace"), GTK_DEFAULT_ACCEL_MOD_MASK_VIRTUAL, 'r', GETTEXT_PACKAGE },
-  { GTK_STOCK_FLOPPY, NC_("Stock label", "_Floppy"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_FULLSCREEN, NC_("Stock label", "_Fullscreen"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_LEAVE_FULLSCREEN, NC_("Stock label", "_Leave Fullscreen"), 0, 0, GETTEXT_PACKAGE },
+  { GTK_STOCK_ABOUT, NC_("Stock label", "_About"), 0, 0, "" },
+  { GTK_STOCK_ADD, NC_("Stock label", "_Add"), 0, 0, "" },
+  { GTK_STOCK_APPLY, NC_("Stock label", "_Apply"), 0, 0, "" },
+  { GTK_STOCK_BOLD, NC_("Stock label", "_Bold"), 0, 0, "" },
+  { GTK_STOCK_CANCEL, NC_("Stock label", "_Cancel"), 0, 0, "" },
+  { GTK_STOCK_CDROM, NC_("Stock label", "_CD-Rom"), 0, 0, "" },
+  { GTK_STOCK_CLEAR, NC_("Stock label", "_Clear"), 0, 0, "" },
+  { GTK_STOCK_CLOSE, NC_("Stock label", "_Close"), GTK_DEFAULT_ACCEL_MOD_MASK_VIRTUAL, 'w', "" },
+  { GTK_STOCK_CONNECT, NC_("Stock label", "C_onnect"), 0, 0, "" },
+  { GTK_STOCK_CONVERT, NC_("Stock label", "_Convert"), 0, 0, "" },
+   { GTK_STOCK_COPY, NC_("Stock label", "_Copy"), GTK_DEFAULT_ACCEL_MOD_MASK_VIRTUAL, 'c', "" },
+  { GTK_STOCK_CUT, NC_("Stock label", "Cu_t"), GTK_DEFAULT_ACCEL_MOD_MASK_VIRTUAL, 'x', "" },
+  { GTK_STOCK_DELETE, NC_("Stock label", "_Delete"), 0, 0, "" },
+  { GTK_STOCK_DISCARD, NC_("Stock label", "_Discard"), 0, 0, "" },
+  { GTK_STOCK_DISCONNECT, NC_("Stock label", "_Disconnect"), 0, 0, "" },
+  { GTK_STOCK_EXECUTE, NC_("Stock label", "_Execute"), 0, 0, "" },
+  { GTK_STOCK_EDIT, NC_("Stock label", "_Edit"), 0, 0, "" },
+  { GTK_STOCK_FIND, NC_("Stock label", "_Find"), GTK_DEFAULT_ACCEL_MOD_MASK_VIRTUAL, 'f', "" },
+  { GTK_STOCK_FIND_AND_REPLACE, NC_("Stock label", "Find and _Replace"), GTK_DEFAULT_ACCEL_MOD_MASK_VIRTUAL, 'r', "" },
+  { GTK_STOCK_FLOPPY, NC_("Stock label", "_Floppy"), 0, 0, "" },
+  { GTK_STOCK_FULLSCREEN, NC_("Stock label", "_Fullscreen"), 0, 0, "" },
+  { GTK_STOCK_LEAVE_FULLSCREEN, NC_("Stock label", "_Leave Fullscreen"), 0, 0, "" },
   /* This is a navigation label as in "go to the bottom of the page" */
-  { GTK_STOCK_GOTO_BOTTOM, NC_("Stock label, navigation", "_Bottom"), 0, 0, GETTEXT_PACKAGE "-navigation" },
+  { GTK_STOCK_GOTO_BOTTOM, NC_("Stock label, navigation", "_Bottom"), 0, 0, "" "-navigation" },
   /* This is a navigation label as in "go to the first page" */
-  { GTK_STOCK_GOTO_FIRST, NC_("Stock label, navigation", "_First"), 0, 0, GETTEXT_PACKAGE "-navigation" },
+  { GTK_STOCK_GOTO_FIRST, NC_("Stock label, navigation", "_First"), 0, 0, "" "-navigation" },
   /* This is a navigation label as in "go to the last page" */
-  { GTK_STOCK_GOTO_LAST, NC_("Stock label, navigation", "_Last"), 0, 0, GETTEXT_PACKAGE "-navigation" },
+  { GTK_STOCK_GOTO_LAST, NC_("Stock label, navigation", "_Last"), 0, 0, "" "-navigation" },
   /* This is a navigation label as in "go to the top of the page" */
-  { GTK_STOCK_GOTO_TOP, NC_("Stock label, navigation", "_Top"), 0, 0, GETTEXT_PACKAGE "-navigation" },
+  { GTK_STOCK_GOTO_TOP, NC_("Stock label, navigation", "_Top"), 0, 0, "" "-navigation" },
   /* This is a navigation label as in "go back" */
-  { GTK_STOCK_GO_BACK, NC_("Stock label, navigation", "_Back"), 0, 0, GETTEXT_PACKAGE "-navigation" },
+  { GTK_STOCK_GO_BACK, NC_("Stock label, navigation", "_Back"), 0, 0, "" "-navigation" },
   /* This is a navigation label as in "go down" */
-  { GTK_STOCK_GO_DOWN, NC_("Stock label, navigation", "_Down"), 0, 0, GETTEXT_PACKAGE "-navigation" },
+  { GTK_STOCK_GO_DOWN, NC_("Stock label, navigation", "_Down"), 0, 0, "" "-navigation" },
   /* This is a navigation label as in "go forward" */
-  { GTK_STOCK_GO_FORWARD, NC_("Stock label, navigation", "_Forward"), 0, 0, GETTEXT_PACKAGE "-navigation" },
+  { GTK_STOCK_GO_FORWARD, NC_("Stock label, navigation", "_Forward"), 0, 0, "" "-navigation" },
   /* This is a navigation label as in "go up" */
-  { GTK_STOCK_GO_UP, NC_("Stock label, navigation", "_Up"), 0, 0, GETTEXT_PACKAGE "-navigation" },
-  { GTK_STOCK_HARDDISK, NC_("Stock label", "_Harddisk"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_HELP, NC_("Stock label", "_Help"), GTK_DEFAULT_ACCEL_MOD_MASK_VIRTUAL, 'h', GETTEXT_PACKAGE },
-  { GTK_STOCK_HOME, NC_("Stock label", "_Home"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_INDENT, NC_("Stock label", "Increase Indent"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_UNINDENT, NC_("Stock label", "Decrease Indent"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_INDEX, NC_("Stock label", "_Index"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_INFO, NC_("Stock label", "_Information"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_ITALIC, NC_("Stock label", "_Italic"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_JUMP_TO, NC_("Stock label", "_Jump to"), 0, 0, GETTEXT_PACKAGE },
+  { GTK_STOCK_GO_UP, NC_("Stock label, navigation", "_Up"), 0, 0, "" "-navigation" },
+  { GTK_STOCK_HARDDISK, NC_("Stock label", "_Harddisk"), 0, 0, "" },
+  { GTK_STOCK_HELP, NC_("Stock label", "_Help"), GTK_DEFAULT_ACCEL_MOD_MASK_VIRTUAL, 'h', "" },
+  { GTK_STOCK_HOME, NC_("Stock label", "_Home"), 0, 0, "" },
+  { GTK_STOCK_INDENT, NC_("Stock label", "Increase Indent"), 0, 0, "" },
+  { GTK_STOCK_UNINDENT, NC_("Stock label", "Decrease Indent"), 0, 0, "" },
+  { GTK_STOCK_INDEX, NC_("Stock label", "_Index"), 0, 0, "" },
+  { GTK_STOCK_INFO, NC_("Stock label", "_Information"), 0, 0, "" },
+  { GTK_STOCK_ITALIC, NC_("Stock label", "_Italic"), 0, 0, "" },
+  { GTK_STOCK_JUMP_TO, NC_("Stock label", "_Jump to"), 0, 0, "" },
   /* This is about text justification, "centered text" */
-  { GTK_STOCK_JUSTIFY_CENTER, NC_("Stock label", "_Center"), 0, 0, GETTEXT_PACKAGE },
+  { GTK_STOCK_JUSTIFY_CENTER, NC_("Stock label", "_Center"), 0, 0, "" },
   /* This is about text justification */
-  { GTK_STOCK_JUSTIFY_FILL, NC_("Stock label", "_Fill"), 0, 0, GETTEXT_PACKAGE },
+  { GTK_STOCK_JUSTIFY_FILL, NC_("Stock label", "_Fill"), 0, 0, "" },
   /* This is about text justification, "left-justified text" */
-  { GTK_STOCK_JUSTIFY_LEFT, NC_("Stock label", "_Left"), 0, 0, GETTEXT_PACKAGE },
+  { GTK_STOCK_JUSTIFY_LEFT, NC_("Stock label", "_Left"), 0, 0, "" },
   /* This is about text justification, "right-justified text" */
-  { GTK_STOCK_JUSTIFY_RIGHT, NC_("Stock label", "_Right"), 0, 0, GETTEXT_PACKAGE },
+  { GTK_STOCK_JUSTIFY_RIGHT, NC_("Stock label", "_Right"), 0, 0, "" },
 
   /* Media label, as in "fast forward" */
-  { GTK_STOCK_MEDIA_FORWARD, NC_("Stock label, media", "_Forward"), 0, 0, GETTEXT_PACKAGE "-media" },
+  { GTK_STOCK_MEDIA_FORWARD, NC_("Stock label, media", "_Forward"), 0, 0, "" "-media" },
   /* Media label, as in "next song" */
-  { GTK_STOCK_MEDIA_NEXT, NC_("Stock label, media", "_Next"), 0, 0, GETTEXT_PACKAGE "-media" },
+  { GTK_STOCK_MEDIA_NEXT, NC_("Stock label, media", "_Next"), 0, 0, "" "-media" },
   /* Media label, as in "pause music" */
-  { GTK_STOCK_MEDIA_PAUSE, NC_("Stock label, media", "P_ause"), 0, 0, GETTEXT_PACKAGE "-media" },
+  { GTK_STOCK_MEDIA_PAUSE, NC_("Stock label, media", "P_ause"), 0, 0, "" "-media" },
   /* Media label, as in "play music" */
-  { GTK_STOCK_MEDIA_PLAY, NC_("Stock label, media", "_Play"), 0, 0, GETTEXT_PACKAGE "-media" },
+  { GTK_STOCK_MEDIA_PLAY, NC_("Stock label, media", "_Play"), 0, 0, "" "-media" },
   /* Media label, as in  "previous song" */
-  { GTK_STOCK_MEDIA_PREVIOUS, NC_("Stock label, media", "Pre_vious"), 0, 0, GETTEXT_PACKAGE "-media" },
+  { GTK_STOCK_MEDIA_PREVIOUS, NC_("Stock label, media", "Pre_vious"), 0, 0, "" "-media" },
   /* Media label */
-  { GTK_STOCK_MEDIA_RECORD, NC_("Stock label, media", "_Record"), 0, 0, GETTEXT_PACKAGE "-media" },
+  { GTK_STOCK_MEDIA_RECORD, NC_("Stock label, media", "_Record"), 0, 0, "" "-media" },
   /* Media label */
-  { GTK_STOCK_MEDIA_REWIND, NC_("Stock label, media", "R_ewind"), 0, 0, GETTEXT_PACKAGE "-media" },
+  { GTK_STOCK_MEDIA_REWIND, NC_("Stock label, media", "R_ewind"), 0, 0, "" "-media" },
   /* Media label */
-  { GTK_STOCK_MEDIA_STOP, NC_("Stock label, media", "_Stop"), 0, 0, GETTEXT_PACKAGE "-media" },
-  { GTK_STOCK_NETWORK, NC_("Stock label", "_Network"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_NEW, NC_("Stock label", "_New"), GTK_DEFAULT_ACCEL_MOD_MASK_VIRTUAL, 'n', GETTEXT_PACKAGE },
-  { GTK_STOCK_NO, NC_("Stock label", "_No"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_OK, NC_("Stock label", "_OK"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_OPEN, NC_("Stock label", "_Open"), GTK_DEFAULT_ACCEL_MOD_MASK_VIRTUAL, 'o', GETTEXT_PACKAGE },
+  { GTK_STOCK_MEDIA_STOP, NC_("Stock label, media", "_Stop"), 0, 0, "" "-media" },
+  { GTK_STOCK_NETWORK, NC_("Stock label", "_Network"), 0, 0, "" },
+  { GTK_STOCK_NEW, NC_("Stock label", "_New"), GTK_DEFAULT_ACCEL_MOD_MASK_VIRTUAL, 'n', "" },
+  { GTK_STOCK_NO, NC_("Stock label", "_No"), 0, 0, "" },
+  { GTK_STOCK_OK, NC_("Stock label", "_OK"), 0, 0, "" },
+  { GTK_STOCK_OPEN, NC_("Stock label", "_Open"), GTK_DEFAULT_ACCEL_MOD_MASK_VIRTUAL, 'o', "" },
   /* Page orientation */
-  { GTK_STOCK_ORIENTATION_LANDSCAPE, NC_("Stock label", "Landscape"), 0, 0, GETTEXT_PACKAGE },
+  { GTK_STOCK_ORIENTATION_LANDSCAPE, NC_("Stock label", "Landscape"), 0, 0, "" },
   /* Page orientation */
-  { GTK_STOCK_ORIENTATION_PORTRAIT, NC_("Stock label", "Portrait"), 0, 0, GETTEXT_PACKAGE },
+  { GTK_STOCK_ORIENTATION_PORTRAIT, NC_("Stock label", "Portrait"), 0, 0, "" },
   /* Page orientation */
-  { GTK_STOCK_ORIENTATION_REVERSE_LANDSCAPE, NC_("Stock label", "Reverse landscape"), 0, 0, GETTEXT_PACKAGE },
+  { GTK_STOCK_ORIENTATION_REVERSE_LANDSCAPE, NC_("Stock label", "Reverse landscape"), 0, 0, "" },
   /* Page orientation */
-  { GTK_STOCK_ORIENTATION_REVERSE_PORTRAIT, NC_("Stock label", "Reverse portrait"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_PAGE_SETUP, NC_("Stock label", "Page Set_up"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_PASTE, NC_("Stock label", "_Paste"), GTK_DEFAULT_ACCEL_MOD_MASK_VIRTUAL, 'v', GETTEXT_PACKAGE },
-  { GTK_STOCK_PREFERENCES, NC_("Stock label", "_Preferences"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_PRINT, NC_("Stock label", "_Print"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_PRINT_PREVIEW, NC_("Stock label", "Print Pre_view"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_PROPERTIES, NC_("Stock label", "_Properties"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_QUIT, NC_("Stock label", "_Quit"), GTK_DEFAULT_ACCEL_MOD_MASK_VIRTUAL, 'q', GETTEXT_PACKAGE },
-  { GTK_STOCK_REDO, NC_("Stock label", "_Redo"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_REFRESH, NC_("Stock label", "_Refresh"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_REMOVE, NC_("Stock label", "_Remove"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_REVERT_TO_SAVED, NC_("Stock label", "_Revert"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_SAVE, NC_("Stock label", "_Save"), GTK_DEFAULT_ACCEL_MOD_MASK_VIRTUAL, 's', GETTEXT_PACKAGE },
-  { GTK_STOCK_SAVE_AS, NC_("Stock label", "Save _As"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_SELECT_ALL, NC_("Stock label", "Select _All"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_SELECT_COLOR, NC_("Stock label", "_Color"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_SELECT_FONT, NC_("Stock label", "_Font"), 0, 0, GETTEXT_PACKAGE },
+  { GTK_STOCK_ORIENTATION_REVERSE_PORTRAIT, NC_("Stock label", "Reverse portrait"), 0, 0, "" },
+  { GTK_STOCK_PAGE_SETUP, NC_("Stock label", "Page Set_up"), 0, 0, "" },
+  { GTK_STOCK_PASTE, NC_("Stock label", "_Paste"), GTK_DEFAULT_ACCEL_MOD_MASK_VIRTUAL, 'v', "" },
+  { GTK_STOCK_PREFERENCES, NC_("Stock label", "_Preferences"), 0, 0, "" },
+  { GTK_STOCK_PRINT, NC_("Stock label", "_Print"), 0, 0, "" },
+  { GTK_STOCK_PRINT_PREVIEW, NC_("Stock label", "Print Pre_view"), 0, 0, "" },
+  { GTK_STOCK_PROPERTIES, NC_("Stock label", "_Properties"), 0, 0, "" },
+  { GTK_STOCK_QUIT, NC_("Stock label", "_Quit"), GTK_DEFAULT_ACCEL_MOD_MASK_VIRTUAL, 'q', "" },
+  { GTK_STOCK_REDO, NC_("Stock label", "_Redo"), 0, 0, "" },
+  { GTK_STOCK_REFRESH, NC_("Stock label", "_Refresh"), 0, 0, "" },
+  { GTK_STOCK_REMOVE, NC_("Stock label", "_Remove"), 0, 0, "" },
+  { GTK_STOCK_REVERT_TO_SAVED, NC_("Stock label", "_Revert"), 0, 0, "" },
+  { GTK_STOCK_SAVE, NC_("Stock label", "_Save"), GTK_DEFAULT_ACCEL_MOD_MASK_VIRTUAL, 's', "" },
+  { GTK_STOCK_SAVE_AS, NC_("Stock label", "Save _As"), 0, 0, "" },
+  { GTK_STOCK_SELECT_ALL, NC_("Stock label", "Select _All"), 0, 0, "" },
+  { GTK_STOCK_SELECT_COLOR, NC_("Stock label", "_Color"), 0, 0, "" },
+  { GTK_STOCK_SELECT_FONT, NC_("Stock label", "_Font"), 0, 0, "" },
   /* Sorting direction */
-  { GTK_STOCK_SORT_ASCENDING, NC_("Stock label", "_Ascending"), 0, 0, GETTEXT_PACKAGE },
+  { GTK_STOCK_SORT_ASCENDING, NC_("Stock label", "_Ascending"), 0, 0, "" },
   /* Sorting direction */
-  { GTK_STOCK_SORT_DESCENDING, NC_("Stock label", "_Descending"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_SPELL_CHECK, NC_("Stock label", "_Spell Check"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_STOP, NC_("Stock label", "_Stop"), 0, 0, GETTEXT_PACKAGE },
+  { GTK_STOCK_SORT_DESCENDING, NC_("Stock label", "_Descending"), 0, 0, "" },
+  { GTK_STOCK_SPELL_CHECK, NC_("Stock label", "_Spell Check"), 0, 0, "" },
+  { GTK_STOCK_STOP, NC_("Stock label", "_Stop"), 0, 0, "" },
   /* Font variant */
-  { GTK_STOCK_STRIKETHROUGH, NC_("Stock label", "_Strikethrough"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_UNDELETE, NC_("Stock label", "_Undelete"), 0, 0, GETTEXT_PACKAGE },
+  { GTK_STOCK_STRIKETHROUGH, NC_("Stock label", "_Strikethrough"), 0, 0, "" },
+  { GTK_STOCK_UNDELETE, NC_("Stock label", "_Undelete"), 0, 0, "" },
   /* Font variant */
-  { GTK_STOCK_UNDERLINE, NC_("Stock label", "_Underline"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_UNDO, NC_("Stock label", "_Undo"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_YES, NC_("Stock label", "_Yes"), 0, 0, GETTEXT_PACKAGE },
+  { GTK_STOCK_UNDERLINE, NC_("Stock label", "_Underline"), 0, 0, "" },
+  { GTK_STOCK_UNDO, NC_("Stock label", "_Undo"), 0, 0, "" },
+  { GTK_STOCK_YES, NC_("Stock label", "_Yes"), 0, 0, "" },
   /* Zoom */
-  { GTK_STOCK_ZOOM_100, NC_("Stock label", "_Normal Size"), 0, 0, GETTEXT_PACKAGE },
+  { GTK_STOCK_ZOOM_100, NC_("Stock label", "_Normal Size"), 0, 0, "" },
   /* Zoom */
-  { GTK_STOCK_ZOOM_FIT, NC_("Stock label", "Best _Fit"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_ZOOM_IN, NC_("Stock label", "Zoom _In"), 0, 0, GETTEXT_PACKAGE },
-  { GTK_STOCK_ZOOM_OUT, NC_("Stock label", "Zoom _Out"), 0, 0, GETTEXT_PACKAGE }
+  { GTK_STOCK_ZOOM_FIT, NC_("Stock label", "Best _Fit"), 0, 0, "" },
+  { GTK_STOCK_ZOOM_IN, NC_("Stock label", "Zoom _In"), 0, 0, "" },
+  { GTK_STOCK_ZOOM_OUT, NC_("Stock label", "Zoom _Out"), 0, 0, "" }
 };
 
 /**
@@ -453,30 +453,6 @@ static const GtkStockItem builtin_items [] =
  * Sets a function to be used for translating the @label of 
  * a stock item.
  * 
- * If no function is registered for a translation domain,
- * g_dgettext() is used.
- * 
- * The function is used for all stock items whose
- * @translation_domain matches @domain. Note that it is possible
- * to use strings different from the actual gettext translation domain
- * of your application for this, as long as your #GtkTranslateFunc uses
- * the correct domain when calling dgettext(). This can be useful, e.g.
- * when dealing with message contexts:
- *
- * |[
- * GtkStockItem items[] = { 
- *  { MY_ITEM1, NC_("odd items", "Item 1"), 0, 0, "odd-item-domain" },
- *  { MY_ITEM2, NC_("even items", "Item 2"), 0, 0, "even-item-domain" },
- * };
- *
- * gchar *
- * my_translate_func (const gchar *msgid,
- *                    gpointer     data)
- * {
- *   gchar *msgctxt = data;
- * 
- *   return (gchar*)g_dpgettext2 (GETTEXT_PACKAGE, msgctxt, msgid);
- * }
  *
  * /&ast; ... &ast;/
  *
@@ -516,13 +492,12 @@ gtk_stock_set_translate_func (const gchar      *domain,
   g_hash_table_insert (translate_hash, domainname, translate);
 }
 
-static gchar *
-sgettext_swapped (const gchar *msgid, 
+static inline gchar *
+return_string (const gchar *msgid, 
 		  gpointer     data)
 {
-  gchar *msgctxt = data;
 
-  return (gchar *)g_dpgettext2 (GETTEXT_PACKAGE, msgctxt, msgid);
+  return msgid;
 }
 
 static void
@@ -540,16 +515,16 @@ init_stock_hash (void)
       translate_hash = g_hash_table_new_full (g_str_hash, g_str_equal,
 	                                      g_free, NULL);
 
-      gtk_stock_set_translate_func (GETTEXT_PACKAGE, 
-				    sgettext_swapped,
+      gtk_stock_set_translate_func ("", 
+				    return_string,
 				    "Stock label",
 				    NULL);
-      gtk_stock_set_translate_func (GETTEXT_PACKAGE "-navigation", 
-				    sgettext_swapped,
+      gtk_stock_set_translate_func ("" "-navigation", 
+				    return_string,
 				    "Stock label, navigation",
 				    NULL);
-      gtk_stock_set_translate_func (GETTEXT_PACKAGE "-media", 
-				    sgettext_swapped,
+      gtk_stock_set_translate_func ("" "-media", 
+				    return_string,
 				    "Stock label, media",
 				    NULL);
     }
