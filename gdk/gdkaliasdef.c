@@ -1363,7 +1363,7 @@ extern __typeof (gdk_gc_get_screen) gdk_gc_get_screen __attribute((alias("IA__gd
 #if IN_FILE(__GDK_PIXMAP_X11_C__)
 #ifdef GDK_WINDOWING_X11
 #undef gdk_pixmap_impl_x11_get_type 
-extern __typeof (gdk_pixmap_impl_x11_get_type) gdk_pixmap_impl_x11_get_type __attribute((alias("IA__gdk_pixmap_impl_x11_get_type"), visibility("default")));
+extern __typeof (gdk_pixmap_impl_x11_get_type) gdk_pixmap_impl_x11_get_type __attribute((alias("IA__gdk_pixmap_impl_x11_get_type"), visibility("default"))) G_GNUC_CONST;
 
 #endif
 #endif
@@ -1372,7 +1372,7 @@ extern __typeof (gdk_pixmap_impl_x11_get_type) gdk_pixmap_impl_x11_get_type __at
 #if IN_FILE(__GDK_WINDOW_X11_C__)
 #ifdef GDK_WINDOWING_X11
 #undef gdk_window_impl_x11_get_type 
-extern __typeof (gdk_window_impl_x11_get_type) gdk_window_impl_x11_get_type __attribute((alias("IA__gdk_window_impl_x11_get_type"), visibility("default")));
+extern __typeof (gdk_window_impl_x11_get_type) gdk_window_impl_x11_get_type __attribute((alias("IA__gdk_window_impl_x11_get_type"), visibility("default"))) G_GNUC_CONST;
 
 #endif
 #endif
@@ -1696,7 +1696,7 @@ extern __typeof (gdk_offscreen_window_get_embedder) gdk_offscreen_window_get_emb
 #if IN_HEADER(__GDK_INTERNALS_H__)
 #if IN_FILE(__GDK_OFFSCREEN_WINDOW_C__)
 #undef gdk_offscreen_window_get_type 
-extern __typeof (gdk_offscreen_window_get_type) gdk_offscreen_window_get_type __attribute((alias("IA__gdk_offscreen_window_get_type"), visibility("default")));
+extern __typeof (gdk_offscreen_window_get_type) gdk_offscreen_window_get_type __attribute((alias("IA__gdk_offscreen_window_get_type"), visibility("default"))) G_GNUC_CONST;
 
 #endif
 #endif
@@ -2879,7 +2879,7 @@ extern __typeof (gdk_xid_table_lookup_for_display) gdk_xid_table_lookup_for_disp
 #if IN_HEADER(__GDK_APP_LAUNCH_CONTEXT_H__)
 #if IN_FILE(__GDK_APP_LAUNCH_CONTEXT_C__)
 #undef gdk_app_launch_context_get_type 
-extern __typeof (gdk_app_launch_context_get_type) gdk_app_launch_context_get_type __attribute((alias("IA__gdk_app_launch_context_get_type"), visibility("default")));
+extern __typeof (gdk_app_launch_context_get_type) gdk_app_launch_context_get_type __attribute((alias("IA__gdk_app_launch_context_get_type"), visibility("default"))) G_GNUC_CONST;
 
 #undef gdk_app_launch_context_new 
 extern __typeof (gdk_app_launch_context_new) gdk_app_launch_context_new __attribute((alias("IA__gdk_app_launch_context_new"), visibility("default")));

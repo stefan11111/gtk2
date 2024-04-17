@@ -68,7 +68,7 @@ struct _GtkMountOperationClass
 };
 
 
-GType            gtk_mount_operation_get_type   (void);
+GType            gtk_mount_operation_get_type   (void) G_GNUC_CONST;
 GMountOperation *gtk_mount_operation_new        (GtkWindow         *parent);
 gboolean         gtk_mount_operation_is_showing (GtkMountOperation *op);
 void             gtk_mount_operation_set_parent (GtkMountOperation *op,
