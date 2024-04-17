@@ -454,7 +454,7 @@ gtk_item_factory_from_path (const gchar      *path)
       return NULL;
     }
   fname = g_new (gchar, i + 2);
-  g_memmove (fname, path, i + 1);
+  memmove (fname, path, i + 1);
   fname[i + 1] = 0;
 
   item = g_hash_table_lookup (class->item_ht, fname);
