@@ -1282,7 +1282,7 @@ gdk_directfb_draw_pixbuf (GdkDrawable  *drawable,
 #endif
 
   if (gdk_pixbuf_get_has_alpha (pixbuf) && impl->format == DSPF_RGB16) {
-    void *data;
+    char *data;
     int   pitch;
 
     if (impl->surface->Lock (impl->surface, DSLF_READ | DSLF_WRITE, &data, &pitch) == DFB_OK) {
@@ -1375,7 +1375,7 @@ gdk_directfb_draw_pixbuf (GdkDrawable  *drawable,
                 }
             }
 #else
-          void *data;
+          char *data;
           int   pitch;
 
           if (impl->surface->Lock (impl->surface,

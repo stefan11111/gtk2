@@ -1034,7 +1034,7 @@ gtk_binding_set_add_path (GtkBindingSet	     *binding_set,
     default:
       g_assert_not_reached ();
       slist_p = NULL;
-      break;
+      return;
     }
   
   pspec = g_new (PatternSpec, 1);
