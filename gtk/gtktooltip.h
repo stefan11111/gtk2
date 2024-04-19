@@ -34,7 +34,7 @@ G_BEGIN_DECLS
 #define GTK_TOOLTIP(obj)                 (G_TYPE_CHECK_INSTANCE_CAST ((obj), GTK_TYPE_TOOLTIP, GtkTooltip))
 #define GTK_IS_TOOLTIP(obj)              (G_TYPE_CHECK_INSTANCE_TYPE ((obj), GTK_TYPE_TOOLTIP))
 
-GType gtk_tooltip_get_type (void);
+GType gtk_tooltip_get_type (void) G_GNUC_CONST;
 
 void gtk_tooltip_set_markup              (GtkTooltip         *tooltip,
                                           const gchar        *markup);

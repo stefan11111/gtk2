@@ -379,10 +379,11 @@ make_list (const gchar  *text,
       p = q + 1;
     }
 
-  if (list)
+  if (list) {
     *list = g_new (gchar *, n_strings + 1);
+   (*list)[n_strings] = NULL;
+  }
 
-  (*list)[n_strings] = NULL;
 
   i = n_strings;
   tmp_list = strings;

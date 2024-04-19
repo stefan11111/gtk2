@@ -497,7 +497,7 @@ return_string (const gchar *msgid,
 		  gpointer     data)
 {
 
-  return msgid;
+  return (gchar*)msgid;
 }
 
 static void

@@ -746,9 +746,9 @@ _gdk_keymap_keys_changed (GdkDisplay *display)
 PangoDirection
 gdk_keymap_get_direction (GdkKeymap *keymap)
 {
+#if HAVE_XKB
   keymap = GET_EFFECTIVE_KEYMAP (keymap);
   
-#if HAVE_XKB
   if (KEYMAP_USE_XKB (keymap))
     {
       GdkKeymapX11 *keymap_x11 = GDK_KEYMAP_X11 (keymap);
@@ -787,9 +787,9 @@ gdk_keymap_get_direction (GdkKeymap *keymap)
 gboolean
 gdk_keymap_have_bidi_layouts (GdkKeymap *keymap)
 {
+#if HAVE_XKB
   keymap = GET_EFFECTIVE_KEYMAP (keymap);
 
-#if HAVE_XKB
   if (KEYMAP_USE_XKB (keymap))
     {
       GdkKeymapX11 *keymap_x11 = GDK_KEYMAP_X11 (keymap);

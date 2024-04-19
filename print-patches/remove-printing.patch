@@ -8654,7 +8654,7 @@ index 20d157d..0000000
 -	      current_format = n_formats;
 -            }
 -          supported_formats[n_formats] = formats[FORMAT_PDF];
--	  display_format_names[n_formats] = _(format_names[FORMAT_PDF]);
+-	  display_format_names[n_formats] = (gchar*)format_names[FORMAT_PDF];
 -	  n_formats++;
 -	}
 -      if (capabilities & GTK_PRINT_CAPABILITY_GENERATE_PS)
@@ -8662,7 +8662,7 @@ index 20d157d..0000000
 -	  if (format == FORMAT_PS || format == N_FORMATS)
 -	    current_format = n_formats;
 -          supported_formats[n_formats] = formats[FORMAT_PS];
--          display_format_names[n_formats] = _(format_names[FORMAT_PS]);
+-          display_format_names[n_formats] = (gchar*)format_names[FORMAT_PS];
 -	  n_formats++;
 -	}
 -    }
@@ -8685,7 +8685,7 @@ index 20d157d..0000000
 -      for (n_formats = 0; n_formats < N_FORMATS; ++n_formats)
 -        {
 -	  supported_formats[n_formats] = formats[n_formats];
--          display_format_names[n_formats] = _(format_names[n_formats]);
+-          display_format_names[n_formats] = (gchar*)format_names[n_formats];
 -	}
 -    }
 -

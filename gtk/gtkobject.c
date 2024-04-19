@@ -192,7 +192,7 @@ gtk_arg_proxy_set_property (GObject      *object,
   memset (&arg, 0, sizeof (arg));
   arg.type = G_VALUE_TYPE (value);
   gtk_arg_set_from_value (&arg, value, FALSE);
-  arg.name = pspec->name;
+  arg.name = (char*)pspec->name;
   class->set_arg (GTK_OBJECT (object), &arg, property_id);
 }
 
@@ -209,7 +209,7 @@ gtk_arg_proxy_get_property (GObject     *object,
 
   memset (&arg, 0, sizeof (arg));
   arg.type = G_VALUE_TYPE (value);
-  arg.name = pspec->name;
+  arg.name = (char*)pspec->name;
   class->get_arg (GTK_OBJECT (object), &arg, property_id);
   gtk_arg_to_value (&arg, value);
 }

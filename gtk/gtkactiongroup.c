@@ -1331,7 +1331,7 @@ static inline gchar *
 return_string (const gchar *msgid, 
 		  const gchar *domainname)
 {
-  return msgid;
+  return (gchar*)msgid;
 }
 
 /**
