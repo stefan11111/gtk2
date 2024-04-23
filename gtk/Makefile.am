@@ -66,8 +66,7 @@ INCLUDES =						\
 	-I$(top_srcdir)/gdk				\
 	$(GMODULE_CFLAGS)				\
 	$(GTK_DEBUG_FLAGS)				\
-	$(GTK_DEP_CFLAGS)				\
-	$(INCLUDED_IMMODULE_DEFINE)
+	$(GTK_DEP_CFLAGS)
 
 gtarget=$(gdktarget)
 
@@ -948,14 +947,9 @@ endif
 #
 # Installed tools
 #
-bin_PROGRAMS = \
-	gtk-query-immodules-2.0
+bin_PROGRAMS =
 
 bin_SCRIPTS =
-
-gtk_query_immodules_2_0_DEPENDENCIES = $(DEPS)
-gtk_query_immodules_2_0_LDADD = $(LDADDS) $(GMODULE_LIBS)
-gtk_query_immodules_2_0_SOURCES = queryimmodules.c
 
 gtk_update_icon_cache_DEPENDENCIES = $(GTK_UPDATE_ICON_CACHE_MANIFEST_OBJECT)
 gtk_update_icon_cache_LDADD = $(GDK_PIXBUF_LIBS) $(GTK_UPDATE_ICON_CACHE_MANIFEST_OBJECT)
