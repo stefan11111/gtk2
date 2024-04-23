@@ -114,19 +114,6 @@ libtool_opts =							\
   -rpath $(libdir) $(libgtk_target_ldflags)
 
 
-included-modules:
-if HAVE_INCLUDED_IMMMODULES
-	@cd $(top_builddir)/modules/input && $(MAKE) $(AM_MAKEFLAGS) included-modules
-
-libadd += $(INCLUDED_IMMODULE_OBJ)
-deps += $(INCLUDED_IMMODULE_OBJ)
-
-$(INCLUDED_IMMODULE_OBJ): included-modules
-	@true
-endif
-
-.PHONY: included-modules
-
 #
 # setup source file variables
 #
@@ -215,7 +202,6 @@ gtk_public_h_sources =          \
 	gtkimagemenuitem.h	\
 	gtkimcontext.h		\
 	gtkimcontextsimple.h	\
-	gtkimmodule.h		\
 	gtkimmulticontext.h	\
 	gtkinfobar.h		\
 	gtkinvisible.h		\
@@ -481,7 +467,6 @@ gtk_base_c_sources =            \
 	gtkimagemenuitem.c	\
 	gtkimcontext.c		\
 	gtkimcontextsimple.c	\
-	gtkimmodule.c		\
 	gtkimmulticontext.c	\
 	gtkinfobar.c		\
 	gtkinputdialog.c	\
