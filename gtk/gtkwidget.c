@@ -10172,7 +10172,7 @@ gtk_widget_class_path (GtkWidget *widget,
 GtkRequisition *
 gtk_requisition_copy (const GtkRequisition *requisition)
 {
-  return (GtkRequisition *)g_memdup (requisition, sizeof (GtkRequisition));
+  return (GtkRequisition *)g_memdup2 (requisition, sizeof (GtkRequisition));
 }
 
 /**

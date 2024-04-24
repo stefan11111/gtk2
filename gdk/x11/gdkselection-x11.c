@@ -355,7 +355,7 @@ gdk_selection_property_get (GdkWindow  *requestor,
 	  length += 1;
 
 	  if (data)
-	    *data = g_memdup (t, length);
+	    *data = g_memdup2 (t, length);
 	}
       
       if (t)
