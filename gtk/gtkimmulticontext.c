@@ -241,8 +241,6 @@ gtk_im_multicontext_get_slave (GtkIMMulticontext *multicontext)
 
   if (!multicontext->slave)
     {
-      GtkIMContext *slave;
-
       g_free (multicontext->context_id);
 
       multicontext->context_id = g_strdup (get_effective_context_id (multicontext));
@@ -498,18 +496,6 @@ gtk_im_multicontext_delete_surrounding_cb (GtkIMContext      *slave,
 			 offset, n_chars, &result);
 
   return result;
-}
-
-static void
-activate_cb (GtkWidget         *menuitem,
-	     GtkIMMulticontext *context)
-{
-  if (GTK_CHECK_MENU_ITEM (menuitem)->active)
-    {
-      const gchar *id = g_object_get_data (G_OBJECT (menuitem), "gtk-context-id");
-
-      gtk_im_multicontext_set_context_id (context, id);
-    }
 }
 
 /**
