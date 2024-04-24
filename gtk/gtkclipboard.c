@@ -1785,7 +1785,7 @@ gtk_clipboard_wait_for_targets (GtkClipboard  *clipboard,
  	{
  	  clipboard->n_cached_targets = tmp_n_targets;
  	  clipboard->cached_targets = g_memdup2 (tmp_targets,
- 						tmp_n_targets * sizeof (GdkAtom));
+ 						(guint)tmp_n_targets * sizeof (GdkAtom));
  	}
  
       if (n_targets)
