@@ -66,8 +66,7 @@ INCLUDES =						\
 	-I$(top_srcdir)/gdk				\
 	$(GMODULE_CFLAGS)				\
 	$(GTK_DEBUG_FLAGS)				\
-	$(GTK_DEP_CFLAGS)				\
-	$(INCLUDED_IMMODULE_DEFINE)
+	$(GTK_DEP_CFLAGS)
 
 gtarget=$(gdktarget)
 
@@ -113,19 +112,6 @@ libtool_opts =							\
   -export-dynamic $(no_undefined) $(LIBTOOL_EXPORT_OPTIONS)	\
   -rpath $(libdir) $(libgtk_target_ldflags)
 
-
-included-modules:
-if HAVE_INCLUDED_IMMMODULES
-	@cd $(top_builddir)/modules/input && $(MAKE) $(AM_MAKEFLAGS) included-modules
-
-libadd += $(INCLUDED_IMMODULE_OBJ)
-deps += $(INCLUDED_IMMODULE_OBJ)
-
-$(INCLUDED_IMMODULE_OBJ): included-modules
-	@true
-endif
-
-.PHONY: included-modules
 
 #
 # setup source file variables
@@ -215,7 +201,6 @@ gtk_public_h_sources =          \
 	gtkimagemenuitem.h	\
 	gtkimcontext.h		\
 	gtkimcontextsimple.h	\
-	gtkimmodule.h		\
 	gtkimmulticontext.h	\
 	gtkinfobar.h		\
 	gtkinvisible.h		\
@@ -357,7 +342,6 @@ gtk_private_h_sources =		\
 	gtkfilesystem.h		\
 	gtkfilesystemmodel.h	\
 	gtkiconcache.h		\
-	gtkimcontextsimpleseqs.h   \
 	gtkintl.h		\
 	gtkkeyhash.h		\
 	gtkmnemonichash.h	\
@@ -481,7 +465,6 @@ gtk_base_c_sources =            \
 	gtkimagemenuitem.c	\
 	gtkimcontext.c		\
 	gtkimcontextsimple.c	\
-	gtkimmodule.c		\
 	gtkimmulticontext.c	\
 	gtkinfobar.c		\
 	gtkinputdialog.c	\
@@ -963,14 +946,9 @@ endif
 #
 # Installed tools
 #
-bin_PROGRAMS = \
-	gtk-query-immodules-2.0
+bin_PROGRAMS =
 
 bin_SCRIPTS =
-
-gtk_query_immodules_2_0_DEPENDENCIES = $(DEPS)
-gtk_query_immodules_2_0_LDADD = $(LDADDS) $(GMODULE_LIBS)
-gtk_query_immodules_2_0_SOURCES = queryimmodules.c
 
 gtk_update_icon_cache_DEPENDENCIES = $(GTK_UPDATE_ICON_CACHE_MANIFEST_OBJECT)
 gtk_update_icon_cache_LDADD = $(GDK_PIXBUF_LIBS) $(GTK_UPDATE_ICON_CACHE_MANIFEST_OBJECT)

@@ -1390,7 +1390,7 @@ clipboard_rich_text_received_func (GtkClipboard *clipboard,
 {
   WaitResults *results = data;
 
-  results->data = g_memdup (text, length);
+  results->data = g_memdup2 (text, length);
   results->format = format;
   results->length = length;
   g_main_loop_quit (results->loop);
@@ -1760,7 +1760,7 @@ gtk_clipboard_wait_for_targets (GtkClipboard  *clipboard,
  	*n_targets = clipboard->n_cached_targets;
  
       if (targets)
- 	*targets = g_memdup (clipboard->cached_targets,
+ 	*targets = g_memdup2 (clipboard->cached_targets,
  			     clipboard->n_cached_targets * sizeof (GdkAtom));
 
        return TRUE;
@@ -1784,8 +1784,8 @@ gtk_clipboard_wait_for_targets (GtkClipboard  *clipboard,
       if (gdk_display_supports_selection_notification (gtk_clipboard_get_display (clipboard)))
  	{
  	  clipboard->n_cached_targets = tmp_n_targets;
- 	  clipboard->cached_targets = g_memdup (tmp_targets,
- 						tmp_n_targets * sizeof (GdkAtom));
+ 	  clipboard->cached_targets = g_memdup2 (tmp_targets,
+ 						(guint)tmp_n_targets * sizeof (GdkAtom));
  	}
  
       if (n_targets)

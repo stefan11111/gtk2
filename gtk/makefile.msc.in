@@ -415,7 +415,6 @@ gtk_public_h_sources =		\
 	gtkimagemenuitem.h	\
 	gtkimcontext.h		\
 	gtkimcontextsimple.h	\
-	gtkimmodule.h		\
 	gtkimmulticontext.h	\
 	gtkinputdialog.h	\
 	gtkinvisible.h		\

@@ -5149,7 +5149,7 @@ _gdk_moveresize_handle_event (XEvent *event)
 	    *mv_resize->moveresize_pending_event = *event;
 	  else
 	    mv_resize->moveresize_pending_event =
-	      g_memdup (event, sizeof (XEvent));
+	      g_memdup2 (event, sizeof (XEvent));
 
 	  break;
 	}
