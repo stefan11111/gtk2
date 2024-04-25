@@ -1109,7 +1109,7 @@ binding_match_activate (GSList          *pspec_list,
         }
       else
         {
-          if (g_pattern_match (pspec->pspec, path_length, path, path_reversed))
+          if (g_pattern_spec_match (pspec->pspec, path_length, path, path_reversed))
 	    binding_set = pspec->user_data;
         }
 
