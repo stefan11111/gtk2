@@ -26,6 +26,8 @@ immodules
 
 gtk-builder-convert
 
+gettext
+
 translations (po and friends)
 
 docs
