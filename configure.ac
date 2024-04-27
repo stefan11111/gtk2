@@ -1128,22 +1128,6 @@ else
   AM_CONDITIONAL(USE_WIN32, false)
 fi
 
-AC_ARG_ENABLE(quartz-relocation,
-              [AS_HELP_STRING([--enable-quartz-relocation],
-                              [enable bundle-based relocation functions])],
-                              [quartz_relocation=yes])
-
-if test "x$gdktarget" = "xquartz"; then
-  GDK_EXTRA_LIBS="$GDK_EXTRA_LIBS -framework Cocoa"
-  AM_CONDITIONAL(USE_QUARTZ, true)
-  if test "x$quartz_relocation" = xyes; then
-    AC_DEFINE([QUARTZ_RELOCATION], [1], [Use NSBundle functions to determine load paths for libraries, translations, etc.])
-  fi
-
-else
-  AM_CONDITIONAL(USE_QUARTZ, false)
-fi
-
 if test "x$gdktarget" = "xdirectfb"; then
   DIRECTFB_REQUIRED_VERSION=1.0.0
   AC_MSG_CHECKING(for DirectFB)
@@ -1499,16 +1483,6 @@ _______EOF
 if test "x$gdktarget" = "xx11" ; then
   gdk_windowing='
 #define GDK_WINDOWING_X11'
-elif test "x$gdktarget" = "xwin32" ; then
-  gdk_windowing='
-#define GDK_NATIVE_WINDOW_POINTER
-
-#define GDK_WINDOWING_WIN32'
-elif test "x$gdktarget" = "xquartz" ; then
-  gdk_windowing='
-#define GDK_NATIVE_WINDOW_POINTER
-
-#define GDK_WINDOWING_QUARTZ'
 elif test "x$gdktarget" = "xdirectfb" ; then
   gdk_windowing='
 #define GDK_WINDOWING_DIRECTFB'
