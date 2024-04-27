@@ -234,7 +234,7 @@ find_module (const gchar *name)
       /* As last resort, try loading without an absolute path (using system
        * library path)
        */
-      module_name = g_module_build_path (NULL, name);
+      module_name = g_module_build_path (NULL, name);;
     }
 
   module = g_module_open (module_name, G_MODULE_BIND_LOCAL | G_MODULE_BIND_LAZY);
