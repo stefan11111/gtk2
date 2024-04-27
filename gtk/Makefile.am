@@ -62,12 +62,15 @@ uninstall-ms-lib:
 gtk.def: gtk.symbols
 	(echo -e EXPORTS; $(CPP) -P -DINCLUDE_VARIABLES -DALL_FILES - <$(srcdir)/gtk.symbols | sed -e '/^$$/d' -e 's/^/	/' -e 's/G_GNUC_[^ ]*//g') > gtk.def
 
-gtkalias.h:
-gtkaliasdef.c:
+gtkalias.h: gtk.symbols
+	  $(PERL) $(srcdir)/makegtkalias.pl < $(srcdir)/gtk.symbols > gtkalias.h
+gtkaliasdef.c: gtk.symbols
+	  $(PERL) $(srcdir)/makegtkalias.pl -def < $(srcdir)/gtk.symbols > gtkaliasdef.c
 
 check-aliases:
+	@$(TESTS_ENVIRONMENT) $(srcdir)/aliasfilescheck.sh
 
-.PHONY: gtkalias.h gtkaliasdef.c check-aliases
+.PHONY: check-aliases
 
 TESTS_ENVIRONMENT = srcdir="$(srcdir)" gtk_all_c_sources="$(gtk_all_c_sources)"
 TESTS = aliasfilescheck.sh
