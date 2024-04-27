@@ -1481,9 +1481,9 @@ gtk_real_menu_item_get_label (GtkMenuItem *menu_item)
 }
 
 static void
-free_timeval (GTimeVal *val)
+free_timeval (guint64 *val)
 {
-  g_slice_free (GTimeVal, val);
+  g_slice_free (guint64, val);
 }
 
 static void
@@ -1503,9 +1503,9 @@ gtk_menu_item_real_popup_submenu (GtkWidget *widget,
 
       if (remember_exact_time)
         {
-          GTimeVal *popup_time = g_slice_new0 (GTimeVal);
+          guint64 *popup_time = g_slice_new0 (guint64);
 
-          g_get_current_time (popup_time);
+          *popup_time = g_get_real_time ();
 
           g_object_set_data_full (G_OBJECT (menu_item->submenu),
                                   "gtk-menu-exact-popup-time", popup_time,
