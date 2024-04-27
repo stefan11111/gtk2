@@ -434,7 +434,6 @@ gtk_public_h_sources =		\
 	gtkmenutoolbutton.h	\
 	gtkmessagedialog.h	\
 	gtkmisc.h		\
-	gtkmodules.h		\
 	gtkmountoperation.h	\
 	gtknotebook.h		\
 	gtkobject.h		\
@@ -640,7 +639,7 @@ gtk_SUBLIBS = \
 #
 libgtk-win32-$(GTK_VER)-0.dll : $(gtk_SUBLIBS) gtk.def gtk-win32.res
 	$(CC) $(CFLAGS) -LD -Fm -Fe$@ $(gtk_SUBLIBS) gtk-win32.res \
-	$(GDK_LIBS) $(GDK_PIXBUF_LIBS) $(PANGO_LIBS) $(INTL_LIBS) $(GLIB_LIBS) $(GMODULE_LIBS) \
+	$(GDK_LIBS) $(GDK_PIXBUF_LIBS) $(PANGO_LIBS) $(INTL_LIBS) $(GLIB_LIBS) \
 	$(CAIRO_LIBS) $(PANGOCAIRO_LIBS) \
 	gdi32.lib user32.lib advapi32.lib wsock32.lib shell32.lib ole32.lib comdlg32.lib winspool.lib comctl32.lib \
 	$(LDFLAGS) /implib:gtk-win32-$(GTK_VER).lib /def:gtk.def

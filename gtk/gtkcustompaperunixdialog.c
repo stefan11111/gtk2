@@ -485,19 +485,6 @@ printer_list_initialize (GtkCustomPaperUnixDialog *dialog,
   g_list_free (list);
 }
 
-static void
-load_print_backends (GtkCustomPaperUnixDialog *dialog)
-{
-  GtkCustomPaperUnixDialogPrivate *priv = dialog->priv;
-  GList *node;
-
-  if (g_module_supported ())
-    priv->print_backends = gtk_print_backend_load_modules ();
-
-  for (node = priv->print_backends; node != NULL; node = node->next)
-    printer_list_initialize (dialog, GTK_PRINT_BACKEND (node->data));
-}
-
 static void unit_widget_changed (GtkCustomPaperUnixDialog *dialog);
 
 static GtkWidget *
@@ -1174,10 +1161,6 @@ populate_dialog (GtkCustomPaperUnixDialog *dialog)
       gtk_widget_realize (treeview);
       add_custom_paper (dialog);
     }
-
-  gtk_window_present (GTK_WINDOW (dialog));
-
-  load_print_backends (dialog);
 }
 
 

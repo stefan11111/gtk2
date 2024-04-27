@@ -54,7 +54,6 @@
 #include "gtkclipboard.h"
 #include "gtkdnd.h"
 #include "gtkversion.h"
-#include "gtkmodules.h"
 #include "gtkrc.h"
 #include "gtkrecentmanager.h"
 #include "gtkselection.h"
@@ -753,14 +752,9 @@ do_post_parse_initialization (int    *argc,
 
   /* load gtk modules */
   if (gtk_modules_string)
-    {
-      _gtk_modules_init (argc, argv, gtk_modules_string->str);
-      g_string_free (gtk_modules_string, TRUE);
-    }
-  else
-    {
-      _gtk_modules_init (argc, argv, NULL);
-    }
+  {
+    g_string_free (gtk_modules_string, TRUE);
+  }
 }
 
 

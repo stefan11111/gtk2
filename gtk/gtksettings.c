@@ -22,7 +22,6 @@
 
 #include <string.h>
 
-#include "gtkmodules.h"
 #include "gtksettings.h"
 #include "gtkrc.h"
 #include "gtkintl.h"
@@ -154,7 +153,6 @@ static guint	settings_install_property_parser (GtkSettingsClass      *class,
 						  GParamSpec            *pspec,
 						  GtkRcPropertyParser    parser);
 static void    settings_update_double_click      (GtkSettings           *settings);
-static void    settings_update_modules           (GtkSettings           *settings);
 
 #ifdef GDK_WINDOWING_X11
 static void    settings_update_cursor_theme      (GtkSettings           *settings);
@@ -1389,7 +1387,6 @@ gtk_settings_notify (GObject    *object,
   switch (property_id)
     {
     case PROP_MODULES:
-      settings_update_modules (settings);
       break;
     case PROP_DOUBLE_CLICK_TIME:
     case PROP_DOUBLE_CLICK_DISTANCE:
@@ -2220,20 +2217,6 @@ settings_update_double_click (GtkSettings *settings)
       gdk_display_set_double_click_time (display, double_click_time);
       gdk_display_set_double_click_distance (display, double_click_distance);
     }
-}
-
-static void
-settings_update_modules (GtkSettings *settings)
-{
-  gchar *modules;
-  
-  g_object_get (settings, 
-		"gtk-modules", &modules,
-		NULL);
-  
-  _gtk_modules_settings_changed (settings, modules);
-  
-  g_free (modules);
 }
 
 #ifdef GDK_WINDOWING_X11
