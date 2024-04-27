@@ -759,23 +759,6 @@ void
 gtk_builder_connect_signals (GtkBuilder *builder,
 			     gpointer    user_data)
 {
-  connect_args *args;
-  
-  g_return_if_fail (GTK_IS_BUILDER (builder));
-  
-  if (!g_module_supported ())
-    g_error ("gtk_builder_connect_signals() requires working GModule");
-
-  args = g_slice_new0 (connect_args);
-  args->module = g_module_open (NULL, G_MODULE_BIND_LAZY);
-  args->data = user_data;
-  
-  gtk_builder_connect_signals_full (builder,
-                                    gtk_builder_connect_signals_default,
-                                    args);
-  g_module_close (args->module);
-
-  g_slice_free (connect_args, args);
 }
 
 /**
