@@ -1174,7 +1174,6 @@ add_option_to_extension_point (GtkPrinterOption *option,
   GtkWidget *widget;
 
   widget = gtk_printer_option_widget_new (option);
-  gtk_widget_show (widget);
 
   if (gtk_printer_option_widget_has_external_label (GTK_PRINTER_OPTION_WIDGET (widget)))
     {
@@ -1208,9 +1207,6 @@ add_option_to_table (GtkPrinterOption *option,
 
   if (g_str_has_prefix (option->name, "gtk-"))
     return;
-
-  widget = gtk_printer_option_widget_new (option);
-  gtk_widget_show (widget);
 
   row = table->nrows;
   gtk_table_resize (table, table->nrows + 1, 2);
@@ -1461,8 +1457,6 @@ update_dialog_from_capabilities (GtkPrintUnixDialog *dialog)
                             caps & GTK_PRINT_CAPABILITY_REVERSE);
   gtk_widget_set_sensitive (priv->scale_spin,
                             caps & GTK_PRINT_CAPABILITY_SCALE);
-  gtk_widget_set_sensitive (GTK_WIDGET (priv->pages_per_sheet),
-                            caps & GTK_PRINT_CAPABILITY_NUMBER_UP);
 
   if (caps & GTK_PRINT_CAPABILITY_PREVIEW)
     gtk_widget_show (priv->preview_button);
@@ -3313,10 +3307,6 @@ create_page_setup_page (GtkPrintUnixDialog *dialog)
 
   widget = gtk_printer_option_widget_new (NULL);
   priv->duplex = GTK_PRINTER_OPTION_WIDGET (widget);
-  gtk_widget_show (widget);
-  gtk_table_attach (GTK_TABLE (table), widget,
-                    1, 2, 0, 1,  GTK_FILL, 0,
-                    0, 0);
   gtk_label_set_mnemonic_widget (GTK_LABEL (label), widget);
 
   label = gtk_label_new_with_mnemonic (_("Pages per _side:"));
@@ -3327,37 +3317,18 @@ create_page_setup_page (GtkPrintUnixDialog *dialog)
                     0, 0);
 
   widget = gtk_printer_option_widget_new (NULL);
-  g_signal_connect_swapped (widget, "changed", G_CALLBACK (redraw_page_layout_preview), dialog);
-  g_signal_connect_swapped (widget, "changed", G_CALLBACK (update_number_up_layout), dialog);
   priv->pages_per_sheet = GTK_PRINTER_OPTION_WIDGET (widget);
-  gtk_widget_show (widget);
-  gtk_table_attach (GTK_TABLE (table), widget,
-                    1, 2, 1, 2,  GTK_FILL, 0,
-                    0, 0);
   gtk_label_set_mnemonic_widget (GTK_LABEL (label), widget);
 
   label = gtk_label_new_with_mnemonic (_("Page or_dering:"));
   gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
-  gtk_widget_show (label);
-  gtk_table_attach (GTK_TABLE (table), label,
-                    0, 1, 2, 3,  GTK_FILL, 0,
-                    0, 0);
 
   widget = gtk_printer_option_widget_new (NULL);
-  g_signal_connect_swapped (widget, "changed", G_CALLBACK (redraw_page_layout_preview), dialog);
   priv->number_up_layout = GTK_PRINTER_OPTION_WIDGET (widget);
-  gtk_widget_show (widget);
-  gtk_table_attach (GTK_TABLE (table), widget,
-                    1, 2, 2, 3,  GTK_FILL, 0,
-                    0, 0);
   gtk_label_set_mnemonic_widget (GTK_LABEL (label), widget);
 
   label = gtk_label_new_with_mnemonic (_("_Only print:"));
   gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
-  gtk_widget_show (label);
-  gtk_table_attach (GTK_TABLE (table), label,
-                    0, 1, 3, 4,  GTK_FILL, 0,
-                    0, 0);
 
   combo = gtk_combo_box_text_new ();
   priv->page_set_combo = combo;
@@ -3412,10 +3383,6 @@ create_page_setup_page (GtkPrintUnixDialog *dialog)
 
   widget = gtk_printer_option_widget_new (NULL);
   priv->paper_type = GTK_PRINTER_OPTION_WIDGET (widget);
-  gtk_widget_show (widget);
-  gtk_table_attach (GTK_TABLE (table), widget,
-                    1, 2, 0, 1,  GTK_FILL, 0,
-                    0, 0);
   gtk_label_set_mnemonic_widget (GTK_LABEL (label), widget);
 
   label = gtk_label_new_with_mnemonic (_("Paper _source:"));
@@ -3427,10 +3394,6 @@ create_page_setup_page (GtkPrintUnixDialog *dialog)
 
   widget = gtk_printer_option_widget_new (NULL);
   priv->paper_source = GTK_PRINTER_OPTION_WIDGET (widget);
-  gtk_widget_show (widget);
-  gtk_table_attach (GTK_TABLE (table), widget,
-                    1, 2, 1, 2,  GTK_FILL, 0,
-                    0, 0);
   gtk_label_set_mnemonic_widget (GTK_LABEL (label), widget);
 
   label = gtk_label_new_with_mnemonic (_("Output t_ray:"));
@@ -3442,10 +3405,6 @@ create_page_setup_page (GtkPrintUnixDialog *dialog)
 
   widget = gtk_printer_option_widget_new (NULL);
   priv->output_tray = GTK_PRINTER_OPTION_WIDGET (widget);
-  gtk_widget_show (widget);
-  gtk_table_attach (GTK_TABLE (table), widget,
-                    1, 2, 2, 3,  GTK_FILL, 0,
-                    0, 0);
   gtk_label_set_mnemonic_widget (GTK_LABEL (label), widget);
 
 
@@ -3551,10 +3510,6 @@ create_job_page (GtkPrintUnixDialog *dialog)
 
   widget = gtk_printer_option_widget_new (NULL);
   priv->job_prio = GTK_PRINTER_OPTION_WIDGET (widget);
-  gtk_widget_show (widget);
-  gtk_table_attach (GTK_TABLE (table), widget,
-                    1, 2, 0, 1,  GTK_FILL, 0,
-                    0, 0);
   gtk_label_set_mnemonic_widget (GTK_LABEL (label), widget);
 
   label = gtk_label_new_with_mnemonic (_("_Billing info:"));
@@ -3566,10 +3521,6 @@ create_job_page (GtkPrintUnixDialog *dialog)
 
   widget = gtk_printer_option_widget_new (NULL);
   priv->billing_info = GTK_PRINTER_OPTION_WIDGET (widget);
-  gtk_widget_show (widget);
-  gtk_table_attach (GTK_TABLE (table), widget,
-                    1, 2, 1, 2,  GTK_FILL, 0,
-                    0, 0);
   gtk_label_set_mnemonic_widget (GTK_LABEL (label), widget);
 
   table = gtk_table_new (2, 2, FALSE);
@@ -3664,10 +3615,6 @@ create_job_page (GtkPrintUnixDialog *dialog)
 
   widget = gtk_printer_option_widget_new (NULL);
   priv->cover_before = GTK_PRINTER_OPTION_WIDGET (widget);
-  gtk_widget_show (widget);
-  gtk_table_attach (GTK_TABLE (table), widget,
-                    1, 2, 0, 1,  GTK_FILL, 0,
-                    0, 0);
   gtk_label_set_mnemonic_widget (GTK_LABEL (label), widget);
 
   /* Translators, this is the label used for the option in the print
@@ -3682,10 +3629,6 @@ create_job_page (GtkPrintUnixDialog *dialog)
 
   widget = gtk_printer_option_widget_new (NULL);
   priv->cover_after = GTK_PRINTER_OPTION_WIDGET (widget);
-  gtk_widget_show (widget);
-  gtk_table_attach (GTK_TABLE (table), widget,
-                    1, 2, 1, 2,  GTK_FILL, 0,
-                    0, 0);
   gtk_label_set_mnemonic_widget (GTK_LABEL (label), widget);
 
   /* Translators: this is the tab label for the notebook tab containing
