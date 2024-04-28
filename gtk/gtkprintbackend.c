@@ -257,8 +257,6 @@ static GtkPrintBackend *
 _gtk_print_backend_create (const gchar *backend_name)
 {
   GSList *l;
-  gchar *module_path;
-  gchar *full_name;
   GtkPrintBackendModule *pb_module;
   GtkPrintBackend *pb;
 

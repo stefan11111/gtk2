@@ -450,41 +450,6 @@ printer_status_cb (GtkPrintBackend        *backend,
   g_free (str);
 }
 
-static void
-printer_list_initialize (GtkCustomPaperUnixDialog *dialog,
-			 GtkPrintBackend        *print_backend)
-{
-  GList *list, *node;
-
-  g_return_if_fail (print_backend != NULL);
-
-  g_signal_connect_object (print_backend,
-			   "printer-added",
-			   (GCallback) printer_added_cb,
-			   G_OBJECT (dialog), 0);
-
-  g_signal_connect_object (print_backend,
-			   "printer-removed",
-			   (GCallback) printer_removed_cb,
-			   G_OBJECT (dialog), 0);
-
-  g_signal_connect_object (print_backend,
-			   "printer-status-changed",
-			   (GCallback) printer_status_cb,
-			   G_OBJECT (dialog), 0);
-
-  list = gtk_print_backend_get_printer_list (print_backend);
-
-  node = list;
-  while (node != NULL)
-    {
-      printer_added_cb (print_backend, node->data, dialog);
-      node = node->next;
-    }
-
-  g_list_free (list);
-}
-
 static void unit_widget_changed (GtkCustomPaperUnixDialog *dialog);
 
 static GtkWidget *
