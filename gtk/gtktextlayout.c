@@ -197,7 +197,7 @@ gtk_text_layout_class_init (GtkTextLayoutClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkTextLayoutClass, invalidated),
                   NULL, NULL,
-                  _gtk_marshal_VOID__VOID,
+                  NULL,
                   G_TYPE_NONE,
                   0);
 
@@ -207,7 +207,7 @@ gtk_text_layout_class_init (GtkTextLayoutClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkTextLayoutClass, changed),
                   NULL, NULL,
-                  _gtk_marshal_VOID__INT_INT_INT,
+                  NULL,
                   G_TYPE_NONE,
                   3,
                   G_TYPE_INT,
@@ -220,7 +220,7 @@ gtk_text_layout_class_init (GtkTextLayoutClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkTextLayoutClass, allocate_child),
                   NULL, NULL,
-                  _gtk_marshal_VOID__OBJECT_INT_INT,
+                  NULL,
                   G_TYPE_NONE,
                   3,
                   GTK_TYPE_OBJECT,

@@ -64,7 +64,7 @@ gtk_cell_editable_default_init (GtkCellEditableInterface *iface)
                 G_SIGNAL_RUN_LAST,
                 G_STRUCT_OFFSET (GtkCellEditableIface, editing_done),
                 NULL, NULL,
-                _gtk_marshal_VOID__VOID,
+                NULL,
                 G_TYPE_NONE, 0);
 
   /**
@@ -88,7 +88,7 @@ gtk_cell_editable_default_init (GtkCellEditableInterface *iface)
                 G_SIGNAL_RUN_LAST,
                 G_STRUCT_OFFSET (GtkCellEditableIface, remove_widget),
                 NULL, NULL,
-                _gtk_marshal_VOID__VOID,
+                NULL,
                 G_TYPE_NONE, 0);
 }
 

@@ -265,7 +265,7 @@ gtk_scale_class_init (GtkScaleClass *class)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkScaleClass, format_value),
                   single_string_accumulator, NULL,
-                  _gtk_marshal_STRING__DOUBLE,
+                  NULL,
                   G_TYPE_STRING, 1,
                   G_TYPE_DOUBLE);
 

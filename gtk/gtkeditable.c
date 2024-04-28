@@ -88,7 +88,7 @@ gtk_editable_base_init (gpointer g_class)
 		    G_SIGNAL_RUN_LAST,
 		    G_STRUCT_OFFSET (GtkEditableClass, insert_text),
 		    NULL, NULL,
-		    _gtk_marshal_VOID__STRING_INT_POINTER,
+		    NULL,
 		    G_TYPE_NONE, 3,
 		    G_TYPE_STRING,
 		    G_TYPE_INT,
@@ -115,7 +115,7 @@ gtk_editable_base_init (gpointer g_class)
 		    G_SIGNAL_RUN_LAST,
 		    G_STRUCT_OFFSET (GtkEditableClass, delete_text),
 		    NULL, NULL,
-		    _gtk_marshal_VOID__INT_INT,
+		    NULL,
 		    G_TYPE_NONE, 2,
 		    G_TYPE_INT,
 		    G_TYPE_INT);
@@ -137,7 +137,7 @@ gtk_editable_base_init (gpointer g_class)
 		    G_SIGNAL_RUN_LAST,
 		    G_STRUCT_OFFSET (GtkEditableClass, changed),
 		    NULL, NULL,
-		    _gtk_marshal_VOID__VOID,
+		    NULL,
 		    G_TYPE_NONE, 0);
 
       initialized = TRUE;

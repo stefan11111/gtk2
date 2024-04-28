@@ -962,7 +962,7 @@ gtk_accel_map_class_init (GtkAccelMapClass *accel_map_class)
 					     G_SIGNAL_DETAILED|G_SIGNAL_RUN_LAST,
 					     0,
 					     NULL, NULL,
-					     _gtk_marshal_VOID__STRING_UINT_FLAGS,
+					     NULL,
 					     G_TYPE_NONE, 3,
 					     G_TYPE_STRING, G_TYPE_UINT, GDK_TYPE_MODIFIER_TYPE);
 }

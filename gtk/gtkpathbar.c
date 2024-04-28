@@ -221,7 +221,7 @@ gtk_path_bar_class_init (GtkPathBarClass *path_bar_class)
 		  G_SIGNAL_RUN_FIRST,
 		  G_STRUCT_OFFSET (GtkPathBarClass, path_clicked),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__POINTER_POINTER_BOOLEAN,
+		  NULL,
 		  G_TYPE_NONE, 3,
 		  G_TYPE_POINTER,
 		  G_TYPE_POINTER,

@@ -691,7 +691,7 @@ gtk_text_tag_class_init (GtkTextTagClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkTextTagClass, event),
                   _gtk_boolean_handled_accumulator, NULL,
-                  _gtk_marshal_BOOLEAN__OBJECT_BOXED_BOXED,
+                  NULL,
                   G_TYPE_BOOLEAN,
                   3,
                   G_TYPE_OBJECT,

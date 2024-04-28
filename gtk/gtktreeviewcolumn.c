@@ -183,7 +183,7 @@ gtk_tree_view_column_class_init (GtkTreeViewColumnClass *class)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkTreeViewColumnClass, clicked),
                   NULL, NULL,
-                  _gtk_marshal_VOID__VOID,
+                  NULL,
                   G_TYPE_NONE, 0);
 
   g_object_class_install_property (object_class,

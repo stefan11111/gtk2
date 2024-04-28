@@ -507,7 +507,7 @@ _gtk_file_chooser_default_class_init (GtkFileChooserDefaultClass *class)
                                 G_SIGNAL_RUN_FIRST | G_SIGNAL_ACTION,
                                 G_CALLBACK (location_popup_handler),
                                 NULL, NULL,
-                                _gtk_marshal_VOID__STRING,
+                                NULL,
                                 G_TYPE_NONE, 1, G_TYPE_STRING);
 
   signals[LOCATION_POPUP_ON_PASTE] =
@@ -516,7 +516,7 @@ _gtk_file_chooser_default_class_init (GtkFileChooserDefaultClass *class)
                                 G_SIGNAL_RUN_FIRST | G_SIGNAL_ACTION,
                                 G_CALLBACK (location_popup_on_paste_handler),
                                 NULL, NULL,
-                                _gtk_marshal_VOID__VOID,
+                                NULL,
                                 G_TYPE_NONE, 0);
 
   signals[LOCATION_TOGGLE_POPUP] =
@@ -525,7 +525,7 @@ _gtk_file_chooser_default_class_init (GtkFileChooserDefaultClass *class)
                                 G_SIGNAL_RUN_FIRST | G_SIGNAL_ACTION,
                                 G_CALLBACK (location_toggle_popup_handler),
                                 NULL, NULL,
-                                _gtk_marshal_VOID__VOID,
+                                NULL,
                                 G_TYPE_NONE, 0);
 
   signals[UP_FOLDER] =
@@ -534,7 +534,7 @@ _gtk_file_chooser_default_class_init (GtkFileChooserDefaultClass *class)
                                 G_SIGNAL_RUN_FIRST | G_SIGNAL_ACTION,
                                 G_CALLBACK (up_folder_handler),
                                 NULL, NULL,
-                                _gtk_marshal_VOID__VOID,
+                                NULL,
                                 G_TYPE_NONE, 0);
 
   signals[DOWN_FOLDER] =
@@ -543,7 +543,7 @@ _gtk_file_chooser_default_class_init (GtkFileChooserDefaultClass *class)
                                 G_SIGNAL_RUN_FIRST | G_SIGNAL_ACTION,
                                 G_CALLBACK (down_folder_handler),
                                 NULL, NULL,
-                                _gtk_marshal_VOID__VOID,
+                                NULL,
                                 G_TYPE_NONE, 0);
 
   signals[HOME_FOLDER] =
@@ -552,7 +552,7 @@ _gtk_file_chooser_default_class_init (GtkFileChooserDefaultClass *class)
                                 G_SIGNAL_RUN_FIRST | G_SIGNAL_ACTION,
                                 G_CALLBACK (home_folder_handler),
                                 NULL, NULL,
-                                _gtk_marshal_VOID__VOID,
+                                NULL,
                                 G_TYPE_NONE, 0);
 
   signals[DESKTOP_FOLDER] =
@@ -561,7 +561,7 @@ _gtk_file_chooser_default_class_init (GtkFileChooserDefaultClass *class)
                                 G_SIGNAL_RUN_FIRST | G_SIGNAL_ACTION,
                                 G_CALLBACK (desktop_folder_handler),
                                 NULL, NULL,
-                                _gtk_marshal_VOID__VOID,
+                                NULL,
                                 G_TYPE_NONE, 0);
 
   signals[QUICK_BOOKMARK] =
@@ -570,7 +570,7 @@ _gtk_file_chooser_default_class_init (GtkFileChooserDefaultClass *class)
                                 G_SIGNAL_RUN_FIRST | G_SIGNAL_ACTION,
                                 G_CALLBACK (quick_bookmark_handler),
                                 NULL, NULL,
-                                _gtk_marshal_VOID__INT,
+                                NULL,
                                 G_TYPE_NONE, 1, G_TYPE_INT);
 
   signals[SHOW_HIDDEN] =
@@ -579,7 +579,7 @@ _gtk_file_chooser_default_class_init (GtkFileChooserDefaultClass *class)
                                 G_SIGNAL_RUN_FIRST | G_SIGNAL_ACTION,
                                 G_CALLBACK (show_hidden_handler),
                                 NULL, NULL,
-                                _gtk_marshal_VOID__VOID,
+                                NULL,
                                 G_TYPE_NONE, 0);
 
   signals[SEARCH_SHORTCUT] =
@@ -588,7 +588,7 @@ _gtk_file_chooser_default_class_init (GtkFileChooserDefaultClass *class)
                                 G_SIGNAL_RUN_FIRST | G_SIGNAL_ACTION,
                                 G_CALLBACK (search_shortcut_handler),
                                 NULL, NULL,
-                                _gtk_marshal_VOID__VOID,
+                                NULL,
                                 G_TYPE_NONE, 0);
 
   signals[RECENT_SHORTCUT] =
@@ -597,7 +597,7 @@ _gtk_file_chooser_default_class_init (GtkFileChooserDefaultClass *class)
                                 G_SIGNAL_RUN_FIRST | G_SIGNAL_ACTION,
                                 G_CALLBACK (recent_shortcut_handler),
                                 NULL, NULL,
-                                _gtk_marshal_VOID__VOID,
+                                NULL,
                                 G_TYPE_NONE, 0);
 
   binding_set = gtk_binding_set_by_class (class);

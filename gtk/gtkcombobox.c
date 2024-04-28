@@ -648,7 +648,7 @@ gtk_combo_box_class_init (GtkComboBoxClass *klass)
                                 G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                                 G_CALLBACK (gtk_combo_box_real_popdown),
                                 NULL, NULL,
-                                _gtk_marshal_BOOLEAN__VOID,
+                                NULL,
                                 G_TYPE_BOOLEAN, 0);
 
   /* key bindings */

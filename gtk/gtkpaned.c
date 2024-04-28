@@ -348,7 +348,7 @@ gtk_paned_class_init (GtkPanedClass *class)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkPanedClass, cycle_child_focus),
 		  NULL, NULL,
-		  _gtk_marshal_BOOLEAN__BOOLEAN,
+		  NULL,
 		  G_TYPE_BOOLEAN, 1,
 		  G_TYPE_BOOLEAN);
 
@@ -371,7 +371,7 @@ gtk_paned_class_init (GtkPanedClass *class)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkPanedClass, toggle_handle_focus),
 		  NULL, NULL,
-		  _gtk_marshal_BOOLEAN__VOID,
+		  NULL,
 		  G_TYPE_BOOLEAN, 0);
 
   /**
@@ -392,7 +392,7 @@ gtk_paned_class_init (GtkPanedClass *class)
                   G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                   G_STRUCT_OFFSET (GtkPanedClass, move_handle),
                   NULL, NULL,
-                  _gtk_marshal_BOOLEAN__ENUM,
+                  NULL,
                   G_TYPE_BOOLEAN, 1,
                   GTK_TYPE_SCROLL_TYPE);
 
@@ -416,7 +416,7 @@ gtk_paned_class_init (GtkPanedClass *class)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkPanedClass, cycle_handle_focus),
 		  NULL, NULL,
-		  _gtk_marshal_BOOLEAN__BOOLEAN,
+		  NULL,
 		  G_TYPE_BOOLEAN, 1,
 		  G_TYPE_BOOLEAN);
 
@@ -439,7 +439,7 @@ gtk_paned_class_init (GtkPanedClass *class)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkPanedClass, accept_position),
 		  NULL, NULL,
-		  _gtk_marshal_BOOLEAN__VOID,
+		  NULL,
 		  G_TYPE_BOOLEAN, 0);
 
   /**
@@ -462,7 +462,7 @@ gtk_paned_class_init (GtkPanedClass *class)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkPanedClass, cancel_position),
 		  NULL, NULL,
-		  _gtk_marshal_BOOLEAN__VOID,
+		  NULL,
 		  G_TYPE_BOOLEAN, 0);
 
   binding_set = gtk_binding_set_by_class (class);

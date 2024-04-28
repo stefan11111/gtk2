@@ -153,7 +153,7 @@ gtk_hsv_class_init (GtkHSVClass *class)
 		  G_SIGNAL_RUN_FIRST,
 		  G_STRUCT_OFFSET (GtkHSVClass, changed),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__VOID,
+		  NULL,
 		  G_TYPE_NONE, 0);
 
   hsv_signals[MOVE] =
@@ -162,7 +162,7 @@ gtk_hsv_class_init (GtkHSVClass *class)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkHSVClass, move),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__ENUM,
+		  NULL,
 		  G_TYPE_NONE, 1,
 		  GTK_TYPE_DIRECTION_TYPE);
 

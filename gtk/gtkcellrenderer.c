@@ -122,7 +122,7 @@ gtk_cell_renderer_class_init (GtkCellRendererClass *class)
 		  G_SIGNAL_RUN_FIRST,
 		  G_STRUCT_OFFSET (GtkCellRendererClass, editing_canceled),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__VOID,
+		  NULL,
 		  G_TYPE_NONE, 0);
 
   /**
@@ -166,7 +166,7 @@ gtk_cell_renderer_class_init (GtkCellRendererClass *class)
 		  G_SIGNAL_RUN_FIRST,
 		  G_STRUCT_OFFSET (GtkCellRendererClass, editing_started),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__OBJECT_STRING,
+		  NULL,
 		  G_TYPE_NONE, 2,
 		  GTK_TYPE_CELL_EDITABLE,
 		  G_TYPE_STRING);

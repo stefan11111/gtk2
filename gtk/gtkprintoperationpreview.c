@@ -102,7 +102,7 @@ gtk_print_operation_preview_base_init (gpointer g_iface)
 		    G_SIGNAL_RUN_LAST,
 		    G_STRUCT_OFFSET (GtkPrintOperationPreviewIface, got_page_size),
 		    NULL, NULL,
-		    _gtk_marshal_VOID__OBJECT_OBJECT,
+		    NULL,
 		    G_TYPE_NONE, 2,
 		    GTK_TYPE_PRINT_CONTEXT,
 		    GTK_TYPE_PAGE_SETUP);

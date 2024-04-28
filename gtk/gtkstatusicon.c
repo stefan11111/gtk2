@@ -450,7 +450,7 @@ gtk_status_icon_class_init (GtkStatusIconClass *class)
 		  G_STRUCT_OFFSET (GtkStatusIconClass, popup_menu),
 		  NULL,
 		  NULL,
-		  _gtk_marshal_VOID__UINT_UINT,
+		  NULL,
 		  G_TYPE_NONE,
 		  2,
 		  G_TYPE_UINT,
@@ -476,7 +476,7 @@ gtk_status_icon_class_init (GtkStatusIconClass *class)
 		  G_STRUCT_OFFSET (GtkStatusIconClass, size_changed),
 		  g_signal_accumulator_true_handled,
 		  NULL,
-		  _gtk_marshal_BOOLEAN__INT,
+		  NULL,
 		  G_TYPE_BOOLEAN,
 		  1,
 		  G_TYPE_INT);
@@ -503,7 +503,7 @@ gtk_status_icon_class_init (GtkStatusIconClass *class)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkStatusIconClass, button_press_event),
 		  g_signal_accumulator_true_handled, NULL,
-		  _gtk_marshal_BOOLEAN__BOXED,
+		  NULL,
 		  G_TYPE_BOOLEAN, 1,
 		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
 
@@ -529,7 +529,7 @@ gtk_status_icon_class_init (GtkStatusIconClass *class)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkStatusIconClass, button_release_event),
 		  g_signal_accumulator_true_handled, NULL,
-		  _gtk_marshal_BOOLEAN__BOXED,
+		  NULL,
 		  G_TYPE_BOOLEAN, 1,
 		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
 
@@ -553,7 +553,7 @@ gtk_status_icon_class_init (GtkStatusIconClass *class)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkStatusIconClass, scroll_event),
 		  g_signal_accumulator_true_handled, NULL,
-		  _gtk_marshal_BOOLEAN__BOXED,
+		  NULL,
 		  G_TYPE_BOOLEAN, 1,
 		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
 
@@ -593,7 +593,7 @@ gtk_status_icon_class_init (GtkStatusIconClass *class)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkStatusIconClass, query_tooltip),
 		  g_signal_accumulator_true_handled, NULL,
-		  _gtk_marshal_BOOLEAN__INT_INT_BOOLEAN_OBJECT,
+		  NULL,
 		  G_TYPE_BOOLEAN, 4,
 		  G_TYPE_INT,
 		  G_TYPE_INT,

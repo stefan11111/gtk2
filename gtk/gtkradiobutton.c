@@ -111,7 +111,7 @@ gtk_radio_button_class_init (GtkRadioButtonClass *class)
 				       G_SIGNAL_RUN_FIRST,
 				       G_STRUCT_OFFSET (GtkRadioButtonClass, group_changed),
 				       NULL, NULL,
-				       _gtk_marshal_VOID__VOID,
+				       NULL,
 				       G_TYPE_NONE, 0);
 }
 

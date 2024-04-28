@@ -319,7 +319,7 @@ gtk_scrolled_window_class_init (GtkScrolledWindowClass *class)
                   G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                   G_STRUCT_OFFSET (GtkScrolledWindowClass, scroll_child),
                   NULL, NULL,
-                  _gtk_marshal_BOOLEAN__ENUM_BOOLEAN,
+                  NULL,
                   G_TYPE_BOOLEAN, 2,
                   GTK_TYPE_SCROLL_TYPE,
 		  G_TYPE_BOOLEAN);
@@ -329,7 +329,7 @@ gtk_scrolled_window_class_init (GtkScrolledWindowClass *class)
                   G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                   G_STRUCT_OFFSET (GtkScrolledWindowClass, move_focus_out),
                   NULL, NULL,
-                  _gtk_marshal_VOID__ENUM,
+                  NULL,
                   G_TYPE_NONE, 1,
                   GTK_TYPE_DIRECTION_TYPE);
   
