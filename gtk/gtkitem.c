@@ -29,9 +29,9 @@
 #undef GTK_DISABLE_DEPRECATED
 
 #include "gtkitem.h"
-#include "gtkmarshalers.h"
+
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 
 enum {
@@ -176,4 +176,4 @@ gtk_item_leave (GtkWidget        *widget,
 }
 
 #define __GTK_ITEM_C__
-#include "gtkaliasdef.c"
+

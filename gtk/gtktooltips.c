@@ -41,7 +41,7 @@
 #include "gtkstyle.h"
 #include "gtktooltips.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 
 #define DEFAULT_DELAY 500           /* Default delay in ms */
@@ -334,4 +334,4 @@ gtk_tooltips_get_info_from_tip_window (GtkWindow    *tip_window,
 }
 
 #define __GTK_TOOLTIPS_C__
-#include "gtkaliasdef.c"
+

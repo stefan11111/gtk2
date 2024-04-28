@@ -30,7 +30,7 @@
 #include "gtkrecentchooserutils.h"
 #include "gtkrecentchooserprivate.h"
 #include "gtkprivate.h"
-#include "gtkalias.h"
+
 
 #define FALLBACK_ITEM_LIMIT     10
 
@@ -767,4 +767,4 @@ gtk_recent_action_set_show_numbers (GtkRecentAction *action,
 }
 
 #define __GTK_RECENT_ACTION_C__
-#include "gtkaliasdef.c"
+

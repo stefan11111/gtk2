@@ -27,11 +27,11 @@
 #include "gtkalignment.h"
 #include "gtklabel.h"
 #include "gtkhbox.h"
-#include "gtkmarshalers.h"
+
 #include "gtkarrow.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 enum
 {
@@ -3786,4 +3786,4 @@ gtk_tree_view_column_get_tree_view (GtkTreeViewColumn *tree_column)
 }
 
 #define __GTK_TREE_VIEW_COLUMN_C__
-#include "gtkaliasdef.c"
+

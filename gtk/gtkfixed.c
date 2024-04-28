@@ -28,7 +28,7 @@
 #include "gtkfixed.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 enum {
   CHILD_PROP_0,
   CHILD_PROP_X,
@@ -503,4 +503,4 @@ gtk_fixed_get_has_window (GtkFixed *fixed)
 }
 
 #define __GTK_FIXED_C__
-#include "gtkaliasdef.c"
+

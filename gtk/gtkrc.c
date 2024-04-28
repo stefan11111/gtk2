@@ -55,7 +55,7 @@
 #include "gtksettings.h"
 #include "gtkwindow.h"
 
-#include "gtkalias.h"
+
 
 #ifdef G_OS_WIN32
 #include <io.h>
@@ -4946,4 +4946,4 @@ gtk_rc_parse (const gchar *filename)
 #endif
 
 #define __GTK_RC_C__
-#include "gtkaliasdef.c"
+

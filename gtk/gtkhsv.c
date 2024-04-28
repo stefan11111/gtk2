@@ -38,9 +38,9 @@
 
 #include "gtkhsv.h"
 #include "gtkbindings.h"
-#include "gtkmarshalers.h"
+
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 /* Default width/height */
 #define DEFAULT_SIZE 100
@@ -1683,4 +1683,4 @@ gtk_hsv_move (GtkHSV          *hsv,
 }
 
 #define __GTK_HSV_C__
-#include "gtkaliasdef.c"
+

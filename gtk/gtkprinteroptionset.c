@@ -24,7 +24,7 @@
 #include <gmodule.h>
 
 #include "gtkprinteroptionset.h"
-#include "gtkalias.h"
+
 
 /*****************************************
  *         GtkPrinterOptionSet    *
@@ -195,4 +195,4 @@ gtk_printer_option_set_foreach (GtkPrinterOptionSet *set,
 
 
 #define __GTK_PRINTER_OPTION_SET_C__
-#include "gtkaliasdef.c"
+

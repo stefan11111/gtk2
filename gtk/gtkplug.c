@@ -28,13 +28,13 @@
 #include "config.h"
 
 #include "gtkmain.h"
-#include "gtkmarshalers.h"
+
 #include "gtkplug.h"
 #include "gtkintl.h"
 #include "gtkprivate.h"
 #include "gtkplugprivate.h"
 
-#include "gtkalias.h"
+
 
 /**
  * SECTION:gtkplug
@@ -1067,4 +1067,4 @@ _gtk_plug_focus_first_last (GtkPlug          *plug,
 }
 
 #define __GTK_PLUG_C__
-#include "gtkaliasdef.c"
+

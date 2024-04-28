@@ -35,12 +35,12 @@
 #include "gtkcurve.h"
 #include "gtkdrawingarea.h"
 #include "gtkmain.h"
-#include "gtkmarshalers.h"
+
 #include "gtkradiobutton.h"
 #include "gtktable.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 #define RADIUS		3	/* radius of the control points */
 #define MIN_DISTANCE	8	/* min distance between control points */
@@ -1037,4 +1037,4 @@ gtk_curve_finalize (GObject *object)
 }
 
 #define __GTK_CURVE_C__
-#include "gtkaliasdef.c"
+

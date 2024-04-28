@@ -26,9 +26,9 @@
 #include "gtktreemodel.h"
 #include "gtktreeview.h"
 #include "gtktreeprivate.h"
-#include "gtkmarshalers.h"
+
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 
 #define INITIALIZE_TREE_ITER(Iter) \
@@ -2191,4 +2191,4 @@ gtk_tree_row_reference_reordered (GObject     *proxy,
 }
 
 #define __GTK_TREE_MODEL_C__
-#include "gtkaliasdef.c"
+

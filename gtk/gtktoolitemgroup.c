@@ -29,7 +29,7 @@
 #include <string.h>
 #include "gtkprivate.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 #define ANIMATION_TIMEOUT        50
 #define ANIMATION_DURATION      (ANIMATION_TIMEOUT * 4)
@@ -2417,4 +2417,4 @@ _gtk_tool_item_group_palette_reconfigured (GtkToolItemGroup *group)
 
 
 #define __GTK_TOOL_ITEM_GROUP_C__
-#include "gtkaliasdef.c"
+

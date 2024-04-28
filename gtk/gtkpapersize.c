@@ -31,7 +31,7 @@
 #include "gtkprintutils.h"
 #include "gtkprintoperation.h"  /* for GtkPrintError */
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 #include "paper_names_offsets.c"
 
@@ -919,4 +919,4 @@ gtk_paper_size_to_key_file (GtkPaperSize *size,
 
 
 #define __GTK_PAPER_SIZE_C__
-#include "gtkaliasdef.c"
+

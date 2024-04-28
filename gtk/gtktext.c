@@ -37,7 +37,7 @@
 #undef GTK_DISABLE_DEPRECATED
 
 #include "gtkmain.h"
-#include "gtkmarshalers.h"
+
 #include "gtkselection.h"
 #include "gtksignal.h"
 #include "gtkstyle.h"
@@ -48,7 +48,7 @@
 #include "gtkprivate.h"
 #include "gtkintl.h"
 
-#include "gtkalias.h"
+
 
 
 #define INITIAL_BUFFER_SIZE      1024
@@ -5458,4 +5458,4 @@ gtk_text_show_props (GtkText *text,
 #endif
 
 #define __GTK_TEXT_C__
-#include "gtkaliasdef.c"
+

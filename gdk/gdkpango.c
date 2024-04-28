@@ -29,7 +29,7 @@
 #include "gdkprivate.h"
 #include "gdkscreen.h"
 #include "gdkintl.h"
-#include "gdkalias.h"
+
 
 #define GDK_INFO_KEY "gdk-info"
 
@@ -1497,4 +1497,4 @@ gdk_pango_context_get_for_screen (GdkScreen *screen)
 }
 
 #define __GDK_PANGO_C__
-#include "gdkaliasdef.c"
+

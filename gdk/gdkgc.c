@@ -33,7 +33,7 @@
 #include "gdkpixmap.h"
 #include "gdkrgb.h"
 #include "gdkprivate.h"
-#include "gdkalias.h"
+
 
 static void gdk_gc_finalize   (GObject      *object);
 
@@ -1596,4 +1596,4 @@ _gdk_gc_update_context (GdkGC          *gc,
 
 
 #define __GDK_GC_C__
-#include "gdkaliasdef.c"
+

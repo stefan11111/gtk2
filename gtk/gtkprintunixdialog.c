@@ -56,7 +56,7 @@
 #include "gtkprintunixdialog.h"
 #include "gtkprinteroptionwidget.h"
 #include "gtkprintutils.h"
-#include "gtkalias.h"
+
 
 #include "gtkmessagedialog.h"
 #include "gtkbutton.h"
@@ -4434,4 +4434,4 @@ gtk_print_unix_dialog_get_embed_page_setup (GtkPrintUnixDialog *dialog)
 }
 
 #define __GTK_PRINT_UNIX_DIALOG_C__
-#include "gtkaliasdef.c"
+

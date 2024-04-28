@@ -35,7 +35,7 @@
 #include "gtkintl.h"
 #include "gtkiconfactory.h"
 #include "gtkmain.h"
-#include "gtkmarshalers.h"
+
 #include "gtktrayicon.h"
 
 #include "gtkprivate.h"
@@ -48,7 +48,7 @@
 
 #include "gdkkeysyms.h"
 
-#include "gtkalias.h"
+
 
 #define BLINK_TIMEOUT 500
 
@@ -2682,4 +2682,4 @@ gtk_status_icon_set_name (GtkStatusIcon *status_icon,
 
 
 #define __GTK_STATUS_ICON_C__
-#include "gtkaliasdef.c"
+

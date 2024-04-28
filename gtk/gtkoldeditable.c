@@ -33,12 +33,12 @@
 #include "gtkclipboard.h"
 #include "gtkoldeditable.h"
 #include "gtkmain.h"
-#include "gtkmarshalers.h"
+
 #include "gtkselection.h"
 #include "gtksignal.h"
 #include "gtkintl.h"
 
-#include "gtkalias.h"
+
 
 #define MIN_EDITABLE_WIDTH  150
 #define DRAW_TIMEOUT     20
@@ -826,4 +826,4 @@ gtk_old_editable_changed (GtkOldEditable *old_editable)
 }
 
 #define __GTK_OLD_EDITABLE_C__
-#include "gtkaliasdef.c"
+

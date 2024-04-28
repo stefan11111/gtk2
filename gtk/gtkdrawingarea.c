@@ -27,7 +27,7 @@
 #include "config.h"
 #include "gtkdrawingarea.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 
 static void gtk_drawing_area_realize       (GtkWidget           *widget);
@@ -150,4 +150,4 @@ gtk_drawing_area_send_configure (GtkDrawingArea *darea)
 }
 
 #define __GTK_DRAWING_AREA_C__
-#include "gtkaliasdef.c"
+

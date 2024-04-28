@@ -33,7 +33,7 @@
 #include "gdkscreen.h"
 #include "gdkinternals.h"
 #include "gdkintl.h"
-#include "gdkalias.h"
+
 
 
 static char *

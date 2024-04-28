@@ -21,7 +21,7 @@
 
 #include	<config.h>
 #include	"gtksignal.h"
-#include "gtkalias.h"
+
 
 /* the real parameter limit is of course given by GSignal, bu we need
  * an upper limit for the implementations. so this should be adjusted
@@ -391,4 +391,4 @@ gtk_signal_emitv_by_name (GtkObject   *object,
 }
 
 #define __GTK_SIGNAL_C__
-#include "gtkaliasdef.c"
+

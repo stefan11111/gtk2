@@ -34,7 +34,7 @@
 #include "gdkpixbuf.h"
 #include "gdkpixmap.h"
 #include "gdkinternals.h"
-#include "gdkalias.h"
+
 
 /* Some convenient names
  */
@@ -1415,4 +1415,4 @@ gdk_pixbuf_get_from_image (GdkPixbuf   *dest,
 }
 
 #define __GDK_PIXBUF_DRAWABLE_C__
-#include "gdkaliasdef.c"
+

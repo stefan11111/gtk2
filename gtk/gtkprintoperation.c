@@ -26,12 +26,12 @@
 
 #include <string.h>
 #include "gtkprintoperation-private.h"
-#include "gtkmarshalers.h"
+
 #include <cairo-pdf.h>
 #include "gtkintl.h"
 #include "gtkprivate.h"
 #include "gtkmessagedialog.h"
-#include "gtkalias.h"
+
 
 #define SHOW_PROGRESS_TIME 1200
 
@@ -3296,4 +3296,4 @@ gtk_print_operation_get_n_pages_to_print (GtkPrintOperation *op)
 }
 
 #define __GTK_PRINT_OPERATION_C__
-#include "gtkaliasdef.c"
+

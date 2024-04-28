@@ -33,7 +33,7 @@
 #include "gtkhbox.h"
 #include "gtkalignment.h"
 
-#include "gtkalias.h"
+
 
 #undef DEBUG_TOOLTIP
 
@@ -1634,4 +1634,4 @@ _gtk_tooltip_handle_event (GdkEvent *event)
 
 
 #define __GTK_TOOLTIP_C__
-#include "gtkaliasdef.c"
+

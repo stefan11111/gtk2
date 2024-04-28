@@ -35,7 +35,7 @@
 #include "gdkpixmap.h"
 #include "gdkinternals.h"
 #include "gdkdisplay-x11.h"
-#include "gdkalias.h"
+
 
 
 /* If this variable is FALSE, it indicates that we should
@@ -249,4 +249,4 @@ gdk_mbstowcs (GdkWChar *dest, const gchar *src, gint dest_max)
 }
 
 #define __GDK_IM_X11_C__
-#include "gdkaliasdef.c"
+

@@ -40,7 +40,7 @@
 #include "config.h"
 #include "gtkbin.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 static void gtk_bin_add         (GtkContainer   *container,
 			         GtkWidget      *widget);
@@ -160,4 +160,4 @@ gtk_bin_get_child (GtkBin *bin)
 }
 
 #define __GTK_BIN_C__
-#include "gtkaliasdef.c"
+

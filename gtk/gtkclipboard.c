@@ -26,10 +26,10 @@
 #include "gtkclipboard.h"
 #include "gtkinvisible.h"
 #include "gtkmain.h"
-#include "gtkmarshalers.h"
+
 #include "gtktextbufferrichtext.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 #ifdef GDK_WINDOWING_X11
 #include "x11/gdkx.h"
@@ -2086,4 +2086,4 @@ _gtk_clipboard_store_all (void)
 }
 
 #define __GTK_CLIPBOARD_C__
-#include "gtkaliasdef.c"
+

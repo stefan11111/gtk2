@@ -34,8 +34,8 @@
 #include "gtklayout.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
-#include "gtkmarshalers.h"
-#include "gtkalias.h"
+
+
 
 typedef struct _GtkLayoutChild   GtkLayoutChild;
 
@@ -1116,4 +1116,4 @@ gtk_layout_adjustment_changed (GtkAdjustment *adjustment,
 }
 
 #define __GTK_LAYOUT_C__
-#include "gtkaliasdef.c"
+

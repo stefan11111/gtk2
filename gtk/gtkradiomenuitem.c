@@ -26,12 +26,12 @@
 
 #include "config.h"
 #include "gtkaccellabel.h"
-#include "gtkmarshalers.h"
+
 #include "gtkradiomenuitem.h"
 #include "gtkactivatable.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 
 enum {
@@ -500,4 +500,4 @@ gtk_radio_menu_item_activate (GtkMenuItem *menu_item)
 }
 
 #define __GTK_RADIO_MENU_ITEM_C__
-#include "gtkaliasdef.c"
+

@@ -27,11 +27,11 @@
 
 #include "gtkfilesystem.h"
 #include "gtkintl.h"
-#include "gtkmarshalers.h"
+
 #include "gtktreedatalist.h"
 #include "gtktreednd.h"
 #include "gtktreemodel.h"
-#include "gtkalias.h"
+
 
 /*** Structure: how GtkFileSystemModel works
  *

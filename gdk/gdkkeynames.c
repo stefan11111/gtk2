@@ -31,7 +31,7 @@
 
 #include "gdkkeysyms.h"
 #include "gdkinternals.h"
-#include "gdkalias.h"
+
 
 /* Key handling not part of the keymap */
 
@@ -130,4 +130,4 @@ gdk_keyval_from_name (const gchar *keyval_name)
 }
 
 #define __GDK_KEYNAMES_C__
-#include "gdkaliasdef.c"
+

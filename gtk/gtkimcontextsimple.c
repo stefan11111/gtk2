@@ -29,7 +29,7 @@
 #include "gtksettings.h"
 #include "gtkwidget.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 #ifdef GDK_WINDOWING_WIN32
 #include <win32/gdkwin32keys.h>
@@ -128,4 +128,4 @@ gtk_im_context_simple_add_table (GtkIMContextSimple *context_simple,
 }
 
 #define __GTK_IM_CONTEXT_SIMPLE_C__
-#include "gtkaliasdef.c"
+

@@ -32,8 +32,8 @@
 #include "gtklabel.h"
 #include "gtkhbox.h"
 #include "gtkmain.h"
-#include "gtkmarshalers.h"
-#include "gtkalias.h"
+
+
 
 enum {
   PATH_CLICKED,
@@ -1799,4 +1799,4 @@ _gtk_path_bar_down (GtkPathBar *path_bar)
 }
 
 #define __GTK_PATH_BAR_C__
-#include "gtkaliasdef.c"
+

@@ -20,9 +20,9 @@
 
 #include "config.h"
 #include "gtkfilechooserembed.h"
-#include "gtkmarshalers.h"
+
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 static void gtk_file_chooser_embed_class_init (gpointer g_iface);
 static void delegate_get_default_size         (GtkFileChooserEmbed *chooser_embed,

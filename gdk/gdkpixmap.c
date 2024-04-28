@@ -29,7 +29,7 @@
 #include "gdkinternals.h"
 #include "gdkpixbuf.h"
 #include "gdkscreen.h"
-#include "gdkalias.h"
+
 
 static GdkGC *gdk_pixmap_create_gc      (GdkDrawable     *drawable,
                                          GdkGCValues     *values,
@@ -866,4 +866,4 @@ gdk_pixmap_get_size (GdkPixmap *pixmap,
 }
 
 #define __GDK_PIXMAP_C__
-#include "gdkaliasdef.c"
+

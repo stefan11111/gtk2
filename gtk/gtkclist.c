@@ -42,10 +42,10 @@
 #include "gtkclist.h"
 #include "gtkbindings.h"
 #include "gtkdnd.h"
-#include "gtkmarshalers.h"
+
 #include "gtkintl.h"
 
-#include "gtkalias.h"
+
 
 /* length of button_actions array */
 #define MAX_BUTTON 5
@@ -7792,4 +7792,4 @@ gtk_clist_set_button_actions (GtkCList *clist,
     }
 }
 
-#include "gtkaliasdef.c"
+

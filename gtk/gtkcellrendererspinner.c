@@ -33,7 +33,7 @@
 #include "gtkiconfactory.h"
 #include "gtkicontheme.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 
 /**
@@ -387,4 +387,4 @@ gtk_cell_renderer_spinner_render (GtkCellRenderer *cellr,
 }
 
 #define __GTK_CELL_RENDERER_SPINNER_C__
-#include "gtkaliasdef.c"
+

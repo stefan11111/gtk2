@@ -34,10 +34,10 @@
 
 #include "gtkobject.h"
 #include "gtkintl.h"
-#include "gtkmarshalers.h"
+
 #include "gtkprivate.h"
 
-#include "gtkalias.h"
+
 
 
 enum {
@@ -730,4 +730,4 @@ gtk_object_unref (GtkObject *object)
 }
 
 #define __GTK_OBJECT_C__
-#include "gtkaliasdef.c"
+

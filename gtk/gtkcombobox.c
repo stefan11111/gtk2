@@ -47,11 +47,11 @@
 #include <string.h>
 #include <stdarg.h>
 
-#include "gtkmarshalers.h"
+
 #include "gtkintl.h"
 
 #include "gtktreeprivate.h"
-#include "gtkalias.h"
+
 
 /**
  * SECTION:gtkcombobox
@@ -6363,4 +6363,4 @@ gtk_combo_box_buildable_get_internal_child (GtkBuildable *buildable,
 }
 
 #define __GTK_COMBO_BOX_C__
-#include "gtkaliasdef.c"
+

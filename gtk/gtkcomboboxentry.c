@@ -31,7 +31,7 @@
 #include "gtkprivate.h"
 #include "gtkintl.h"
 #include "gtkbuildable.h"
-#include "gtkalias.h"
+
 
 #define GTK_COMBO_BOX_ENTRY_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_COMBO_BOX_ENTRY, GtkComboBoxEntryPrivate))
 
@@ -474,4 +474,4 @@ gtk_combo_box_entry_get_active_text (GtkComboBox *combo_box)
 }
 
 #define __GTK_COMBO_BOX_ENTRY_C__
-#include "gtkaliasdef.c"
+

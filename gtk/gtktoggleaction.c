@@ -37,7 +37,7 @@
 #include "gtktogglebutton.h"
 #include "gtkcheckmenuitem.h"
 #include "gtkprivate.h"
-#include "gtkalias.h"
+
 
 enum 
 {
@@ -344,4 +344,4 @@ create_menu_item (GtkAction *action)
 }
 
 #define __GTK_TOGGLE_ACTION_C__
-#include "gtkaliasdef.c"
+

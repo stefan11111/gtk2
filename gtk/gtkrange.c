@@ -34,14 +34,14 @@
 
 #include <gdk/gdkkeysyms.h>
 #include "gtkmain.h"
-#include "gtkmarshalers.h"
+
 #include "gtkorientable.h"
 #include "gtkrange.h"
 #include "gtkscale.h"
 #include "gtkscrollbar.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 #define SCROLL_DELAY_FACTOR 5    /* Scroll repeat multiplier */
 #define UPDATE_DELAY        300  /* Delay for queued update */
@@ -4020,4 +4020,4 @@ gtk_range_get_round_digits (GtkRange *range)
 
 
 #define __GTK_RANGE_C__
-#include "gtkaliasdef.c"
+

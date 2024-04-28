@@ -33,7 +33,7 @@
 #include "gtkmain.h"
 #include "gtkwindow.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 #include "gdkkeysyms.h"
 

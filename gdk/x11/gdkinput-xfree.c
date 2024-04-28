@@ -21,7 +21,7 @@
 #include <string.h>
 #include "gdkinputprivate.h"
 #include "gdkdisplay-x11.h"
-#include "gdkalias.h"
+
 
 /*
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
@@ -448,4 +448,4 @@ _gdk_input_ungrab_pointer (GdkDisplay *display,
 }
 
 #define __GDK_INPUT_XFREE_C__
-#include "gdkaliasdef.c"
+

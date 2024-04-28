@@ -34,7 +34,7 @@
 #include "gtkimagemenuitem.h"
 #include "gtkintl.h"
 #include "gtkmain.h"
-#include "gtkmarshalers.h"
+
 #include "gtkmenu.h"
 #include "gtkmenuitem.h"
 #include "gtkseparatormenuitem.h"
@@ -48,7 +48,7 @@
 #include "gtkprivate.h"
 #include "gtktextutil.h"
 #include "gtkwindow.h"
-#include "gtkalias.h"
+
 
 /* How scrolling, validation, exposes, etc. work.
  *
@@ -9345,4 +9345,4 @@ gtk_text_view_move_visually (GtkTextView *text_view,
 }
 
 #define __GTK_TEXT_VIEW_C__
-#include "gtkaliasdef.c"
+

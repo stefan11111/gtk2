@@ -29,7 +29,7 @@
 
 #include "gdk.h"
 #include "gdkinternals.h"
-#include "gdkalias.h"
+
 
 typedef struct _GdkIOClosure GdkIOClosure;
 
@@ -1376,4 +1376,4 @@ gdk_setting_get (const gchar *name,
 }
 
 #define __GDK_EVENTS_C__
-#include "gdkaliasdef.c"
+

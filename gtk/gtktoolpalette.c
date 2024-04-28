@@ -25,11 +25,11 @@
 #include <gtk/gtk.h>
 
 #include "gtktoolpaletteprivate.h"
-#include "gtkmarshalers.h"
+
 
 #include "gtkprivate.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 #define DEFAULT_ICON_SIZE       GTK_ICON_SIZE_SMALL_TOOLBAR
 #define DEFAULT_ORIENTATION     GTK_ORIENTATION_VERTICAL
@@ -1928,4 +1928,4 @@ _gtk_tool_palette_get_size_group (GtkToolPalette *palette)
 
 
 #define __GTK_TOOL_PALETTE_C__
-#include "gtkaliasdef.c"
+

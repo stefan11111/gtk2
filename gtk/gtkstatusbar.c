@@ -28,13 +28,13 @@
 #include "config.h"
 #include "gtkframe.h"
 #include "gtklabel.h"
-#include "gtkmarshalers.h"
+
 #include "gtkstatusbar.h"
 #include "gtkwindow.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
 #include "gtkbuildable.h"
-#include "gtkalias.h"
+
 
 typedef struct _GtkStatusbarMsg GtkStatusbarMsg;
 
@@ -1063,4 +1063,4 @@ label_selectable_changed (GtkWidget  *label,
 }
 
 #define __GTK_STATUSBAR_C__
-#include "gtkaliasdef.c"
+

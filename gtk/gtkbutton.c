@@ -30,7 +30,7 @@
 #include "gtkbutton.h"
 #include "gtklabel.h"
 #include "gtkmain.h"
-#include "gtkmarshalers.h"
+
 #include "gtkimage.h"
 #include "gtkhbox.h"
 #include "gtkvbox.h"
@@ -39,7 +39,7 @@
 #include "gtkactivatable.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 static const GtkBorder default_default_border = { 1, 1, 1, 1 };
 static const GtkBorder default_default_outside_border = { 0, 0, 0, 0 };
@@ -2333,4 +2333,4 @@ gtk_button_get_event_window (GtkButton *button)
 }
 
 #define __GTK_BUTTON_C__
-#include "gtkaliasdef.c"  
+  

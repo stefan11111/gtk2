@@ -31,7 +31,7 @@
 
 #include "gtkaccellabel.h"
 #include "gtkmain.h"
-#include "gtkmarshalers.h"
+
 #include "gtkmenu.h"
 #include "gtkmenubar.h"
 #include "gtkseparatormenuitem.h"
@@ -39,7 +39,7 @@
 #include "gtkbuildable.h"
 #include "gtkactivatable.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 
 typedef struct {
@@ -2219,4 +2219,4 @@ gtk_menu_item_get_use_underline (GtkMenuItem *menu_item)
 
 
 #define __GTK_MENU_ITEM_C__
-#include "gtkaliasdef.c"
+

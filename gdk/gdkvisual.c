@@ -24,7 +24,7 @@
 #include "config.h"
 #include "gdkvisual.h"
 #include "gdkscreen.h"
-#include "gdkalias.h"
+
 
 /**
  * gdk_list_visuals:
@@ -251,4 +251,4 @@ gdk_visual_get_blue_pixel_details (GdkVisual *visual,
 }
 
 #define __GDK_VISUAL_C__
-#include "gdkaliasdef.c"
+

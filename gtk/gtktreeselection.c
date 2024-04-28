@@ -22,9 +22,9 @@
 #include "gtktreeselection.h"
 #include "gtktreeprivate.h"
 #include "gtkrbtree.h"
-#include "gtkmarshalers.h"
+
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 static void gtk_tree_selection_finalize          (GObject               *object);
 static gint gtk_tree_selection_real_select_all   (GtkTreeSelection      *selection);
@@ -1468,4 +1468,4 @@ gtk_tree_selection_real_select_node (GtkTreeSelection *selection,
 }
 
 #define __GTK_TREE_SELECTION_C__
-#include "gtkaliasdef.c"
+

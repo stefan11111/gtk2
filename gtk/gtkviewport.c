@@ -27,9 +27,9 @@
 #include "config.h"
 #include "gtkviewport.h"
 #include "gtkintl.h"
-#include "gtkmarshalers.h"
+
 #include "gtkprivate.h"
-#include "gtkalias.h"
+
 
 /**
  * SECTION:gtkviewport
@@ -887,4 +887,4 @@ gtk_viewport_style_set (GtkWidget *widget,
 }
 
 #define __GTK_VIEWPORT_C__
-#include "gtkaliasdef.c"
+

@@ -21,7 +21,7 @@
 #undef GDK_DISABLE_DEPRECATED /* We need gdk_drawable_get_size() */
 
 #include "gtkoffscreenwindow.h"
-#include "gtkalias.h"
+
 
 /**
  * SECTION:gtkoffscreenwindow
@@ -314,4 +314,4 @@ gtk_offscreen_window_get_pixbuf (GtkOffscreenWindow *offscreen)
 }
 
 #define __GTK_OFFSCREEN_WINDOW_C__
-#include "gtkaliasdef.c"
+

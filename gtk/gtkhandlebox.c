@@ -30,11 +30,11 @@
 #include "gtkhandlebox.h"
 #include "gtkinvisible.h"
 #include "gtkmain.h"
-#include "gtkmarshalers.h"
+
 #include "gtkwindow.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 typedef struct _GtkHandleBoxPrivate GtkHandleBoxPrivate;
 
@@ -1434,4 +1434,4 @@ gtk_handle_box_end_drag (GtkHandleBox *hb,
 }
 
 #define __GTK_HANDLE_BOX_C__
-#include "gtkaliasdef.c"
+

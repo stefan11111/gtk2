@@ -62,7 +62,7 @@
 #include "gtkwindow.h"
 #include "gtktooltip.h"
 #include "gtkdebug.h"
-#include "gtkalias.h"
+
 #include "gtkmenu.h"
 #include "gdk/gdkkeysyms.h"
 
@@ -2681,4 +2681,4 @@ _gtk_translate_keyboard_accel_state (GdkKeymap       *keymap,
 }
 
 #define __GTK_MAIN_C__
-#include "gtkaliasdef.c"
+
