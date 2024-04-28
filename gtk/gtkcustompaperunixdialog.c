@@ -18,16 +18,6 @@
  * Boston, MA 02111-1307, USA.
  */
 
-
-#include "config.h"
-#include <string.h>
-#include <locale.h>
-
-#ifdef HAVE__NL_MEASUREMENT_MEASUREMENT
-#include <langinfo.h>
-#endif
-
-#include "gtkintl.h"
 #include "gtkprivate.h"
 
 #include "gtkliststore.h"
