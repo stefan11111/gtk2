@@ -1318,15 +1318,6 @@ choose_icon (GtkIconTheme       *icon_theme,
 	      found = g_file_test (default_theme_path, G_FILE_TEST_IS_REGULAR);
 	      g_free (default_theme_path);
 	    }
-
-	  if (!found)
-	    {
-	      g_warning (_("Could not find the icon '%s'. The '%s' theme\n"
-			   "was not found either, perhaps you need to install it.\n"
-			   "You can get a copy from:\n"
-			   "\t%s"),
-			 icon_names[0], DEFAULT_THEME_NAME, "http://icon-theme.freedesktop.org/releases");
-	    }
 	}
     }
 
