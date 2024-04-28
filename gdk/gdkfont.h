@@ -30,6 +30,7 @@
 #define __GDK_FONT_H__
 
 #include <gdk/gdktypes.h>
+#include <pango/pango.h>
 
 G_BEGIN_DECLS
 

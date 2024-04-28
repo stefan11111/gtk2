@@ -23,6 +23,7 @@
 #include <locale.h>
 
 #include "gtkimmulticontext.h"
+#include "gtkimmodule.h"
 #include "gtkmain.h"
 #include "gtkradiomenuitem.h"
 #include "gtkintl.h"
@@ -228,7 +229,7 @@ get_effective_context_id (GtkIMMulticontext *multicontext)
     return multicontext->priv->context_id;
 
   if (!global_context_id)
-    return "";
+    global_context_id = _gtk_im_module_get_default_context_id (multicontext->priv->client_window);
 
   return global_context_id;
 }
@@ -241,12 +242,18 @@ gtk_im_multicontext_get_slave (GtkIMMulticontext *multicontext)
 
   if (!multicontext->slave)
     {
+      GtkIMContext *slave;
+
       g_free (multicontext->context_id);
 
       multicontext->context_id = g_strdup (get_effective_context_id (multicontext));
 
       if (g_strcmp0 (multicontext->context_id, NONE_ID) == 0)
         return NULL;
+
+      slave = _gtk_im_module_create (multicontext->context_id);
+      gtk_im_multicontext_set_slave (multicontext, slave, FALSE);
+      g_object_unref (slave);
     }
 
   return multicontext->slave;
@@ -498,6 +505,38 @@ gtk_im_multicontext_delete_surrounding_cb (GtkIMContext      *slave,
   return result;
 }
 
+static void
+activate_cb (GtkWidget         *menuitem,
+	     GtkIMMulticontext *context)
+{
+  if (GTK_CHECK_MENU_ITEM (menuitem)->active)
+    {
+      const gchar *id = g_object_get_data (G_OBJECT (menuitem), "gtk-context-id");
+
+      gtk_im_multicontext_set_context_id (context, id);
+    }
+}
+
+static int
+pathnamecmp (const char *a,
+	     const char *b)
+{
+#ifndef G_OS_WIN32
+  return strcmp (a, b);
+#else
+  /* Ignore case insensitivity, probably not that relevant here. Just
+   * make sure slash and backslash compare equal.
+   */
+  while (*a && *b)
+    if ((G_IS_DIR_SEPARATOR (*a) && G_IS_DIR_SEPARATOR (*b)) ||
+	*a == *b)
+      a++, b++;
+    else
+      return (*a - *b);
+  return (*a - *b);
+#endif
+}
+
 /**
  * gtk_im_multicontext_append_menuitems:
  * @context: a #GtkIMMulticontext
@@ -511,6 +550,123 @@ void
 gtk_im_multicontext_append_menuitems (GtkIMMulticontext *context,
 				      GtkMenuShell      *menushell)
 {
+  const GtkIMContextInfo **contexts;
+  guint n_contexts, i;
+  GSList *group = NULL;
+  GtkWidget *menuitem, *system_menuitem;
+  const char *system_context_id; 
+  
+  system_context_id = _gtk_im_module_get_default_context_id (context->priv->client_window);
+  system_menuitem = menuitem = gtk_radio_menu_item_new_with_label (group, C_("input method menu", "System"));
+  if (!context->priv->context_id)
+    gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (menuitem), TRUE);
+  group = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (menuitem));
+  g_object_set_data (G_OBJECT (menuitem), I_("gtk-context-id"), NULL);
+  g_signal_connect (menuitem, "activate", G_CALLBACK (activate_cb), context);
+
+  gtk_widget_show (menuitem);
+  gtk_menu_shell_append (menushell, menuitem);
+
+  menuitem = gtk_radio_menu_item_new_with_label (group, C_("input method menu", "None"));
+  if (g_strcmp0 (context->priv->context_id, NONE_ID) == 0)
+    gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (menuitem), TRUE);
+  g_object_set_data (G_OBJECT (menuitem), I_("gtk-context-id"), NONE_ID);
+  g_signal_connect (menuitem, "activate", G_CALLBACK (activate_cb), context);
+  gtk_widget_show (menuitem);
+  gtk_menu_shell_append (menushell, menuitem);
+  group = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (menuitem));
+  
+  menuitem = gtk_separator_menu_item_new ();
+  gtk_widget_show (menuitem);
+  gtk_menu_shell_append (menushell, menuitem);
+
+  _gtk_im_module_list (&contexts, &n_contexts);
+
+  for (i = 0; i < n_contexts; i++)
+    {
+      const gchar *translated_name;
+#ifdef ENABLE_NLS
+      if (contexts[i]->domain && contexts[i]->domain[0])
+	{
+	  if (strcmp (contexts[i]->domain, GETTEXT_PACKAGE) == 0)
+	    {
+	      /* Same translation domain as GTK+ */
+	      if (!(contexts[i]->domain_dirname && contexts[i]->domain_dirname[0]) ||
+		  pathnamecmp (contexts[i]->domain_dirname, GTK_LOCALEDIR) == 0)
+		{
+		  /* Empty or NULL, domain directory, or same as
+		   * GTK+. Input method may have a name in the GTK+
+		   * message catalog.
+		   */
+		  translated_name = _(contexts[i]->context_name);
+		}
+	      else
+		{
+		  /* Separate domain directory but the same
+		   * translation domain as GTK+. We can't call
+		   * bindtextdomain() as that would make GTK+ forget
+		   * its own messages.
+		   */
+		  g_warning ("Input method %s should not use GTK's translation domain %s",
+			     contexts[i]->context_id, GETTEXT_PACKAGE);
+		  /* Try translating the name in GTK+'s domain */
+		  translated_name = _(contexts[i]->context_name);
+		}
+	    }
+	  else if (contexts[i]->domain_dirname && contexts[i]->domain_dirname[0])
+	    /* Input method has own translation domain and message catalog */
+	    {
+	      bindtextdomain (contexts[i]->domain,
+			      contexts[i]->domain_dirname);
+#ifdef HAVE_BIND_TEXTDOMAIN_CODESET
+	      bind_textdomain_codeset (contexts[i]->domain, "UTF-8");
+#endif
+	      translated_name = g_dgettext (contexts[i]->domain, contexts[i]->context_name);
+	    }
+	  else
+	    {
+	      /* Different translation domain, but no domain directory */
+	      translated_name = contexts[i]->context_name;
+	    }
+	}
+      else
+	/* Empty or NULL domain. We assume that input method does not
+	 * want a translated name in this case.
+	 */
+	translated_name = contexts[i]->context_name;
+#else
+      translated_name = contexts[i]->context_name;
+#endif
+      menuitem = gtk_radio_menu_item_new_with_label (group,
+						     translated_name);
+      
+      if ((context->priv->context_id &&
+           strcmp (contexts[i]->context_id, context->priv->context_id) == 0))
+        gtk_check_menu_item_set_active (GTK_CHECK_MENU_ITEM (menuitem), TRUE);
+
+      if (strcmp (contexts[i]->context_id, system_context_id) == 0)
+        {
+          GtkWidget *label;
+          char *text;
+
+          label = gtk_bin_get_child (GTK_BIN (system_menuitem));
+          text = g_strdup_printf (C_("input method menu", "System (%s)"), translated_name);
+          gtk_label_set_text (GTK_LABEL (label), text);
+          g_free (text);
+        }     
+ 
+      group = gtk_radio_menu_item_get_group (GTK_RADIO_MENU_ITEM (menuitem));
+      
+      g_object_set_data (G_OBJECT (menuitem), I_("gtk-context-id"),
+			 (char *)contexts[i]->context_id);
+      g_signal_connect (menuitem, "activate",
+			G_CALLBACK (activate_cb), context);
+
+      gtk_widget_show (menuitem);
+      gtk_menu_shell_append (menushell, menuitem);
+    }
+
+  g_free (contexts);
 }
 
 /**

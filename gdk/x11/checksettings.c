@@ -25,8 +25,7 @@ int
 main (int   argc,
       char *argv[])
 {
-  guint i;
-  gint accu = 0;
+  guint i, accu = 0;
 
   for (i = 0; i < GDK_SETTINGS_N_ELEMENTS(); i++)
     {

@@ -34,7 +34,7 @@
 #include <cairo-ps.h>
 #include <cairo-svg.h>
 
-#include "gtk/gtkintl.h"
+#include <glib/gi18n-lib.h>
 
 #include "gtk/gtk.h"
 #include "gtk/gtkprinter-private.h"
@@ -651,7 +651,7 @@ file_printer_get_options (GtkPrinter           *printer,
 	      current_format = n_formats;
             }
           supported_formats[n_formats] = formats[FORMAT_PDF];
-	  display_format_names[n_formats] = (gchar*)format_names[FORMAT_PDF];
+	  display_format_names[n_formats] = _(format_names[FORMAT_PDF]);
 	  n_formats++;
 	}
       if (capabilities & GTK_PRINT_CAPABILITY_GENERATE_PS)
@@ -659,7 +659,7 @@ file_printer_get_options (GtkPrinter           *printer,
 	  if (format == FORMAT_PS || format == N_FORMATS)
 	    current_format = n_formats;
           supported_formats[n_formats] = formats[FORMAT_PS];
-          display_format_names[n_formats] = (gchar*)format_names[FORMAT_PS];
+          display_format_names[n_formats] = _(format_names[FORMAT_PS]);
 	  n_formats++;
 	}
     }
@@ -682,7 +682,7 @@ file_printer_get_options (GtkPrinter           *printer,
       for (n_formats = 0; n_formats < N_FORMATS; ++n_formats)
         {
 	  supported_formats[n_formats] = formats[n_formats];
-          display_format_names[n_formats] = (gchar*)format_names[n_formats];
+          display_format_names[n_formats] = _(format_names[n_formats]);
 	}
     }
 

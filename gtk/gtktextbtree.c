@@ -2439,8 +2439,7 @@ _gtk_text_btree_get_text (const GtkTextIter *start_orig,
   copy_segment (retval, include_hidden, include_nonchars, &iter, &end);
 
   str = retval->str;
-  /* silence gcc */
-  (void)!g_string_free (retval, FALSE);
+  g_string_free (retval, FALSE);
   return str;
 }
 

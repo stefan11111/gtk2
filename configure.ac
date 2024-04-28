@@ -34,6 +34,7 @@ m4_define([gtk_binary_version], [2.10.0])
 # required versions of other packages
 m4_define([glib_required_version], [2.28.0])
 m4_define([pango_required_version], [1.20])
+m4_define([atk_required_version], [1.29.2])
 m4_define([cairo_required_version], [1.6])
 m4_define([gdk_pixbuf_required_version], [2.21.0])
 
@@ -99,6 +100,19 @@ LT_VERSION_INFO="lt_current:lt_revision:lt_age"
 LT_CURRENT_MINUS_AGE=m4_eval(lt_current - lt_age)
 AC_SUBST(LT_VERSION_INFO)
 AC_SUBST(LT_CURRENT_MINUS_AGE)
+
+m4_define([gail_lt_current],[18])
+m4_define([gail_lt_revision],[1])
+m4_define([gail_lt_age],[0])
+m4_define([gail_lt_version_info],[gail_lt_current:gail_lt_revision:gail_lt_age])
+m4_define([gail_lt_current_minus_age],[m4_eval(gail_lt_current - gail_lt_age)])
+AC_SUBST([GAIL_LT_VERSION_INFO],[gail_lt_version_info])
+AC_SUBST([GAIL_LT_CURRENT_MINUS_AGE],[gail_lt_current_minus_age])
+
+GETTEXT_PACKAGE=gtk20
+AC_SUBST(GETTEXT_PACKAGE)
+AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE",
+                   [The prefix for our gettext translation domains.])
 
 AC_CANONICAL_HOST
 
@@ -176,7 +190,7 @@ m4_ifdef([LT_OUTPUT], [LT_OUTPUT])
 AC_SYS_LARGEFILE
 
 AM_PROG_AS
-AC_CHECK_TOOL(NM, nm, nm)
+AC_PATH_TOOL(NM, nm, nm)
 
 dnl Initialize maintainer mode
 AM_MAINTAINER_MODE([enable])
@@ -244,13 +258,13 @@ else
   gdktarget=x11
 fi
 
-AC_ARG_WITH(gdktarget, [  --with-gdktarget=[[x11/directfb]] select non-default GDK target],
+AC_ARG_WITH(gdktarget, [  --with-gdktarget=[[x11/win32/quartz/directfb]] select non-default GDK target],
 	gdktarget=$with_gdktarget)
 
 AC_SUBST(gdktarget)
 case $gdktarget in
-  x11|directfb) ;;
-  *) AC_MSG_ERROR([Invalid target for GDK: use x11 or directfb.]);;
+  x11|win32|quartz|directfb) ;;
+  *) AC_MSG_ERROR([Invalid target for GDK: use x11, quartz, directfb or win32.]);;
 esac
 
 gdktargetlib=libgdk-$gdktarget-$GTK_API_VERSION.la
@@ -310,7 +324,7 @@ if test "x$GCC" = "xyes"; then
 fi
 changequote([,])dnl
 
-CPPFLAGS="$CPPFLAGS -DG_DISABLE_SINGLE_INCLUDES -DGDK_PIXBUF_DISABLE_SINGLE_INCLUDES -DGTK_DISABLE_SINGLE_INCLUDES"
+CPPFLAGS="$CPPFLAGS -DG_DISABLE_SINGLE_INCLUDES -DATK_DISABLE_SINGLE_INCLUDES -DGDK_PIXBUF_DISABLE_SINGLE_INCLUDES -DGTK_DISABLE_SINGLE_INCLUDES"
 
 # Ensure MSVC-compatible struct packing convention is used when
 # compiling for Win32 with gcc.
@@ -358,6 +372,7 @@ ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS"
 ## annoying to construct
 PKG_CHECK_MODULES(BASE_DEPENDENCIES,
   [glib-2.0 >= glib_required_version dnl
+   atk >= atk_required_version dnl
    pango >= pango_required_version dnl
    cairo >= cairo_required_version dnl
    gdk-pixbuf-2.0 >= gdk_pixbuf_required_version])
@@ -495,6 +510,36 @@ if test "$gtk_ok" = "yes"; then
             [Define to 1 if sigsetjmp is available])
 fi
 
+# i18n stuff
+ALL_LINGUAS="`grep -v '^#' "$srcdir/po/LINGUAS" | tr '\n' ' '`"
+AM_GLIB_GNU_GETTEXT
+LIBS="$LIBS $INTLLIBS"
+AC_OUTPUT_COMMANDS([case "$CONFIG_FILES" in *po-properties/Makefile.in*)
+        sed -e "/POTFILES =/r po-properties/POTFILES" po-properties/Makefile.in > po-properties/Makefile
+      esac])
+
+dnl Snippet below is copied from AM_GLIB_GNU_GETTEXT to generate a first
+dnl po-properties/POTFILES during configure; see GNOME #573515.
+dnl
+dnl Generate list of files to be processed by xgettext which will
+dnl be included in po-properties/Makefile.
+test -d po-properties || mkdir po-properties
+if test "x$srcdir" != "x."; then
+  if test "x`echo $srcdir | sed 's@/.*@@'`" = "x"; then
+    popropsrcprefix="$srcdir/"
+  else
+    popropsrcprefix="../$srcdir/"
+  fi
+else
+  popropsrcprefix="../"
+fi
+rm -f po-properties/POTFILES
+sed -e "/^#/d" -e "/^\$/d" -e "s,.*,	$popropsrcprefix& \\\\," -e "\$s/\(.*\) \\\\/\1/" \
+< $srcdir/po-properties/POTFILES.in > po-properties/POTFILES
+dnl (End of adapted AM_GLIB_GNU_GETTEXT snippet.)
+
+AM_GLIB_DEFINE_LOCALEDIR(GTK_LOCALEDIR)
+
 dnl The DU4 header files don't provide library prototypes unless 
 dnl -std1 is given to the native cc.
 AC_MSG_CHECKING([for extra flags to get ANSI library prototypes])
@@ -506,7 +551,7 @@ AC_TRY_RUN([#include <math.h>
      AC_MSG_RESULT(none needed),
      gtk_save_CFLAGS="$CFLAGS"
      CFLAGS="$CFLAGS -std1"
-     [AC_TRY_RUN([#include <math.h>
+     AC_TRY_RUN([#include <math.h>
 	         int main (void) { return (log(1) != log(1.)); }],
          AC_MSG_RESULT(-std1),
          AC_MSG_RESULT()
@@ -514,7 +559,7 @@ AC_TRY_RUN([#include <math.h>
          AC_MSG_WARN(
                 [No ANSI prototypes found in library. (-std1 didn't work.)]),
 	 true
-     )],
+     ),
      AC_MSG_RESULT(none needed)
 )
 LIBS=$gtk_save_LIBS
@@ -749,6 +794,89 @@ fi
 
 AM_CONDITIONAL(BUILD_DYNAMIC_MODULES, $dynworks)
 
+#
+# Allow building some or all immodules included
+#
+AC_MSG_CHECKING(immodules to build)
+
+dnl due to an autoconf bug, commas in the first arg to
+dnl AC_HELP_STRING cause problems.
+dnl AC_HELP_STRING([--with-included-immodules=MODULE1 MODULE2 ...],
+dnl                [build the specified input method modules into gtk])
+AC_ARG_WITH(included_immodules,
+[  --with-included-immodules=MODULE1,MODULE2,...
+                          build the specified input methods into gtk])
+
+if $dynworks; then 
+   :
+else
+   ## if the option was specified, leave it; otherwise disable included immodules
+   if test x$with_included_immodules = xno; then
+           with_included_immodules=yes
+   fi
+fi
+
+all_immodules="am-et,cedilla,cyrillic-translit"
+if test "$gdktarget" = "win32"; then
+   all_immodules="${all_immodules},ime"
+fi
+if test "$gdktarget" = "quartz"; then
+   all_immodules="${all_immodules},quartz"
+fi
+all_immodules="${all_immodules},inuktitut,ipa,multipress,thai,ti-er,ti-et,viqr"
+if test "$gdktarget" = "x11"; then
+   all_immodules="${all_immodules},xim"
+fi
+
+included_immodules=""
+# If the switch specified without listing any specific ones, include all
+if test "x$with_included_immodules" = xyes ; then
+  included_immodules="$all_immodules"
+else
+  included_immodules="$with_included_immodules"
+fi
+
+AC_MSG_RESULT($included_immodules)
+AM_CONDITIONAL(HAVE_INCLUDED_IMMMODULES, test "x$included_immodules" != x)
+
+INCLUDED_IMMODULE_OBJ=
+INCLUDED_IMMODULE_DEFINE=
+
+IFS="${IFS= 	}"; gtk_save_ifs="$IFS"; IFS=","
+for immodule in $included_immodules; do
+ immodule_underscores=`echo $immodule | sed -e 's/-/_/g'`
+ if echo "$all_immodules" | egrep "(^|,)$immodule(\$|,)" > /dev/null; then
+   :
+ else
+   AC_MSG_ERROR([the specified input method $immodule does not exist])
+ fi
+
+ INCLUDED_IMMODULE_OBJ="$INCLUDED_IMMODULE_OBJ ../modules/input/libstatic-im-$immodule.la"
+ INCLUDED_IMMODULE_DEFINE="$INCLUDED_IMMODULE_DEFINE -DINCLUDE_IM_$immodule_underscores"
+ eval INCLUDE_$immodule_underscores=yes
+done
+IFS="$gtk_save_ifs"
+AC_SUBST(INCLUDED_IMMODULE_OBJ)
+AC_SUBST(INCLUDED_IMMODULE_DEFINE)
+
+AM_CONDITIONAL(INCLUDE_IM_AM_ET, [test x"$INCLUDE_am_et" = xyes])
+AM_CONDITIONAL(INCLUDE_IM_CEDILLA, [test x"$INCLUDE_cedilla" = xyes])
+AM_CONDITIONAL(INCLUDE_IM_CYRILLIC_TRANSLIT, [test x"$INCLUDE_cyrillic_translit" = xyes])
+AM_CONDITIONAL(INCLUDE_IM_IME, [test x"$INCLUDE_ime" = xyes])
+AM_CONDITIONAL(INCLUDE_IM_INUKTITUT, [test x"$INCLUDE_inuktitut" = xyes])
+AM_CONDITIONAL(INCLUDE_IM_IPA, [test x"$INCLUDE_ipa" = xyes])
+AM_CONDITIONAL(INCLUDE_IM_MULTIPRESS, [test x"$INCLUDE_multipress" = xyes])
+AM_CONDITIONAL(INCLUDE_IM_QUARTZ, [test x"$INCLUDE_quartz" = xyes])
+AM_CONDITIONAL(INCLUDE_IM_THAI, [test x"$INCLUDE_thai" = xyes])
+AM_CONDITIONAL(INCLUDE_IM_TI_ER, [test x"$INCLUDE_ti_er" = xyes])
+AM_CONDITIONAL(INCLUDE_IM_TI_ET, [test x"$INCLUDE_ti_et" = xyes])
+AM_CONDITIONAL(INCLUDE_IM_VIQR, [test x"$INCLUDE_viqr" = xyes])
+AM_CONDITIONAL(INCLUDE_IM_XIM, [test x"$INCLUDE_xim" = xyes])
+
+AC_HEADER_SYS_WAIT
+
+AC_TYPE_SIGNAL
+
 # Checks to see whether we should include mediaLib
 # support.
 #
@@ -785,9 +913,11 @@ dnl Look for a host system's gdk-pixbuf-csource if we are cross-compiling
 
 AM_CONDITIONAL(CROSS_COMPILING, test $cross_compiling = yes)
 
-AC_PATH_PROG(GTK_UPDATE_ICON_CACHE, gtk-update-icon-cache, no)
-if test x$GTK_UPDATE_ICON_CACHE = xno; then
-  REBUILD_PNGS=#
+if test $cross_compiling = yes; then
+  AC_PATH_PROG(GTK_UPDATE_ICON_CACHE, gtk-update-icon-cache, no)
+  if test x$GTK_UPDATE_ICON_CACHE = xno; then
+    REBUILD_PNGS=#
+  fi
 fi
 
 AC_PATH_PROG(GDK_PIXBUF_CSOURCE, gdk-pixbuf-csource, no)
@@ -1219,10 +1349,34 @@ AC_SUBST(GDK_DEP_CFLAGS)
 
 ########################################
 # Check for Accessibility Toolkit flags
-# Apparently does more that that. Removing this section breaks included dirs for various headers, like cairo.h
 ########################################
 
-GTK_PACKAGES="cairo gdk-pixbuf-2.0 gio-2.0"
+ATK_PACKAGES=atk
+AC_MSG_CHECKING(ATK flags)
+if $PKG_CONFIG --exists $ATK_PACKAGES ; then
+        ATK_CFLAGS=`$PKG_CONFIG --cflags $ATK_PACKAGES`
+        ATK_LIBS=`$PKG_CONFIG --libs $ATK_PACKAGES`
+
+        AC_MSG_RESULT($ATK_CFLAGS $ATK_LIBS)
+else
+        AC_MSG_ERROR([
+*** Accessibility Toolkit not found. Accessibility Toolkit is required
+*** to build GTK+.
+])
+fi
+
+if $PKG_CONFIG --uninstalled $ATK_PACKAGES; then
+        :
+else
+	gtk_save_LIBS="$LIBS"
+        LIBS="$ATK_LIBS $LIBS"
+        AC_TRY_LINK_FUNC(atk_object_get_type, : , AC_MSG_ERROR([
+                *** Cannot link to Accessibility Toolkit. Accessibility Toolkit is required
+                *** to build GTK+]))
+        LIBS="$gtk_save_LIBS"
+fi
+
+GTK_PACKAGES="atk cairo gdk-pixbuf-2.0 gio-2.0"
 if test "x$gdktarget" = "xx11"; then
   GTK_PACKAGES="$GTK_PACKAGES pangoft2"
 fi
@@ -1236,6 +1390,7 @@ if test x"$os_win32" = xyes; then
 fi
 
 GLIB_PREFIX="`$PKG_CONFIG --variable=prefix glib-2.0`"
+ATK_PREFIX="`$PKG_CONFIG --variable=prefix atk`"
 PANGO_PREFIX="`$PKG_CONFIG --variable=prefix pango`"
 CAIRO_PREFIX="`pkg-config --variable=prefix cairo`"
 
@@ -1246,6 +1401,7 @@ AC_SUBST(GTK_DEP_LIBS)
 AC_SUBST(GTK_DEP_CFLAGS)
 
 AC_SUBST(GLIB_PREFIX)
+AC_SUBST(ATK_PREFIX)
 AC_SUBST(PANGO_PREFIX)
 AC_SUBST(CAIRO_PREFIX)
 
@@ -1255,6 +1411,36 @@ AC_SUBST(GTK_XIM_FLAGS)
 GDK_PIXBUF_LIBS=`$PKG_CONFIG --libs gdk-pixbuf-2.0`
 AC_SUBST(GDK_PIXBUF_LIBS)
 
+########################
+# Checks needed for gail
+########################
+
+old_LIBS="$LIBS"
+dnl Checks for inet libraries:
+AC_SEARCH_LIBS(gethostent, nsl)
+AC_SEARCH_LIBS(setsockopt, socket)
+AC_SEARCH_LIBS(connect, inet)
+
+dnl check for the sockaddr_un.sun_len member
+AC_CHECK_MEMBER([struct sockaddr_un.sun_len],
+		[struct_sockaddr_un_sun_len=true],
+		[struct_sockaddr_un_suin_len=false],
+		[#include <sys/types.h>
+		 #include <sys/un.h>]
+		)
+case $struct_sockaddr_un_sun_len in 
+	true)
+		AC_DEFINE_UNQUOTED(HAVE_SOCKADDR_UN_SUN_LEN, 1,
+		                   [Have the sockaddr_un.sun_len member])
+		;;
+	*)
+		;;
+esac
+
+GAIL_INET_LIBS="$LIBS"
+AC_SUBST([GAIL_INET_LIBS])
+
+LIBS="$old_LIBS"
 
 ################################################################
 # Printing system checks
@@ -1391,7 +1577,7 @@ fi
 #  is exported
 #
 # We are using gmodule-no-export now, but I'm leaving the stripping
-# code in place for now, since pango still require gmodule.
+# code in place for now, since pango and atk still require gmodule.
 export SED
 export_dynamic=`(./libtool --config; echo eval echo \\$export_dynamic_flag_spec) | sh`
 if test -n "$export_dynamic"; then
@@ -1531,26 +1717,76 @@ fi
 ])
 
 AC_CONFIG_FILES([
+config.h.win32
+gtk-zip.sh
 Makefile
 gdk-2.0.pc
 gtk+-2.0.pc
 gtk+-unix-print-2.0.pc
+gail.pc
 gdk-2.0-uninstalled.pc
 gtk+-2.0-uninstalled.pc
+gail-uninstalled.pc
 m4macros/Makefile
+po/Makefile.in
+po-properties/Makefile.in
+demos/Makefile
+demos/gtk-demo/Makefile
+demos/gtk-demo/geninclude.pl
+tests/Makefile
+docs/Makefile
+docs/reference/Makefile
+docs/reference/gdk/Makefile
+docs/reference/gdk/version.xml
+docs/reference/gtk/Makefile
+docs/reference/gtk/version.xml
+docs/reference/libgail-util/Makefile
+docs/faq/Makefile
+docs/tools/Makefile
+docs/tutorial/Makefile
 build/Makefile
+build/win32/Makefile
+build/win32/vs9/Makefile
+build/win32/vs9/gtk-version-paths.vsprops
+build/win32/vs10/Makefile
+build/win32/vs10/gtk-version-paths.props
+build/win32/vs11/Makefile
+build/win32/vs12/Makefile
+build/win32/vs14/Makefile
+build/win32/vs15/Makefile
+build/win32/vs16/Makefile
 gdk/Makefile
 gdk/x11/Makefile
+gdk/win32/Makefile
+gdk/win32/rc/Makefile
+gdk/win32/rc/gdk.rc
+gdk/quartz/Makefile
 gdk/directfb/Makefile
+gdk/tests/Makefile
 gtk/Makefile
 gtk/makefile.msc
 gtk/gtkversion.h
+gtk/gtk-win32.rc
+gtk/theme-bits/Makefile
+gtk/tests/Makefile
 modules/Makefile
+modules/other/Makefile
+modules/other/gail/Makefile
+modules/other/gail/libgail-util/Makefile
+modules/other/gail/tests/Makefile
+modules/engines/Makefile
+modules/engines/pixbuf/Makefile
+modules/engines/ms-windows/Makefile
+modules/engines/ms-windows/Theme/Makefile
+modules/engines/ms-windows/Theme/gtk-2.0/Makefile
+modules/input/Makefile
 modules/printbackends/Makefile
 modules/printbackends/cups/Makefile
 modules/printbackends/lpr/Makefile
 modules/printbackends/file/Makefile
 modules/printbackends/papi/Makefile
+modules/printbackends/test/Makefile
+perf/Makefile
 ])
 
 AC_OUTPUT

@@ -693,7 +693,7 @@ create_subparser (GObject       *object,
   subparser->child = child;
   subparser->tagname = g_strdup (element_name);
   subparser->start = element_name;
-  subparser->parser = g_memdup2 (parser, sizeof (GMarkupParser));
+  subparser->parser = g_memdup (parser, sizeof (GMarkupParser));
   subparser->data = user_data;
 
   return subparser;
@@ -899,6 +899,21 @@ start_element (GMarkupParseContext *context,
 		   element_name);
 }
 
+gchar *
+_gtk_builder_parser_translate (const gchar *domain,
+			       const gchar *context,
+			       const gchar *text)
+{
+  const char *s;
+
+  if (context)
+    s = g_dpgettext2 (domain, context, text);
+  else
+    s = g_dgettext (domain, text);
+
+  return g_strdup (s);
+}
+
 /* Called for close tags </foo> */
 static void
 end_element (GMarkupParseContext *context,
@@ -991,7 +1006,9 @@ end_element (GMarkupParseContext *context,
 
           if (prop_info->translatable && prop_info->text->len)
             {
-	      prop_info->data = g_strdup(prop_info->text->str);
+	      prop_info->data = _gtk_builder_parser_translate (data->domain,
+							       prop_info->context,
+							       prop_info->text->str);
               g_string_free (prop_info->text, TRUE);
             }
           else

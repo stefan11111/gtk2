@@ -1,6 +1,6 @@
 include $(top_srcdir)/Makefile.decl
 
-SUBDIRS =
+SUBDIRS = input engines other
 
 if OS_UNIX
 SUBDIRS += printbackends

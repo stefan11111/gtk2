@@ -454,7 +454,7 @@ gtk_item_factory_from_path (const gchar      *path)
       return NULL;
     }
   fname = g_new (gchar, i + 2);
-  memmove (fname, path, i + 1);
+  g_memmove (fname, path, i + 1);
   fname[i + 1] = 0;
 
   item = g_hash_table_lookup (class->item_ht, fname);
@@ -1186,9 +1186,9 @@ gtk_item_factory_create_menu_entries (guint              n_entries,
       entry.accelerator = entries[i].accelerator;
       entry.callback = entries[i].callback;
       entry.callback_action = 0;
-      if (g_pattern_spec_match_string (pspec_separator, path))
+      if (g_pattern_match_string (pspec_separator, path))
 	entry.item_type = "<Separator>";
-      else if (!g_pattern_spec_match_string (pspec_check, path))
+      else if (!g_pattern_match_string (pspec_check, path))
 	entry.item_type = NULL;
       else
 	{

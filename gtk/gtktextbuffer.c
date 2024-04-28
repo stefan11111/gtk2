@@ -4373,7 +4373,7 @@ _gtk_text_buffer_get_line_log_attrs (GtkTextBuffer     *buffer,
   /* Not in cache; open up the first cache entry */
   g_free (cache->entries[ATTR_CACHE_SIZE-1].attrs);
   
-  memmove (cache->entries + 1, cache->entries,
+  g_memmove (cache->entries + 1, cache->entries,
              sizeof (CacheEntry) * (ATTR_CACHE_SIZE - 1));
 
   cache->entries[0].line = line;

@@ -1490,6 +1490,7 @@ static void
 gtk_scale_button_update_icon (GtkScaleButton *button)
 {
   GtkScaleButtonPrivate *priv;
+  GtkRange *range;
   GtkAdjustment *adj;
   gdouble value;
   const gchar *name;
@@ -1497,7 +1498,7 @@ gtk_scale_button_update_icon (GtkScaleButton *button)
 
   priv = button->priv;
 
-  if (!priv->icon_list || !priv->icon_list[0])
+  if (!priv->icon_list || priv->icon_list[0] == '\0')
     {
       gtk_image_set_from_stock (GTK_IMAGE (priv->image),
 				GTK_STOCK_MISSING_IMAGE,
@@ -1516,6 +1517,7 @@ gtk_scale_button_update_icon (GtkScaleButton *button)
       return;
     }
 
+  range = GTK_RANGE (priv->scale);
   adj = priv->adjustment;
   value = gtk_scale_button_get_value (button);
 

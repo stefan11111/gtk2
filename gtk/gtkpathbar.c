@@ -126,22 +126,40 @@ static void gtk_path_bar_update_button_appearance (GtkPathBar       *path_bar,
 						   ButtonData       *button_data,
 						   gboolean          current_dir);
 
+static void
+on_slider_unmap (GtkWidget  *widget,
+		 GtkPathBar *path_bar)
+{
+  if (path_bar->timer &&
+      ((widget == path_bar->up_slider_button && path_bar->scrolling_up) ||
+       (widget == path_bar->down_slider_button && path_bar->scrolling_down)))
+    gtk_path_bar_stop_scrolling (path_bar);
+}
 
 static GtkWidget *
 get_slider_button (GtkPathBar  *path_bar,
 		   GtkArrowType arrow_type)
 {
   GtkWidget *button;
+  AtkObject *atk_obj;
 
   gtk_widget_push_composite_child ();
 
   button = gtk_button_new ();
+  atk_obj = gtk_widget_get_accessible (button);
+  if (arrow_type == GTK_ARROW_LEFT)
+    atk_object_set_name (atk_obj, _("Up Path"));
+  else
+    atk_object_set_name (atk_obj, _("Down Path"));
 
   gtk_button_set_focus_on_click (GTK_BUTTON (button), FALSE);
   gtk_container_add (GTK_CONTAINER (button),
                      gtk_arrow_new (arrow_type, GTK_SHADOW_OUT));
   gtk_container_add (GTK_CONTAINER (path_bar), button);
   gtk_widget_show_all (button);
+
+  g_signal_connect (G_OBJECT (button), "unmap",
+		    G_CALLBACK (on_slider_unmap), path_bar);
 
   gtk_widget_pop_composite_child ();
 
@@ -1426,6 +1444,7 @@ make_directory_button (GtkPathBar  *path_bar,
 		       gboolean     current_dir,
 		       gboolean     file_is_hidden)
 {
+  AtkObject *atk_obj;
   GtkWidget *child = NULL;
   GtkWidget *label_alignment = NULL;
   ButtonData *button_data;
@@ -1436,6 +1455,7 @@ make_directory_button (GtkPathBar  *path_bar,
 
   button_data->type = find_button_type (path_bar, file);
   button_data->button = gtk_toggle_button_new ();
+  atk_obj = gtk_widget_get_accessible (button_data->button);
   gtk_button_set_focus_on_click (GTK_BUTTON (button_data->button), FALSE);
 
   switch (button_data->type)
@@ -1444,6 +1464,7 @@ make_directory_button (GtkPathBar  *path_bar,
       button_data->image = gtk_image_new ();
       child = button_data->image;
       button_data->label = NULL;
+      atk_object_set_name (atk_obj, _("File System Root"));
       break;
     case HOME_BUTTON:
     case DESKTOP_BUTTON:

@@ -31,7 +31,7 @@
 #include <cairo.h>
 #include <cairo-ps.h>
 
-#include "gtk/gtkintl.h"
+#include <glib/gi18n-lib.h>
 
 #include <gtk/gtk.h>
 #include "gtkprinter-private.h"

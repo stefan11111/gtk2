@@ -484,6 +484,7 @@ gdk_rgb_set_gray_cmap (GdkRgbInfo  *image_info,
 {
   gint i;
   GdkColor color;
+  gboolean status;
   gulong pixels[256];
   gint r, g, b, gray;
 
@@ -493,11 +494,7 @@ gdk_rgb_set_gray_cmap (GdkRgbInfo  *image_info,
       color.red = i * 257;
       color.green = i * 257;
       color.blue = i * 257;
-#ifdef VERBOSE
-      gboolean status = gdk_colormap_alloc_color (cmap, &color, FALSE, TRUE);
-#else
-      gdk_colormap_alloc_color (cmap, &color, FALSE, TRUE);
-#endif
+      status = gdk_colormap_alloc_color (cmap, &color, FALSE, TRUE);
       pixels[i] = color.pixel;
 #ifdef VERBOSE
       g_print ("allocating pixel %d, %x %x %x, result %d\n",

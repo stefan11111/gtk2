@@ -1889,7 +1889,7 @@ gtk_rc_styles_match (GSList       *rc_styles,
         }
       else
         {
-          if (g_pattern_spec_match (rc_set->pspec, path_length, path, path_reversed))
+          if (g_pattern_match (rc_set->pspec, path_length, path, path_reversed))
 	    rc_styles = g_slist_append (rc_styles, rc_set);
 	}
     }
@@ -4816,7 +4816,7 @@ match_widget_class_recursive (GSList *list,
        * just compare the pspec. 
        */
       if (list->next == NULL)
-        return g_pattern_spec_match (path_elt->elt.pspec, length, path, path_reversed);
+        return g_pattern_match (path_elt->elt.pspec, length, path, path_reversed);
       
       class_elt = (PathElt *)list->next->data;
       g_assert (class_elt->type != PATH_ELT_PSPEC);
@@ -4856,7 +4856,7 @@ match_widget_class_recursive (GSList *list,
               old_char = class_start[0];
               class_start[0] = '\0';
               
-              if (g_pattern_spec_match (path_elt->elt.pspec, class_start - path, path, path_reversed + length - (class_start - path)))
+              if (g_pattern_match (path_elt->elt.pspec, class_start - path, path, path_reversed + length - (class_start - path)))
                 {
                   if (class_end != NULL)
                     {

@@ -1305,6 +1305,9 @@ gtk_action_group_add_radio_actions_full (GtkActionGroup            *action_group
  * Sets a function to be used for translating the @label and @tooltip of 
  * #GtkActionGroupEntry<!-- -->s added by gtk_action_group_add_actions().
  *
+ * If you're using gettext(), it is enough to set the translation domain
+ * with gtk_action_group_set_translation_domain().
+ *
  * Since: 2.4 
  **/
 void
@@ -1327,16 +1330,28 @@ gtk_action_group_set_translate_func (GtkActionGroup   *action_group,
   private->translate_notify = notify;
 }
 
-static inline gchar *
-return_string (const gchar *msgid, 
+static gchar *
+dgettext_swapped (const gchar *msgid, 
 		  const gchar *domainname)
 {
-  return (gchar*)msgid;
+  /* Pass through g_dgettext if and only if msgid is nonempty. */
+  if (msgid && *msgid) 
+    return (gchar*) g_dgettext (domainname, msgid); 
+  else
+    return (gchar*) msgid;
 }
 
 /**
  * gtk_action_group_set_translation_domain:
  * @action_group: a #GtkActionGroup
+ * @domain: the translation domain to use for g_dgettext() calls
+ * 
+ * Sets the translation domain and uses g_dgettext() for translating the 
+ * @label and @tooltip of #GtkActionEntry<!-- -->s added by 
+ * gtk_action_group_add_actions().
+ *
+ * If you're not using gettext() for localization, see 
+ * gtk_action_group_set_translate_func().
  *
  * Since: 2.4
  **/
@@ -1347,7 +1362,7 @@ gtk_action_group_set_translation_domain (GtkActionGroup *action_group,
   g_return_if_fail (GTK_IS_ACTION_GROUP (action_group));
 
   gtk_action_group_set_translate_func (action_group, 
-				       (GtkTranslateFunc)return_string,
+				       (GtkTranslateFunc)dgettext_swapped,
 				       g_strdup (domain),
 				       g_free);
 } 

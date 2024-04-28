@@ -116,7 +116,7 @@ static GObject *gtk_print_unix_dialog_buildable_get_internal_child  (GtkBuildabl
                                                                      GtkBuilder   *builder,
                                                                      const gchar  *childname);
 
-static const gchar * const common_paper_sizes[16] = {
+static const gchar const common_paper_sizes[][16] = {
   "na_letter",
   "na_legal",
   "iso_a4",
@@ -2218,6 +2218,8 @@ create_main_page (GtkPrintUnixDialog *dialog)
   entry = gtk_entry_new ();
   gtk_widget_set_tooltip_text (entry, range_tooltip);
   gtk_entry_set_activates_default (GTK_ENTRY (entry), TRUE);
+  atk_object_set_name (gtk_widget_get_accessible (entry), _("Pages"));
+  atk_object_set_description (gtk_widget_get_accessible (entry), range_tooltip);
   priv->page_range_entry = entry;
   gtk_widget_show (entry);
   gtk_table_attach (GTK_TABLE (table), entry,
@@ -3615,6 +3617,8 @@ create_job_page (GtkPrintUnixDialog *dialog)
 
   entry = gtk_entry_new ();
   gtk_widget_set_tooltip_text (entry, at_tooltip);
+  atk_object_set_name (gtk_widget_get_accessible (entry), _("Time of print"));
+  atk_object_set_description (gtk_widget_get_accessible (entry), at_tooltip);
   priv->print_at_entry = entry;
   gtk_widget_show (entry);
   gtk_table_attach (GTK_TABLE (table), entry,

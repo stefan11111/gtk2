@@ -33,7 +33,7 @@
 #include <cairo.h>
 #include <cairo-ps.h>
 
-#include "gtk/gtkintl.h"
+#include <glib/gi18n-lib.h>
 
 #include "gtk.h"
 #include "gtkprintbackendpapi.h"

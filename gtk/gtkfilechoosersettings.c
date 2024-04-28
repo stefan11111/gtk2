@@ -33,7 +33,7 @@
 #include <errno.h>
 #include <string.h>
 #include <glib.h>
-#include "gtk/gtkintl.h"
+#include <glib/gi18n-lib.h>
 #include "gtkfilechoosersettings.h"
 #include "gtkalias.h"
 

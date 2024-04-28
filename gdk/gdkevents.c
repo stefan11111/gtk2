@@ -483,13 +483,13 @@ gdk_event_copy (const GdkEvent *event)
     case GDK_BUTTON_PRESS:
     case GDK_BUTTON_RELEASE:
       if (event->button.axes) 
-	new_event->button.axes = g_memdup2 (event->button.axes, 
+	new_event->button.axes = g_memdup (event->button.axes, 
 					     sizeof (gdouble) * event->button.device->num_axes);
       break;
 
     case GDK_MOTION_NOTIFY:
       if (event->motion.axes) 
-	new_event->motion.axes = g_memdup2 (event->motion.axes, 
+	new_event->motion.axes = g_memdup (event->motion.axes, 
 					   sizeof (gdouble) * event->motion.device->num_axes);
       
       break;
@@ -1171,6 +1171,7 @@ gdk_synthesize_click (GdkDisplay *display,
 {
   GdkEvent temp_event;
   GdkEvent *event_copy;
+  GList *link;
   
   g_return_if_fail (event != NULL);
   
@@ -1178,7 +1179,7 @@ gdk_synthesize_click (GdkDisplay *display,
   temp_event.type = (nclicks == 2) ? GDK_2BUTTON_PRESS : GDK_3BUTTON_PRESS;
 
   event_copy = gdk_event_copy (&temp_event);
-  _gdk_event_queue_append (display, event_copy);
+  link = _gdk_event_queue_append (display, event_copy);
 }
 
 void

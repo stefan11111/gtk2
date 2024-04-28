@@ -27,14 +27,13 @@
 #ifndef __GDKINTL_H__
 #define __GDKINTL_H__
 
+#include "config.h"
+#include <glib/gi18n-lib.h>
+
+#ifdef ENABLE_NLS
+#define P_(String) dgettext(GETTEXT_PACKAGE "-properties",String)
+#else
 #define P_(String) (String)
-
-#define N_(String) (String)
-
-#define _(String) (String)
-
-#define NC_(String1, String2) (String2)
-
-#define C_(String1, String2) (String2)
+#endif
 
 #endif

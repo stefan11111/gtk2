@@ -531,6 +531,7 @@ gtk_window_class_init (GtkWindowClass *klass)
                                    PROP_ALLOW_SHRINK,
                                    g_param_spec_boolean ("allow-shrink",
 							 P_("Allow Shrink"),
+							 /* xgettext:no-c-format */
 							 P_("If TRUE, the window has no mimimum size. Setting this to TRUE is 99% of the time a bad idea"),
 							 FALSE,
 							 GTK_PARAM_READWRITE | G_PARAM_DEPRECATED));
@@ -978,8 +979,11 @@ gtk_window_set_property (GObject      *object,
 			 GParamSpec   *pspec)
 {
   GtkWindow  *window;
+  GtkWindowPrivate *priv;
   
   window = GTK_WINDOW (object);
+
+  priv = GTK_WINDOW_GET_PRIVATE (window);
 
   switch (prop_id)
     {

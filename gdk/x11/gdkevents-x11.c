@@ -708,7 +708,7 @@ translate_key_event (GdkDisplay *display,
 	  if ((c >= '@' && c < '\177') || c == ' ') c &= 0x1F;
 	  else if (c == '2')
 	    {
-	      event->key.string = g_memdup2 ("\0\0", 2);
+	      event->key.string = g_memdup ("\0\0", 2);
 	      event->key.length = 1;
 	      buf[0] = '\0';
 	      goto out;

@@ -26,8 +26,8 @@ AWK = gawk
 
 INCLUDES = -FImsvc_recommended_pragmas.h -I . -I .. -I ../gdk $(GDK_PIXBUF_CFLAGS)
 DEPCFLAGS = $(PANGO_CFLAGS) $(GLIB_CFLAGS) $(LIBICONV_CFLAGS) \
-		$(INTL_CFLAGS) $(CAIRO_CFLAGS)
-LDFLAGS = /link /machine:ix86 $(LINKDEBUG)
+		$(INTL_CFLAGS) $(ATK_CFLAGS) $(CAIRO_CFLAGS)
+LDFLAGS = $(ATK_LIBS) /link /machine:ix86 $(LINKDEBUG)
 # Some files use near as an identifier
 # Don't define GTK_COMPILATION here, because it's for gtk-x.x.dll only
 DEFINES = \
@@ -415,6 +415,7 @@ gtk_public_h_sources =		\
 	gtkimagemenuitem.h	\
 	gtkimcontext.h		\
 	gtkimcontextsimple.h	\
+	gtkimmodule.h		\
 	gtkimmulticontext.h	\
 	gtkinputdialog.h	\
 	gtkinvisible.h		\
@@ -660,4 +661,10 @@ gtk-x11-$(GTK_VER).dll : $(gtk_OBJECTS) gtk.def
 # General rule for compiling the objects into the DLL
 .c.obj :
 	$(CC) $(CFLAGS) -GF -Zm400 -GD -c -DGTK_COMPILATION -DG_LOG_DOMAIN=\"Gtk\" $<
+
+$(EXAMPLE).obj : ..\examples\$(EXAMPLE)\$(EXAMPLE).c
+	$(CC) $(CFLAGS) -c -DG_LOG_DOMAIN=\"$(EXAMPLE)\" ..\examples\$(EXAMPLE)\$(EXAMPLE).c
+
+$(EXAMPLE).exe : $(EXAMPLE).obj
+	$(CC) $(CFLAGS) $(EXAMPLE).obj $(GTK_LIBS) $(GDK_LIBS) $(GLIB_LIBS) $(LDFLAGS)
 

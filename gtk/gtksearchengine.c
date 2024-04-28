@@ -113,10 +113,8 @@ _gtk_search_engine_init (GtkSearchEngine *engine)
 GtkSearchEngine *
 _gtk_search_engine_new (void)
 {
-#if defined(HAVE_TRACKER) || defined(HAVE_BEAGLE) || defined (GDK_WINDOWING_QUARTZ)
   GtkSearchEngine *engine = NULL;
-#endif
-
+	
 #ifdef HAVE_TRACKER
   engine = _gtk_search_engine_tracker_new ();
   if (engine)
@@ -135,12 +133,10 @@ _gtk_search_engine_new (void)
     return engine;
 #endif
 
-#if !GLIB_CHECK_VERSION(2, 31, 0)
   if (g_thread_supported ())
-    return _gtk_search_engine_simple_new ();
-#else
-  return _gtk_search_engine_simple_new ();
-#endif
+    engine = _gtk_search_engine_simple_new ();
+  
+  return engine;
 }
 
 void

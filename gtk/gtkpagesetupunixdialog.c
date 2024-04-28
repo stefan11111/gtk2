@@ -118,7 +118,7 @@ static void printer_status_cb                    (GtkPrintBackend        *backen
 
 
 
-static const gchar * const common_paper_sizes[16] = {
+static const gchar const common_paper_sizes[][16] = {
   "na_letter",
   "na_legal",
   "iso_a4",
@@ -138,8 +138,10 @@ static void
 gtk_page_setup_unix_dialog_class_init (GtkPageSetupUnixDialogClass *class)
 {
   GObjectClass *object_class;
+  GtkWidgetClass *widget_class;
 
   object_class = (GObjectClass *) class;
+  widget_class = (GtkWidgetClass *) class;
 
   object_class->finalize = gtk_page_setup_unix_dialog_finalize;
 

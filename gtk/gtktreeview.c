@@ -9332,7 +9332,7 @@ _gtk_tree_view_column_start_drag (GtkTreeView       *tree_view,
 {
   GdkEvent *send_event;
   GtkAllocation allocation;
-  gint x, y;
+  gint x, y, width, height;
   GdkScreen *screen = gtk_widget_get_screen (GTK_WIDGET (tree_view));
   GdkDisplay *display = gdk_screen_get_display (screen);
 
@@ -9414,6 +9414,8 @@ _gtk_tree_view_column_start_drag (GtkTreeView       *tree_view,
   gdk_window_show (tree_view->priv->drag_window);
 
   gdk_window_get_origin (tree_view->priv->header_window, &x, &y);
+  width = gdk_window_get_width (tree_view->priv->header_window);
+  height = gdk_window_get_height (tree_view->priv->header_window);
 
   gtk_widget_grab_focus (GTK_WIDGET (tree_view));
   while (gtk_events_pending ())
@@ -13918,8 +13920,8 @@ gtk_tree_view_create_row_drag_icon (GtkTreeView  *tree_view,
  * @data: (allow-none): User data to be passed to @func, or %NULL
  * @destroy: (allow-none): Destroy notifier for @data, or %NULL
  *
- * This function should almost never be used.  It is meant for private use
- * for determining the number of visible children that are removed when the
+ * This function should almost never be used.  It is meant for private use by
+ * ATK for determining the number of visible children that are removed when the
  * user collapses a row, or a row is deleted.
  **/
 void
@@ -14145,7 +14147,7 @@ gtk_tree_view_set_search_entry (GtkTreeView *tree_view,
 
   if (entry)
     {
-      tree_view->priv->search_entry = GTK_WIDGET (g_object_ref (entry));
+      tree_view->priv->search_entry = g_object_ref (entry);
       tree_view->priv->search_custom_entry_set = TRUE;
 
       if (tree_view->priv->search_entry_changed_id == 0)

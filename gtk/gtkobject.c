@@ -126,7 +126,7 @@ gtk_arg_set_from_value (GtkArg       *arg,
 {
   switch (G_TYPE_FUNDAMENTAL (arg->type))
     {
-    case G_TYPE_CHAR:           GTK_VALUE_CHAR (*arg) = g_value_get_schar (value);       break;
+    case G_TYPE_CHAR:           GTK_VALUE_CHAR (*arg) = g_value_get_char (value);       break;
     case G_TYPE_UCHAR:          GTK_VALUE_UCHAR (*arg) = g_value_get_uchar (value);     break;
     case G_TYPE_BOOLEAN:        GTK_VALUE_BOOL (*arg) = g_value_get_boolean (value);    break;
     case G_TYPE_INT:            GTK_VALUE_INT (*arg) = g_value_get_int (value);         break;
@@ -157,7 +157,7 @@ gtk_arg_to_value (GtkArg *arg,
 {
   switch (G_TYPE_FUNDAMENTAL (arg->type))
     {
-    case G_TYPE_CHAR:           g_value_set_schar (value, GTK_VALUE_CHAR (*arg));        break;
+    case G_TYPE_CHAR:           g_value_set_char (value, GTK_VALUE_CHAR (*arg));        break;
     case G_TYPE_UCHAR:          g_value_set_uchar (value, GTK_VALUE_UCHAR (*arg));      break;
     case G_TYPE_BOOLEAN:        g_value_set_boolean (value, GTK_VALUE_BOOL (*arg));     break;
     case G_TYPE_INT:            g_value_set_int (value, GTK_VALUE_INT (*arg));          break;
@@ -192,7 +192,7 @@ gtk_arg_proxy_set_property (GObject      *object,
   memset (&arg, 0, sizeof (arg));
   arg.type = G_VALUE_TYPE (value);
   gtk_arg_set_from_value (&arg, value, FALSE);
-  arg.name = (char*)pspec->name;
+  arg.name = pspec->name;
   class->set_arg (GTK_OBJECT (object), &arg, property_id);
 }
 
@@ -209,7 +209,7 @@ gtk_arg_proxy_get_property (GObject     *object,
 
   memset (&arg, 0, sizeof (arg));
   arg.type = G_VALUE_TYPE (value);
-  arg.name = (char*)pspec->name;
+  arg.name = pspec->name;
   class->get_arg (GTK_OBJECT (object), &arg, property_id);
   gtk_arg_to_value (&arg, value);
 }

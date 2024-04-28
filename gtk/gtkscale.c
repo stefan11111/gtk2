@@ -1471,7 +1471,7 @@ gtk_scale_add_mark (GtkScale        *scale,
   mark->position = position;
  
   priv->marks = g_slist_insert_sorted_with_data (priv->marks, mark,
-                                                 compare_marks,
+                                                 (GCompareFunc) compare_marks,
                                                  GINT_TO_POINTER (
                                                    gtk_range_get_inverted (GTK_RANGE (scale)) 
                                                    ));
@@ -1708,7 +1708,12 @@ gtk_scale_buildable_custom_finished (GtkBuildable *buildable,
         {
           MarkData *mdata = m->data;
 
-          markup = mdata->markup->str;
+          if (mdata->translatable && mdata->markup->len)
+            markup = _gtk_builder_parser_translate (gtk_builder_get_translation_domain (builder),
+                                                    mdata->context,
+                                                    mdata->markup->str);
+          else
+            markup = mdata->markup->str;
 
           gtk_scale_add_mark (scale, mdata->value, mdata->position, markup);
 

@@ -9,8 +9,8 @@ INTROSPECTION_COMPILER_ARGS = \
    --includedir=$(srcdir) \
    --includedir=.
 
-SUBDIRS = $(gdktarget) .
-DIST_SUBDIRS = x11 directfb
+SUBDIRS = $(gdktarget) . tests
+DIST_SUBDIRS = win32 x11 quartz directfb tests
 
 CLEANFILES =
 
@@ -18,6 +18,7 @@ EXTRA_DIST +=			\
 	keynames.txt		\
 	keyname-table.h		\
 	gen-keyname-table.pl	\
+	gdkconfig.h.win32 	\
 	gdkkeysyms-update.pl	\
 	gdk.def 		\
 	gdkmarshalers.list	\
@@ -42,6 +43,10 @@ INCLUDES =                              \
 	$(GDK_DEP_CFLAGS)
 
 gtarget=$(gdktarget)
+
+if PLATFORM_WIN32
+no_undefined = -no-undefined
+endif
 
 # libtool stuff: set version and export symbols for resolving
 # since automake doesn't support conditionalized libsomething_la_LDFLAGS
@@ -176,6 +181,15 @@ libgdk_x11_2_0_la_SOURCES = $(common_sources)
 libgdk_x11_2_0_la_LIBADD = x11/libgdk-x11.la $(GDK_DEP_LIBS)
 libgdk_x11_2_0_la_LDFLAGS = $(LDADD)
 
+libgdk_quartz_2_0_la_SOURCES = $(common_sources) gdkkeynames.c
+libgdk_quartz_2_0_la_LIBADD = quartz/libgdk-quartz.la $(GDK_DEP_LIBS)
+libgdk_quartz_2_0_la_LDFLAGS = $(LDADD)
+
+libgdk_win32_2_0_la_SOURCES = $(common_sources) gdkkeynames.c
+libgdk_win32_2_0_la_LIBADD = win32/libgdk-win32.la $(GDK_DEP_LIBS)
+libgdk_win32_2_0_la_DEPENDENCIES = win32/libgdk-win32.la win32/rc/gdk-win32-res.o gdk.def
+libgdk_win32_2_0_la_LDFLAGS = -Wl,win32/rc/gdk-win32-res.o -export-symbols $(srcdir)/gdk.def $(LDADD)
+
 if HAVE_INTROSPECTION
 
 base_introspection_files = 		\
@@ -253,16 +267,38 @@ CLEANFILES += $(gir_DATA) $(typelibs_DATA)
 
 endif # HAVE_INTROSPECTION
 
+if OS_WIN32
+install-def-file: gdk.def
+	$(mkinstalldirs) $(DESTDIR)$(libdir)
+	$(INSTALL) $(srcdir)/gdk.def $(DESTDIR)$(libdir)/gdk-win32-2.0.def
+uninstall-def-file:
+	-rm $(DESTDIR)$(libdir)/gdk-win32-2.0.def
+else
 install-def-file:
 uninstall-def-file:
+endif
+
+if MS_LIB_AVAILABLE
+noinst_DATA = gdk-win32-$(GTK_API_VERSION).lib
+
+gdk-win32-$(GTK_API_VERSION).lib: libgdk-win32-$(GTK_API_VERSION).la gdk.def
+	lib -machine:@LIB_EXE_MACHINE_FLAG@ -name:libgdk-win32-$(GTK_API_VERSION)-@LT_CURRENT_MINUS_AGE@.dll -def:gdk.def -out:$@
 
 install-ms-lib:
+	$(mkinstalldirs) $(DESTDIR)$(libdir)
+	$(INSTALL) gdk-win32-$(GTK_API_VERSION).lib $(DESTDIR)$(libdir)
+
 uninstall-ms-lib:
+	-rm $(DESTDIR)$(libdir)/gdk-win32-$(GTK_API_VERSION).lib
+else
+install-ms-lib:
+uninstall-ms-lib:
+endif
 
 # This places the generated .def file in srcdir, since it is expected to be there.
 # (The one from a tarball is)
 gdk.def: gdk.symbols
-	(echo -e EXPORTS; $(CPP) -P -DALL_FILES -DINCLUDE_VARIABLES - <$(srcdir)/gdk.symbols | sed -e '/^$$/d' -e 's/^/	/' -e 's/G_GNUC_[^ ]*//g') > $(srcdir)/gdk.def
+	(echo -e EXPORTS; $(CPP) -P -DALL_FILES -DGDK_WINDOWING_WIN32 -DINCLUDE_VARIABLES - <$(srcdir)/gdk.symbols | sed -e '/^$$/d' -e 's/^/	/' -e 's/G_GNUC_[^ ]*//g') > $(srcdir)/gdk.def
 
 gdkalias.h: gdk.symbols
 	 $(PERL) $(srcdir)/makegdkalias.pl < $(srcdir)/gdk.symbols > gdkalias.h
@@ -277,7 +313,7 @@ endif
 
 lib_LTLIBRARIES = $(gdktargetlib)
 
-EXTRA_LTLIBRARIES = libgdk-x11-2.0.la libgdk-directfb-2.0.la
+EXTRA_LTLIBRARIES = libgdk-x11-2.0.la libgdk-win32-2.0.la libgdk-quartz-2.0.la libgdk-directfb-2.0.la
 
 MAINTAINERCLEANFILES = $(gdk_built_sources) stamp-gdkenumtypes.h
 EXTRA_DIST += $(gdk_built_sources)
@@ -338,7 +374,46 @@ stamp-gc-h: $(top_builddir)/config.status
 	cd $(top_builddir) && $(SHELL) ./config.status gdk/gdkconfig.h
 	echo timestamp > stamp-gc-h
 
+# ---------------- MSVC Projects ----------------
+MSVCPROJS = gdk
+
+gdk_FILES = $(libgdk_win32_2_0_la_SOURCES)
+gdk_EXCLUDES = gdkdummy
+
+gdk_HEADERS_DIR = $(gdkincludedir)
+gdk_HEADERS_INST = $(gdkinclude_HEADERS)
+gdk_HEADERS_EXCLUDES = gdkdummy
+
+include $(top_srcdir)/build/Makefile.msvcproj
+
+if HAVE_INTROSPECTION
+# Introspection Items for MSVC
+MSVC_INTROSPECT_GIRS = Gdk-2.0.gir
+
+BASE_MSVC_GIR_CFLAGS =			\
+	-DGDK_COMPILATION		\
+	-I../.. -I../../gdk -I.../../gdk/win32
+
+INTROSPECTION_INTERMEDIATE_ITEMS = \
+	$(top_builddir)/build/win32/Gdk-2.0.gir.msvc.introspect	\
+	$(top_builddir)/build/win32/Gdk_2_0_gir_list
+
+Gdk_2_0_gir_MSVC_FILES = $(filter-out gdkmedialib.c, $(base_introspection_files))
+Gdk_2_0_gir_MSVC_EXPORT_PACKAGES = $(Gdk_2_0_gir_EXPORT_PACKAGES)
+Gdk_2_0_gir_MSVC_INCLUDE_GIRS = $(Gdk_2_0_gir_INCLUDES)
+Gdk_2_0_gir_MSVC_LIBS = gdk-win32-2.0
+Gdk_2_0_gir_MSVC_CFLAGS = $(BASE_MSVC_GIR_CFLAGS)
+Gdk_2_0_gir_MSVC_SCANNERFLAGS = $(Gdk_2_0_gir_SCANNERFLAGS)
+
+include $(top_srcdir)/build/Makefile.msvc-introspection
+
+else
+INTROSPECTION_INTERMEDIATE_ITEMS =
+endif
+
 dist-hook:	\
+	$(top_builddir)/build/win32/vs9/gdk.vcproj	\
+	$(top_builddir)/build/win32/vs9/gdk.headers	\
 	$(INTROSPECTION_INTERMEDIATE_ITEMS)
 
 DISTCLEANFILES = gdkconfig.h stamp-gc-h

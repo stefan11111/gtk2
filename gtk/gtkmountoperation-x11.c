@@ -193,6 +193,9 @@ find_largest_sizes (gulong *data,
   while (nitems > 0)
     {
       int w, h;
+      gboolean replace;
+
+      replace = FALSE;
 
       if (nitems < 3)
         return FALSE; /* no space for w, h */
@@ -771,7 +774,7 @@ get_name_for_window_with_pid (GtkMountOperationLookupContext *context,
 
           endp = NULL;
           windowid_window = (Window) g_ascii_strtoll (windowid_value, &endp, 10);
-          if (endp == NULL || *endp == '\0')
+          if (endp != NULL || *endp == '\0')
             {
               window = windowid_window;
             }

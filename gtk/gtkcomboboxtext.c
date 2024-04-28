@@ -212,6 +212,21 @@ item_text (GMarkupParseContext *context,
 
   string = g_strndup (text, text_len);
 
+  if (data->translatable && text_len)
+    {
+      gchar *translated;
+
+      /* FIXME: This will not use the domain set in the .ui file,
+       * since the parser is not telling the builder about the domain.
+       * However, it will work for gtk_builder_set_translation_domain() calls.
+       */
+      translated = _gtk_builder_parser_translate (data->domain,
+						  data->context,
+						  string);
+      g_free (string);
+      string = translated;
+    }
+
   data->string = string;
 }
 
@@ -260,7 +275,7 @@ gtk_combo_box_text_buildable_custom_tag_start (GtkBuildable     *buildable,
 
       parser_data = g_slice_new0 (ItemParserData);
       parser_data->builder = g_object_ref (builder);
-      parser_data->object = G_OBJECT (g_object_ref (buildable));
+      parser_data->object = g_object_ref (buildable);
       parser_data->domain = gtk_builder_get_translation_domain (builder);
       *parser = item_parser;
       *data = parser_data;

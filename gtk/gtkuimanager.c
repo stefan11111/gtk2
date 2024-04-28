@@ -503,7 +503,7 @@ gtk_ui_manager_buildable_construct_child (GtkBuildable *buildable,
   g_signal_connect (widget, "hierarchy-changed",
 		    G_CALLBACK (child_hierarchy_changed_cb),
 		    GTK_UI_MANAGER (buildable));
-  return G_OBJECT (g_object_ref (widget));
+  return g_object_ref (widget);
 }
 
 static void
@@ -996,16 +996,16 @@ get_child_node (GtkUIManager *self,
 			       NODE_INFO (child)->name,
 			       NODE_INFO (child)->type);
 
-                  if (node_is_dead (child))
-                    {
-                      /* This node was removed but is still dirty so
-                       * it is still in the tree. We want to treat this
-                       * as if it didn't exist, which means we move it
-                       * to the position it would have been created at.
-                       */
-                      g_node_unlink (child);
-                      goto insert_child;
-                    }
+                    if (node_is_dead (child))
+                      {
+                        /* This node was removed but is still dirty so
+                         * it is still in the tree. We want to treat this
+                         * as if it didn't exist, which means we move it
+                         * to the position it would have been created at.
+                         */
+                        g_node_unlink (child);
+                        goto insert_child;
+                      }
 
 		  return child;
 		}

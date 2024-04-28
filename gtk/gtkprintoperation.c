@@ -1721,7 +1721,7 @@ _gtk_print_operation_set_status (GtkPrintOperation *op,
     status = GTK_PRINT_STATUS_FINISHED_ABORTED;
 
   if (string == NULL)
-    string = status_strs[status];
+    string = g_dpgettext2 (GETTEXT_PACKAGE, "print operation status", status_strs[status]);
   
   if (priv->status == status &&
       strcmp (string, priv->status_string) == 0)

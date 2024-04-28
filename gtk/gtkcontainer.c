@@ -411,18 +411,34 @@ attributes_text_element (GMarkupParseContext *context,
 			 GError             **error)
 {
   PackingPropertiesData *parser_data = (PackingPropertiesData*)user_data;
+  gchar* value;
 
   if (!parser_data->child_prop_name)
     return;
   
+  if (parser_data->translatable && text_len)
+    {
+      const gchar* domain;
+      domain = gtk_builder_get_translation_domain (parser_data->builder);
+      
+      value = _gtk_builder_parser_translate (domain,
+					     parser_data->context,
+					     text);
+    }
+  else
+    {
+      value = g_strdup (text);
+    }
+
   gtk_container_buildable_set_child_property (parser_data->container,
 					      parser_data->builder,
 					      parser_data->child,
 					      parser_data->child_prop_name,
-					      text);
+					      value);
 
   g_free (parser_data->child_prop_name);
   g_free (parser_data->context);
+  g_free (value);
   parser_data->child_prop_name = NULL;
   parser_data->context = NULL;
   parser_data->translatable = FALSE;

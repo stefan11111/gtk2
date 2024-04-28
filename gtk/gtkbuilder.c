@@ -85,6 +85,8 @@ gtk_builder_class_init (GtkBuilderClass *klass)
   *
   * The translation domain used when translating property values that
   * have been marked as translatable in interface descriptions.
+  * If the translation domain is %NULL, #GtkBuilder uses gettext(),
+  * otherwise g_dgettext().
   *
   * Since: 2.12
   */
@@ -92,7 +94,7 @@ gtk_builder_class_init (GtkBuilderClass *klass)
                                    PROP_TRANSLATION_DOMAIN,
                                    g_param_spec_string ("translation-domain",
                                                         P_("Translation Domain"),
-                                                        P_("The translation domain"),
+                                                        P_("The translation domain used by gettext"),
                                                         NULL,
                                                         GTK_PARAM_READWRITE));
 
@@ -1210,7 +1212,7 @@ gtk_builder_value_from_string_type (GtkBuilder   *builder,
   switch (G_TYPE_FUNDAMENTAL (type))
     {
     case G_TYPE_CHAR:
-      g_value_set_schar (value, string[0]);
+      g_value_set_char (value, string[0]);
       break;
     case G_TYPE_UCHAR:
       g_value_set_uchar (value, (guchar)string[0]);

@@ -1034,7 +1034,7 @@ gtk_binding_set_add_path (GtkBindingSet	     *binding_set,
     default:
       g_assert_not_reached ();
       slist_p = NULL;
-      return;
+      break;
     }
   
   pspec = g_new (PatternSpec, 1);
@@ -1109,7 +1109,7 @@ binding_match_activate (GSList          *pspec_list,
         }
       else
         {
-          if (g_pattern_spec_match (pspec->pspec, path_length, path, path_reversed))
+          if (g_pattern_match (pspec->pspec, path_length, path, path_reversed))
 	    binding_set = pspec->user_data;
         }
 

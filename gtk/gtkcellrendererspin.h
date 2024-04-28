@@ -49,7 +49,7 @@ struct _GtkCellRendererSpinClass
   GtkCellRendererTextClass parent;
 };
 
-GType            gtk_cell_renderer_spin_get_type (void) G_GNUC_CONST;
+GType            gtk_cell_renderer_spin_get_type (void);
 GtkCellRenderer *gtk_cell_renderer_spin_new      (void);
 
 G_END_DECLS

@@ -29,7 +29,7 @@
  * SECTION:gtkimcontext
  * @title: GtkIMContext
  * @short_description: Base class for input method contexts
- * @include: gtk/gtk.h
+ * @include: gtk/gtk.h,gtk/gtkimmodule.h
  *
  * #GtkIMContext defines the interface for GTK+ input methods. An input method
  * is used by GTK+ text input widgets like #GtkEntry to map from key events to

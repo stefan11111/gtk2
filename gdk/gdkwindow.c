@@ -7426,12 +7426,17 @@ gdk_window_move_resize_toplevel (GdkWindow *window,
   GdkRegion *old_region, *new_region;
   GdkWindowImplIface *impl_iface;
   gboolean expose;
+  int old_x, old_y, old_abs_x, old_abs_y;
+  int dx, dy;
   gboolean is_resize;
 
   private = (GdkWindowObject *) window;
 
   expose = FALSE;
   old_region = NULL;
+
+  old_x = private->x;
+  old_y = private->y;
 
   is_resize = (width != -1) || (height != -1);
 
@@ -7444,6 +7449,12 @@ gdk_window_move_resize_toplevel (GdkWindow *window,
 
   impl_iface = GDK_WINDOW_IMPL_GET_IFACE (private->impl);
   impl_iface->move_resize (window, with_move, x, y, width, height);
+
+  dx = private->x - old_x;
+  dy = private->y - old_y;
+
+  old_abs_x = private->abs_x;
+  old_abs_y = private->abs_y;
 
   /* Avoid recomputing for pure toplevel moves, for performance reasons */
   if (is_resize)
@@ -8634,9 +8645,12 @@ gdk_window_shape_combine_mask (GdkWindow *window,
 			       gint       x,
 			       gint       y)
 {
+  GdkWindowObject *private;
   GdkRegion *region;
 
   g_return_if_fail (GDK_IS_WINDOW (window));
+
+  private = (GdkWindowObject *) window;
 
   if (mask)
     region = _gdk_windowing_get_shape_for_mask (mask);
@@ -8843,9 +8857,12 @@ gdk_window_input_shape_combine_mask (GdkWindow *window,
 				     gint       x,
 				     gint       y)
 {
+  GdkWindowObject *private;
   GdkRegion *region;
 
   g_return_if_fail (GDK_IS_WINDOW (window));
+
+  private = (GdkWindowObject *) window;
 
   if (mask)
     region = _gdk_windowing_get_shape_for_mask (mask);

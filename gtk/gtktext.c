@@ -2955,11 +2955,11 @@ move_gap (GtkText* text, guint index)
       gint diff = index - text->gap_position;
       
       if (text->use_wchar)
-	memmove (text->text.wc + text->gap_position,
+	g_memmove (text->text.wc + text->gap_position,
 		   text->text.wc + text->gap_position + text->gap_size,
 		   diff*sizeof (GdkWChar));
       else
-	memmove (text->text.ch + text->gap_position,
+	g_memmove (text->text.ch + text->gap_position,
 		   text->text.ch + text->gap_position + text->gap_size,
 		   diff);
       
@@ -2970,11 +2970,11 @@ move_gap (GtkText* text, guint index)
       gint diff = text->gap_position - index;
       
       if (text->use_wchar)
-	memmove (text->text.wc + index + text->gap_size,
+	g_memmove (text->text.wc + index + text->gap_size,
 		   text->text.wc + index,
 		   diff*sizeof (GdkWChar));
       else
-	memmove (text->text.ch + index + text->gap_size,
+	g_memmove (text->text.ch + index + text->gap_size,
 		   text->text.ch + index,
 		   diff);
       
@@ -3005,12 +3005,12 @@ make_forward_space (GtkText* text, guint len)
 	}
       
       if (text->use_wchar)
-	memmove (text->text.wc + text->gap_position + text->gap_size + 2*len,
+	g_memmove (text->text.wc + text->gap_position + text->gap_size + 2*len,
 		   text->text.wc + text->gap_position + text->gap_size,
 		   (text->text_end - (text->gap_position + text->gap_size))
 		   *sizeof(GdkWChar));
       else
-	memmove (text->text.ch + text->gap_position + text->gap_size + 2*len,
+	g_memmove (text->text.ch + text->gap_position + text->gap_size + 2*len,
 		   text->text.ch + text->gap_position + text->gap_size,
 		   text->text_end - (text->gap_position + text->gap_size));
       
