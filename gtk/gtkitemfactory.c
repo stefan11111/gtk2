@@ -53,7 +53,7 @@
 #endif
 #include	<stdio.h>
 
-#include "gtkalias.h"
+
 
 /* --- defines --- */
 #define		ITEM_FACTORY_STRING	((gchar*) item_factory_string)
@@ -1583,4 +1583,4 @@ gtk_item_factory_set_translate_func (GtkItemFactory    *ifactory,
 }
 
 #define __GTK_ITEM_FACTORY_C__
-#include "gtkaliasdef.c"
+

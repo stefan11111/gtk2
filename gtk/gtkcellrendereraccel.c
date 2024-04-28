@@ -20,14 +20,14 @@
 #include "config.h"
 #include "gtkintl.h"
 #include "gtkaccelgroup.h"
-#include "gtkmarshalers.h"
+
 #include "gtkcellrendereraccel.h"
 #include "gtklabel.h"
 #include "gtkeventbox.h"
 #include "gtkmain.h"
 #include "gtkprivate.h"
 #include "gdk/gdkkeysyms.h"
-#include "gtkalias.h"
+
 
 
 static void gtk_cell_renderer_accel_get_property (GObject         *object,
@@ -189,7 +189,7 @@ gtk_cell_renderer_accel_class_init (GtkCellRendererAccelClass *cell_accel_class)
                                         G_SIGNAL_RUN_LAST,
                                         G_STRUCT_OFFSET (GtkCellRendererAccelClass, accel_edited),
                                         NULL, NULL,
-                                        _gtk_marshal_VOID__STRING_UINT_FLAGS_UINT,
+                                        NULL,
                                         G_TYPE_NONE, 4,
                                         G_TYPE_STRING,
                                         G_TYPE_UINT,
@@ -679,4 +679,4 @@ gtk_cell_renderer_accel_start_editing (GtkCellRenderer      *cell,
 
 
 #define __GTK_CELL_RENDERER_ACCEL_C__
-#include "gtkaliasdef.c"
+

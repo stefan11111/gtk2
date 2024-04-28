@@ -21,10 +21,10 @@
 
 #include "gtkentrybuffer.h"
 #include "gtkintl.h"
-#include "gtkmarshalers.h"
+
 #include "gtkprivate.h"
 #include "gtkwidget.h"
-#include "gtkalias.h"
+
 
 #include <gdk/gdk.h>
 
@@ -401,7 +401,7 @@ gtk_entry_buffer_class_init (GtkEntryBufferClass *klass)
                                          G_SIGNAL_RUN_FIRST,
                                          G_STRUCT_OFFSET (GtkEntryBufferClass, inserted_text),
                                          NULL, NULL,
-                                         _gtk_marshal_VOID__UINT_STRING_UINT,
+                                         NULL,
                                          G_TYPE_NONE, 3,
                                          G_TYPE_UINT,
                                          G_TYPE_STRING,
@@ -422,7 +422,7 @@ gtk_entry_buffer_class_init (GtkEntryBufferClass *klass)
                                          G_SIGNAL_RUN_FIRST,
                                          G_STRUCT_OFFSET (GtkEntryBufferClass, deleted_text),
                                          NULL, NULL,
-                                         _gtk_marshal_VOID__UINT_UINT,
+                                         NULL,
                                          G_TYPE_NONE, 2,
                                          G_TYPE_UINT,
                                          G_TYPE_UINT);
@@ -751,4 +751,4 @@ gtk_entry_buffer_emit_deleted_text (GtkEntryBuffer *buffer,
 }
 
 #define __GTK_ENTRY_BUFFER_C__
-#include "gtkaliasdef.c"
+

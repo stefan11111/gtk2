@@ -83,7 +83,7 @@
 #define WANT_HPANED 1
 #include "gtkhpaned.h"
 
-#include "gtkalias.h"
+
 
 #ifdef G_OS_WIN32
 #include <direct.h>
@@ -3994,4 +3994,4 @@ gtk_file_selection_get_selections (GtkFileSelection *filesel)
 #endif /* G_OS_WIN32 && !_WIN64 */
 
 #define __GTK_FILESEL_C__
-#include "gtkaliasdef.c"
+

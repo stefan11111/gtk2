@@ -26,7 +26,7 @@
 
 #include "config.h"
 #include "gdk.h"
-#include "gdkalias.h"
+
 
 #ifdef GDK_WINDOWING_WIN32
 #include "win32/gdkprivate-win32.h"
@@ -1710,4 +1710,4 @@ gdk_unicode_to_keyval (guint32 wc)
 }
 
 #define __GDK_KEYUNI_C__
-#include "gdkaliasdef.c"
+

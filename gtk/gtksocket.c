@@ -30,7 +30,7 @@
 
 #include "gdk/gdkkeysyms.h"
 #include "gtkmain.h"
-#include "gtkmarshalers.h"
+
 #include "gtkwindow.h"
 #include "gtkplug.h"
 #include "gtkprivate.h"
@@ -39,7 +39,7 @@
 #include "gtkdnd.h"
 #include "gtkintl.h"
 
-#include "gtkalias.h"
+
 
 /**
  * SECTION:gtksocket
@@ -228,7 +228,7 @@ gtk_socket_class_init (GtkSocketClass *class)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkSocketClass, plug_added),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__VOID,
+		  NULL,
 		  G_TYPE_NONE, 0);
 
   /**
@@ -247,7 +247,7 @@ gtk_socket_class_init (GtkSocketClass *class)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkSocketClass, plug_removed),
                   _gtk_boolean_handled_accumulator, NULL,
-		  _gtk_marshal_BOOLEAN__VOID,
+		  NULL,
 		  G_TYPE_BOOLEAN, 0);
 
   g_type_class_add_private (gobject_class, sizeof (GtkSocketPrivate));
@@ -1074,4 +1074,4 @@ _gtk_socket_advance_toplevel_focus (GtkSocket        *socket,
 }
 
 #define __GTK_SOCKET_C__
-#include "gtkaliasdef.c"
+

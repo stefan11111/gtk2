@@ -29,10 +29,10 @@
 #include "gtkaccellabel.h"
 #include "gtkactivatable.h"
 #include "gtktoggleaction.h"
-#include "gtkmarshalers.h"
+
 #include "gtkprivate.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 enum {
   TOGGLED,
@@ -140,7 +140,7 @@ gtk_check_menu_item_class_init (GtkCheckMenuItemClass *klass)
 		  G_SIGNAL_RUN_FIRST,
 		  G_STRUCT_OFFSET (GtkCheckMenuItemClass, toggled),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__VOID,
+		  NULL,
 		  G_TYPE_NONE, 0);
 }
 
@@ -562,4 +562,4 @@ gtk_check_menu_item_set_property (GObject      *object,
 }
 
 #define __GTK_CHECK_MENU_ITEM_C__
-#include "gtkaliasdef.c"
+

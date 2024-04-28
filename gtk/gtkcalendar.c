@@ -51,11 +51,11 @@
 #include "gtkdnd.h"
 #include "gtkintl.h"
 #include "gtkmain.h"
-#include "gtkmarshalers.h"
+
 #include "gtktooltip.h"
 #include "gtkprivate.h"
 #include "gdk/gdkkeysyms.h"
-#include "gtkalias.h"
+
 
 /***************************************************************************/
 /* The following date routines are taken from the lib_date package. 
@@ -625,7 +625,7 @@ gtk_calendar_class_init (GtkCalendarClass *class)
 		  G_SIGNAL_RUN_FIRST,
 		  G_STRUCT_OFFSET (GtkCalendarClass, month_changed),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__VOID,
+		  NULL,
 		  G_TYPE_NONE, 0);
   gtk_calendar_signals[DAY_SELECTED_SIGNAL] =
     g_signal_new (I_("day-selected"),
@@ -633,7 +633,7 @@ gtk_calendar_class_init (GtkCalendarClass *class)
 		  G_SIGNAL_RUN_FIRST,
 		  G_STRUCT_OFFSET (GtkCalendarClass, day_selected),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__VOID,
+		  NULL,
 		  G_TYPE_NONE, 0);
   gtk_calendar_signals[DAY_SELECTED_DOUBLE_CLICK_SIGNAL] =
     g_signal_new (I_("day-selected-double-click"),
@@ -641,7 +641,7 @@ gtk_calendar_class_init (GtkCalendarClass *class)
 		  G_SIGNAL_RUN_FIRST,
 		  G_STRUCT_OFFSET (GtkCalendarClass, day_selected_double_click),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__VOID,
+		  NULL,
 		  G_TYPE_NONE, 0);
   gtk_calendar_signals[PREV_MONTH_SIGNAL] =
     g_signal_new (I_("prev-month"),
@@ -649,7 +649,7 @@ gtk_calendar_class_init (GtkCalendarClass *class)
 		  G_SIGNAL_RUN_FIRST,
 		  G_STRUCT_OFFSET (GtkCalendarClass, prev_month),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__VOID,
+		  NULL,
 		  G_TYPE_NONE, 0);
   gtk_calendar_signals[NEXT_MONTH_SIGNAL] =
     g_signal_new (I_("next-month"),
@@ -657,7 +657,7 @@ gtk_calendar_class_init (GtkCalendarClass *class)
 		  G_SIGNAL_RUN_FIRST,
 		  G_STRUCT_OFFSET (GtkCalendarClass, next_month),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__VOID,
+		  NULL,
 		  G_TYPE_NONE, 0);
   gtk_calendar_signals[PREV_YEAR_SIGNAL] =
     g_signal_new (I_("prev-year"),
@@ -665,7 +665,7 @@ gtk_calendar_class_init (GtkCalendarClass *class)
 		  G_SIGNAL_RUN_FIRST,
 		  G_STRUCT_OFFSET (GtkCalendarClass, prev_year),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__VOID,
+		  NULL,
 		  G_TYPE_NONE, 0);
   gtk_calendar_signals[NEXT_YEAR_SIGNAL] =
     g_signal_new (I_("next-year"),
@@ -673,7 +673,7 @@ gtk_calendar_class_init (GtkCalendarClass *class)
 		  G_SIGNAL_RUN_FIRST,
 		  G_STRUCT_OFFSET (GtkCalendarClass, next_year),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__VOID,
+		  NULL,
 		  G_TYPE_NONE, 0);
   
   g_type_class_add_private (gobject_class, sizeof (GtkCalendarPrivate));
@@ -4134,4 +4134,4 @@ gtk_calendar_thaw (GtkCalendar *calendar)
 }
 
 #define __GTK_CALENDAR_C__
-#include "gtkaliasdef.c"
+

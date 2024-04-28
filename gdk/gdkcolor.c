@@ -30,7 +30,7 @@
 #include "gdkscreen.h"
 #include "gdkcolor.h"
 #include "gdkinternals.h"
-#include "gdkalias.h"
+
 
 /**
  * gdk_colormap_ref:
@@ -395,4 +395,4 @@ gdk_colormap_get_system (void)
 }
 
 #define __GDK_COLOR_C__
-#include "gdkaliasdef.c"
+

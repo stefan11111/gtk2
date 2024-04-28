@@ -35,7 +35,7 @@
 #include "gdkprivate.h"
 #include "gdkprivate-x11.h"
 #include "gdkdisplay-x11.h"
-#include "gdkalias.h"
+
 
 typedef struct _OwnerInfo OwnerInfo;
 
@@ -944,4 +944,4 @@ void gdk_x11_free_compound_text (guchar *ctext)
 }
 
 #define __GDK_SELECTION_X11_C__
-#include "gdkaliasdef.c"
+

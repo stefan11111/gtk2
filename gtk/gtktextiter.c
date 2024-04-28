@@ -31,7 +31,7 @@
 #include "gtktextiterprivate.h"
 #include "gtkintl.h"
 #include "gtkdebug.h"
-#include "gtkalias.h"
+
 #include <string.h>
 
 #define FIX_OVERFLOWS(varname) if ((varname) == G_MININT) (varname) = G_MININT + 1
@@ -5576,4 +5576,4 @@ _gtk_text_iter_check (const GtkTextIter *iter)
 }
 
 #define __GTK_TEXT_ITER_C__
-#include "gtkaliasdef.c"
+

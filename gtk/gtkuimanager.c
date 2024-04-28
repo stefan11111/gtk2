@@ -36,7 +36,7 @@
 #include "gtkbuildable.h"
 #include "gtkimagemenuitem.h"
 #include "gtkintl.h"
-#include "gtkmarshalers.h"
+
 #include "gtkmenu.h"
 #include "gtkmenubar.h"
 #include "gtkmenutoolbutton.h"
@@ -47,7 +47,7 @@
 #include "gtkuimanager.h"
 #include "gtkwindow.h"
 #include "gtkprivate.h"
-#include "gtkalias.h"
+
 
 #undef DEBUG_UI_MANAGER
 
@@ -297,7 +297,7 @@ gtk_ui_manager_class_init (GtkUIManagerClass *klass)
 		  G_SIGNAL_RUN_FIRST | G_SIGNAL_NO_RECURSE,
 		  G_STRUCT_OFFSET (GtkUIManagerClass, connect_proxy),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__OBJECT_OBJECT,
+		  NULL,
 		  G_TYPE_NONE, 2, 
 		  GTK_TYPE_ACTION,
 		  GTK_TYPE_WIDGET);
@@ -319,7 +319,7 @@ gtk_ui_manager_class_init (GtkUIManagerClass *klass)
 		  G_SIGNAL_RUN_FIRST | G_SIGNAL_NO_RECURSE,
 		  G_STRUCT_OFFSET (GtkUIManagerClass, disconnect_proxy),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__OBJECT_OBJECT,
+		  NULL,
 		  G_TYPE_NONE, 2,
 		  GTK_TYPE_ACTION,
 		  GTK_TYPE_WIDGET);
@@ -343,7 +343,7 @@ gtk_ui_manager_class_init (GtkUIManagerClass *klass)
 		  G_SIGNAL_RUN_FIRST | G_SIGNAL_NO_RECURSE,
 		  G_STRUCT_OFFSET (GtkUIManagerClass, pre_activate),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__OBJECT,
+		  NULL,
 		  G_TYPE_NONE, 1,
 		  GTK_TYPE_ACTION);
 
@@ -366,7 +366,7 @@ gtk_ui_manager_class_init (GtkUIManagerClass *klass)
 		  G_SIGNAL_RUN_FIRST | G_SIGNAL_NO_RECURSE,
 		  G_STRUCT_OFFSET (GtkUIManagerClass, post_activate),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__OBJECT,
+		  NULL,
 		  G_TYPE_NONE, 1,
 		  GTK_TYPE_ACTION);
 
@@ -3078,4 +3078,4 @@ gtk_ui_manager_add_ui_from_file (GtkUIManager *self,
 #endif
 
 #define __GTK_UI_MANAGER_C__
-#include "gtkaliasdef.c"
+

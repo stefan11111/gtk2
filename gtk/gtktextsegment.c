@@ -61,7 +61,7 @@
 #include "gtktextlayout.h"
 #include "gtktextiterprivate.h"
 #include "gtkdebug.h"
-#include "gtkalias.h"
+
 
 /*
  *--------------------------------------------------------------
@@ -640,4 +640,4 @@ const GtkTextLineSegmentClass gtk_text_toggle_off_type = {
 };
 
 #define __GTK_TEXT_SEGMENT_C__
-#include "gtkaliasdef.c"
+

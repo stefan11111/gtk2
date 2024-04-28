@@ -26,11 +26,11 @@
 
 #include "config.h"
 #include "gtklabel.h"
-#include "gtkmarshalers.h"
+
 #include "gtkradiobutton.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 
 enum {
@@ -111,7 +111,7 @@ gtk_radio_button_class_init (GtkRadioButtonClass *class)
 				       G_SIGNAL_RUN_FIRST,
 				       G_STRUCT_OFFSET (GtkRadioButtonClass, group_changed),
 				       NULL, NULL,
-				       _gtk_marshal_VOID__VOID,
+				       NULL,
 				       G_TYPE_NONE, 0);
 }
 
@@ -806,4 +806,4 @@ gtk_radio_button_draw_indicator (GtkCheckButton *check_button,
 }
 
 #define __GTK_RADIO_BUTTON_C__
-#include "gtkaliasdef.c"
+

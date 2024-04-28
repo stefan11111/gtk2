@@ -26,10 +26,10 @@
 #include "gtkclipboard.h"
 #include "gtkinvisible.h"
 #include "gtkmain.h"
-#include "gtkmarshalers.h"
+
 #include "gtktextbufferrichtext.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 #ifdef GDK_WINDOWING_X11
 #include "x11/gdkx.h"
@@ -191,7 +191,7 @@ gtk_clipboard_class_init (GtkClipboardClass *class)
 		  G_SIGNAL_RUN_FIRST,
 		  G_STRUCT_OFFSET (GtkClipboardClass, owner_change),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__BOXED,
+		  NULL,
 		  G_TYPE_NONE, 1,
 		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
 }
@@ -2086,4 +2086,4 @@ _gtk_clipboard_store_all (void)
 }
 
 #define __GTK_CLIPBOARD_C__
-#include "gtkaliasdef.c"
+

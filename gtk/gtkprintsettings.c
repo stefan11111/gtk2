@@ -25,7 +25,7 @@
 #include <gtk/gtk.h>
 #include "gtkprintsettings.h"
 #include "gtkprintutils.h"
-#include "gtkalias.h"
+
 
 
 typedef struct _GtkPrintSettingsClass GtkPrintSettingsClass;
@@ -1925,4 +1925,4 @@ gtk_print_settings_to_key_file (GtkPrintSettings  *settings,
 
 
 #define __GTK_PRINT_SETTINGS_C__
-#include "gtkaliasdef.c"
+

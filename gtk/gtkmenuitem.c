@@ -31,7 +31,7 @@
 
 #include "gtkaccellabel.h"
 #include "gtkmain.h"
-#include "gtkmarshalers.h"
+
 #include "gtkmenu.h"
 #include "gtkmenubar.h"
 #include "gtkseparatormenuitem.h"
@@ -39,7 +39,7 @@
 #include "gtkbuildable.h"
 #include "gtkactivatable.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 
 typedef struct {
@@ -211,7 +211,7 @@ gtk_menu_item_class_init (GtkMenuItemClass *klass)
 		  G_SIGNAL_RUN_FIRST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkMenuItemClass, activate),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__VOID,
+		  NULL,
 		  G_TYPE_NONE, 0);
   widget_class->activate_signal = menu_item_signals[ACTIVATE];
 
@@ -221,7 +221,7 @@ gtk_menu_item_class_init (GtkMenuItemClass *klass)
 		  G_SIGNAL_RUN_FIRST,
 		  G_STRUCT_OFFSET (GtkMenuItemClass, activate_item),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__VOID,
+		  NULL,
 		  G_TYPE_NONE, 0);
 
   menu_item_signals[TOGGLE_SIZE_REQUEST] =
@@ -230,7 +230,7 @@ gtk_menu_item_class_init (GtkMenuItemClass *klass)
 		  G_SIGNAL_RUN_FIRST,
 		  G_STRUCT_OFFSET (GtkMenuItemClass, toggle_size_request),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__POINTER,
+		  NULL,
 		  G_TYPE_NONE, 1,
 		  G_TYPE_POINTER);
 
@@ -240,7 +240,7 @@ gtk_menu_item_class_init (GtkMenuItemClass *klass)
 		  G_SIGNAL_RUN_FIRST,
  		  G_STRUCT_OFFSET (GtkMenuItemClass, toggle_size_allocate),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__INT,
+		  NULL,
 		  G_TYPE_NONE, 1,
 		  G_TYPE_INT);
 
@@ -1481,9 +1481,9 @@ gtk_real_menu_item_get_label (GtkMenuItem *menu_item)
 }
 
 static void
-free_timeval (GTimeVal *val)
+free_timeval (guint64 *val)
 {
-  g_slice_free (GTimeVal, val);
+  g_slice_free (guint64, val);
 }
 
 static void
@@ -1503,9 +1503,9 @@ gtk_menu_item_real_popup_submenu (GtkWidget *widget,
 
       if (remember_exact_time)
         {
-          GTimeVal *popup_time = g_slice_new0 (GTimeVal);
+          guint64 *popup_time = g_slice_new0 (guint64);
 
-          g_get_current_time (popup_time);
+          *popup_time = g_get_real_time ();
 
           g_object_set_data_full (G_OBJECT (menu_item->submenu),
                                   "gtk-menu-exact-popup-time", popup_time,
@@ -2219,4 +2219,4 @@ gtk_menu_item_get_use_underline (GtkMenuItem *menu_item)
 
 
 #define __GTK_MENU_ITEM_C__
-#include "gtkaliasdef.c"
+

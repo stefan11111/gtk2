@@ -30,11 +30,11 @@
 #include "gtkhandlebox.h"
 #include "gtkinvisible.h"
 #include "gtkmain.h"
-#include "gtkmarshalers.h"
+
 #include "gtkwindow.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 typedef struct _GtkHandleBoxPrivate GtkHandleBoxPrivate;
 
@@ -234,7 +234,7 @@ gtk_handle_box_class_init (GtkHandleBoxClass *class)
 		  G_SIGNAL_RUN_FIRST,
 		  G_STRUCT_OFFSET (GtkHandleBoxClass, child_attached),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__OBJECT,
+		  NULL,
 		  G_TYPE_NONE, 1,
 		  GTK_TYPE_WIDGET);
   handle_box_signals[SIGNAL_CHILD_DETACHED] =
@@ -243,7 +243,7 @@ gtk_handle_box_class_init (GtkHandleBoxClass *class)
 		  G_SIGNAL_RUN_FIRST,
 		  G_STRUCT_OFFSET (GtkHandleBoxClass, child_detached),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__OBJECT,
+		  NULL,
 		  G_TYPE_NONE, 1,
 		  GTK_TYPE_WIDGET);
 
@@ -1434,4 +1434,4 @@ gtk_handle_box_end_drag (GtkHandleBox *hb,
 }
 
 #define __GTK_HANDLE_BOX_C__
-#include "gtkaliasdef.c"
+

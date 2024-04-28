@@ -44,7 +44,7 @@
 #include "gtkimage.h"
 #include "gtklabel.h"
 #include "gtkmain.h"
-#include "gtkmarshalers.h"
+
 #include "gtkmenu.h"
 #include "gtkorientable.h"
 #include "gtkradiobutton.h"
@@ -57,7 +57,7 @@
 #include "gtkvbox.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 typedef struct _ToolbarContent ToolbarContent;
 
@@ -460,7 +460,7 @@ gtk_toolbar_class_init (GtkToolbarClass *klass)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkToolbarClass, popup_context_menu),
 		  _gtk_boolean_handled_accumulator, NULL,
-		  _gtk_marshal_BOOLEAN__INT_INT_INT,
+		  NULL,
 		  G_TYPE_BOOLEAN, 3,
 		  G_TYPE_INT, G_TYPE_INT,
 		  G_TYPE_INT);
@@ -481,7 +481,7 @@ gtk_toolbar_class_init (GtkToolbarClass *klass)
                                 G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                                 G_CALLBACK (gtk_toolbar_focus_home_or_end),
                                 NULL, NULL,
-                                _gtk_marshal_BOOLEAN__BOOLEAN,
+                                NULL,
                                 G_TYPE_BOOLEAN, 1,
                                 G_TYPE_BOOLEAN);
 
@@ -5033,4 +5033,4 @@ toolbar_rebuild_menu (GtkToolShell *shell)
 }
 
 #define __GTK_TOOLBAR_C__
-#include "gtkaliasdef.c"
+

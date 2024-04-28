@@ -30,7 +30,7 @@
 
 #include "gtkgc.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 
 typedef struct _GtkGCKey       GtkGCKey;
@@ -417,4 +417,4 @@ gtk_gc_drawable_equal (GtkGCDrawable *a,
 }
 
 #define __GTK_GC_C__
-#include "gtkaliasdef.c"
+

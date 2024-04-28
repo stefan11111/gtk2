@@ -46,7 +46,7 @@
 #include "gtkmain.h"
 #include "gtksettings.h"
 #include "gtkprivate.h"
-#include "gtkalias.h"
+
 
 #define DEFAULT_THEME_NAME "hicolor"
 
@@ -99,7 +99,7 @@ struct _GtkIconThemePrivate
   GdkScreen *screen;
   
   /* time when we last stat:ed for theme changes */
-  long last_stat_time;
+  guint64 last_stat_time;
   GList *dir_mtimes;
 
   gulong reset_styles_idle;
@@ -1050,7 +1050,6 @@ load_themes (GtkIconTheme *icon_theme)
   const char *file;
   UnthemedIcon *unthemed_icon;
   IconSuffix old_suffix, new_suffix;
-  GTimeVal tv;
   IconThemeDirMtime *dir_mtime;
   GStatBuf stat_buf;
   
@@ -1159,8 +1158,7 @@ load_themes (GtkIconTheme *icon_theme)
 
   priv->themes_valid = TRUE;
   
-  g_get_current_time(&tv);
-  priv->last_stat_time = tv.tv_sec;
+  priv->last_stat_time = g_get_real_time();
 }
 
 void
@@ -1199,7 +1197,6 @@ static void
 ensure_valid_themes (GtkIconTheme *icon_theme)
 {
   GtkIconThemePrivate *priv = icon_theme->priv;
-  GTimeVal tv;
   gboolean was_valid = priv->themes_valid;
 
   if (priv->loading_themes)
@@ -1210,9 +1207,7 @@ ensure_valid_themes (GtkIconTheme *icon_theme)
 
   if (priv->themes_valid)
     {
-      g_get_current_time (&tv);
-
-      if (ABS (tv.tv_sec - priv->last_stat_time) > 5 &&
+      if (ABS (g_get_real_time() - priv->last_stat_time) > 5 &&
 	  rescan_themes (icon_theme))
 	blow_themes (icon_theme);
     }
@@ -1899,7 +1894,6 @@ rescan_themes (GtkIconTheme *icon_theme)
   GList *d;
   int stat_res;
   GStatBuf stat_buf;
-  GTimeVal tv;
 
   priv = icon_theme->priv;
 
@@ -1922,8 +1916,7 @@ rescan_themes (GtkIconTheme *icon_theme)
       return TRUE;
     }
 
-  g_get_current_time (&tv);
-  priv->last_stat_time = tv.tv_sec;
+  priv->last_stat_time = g_get_real_time ();
 
   return FALSE;
 }
@@ -3685,4 +3678,4 @@ gtk_icon_info_get_filename (GtkIconInfo *icon_info)
 #endif
 
 #define __GTK_ICON_THEME_C__
-#include "gtkaliasdef.c"
+

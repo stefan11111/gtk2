@@ -52,7 +52,7 @@
 #include "gtkprivate.h"
 #include "gtkintl.h"
 
-#include "gtkalias.h"
+
 
 static const gchar gtk_combo_string_key[] = "gtk-combo-string-value";
 
@@ -213,21 +213,15 @@ gtk_combo_entry_key_press (GtkEntry * entry, GdkEventKey * event, GtkCombo * com
       state == GDK_MOD1_MASK)
     {
       GtkEditable *editable = GTK_EDITABLE (entry);
-      GCompletion * cmpl;
       gchar* prefix;
       gchar* nprefix = NULL;
       gint pos;
 
       if ( !GTK_LIST (combo->list)->children )
 	return FALSE;
-    
-      cmpl = g_completion_new ((GCompletionFunc)gtk_combo_func);
-      g_completion_add_items (cmpl, GTK_LIST (combo->list)->children);
 
       pos = gtk_editable_get_position (editable);
       prefix = gtk_editable_get_chars (editable, 0, pos);
-
-      g_completion_complete_utf8 (cmpl, prefix, &nprefix);
 
       if (nprefix && strlen (nprefix) > strlen (prefix)) 
 	{
@@ -238,7 +232,6 @@ gtk_combo_entry_key_press (GtkEntry * entry, GdkEventKey * event, GtkCombo * com
 
       g_free (nprefix);
       g_free (prefix);
-      g_completion_free (cmpl);
 
       return TRUE;
     }
@@ -1233,4 +1226,4 @@ gtk_combo_get_property (GObject    *object,
 }
 
 #define __GTK_SMART_COMBO_C__
-#include "gtkaliasdef.c"
+

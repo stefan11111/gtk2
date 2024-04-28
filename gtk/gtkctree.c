@@ -38,12 +38,12 @@
 #include "gtkctree.h"
 #include "gtkbindings.h"
 #include "gtkmain.h"
-#include "gtkmarshalers.h"
+
 #include "gtkdnd.h"
 #include "gtkintl.h"
 #include <gdk/gdkkeysyms.h>
 
-#include "gtkalias.h"
+
 
 #define PM_SIZE                    8
 #define TAB_SIZE                   (PM_SIZE + 6)
@@ -443,7 +443,7 @@ gtk_ctree_class_init (GtkCTreeClass *klass)
 		    GTK_RUN_FIRST,
 		    GTK_CLASS_TYPE (object_class),
 		    GTK_SIGNAL_OFFSET (GtkCTreeClass, tree_select_row),
-		    _gtk_marshal_VOID__POINTER_INT,
+		    NULL,
 		    GTK_TYPE_NONE, 2,
 		    GTK_TYPE_CTREE_NODE,
 		    GTK_TYPE_INT);
@@ -452,7 +452,7 @@ gtk_ctree_class_init (GtkCTreeClass *klass)
 		    GTK_RUN_FIRST,
 		    GTK_CLASS_TYPE (object_class),
 		    GTK_SIGNAL_OFFSET (GtkCTreeClass, tree_unselect_row),
-		    _gtk_marshal_VOID__POINTER_INT,
+		    NULL,
 		    GTK_TYPE_NONE, 2,
 		    GTK_TYPE_CTREE_NODE,
 		    GTK_TYPE_INT);
@@ -461,7 +461,7 @@ gtk_ctree_class_init (GtkCTreeClass *klass)
 		    GTK_RUN_LAST,
 		    GTK_CLASS_TYPE (object_class),
 		    GTK_SIGNAL_OFFSET (GtkCTreeClass, tree_expand),
-		    _gtk_marshal_VOID__POINTER,
+		    NULL,
 		    GTK_TYPE_NONE, 1,
 		    GTK_TYPE_CTREE_NODE);
   ctree_signals[TREE_COLLAPSE] =
@@ -469,7 +469,7 @@ gtk_ctree_class_init (GtkCTreeClass *klass)
 		    GTK_RUN_LAST,
 		    GTK_CLASS_TYPE (object_class),
 		    GTK_SIGNAL_OFFSET (GtkCTreeClass, tree_collapse),
-		    _gtk_marshal_VOID__POINTER,
+		    NULL,
 		    GTK_TYPE_NONE, 1,
 		    GTK_TYPE_CTREE_NODE);
   ctree_signals[TREE_MOVE] =
@@ -477,7 +477,7 @@ gtk_ctree_class_init (GtkCTreeClass *klass)
 		    GTK_RUN_LAST,
 		    GTK_CLASS_TYPE (object_class),
 		    GTK_SIGNAL_OFFSET (GtkCTreeClass, tree_move),
-		    _gtk_marshal_VOID__POINTER_POINTER_POINTER,
+		    NULL,
 		    GTK_TYPE_NONE, 3,
 		    GTK_TYPE_CTREE_NODE,
 		    GTK_TYPE_CTREE_NODE,
@@ -488,7 +488,7 @@ gtk_ctree_class_init (GtkCTreeClass *klass)
 		    GTK_CLASS_TYPE (object_class),
 		    GTK_SIGNAL_OFFSET (GtkCTreeClass,
 				       change_focus_row_expansion),
-		    _gtk_marshal_VOID__ENUM,
+		    NULL,
 		    GTK_TYPE_NONE, 1, GTK_TYPE_CTREE_EXPANSION_TYPE);
 
   binding_set = gtk_binding_set_by_class (klass);
@@ -6142,4 +6142,4 @@ gtk_ctree_node_get_type (void)
   return our_type;
 }
 
-#include "gtkaliasdef.c"
+

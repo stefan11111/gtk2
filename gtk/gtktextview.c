@@ -34,7 +34,7 @@
 #include "gtkimagemenuitem.h"
 #include "gtkintl.h"
 #include "gtkmain.h"
-#include "gtkmarshalers.h"
+
 #include "gtkmenu.h"
 #include "gtkmenuitem.h"
 #include "gtkseparatormenuitem.h"
@@ -48,7 +48,7 @@
 #include "gtkprivate.h"
 #include "gtktextutil.h"
 #include "gtkwindow.h"
-#include "gtkalias.h"
+
 
 /* How scrolling, validation, exposes, etc. work.
  *
@@ -735,7 +735,7 @@ gtk_text_view_class_init (GtkTextViewClass *klass)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION, 
 		  G_STRUCT_OFFSET (GtkTextViewClass, move_cursor),
 		  NULL, NULL, 
-		  _gtk_marshal_VOID__ENUM_INT_BOOLEAN, 
+		  NULL, 
 		  G_TYPE_NONE, 3,
 		  GTK_TYPE_MOVEMENT_STEP, 
 		  G_TYPE_INT, 
@@ -762,7 +762,7 @@ gtk_text_view_class_init (GtkTextViewClass *klass)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkTextViewClass, page_horizontally),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__INT_BOOLEAN,
+		  NULL,
 		  G_TYPE_NONE, 2,
 		  G_TYPE_INT,
 		  G_TYPE_BOOLEAN);
@@ -787,7 +787,7 @@ gtk_text_view_class_init (GtkTextViewClass *klass)
                                 G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                                 G_CALLBACK (gtk_text_view_move_viewport),
                                 NULL, NULL,
-                                _gtk_marshal_VOID__ENUM_INT,
+                                NULL,
                                 G_TYPE_NONE, 2,
                                 GTK_TYPE_SCROLL_STEP,
                                 G_TYPE_INT);
@@ -810,7 +810,7 @@ gtk_text_view_class_init (GtkTextViewClass *klass)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkTextViewClass, set_anchor),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__VOID,
+		  NULL,
 		  G_TYPE_NONE, 0);
 
   /**
@@ -831,7 +831,7 @@ gtk_text_view_class_init (GtkTextViewClass *klass)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkTextViewClass, insert_at_cursor),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__STRING,
+		  NULL,
 		  G_TYPE_NONE, 1,
 		  G_TYPE_STRING);
 
@@ -860,7 +860,7 @@ gtk_text_view_class_init (GtkTextViewClass *klass)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkTextViewClass, delete_from_cursor),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__ENUM_INT,
+		  NULL,
 		  G_TYPE_NONE, 2,
 		  GTK_TYPE_DELETE_TYPE,
 		  G_TYPE_INT);
@@ -882,7 +882,7 @@ gtk_text_view_class_init (GtkTextViewClass *klass)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkTextViewClass, backspace),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__VOID,
+		  NULL,
 		  G_TYPE_NONE, 0);
 
   /**
@@ -902,7 +902,7 @@ gtk_text_view_class_init (GtkTextViewClass *klass)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkTextViewClass, cut_clipboard),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__VOID,
+		  NULL,
 		  G_TYPE_NONE, 0);
 
   /**
@@ -922,7 +922,7 @@ gtk_text_view_class_init (GtkTextViewClass *klass)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkTextViewClass, copy_clipboard),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__VOID,
+		  NULL,
 		  G_TYPE_NONE, 0);
 
   /**
@@ -943,7 +943,7 @@ gtk_text_view_class_init (GtkTextViewClass *klass)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkTextViewClass, paste_clipboard),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__VOID,
+		  NULL,
 		  G_TYPE_NONE, 0);
 
   /**
@@ -962,7 +962,7 @@ gtk_text_view_class_init (GtkTextViewClass *klass)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkTextViewClass, toggle_overwrite),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__VOID,
+		  NULL,
 		  G_TYPE_NONE, 0);
 
   /**
@@ -980,7 +980,7 @@ gtk_text_view_class_init (GtkTextViewClass *klass)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkTextViewClass, set_scroll_adjustments),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__OBJECT_OBJECT,
+		  NULL,
 		  G_TYPE_NONE, 2,
 		  GTK_TYPE_ADJUSTMENT,
 		  GTK_TYPE_ADJUSTMENT);
@@ -1003,7 +1003,7 @@ gtk_text_view_class_init (GtkTextViewClass *klass)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkTextViewClass, populate_popup),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__OBJECT,
+		  NULL,
 		  G_TYPE_NONE, 1,
 		  GTK_TYPE_MENU);
   
@@ -1026,7 +1026,7 @@ gtk_text_view_class_init (GtkTextViewClass *klass)
                                 G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                                 G_CALLBACK (gtk_text_view_select_all),
                                 NULL, NULL,
-                                _gtk_marshal_VOID__BOOLEAN,
+                                NULL,
                                 G_TYPE_NONE, 1, G_TYPE_BOOLEAN);
 
   /**
@@ -1045,7 +1045,7 @@ gtk_text_view_class_init (GtkTextViewClass *klass)
                                 G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                                 G_CALLBACK (gtk_text_view_toggle_cursor_visible),
                                 NULL, NULL,
-                                _gtk_marshal_VOID__VOID,
+                                NULL,
                                 G_TYPE_NONE, 0);
 
   /**
@@ -1068,7 +1068,7 @@ gtk_text_view_class_init (GtkTextViewClass *klass)
                                 G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                                 NULL,
                                 NULL, NULL,
-                                _gtk_marshal_VOID__STRING,
+                                NULL,
                                 G_TYPE_NONE, 1,
                                 G_TYPE_STRING);
 
@@ -9345,4 +9345,4 @@ gtk_text_view_move_visually (GtkTextView *text_view,
 }
 
 #define __GTK_TEXT_VIEW_C__
-#include "gtkaliasdef.c"
+

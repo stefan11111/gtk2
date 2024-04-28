@@ -34,7 +34,7 @@
 #include "gtkhbbox.h"
 #include "gtklabel.h"
 #include "gtkhseparator.h"
-#include "gtkmarshalers.h"
+
 #include "gtkvbox.h"
 #include "gdkkeysyms.h"
 #include "gtkmain.h"
@@ -42,7 +42,7 @@
 #include "gtkbindings.h"
 #include "gtkprivate.h"
 #include "gtkbuildable.h"
-#include "gtkalias.h"
+
 
 #define GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_DIALOG, GtkDialogPrivate))
 
@@ -167,7 +167,7 @@ gtk_dialog_class_init (GtkDialogClass *class)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkDialogClass, response),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__INT,
+		  NULL,
 		  G_TYPE_NONE, 1,
 		  G_TYPE_INT);
 
@@ -187,7 +187,7 @@ gtk_dialog_class_init (GtkDialogClass *class)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkDialogClass, close),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__VOID,
+		  NULL,
 		  G_TYPE_NONE, 0);
   
   gtk_widget_class_install_style_property (widget_class,
@@ -1563,4 +1563,4 @@ gtk_dialog_get_content_area (GtkDialog *dialog)
 }
 
 #define __GTK_DIALOG_C__
-#include "gtkaliasdef.c"
+

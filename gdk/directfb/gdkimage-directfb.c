@@ -40,7 +40,7 @@
 #include "gdkinternals.h"
 
 #include "gdkimage.h"
-#include "gdkalias.h"
+
 
 
 static GList    *image_list   = NULL;
@@ -417,4 +417,4 @@ _gdk_windowing_get_bits_for_depth (GdkDisplay *display,
 }
 
 #define __GDK_IMAGE_X11_C__
-#include "gdkaliasdef.c"
+

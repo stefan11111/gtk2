@@ -54,7 +54,6 @@
 #include "gtkclipboard.h"
 #include "gtkdnd.h"
 #include "gtkversion.h"
-#include "gtkmodules.h"
 #include "gtkrc.h"
 #include "gtkrecentmanager.h"
 #include "gtkselection.h"
@@ -63,7 +62,7 @@
 #include "gtkwindow.h"
 #include "gtktooltip.h"
 #include "gtkdebug.h"
-#include "gtkalias.h"
+
 #include "gtkmenu.h"
 #include "gdk/gdkkeysyms.h"
 
@@ -744,9 +743,6 @@ do_post_parse_initialization (int    *argc,
       g_warning ("Whoever translated default:LTR did so wrongly.\n");
   }
 
-  /* do what the call to gtk_type_init() used to do */
-  g_type_init ();
-
   _gtk_accel_map_init ();
   _gtk_rc_init ();
 
@@ -756,14 +752,9 @@ do_post_parse_initialization (int    *argc,
 
   /* load gtk modules */
   if (gtk_modules_string)
-    {
-      _gtk_modules_init (argc, argv, gtk_modules_string->str);
-      g_string_free (gtk_modules_string, TRUE);
-    }
-  else
-    {
-      _gtk_modules_init (argc, argv, NULL);
-    }
+  {
+    g_string_free (gtk_modules_string, TRUE);
+  }
 }
 
 
@@ -2639,13 +2630,6 @@ _gtk_button_event_triggers_context_menu (GdkEventButton *event)
       if (event->button == 3 &&
           ! (event->state & (GDK_BUTTON1_MASK | GDK_BUTTON2_MASK)))
         return TRUE;
-
-#ifdef GDK_WINDOWING_QUARTZ
-      if (event->button == 1 &&
-          ! (event->state & (GDK_BUTTON2_MASK | GDK_BUTTON3_MASK)) &&
-          (event->state & GDK_CONTROL_MASK))
-        return TRUE;
-#endif
     }
 
   return FALSE;
@@ -2697,4 +2681,4 @@ _gtk_translate_keyboard_accel_state (GdkKeymap       *keymap,
 }
 
 #define __GTK_MAIN_C__
-#include "gtkaliasdef.c"
+

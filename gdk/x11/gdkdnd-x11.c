@@ -45,7 +45,7 @@
 #include "gdkinternals.h"
 #include "gdkscreen-x11.h"
 #include "gdkdisplay-x11.h"
-#include "gdkalias.h"
+
 
 typedef struct _GdkDragContextPrivateX11 GdkDragContextPrivateX11;
 
@@ -4042,4 +4042,4 @@ gdk_drag_drop_succeeded (GdkDragContext *context)
 }
 
 #define __GDK_DND_X11_C__
-#include "gdkaliasdef.c"
+

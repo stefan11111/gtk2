@@ -41,7 +41,7 @@
 #include "gtkstyle.h"
 #include "gtktooltips.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 
 #define DEFAULT_DELAY 500           /* Default delay in ms */
@@ -100,8 +100,7 @@ gtk_tooltips_init (GtkTooltips *tooltips)
   tooltips->enabled = TRUE;
   tooltips->timer_tag = 0;
   tooltips->use_sticky_delay = FALSE;
-  tooltips->last_popdown.tv_sec = -1;
-  tooltips->last_popdown.tv_usec = -1;
+  tooltips->last_popdown = -1;
 
   private->tips_data_table =
     g_hash_table_new_full (NULL, NULL, NULL,
@@ -335,4 +334,4 @@ gtk_tooltips_get_info_from_tip_window (GtkWindow    *tip_window,
 }
 
 #define __GTK_TOOLTIPS_C__
-#include "gtkaliasdef.c"
+

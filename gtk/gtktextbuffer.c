@@ -33,14 +33,14 @@
 #include "gtkclipboard.h"
 #include "gtkdnd.h"
 #include "gtkinvisible.h"
-#include "gtkmarshalers.h"
+
 #include "gtktextbuffer.h"
 #include "gtktextbufferrichtext.h"
 #include "gtktextbtree.h"
 #include "gtktextiterprivate.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 
 #define GTK_TEXT_BUFFER_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_TEXT_BUFFER, GtkTextBufferPrivate))
@@ -289,7 +289,7 @@ gtk_text_buffer_class_init (GtkTextBufferClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkTextBufferClass, insert_text),
                   NULL, NULL,
-                  _gtk_marshal_VOID__BOXED_STRING_INT,
+                  NULL,
                   G_TYPE_NONE,
                   3,
                   GTK_TYPE_TEXT_ITER | G_SIGNAL_TYPE_STATIC_SCOPE,
@@ -318,7 +318,7 @@ gtk_text_buffer_class_init (GtkTextBufferClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkTextBufferClass, insert_pixbuf),
                   NULL, NULL,
-                  _gtk_marshal_VOID__BOXED_OBJECT,
+                  NULL,
                   G_TYPE_NONE,
                   2,
                   GTK_TYPE_TEXT_ITER | G_SIGNAL_TYPE_STATIC_SCOPE,
@@ -348,7 +348,7 @@ gtk_text_buffer_class_init (GtkTextBufferClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkTextBufferClass, insert_child_anchor),
                   NULL, NULL,
-                  _gtk_marshal_VOID__BOXED_OBJECT,
+                  NULL,
                   G_TYPE_NONE,
                   2,
                   GTK_TYPE_TEXT_ITER | G_SIGNAL_TYPE_STATIC_SCOPE,
@@ -378,7 +378,7 @@ gtk_text_buffer_class_init (GtkTextBufferClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkTextBufferClass, delete_range),
                   NULL, NULL,
-                  _gtk_marshal_VOID__BOXED_BOXED,
+                  NULL,
                   G_TYPE_NONE,
                   2,
                   GTK_TYPE_TEXT_ITER | G_SIGNAL_TYPE_STATIC_SCOPE,
@@ -397,7 +397,7 @@ gtk_text_buffer_class_init (GtkTextBufferClass *klass)
                   G_SIGNAL_RUN_LAST,                   
                   G_STRUCT_OFFSET (GtkTextBufferClass, changed),
                   NULL, NULL,
-                  _gtk_marshal_VOID__VOID,
+                  NULL,
                   G_TYPE_NONE,
                   0);
 
@@ -417,7 +417,7 @@ gtk_text_buffer_class_init (GtkTextBufferClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkTextBufferClass, modified_changed),
                   NULL, NULL,
-                  _gtk_marshal_VOID__VOID,
+                  NULL,
                   G_TYPE_NONE,
                   0);
 
@@ -440,7 +440,7 @@ gtk_text_buffer_class_init (GtkTextBufferClass *klass)
                   G_SIGNAL_RUN_LAST,                   
                   G_STRUCT_OFFSET (GtkTextBufferClass, mark_set),
                   NULL, NULL,
-                  _gtk_marshal_VOID__BOXED_OBJECT,
+                  NULL,
                   G_TYPE_NONE,
                   2,
                   GTK_TYPE_TEXT_ITER,
@@ -463,7 +463,7 @@ gtk_text_buffer_class_init (GtkTextBufferClass *klass)
                   G_SIGNAL_RUN_LAST,                   
                   G_STRUCT_OFFSET (GtkTextBufferClass, mark_deleted),
                   NULL, NULL,
-                  _gtk_marshal_VOID__OBJECT,
+                  NULL,
                   G_TYPE_NONE,
                   1,
                   GTK_TYPE_TEXT_MARK);
@@ -493,7 +493,7 @@ gtk_text_buffer_class_init (GtkTextBufferClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkTextBufferClass, apply_tag),
                   NULL, NULL,
-                  _gtk_marshal_VOID__OBJECT_BOXED_BOXED,
+                  NULL,
                   G_TYPE_NONE,
                   3,
                   GTK_TYPE_TEXT_TAG,
@@ -524,7 +524,7 @@ gtk_text_buffer_class_init (GtkTextBufferClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkTextBufferClass, remove_tag),
                   NULL, NULL,
-                  _gtk_marshal_VOID__OBJECT_BOXED_BOXED,
+                  NULL,
                   G_TYPE_NONE,
                   3,
                   GTK_TYPE_TEXT_TAG,
@@ -552,7 +552,7 @@ gtk_text_buffer_class_init (GtkTextBufferClass *klass)
                   G_SIGNAL_RUN_LAST,                   
                   G_STRUCT_OFFSET (GtkTextBufferClass, begin_user_action),
                   NULL, NULL,
-                  _gtk_marshal_VOID__VOID,
+                  NULL,
                   G_TYPE_NONE,
                   0);
 
@@ -578,7 +578,7 @@ gtk_text_buffer_class_init (GtkTextBufferClass *klass)
                   G_SIGNAL_RUN_LAST,                   
                   G_STRUCT_OFFSET (GtkTextBufferClass, end_user_action),
                   NULL, NULL,
-                  _gtk_marshal_VOID__VOID,
+                  NULL,
                   G_TYPE_NONE,
                   0);
 
@@ -598,7 +598,7 @@ gtk_text_buffer_class_init (GtkTextBufferClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkTextBufferClass, paste_done),
                   NULL, NULL,
-                  _gtk_marshal_VOID__OBJECT,
+                  NULL,
                   G_TYPE_NONE,
                   1,
                   GTK_TYPE_CLIPBOARD);
@@ -4410,4 +4410,4 @@ _gtk_text_buffer_spew (GtkTextBuffer *buffer)
 }
 
 #define __GTK_TEXT_BUFFER_C__
-#include "gtkaliasdef.c"
+

@@ -21,10 +21,10 @@
 
 #include "gtkaccelmap.h"
 
-#include "gtkmarshalers.h"
+
 #include "gtkwindow.h"  /* in lack of GtkAcceleratable */
 #include "gtkintl.h" 
-#include "gtkalias.h"
+
 
 #include <glib/gstdio.h>
 
@@ -962,7 +962,7 @@ gtk_accel_map_class_init (GtkAccelMapClass *accel_map_class)
 					     G_SIGNAL_DETAILED|G_SIGNAL_RUN_LAST,
 					     0,
 					     NULL, NULL,
-					     _gtk_marshal_VOID__STRING_UINT_FLAGS,
+					     NULL,
 					     G_TYPE_NONE, 3,
 					     G_TYPE_STRING, G_TYPE_UINT, GDK_TYPE_MODIFIER_TYPE);
 }
@@ -1034,4 +1034,4 @@ gtk_accel_map_save (const gchar *file_name)
 #endif
 
 #define __GTK_ACCEL_MAP_C__
-#include "gtkaliasdef.c"
+

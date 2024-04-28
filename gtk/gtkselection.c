@@ -70,7 +70,7 @@
 #include "win32/gdkwin32.h"
 #endif
 
-#include "gtkalias.h"
+
 
 #undef DEBUG_SELECTION
 
@@ -1328,8 +1328,6 @@ selection_set_compound_text (GtkSelectionData *selection_data,
       result = TRUE;
     }
   g_free (tmp);
-#elif defined(GDK_WINDOWING_WIN32) || defined(GDK_WINDOWING_QUARTZ)
-  result = FALSE; /* not needed on Win32 or Quartz */
 #else
   g_warning ("%s is not implemented", G_STRFUNC);
   result = FALSE;
@@ -3177,4 +3175,4 @@ gtk_selection_bytes_per_item (gint format)
 }
 
 #define __GTK_SELECTION_C__
-#include "gtkaliasdef.c"
+

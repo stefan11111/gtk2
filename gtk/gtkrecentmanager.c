@@ -38,8 +38,8 @@
 #include "gtkicontheme.h"
 #include "gtktypebuiltins.h"
 #include "gtkprivate.h"
-#include "gtkmarshalers.h"
-#include "gtkalias.h"
+
+
 
 /* the file where we store the recently used items */
 #define GTK_RECENTLY_USED_FILE	"recently-used.xbel"
@@ -587,19 +587,19 @@ get_default_recent_file (void)
         {
           char *exec;
           guint count;
-          time_t stamp;
+          GDateTime *stamp;
 
-          g_bookmark_file_get_app_info (bf_old, uris[i], apps[j],
-                                        &exec,
-                                        &count,
-                                        &stamp,
-                                        NULL);
+          g_bookmark_file_get_application_info (bf_old, uris[i], apps[j],
+                                                &exec,
+                                                &count,
+                                                &stamp,
+                                                NULL);
 
-          g_bookmark_file_set_app_info (bf_new, uris[i], apps[j],
-                                        exec,
-                                        count,
-                                        stamp,
-                                        NULL);
+          g_bookmark_file_set_application_info (bf_new, uris[i], apps[j],
+                                                exec,
+                                                count,
+                                                stamp,
+                                                NULL);
 
           g_free (exec);
         }
@@ -1247,9 +1247,9 @@ build_recent_info (GBookmarkFile  *bookmarks,
     
   info->is_private = g_bookmark_file_get_is_private (bookmarks, info->uri, NULL);
   
-  info->added = g_bookmark_file_get_added (bookmarks, info->uri, NULL);
-  info->modified = g_bookmark_file_get_modified (bookmarks, info->uri, NULL);
-  info->visited = g_bookmark_file_get_visited (bookmarks, info->uri, NULL);
+  info->added = *(guint64*)g_bookmark_file_get_added_date_time (bookmarks, info->uri, NULL);
+  info->modified = *(guint64*)g_bookmark_file_get_modified_date_time (bookmarks, info->uri, NULL);
+  info->visited = *(guint64*)g_bookmark_file_get_visited_date_time (bookmarks, info->uri, NULL);
   
   groups = g_bookmark_file_get_groups (bookmarks, info->uri, &groups_len, NULL);
   for (i = 0; i < groups_len; i++)
@@ -1266,24 +1266,24 @@ build_recent_info (GBookmarkFile  *bookmarks,
     {
       gchar *app_name, *app_exec;
       guint count;
-      time_t stamp;
+      GDateTime *stamp;
       RecentAppInfo *app_info;
       gboolean res;
       
       app_name = apps[i];
       
-      res = g_bookmark_file_get_app_info (bookmarks, info->uri, app_name,
-      					  &app_exec,
-      					  &count,
-      					  &stamp,
-      					  NULL);
+      res = g_bookmark_file_get_application_info (bookmarks, info->uri, app_name,
+      					          &app_exec,
+      					          &count,
+      					          &stamp,
+      					          NULL);
       if (!res)
         continue;
       
       app_info = recent_app_info_new (app_name);
       app_info->exec = app_exec;
       app_info->count = count;
-      app_info->stamp = stamp;
+      app_info->stamp = *(guint64*)stamp;
       
       info->applications = g_slist_prepend (info->applications, app_info);
       g_hash_table_replace (info->apps_lookup, app_info->name, app_info);
@@ -1584,7 +1584,7 @@ gtk_recent_manager_clamp_to_age (GtkRecentManager *manager,
       time_t modified;
       gint item_age;
 
-      modified = g_bookmark_file_get_modified (priv->recent_items, uri, NULL);
+      modified = *(guint64*)g_bookmark_file_get_modified_date_time (priv->recent_items, uri, NULL);
       item_age = (gint) ((now - modified) / (60 * 60 * 24));
       if (item_age > age)
         g_bookmark_file_remove_item (priv->recent_items, uri, NULL);
@@ -2592,4 +2592,4 @@ _gtk_recent_manager_sync (void)
 }
 
 #define __GTK_RECENT_MANAGER_C__
-#include "gtkaliasdef.c"
+

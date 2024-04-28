@@ -40,7 +40,7 @@
 #include "gtkbuildable.h"
 #include "gtktypeutils.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 
 typedef GtkBuildableIface GtkBuildableInterface;
@@ -359,4 +359,4 @@ gtk_buildable_get_internal_child (GtkBuildable *buildable,
 }
 
 #define __GTK_BUILDABLE_C__
-#include "gtkaliasdef.c"
+

@@ -33,7 +33,7 @@
 #include "gtkbuildable.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 
 #define GTK_MENU_TOOL_BUTTON_GET_PRIVATE(object)(G_TYPE_INSTANCE_GET_PRIVATE ((object), GTK_TYPE_MENU_TOOL_BUTTON, GtkMenuToolButtonPrivate))
@@ -692,4 +692,4 @@ gtk_menu_tool_button_set_arrow_tooltip_markup (GtkMenuToolButton *button,
 }
 
 #define __GTK_MENU_TOOL_BUTTON_C__
-#include "gtkaliasdef.c"
+

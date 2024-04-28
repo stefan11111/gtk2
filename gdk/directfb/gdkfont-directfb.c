@@ -43,7 +43,7 @@
 #include "gdkinternals.h"
 
 #include "gdkfont.h"
-#include "gdkalias.h"
+
 
 
 typedef struct _GdkFontDirectFB  GdkFontDirectFB;
@@ -277,4 +277,4 @@ gdk_font_get_display (GdkFont* font)
 }
 
 #define __GDK_FONT_X11_C__
-#include "gdkaliasdef.c"
+

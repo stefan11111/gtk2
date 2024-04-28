@@ -20,9 +20,9 @@
 
 #include "config.h"
 #include "gtkfilechooserembed.h"
-#include "gtkmarshalers.h"
+
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 static void gtk_file_chooser_embed_class_init (gpointer g_iface);
 static void delegate_get_default_size         (GtkFileChooserEmbed *chooser_embed,
@@ -157,14 +157,14 @@ gtk_file_chooser_embed_class_init (gpointer g_iface)
 		G_SIGNAL_RUN_LAST,
 		G_STRUCT_OFFSET (GtkFileChooserEmbedIface, default_size_changed),
 		NULL, NULL,
-		_gtk_marshal_VOID__VOID,
+		NULL,
 		G_TYPE_NONE, 0);
   g_signal_new (I_("response-requested"),
 		iface_type,
 		G_SIGNAL_RUN_LAST,
 		G_STRUCT_OFFSET (GtkFileChooserEmbedIface, response_requested),
 		NULL, NULL,
-		_gtk_marshal_VOID__VOID,
+		NULL,
 		G_TYPE_NONE, 0);
 }
 

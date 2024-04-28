@@ -38,11 +38,11 @@
 #include "gtkspinbutton.h"
 #include "gtkentryprivate.h"
 #include "gtkmain.h"
-#include "gtkmarshalers.h"
+
 #include "gtksettings.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 #define MIN_SPIN_BUTTON_WIDTH 30
 #define MAX_TIMER_CALLS       5
@@ -287,7 +287,7 @@ gtk_spin_button_class_init (GtkSpinButtonClass *class)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkSpinButtonClass, input),
 		  NULL, NULL,
-		  _gtk_marshal_INT__POINTER,
+		  NULL,
 		  G_TYPE_INT, 1,
 		  G_TYPE_POINTER);
 
@@ -325,7 +325,7 @@ gtk_spin_button_class_init (GtkSpinButtonClass *class)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkSpinButtonClass, output),
 		  _gtk_boolean_handled_accumulator, NULL,
-		  _gtk_marshal_BOOLEAN__VOID,
+		  NULL,
 		  G_TYPE_BOOLEAN, 0);
 
   spinbutton_signals[VALUE_CHANGED] =
@@ -334,7 +334,7 @@ gtk_spin_button_class_init (GtkSpinButtonClass *class)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkSpinButtonClass, value_changed),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__VOID,
+		  NULL,
 		  G_TYPE_NONE, 0);
 
   /**
@@ -352,7 +352,7 @@ gtk_spin_button_class_init (GtkSpinButtonClass *class)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkSpinButtonClass, wrapped),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__VOID,
+		  NULL,
 		  G_TYPE_NONE, 0);
 
   /* Action signals */
@@ -362,7 +362,7 @@ gtk_spin_button_class_init (GtkSpinButtonClass *class)
                   G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                   G_STRUCT_OFFSET (GtkSpinButtonClass, change_value),
                   NULL, NULL,
-                  _gtk_marshal_VOID__ENUM,
+                  NULL,
                   G_TYPE_NONE, 1,
                   GTK_TYPE_SCROLL_TYPE);
   
@@ -2350,4 +2350,4 @@ gtk_spin_button_update (GtkSpinButton *spin_button)
 }
 
 #define __GTK_SPIN_BUTTON_C__
-#include "gtkaliasdef.c"
+

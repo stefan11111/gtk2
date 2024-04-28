@@ -20,7 +20,7 @@
 
 #include "config.h"
 #include "gtkprintoperation-private.h"
-#include "gtkalias.h"
+
 
 typedef struct _GtkPrintContextClass GtkPrintContextClass;
 
@@ -517,4 +517,4 @@ gtk_print_context_create_pango_layout (GtkPrintContext *context)
 
 
 #define __GTK_PRINT_CONTEXT_C__
-#include "gtkaliasdef.c"
+

@@ -35,7 +35,7 @@
 #include "gtkmain.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 #include <gdk/gdkkeysyms.h>
 
 /**
@@ -137,7 +137,6 @@ gtk_accel_label_class_init (GtkAccelLabelClass *class)
   class->signal_quote1 = g_strdup ("<:");
   class->signal_quote2 = g_strdup (":>");
 
-#ifndef GDK_WINDOWING_QUARTZ
   /* This is the text that should appear next to menu accelerators
    * that use the shift key. If the text on this key isn't typically
    * translated on keyboards used for your language, don't translate
@@ -157,17 +156,6 @@ gtk_accel_label_class_init (GtkAccelLabelClass *class)
    */
   class->mod_name_alt = g_strdup (C_("keyboard label", "Alt"));
   class->mod_separator = g_strdup ("+");
-#else /* GDK_WINDOWING_QUARTZ */
-
-  /* U+21E7 UPWARDS WHITE ARROW */
-  class->mod_name_shift = g_strdup ("\xe2\x87\xa7");
-  /* U+2303 UP ARROWHEAD */
-  class->mod_name_control = g_strdup ("\xe2\x8c\x83");
-  /* U+2325 OPTION KEY */
-  class->mod_name_alt = g_strdup ("\xe2\x8c\xa5");
-  class->mod_separator = g_strdup ("");
-
-#endif /* GDK_WINDOWING_QUARTZ */
 
   class->accel_seperator = g_strdup (" / ");
   class->latin1_to_char = TRUE;
@@ -588,84 +576,11 @@ substitute_underscores (char *str)
  * append it to gstring and return TRUE; otherwise return FALSE.
  * See http://docs.info.apple.com/article.html?path=Mac/10.5/en/cdb_symbs.html 
  * for the list of special keys. */
-static gboolean
+static inline gboolean
 append_keyval_symbol (guint    accelerator_key,
                       GString *gstring)
 {
-#ifdef GDK_WINDOWING_QUARTZ
-  switch (accelerator_key)
-  {
-  case GDK_Return:
-    /* U+21A9 LEFTWARDS ARROW WITH HOOK */
-    g_string_append (gstring, "\xe2\x86\xa9");
-    return TRUE;
-
-  case GDK_ISO_Enter:
-    /* U+2324 UP ARROWHEAD BETWEEN TWO HORIZONTAL BARS */
-    g_string_append (gstring, "\xe2\x8c\xa4");
-    return TRUE;
-
-  case GDK_Left:
-    /* U+2190 LEFTWARDS ARROW */
-    g_string_append (gstring, "\xe2\x86\x90");
-    return TRUE;
-
-  case GDK_Up:
-    /* U+2191 UPWARDS ARROW */
-    g_string_append (gstring, "\xe2\x86\x91");
-    return TRUE;
-
-  case GDK_Right:
-    /* U+2192 RIGHTWARDS ARROW */
-    g_string_append (gstring, "\xe2\x86\x92");
-    return TRUE;
-
-  case GDK_Down:
-    /* U+2193 DOWNWARDS ARROW */
-    g_string_append (gstring, "\xe2\x86\x93");
-    return TRUE;
-
-  case GDK_Page_Up:
-    /* U+21DE UPWARDS ARROW WITH DOUBLE STROKE */
-    g_string_append (gstring, "\xe2\x87\x9e");
-    return TRUE;
-
-  case GDK_Page_Down:
-    /* U+21DF DOWNWARDS ARROW WITH DOUBLE STROKE */
-    g_string_append (gstring, "\xe2\x87\x9f");
-    return TRUE;
-
-  case GDK_Home:
-    /* U+2196 NORTH WEST ARROW */
-    g_string_append (gstring, "\xe2\x86\x96");
-    return TRUE;
-
-  case GDK_End:
-    /* U+2198 SOUTH EAST ARROW */
-    g_string_append (gstring, "\xe2\x86\x98");
-    return TRUE;
-
-  case GDK_Escape:
-    /* U+238B BROKEN CIRCLE WITH NORTHWEST ARROW */
-    g_string_append (gstring, "\xe2\x8e\x8b");
-    return TRUE;
-
-  case GDK_BackSpace:
-    /* U+232B ERASE TO THE LEFT */
-    g_string_append (gstring, "\xe2\x8c\xab");
-    return TRUE;
-
-  case GDK_Delete:
-    /* U+2326 ERASE TO THE RIGHT */
-    g_string_append (gstring, "\xe2\x8c\xa6");
-    return TRUE;
-
-  default:
-    return FALSE;
-  }
-#else /* !GDK_WINDOWING_QUARTZ */
   return FALSE;
-#endif
 }
 
 gchar *
@@ -761,17 +676,13 @@ _gtk_accel_label_class_get_accelerator_label (GtkAccelLabelClass *klass,
       if (seen_mod)
 	g_string_append (gstring, klass->mod_separator);
 
-#ifndef GDK_WINDOWING_QUARTZ
       /* This is the text that should appear next to menu accelerators
        * that use the meta key. If the text on this key isn't typically
        * translated on keyboards used for your language, don't translate
        * this.
        */
       g_string_append (gstring, C_("keyboard label", "Meta"));
-#else
-      /* Command key symbol U+2318 PLACE OF INTEREST SIGN */
-      g_string_append (gstring, "\xe2\x8c\x98");
-#endif
+
       seen_mod = TRUE;
     }
   if (seen_mod)
@@ -870,4 +781,4 @@ gtk_accel_label_refetch (GtkAccelLabel *accel_label)
 }
 
 #define __GTK_ACCEL_LABEL_C__
-#include "gtkaliasdef.c"
+

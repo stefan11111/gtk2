@@ -42,7 +42,7 @@
 #include "gtkimage.h"
 #include "gtklabel.h"
 #include "gtklinkbutton.h"
-#include "gtkmarshalers.h"
+
 #include "gtknotebook.h"
 #include "gtkscrolledwindow.h"
 #include "gtkstock.h"
@@ -55,7 +55,7 @@
 #include "gtkprivate.h"
 #include "gtkintl.h"
 
-#include "gtkalias.h"
+
 
 
 /**
@@ -315,7 +315,7 @@ gtk_about_dialog_class_init (GtkAboutDialogClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkAboutDialogClass, activate_link),
                   _gtk_boolean_handled_accumulator, NULL,
-                  _gtk_marshal_BOOLEAN__STRING,
+                  NULL,
                   G_TYPE_BOOLEAN, 1, G_TYPE_STRING);
 
   /**
@@ -2496,4 +2496,4 @@ gtk_show_about_dialog (GtkWindow   *parent,
 }
 
 #define __GTK_ABOUT_DIALOG_C__
-#include "gtkaliasdef.c"
+

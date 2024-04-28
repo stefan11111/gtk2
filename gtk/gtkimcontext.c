@@ -21,9 +21,9 @@
 #include <string.h>
 #include "gtkimcontext.h"
 #include "gtkmain.h"		/* For _gtk_boolean_handled_accumulator */
-#include "gtkmarshalers.h"
+
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 /**
  * SECTION:gtkimcontext
@@ -206,7 +206,7 @@ gtk_im_context_class_init (GtkIMContextClass *klass)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkIMContextClass, preedit_start),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__VOID,
+		  NULL,
 		  G_TYPE_NONE, 0);
   /**
    * GtkIMContext::preedit-end:
@@ -221,7 +221,7 @@ gtk_im_context_class_init (GtkIMContextClass *klass)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkIMContextClass, preedit_end),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__VOID,
+		  NULL,
 		  G_TYPE_NONE, 0);
   /**
    * GtkIMContext::preedit-changed:
@@ -238,7 +238,7 @@ gtk_im_context_class_init (GtkIMContextClass *klass)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkIMContextClass, preedit_changed),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__VOID,
+		  NULL,
 		  G_TYPE_NONE, 0);
   /**
    * GtkIMContext::commit:
@@ -255,7 +255,7 @@ gtk_im_context_class_init (GtkIMContextClass *klass)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkIMContextClass, commit),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__STRING,
+		  NULL,
 		  G_TYPE_NONE, 1,
 		  G_TYPE_STRING);
   /**
@@ -275,7 +275,7 @@ gtk_im_context_class_init (GtkIMContextClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkIMContextClass, retrieve_surrounding),
                   _gtk_boolean_handled_accumulator, NULL,
-                  _gtk_marshal_BOOLEAN__VOID,
+                  NULL,
                   G_TYPE_BOOLEAN, 0);
   /**
    * GtkIMContext::delete-surrounding:
@@ -296,7 +296,7 @@ gtk_im_context_class_init (GtkIMContextClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkIMContextClass, delete_surrounding),
                   _gtk_boolean_handled_accumulator, NULL,
-                  _gtk_marshal_BOOLEAN__INT_INT,
+                  NULL,
                   G_TYPE_BOOLEAN, 2,
                   G_TYPE_INT,
 		  G_TYPE_INT);
@@ -711,4 +711,4 @@ gtk_im_context_delete_surrounding (GtkIMContext *context,
 }
 
 #define __GTK_IM_CONTEXT_C__
-#include "gtkaliasdef.c"
+

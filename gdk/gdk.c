@@ -36,7 +36,7 @@
 #ifndef HAVE_XCONVERTCASE
 #include "gdkkeysyms.h"
 #endif
-#include "gdkalias.h"
+
 
 typedef struct _GdkPredicate  GdkPredicate;
 
@@ -213,8 +213,6 @@ gdk_pre_parse_libgtk_only (void)
 	 to spawned applications */
       g_unsetenv ("GDK_NATIVE_WINDOWS");
     }
-
-  g_type_init ();
 
   /* Do any setup particular to the windowing system
    */
@@ -477,7 +475,7 @@ gdk_threads_init (void)
     g_error ("g_thread_init() must be called before gdk_threads_init()");
 #endif
 
-  gdk_threads_mutex = g_mutex_new ();
+  g_mutex_init(gdk_threads_mutex);
   if (!gdk_threads_lock)
     gdk_threads_lock = gdk_threads_impl_lock;
   if (!gdk_threads_unlock)
@@ -837,4 +835,4 @@ gdk_set_program_class (const char *program_class)
 }
 
 #define __GDK_C__
-#include "gdkaliasdef.c"
+

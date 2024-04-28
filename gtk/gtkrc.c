@@ -51,12 +51,11 @@
 #include "gtkintl.h"
 #include "gtkiconfactory.h"
 #include "gtkmain.h"
-#include "gtkmodules.h"
 #include "gtkprivate.h"
 #include "gtksettings.h"
 #include "gtkwindow.h"
 
-#include "gtkalias.h"
+
 
 #ifdef G_OS_WIN32
 #include <io.h>
@@ -420,11 +419,7 @@ gtk_rc_make_default_dir (const gchar *type)
 gchar *
 gtk_rc_get_im_module_path (void)
 {
-  gchar **paths = _gtk_get_module_path ("immodules");
-  gchar *result = g_strjoinv (G_SEARCHPATH_SEPARATOR_S, paths);
-  g_strfreev (paths);
-
-  return result;
+  return NULL;
 }
 
 /**
@@ -3555,7 +3550,7 @@ gtk_rc_find_pixmap_in_path (GtkSettings  *settings,
 gchar*
 gtk_rc_find_module_in_path (const gchar *module_file)
 {
-  return _gtk_find_module (module_file, "engines");
+  return "";
 }
 
 static guint
@@ -4951,4 +4946,4 @@ gtk_rc_parse (const gchar *filename)
 #endif
 
 #define __GTK_RC_C__
-#include "gtkaliasdef.c"
+

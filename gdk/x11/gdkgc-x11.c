@@ -30,7 +30,7 @@
 #include "gdkprivate-x11.h"
 #include "gdkregion-generic.h"
 #include "gdkx.h"
-#include "gdkalias.h"
+
 
 #include <string.h>
 
@@ -710,4 +710,4 @@ gdk_x11_gc_get_xgc (GdkGC *gc)
 }
 
 #define __GDK_GC_X11_C__
-#include "gdkaliasdef.c"
+

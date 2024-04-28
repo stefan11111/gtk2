@@ -26,12 +26,12 @@
 
 #include <string.h>
 #include "gtkprintoperation-private.h"
-#include "gtkmarshalers.h"
+
 #include <cairo-pdf.h>
 #include "gtkintl.h"
 #include "gtkprivate.h"
 #include "gtkmessagedialog.h"
-#include "gtkalias.h"
+
 
 #define SHOW_PROGRESS_TIME 1200
 
@@ -750,7 +750,7 @@ gtk_print_operation_class_init (GtkPrintOperationClass *class)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkPrintOperationClass, paginate),
 		  paginate_accumulator, NULL,
-		  _gtk_marshal_BOOLEAN__OBJECT,
+		  NULL,
 		  G_TYPE_BOOLEAN, 1, GTK_TYPE_PRINT_CONTEXT);
 
 
@@ -773,7 +773,7 @@ gtk_print_operation_class_init (GtkPrintOperationClass *class)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkPrintOperationClass, request_page_setup),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__OBJECT_INT_OBJECT,
+		  NULL,
 		  G_TYPE_NONE, 3,
 		  GTK_TYPE_PRINT_CONTEXT,
 		  G_TYPE_INT,
@@ -842,7 +842,7 @@ gtk_print_operation_class_init (GtkPrintOperationClass *class)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkPrintOperationClass, draw_page),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__OBJECT_INT,
+		  NULL,
 		  G_TYPE_NONE, 2,
 		  GTK_TYPE_PRINT_CONTEXT,
 		  G_TYPE_INT);
@@ -914,7 +914,7 @@ gtk_print_operation_class_init (GtkPrintOperationClass *class)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkPrintOperationClass, create_custom_widget),
 		  custom_widget_accumulator, NULL,
-		  _gtk_marshal_OBJECT__VOID,
+		  NULL,
 		  G_TYPE_OBJECT, 0);
 
   /**
@@ -936,7 +936,7 @@ gtk_print_operation_class_init (GtkPrintOperationClass *class)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkPrintOperationClass, update_custom_widget),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__OBJECT_OBJECT_OBJECT,
+		  NULL,
 		  G_TYPE_NONE, 3, GTK_TYPE_WIDGET, GTK_TYPE_PAGE_SETUP, GTK_TYPE_PRINT_SETTINGS);
 
   /**
@@ -995,7 +995,7 @@ gtk_print_operation_class_init (GtkPrintOperationClass *class)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkPrintOperationClass, preview),
 		  _gtk_boolean_handled_accumulator, NULL,
-		  _gtk_marshal_BOOLEAN__OBJECT_OBJECT_OBJECT,
+		  NULL,
 		  G_TYPE_BOOLEAN, 3,
 		  GTK_TYPE_PRINT_OPERATION_PREVIEW,
 		  GTK_TYPE_PRINT_CONTEXT,
@@ -3296,4 +3296,4 @@ gtk_print_operation_get_n_pages_to_print (GtkPrintOperation *op)
 }
 
 #define __GTK_PRINT_OPERATION_C__
-#include "gtkaliasdef.c"
+

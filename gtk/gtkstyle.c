@@ -31,7 +31,7 @@
 #include <gobject/gvaluecollector.h>
 #undef GDK_DISABLE_DEPRECATED
 #include "gtkgc.h"
-#include "gtkmarshalers.h"
+
 #undef GTK_DISABLE_DEPRECATED
 #include "gtkoptionmenu.h"
 #include "gtkrc.h"
@@ -42,7 +42,7 @@
 #include "gtkiconfactory.h"
 #include "gtksettings.h"	/* _gtk_settings_parse_convert() */
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 #define LIGHTNESS_MULT  1.3
 #define DARKNESS_MULT   0.7
@@ -543,7 +543,7 @@ gtk_style_class_init (GtkStyleClass *klass)
 				 G_SIGNAL_RUN_FIRST,
 				 G_STRUCT_OFFSET (GtkStyleClass, realize),
 				 NULL, NULL,
-				 _gtk_marshal_VOID__VOID,
+				 NULL,
 				 G_TYPE_NONE, 0);
   /**
    * GtkStyle::unrealize:
@@ -561,7 +561,7 @@ gtk_style_class_init (GtkStyleClass *klass)
 				   G_SIGNAL_RUN_FIRST,
 				   G_STRUCT_OFFSET (GtkStyleClass, unrealize),
 				   NULL, NULL,
-				   _gtk_marshal_VOID__VOID,
+				   NULL,
 				   G_TYPE_NONE, 0);
 }
 
@@ -7206,4 +7206,4 @@ gtk_draw_insertion_cursor (GtkWidget          *widget,
 }
 
 #define __GTK_STYLE_C__
-#include "gtkaliasdef.c"
+

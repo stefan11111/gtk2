@@ -34,8 +34,8 @@
 #include "gdkdrawable.h"
 #include "gdkintl.h"
 #include "gdkscreen.h"
-#include "gdkmarshalers.h"
-#include "gdkalias.h"
+
+
 
 #undef DEBUG_WINDOW_PRINTING
 
@@ -518,7 +518,7 @@ gdk_window_class_init (GdkWindowObjectClass *klass)
 		  G_SIGNAL_RUN_LAST,
 		  0,
 		  accumulate_get_window, NULL,
-		  _gdk_marshal_OBJECT__DOUBLE_DOUBLE,
+		  NULL,
 		  GDK_TYPE_WINDOW,
 		  2,
 		  G_TYPE_DOUBLE,
@@ -547,7 +547,7 @@ gdk_window_class_init (GdkWindowObjectClass *klass)
 		  G_SIGNAL_RUN_LAST,
 		  0,
 		  NULL, NULL,
-		  _gdk_marshal_VOID__DOUBLE_DOUBLE_POINTER_POINTER,
+		  NULL,
 		  G_TYPE_NONE,
 		  4,
 		  G_TYPE_DOUBLE,
@@ -578,7 +578,7 @@ gdk_window_class_init (GdkWindowObjectClass *klass)
 		  G_SIGNAL_RUN_LAST,
 		  0,
 		  NULL, NULL,
-		  _gdk_marshal_VOID__DOUBLE_DOUBLE_POINTER_POINTER,
+		  NULL,
 		  G_TYPE_NONE,
 		  4,
 		  G_TYPE_DOUBLE,
@@ -11379,4 +11379,4 @@ gdk_window_get_height (GdkWindow *window)
 
 
 #define __GDK_WINDOW_C__
-#include "gdkaliasdef.c"
+

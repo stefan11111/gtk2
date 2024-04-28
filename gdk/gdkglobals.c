@@ -30,7 +30,7 @@
 
 #include "gdktypes.h"
 #include "gdkprivate.h"
-#include "gdkalias.h"
+
 
 guint               _gdk_debug_flags = 0;
 gint                _gdk_error_code = 0;
@@ -43,6 +43,7 @@ gboolean            _gdk_native_windows = FALSE;
 
 GSList             *_gdk_displays = NULL;
 
-GMutex              *gdk_threads_mutex = NULL;          /* Global GDK lock */
+GMutex               _gdk_threads_mutex;
+GMutex              *gdk_threads_mutex = &_gdk_threads_mutex;          /* Global GDK lock */
 GCallback            gdk_threads_lock = NULL;
 GCallback            gdk_threads_unlock = NULL;

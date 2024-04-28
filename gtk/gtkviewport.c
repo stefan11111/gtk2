@@ -27,9 +27,9 @@
 #include "config.h"
 #include "gtkviewport.h"
 #include "gtkintl.h"
-#include "gtkmarshalers.h"
+
 #include "gtkprivate.h"
-#include "gtkalias.h"
+
 
 /**
  * SECTION:gtkviewport
@@ -159,7 +159,7 @@ gtk_viewport_class_init (GtkViewportClass *class)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkViewportClass, set_scroll_adjustments),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__OBJECT_OBJECT,
+		  NULL,
 		  G_TYPE_NONE, 2,
 		  GTK_TYPE_ADJUSTMENT,
 		  GTK_TYPE_ADJUSTMENT);
@@ -887,4 +887,4 @@ gtk_viewport_style_set (GtkWidget *widget,
 }
 
 #define __GTK_VIEWPORT_C__
-#include "gtkaliasdef.c"
+

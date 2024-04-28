@@ -35,7 +35,7 @@
 #include "gtkwindow.h"
 #include "gtkicontheme.h"
 #include "gtkstock.h"
-#include "gtkalias.h"
+
 
 static void gtk_builder_class_init     (GtkBuilderClass *klass);
 static void gtk_builder_init           (GtkBuilder      *builder);
@@ -170,52 +170,6 @@ gtk_builder_get_property (GObject    *object,
 
 
 /*
- * Try to map a type name to a _get_type function
- * and call it, eg:
- *
- * GtkWindow -> gtk_window_get_type
- * GtkHBox -> gtk_hbox_get_type
- * GtkUIManager -> gtk_ui_manager_get_type
- *
- */
-static GType
-_gtk_builder_resolve_type_lazily (const gchar *name)
-{
-  static GModule *module = NULL;
-  GTypeGetFunc func;
-  GString *symbol_name = g_string_new ("");
-  char c, *symbol;
-  int i;
-  GType gtype = G_TYPE_INVALID;
-
-  if (!module)
-    module = g_module_open (NULL, 0);
-  
-  for (i = 0; name[i] != '\0'; i++)
-    {
-      c = name[i];
-      /* skip if uppercase, first or previous is uppercase */
-      if ((c == g_ascii_toupper (c) &&
-           i > 0 && name[i-1] != g_ascii_toupper (name[i-1])) ||
-          (i > 2 && name[i]   == g_ascii_toupper (name[i]) &&
-           name[i-1] == g_ascii_toupper (name[i-1]) &&
-           name[i-2] == g_ascii_toupper (name[i-2])))
-        g_string_append_c (symbol_name, '_');
-      g_string_append_c (symbol_name, g_ascii_tolower (c));
-    }
-  g_string_append (symbol_name, "_get_type");
-  
-  symbol = g_string_free (symbol_name, FALSE);
-
-  if (g_module_symbol (module, symbol, (gpointer)&func))
-    gtype = func ();
-  
-  g_free (symbol);
-
-  return gtype;
-}
-
-/*
  * GtkBuilder virtual methods
  */
 
@@ -226,10 +180,7 @@ gtk_builder_real_get_type_from_name (GtkBuilder  *builder,
   GType gtype;
 
   gtype = g_type_from_name (type_name);
-  if (gtype != G_TYPE_INVALID)
-    return gtype;
-
-  return _gtk_builder_resolve_type_lazily (type_name);
+  return gtype;
 }
 
 typedef struct
@@ -239,271 +190,12 @@ typedef struct
   gchar *value;
 } DelayedProperty;
 
-static void
-gtk_builder_get_parameters (GtkBuilder  *builder,
-                            GType        object_type,
-                            const gchar *object_name,
-                            GSList      *properties,
-                            GArray      **parameters,
-                            GArray      **construct_parameters)
-{
-  GSList *l;
-  GParamSpec *pspec;
-  GObjectClass *oclass;
-  DelayedProperty *property;
-  GError *error = NULL;
-  
-  oclass = g_type_class_ref (object_type);
-  g_assert (oclass != NULL);
-
-  *parameters = g_array_new (FALSE, FALSE, sizeof (GParameter));
-  *construct_parameters = g_array_new (FALSE, FALSE, sizeof (GParameter));
-
-  for (l = properties; l; l = l->next)
-    {
-      PropertyInfo *prop = (PropertyInfo*)l->data;
-      GParameter parameter = { NULL };
-
-      pspec = g_object_class_find_property (G_OBJECT_CLASS (oclass),
-                                            prop->name);
-      if (!pspec)
-        {
-          g_warning ("Unknown property: %s.%s",
-                     g_type_name (object_type), prop->name);
-          continue;
-        }
-
-      parameter.name = prop->name;
-
-      if (G_IS_PARAM_SPEC_OBJECT (pspec) &&
-          (G_PARAM_SPEC_VALUE_TYPE (pspec) != GDK_TYPE_PIXBUF))
-        {
-          GObject *object = gtk_builder_get_object (builder, prop->data);
-
-          if (object)
-            {
-              g_value_init (&parameter.value, G_OBJECT_TYPE (object));
-              g_value_set_object (&parameter.value, object);
-            }
-          else 
-            {
-              if (pspec->flags & G_PARAM_CONSTRUCT_ONLY)
-                {
-                  g_warning ("Failed to get constuct only property "
-                             "%s of %s with value `%s'",
-                             prop->name, object_name, prop->data);
-                  continue;
-                }
-              /* Delay setting property */
-              property = g_slice_new (DelayedProperty);
-              property->object = g_strdup (object_name);
-              property->name = g_strdup (prop->name);
-              property->value = g_strdup (prop->data);
-              builder->priv->delayed_properties =
-                g_slist_prepend (builder->priv->delayed_properties, property);
-              continue;
-            }
-        }
-      else if (!gtk_builder_value_from_string (builder, pspec,
-					       prop->data, &parameter.value, &error))
-        {
-          g_warning ("Failed to set property %s.%s to %s: %s",
-                     g_type_name (object_type), prop->name, prop->data,
-		     error->message);
-	  g_error_free (error);
-	  error = NULL;
-          continue;
-        }
-
-      if (pspec->flags & (G_PARAM_CONSTRUCT | G_PARAM_CONSTRUCT_ONLY))
-        g_array_append_val (*construct_parameters, parameter);
-      else
-        g_array_append_val (*parameters, parameter);
-    }
-
-  g_type_class_unref (oclass);
-}
-
-static GObject *
-gtk_builder_get_internal_child (GtkBuilder  *builder,
-                                ObjectInfo  *info,
-                                const gchar *childname,
-				GError      **error)
-{
-  GObject *obj = NULL;
-
-  while (!obj)
-    {
-      if (!info->parent)
-        break;
-
-      info = (ObjectInfo*)((ChildInfo*)info->parent)->parent;
-      if (!info)
-        break;
-
-      GTK_NOTE (BUILDER,
-                g_print ("Trying to get internal child %s from %s\n",
-                         childname,
-                         gtk_buildable_get_name (GTK_BUILDABLE (info->object))));
-
-      if (GTK_IS_BUILDABLE (info->object))
-          obj = gtk_buildable_get_internal_child (GTK_BUILDABLE (info->object),
-                                                  builder,
-                                                  childname);
-    };
-
-  if (!obj)
-    {
-      g_set_error (error,
-		   GTK_BUILDER_ERROR,
-		   GTK_BUILDER_ERROR_INVALID_VALUE,
-		   "Unknown internal child: %s", childname);
-    }
-  return obj;
-}
-
 GObject *
 _gtk_builder_construct (GtkBuilder *builder,
                         ObjectInfo *info,
 			GError **error)
 {
-  GArray *parameters, *construct_parameters;
-  GType object_type;
-  GObject *obj;
-  int i;
-  GtkBuildableIface *iface;
-  gboolean custom_set_property;
-  GtkBuildable *buildable;
-
-  g_assert (info->class_name != NULL);
-  object_type = gtk_builder_get_type_from_name (builder, info->class_name);
-  if (object_type == G_TYPE_INVALID)
-    {
-      g_set_error (error,
-		   GTK_BUILDER_ERROR,
-		   GTK_BUILDER_ERROR_INVALID_VALUE,
-		   "Invalid object type `%s'",
-		   info->class_name);
-      return NULL;
-    }
-
-  gtk_builder_get_parameters (builder, object_type,
-                              info->id,
-                              info->properties,
-                              &parameters,
-                              &construct_parameters);
-
-  if (info->constructor)
-    {
-      GObject *constructor;
-
-      constructor = gtk_builder_get_object (builder, info->constructor);
-      if (constructor == NULL)
-	{
-	  g_set_error (error,
-		       GTK_BUILDER_ERROR,
-		       GTK_BUILDER_ERROR_INVALID_VALUE,
-		       "Unknown object constructor for %s: %s",
-		       info->id,
-		       info->constructor);
-	  g_array_free (parameters, TRUE);
-	  g_array_free (construct_parameters, TRUE);
-	  return NULL;
-	}
-      obj = gtk_buildable_construct_child (GTK_BUILDABLE (constructor),
-                                           builder,
-                                           info->id);
-      g_assert (obj != NULL);
-      if (construct_parameters->len)
-        g_warning ("Can't pass in construct-only parameters to %s", info->id);
-    }
-  else if (info->parent && ((ChildInfo*)info->parent)->internal_child != NULL)
-    {
-      gchar *childname = ((ChildInfo*)info->parent)->internal_child;
-      obj = gtk_builder_get_internal_child (builder, info, childname, error);
-      if (!obj)
-	{
-	  g_array_free (parameters, TRUE);
-	  g_array_free (construct_parameters, TRUE);
-	  return NULL;
-	}
-      if (construct_parameters->len)
-        g_warning ("Can't pass in construct-only parameters to %s", childname);
-      g_object_ref (obj);
-    }
-  else
-    {
-      obj = g_object_newv (object_type,
-                           construct_parameters->len,
-                           (GParameter *)construct_parameters->data);
-
-      /* No matter what, make sure we have a reference.
-       *
-       * If it's an initially unowned object, sink it.
-       * If it's not initially unowned then we have the reference already.
-       *
-       * In the case that this is a window it will be sunk already and
-       * this is effectively a call to g_object_ref().  That's what
-       * we want.
-       */
-      if (G_IS_INITIALLY_UNOWNED (obj))
-        g_object_ref_sink (obj);
-
-      GTK_NOTE (BUILDER,
-                g_print ("created %s of type %s\n", info->id, info->class_name));
-
-      for (i = 0; i < construct_parameters->len; i++)
-        {
-          GParameter *param = &g_array_index (construct_parameters,
-                                              GParameter, i);
-          g_value_unset (&param->value);
-        }
-    }
-  g_array_free (construct_parameters, TRUE);
-
-  custom_set_property = FALSE;
-  buildable = NULL;
-  iface = NULL;
-  if (GTK_IS_BUILDABLE (obj))
-    {
-      buildable = GTK_BUILDABLE (obj);
-      iface = GTK_BUILDABLE_GET_IFACE (obj);
-      if (iface->set_buildable_property)
-        custom_set_property = TRUE;
-    }
-
-  for (i = 0; i < parameters->len; i++)
-    {
-      GParameter *param = &g_array_index (parameters, GParameter, i);
-      if (custom_set_property)
-        iface->set_buildable_property (buildable, builder, param->name, &param->value);
-      else
-        g_object_set_property (obj, param->name, &param->value);
-
-#if G_ENABLE_DEBUG
-      if (gtk_debug_flags & GTK_DEBUG_BUILDER)
-        {
-          gchar *str = g_strdup_value_contents ((const GValue*)&param->value);
-          g_print ("set %s: %s = %s\n", info->id, param->name, str);
-          g_free (str);
-        }
-#endif      
-      g_value_unset (&param->value);
-    }
-  g_array_free (parameters, TRUE);
-  
-  if (GTK_IS_BUILDABLE (obj))
-    gtk_buildable_set_name (buildable, info->id);
-  else
-    g_object_set_data_full (obj,
-                            "gtk-builder-name",
-                            g_strdup (info->id),
-                            g_free);
-
-  /* we already own a reference to obj.  put it in the hash table. */
-  g_hash_table_insert (builder->priv->objects, g_strdup (info->id), obj);
-  
-  return obj;
+  return NULL;
 }
 
 
@@ -962,55 +654,12 @@ gtk_builder_get_translation_domain (GtkBuilder *builder)
   return builder->priv->domain;
 }
 
-typedef struct {
-  GModule *module;
-  gpointer data;
-} connect_args;
-
-static void
-gtk_builder_connect_signals_default (GtkBuilder    *builder,
-				     GObject       *object,
-				     const gchar   *signal_name,
-				     const gchar   *handler_name,
-				     GObject       *connect_object,
-				     GConnectFlags  flags,
-				     gpointer       user_data)
-{
-  GCallback func;
-  connect_args *args = (connect_args*)user_data;
-  
-  if (!g_module_symbol (args->module, handler_name, (gpointer)&func))
-    {
-      g_warning ("Could not find signal handler '%s'", handler_name);
-      return;
-    }
-
-  if (connect_object)
-    g_signal_connect_object (object, signal_name, func, connect_object, flags);
-  else
-    g_signal_connect_data (object, signal_name, func, args->data, NULL, flags);
-}
-
 
 /**
  * gtk_builder_connect_signals:
  * @builder: a #GtkBuilder
  * @user_data: a pointer to a structure sent in as user data to all signals
  *
- * This method is a simpler variation of gtk_builder_connect_signals_full().
- * It uses #GModule's introspective features (by opening the module %NULL) 
- * to look at the application's symbol table. From here it tries to match
- * the signal handler names given in the interface description with
- * symbols in the application and connects the signals.
- * 
- * Note that this function will not work correctly if #GModule is not
- * supported on the platform.
- *
- * When compiling applications for Windows, you must declare signal callbacks
- * with #G_MODULE_EXPORT, or they will not be put in the symbol table.
- * On Linux and Unices, this is not necessary; applications should instead
- * be compiled with the -Wl,--export-dynamic CFLAGS, and linked against
- * gmodule-export-2.0.
  *
  * Since: 2.12
  **/
@@ -1018,23 +667,6 @@ void
 gtk_builder_connect_signals (GtkBuilder *builder,
 			     gpointer    user_data)
 {
-  connect_args *args;
-  
-  g_return_if_fail (GTK_IS_BUILDER (builder));
-  
-  if (!g_module_supported ())
-    g_error ("gtk_builder_connect_signals() requires working GModule");
-
-  args = g_slice_new0 (connect_args);
-  args->module = g_module_open (NULL, G_MODULE_BIND_LAZY);
-  args->data = user_data;
-  
-  gtk_builder_connect_signals_full (builder,
-                                    gtk_builder_connect_signals_default,
-                                    args);
-  g_module_close (args->module);
-
-  g_slice_free (connect_args, args);
 }
 
 /**
@@ -1063,8 +695,7 @@ gtk_builder_connect_signals (GtkBuilder *builder,
  * @user_data: arbitrary data that will be passed to the connection function
  *
  * This function can be thought of the interpreted language binding
- * version of gtk_builder_connect_signals(), except that it does not
- * require GModule to function correctly.
+ * version of gtk_builder_connect_signals().
  *
  * Since: 2.12
  */
@@ -1630,4 +1261,4 @@ _gtk_builder_get_absolute_filename (GtkBuilder *builder, const gchar *string)
 }
 
 #define __GTK_BUILDER_C__
-#include "gtkaliasdef.c"
+

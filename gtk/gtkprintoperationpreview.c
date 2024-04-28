@@ -21,9 +21,9 @@
 #include "config.h"
 
 #include "gtkprintoperationpreview.h"
-#include "gtkmarshalers.h"
+
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 
 static void gtk_print_operation_preview_base_init (gpointer g_iface);
@@ -102,7 +102,7 @@ gtk_print_operation_preview_base_init (gpointer g_iface)
 		    G_SIGNAL_RUN_LAST,
 		    G_STRUCT_OFFSET (GtkPrintOperationPreviewIface, got_page_size),
 		    NULL, NULL,
-		    _gtk_marshal_VOID__OBJECT_OBJECT,
+		    NULL,
 		    G_TYPE_NONE, 2,
 		    GTK_TYPE_PRINT_CONTEXT,
 		    GTK_TYPE_PAGE_SETUP);
@@ -179,4 +179,4 @@ gtk_print_operation_preview_is_selected (GtkPrintOperationPreview *preview,
 
 
 #define __GTK_PRINT_OPERATION_PREVIEW_C__
-#include "gtkaliasdef.c"
+

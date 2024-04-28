@@ -80,7 +80,7 @@
 #include "config.h"
 #include "gtktextdisplay.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 /* DO NOT go putting private headers in here. This file should only
  * use the semi-public headers, as with gtktextview.c.
  */
@@ -920,4 +920,4 @@ gtk_text_layout_draw (GtkTextLayout *layout,
 }
 
 #define __GTK_TEXT_DISPLAY_C__
-#include "gtkaliasdef.c"
+

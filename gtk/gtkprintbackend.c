@@ -24,11 +24,10 @@
 #include <gmodule.h>
 
 #include "gtkintl.h"
-#include "gtkmodules.h"
-#include "gtkmarshalers.h"
+
 #include "gtkprivate.h"
 #include "gtkprintbackend.h"
-#include "gtkalias.h"
+
 
 #define GTK_PRINT_BACKEND_GET_PRIVATE(o)  \
    (G_TYPE_INSTANCE_GET_PRIVATE ((o), GTK_TYPE_PRINT_BACKEND, GtkPrintBackendPrivate))
@@ -274,30 +273,6 @@ _gtk_print_backend_create (const gchar *backend_name)
   pb = NULL;
   if (g_module_supported ())
     {
-      full_name = g_strconcat ("printbackend-", backend_name, NULL);
-      module_path = _gtk_find_module (full_name, "printbackends");
-      g_free (full_name);
-
-      if (module_path)
-	{
-	  pb_module = g_object_new (GTK_TYPE_PRINT_BACKEND_MODULE, NULL);
-
-	  g_type_module_set_name (G_TYPE_MODULE (pb_module), backend_name);
-	  pb_module->path = g_strdup (module_path);
-
-	  loaded_backends = g_slist_prepend (loaded_backends,
-		   		             pb_module);
-
-	  pb = _gtk_print_backend_module_create (pb_module);
-
-	  /* Increase use-count so that we don't unload print backends.
-	   * There is a problem with module unloading in the cups module,
-	   * see cups_dispatch_watch_finalize for details. 
-	   */
-	  g_type_module_use (G_TYPE_MODULE (pb_module));
-	}
-      
-      g_free (module_path);
     }
 
   return pb;
@@ -446,7 +421,7 @@ gtk_print_backend_class_init (GtkPrintBackendClass *class)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkPrintBackendClass, request_password),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__POINTER_POINTER_POINTER_POINTER_STRING,
+		  NULL,
 		  G_TYPE_NONE, 5, G_TYPE_POINTER, G_TYPE_POINTER, G_TYPE_POINTER, G_TYPE_POINTER, G_TYPE_STRING);
 }
 
@@ -840,4 +815,4 @@ gtk_print_backend_destroy (GtkPrintBackend *print_backend)
 
 
 #define __GTK_PRINT_BACKEND_C__
-#include "gtkaliasdef.c"
+

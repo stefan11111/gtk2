@@ -32,7 +32,7 @@
 #include "gtkkeyhash.h"
 #include "gtklabel.h"
 #include "gtkmain.h"
-#include "gtkmarshalers.h"
+
 #include "gtkmenu.h"
 #include "gtkmenubar.h"
 #include "gtkmenuitem.h"
@@ -42,7 +42,7 @@
 #include "gtkwindow.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 #define MENU_SHELL_TIMEOUT   500
 
@@ -254,7 +254,7 @@ gtk_menu_shell_class_init (GtkMenuShellClass *klass)
 		  G_SIGNAL_RUN_FIRST,
 		  G_STRUCT_OFFSET (GtkMenuShellClass, deactivate),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__VOID,
+		  NULL,
 		  G_TYPE_NONE, 0);
 
   menu_shell_signals[SELECTION_DONE] =
@@ -263,7 +263,7 @@ gtk_menu_shell_class_init (GtkMenuShellClass *klass)
 		  G_SIGNAL_RUN_FIRST,
 		  G_STRUCT_OFFSET (GtkMenuShellClass, selection_done),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__VOID,
+		  NULL,
 		  G_TYPE_NONE, 0);
 
   menu_shell_signals[MOVE_CURRENT] =
@@ -272,7 +272,7 @@ gtk_menu_shell_class_init (GtkMenuShellClass *klass)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkMenuShellClass, move_current),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__ENUM,
+		  NULL,
 		  G_TYPE_NONE, 1,
 		  GTK_TYPE_MENU_DIRECTION_TYPE);
 
@@ -282,7 +282,7 @@ gtk_menu_shell_class_init (GtkMenuShellClass *klass)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkMenuShellClass, activate_current),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__BOOLEAN,
+		  NULL,
 		  G_TYPE_NONE, 1,
 		  G_TYPE_BOOLEAN);
 
@@ -292,7 +292,7 @@ gtk_menu_shell_class_init (GtkMenuShellClass *klass)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkMenuShellClass, cancel),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__VOID,
+		  NULL,
 		  G_TYPE_NONE, 0);
 
   menu_shell_signals[CYCLE_FOCUS] =
@@ -301,7 +301,7 @@ gtk_menu_shell_class_init (GtkMenuShellClass *klass)
                                 G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                                 G_CALLBACK (gtk_real_menu_shell_cycle_focus),
                                 NULL, NULL,
-                                _gtk_marshal_VOID__ENUM,
+                                NULL,
                                 G_TYPE_NONE, 1,
                                 GTK_TYPE_DIRECTION_TYPE);
 
@@ -323,7 +323,7 @@ gtk_menu_shell_class_init (GtkMenuShellClass *klass)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkMenuShellClass, move_selected),
 		  _gtk_boolean_handled_accumulator, NULL,
-		  _gtk_marshal_BOOLEAN__INT,
+		  NULL,
 		  G_TYPE_BOOLEAN, 1,
 		  G_TYPE_INT);
 
@@ -348,7 +348,7 @@ gtk_menu_shell_class_init (GtkMenuShellClass *klass)
                   G_SIGNAL_RUN_FIRST,
                   G_STRUCT_OFFSET (GtkMenuShellClass, insert),
                   NULL, NULL,
-                  _gtk_marshal_VOID__OBJECT_INT,
+                  NULL,
                   G_TYPE_NONE, 2, GTK_TYPE_WIDGET, G_TYPE_INT);
 
   binding_set = gtk_binding_set_by_class (klass);
@@ -708,26 +708,21 @@ gtk_menu_shell_button_release (GtkWidget      *widget,
                        priv->activated_submenu)
                 {
                   gint popdown_delay;
-                  GTimeVal *popup_time;
-                  gint64 usec_since_popup = 0;
+                  guint64 popup_time;
+                  guint64 usec_since_popup = 0;
 
                   g_object_get (gtk_widget_get_settings (widget),
                                 "gtk-menu-popdown-delay", &popdown_delay,
                                 NULL);
 
-                  popup_time = g_object_get_data (G_OBJECT (submenu),
+                  popup_time = *(guint64*)g_object_get_data (G_OBJECT (submenu),
                                                   "gtk-menu-exact-popup-time");
 
                   if (popup_time)
                     {
-                      GTimeVal current_time;
+                      guint64 current_time = g_get_real_time ();
 
-                      g_get_current_time (&current_time);
-
-                      usec_since_popup = ((gint64) current_time.tv_sec * 1000 * 1000 +
-                                          (gint64) current_time.tv_usec -
-                                          (gint64) popup_time->tv_sec * 1000 * 1000 -
-                                          (gint64) popup_time->tv_usec);
+                      usec_since_popup = (current_time - popup_time);
 
                       g_object_set_data (G_OBJECT (submenu),
                                          "gtk-menu-exact-popup-time", NULL);
@@ -1838,4 +1833,4 @@ gtk_menu_shell_set_take_focus (GtkMenuShell *menu_shell,
 }
 
 #define __GTK_MENU_SHELL_C__
-#include "gtkaliasdef.c"
+

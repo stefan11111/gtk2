@@ -39,7 +39,7 @@
 #include "gdkinternals.h"
 #include "gdkinputprivate.h"
 #include "xsettings-client.h"
-#include "gdkalias.h"
+
 
 #include <X11/Xatom.h>
 
@@ -1484,4 +1484,4 @@ gdk_display_supports_composite (GdkDisplay *display)
 
 
 #define __GDK_DISPLAY_X11_C__
-#include "gdkaliasdef.c"
+

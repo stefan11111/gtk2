@@ -70,7 +70,7 @@ struct _GtkTooltips
   guint   have_grab : 1;
   guint   use_sticky_delay : 1;
   gint	  timer_tag;
-  GTimeVal last_popdown;
+  guint64 last_popdown;
 };
 
 struct _GtkTooltipsClass

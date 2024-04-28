@@ -29,9 +29,9 @@
 #undef GTK_DISABLE_DEPRECATED
 
 #include "gtkitem.h"
-#include "gtkmarshalers.h"
+
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 
 enum {
@@ -76,7 +76,7 @@ gtk_item_class_init (GtkItemClass *class)
 		  G_SIGNAL_RUN_FIRST,
 		  G_STRUCT_OFFSET (GtkItemClass, select),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__VOID,
+		  NULL,
 		  G_TYPE_NONE, 0);
   item_signals[DESELECT] =
     g_signal_new (I_("deselect"),
@@ -84,7 +84,7 @@ gtk_item_class_init (GtkItemClass *class)
 		  G_SIGNAL_RUN_FIRST,
 		  G_STRUCT_OFFSET (GtkItemClass, deselect),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__VOID,
+		  NULL,
 		  G_TYPE_NONE, 0);
   item_signals[TOGGLE] =
     g_signal_new (I_("toggle"),
@@ -92,7 +92,7 @@ gtk_item_class_init (GtkItemClass *class)
 		  G_SIGNAL_RUN_FIRST,
 		  G_STRUCT_OFFSET (GtkItemClass, toggle),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__VOID,
+		  NULL,
 		  G_TYPE_NONE, 0);
   widget_class->activate_signal = item_signals[TOGGLE];
 }
@@ -176,4 +176,4 @@ gtk_item_leave (GtkWidget        *widget,
 }
 
 #define __GTK_ITEM_C__
-#include "gtkaliasdef.c"
+

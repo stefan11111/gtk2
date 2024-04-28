@@ -27,7 +27,7 @@
 #include "gtkcellrenderer.h"
 #include "gtkcellrenderertext.h"
 #include "gtkcellrendererpixbuf.h"
-#include "gtkmarshalers.h"
+
 #include "gtkbindings.h"
 #include "gtkdnd.h"
 #include "gtkmain.h"
@@ -39,7 +39,7 @@
 #include "gtktextbuffer.h"
 #include "gtktreednd.h"
 #include "gtkprivate.h"
-#include "gtkalias.h"
+
 
 #undef DEBUG_ICON_VIEW
 
@@ -826,7 +826,7 @@ gtk_icon_view_class_init (GtkIconViewClass *klass)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkIconViewClass, set_scroll_adjustments),
 		  NULL, NULL, 
-		  _gtk_marshal_VOID__OBJECT_OBJECT,
+		  NULL,
 		  G_TYPE_NONE, 2,
 		  GTK_TYPE_ADJUSTMENT, GTK_TYPE_ADJUSTMENT);
 
@@ -978,7 +978,7 @@ gtk_icon_view_class_init (GtkIconViewClass *klass)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkIconViewClass, activate_cursor_item),
 		  NULL, NULL,
-		  _gtk_marshal_BOOLEAN__VOID,
+		  NULL,
 		  G_TYPE_BOOLEAN, 0);
   
   /**
@@ -1011,7 +1011,7 @@ gtk_icon_view_class_init (GtkIconViewClass *klass)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkIconViewClass, move_cursor),
 		  NULL, NULL,
-		  _gtk_marshal_BOOLEAN__ENUM_INT,
+		  NULL,
 		  G_TYPE_BOOLEAN, 2,
 		  GTK_TYPE_MOVEMENT_STEP,
 		  G_TYPE_INT);
@@ -7705,4 +7705,4 @@ gtk_icon_view_buildable_custom_tag_end (GtkBuildable *buildable,
 
 
 #define __GTK_ICON_VIEW_C__
-#include "gtkaliasdef.c"
+

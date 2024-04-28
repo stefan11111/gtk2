@@ -33,14 +33,14 @@
 #include "gtkeventbox.h"
 #include "gtkpixmap.h"
 #include "gtkmain.h"
-#include "gtkmarshalers.h"
+
 #include "gtksignal.h"
 #define GTK_ENABLE_BROKEN
 #include "gtktree.h"
 #include "gtktreeitem.h"
 #include "gtkintl.h"
 
-#include "gtkalias.h"
+
 
 #include "tree_plus.xpm"
 #include "tree_minus.xpm"
@@ -168,14 +168,14 @@ gtk_tree_item_class_init (GtkTreeItemClass *class)
 		    GTK_RUN_FIRST,
 		    GTK_CLASS_TYPE (object_class),
 		    GTK_SIGNAL_OFFSET (GtkTreeItemClass, expand),
-		    _gtk_marshal_VOID__VOID,
+		    NULL,
 		    GTK_TYPE_NONE, 0);
   tree_item_signals[COLLAPSE_TREE] =
     gtk_signal_new (I_("collapse"),
 		    GTK_RUN_FIRST,
 		    GTK_CLASS_TYPE (object_class),
 		    GTK_SIGNAL_OFFSET (GtkTreeItemClass, collapse),
-		    _gtk_marshal_VOID__VOID,
+		    NULL,
 		    GTK_TYPE_NONE, 0);
 }
 
@@ -998,4 +998,4 @@ gtk_tree_item_forall (GtkContainer *container,
 }
 
 #define __GTK_TREE_ITEM_C__
-#include "gtkaliasdef.c"
+
