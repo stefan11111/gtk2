@@ -8,28 +8,7 @@ SUBDIRS = $(SRC_SUBDIRS) m4macros build
 AUTOMAKE_OPTIONS = 1.7
 ACLOCAL_AMFLAGS = -I m4
 
-EXTRA_DIST +=			\
-	HACKING			\
-	makecopyright		\
-	NEWS.pre-1-0		\
-	ChangeLog.pre-1-0	\
-	ChangeLog.pre-1-2	\
-	ChangeLog.pre-2-0	\
-	ChangeLog.pre-2-2	\
-	ChangeLog.pre-2-4	\
-	ChangeLog.pre-2-6	\
-	ChangeLog.pre-2-8	\
-	ChangeLog.pre-2-10	\
-	ChangeLog.pre-2-12	\
-	ChangeLog.pre-2-14	\
-	ChangeLog.pre-2-16	\
-	ChangeLog.gtk-async-file-chooser	\
-	ChangeLog.gtk-printing	\
-	README.commits	\
-	README.win32		\
-	config.h.win32		\
-	makefile.msc	\
-	sanitize-la.sh
+EXTRA_DIST += sanitize-la.sh
 
 MAINTAINERCLEANFILES = \
 	$(srcdir)/INSTALL \
