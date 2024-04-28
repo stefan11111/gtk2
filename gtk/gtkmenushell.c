@@ -708,21 +708,19 @@ gtk_menu_shell_button_release (GtkWidget      *widget,
                        priv->activated_submenu)
                 {
                   gint popdown_delay;
-                  guint64 popup_time;
+                  guint64 *popup_time;
                   guint64 usec_since_popup = 0;
 
                   g_object_get (gtk_widget_get_settings (widget),
                                 "gtk-menu-popdown-delay", &popdown_delay,
                                 NULL);
 
-                  popup_time = *(guint64*)g_object_get_data (G_OBJECT (submenu),
+                  popup_time = g_object_get_data (G_OBJECT (submenu),
                                                   "gtk-menu-exact-popup-time");
 
-                  if (popup_time)
+                  if (popup_time && *popup_time)
                     {
-                      guint64 current_time = g_get_real_time ();
-
-                      usec_since_popup = (current_time - popup_time);
+                      usec_since_popup = (g_get_real_time () - *popup_time);
 
                       g_object_set_data (G_OBJECT (submenu),
                                          "gtk-menu-exact-popup-time", NULL);
