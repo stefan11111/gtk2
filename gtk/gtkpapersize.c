@@ -658,9 +658,7 @@ gtk_paper_size_get_default (void)
   }
 #endif
 
-#ifdef G_OS_WIN32
-  freeme = locale = g_win32_getlocale ();
-#elif defined(LC_PAPER)
+#if defined(LC_PAPER)
   locale = setlocale(LC_PAPER, NULL);
 #else
   locale = setlocale(LC_MESSAGES, NULL);

@@ -29,15 +29,6 @@
 #include <glib.h>
 #include <glib/gstdio.h>
 
-#ifdef G_OS_WIN32
-#ifndef S_ISDIR
-#define S_ISDIR(mode) ((mode)&_S_IFDIR)
-#endif
-#define WIN32_MEAN_AND_LEAN
-#include <windows.h>
-#include "win32/gdkwin32.h"
-#endif /* G_OS_WIN32 */
-
 #include "gtkicontheme.h"
 #include "gtkiconfactory.h"
 #include "gtkiconcache.h"
@@ -110,12 +101,6 @@ struct _GtkIconInfo
   /* Information about the source
    */
   gchar *filename;
-#if defined (G_OS_WIN32) && !defined (_WIN64)
-  /* System codepage version of filename, for DLL ABI backward
-   * compatibility functions.
-   */
-  gchar *cp_filename;
-#endif
   GLoadableIcon *loadable;
   GSList *emblem_infos;
 
@@ -1287,32 +1272,6 @@ choose_icon (GtkIconTheme       *icon_theme,
       if (unthemed_icon)
         break;
     }
-#ifdef G_OS_WIN32
-  /* Still not found an icon, check if reference to a Win32 resource */
-  if (!unthemed_icon)
-    {
-      gchar **resources;
-      HICON hIcon = NULL;
-      
-      resources = g_strsplit (icon_names[0], ",", 0);
-      if (resources[0])
-	{
-	  wchar_t *wfile = g_utf8_to_utf16 (resources[0], -1, NULL, NULL, NULL);
-	  ExtractIconExW (wfile, resources[1] ? atoi (resources[1]) : 0, &hIcon, NULL, 1);
-	  g_free (wfile);
-	}
-      
-      if (hIcon)
-	{
-	  icon_info = icon_info_new ();
-	  icon_info->cache_pixbuf = gdk_win32_icon_to_pixbuf_libgtk_only (hIcon);
-	  DestroyIcon (hIcon);
-          icon_info->dir_type = ICON_THEME_DIR_UNTHEMED;
-          icon_info->dir_size = size;
-	}
-      g_strfreev (resources);
-    }
-#endif
 
   if (unthemed_icon)
     {
@@ -1328,10 +1287,6 @@ choose_icon (GtkIconTheme       *icon_theme,
 	icon_info->filename = g_strdup (unthemed_icon->svg_filename);
       else if (unthemed_icon->no_svg_filename)
 	icon_info->filename = g_strdup (unthemed_icon->no_svg_filename);
-#if defined (G_OS_WIN32) && !defined (_WIN64)
-      icon_info->cp_filename = g_locale_from_utf8 (icon_info->filename,
-						   -1, NULL, NULL, NULL);
-#endif
 
       icon_info->dir_type = ICON_THEME_DIR_UNTHEMED;
       icon_info->dir_size = size;
@@ -2214,17 +2169,10 @@ theme_lookup_icon (IconTheme          *theme,
           file = g_strconcat (icon_name, string_from_suffix (suffix), NULL);
           icon_info->filename = g_build_filename (min_dir->dir, file, NULL);
           g_free (file);
-#if defined (G_OS_WIN32) && !defined (_WIN64)
-          icon_info->cp_filename = g_locale_from_utf8 (icon_info->filename,
-						   -1, NULL, NULL, NULL);
-#endif
         }
       else
         {
           icon_info->filename = NULL;
-#if defined (G_OS_WIN32) && !defined (_WIN64)
-          icon_info->cp_filename = NULL;
-#endif
         }
       
       if (min_dir->icon_data != NULL)
@@ -2680,9 +2628,6 @@ gtk_icon_info_free (GtkIconInfo *icon_info)
     return;
  
   g_free (icon_info->filename);
-#if defined (G_OS_WIN32) && !defined (_WIN64)
-  g_free (icon_info->cp_filename);
-#endif
   if (icon_info->loadable)
     g_object_unref (icon_info->loadable);
   g_slist_foreach (icon_info->emblem_infos, (GFunc)gtk_icon_info_free, NULL);
@@ -3585,97 +3530,6 @@ gtk_icon_info_new_for_pixbuf (GtkIconTheme *icon_theme,
 
   return info;
 }
-
-#if defined (G_OS_WIN32) && !defined (_WIN64)
-
-/* DLL ABI stability backward compatibility versions */
-
-#undef gtk_icon_theme_set_search_path
-
-void
-gtk_icon_theme_set_search_path (GtkIconTheme *icon_theme,
-				const gchar  *path[],
-				gint          n_elements)
-{
-  const gchar **utf8_path;
-  gint i;
-
-  utf8_path = g_new (const gchar *, n_elements);
-
-  for (i = 0; i < n_elements; i++)
-    utf8_path[i] = g_locale_to_utf8 (path[i], -1, NULL, NULL, NULL);
-
-  gtk_icon_theme_set_search_path_utf8 (icon_theme, utf8_path, n_elements);
-
-  for (i = 0; i < n_elements; i++)
-    g_free ((gchar *) utf8_path[i]);
-
-  g_free (utf8_path);
-}
-
-#undef gtk_icon_theme_get_search_path
-
-void
-gtk_icon_theme_get_search_path (GtkIconTheme      *icon_theme,
-				gchar            **path[],
-				gint              *n_elements)
-{
-  gint i, n;
-
-  gtk_icon_theme_get_search_path_utf8 (icon_theme, path, &n);
-
-  if (n_elements)
-    *n_elements = n;
-
-  if (path)
-    {
-      for (i = 0; i < n; i++)
-	{
-	  gchar *tem = (*path)[i];
-
-	  (*path)[i] = g_locale_from_utf8 ((*path)[i], -1, NULL, NULL, NULL);
-	  g_free (tem);
-	}
-    }
-}
-
-#undef gtk_icon_theme_append_search_path
-
-void
-gtk_icon_theme_append_search_path (GtkIconTheme *icon_theme,
-				   const gchar  *path)
-{
-  gchar *utf8_path = g_locale_from_utf8 (path, -1, NULL, NULL, NULL);
-
-  gtk_icon_theme_append_search_path_utf8 (icon_theme, utf8_path);
-
-  g_free (utf8_path);
-}
-
-#undef gtk_icon_theme_prepend_search_path
-
-void
-gtk_icon_theme_prepend_search_path (GtkIconTheme *icon_theme,
-				    const gchar  *path)
-{
-  gchar *utf8_path = g_locale_from_utf8 (path, -1, NULL, NULL, NULL);
-
-  gtk_icon_theme_prepend_search_path_utf8 (icon_theme, utf8_path);
-
-  g_free (utf8_path);
-}
-
-#undef gtk_icon_info_get_filename
-
-const gchar *
-gtk_icon_info_get_filename (GtkIconInfo *icon_info)
-{
-  g_return_val_if_fail (icon_info != NULL, NULL);
-
-  return icon_info->cp_filename;
-}
-
-#endif
 
 #define __GTK_ICON_THEME_C__
 

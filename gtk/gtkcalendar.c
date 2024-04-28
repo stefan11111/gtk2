@@ -43,10 +43,6 @@
 
 #include <glib.h>
 
-#ifdef G_OS_WIN32
-#include <windows.h>
-#endif
-
 #include "gtkcalendar.h"
 #include "gtkdnd.h"
 #include "gtkintl.h"
@@ -59,8 +55,6 @@
 
 /***************************************************************************/
 /* The following date routines are taken from the lib_date package. 
- * They have been minimally edited to avoid conflict with types defined
- * in win32 headers.
  */
 
 static const guint month_length[2][13] =
@@ -686,13 +680,9 @@ gtk_calendar_init (GtkCalendar *calendar)
   time_t secs;
   struct tm *tm;
   gint i;
-#ifdef G_OS_WIN32
-  wchar_t wbuffer[100];
-#else
   static const char *month_format = NULL;
   char buffer[255];
   time_t tmp_time;
-#endif
   GtkCalendarPrivate *priv;
   gchar *year_before;
 #ifdef HAVE__NL_TIME_FIRST_WEEKDAY
@@ -713,23 +703,14 @@ gtk_calendar_init (GtkCalendar *calendar)
   if (!default_abbreviated_dayname[0])
     for (i=0; i<7; i++)
       {
-#ifndef G_OS_WIN32
 	tmp_time= (i+3)*86400;
 	strftime (buffer, sizeof (buffer), "%a", gmtime (&tmp_time));
 	default_abbreviated_dayname[i] = g_locale_to_utf8 (buffer, -1, NULL, NULL, NULL);
-#else
-	if (!GetLocaleInfoW (GetThreadLocale (), LOCALE_SABBREVDAYNAME1 + (i+6)%7,
-			     wbuffer, G_N_ELEMENTS (wbuffer)))
-	  default_abbreviated_dayname[i] = g_strdup_printf ("(%d)", i);
-	else
-	  default_abbreviated_dayname[i] = g_utf16_to_utf8 (wbuffer, -1, NULL, NULL, NULL);
-#endif
       }
   
   if (!default_monthname[0])
     for (i=0; i<12; i++)
       {
-#ifndef G_OS_WIN32
 	tmp_time=i*2764800;
 	if (G_UNLIKELY (month_format == NULL))
 	  {
@@ -747,13 +728,6 @@ gtk_calendar_init (GtkCalendar *calendar)
 	  strftime (buffer, sizeof (buffer), month_format, gmtime (&tmp_time));
 
 	default_monthname[i] = g_locale_to_utf8 (buffer, -1, NULL, NULL, NULL);
-#else
-	if (!GetLocaleInfoW (GetThreadLocale (), LOCALE_SMONTHNAME1 + i,
-			     wbuffer, G_N_ELEMENTS (wbuffer)))
-	  default_monthname[i] = g_strdup_printf ("(%d)", i);
-	else
-	  default_monthname[i] = g_utf16_to_utf8 (wbuffer, -1, NULL, NULL, NULL);
-#endif
       }
   
   /* Set defaults */
@@ -817,20 +791,6 @@ gtk_calendar_init (GtkCalendar *calendar)
   else if (strcmp (year_before, "calendar:MY") != 0)
     g_warning ("Whoever translated calendar:MY did so wrongly.\n");
 
-#ifdef G_OS_WIN32
-  priv->week_start = 0;
-  week_start = NULL;
-
-  if (GetLocaleInfoW (GetThreadLocale (), LOCALE_IFIRSTDAYOFWEEK,
-		      wbuffer, G_N_ELEMENTS (wbuffer)))
-    week_start = g_utf16_to_utf8 (wbuffer, -1, NULL, NULL, NULL);
-      
-  if (week_start != NULL)
-    {
-      priv->week_start = (week_start[0] - '0' + 1) % 7;
-      g_free(week_start);
-    }
-#else
 #ifdef HAVE__NL_TIME_FIRST_WEEKDAY
   langinfo.string = nl_langinfo (_NL_TIME_FIRST_WEEKDAY);
   first_weekday = langinfo.string[0];
@@ -861,7 +821,6 @@ gtk_calendar_init (GtkCalendar *calendar)
       g_warning ("Whoever translated calendar:week_start:0 did so wrongly.\n");
       priv->week_start = 0;
     }
-#endif
 #endif
 
   calendar_compute_days (calendar);

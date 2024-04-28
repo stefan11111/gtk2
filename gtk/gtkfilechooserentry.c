@@ -82,17 +82,6 @@ static gboolean gtk_file_chooser_entry_tab_handler    (GtkWidget *widget,
 static gboolean gtk_file_chooser_entry_focus_out_event (GtkWidget       *widget,
 							GdkEventFocus   *event);
 
-#ifdef G_OS_WIN32
-static gint     insert_text_callback      (GtkFileChooserEntry *widget,
-					   const gchar         *new_text,
-					   gint                 new_text_length,
-					   gint                *position,
-					   gpointer             user_data);
-static void     delete_text_callback      (GtkFileChooserEntry *widget,
-					   gint                 start_pos,
-					   gint                 end_pos,
-					   gpointer             user_data);
-#endif
 
 static gboolean match_selected_callback   (GtkEntryCompletion  *completion,
 					   GtkTreeModel        *model,
@@ -205,12 +194,6 @@ _gtk_file_chooser_entry_init (GtkFileChooserEntry *chooser_entry)
   g_signal_connect (chooser_entry, "key-press-event",
                     G_CALLBACK (gtk_file_chooser_entry_tab_handler), NULL);
 
-#ifdef G_OS_WIN32
-  g_signal_connect (chooser_entry, "insert-text",
-		    G_CALLBACK (insert_text_callback), NULL);
-  g_signal_connect (chooser_entry, "delete-text",
-		    G_CALLBACK (delete_text_callback), NULL);
-#endif
 }
 
 static void
@@ -671,70 +654,6 @@ refresh_current_folder_and_file_part (GtkFileChooserEntry *chooser_entry)
   g_free (text);
   g_free (old_file_part);
 }
-
-#ifdef G_OS_WIN32
-static gint
-insert_text_callback (GtkFileChooserEntry *chooser_entry,
-		      const gchar	  *new_text,
-		      gint       	   new_text_length,
-		      gint       	  *position,
-		      gpointer   	   user_data)
-{
-  const gchar *colon = memchr (new_text, ':', new_text_length);
-  gint i;
-
-  /* Disallow these characters altogether */
-  for (i = 0; i < new_text_length; i++)
-    {
-      if (new_text[i] == '<' ||
-	  new_text[i] == '>' ||
-	  new_text[i] == '"' ||
-	  new_text[i] == '|' ||
-	  new_text[i] == '*' ||
-	  new_text[i] == '?')
-	break;
-    }
-
-  if (i < new_text_length ||
-      /* Disallow entering text that would cause a colon to be anywhere except
-       * after a drive letter.
-       */
-      (colon != NULL &&
-       *position + (colon - new_text) != 1) ||
-      (new_text_length > 0 &&
-       *position <= 1 &&
-       gtk_entry_get_text_length (GTK_ENTRY (chooser_entry)) >= 2 &&
-       gtk_entry_get_text (GTK_ENTRY (chooser_entry))[1] == ':'))
-    {
-      gtk_widget_error_bell (GTK_WIDGET (chooser_entry));
-      g_signal_stop_emission_by_name (chooser_entry, "insert_text");
-      return FALSE;
-    }
-
-  return TRUE;
-}
-
-static void
-delete_text_callback (GtkFileChooserEntry *chooser_entry,
-		      gint                 start_pos,
-		      gint                 end_pos,
-		      gpointer             user_data)
-{
-  /* If deleting a drive letter, delete the colon, too */
-  if (start_pos == 0 && end_pos == 1 &&
-      gtk_entry_get_text_length (GTK_ENTRY (chooser_entry)) >= 2 &&
-      gtk_entry_get_text (GTK_ENTRY (chooser_entry))[1] == ':')
-    {
-      g_signal_handlers_block_by_func (chooser_entry,
-				       G_CALLBACK (delete_text_callback),
-				       user_data);
-      gtk_editable_delete_text (GTK_EDITABLE (chooser_entry), 0, 1);
-      g_signal_handlers_unblock_by_func (chooser_entry,
-					 G_CALLBACK (delete_text_callback),
-					 user_data);
-    }
-}
-#endif
 
 /**
  * _gtk_file_chooser_entry_new:

@@ -3125,7 +3125,6 @@ gtk_print_operation_run (GtkPrintOperation        *op,
       do_print = TRUE;
       result = priv->is_sync ? GTK_PRINT_OPERATION_RESULT_APPLY : GTK_PRINT_OPERATION_RESULT_IN_PROGRESS;
     }
-#ifndef G_OS_WIN32
   else if (priv->allow_async)
     {
       priv->is_sync = FALSE;
@@ -3136,7 +3135,6 @@ gtk_print_operation_run (GtkPrintOperation        *op,
       result = GTK_PRINT_OPERATION_RESULT_IN_PROGRESS;
       run_print_pages = FALSE; /* print_pages is called asynchronously from dialog */
     }
-#endif
   else
     {
       priv->is_sync = TRUE;

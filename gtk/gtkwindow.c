@@ -7987,8 +7987,8 @@ gtk_XParseGeometry (const char   *string,
  * 
  * Parses a standard X Window System geometry string - see the
  * manual page for X (type 'man X') for details on this.
- * gtk_window_parse_geometry() does work on all GTK+ ports
- * including Win32 but is primarily intended for an X environment.
+ * gtk_window_parse_geometry() does work on all GTK+ ports,
+ * but is primarily intended for an X environment.
  *
  * If either a size or a position can be extracted from the
  * geometry string, gtk_window_parse_geometry() returns %TRUE
@@ -8564,49 +8564,6 @@ gtk_window_set_mnemonics_visible (GtkWindow *window,
 
   priv->mnemonics_visible_set = TRUE;
 }
-
-#if defined (G_OS_WIN32) && !defined (_WIN64)
-
-#undef gtk_window_set_icon_from_file
-
-gboolean
-gtk_window_set_icon_from_file (GtkWindow   *window,
-			       const gchar *filename,
-			       GError     **err)
-{
-  gchar *utf8_filename = g_locale_to_utf8 (filename, -1, NULL, NULL, err);
-  gboolean retval;
-
-  if (utf8_filename == NULL)
-    return FALSE;
-
-  retval = gtk_window_set_icon_from_file_utf8 (window, utf8_filename, err);
-
-  g_free (utf8_filename);
-
-  return retval;
-}
-
-#undef gtk_window_set_default_icon_from_file
-
-gboolean
-gtk_window_set_default_icon_from_file (const gchar *filename,
-				       GError     **err)
-{
-  gchar *utf8_filename = g_locale_to_utf8 (filename, -1, NULL, NULL, err);
-  gboolean retval;
-
-  if (utf8_filename == NULL)
-    return FALSE;
-
-  retval = gtk_window_set_default_icon_from_file_utf8 (utf8_filename, err);
-
-  g_free (utf8_filename);
-
-  return retval;
-}
-
-#endif
 
 #define __GTK_WINDOW_C__
 
