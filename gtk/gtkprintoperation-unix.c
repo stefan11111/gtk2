@@ -866,49 +866,8 @@ _gtk_print_operation_platform_backend_run_dialog (GtkPrintOperation *op,
 						  gboolean           show_dialog,
 						  GtkWindow         *parent,
 						  gboolean          *do_print)
- {
-  GtkWidget *pd;
-  PrintResponseData rdata;
-  gint response;  
-  const gchar *printer_name;
-   
-  rdata.op = op;
-  rdata.do_print = FALSE;
-  rdata.do_preview = FALSE;
-  rdata.result = GTK_PRINT_OPERATION_RESULT_CANCEL;
-  rdata.print_cb = NULL;
-  rdata.destroy = NULL;
-  rdata.parent = parent;
-  rdata.loop = NULL;
-
-  if (show_dialog)
-    {
-      pd = get_print_dialog (op, parent);
-
-      response = gtk_dialog_run (GTK_DIALOG (pd));
-      handle_print_response (pd, response, &rdata);
-    }
-  else
-    {
-      printer_name = NULL;
-      if (op->priv->print_settings)
-	printer_name = gtk_print_settings_get_printer (op->priv->print_settings);
-      
-      rdata.loop = g_main_loop_new (NULL, FALSE);
-      find_printer (printer_name,
-		    (GFunc) found_printer, &rdata);
-
-      GDK_THREADS_LEAVE ();  
-      g_main_loop_run (rdata.loop);
-      GDK_THREADS_ENTER ();  
-
-      g_main_loop_unref (rdata.loop);
-      rdata.loop = NULL;
-    }
-
-  *do_print = rdata.do_print;
-  
-  return rdata.result;
+{
+  return GTK_PRINT_OPERATION_RESULT_CANCEL;
 }
 
 
