@@ -22,6 +22,12 @@
 #include "gtkprintbackend.h"
 
 
+GType
+gtk_print_backend_get_type (void)
+{
+  return 0;
+}
+
 GQuark
 gtk_print_backend_error_quark (void)
 {
