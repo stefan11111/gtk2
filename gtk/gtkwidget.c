@@ -3163,6 +3163,10 @@ gtk_widget_unparent (GtkWidget *widget)
 void
 gtk_widget_destroy (GtkWidget *widget)
 {
+  if (!widget) {
+    return;
+  }
+
   g_return_if_fail (GTK_IS_WIDGET (widget));
 
   gtk_object_destroy ((GtkObject*) widget);
@@ -3293,6 +3297,10 @@ gtk_widget_show_now (GtkWidget *widget)
 void
 gtk_widget_hide (GtkWidget *widget)
 {
+  if (!widget) {
+    return;
+  }
+
   g_return_if_fail (GTK_IS_WIDGET (widget));
   
   if (gtk_widget_get_visible (widget))

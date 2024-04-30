@@ -1053,6 +1053,10 @@ gtk_dialog_run (GtkDialog *dialog)
   gulong destroy_handler;
   gulong delete_handler;
   
+  if (!dialog) {
+    return -1;
+  }
+
   g_return_val_if_fail (GTK_IS_DIALOG (dialog), -1);
 
   g_object_ref (dialog);
