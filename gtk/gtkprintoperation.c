@@ -717,7 +717,8 @@ gtk_print_operation_class_init (GtkPrintOperationClass *class)
 		  G_STRUCT_OFFSET (GtkPrintOperationClass, begin_print),
 		  NULL, NULL,
 		  g_cclosure_marshal_VOID__OBJECT,
-		  G_TYPE_NONE, 1, GTK_TYPE_PRINT_CONTEXT);
+		  G_TYPE_NONE, 1, GTK_TYPE_PRINT_OPERATION_RESULT);
+
 
    /**
    * GtkPrintOperation::paginate:
@@ -749,7 +750,7 @@ gtk_print_operation_class_init (GtkPrintOperationClass *class)
 		  G_STRUCT_OFFSET (GtkPrintOperationClass, paginate),
 		  paginate_accumulator, NULL,
 		  NULL,
-		  G_TYPE_BOOLEAN, 1, GTK_TYPE_PRINT_CONTEXT);
+		  G_TYPE_BOOLEAN, 1, GTK_TYPE_PRINT_OPERATION_RESULT);
 
 
 
@@ -818,7 +819,7 @@ gtk_print_operation_class_init (GtkPrintOperationClass *class)
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 2,
-		  GTK_TYPE_PRINT_CONTEXT,
+		  GTK_TYPE_PRINT_OPERATION_RESULT,
 		  G_TYPE_INT);
 
   /**
@@ -839,7 +840,7 @@ gtk_print_operation_class_init (GtkPrintOperationClass *class)
 		  G_STRUCT_OFFSET (GtkPrintOperationClass, end_print),
 		  NULL, NULL,
 		  g_cclosure_marshal_VOID__OBJECT,
-		  G_TYPE_NONE, 1, GTK_TYPE_PRINT_CONTEXT);
+		  G_TYPE_NONE, 1, GTK_TYPE_PRINT_OPERATION_RESULT);
 
   /**
    * GtkPrintOperation::status-changed:
