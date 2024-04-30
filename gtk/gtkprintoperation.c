@@ -957,26 +957,6 @@ gtk_print_operation_class_init (GtkPrintOperationClass *class)
 		  GTK_TYPE_WINDOW);
 
 
-
-  /**
-   * GtkPrintOperation:print-settings:
-   *
-   * The #GtkPrintSettings used for initializing the dialog.
-   *
-   * Setting this property is typically used to re-establish 
-   * print settings from a previous print operation, see 
-   * gtk_print_operation_run().
-   *
-   * Since: 2.10
-   */
-  g_object_class_install_property (gobject_class,
-				   PROP_PRINT_SETTINGS,
-				   g_param_spec_object ("print-settings",
-							P_("Print Settings"),
-							P_("The GtkPrintSettings used for initializing the dialog"),
-							GTK_TYPE_PRINT_SETTINGS,
-							GTK_PARAM_READWRITE));
-  
   /**
    * GtkPrintOperation:job-name:
    *

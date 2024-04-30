@@ -135,7 +135,11 @@ gtk_print_job_set_source_file (GtkPrintJob *job,
 			       const gchar *filename,
 			       GError     **error)
 {
-  return 1;
+  g_set_error_literal (error,
+                       GTK_PRINT_ERROR,
+                       GTK_PRINT_ERROR_INVALID_FILE,
+                       "Printing is not supported");
+  return 0;
 }
 
 /**
@@ -154,6 +158,10 @@ cairo_surface_t *
 gtk_print_job_get_surface (GtkPrintJob  *job,
 			   GError      **error)
 {
+  g_set_error_literal (error,
+                       GTK_PRINT_ERROR,
+                       GTK_PRINT_ERROR_INVALID_FILE,
+                       "Printing is not supported");
   return NULL;
 }
 

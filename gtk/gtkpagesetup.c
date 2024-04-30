@@ -383,7 +383,7 @@ gtk_page_setup_load_file (GtkPageSetup *setup,
                        GTK_PRINT_ERROR,
                        GTK_PRINT_ERROR_INVALID_FILE,
                        "Printing is not supported");
-  return 1;
+  return 0;
 }
 
 /**
@@ -435,7 +435,7 @@ gtk_page_setup_load_key_file (GtkPageSetup *setup,
                        GTK_PRINT_ERROR,
                        GTK_PRINT_ERROR_INVALID_FILE,
                        "Printing is not supported");
-  return 1;
+  return 0;
 }
 
 /**
@@ -486,7 +486,7 @@ gtk_page_setup_to_file (GtkPageSetup  *setup,
                        GTK_PRINT_ERROR,
                        GTK_PRINT_ERROR_INVALID_FILE,
                        "Printing is not supported");
-  return 1;
+  return 0;
 }
 
 /**

@@ -420,6 +420,10 @@ gtk_paper_size_new_from_key_file (GKeyFile    *key_file,
 				  const gchar *group_name,
 				  GError     **error)
 {
+  g_set_error_literal (error,
+                       GTK_PRINT_ERROR,
+                       GTK_PRINT_ERROR_INVALID_FILE,
+                       "Printing is not supported");
   return NULL;
 }
 
