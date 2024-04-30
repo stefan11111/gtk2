@@ -44,17 +44,6 @@ _gtk_print_save_custom_papers (GtkListStore *store)
 {
 }
 
-/**
- * gtk_custom_paper_unix_dialog_new:
- * @title: (allow-none): the title of the dialog, or %NULL
- * @parent: (allow-none): transient parent of the dialog, or %NULL
- *
- * Creates a new custom paper dialog.
- *
- * Returns: the new #GtkCustomPaperUnixDialog
- *
- * Since: 2.18
- */
 GtkWidget *
 _gtk_custom_paper_unix_dialog_new (GtkWindow   *parent,
 				  const gchar *title)

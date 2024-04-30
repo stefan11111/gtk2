@@ -34,24 +34,11 @@ gtk_print_backend_error_quark (void)
   return NULL;
 }
 
-/*****************************************
- *     GtkPrintBackendModule modules     *
- *****************************************/
-
-/**
- * gtk_printer_backend_load_modules:
- *
- * Return value: (element-type GtkPrintBackend) (transfer container):
- */
 GList *
 gtk_print_backend_load_modules (void)
 {
   return NULL;
 }
-
-/*****************************************
- *             GtkPrintBackend           *
- *****************************************/
 
 void
 gtk_print_backend_add_printer (GtkPrintBackend *backend,
@@ -70,11 +57,6 @@ gtk_print_backend_set_list_done (GtkPrintBackend *backend)
 {
 }
 
-/**
- * gtk_print_backend_get_printer_list:
- *
- * Return value: (element-type GtkPrinter) (transfer container):
- */
 GList *
 gtk_print_backend_get_printer_list (GtkPrintBackend *backend)
 {

@@ -21,10 +21,6 @@
 #include "gtkprinteroption.h"
 
 
-/*****************************************
- *            GtkPrinterOption           *
- *****************************************/
-
 
 GtkPrinterOption *
 gtk_printer_option_new (const char *name, const char *display_text,
