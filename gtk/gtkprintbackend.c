@@ -31,7 +31,7 @@ gtk_print_backend_get_type (void)
 GQuark
 gtk_print_backend_error_quark (void)
 {
-  return NULL;
+  return 0;
 }
 
 GList *
