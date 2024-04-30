@@ -89,9 +89,7 @@ static void          prepare_data            (PrintPagesData *data);
 static void          clamp_page_ranges       (PrintPagesData *data);
 
 
-G_DEFINE_TYPE_WITH_CODE (GtkPrintOperation, gtk_print_operation, G_TYPE_OBJECT,
-			 G_IMPLEMENT_INTERFACE (GTK_TYPE_PRINT_OPERATION_PREVIEW,
-						preview_iface_init))
+G_DEFINE_TYPE (GtkPrintOperation, gtk_print_operation, G_TYPE_OBJECT)
 
 /**
  * gtk_print_error_quark:
@@ -915,47 +913,6 @@ gtk_print_operation_class_init (GtkPrintOperationClass *class)
 		  NULL, NULL,
 		  g_cclosure_marshal_VOID__OBJECT,
 		  G_TYPE_NONE, 1, GTK_TYPE_WIDGET);
-
-   /**
-   * GtkPrintOperation::preview:
-   * @operation: the #GtkPrintOperation on which the signal was emitted
-   * @preview: the #GtkPrintPreviewOperation for the current operation
-   * @context: the #GtkPrintContext that will be used
-   * @parent: (allow-none): the #GtkWindow to use as window parent, or %NULL
-   *
-   * Gets emitted when a preview is requested from the native dialog.
-   *
-   * The default handler for this signal uses an external viewer 
-   * application to preview.
-   *
-   * To implement a custom print preview, an application must return
-   * %TRUE from its handler for this signal. In order to use the
-   * provided @context for the preview implementation, it must be
-   * given a suitable cairo context with gtk_print_context_set_cairo_context().
-   * 
-   * The custom preview implementation can use 
-   * gtk_print_operation_preview_is_selected() and 
-   * gtk_print_operation_preview_render_page() to find pages which
-   * are selected for print and render them. The preview must be
-   * finished by calling gtk_print_operation_preview_end_preview()
-   * (typically in response to the user clicking a close button).
-   *
-   * Returns: %TRUE if the listener wants to take over control of the preview
-   * 
-   * Since: 2.10
-   */
-  signals[PREVIEW] =
-    g_signal_new (I_("preview"),
-		  G_TYPE_FROM_CLASS (gobject_class),
-		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkPrintOperationClass, preview),
-		  _gtk_boolean_handled_accumulator, NULL,
-		  NULL,
-		  G_TYPE_BOOLEAN, 3,
-		  GTK_TYPE_PRINT_OPERATION_PREVIEW,
-		  GTK_TYPE_PRINT_CONTEXT,
-		  GTK_TYPE_WINDOW);
-
 
   /**
    * GtkPrintOperation:job-name:
