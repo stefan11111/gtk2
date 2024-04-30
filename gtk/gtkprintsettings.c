@@ -20,7 +20,6 @@
 
 #include <gtk/gtk.h>
 #include "gtkprintsettings.h"
-#include "gtkprintutils.h"
 
 GType
 gtk_print_settings_get_type (void)
