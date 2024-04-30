@@ -754,30 +754,6 @@ gtk_print_operation_class_init (GtkPrintOperationClass *class)
 		  G_TYPE_BOOLEAN, 1, GTK_TYPE_PRINT_CONTEXT);
 
 
-  /**
-   * GtkPrintOperation::request-page-setup:
-   * @operation: the #GtkPrintOperation on which the signal was emitted
-   * @context: the #GtkPrintContext for the current operation
-   * @page_nr: the number of the currently printed page (0-based)
-   * @setup: the #GtkPageSetup 
-   * 
-   * Emitted once for every page that is printed, to give
-   * the application a chance to modify the page setup. Any changes 
-   * done to @setup will be in force only for printing this page.
-   *
-   * Since: 2.10
-   */
-  signals[REQUEST_PAGE_SETUP] =
-    g_signal_new (I_("request-page-setup"),
-		  G_TYPE_FROM_CLASS (gobject_class),
-		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkPrintOperationClass, request_page_setup),
-		  NULL, NULL,
-		  NULL,
-		  G_TYPE_NONE, 3,
-		  GTK_TYPE_PRINT_CONTEXT,
-		  G_TYPE_INT,
-		  GTK_TYPE_PAGE_SETUP);
 
   /**
    * GtkPrintOperation::draw-page:
@@ -917,27 +893,6 @@ gtk_print_operation_class_init (GtkPrintOperationClass *class)
 		  NULL,
 		  G_TYPE_OBJECT, 0);
 
-  /**
-   * GtkPrintOperation::update-custom-widget:
-   * @operation: the #GtkPrintOperation on which the signal was emitted
-   * @widget: the custom widget added in create-custom-widget
-   * @setup: actual page setup
-   * @settings: actual print settings
-   *
-   * Emitted after change of selected printer. The actual page setup and
-   * print settings are passed to the custom widget, which can actualize
-   * itself according to this change.
-   *
-   * Since: 2.18
-   */
-  signals[UPDATE_CUSTOM_WIDGET] =
-    g_signal_new (I_("update-custom-widget"),
-		  G_TYPE_FROM_CLASS (class),
-		  G_SIGNAL_RUN_LAST,
-		  G_STRUCT_OFFSET (GtkPrintOperationClass, update_custom_widget),
-		  NULL, NULL,
-		  NULL,
-		  G_TYPE_NONE, 3, GTK_TYPE_WIDGET, GTK_TYPE_PAGE_SETUP, GTK_TYPE_PRINT_SETTINGS);
 
   /**
    * GtkPrintOperation::custom-widget-apply:
@@ -1001,25 +956,7 @@ gtk_print_operation_class_init (GtkPrintOperationClass *class)
 		  GTK_TYPE_PRINT_CONTEXT,
 		  GTK_TYPE_WINDOW);
 
-  
-  /**
-   * GtkPrintOperation:default-page-setup:
-   *
-   * The #GtkPageSetup used by default.
-   * 
-   * This page setup will be used by gtk_print_operation_run(),
-   * but it can be overridden on a per-page basis by connecting
-   * to the #GtkPrintOperation::request-page-setup signal.
-   *
-   * Since: 2.10
-   */
-  g_object_class_install_property (gobject_class,
-				   PROP_DEFAULT_PAGE_SETUP,
-				   g_param_spec_object ("default-page-setup",
-							P_("Default Page Setup"),
-							P_("The GtkPageSetup used by default"),
-							GTK_TYPE_PAGE_SETUP,
-							GTK_PARAM_READWRITE));
+
 
   /**
    * GtkPrintOperation:print-settings:
@@ -3086,71 +3023,7 @@ gtk_print_operation_run (GtkPrintOperation        *op,
 			 GtkWindow                *parent,
 			 GError                  **error)
 {
-  GtkPrintOperationPrivate *priv;
-  GtkPrintOperationResult result;
-  GtkPageSetup *page_setup;
-  gboolean do_print;
-  gboolean run_print_pages;
-  
-  g_return_val_if_fail (GTK_IS_PRINT_OPERATION (op), 
-                        GTK_PRINT_OPERATION_RESULT_ERROR);
-  g_return_val_if_fail (op->priv->status == GTK_PRINT_STATUS_INITIAL,
-                        GTK_PRINT_OPERATION_RESULT_ERROR);
-  priv = op->priv;
-  
-  run_print_pages = TRUE;
-  do_print = FALSE;
-  priv->error = NULL;
-  priv->action = action;
-
-  if (priv->print_settings == NULL)
-    priv->print_settings = gtk_print_settings_new ();
-  
-  if (action == GTK_PRINT_OPERATION_ACTION_EXPORT)
-    {
-      /* note: if you implement async EXPORT, update the docs
-       * docs for the allow-async property.
-       */
-      priv->is_sync = TRUE;
-      g_return_val_if_fail (priv->export_filename != NULL, GTK_PRINT_OPERATION_RESULT_ERROR);
-      result = run_pdf (op, parent, &do_print);
-    }
-  else if (action == GTK_PRINT_OPERATION_ACTION_PREVIEW)
-    {
-      priv->is_sync = !priv->allow_async;
-      priv->print_context = _gtk_print_context_new (op);
-      page_setup = create_page_setup (op);
-      _gtk_print_context_set_page_setup (priv->print_context, page_setup);
-      g_object_unref (page_setup);
-      do_print = TRUE;
-      result = priv->is_sync ? GTK_PRINT_OPERATION_RESULT_APPLY : GTK_PRINT_OPERATION_RESULT_IN_PROGRESS;
-    }
-  else if (priv->allow_async)
-    {
-      priv->is_sync = FALSE;
-      _gtk_print_operation_platform_backend_run_dialog_async (op,
-							      action == GTK_PRINT_OPERATION_ACTION_PRINT_DIALOG,
-							      parent,
-							      print_pages);
-      result = GTK_PRINT_OPERATION_RESULT_IN_PROGRESS;
-      run_print_pages = FALSE; /* print_pages is called asynchronously from dialog */
-    }
-  else
-    {
-      priv->is_sync = TRUE;
-      result = _gtk_print_operation_platform_backend_run_dialog (op, 
-								 action == GTK_PRINT_OPERATION_ACTION_PRINT_DIALOG,
-								 parent,
-								 &do_print);
-    }
-
-  if (run_print_pages)
-    print_pages (op, parent, do_print, result);
-
-  if (priv->error && error)
-    *error = g_error_copy (priv->error);
-  
-  return result;
+  return GTK_PRINT_OPERATION_RESULT_CANCEL;
 }
 
 /**

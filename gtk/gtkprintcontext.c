@@ -232,16 +232,6 @@ void
 _gtk_print_context_set_page_setup (GtkPrintContext *context,
 				   GtkPageSetup    *page_setup)
 {
-  g_return_if_fail (GTK_IS_PRINT_CONTEXT (context));
-  g_return_if_fail (page_setup == NULL ||
-		    GTK_IS_PAGE_SETUP (page_setup));
-  
-  g_object_ref (page_setup);
-
-  if (context->page_setup != NULL)
-    g_object_unref (context->page_setup);
-
-  context->page_setup = page_setup;
 }
 
 /**

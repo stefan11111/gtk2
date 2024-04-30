@@ -84,29 +84,6 @@ gtk_print_operation_preview_base_init (gpointer g_iface)
 		    G_TYPE_NONE, 1,
 		    GTK_TYPE_PRINT_CONTEXT);
 
-      /**
-       * GtkPrintOperationPreview::got-page-size:
-       * @preview: the object on which the signal is emitted
-       * @context: the current #GtkPrintContext
-       * @page_setup: the #GtkPageSetup for the current page
-       *
-       * The ::got-page-size signal is emitted once for each page
-       * that gets rendered to the preview. 
-       *
-       * A handler for this signal should update the @context
-       * according to @page_setup and set up a suitable cairo
-       * context, using gtk_print_context_set_cairo_context().
-       */
-      g_signal_new (I_("got-page-size"),
-		    GTK_TYPE_PRINT_OPERATION_PREVIEW,
-		    G_SIGNAL_RUN_LAST,
-		    G_STRUCT_OFFSET (GtkPrintOperationPreviewIface, got_page_size),
-		    NULL, NULL,
-		    NULL,
-		    G_TYPE_NONE, 2,
-		    GTK_TYPE_PRINT_CONTEXT,
-		    GTK_TYPE_PAGE_SETUP);
-
       initialized = TRUE;
     }
 }

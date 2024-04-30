@@ -427,11 +427,7 @@ gboolean
 gtk_paper_size_is_equal (GtkPaperSize *size1,
 			 GtkPaperSize *size2)
 {
-  if (size1->info != NULL && size2->info != NULL)
-    return size1->info == size2->info;
-  
-  return strcmp (gtk_paper_size_get_name (size1),
-		 gtk_paper_size_get_name (size2)) == 0;
+  return 0;
 }
 
 GList * _gtk_load_custom_papers (void);
@@ -497,10 +493,7 @@ gtk_paper_size_get_paper_sizes (gboolean include_custom)
 const gchar *
 gtk_paper_size_get_name (GtkPaperSize *size)
 {
-  if (size->name)
-    return size->name;
-  g_assert (size->info != NULL);
-  return paper_names + size->info->name;
+  return "";
 }
 
 /**
@@ -516,15 +509,7 @@ gtk_paper_size_get_name (GtkPaperSize *size)
 const gchar *
 gtk_paper_size_get_display_name (GtkPaperSize *size)
 {
-  const gchar *display_name;
-
-  if (size->display_name)
-    return size->display_name;
-
-  g_assert (size->info != NULL);
-
-  display_name = paper_names + size->info->display_name;
-  return display_name;
+  return "";
 }
 
 /**
@@ -564,7 +549,7 @@ gdouble
 gtk_paper_size_get_width (GtkPaperSize *size, 
 			  GtkUnit       unit)
 {
-  return _gtk_print_convert_from_mm (size->width, unit);
+  return 0;
 }
 
 /**
@@ -583,7 +568,7 @@ gdouble
 gtk_paper_size_get_height (GtkPaperSize *size, 
 			   GtkUnit       unit)
 {
-  return _gtk_print_convert_from_mm (size->height, unit);
+  return 0;
 }
 
 /**
@@ -597,7 +582,7 @@ gtk_paper_size_get_height (GtkPaperSize *size,
 gboolean
 gtk_paper_size_is_custom (GtkPaperSize *size)
 {
-  return size->is_custom;
+  return 0;
 }
 
 /**
@@ -617,11 +602,6 @@ gtk_paper_size_set_size (GtkPaperSize *size,
 			 gdouble       height, 
 			 GtkUnit       unit)
 {
-  g_return_if_fail (size != NULL);
-  g_return_if_fail (size->is_custom);
-
-  size->width = _gtk_print_convert_to_mm (width, unit);
-  size->height = _gtk_print_convert_to_mm (height, unit);
 }
 
 #define NL_PAPER_GET(x)         \
@@ -637,6 +617,7 @@ gtk_paper_size_set_size (GtkPaperSize *size,
  * is owned by GTK+ and should not be modified.
  * 
  * Since: 2.10
+
  */
 const gchar *
 gtk_paper_size_get_default (void)

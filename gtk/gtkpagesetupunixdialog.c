@@ -712,15 +712,6 @@ custom_paper_dialog_response_cb (GtkDialog *custom_paper_dialog,
 				 gint       response_id,
 				 gpointer   user_data)
 {
-  GtkPageSetupUnixDialog *page_setup_dialog = GTK_PAGE_SETUP_UNIX_DIALOG (user_data);
-  GtkPageSetupUnixDialogPrivate *priv = page_setup_dialog->priv;
-
-  _gtk_print_load_custom_papers (priv->custom_paper_list);
-
-  /* Update printer page list */
-  printer_changed_callback (GTK_COMBO_BOX (priv->printer_combo), page_setup_dialog);
-
-  gtk_widget_destroy (GTK_WIDGET (custom_paper_dialog));
 }
 
 static void
@@ -745,21 +736,6 @@ paper_size_changed (GtkComboBox            *combo_box,
 
       if (page_setup == NULL)
 	{
-          GtkWidget *custom_paper_dialog;
-
-          /* Change from "manage" menu item to last value */
-          if (priv->last_setup)
-            last_page_setup = g_object_ref (priv->last_setup);
-          else
-	    last_page_setup = gtk_page_setup_new (); /* "good" default */
-	  set_paper_size (dialog, last_page_setup, FALSE, TRUE);
-          g_object_unref (last_page_setup);
-
-          /* And show the custom paper dialog */
-          custom_paper_dialog = _gtk_custom_paper_unix_dialog_new (GTK_WINDOW (dialog), NULL);
-          g_signal_connect (custom_paper_dialog, "response", G_CALLBACK (custom_paper_dialog_response_cb), dialog);
-          gtk_window_present (GTK_WINDOW (custom_paper_dialog));
-
           return;
 	}
 
@@ -869,123 +845,6 @@ create_radio_button (GSList      *group,
 static void
 populate_dialog (GtkPageSetupUnixDialog *ps_dialog)
 {
-  GtkPageSetupUnixDialogPrivate *priv = ps_dialog->priv;
-  GtkDialog *dialog = GTK_DIALOG (ps_dialog);
-  GtkWidget *table, *label, *combo, *radio_button;
-  GtkCellRenderer *cell;
-
-  gtk_window_set_resizable (GTK_WINDOW (dialog), FALSE);
-
-  gtk_dialog_set_has_separator (dialog, FALSE);
-  gtk_container_set_border_width (GTK_CONTAINER (dialog), 5);
-  gtk_box_set_spacing (GTK_BOX (dialog->vbox), 2); /* 2 * 5 + 2 = 12 */
-  gtk_container_set_border_width (GTK_CONTAINER (dialog->action_area), 5);
-  gtk_box_set_spacing (GTK_BOX (dialog->action_area), 6);
-
-  table = gtk_table_new (5, 4, FALSE);
-  gtk_table_set_row_spacings (GTK_TABLE (table), 6);
-  gtk_table_set_col_spacings (GTK_TABLE (table), 12);
-  gtk_container_set_border_width (GTK_CONTAINER (table), 5);
-  gtk_box_pack_start (GTK_BOX (dialog->vbox), table, TRUE, TRUE, 0);
-  gtk_widget_show (table);
-
-  label = gtk_label_new_with_mnemonic (_("_Format for:"));
-  gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
-  gtk_table_attach (GTK_TABLE (table), label,
-		    0, 1, 0, 1,
-		    GTK_FILL, 0, 0, 0);
-  gtk_widget_show (label);
-
-  combo = gtk_combo_box_new_with_model (GTK_TREE_MODEL (priv->printer_list));
-  priv->printer_combo = combo;
-
-  cell = gtk_cell_renderer_text_new ();
-  gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (combo), cell, TRUE);
-  gtk_cell_layout_set_attributes (GTK_CELL_LAYOUT (combo), cell,
-                                  "markup", PRINTER_LIST_COL_NAME,
-                                  NULL);
-
-  gtk_table_attach (GTK_TABLE (table), combo,
-		    1, 4, 0, 1,
-		    GTK_FILL | GTK_EXPAND, 0, 0, 0);
-  gtk_widget_show (combo);
-  gtk_label_set_mnemonic_widget (GTK_LABEL (label), combo);
-
-  label = gtk_label_new_with_mnemonic (_("_Paper size:"));
-  gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
-  gtk_table_attach (GTK_TABLE (table), label,
-		    0, 1, 1, 2,
-		    GTK_FILL, 0, 0, 0);
-  gtk_widget_show (label);
-
-  combo = gtk_combo_box_new_with_model (GTK_TREE_MODEL (priv->page_setup_list));
-  priv->paper_size_combo = combo;
-  gtk_combo_box_set_row_separator_func (GTK_COMBO_BOX (combo), 
-					paper_size_row_is_separator, NULL, NULL);
-  
-  cell = gtk_cell_renderer_text_new ();
-  gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (combo), cell, TRUE);
-  gtk_cell_layout_set_cell_data_func (GTK_CELL_LAYOUT (combo), cell,
-				      page_name_func, NULL, NULL);
-
-  gtk_table_attach (GTK_TABLE (table), combo,
-		    1, 4, 1, 2,
-		    GTK_FILL | GTK_EXPAND, 0, 0, 0);
-  gtk_widget_show (combo);
-  gtk_label_set_mnemonic_widget (GTK_LABEL (label), combo);
-
-  label = gtk_label_new (NULL);
-  priv->paper_size_label = label;
-  gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
-  gtk_table_attach (GTK_TABLE (table), label,
-		    1, 4, 2, 3,
-		    GTK_FILL, 0, 0, 0);
-  gtk_widget_show (label);
-
-  label = gtk_label_new_with_mnemonic (_("_Orientation:"));
-  gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
-  gtk_table_attach (GTK_TABLE (table), label,
-		    0, 1, 3, 4,
-		    GTK_FILL, 0, 0, 0);
-  gtk_widget_show (label);
-
-  radio_button = create_radio_button (NULL, GTK_STOCK_ORIENTATION_PORTRAIT);
-  priv->portrait_radio = radio_button;
-  gtk_table_attach (GTK_TABLE (table), radio_button,
-		    1, 2, 3, 4,
-		    GTK_EXPAND|GTK_FILL, 0, 0, 0);
-  gtk_label_set_mnemonic_widget (GTK_LABEL (label), radio_button);
-
-  radio_button = create_radio_button (gtk_radio_button_get_group (GTK_RADIO_BUTTON (radio_button)),
-				      GTK_STOCK_ORIENTATION_REVERSE_PORTRAIT);
-  priv->reverse_portrait_radio = radio_button;
-  gtk_table_attach (GTK_TABLE (table), radio_button,
-		    2, 3, 3, 4,
-		    GTK_EXPAND|GTK_FILL, 0, 0, 0);
-
-  radio_button = create_radio_button (gtk_radio_button_get_group (GTK_RADIO_BUTTON (radio_button)),
-				      GTK_STOCK_ORIENTATION_LANDSCAPE);
-  priv->landscape_radio = radio_button;
-  gtk_table_attach (GTK_TABLE (table), radio_button,
-		    1, 2, 4, 5,
-		    GTK_EXPAND|GTK_FILL, 0, 0, 0);
-  gtk_widget_show (radio_button);
-
-  gtk_table_set_row_spacing (GTK_TABLE (table), 3, 0);
-  
-  radio_button = create_radio_button (gtk_radio_button_get_group (GTK_RADIO_BUTTON (radio_button)),
-				      GTK_STOCK_ORIENTATION_REVERSE_LANDSCAPE);
-  priv->reverse_landscape_radio = radio_button;
-  gtk_table_attach (GTK_TABLE (table), radio_button,
-		    2, 3, 4, 5,
-		    GTK_EXPAND|GTK_FILL, 0, 0, 0);
-
-
-  g_signal_connect (priv->paper_size_combo, "changed", G_CALLBACK (paper_size_changed), ps_dialog);
-  g_signal_connect (priv->printer_combo, "changed", G_CALLBACK (printer_changed_callback), ps_dialog);
-  gtk_combo_box_set_active (GTK_COMBO_BOX (priv->printer_combo), 0);
-
-  load_print_backends (ps_dialog);
 }
 
 /**

@@ -952,25 +952,7 @@ gtk_print_run_page_setup_dialog (GtkWindow        *parent,
 				 GtkPageSetup     *page_setup,
 				 GtkPrintSettings *settings)
 {
-  GtkWidget *dialog;
-  gint response;
-  PageSetupResponseData rdata;  
-  
-  rdata.page_setup = NULL;
-  rdata.done_cb = NULL;
-  rdata.data = NULL;
-  rdata.destroy = NULL;
-
-  dialog = get_page_setup_dialog (parent, page_setup, settings);
-  response = gtk_dialog_run (GTK_DIALOG (dialog));
-  handle_page_setup_response (dialog, response, &rdata);
- 
-  if (rdata.page_setup)
-    return rdata.page_setup;
-  else if (page_setup)
-    return gtk_page_setup_copy (page_setup);
-  else
-    return gtk_page_setup_new ();
+  return NULL;
 }
 
 /**
