@@ -18,23 +18,7 @@
  */
 
 #include "gtkprintjob.h"
-#include "gtkprinter.h"
-#include "gtkprinter-private.h"
-#include "gtkprintbackend.h"
 
-/**
- * gtk_print_job_new:
- * @title: the job title
- * @printer: a #GtkPrinter
- * @settings: a #GtkPrintSettings
- * @page_setup: a #GtkPageSetup
- *
- * Creates a new #GtkPrintJob.
- *
- * Return value: a new #GtkPrintJob
- *
- * Since: 2.10
- **/
 GtkPrintJob *
 gtk_print_job_new (const gchar      *title,
 		   GtkPrinter       *printer,
@@ -44,64 +28,24 @@ gtk_print_job_new (const gchar      *title,
   return NULL;
 }
 
-/**
- * gtk_print_job_get_settings:
- * @job: a #GtkPrintJob
- * 
- * Gets the #GtkPrintSettings of the print job.
- * 
- * Return value: (transfer none): the settings of @job
- *
- * Since: 2.10
- */
 GtkPrintSettings *
 gtk_print_job_get_settings (GtkPrintJob *job)
 {
   return NULL;
 }
 
-/**
- * gtk_print_job_get_printer:
- * @job: a #GtkPrintJob
- * 
- * Gets the #GtkPrinter of the print job.
- * 
- * Return value: (transfer none): the printer of @job
- *
- * Since: 2.10
- */
 GtkPrinter *
 gtk_print_job_get_printer (GtkPrintJob *job)
 {
   return NULL;
 }
 
-/**
- * gtk_print_job_get_title:
- * @job: a #GtkPrintJob
- * 
- * Gets the job title.
- * 
- * Return value: the title of @job
- *
- * Since: 2.10
- */
 const gchar *
 gtk_print_job_get_title (GtkPrintJob *job)
 {
   return NULL;
 }
 
-/**
- * gtk_print_job_get_status:
- * @job: a #GtkPrintJob
- * 
- * Gets the status of the print job.
- * 
- * Return value: the status of @job
- *
- * Since: 2.10
- */
 GtkPrintStatus
 gtk_print_job_get_status (GtkPrintJob *job)
 {
@@ -114,22 +58,6 @@ gtk_print_job_set_status (GtkPrintJob   *job,
 {
 }
 
-/**
- * gtk_print_job_set_source_file:
- * @job: a #GtkPrintJob
- * @filename: the file to be printed
- * @error: return location for errors
- * 
- * Make the #GtkPrintJob send an existing document to the 
- * printing system. The file can be in any format understood
- * by the platforms printing system (typically PostScript,
- * but on many platforms PDF may work too). See 
- * gtk_printer_accepts_pdf() and gtk_printer_accepts_ps().
- * 
- * Returns: %FALSE if an error occurred
- *
- * Since: 2.10
- **/
 gboolean
 gtk_print_job_set_source_file (GtkPrintJob *job,
 			       const gchar *filename,
@@ -142,18 +70,6 @@ gtk_print_job_set_source_file (GtkPrintJob *job,
   return 0;
 }
 
-/**
- * gtk_print_job_get_surface:
- * @job: a #GtkPrintJob
- * @error: (allow-none): return location for errors, or %NULL
- * 
- * Gets a cairo surface onto which the pages of
- * the print job should be rendered.
- * 
- * Return value: (transfer none): the cairo surface of @job
- *
- * Since: 2.10
- **/
 cairo_surface_t *
 gtk_print_job_get_surface (GtkPrintJob  *job,
 			   GError      **error)
@@ -165,55 +81,18 @@ gtk_print_job_get_surface (GtkPrintJob  *job,
   return NULL;
 }
 
-/**
- * gtk_print_job_set_track_print_status:
- * @job: a #GtkPrintJob
- * @track_status: %TRUE to track status after printing
- * 
- * If track_status is %TRUE, the print job will try to continue report
- * on the status of the print job in the printer queues and printer. This
- * can allow your application to show things like "out of paper" issues,
- * and when the print job actually reaches the printer.
- * 
- * This function is often implemented using some form of polling, so it should
- * not be enabled unless needed.
- *
- * Since: 2.10
- */
 void
 gtk_print_job_set_track_print_status (GtkPrintJob *job,
 				      gboolean     track_status)
 {
 }
 
-/**
- * gtk_print_job_get_track_print_status:
- * @job: a #GtkPrintJob
- *
- * Returns wheter jobs will be tracked after printing.
- * For details, see gtk_print_job_set_track_print_status().
- *
- * Return value: %TRUE if print job status will be reported after printing
- *
- * Since: 2.10
- */
 gboolean
 gtk_print_job_get_track_print_status (GtkPrintJob *job)
 {
   return 1;
 }
 
-/**
- * gtk_print_job_send:
- * @job: a GtkPrintJob
- * @callback: function to call when the job completes or an error occurs
- * @user_data: user data that gets passed to @callback
- * @dnotify: destroy notify for @user_data
- * 
- * Sends the print job off to the printer.  
- * 
- * Since: 2.10
- **/
 void
 gtk_print_job_send (GtkPrintJob             *job,
                     GtkPrintJobCompleteFunc  callback,
