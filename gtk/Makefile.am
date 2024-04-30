@@ -677,9 +677,6 @@ stamp_files =					\
 # that don't serve as direct make target sources, i.e. they don't have
 # their own .lo rules and don't get publically installed
 gtk_extra_sources =				\
-	paper_names.c				\
-	paper_names_offsets.c			\
-	gen-paper-names.c			\
 	gtkversion.h.in
 
 #
