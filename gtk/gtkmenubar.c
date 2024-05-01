@@ -599,7 +599,7 @@ window_key_press_handler (GtkWidget   *widget,
         g_warning ("Failed to parse menu bar accelerator '%s'\n", accel);
 
       /* FIXME this is wrong, needs to be in the global accel resolution
-       * thing, to properly consider i18n etc., but that probably requires
+       * thing., but that probably requires
        * AccelGroup changes etc.
        */
       if (event->keyval == keyval &&

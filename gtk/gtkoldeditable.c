@@ -29,7 +29,6 @@
 #include "config.h"
 #include <string.h>
 #include "gdk/gdkkeysyms.h"
-#include "gdk/gdki18n.h"
 #include "gtkclipboard.h"
 #include "gtkoldeditable.h"
 #include "gtkmain.h"

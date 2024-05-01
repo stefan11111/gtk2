@@ -631,7 +631,7 @@ file_printer_get_options (GtkPrinter           *printer,
 
   option = gtk_printer_option_new ("gtk-n-up", _("Pages per _sheet:"), GTK_PRINTER_OPTION_TYPE_PICKONE);
   gtk_printer_option_choices_from_array (option, G_N_ELEMENTS (n_up),
-					 (char **) n_up, (char **) n_up /* FIXME i18n (localised digits)! */);
+					 (char **) n_up, (char **) n_up /* FIXME (localised digits)! */);
   if (settings)
     pages_per_sheet = gtk_print_settings_get (settings, GTK_PRINT_SETTINGS_NUMBER_UP);
   if (pages_per_sheet)
