@@ -646,61 +646,6 @@ else
     fi
 fi
 
-# `widechar' tests for gdki18n.h
-AC_MSG_CHECKING(for wchar.h)
-AC_TRY_CPP([#include <wchar.h>], gdk_wchar_h=yes, gdk_wchar_h=no)
-if test $gdk_wchar_h = yes; then
-   AC_DEFINE(HAVE_WCHAR_H, 1, [Have wchar.h include file])
-fi
-AC_MSG_RESULT($gdk_wchar_h)
-
-# Check for wctype.h (for iswalnum)
-AC_MSG_CHECKING(for wctype.h)
-AC_TRY_CPP([#include <wctype.h>], gdk_wctype_h=yes, gdk_wctype_h=no)
-if test $gdk_wctype_h = yes; then
-   AC_DEFINE(HAVE_WCTYPE_H, 1, [Have wctype.h include file])
-fi
-AC_MSG_RESULT($gdk_wctype_h)
-
-# in Solaris 2.5, `iswalnum' is in -lw
-GDK_WLIBS=
-AC_CHECK_FUNC(iswalnum,,[AC_CHECK_LIB(w,iswalnum,GDK_WLIBS=-lw)])
-
-oLIBS="$LIBS"
-LIBS="$LIBS $GDK_WLIBS"
-# The following is necessary for Linux libc-5.4.38
-AC_MSG_CHECKING(if iswalnum() and friends are properly defined)
-AC_TRY_LINK([#include <stdlib.h>
-#if (defined(HAVE_WCTYPE_H) || defined(HAVE_WCHAR_H))
-#  ifdef HAVE_WCTYPE_H
-#    include <wctype.h>
-#  else
-#    ifdef HAVE_WCHAR_H
-#      include <wchar.h>
-#    endif
-#  endif
-#else
-#  define iswalnum(c) ((wchar_t)(c) <= 0xFF && isalnum(c))
-#endif],[
-iswalnum((wchar_t) 0);
-], gdk_working_wctype=yes, gdk_working_wctype=no)
-LIBS="$oLIBS"
-
-if test $gdk_working_wctype = no; then
-   AC_DEFINE(HAVE_BROKEN_WCTYPE, 1, [Is the wctype implementation broken])
-   GDK_WLIBS=
-fi
-AC_MSG_RESULT($gdk_working_wctype)
-AC_SUBST(GDK_WLIBS)
-
-# Check for uxtheme.h (for MS-Windows Engine)
-AC_MSG_CHECKING(for uxtheme.h)
-AC_TRY_CPP([#include <uxtheme.h>], gtk_uxtheme_h=yes, gtk_uxtheme_h=no)
-if test $gtk_uxtheme_h = yes; then
-   AC_DEFINE(HAVE_UXTHEME_H, 1, [Have uxtheme.h include file])
-fi
-AC_MSG_RESULT($gtk_uxtheme_h)
-
 # Checks for gdkspawn
 AC_CHECK_HEADERS(crt_externs.h)
 AC_CHECK_FUNCS(_NSGetEnviron)

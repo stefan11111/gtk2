@@ -32,7 +32,6 @@
 #undef GDK_DISABLE_DEPRECATED
 
 #include "gdk/gdkkeysyms.h"
-#include "gdk/gdki18n.h"
 
 #undef GTK_DISABLE_DEPRECATED
 
@@ -48,8 +47,9 @@
 #include "gtkprivate.h"
 #include "gtkintl.h"
 
-
-
+#include <stddef.h>
+#define gdk_iswalnum(c) ((wchar_t)(c) <= 0xFF && isalnum(c))
+#define gdk_iswspace(c) ((wchar_t)(c) <= 0xFF && isspace(c))
 
 #define INITIAL_BUFFER_SIZE      1024
 #define INITIAL_LINE_CACHE_SIZE  256
