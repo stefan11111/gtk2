@@ -36,7 +36,7 @@
 #include "gtkkeyhash.h"
 #include "gtkwidget.h"
 #include "gtkrc.h"
-#include "gtkalias.h"
+
 
 
 /* --- defines --- */
@@ -1726,4 +1726,4 @@ _gtk_binding_reset_parsed (void)
 }
 
 #define __GTK_BINDINGS_C__
-#include "gtkaliasdef.c"
+

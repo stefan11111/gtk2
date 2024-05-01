@@ -20,10 +20,10 @@
 
 #include "config.h"
 #include "gtkcelleditable.h"
-#include "gtkmarshalers.h"
+
 #include "gtkprivate.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 typedef GtkCellEditableIface GtkCellEditableInterface;
 G_DEFINE_INTERFACE(GtkCellEditable, gtk_cell_editable, GTK_TYPE_WIDGET)
@@ -139,4 +139,4 @@ gtk_cell_editable_remove_widget (GtkCellEditable *cell_editable)
 }
 
 #define __GTK_CELL_EDITABLE_C__
-#include "gtkaliasdef.c"
+

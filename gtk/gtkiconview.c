@@ -27,7 +27,7 @@
 #include "gtkcellrenderer.h"
 #include "gtkcellrenderertext.h"
 #include "gtkcellrendererpixbuf.h"
-#include "gtkmarshalers.h"
+
 #include "gtkbindings.h"
 #include "gtkdnd.h"
 #include "gtkmain.h"
@@ -39,7 +39,7 @@
 #include "gtktextbuffer.h"
 #include "gtktreednd.h"
 #include "gtkprivate.h"
-#include "gtkalias.h"
+
 
 #undef DEBUG_ICON_VIEW
 
@@ -7705,4 +7705,4 @@ gtk_icon_view_buildable_custom_tag_end (GtkBuildable *buildable,
 
 
 #define __GTK_ICON_VIEW_C__
-#include "gtkaliasdef.c"
+

@@ -32,7 +32,7 @@
 #include "gtkaccellabel.h"
 #include "gtkdnd.h"
 #include "gtkmain.h"
-#include "gtkmarshalers.h"
+
 #include "gtkpango.h"
 #include "gtkwindow.h"
 #include "gdk/gdkkeysyms.h"
@@ -50,7 +50,7 @@
 #include "gtkshow.h"
 #include "gtktooltip.h"
 #include "gtkprivate.h"
-#include "gtkalias.h"
+
 
 #define GTK_LABEL_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_LABEL, GtkLabelPrivate))
 
@@ -6028,4 +6028,4 @@ gtk_label_query_tooltip (GtkWidget  *widget,
 
 
 #define __GTK_LABEL_C__
-#include "gtkaliasdef.c"
+

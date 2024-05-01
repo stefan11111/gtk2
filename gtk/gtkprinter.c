@@ -29,7 +29,7 @@
 #include "gtkprinter-private.h"
 #include "gtkprintbackend.h"
 #include "gtkprintjob.h"
-#include "gtkalias.h"
+
 
 #define GTK_PRINTER_GET_PRIVATE(o)  \
    (G_TYPE_INSTANCE_GET_PRIVATE ((o), GTK_TYPE_PRINTER, GtkPrinterPrivate))
@@ -1285,4 +1285,4 @@ gtk_print_capabilities_get_type (void)
 
 
 #define __GTK_PRINTER_C__
-#include "gtkaliasdef.c"
+

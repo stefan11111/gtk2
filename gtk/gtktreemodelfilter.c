@@ -23,7 +23,7 @@
 #include "gtkintl.h"
 #include "gtktreednd.h"
 #include "gtkprivate.h"
-#include "gtkalias.h"
+
 #include <string.h>
 
 /* ITER FORMAT:
@@ -3499,4 +3499,4 @@ gtk_tree_model_filter_clear_cache (GtkTreeModelFilter *filter)
 }
 
 #define __GTK_TREE_MODEL_FILTER_C__
-#include "gtkaliasdef.c"
+

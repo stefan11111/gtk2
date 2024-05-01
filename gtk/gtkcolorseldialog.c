@@ -33,7 +33,7 @@
 #include "gtkstock.h"
 #include "gtkintl.h"
 #include "gtkbuildable.h"
-#include "gtkalias.h"
+
 
 enum {
   PROP_0,
@@ -231,4 +231,4 @@ gtk_color_selection_dialog_buildable_get_internal_child (GtkBuildable *buildable
 
 
 #define __GTK_COLOR_SELECTION_DIALOG_C__
-#include "gtkaliasdef.c"
+

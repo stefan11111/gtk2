@@ -40,13 +40,13 @@
 #include "gtkmenuitem.h"
 #include "gtklabel.h"
 #include "gtkintl.h"
-#include "gtkmarshalers.h"
+
 #include "gtkbindings.h"
 #include "gtkprivate.h"
 #include "gtkdnd.h"
 #include "gtkbuildable.h"
 
-#include "gtkalias.h"
+
 
 #define SCROLL_DELAY_FACTOR   5
 #define SCROLL_THRESHOLD      12
@@ -8137,4 +8137,4 @@ gtk_notebook_set_action_widget (GtkNotebook *notebook,
 }
 
 #define __GTK_NOTEBOOK_C__
-#include "gtkaliasdef.c"
+

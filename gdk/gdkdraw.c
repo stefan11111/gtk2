@@ -34,7 +34,7 @@
 #include "gdkwindow.h"
 #include "gdkscreen.h"
 #include "gdkpixbuf.h"
-#include "gdkalias.h"
+
 
 static GdkImage*    gdk_drawable_real_get_image (GdkDrawable     *drawable,
 						 gint             x,
@@ -1976,4 +1976,4 @@ _gdk_drawable_create_cairo_surface (GdkDrawable *drawable,
 
 
 #define __GDK_DRAW_C__
-#include "gdkaliasdef.c"
+

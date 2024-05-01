@@ -31,7 +31,7 @@
 #include <gobject/gvaluecollector.h>
 #undef GDK_DISABLE_DEPRECATED
 #include "gtkgc.h"
-#include "gtkmarshalers.h"
+
 #undef GTK_DISABLE_DEPRECATED
 #include "gtkoptionmenu.h"
 #include "gtkrc.h"
@@ -42,7 +42,7 @@
 #include "gtkiconfactory.h"
 #include "gtksettings.h"	/* _gtk_settings_parse_convert() */
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 #define LIGHTNESS_MULT  1.3
 #define DARKNESS_MULT   0.7
@@ -7206,4 +7206,4 @@ gtk_draw_insertion_cursor (GtkWidget          *widget,
 }
 
 #define __GTK_STYLE_C__
-#include "gtkaliasdef.c"
+

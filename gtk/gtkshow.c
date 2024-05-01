@@ -26,7 +26,7 @@
 
 #include "gtkshow.h"
 
-#include "gtkalias.h"
+
 
 
 /**
@@ -80,4 +80,4 @@ gtk_show_uri (GdkScreen    *screen,
 
 
 #define __GTK_SHOW_C__
-#include "gtkaliasdef.c"
+

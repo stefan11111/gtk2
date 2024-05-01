@@ -34,7 +34,7 @@
 #include "gtkcheckmenuitem.h"
 #include  <gobject/gvaluecollector.h>
 #include "gtkmain.h"
-#include "gtkmarshalers.h"
+
 #include "gtkmenu.h"
 #include "gtktearoffmenuitem.h"
 #include "gtkwindow.h"
@@ -43,7 +43,7 @@
 #include "gtksettings.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 
 #define NAVIGATION_REGION_OVERSHOOT 50  /* How much the navigation region
@@ -5367,4 +5367,4 @@ gtk_menu_get_reserve_toggle_size (GtkMenu *menu)
 }
 
 #define __GTK_MENU_C__
-#include "gtkaliasdef.c"
+

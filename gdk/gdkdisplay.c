@@ -28,9 +28,9 @@
 #include "gdkdisplay.h"
 #include "gdkwindowimpl.h"
 #include "gdkinternals.h"
-#include "gdkmarshalers.h"
+
 #include "gdkscreen.h"
-#include "gdkalias.h"
+
 
 enum {
   CLOSED,
@@ -1304,4 +1304,4 @@ gdk_display_pointer_is_grabbed (GdkDisplay *display)
 }
 
 #define __GDK_DISPLAY_C__
-#include "gdkaliasdef.c"
+

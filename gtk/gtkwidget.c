@@ -34,7 +34,7 @@
 #include "gtkiconfactory.h"
 #include "gtkintl.h"
 #include "gtkmain.h"
-#include "gtkmarshalers.h"
+
 #include "gtkrc.h"
 #include "gtkselection.h"
 #include "gtksettings.h"
@@ -53,7 +53,7 @@
 #include "gtkinvisible.h"
 #include "gtkbuildable.h"
 #include "gtkbuilderprivate.h"
-#include "gtkalias.h"
+
 
 /**
  * SECTION:gtkwidget
@@ -11128,4 +11128,4 @@ gtk_widget_send_focus_change (GtkWidget *widget,
 }
 
 #define __GTK_WIDGET_C__
-#include "gtkaliasdef.c"
+

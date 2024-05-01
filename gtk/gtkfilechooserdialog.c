@@ -29,7 +29,7 @@
 #include "gtkfilesystem.h"
 #include "gtktypebuiltins.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 #include <stdarg.h>
 
@@ -487,4 +487,4 @@ gtk_file_chooser_dialog_new_with_backend (const gchar          *title,
 }
 
 #define __GTK_FILE_CHOOSER_DIALOG_C__
-#include "gtkaliasdef.c"
+

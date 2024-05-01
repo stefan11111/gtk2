@@ -29,8 +29,8 @@
 #include "gtkintl.h"
 #include "gtktypebuiltins.h"
 #include "gtkprivate.h"
-#include "gtkmarshalers.h"
-#include "gtkalias.h"
+
+
 
 
 enum
@@ -1200,4 +1200,4 @@ _gtk_recent_chooser_get_use_action_appearance (GtkRecentChooser *recent_chooser)
 }
 
 #define __GTK_RECENT_CHOOSER_C__
-#include "gtkaliasdef.c"
+

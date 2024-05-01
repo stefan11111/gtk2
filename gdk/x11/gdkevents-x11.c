@@ -43,7 +43,7 @@
 
 #include "gdkinputprivate.h"
 #include "gdksettings.c"
-#include "gdkalias.h"
+
 
 
 #ifdef HAVE_XKB
@@ -3178,4 +3178,4 @@ _gdk_windowing_event_data_free (GdkEvent *event)
 }
 
 #define __GDK_EVENTS_X11_C__
-#include "gdkaliasdef.c"
+

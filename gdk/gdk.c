@@ -36,7 +36,7 @@
 #ifndef HAVE_XCONVERTCASE
 #include "gdkkeysyms.h"
 #endif
-#include "gdkalias.h"
+
 
 typedef struct _GdkPredicate  GdkPredicate;
 
@@ -835,4 +835,4 @@ gdk_set_program_class (const char *program_class)
 }
 
 #define __GDK_C__
-#include "gdkaliasdef.c"
+

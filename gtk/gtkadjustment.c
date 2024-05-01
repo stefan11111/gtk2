@@ -26,10 +26,10 @@
 
 #include "config.h"
 #include "gtkadjustment.h"
-#include "gtkmarshalers.h"
+
 #include "gtkprivate.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 enum
 {
@@ -699,4 +699,4 @@ gtk_adjustment_clamp_page (GtkAdjustment *adjustment,
 }
 
 #define __GTK_ADJUSTMENT_C__
-#include "gtkaliasdef.c"
+

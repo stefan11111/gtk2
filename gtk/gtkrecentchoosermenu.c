@@ -45,7 +45,7 @@
 #include "gtkactivatable.h"
 #include "gtktypebuiltins.h"
 #include "gtkprivate.h"
-#include "gtkalias.h"
+
 
 struct _GtkRecentChooserMenuPrivate
 {
@@ -1294,4 +1294,4 @@ gtk_recent_chooser_menu_set_show_numbers (GtkRecentChooserMenu *menu,
 }
 
 #define __GTK_RECENT_CHOOSER_MENU_C__
-#include "gtkaliasdef.c"
+

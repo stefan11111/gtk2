@@ -62,7 +62,7 @@
 #include "gtkprivate.h"
 #include "gtkbuildable.h"
 
-#include "gtkalias.h"
+
 
 #define GTK_ASSISTANT_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), GTK_TYPE_ASSISTANT, GtkAssistantPrivate))
 
@@ -2364,4 +2364,4 @@ gtk_assistant_buildable_custom_finished (GtkBuildable *buildable,
 
 
 #define __GTK_ASSISTANT_C__
-#include "gtkaliasdef.c"
+

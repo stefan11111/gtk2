@@ -38,7 +38,7 @@
 #include "gtkpixmap.h"
 #include "gtkintl.h"
 
-#include "gtkalias.h"
+
 
 
 static gint gtk_pixmap_expose     (GtkWidget       *widget,
@@ -284,4 +284,4 @@ build_insensitive_pixmap (GtkPixmap *gtkpixmap)
   g_object_unref (stated);
 }
 
-#include "gtkaliasdef.c"
+

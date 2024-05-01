@@ -31,7 +31,7 @@
 #include "gtkprivate.h"
 #include "gtkintl.h"
 #include "gtkbuildable.h"
-#include "gtkalias.h"
+
 
 #define LABEL_PAD 1
 #define LABEL_SIDE_PAD 2
@@ -731,4 +731,4 @@ gtk_frame_real_compute_child_allocation (GtkFrame      *frame,
 }
 
 #define __GTK_FRAME_C__
-#include "gtkaliasdef.c"
+

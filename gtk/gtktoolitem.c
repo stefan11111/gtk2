@@ -27,14 +27,14 @@
 #undef GTK_DISABLE_DEPRECATED /* GtkTooltips */
 
 #include "gtktoolitem.h"
-#include "gtkmarshalers.h"
+
 #include "gtktoolshell.h"
 #include "gtkseparatormenuitem.h"
 #include "gtkactivatable.h"
 #include "gtkintl.h"
 #include "gtkmain.h"
 #include "gtkprivate.h"
-#include "gtkalias.h"
+
 
 /**
  * SECTION:gtktoolitem
@@ -1488,4 +1488,4 @@ gtk_tool_item_toolbar_reconfigured (GtkToolItem *tool_item)
 }
 
 #define __GTK_TOOL_ITEM_C__
-#include "gtkaliasdef.c"
+

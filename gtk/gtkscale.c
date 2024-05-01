@@ -34,13 +34,13 @@
 #include "gtkscale.h"
 #include "gtkiconfactory.h"
 #include "gtkicontheme.h"
-#include "gtkmarshalers.h"
+
 #include "gtkbindings.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
 #include "gtkbuildable.h"
 #include "gtkbuilderprivate.h"
-#include "gtkalias.h"
+
 
 
 #define	MAX_DIGITS	(64)	/* don't change this,
@@ -1721,4 +1721,4 @@ gtk_scale_buildable_custom_finished (GtkBuildable *buildable,
 }
 
 #define __GTK_SCALE_C__
-#include "gtkaliasdef.c"
+

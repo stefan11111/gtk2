@@ -35,7 +35,7 @@
 #include "gtkprogress.h" 
 #include "gtkprivate.h" 
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 #define EPSILON  1e-5
 #define DEFAULT_FORMAT "%P %%"
@@ -711,4 +711,4 @@ gtk_progress_set_activity_mode (GtkProgress *progress,
     }
 }
 
-#include "gtkaliasdef.c"
+

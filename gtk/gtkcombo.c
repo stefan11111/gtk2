@@ -52,7 +52,7 @@
 #include "gtkprivate.h"
 #include "gtkintl.h"
 
-#include "gtkalias.h"
+
 
 static const gchar gtk_combo_string_key[] = "gtk-combo-string-value";
 
@@ -1226,4 +1226,4 @@ gtk_combo_get_property (GObject    *object,
 }
 
 #define __GTK_SMART_COMBO_C__
-#include "gtkaliasdef.c"
+

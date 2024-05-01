@@ -34,8 +34,8 @@
 #include "gdkdrawable.h"
 #include "gdkintl.h"
 #include "gdkscreen.h"
-#include "gdkmarshalers.h"
-#include "gdkalias.h"
+
+
 
 #undef DEBUG_WINDOW_PRINTING
 
@@ -11379,4 +11379,4 @@ gdk_window_get_height (GdkWindow *window)
 
 
 #define __GDK_WINDOW_C__
-#include "gdkaliasdef.c"
+

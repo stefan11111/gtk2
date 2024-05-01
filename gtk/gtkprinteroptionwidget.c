@@ -40,7 +40,7 @@
 #include "gtkprivate.h"
 
 #include "gtkprinteroptionwidget.h"
-#include "gtkalias.h"
+
 
 #define GTK_PRINTER_OPTION_WIDGET_GET_PRIVATE(o)  \
    (G_TYPE_INSTANCE_GET_PRIVATE ((o), GTK_TYPE_PRINTER_OPTION_WIDGET, GtkPrinterOptionWidgetPrivate))
@@ -984,4 +984,4 @@ gtk_printer_option_widget_get_value (GtkPrinterOptionWidget *widget)
 }
 
 #define __GTK_PRINTER_OPTION_WIDGET_C__
-#include "gtkaliasdef.c"
+

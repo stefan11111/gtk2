@@ -31,7 +31,7 @@
 
 #include "gtkhscale.h"
 #include "gtkorientable.h"
-#include "gtkalias.h"
+
 
 
 G_DEFINE_TYPE (GtkHScale, gtk_hscale, GTK_TYPE_SCALE)
@@ -113,4 +113,4 @@ gtk_hscale_new_with_range (gdouble min,
 }
 
 #define __GTK_HSCALE_C__
-#include "gtkaliasdef.c"
+

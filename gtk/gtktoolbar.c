@@ -44,7 +44,7 @@
 #include "gtkimage.h"
 #include "gtklabel.h"
 #include "gtkmain.h"
-#include "gtkmarshalers.h"
+
 #include "gtkmenu.h"
 #include "gtkorientable.h"
 #include "gtkradiobutton.h"
@@ -57,7 +57,7 @@
 #include "gtkvbox.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 typedef struct _ToolbarContent ToolbarContent;
 
@@ -5033,4 +5033,4 @@ toolbar_rebuild_menu (GtkToolShell *shell)
 }
 
 #define __GTK_TOOLBAR_C__
-#include "gtkaliasdef.c"
+

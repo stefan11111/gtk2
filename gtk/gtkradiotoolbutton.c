@@ -25,7 +25,7 @@
 #include "gtkradiobutton.h"
 #include "gtkintl.h"
 #include "gtkprivate.h"
-#include "gtkalias.h"
+
 
 enum {
   PROP_0,
@@ -254,4 +254,4 @@ gtk_radio_tool_button_set_group (GtkRadioToolButton *button,
 }
 
 #define __GTK_RADIO_TOOL_BUTTON_C__
-#include "gtkaliasdef.c"
+

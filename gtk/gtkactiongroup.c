@@ -39,11 +39,11 @@
 #include "gtktoggleaction.h"
 #include "gtkradioaction.h"
 #include "gtkaccelmap.h"
-#include "gtkmarshalers.h"
+
 #include "gtkbuilderprivate.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 #define GTK_ACTION_GROUP_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_ACTION_GROUP, GtkActionGroupPrivate))
 
@@ -1423,4 +1423,4 @@ _gtk_action_group_emit_post_activate (GtkActionGroup *action_group,
 }
 
 #define __GTK_ACTION_GROUP_C__
-#include "gtkaliasdef.c"
+

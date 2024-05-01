@@ -50,7 +50,7 @@
 #include "gdkinternals.h"
 #include "MwmUtil.h"
 #include "gdkwindow-x11.h"
-#include "gdkalias.h"
+
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -5685,4 +5685,4 @@ gdk_window_impl_iface_init (GdkWindowImplIface *iface)
 }
 
 #define __GDK_WINDOW_X11_C__
-#include "gdkaliasdef.c"
+

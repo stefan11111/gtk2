@@ -28,7 +28,7 @@
 
 #include "config.h"
 #include "gtkmain.h"
-#include "gtkmarshalers.h"
+
 #include "gtksignal.h"
 #include "gtklist.h"
 
@@ -37,7 +37,7 @@
 #include "gtktreeitem.h"
 #include "gtkintl.h"
 
-#include "gtkalias.h"
+
 
 enum {
   SELECTION_CHANGED,
@@ -1124,4 +1124,4 @@ gtk_tree_set_view_lines (GtkTree       *tree,
 }
 
 #define __GTK_TREE_C__
-#include "gtkaliasdef.c"
+

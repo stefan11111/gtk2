@@ -34,10 +34,10 @@
 #include "gtksignal.h"
 #include "gtktooltips.h"
 #include "gtkmain.h"
-#include "gtkmarshalers.h"
+
 #include "gtkintl.h"
 
-#include "gtkalias.h"
+
 
 
 
@@ -521,4 +521,4 @@ gtk_tips_query_event (GtkWidget	       *widget,
 }
 
 #define __GTK_TIPS_QUERY_C__
-#include "gtkaliasdef.c"
+

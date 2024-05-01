@@ -26,11 +26,11 @@
 
 #include "config.h"
 #include "gtklabel.h"
-#include "gtkmarshalers.h"
+
 #include "gtkradiobutton.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 
 enum {
@@ -806,4 +806,4 @@ gtk_radio_button_draw_indicator (GtkCheckButton *check_button,
 }
 
 #define __GTK_RADIO_BUTTON_C__
-#include "gtkaliasdef.c"
+

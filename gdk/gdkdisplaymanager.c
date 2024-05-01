@@ -31,11 +31,11 @@
 #include "gdkdisplaymanager.h"
 
 #include "gdkinternals.h"
-#include "gdkmarshalers.h"
+
 
 #include "gdkintl.h"
 
-#include "gdkalias.h"
+
 
 struct _GdkDisplayManager
 {
@@ -261,4 +261,4 @@ gdk_display_manager_list_displays (GdkDisplayManager *display_manager)
 }
 
 #define __GDK_DISPLAY_MANAGER_C__
-#include "gdkaliasdef.c"
+

@@ -37,7 +37,7 @@
 #include "gdkinternals.h"
 #include "gdkdisplay-x11.h"
 #include "gdkscreen-x11.h"
-#include "gdkalias.h"
+
 
 typedef struct _GdkFontPrivateX        GdkFontPrivateX;
 
@@ -845,4 +845,4 @@ gdk_x11_font_get_name (GdkFont *font)
 }
      
 #define __GDK_FONT_X11_C__
-#include "gdkaliasdef.c"
+

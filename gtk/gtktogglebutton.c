@@ -27,13 +27,13 @@
 #include "config.h"
 #include "gtklabel.h"
 #include "gtkmain.h"
-#include "gtkmarshalers.h"
+
 #include "gtktogglebutton.h"
 #include "gtktoggleaction.h"
 #include "gtkactivatable.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 #define DEFAULT_LEFT_POS  4
 #define DEFAULT_TOP_POS   4
@@ -533,4 +533,4 @@ gtk_toggle_button_update_state (GtkButton *button)
 }
 
 #define __GTK_TOGGLE_BUTTON_C__
-#include "gtkaliasdef.c"
+

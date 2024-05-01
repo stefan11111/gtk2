@@ -28,7 +28,7 @@
 
 #include "gtkhpaned.h"
 #include "gtkorientable.h"
-#include "gtkalias.h"
+
 
 G_DEFINE_TYPE (GtkHPaned, gtk_hpaned, GTK_TYPE_PANED)
 
@@ -51,4 +51,4 @@ gtk_hpaned_new (void)
 }
 
 #define __GTK_HPANED_C__
-#include "gtkaliasdef.c"
+

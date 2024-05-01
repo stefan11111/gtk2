@@ -40,7 +40,7 @@
 
 #include "gdkinput.h"
 #include "gdkkeysyms.h"
-#include "gdkalias.h"
+
 
 
 static GdkDeviceAxis gdk_input_core_axes[] =
@@ -499,4 +499,4 @@ _gdk_input_exit (void)
 
 #define __GDK_INPUT_NONE_C__
 #define __GDK_INPUT_C__
-#include "gdkaliasdef.c"
+

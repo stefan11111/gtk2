@@ -30,7 +30,7 @@
 
 #include "gdk/gdkkeysyms.h"
 #include "gtkmain.h"
-#include "gtkmarshalers.h"
+
 #include "gtkwindow.h"
 #include "gtkplug.h"
 #include "gtkprivate.h"
@@ -45,7 +45,7 @@
 #endif
 
 #include "gtkxembed.h"
-#include "gtkalias.h"
+
 
 static gboolean xembed_get_info     (GdkWindow     *gdk_window,
 				     unsigned long *version,

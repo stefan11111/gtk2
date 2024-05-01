@@ -47,12 +47,12 @@
 gboolean gdk_net_wm_supports (GdkAtom property);
 #endif
 
-#include "gdkalias.h"
+
 
 #define EventBuffer _gdk_display->buffer
 #define DirectFB _gdk_display->directfb
 
-#include "gdkaliasdef.c"
+
 
 D_DEBUG_DOMAIN (GDKDFB_Events, "GDKDFB/Events", "GDK DirectFB Events");
 D_DEBUG_DOMAIN (GDKDFB_MouseEvents, "GDKDFB/Events/Mouse", "GDK DirectFB Mouse Events");
@@ -793,4 +793,4 @@ _gdk_windowing_event_data_free (GdkEvent *event)
 }
 
 #define __GDK_EVENTS_X11_C__
-#include "gdkaliasdef.c"
+

@@ -70,7 +70,7 @@
 #include "win32/gdkwin32.h"
 #endif
 
-#include "gtkalias.h"
+
 
 #undef DEBUG_SELECTION
 
@@ -3175,4 +3175,4 @@ gtk_selection_bytes_per_item (gint format)
 }
 
 #define __GTK_SELECTION_C__
-#include "gtkaliasdef.c"
+

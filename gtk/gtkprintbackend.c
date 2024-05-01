@@ -25,10 +25,8 @@
 
 #include "gtkintl.h"
 #include "gtkmodules.h"
-#include "gtkmarshalers.h"
 #include "gtkprivate.h"
 #include "gtkprintbackend.h"
-#include "gtkalias.h"
 
 #define GTK_PRINT_BACKEND_GET_PRIVATE(o)  \
    (G_TYPE_INSTANCE_GET_PRIVATE ((o), GTK_TYPE_PRINT_BACKEND, GtkPrintBackendPrivate))
@@ -840,4 +838,3 @@ gtk_print_backend_destroy (GtkPrintBackend *print_backend)
 
 
 #define __GTK_PRINT_BACKEND_C__
-#include "gtkaliasdef.c"

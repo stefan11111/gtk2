@@ -34,9 +34,9 @@
 #include "gtkintl.h"
 #include "gtkmain.h"		/* For _gtk_boolean_handled_accumulator */
 #include "gdk/gdkkeysyms.h"
-#include "gtkmarshalers.h"
+
 #include "gtkprivate.h"
-#include "gtkalias.h"
+
 
 /**
  * SECTION:gtkaccelgroup
@@ -1489,4 +1489,4 @@ gtk_accelerator_get_default_mod_mask (void)
 }
 
 #define __GTK_ACCEL_GROUP_C__
-#include "gtkaliasdef.c"
+

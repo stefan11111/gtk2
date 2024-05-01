@@ -28,7 +28,7 @@
 #include "gtkintl.h"
 #include "gtkwidget.h"
 #include "gtkprivate.h"
-#include "gtkalias.h"
+
 
 #ifdef GDK_WINDOWING_X11
 #include "x11/gdkx.h"
@@ -2663,4 +2663,4 @@ get_color_scheme (GtkSettings *settings)
 
 
 #define __GTK_SETTINGS_C__
-#include "gtkaliasdef.c"
+

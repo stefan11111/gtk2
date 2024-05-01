@@ -36,7 +36,7 @@
 #include "gtkimage.h"
 #include "gtkspinner.h"
 #include "gtkstyle.h"
-#include "gtkalias.h"
+
 
 
 /**
@@ -440,4 +440,4 @@ gtk_spinner_stop (GtkSpinner *spinner)
 }
 
 #define __GTK_SPINNER_C__
-#include "gtkaliasdef.c"
+

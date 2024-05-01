@@ -29,13 +29,13 @@
 #include "gdk/gdkkeysyms.h"
 #include "gtkbindings.h"
 #include "gtkmain.h"
-#include "gtkmarshalers.h"
+
 #include "gtkorientable.h"
 #include "gtkpaned.h"
 #include "gtkwindow.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
-#include "gtkalias.h"
+
 
 enum {
   PROP_0,
@@ -2253,4 +2253,4 @@ gtk_paned_get_handle_window (GtkPaned *paned)
 }
 
 #define __GTK_PANED_C__
-#include "gtkaliasdef.c"
+

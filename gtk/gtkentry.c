@@ -47,7 +47,7 @@
 #include "gtkintl.h"
 #include "gtklabel.h"
 #include "gtkmain.h"
-#include "gtkmarshalers.h"
+
 #include "gtkmenu.h"
 #include "gtkmenuitem.h"
 #include "gtkseparatormenuitem.h"
@@ -65,7 +65,7 @@
 #include "gtktooltip.h"
 #include "gtkiconfactory.h"
 #include "gtkicontheme.h"
-#include "gtkalias.h"
+
 
 #define GTK_ENTRY_COMPLETION_KEY "gtk-entry-completion-key"
 
@@ -10167,4 +10167,4 @@ keymap_state_changed (GdkKeymap *keymap,
 }
 
 #define __GTK_ENTRY_C__
-#include "gtkaliasdef.c"
+

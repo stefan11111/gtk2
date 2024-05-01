@@ -50,7 +50,7 @@
 #include "gtkimagemenuitem.h"
 #include "gtkinfobar.h"
 #include "gtklabel.h"
-#include "gtkmarshalers.h"
+
 #include "gtkmessagedialog.h"
 #include "gtkmountoperation.h"
 #include "gtkpathbar.h"
@@ -72,7 +72,7 @@
 #include "gtkvbox.h"
 #include "gtkintl.h"
 
-#include "gtkalias.h"
+
 
 #include <errno.h>
 #include <string.h>

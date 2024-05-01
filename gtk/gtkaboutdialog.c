@@ -42,7 +42,7 @@
 #include "gtkimage.h"
 #include "gtklabel.h"
 #include "gtklinkbutton.h"
-#include "gtkmarshalers.h"
+
 #include "gtknotebook.h"
 #include "gtkscrolledwindow.h"
 #include "gtkstock.h"
@@ -55,7 +55,7 @@
 #include "gtkprivate.h"
 #include "gtkintl.h"
 
-#include "gtkalias.h"
+
 
 
 /**
@@ -2496,4 +2496,4 @@ gtk_show_about_dialog (GtkWindow   *parent,
 }
 
 #define __GTK_ABOUT_DIALOG_C__
-#include "gtkaliasdef.c"
+
