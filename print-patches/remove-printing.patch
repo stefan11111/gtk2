@@ -15,7 +15,7 @@ diff --git a/configure.ac b/configure.ac
 index d2f117d..4753065 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -1343,129 +1343,6 @@ GDK_PIXBUF_LIBS=`$PKG_CONFIG --libs gdk-pixbuf-2.0`
+@@ -1240,129 +1240,6 @@ GDK_PIXBUF_LIBS=`$PKG_CONFIG --libs gdk-pixbuf-2.0`
  AC_SUBST(GDK_PIXBUF_LIBS)
  
  
@@ -145,9 +145,9 @@ index d2f117d..4753065 100644
  ################################################################
  # Strip -export-dynamic from the link lines of various libraries
  ################################################################
-@@ -1632,12 +1509,6 @@ gdk/directfb/Makefile
+@@ -1518,12 +1395,6 @@ gdk/x11/Makefile
+ gdk/directfb/Makefile
  gtk/Makefile
- gtk/makefile.msc
  gtk/gtkversion.h
 -modules/Makefile
 -modules/printbackends/Makefile
