@@ -2438,10 +2438,6 @@ gdk_event_dispatch (GSource    *source,
  * @event: the #GdkEvent to send, which should be a #GdkEventClient.
  * @winid: the window to send the client message to.
  *
- * On X11, sends an X ClientMessage event to a given window. On
- * Windows, sends a message registered with the name
- * GDK_WIN32_CLIENT_MESSAGE.
- *
  * This could be used for communicating between different
  * applications, though the amount of data is limited to 20 bytes on
  * X11, and to just four bytes on Windows.
@@ -2544,10 +2540,6 @@ gdk_event_send_client_message_to_all_recurse (GdkDisplay *display,
  * as described in the Inter-Client Communication Conventions Manual (ICCCM).
  * If no windows are found with the WM_STATE property set, the message is 
  * sent to all children of the root window.
- *
- * On Windows, broadcasts a message registered with the name
- * GDK_WIN32_CLIENT_MESSAGE to all top-level windows. The amount of
- * data is limited to one long, i.e. four bytes.
  *
  * Since: 2.2
  */

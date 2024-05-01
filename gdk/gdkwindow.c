@@ -7405,6 +7405,10 @@ gdk_window_get_events (GdkWindow *window)
 {
   GdkWindowObject *private;
 
+  if (!window) {
+    return 0;
+  }
+
   g_return_val_if_fail (GDK_IS_WINDOW (window), 0);
 
   private = (GdkWindowObject *) window;

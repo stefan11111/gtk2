@@ -18,82 +18,22 @@
  * Boston, MA 02111-1307, USA.
  */
 
-#include "config.h"
-
 #include "gtkpagesetup.h"
-#include "gtkprintutils.h"
 #include "gtkprintoperation.h" /* for GtkPrintError */
 #include "gtkintl.h"
 #include "gtktypebuiltins.h"
 
 
-#define KEYFILE_GROUP_NAME "Page Setup"
-
-typedef struct _GtkPageSetupClass GtkPageSetupClass;
-
-#define GTK_IS_PAGE_SETUP_CLASS(klass)  (G_TYPE_CHECK_CLASS_TYPE ((klass), GTK_TYPE_PAGE_SETUP))
-#define GTK_PAGE_SETUP_CLASS(klass)     (G_TYPE_CHECK_CLASS_CAST ((klass), GTK_TYPE_PAGE_SETUP, GtkPageSetupClass))
-#define GTK_PAGE_SETUP_GET_CLASS(obj)   (G_TYPE_INSTANCE_GET_CLASS ((obj), GTK_TYPE_PAGE_SETUP, GtkPageSetupClass))
-
-struct _GtkPageSetup
+GType
+gtk_page_setup_get_type (void)
 {
-  GObject parent_instance;
-
-  GtkPageOrientation orientation;
-  GtkPaperSize *paper_size;
-  /* These are stored in mm */
-  double top_margin, bottom_margin, left_margin, right_margin;
-};
-
-struct _GtkPageSetupClass
-{
-  GObjectClass parent_class;
-};
-
-G_DEFINE_TYPE (GtkPageSetup, gtk_page_setup, G_TYPE_OBJECT)
-
-static void
-gtk_page_setup_finalize (GObject *object)
-{
-  GtkPageSetup *setup = GTK_PAGE_SETUP (object);
-  
-  gtk_paper_size_free (setup->paper_size);
-  
-  G_OBJECT_CLASS (gtk_page_setup_parent_class)->finalize (object);
+  return 0;
 }
 
-static void
-gtk_page_setup_init (GtkPageSetup *setup)
-{
-  setup->paper_size = gtk_paper_size_new (NULL);
-  setup->orientation = GTK_PAGE_ORIENTATION_PORTRAIT;
-  setup->top_margin = gtk_paper_size_get_default_top_margin (setup->paper_size, GTK_UNIT_MM);
-  setup->bottom_margin = gtk_paper_size_get_default_bottom_margin (setup->paper_size, GTK_UNIT_MM);
-  setup->left_margin = gtk_paper_size_get_default_left_margin (setup->paper_size, GTK_UNIT_MM);
-  setup->right_margin = gtk_paper_size_get_default_right_margin (setup->paper_size, GTK_UNIT_MM);
-}
-
-static void
-gtk_page_setup_class_init (GtkPageSetupClass *class)
-{
-  GObjectClass *gobject_class = (GObjectClass *)class;
-
-  gobject_class->finalize = gtk_page_setup_finalize;
-}
-
-/**
- * gtk_page_setup_new:
- *
- * Creates a new #GtkPageSetup. 
- * 
- * Return value: a new #GtkPageSetup.
- *
- * Since: 2.10
- */
 GtkPageSetup *
 gtk_page_setup_new (void)
 {
-  return g_object_new (GTK_TYPE_PAGE_SETUP, NULL);
+  return NULL;
 }
 
 /**
@@ -109,18 +49,7 @@ gtk_page_setup_new (void)
 GtkPageSetup *
 gtk_page_setup_copy (GtkPageSetup *other)
 {
-  GtkPageSetup *copy;
-
-  copy = gtk_page_setup_new ();
-  copy->orientation = other->orientation;
-  gtk_paper_size_free (copy->paper_size);
-  copy->paper_size = gtk_paper_size_copy (other->paper_size);
-  copy->top_margin = other->top_margin;
-  copy->bottom_margin = other->bottom_margin;
-  copy->left_margin = other->left_margin;
-  copy->right_margin = other->right_margin;
-
-  return copy;
+  return other;
 }
 
 /**
@@ -136,7 +65,7 @@ gtk_page_setup_copy (GtkPageSetup *other)
 GtkPageOrientation
 gtk_page_setup_get_orientation (GtkPageSetup *setup)
 {
-  return setup->orientation;
+  return 0;
 }
 
 /**
@@ -152,7 +81,6 @@ void
 gtk_page_setup_set_orientation (GtkPageSetup       *setup,
 				GtkPageOrientation  orientation)
 {
-  setup->orientation = orientation;
 }
 
 /**
@@ -168,9 +96,7 @@ gtk_page_setup_set_orientation (GtkPageSetup       *setup,
 GtkPaperSize *
 gtk_page_setup_get_paper_size (GtkPageSetup *setup)
 {
-  g_return_val_if_fail (GTK_IS_PAGE_SETUP (setup), NULL);
-
-  return setup->paper_size;
+  return NULL;
 }
 
 /**
@@ -188,17 +114,6 @@ void
 gtk_page_setup_set_paper_size (GtkPageSetup *setup,
 			       GtkPaperSize *size)
 {
-  GtkPaperSize *old_size;
-
-  g_return_if_fail (GTK_IS_PAGE_SETUP (setup));
-  g_return_if_fail (size != NULL);
-
-  old_size = setup->paper_size;
-
-  setup->paper_size = gtk_paper_size_copy (size);
-
-  if (old_size)
-    gtk_paper_size_free (old_size);
 }
 
 /**
@@ -215,11 +130,6 @@ void
 gtk_page_setup_set_paper_size_and_default_margins (GtkPageSetup *setup,
 						   GtkPaperSize *size)
 {
-  gtk_page_setup_set_paper_size (setup, size);
-  setup->top_margin = gtk_paper_size_get_default_top_margin (setup->paper_size, GTK_UNIT_MM);
-  setup->bottom_margin = gtk_paper_size_get_default_bottom_margin (setup->paper_size, GTK_UNIT_MM);
-  setup->left_margin = gtk_paper_size_get_default_left_margin (setup->paper_size, GTK_UNIT_MM);
-  setup->right_margin = gtk_paper_size_get_default_right_margin (setup->paper_size, GTK_UNIT_MM);
 }
 
 /**
@@ -237,7 +147,7 @@ gdouble
 gtk_page_setup_get_top_margin (GtkPageSetup *setup,
 			       GtkUnit       unit)
 {
-  return _gtk_print_convert_from_mm (setup->top_margin, unit);
+  return 0;
 }
 
 /**
@@ -255,7 +165,6 @@ gtk_page_setup_set_top_margin (GtkPageSetup *setup,
 			       gdouble       margin,
 			       GtkUnit       unit)
 {
-  setup->top_margin = _gtk_print_convert_to_mm (margin, unit);
 }
 
 /**
@@ -273,7 +182,7 @@ gdouble
 gtk_page_setup_get_bottom_margin (GtkPageSetup *setup,
 				  GtkUnit       unit)
 {
-  return _gtk_print_convert_from_mm (setup->bottom_margin, unit);
+  return 0;
 }
 
 /**
@@ -291,7 +200,6 @@ gtk_page_setup_set_bottom_margin (GtkPageSetup *setup,
 				  gdouble       margin,
 				  GtkUnit       unit)
 {
-  setup->bottom_margin = _gtk_print_convert_to_mm (margin, unit);
 }
 
 /**
@@ -309,7 +217,7 @@ gdouble
 gtk_page_setup_get_left_margin (GtkPageSetup *setup,
 				GtkUnit       unit)
 {
-  return _gtk_print_convert_from_mm (setup->left_margin, unit);
+  return 0;
 }
 
 /**
@@ -327,7 +235,6 @@ gtk_page_setup_set_left_margin (GtkPageSetup *setup,
 				gdouble       margin,
 				GtkUnit       unit)
 {
-  setup->left_margin = _gtk_print_convert_to_mm (margin, unit);
 }
 
 /**
@@ -345,7 +252,7 @@ gdouble
 gtk_page_setup_get_right_margin (GtkPageSetup *setup,
 				 GtkUnit       unit)
 {
-  return _gtk_print_convert_from_mm (setup->right_margin, unit);
+  return 0;
 }
 
 /**
@@ -363,7 +270,6 @@ gtk_page_setup_set_right_margin (GtkPageSetup *setup,
 				 gdouble       margin,
 				 GtkUnit       unit)
 {
-  setup->right_margin = _gtk_print_convert_to_mm (margin, unit);
 }
 
 /**
@@ -385,11 +291,7 @@ gdouble
 gtk_page_setup_get_paper_width (GtkPageSetup *setup,
 				GtkUnit       unit)
 {
-  if (setup->orientation == GTK_PAGE_ORIENTATION_PORTRAIT ||
-      setup->orientation == GTK_PAGE_ORIENTATION_REVERSE_PORTRAIT)
-    return gtk_paper_size_get_width (setup->paper_size, unit);
-  else
-    return gtk_paper_size_get_height (setup->paper_size, unit);
+  return 0;
 }
 
 /**
@@ -411,11 +313,7 @@ gdouble
 gtk_page_setup_get_paper_height (GtkPageSetup *setup,
 				 GtkUnit       unit)
 {
-  if (setup->orientation == GTK_PAGE_ORIENTATION_PORTRAIT ||
-      setup->orientation == GTK_PAGE_ORIENTATION_REVERSE_PORTRAIT)
-    return gtk_paper_size_get_height (setup->paper_size, unit);
-  else
-    return gtk_paper_size_get_width (setup->paper_size, unit);
+  return 0;
 }
 
 /**
@@ -437,12 +335,7 @@ gdouble
 gtk_page_setup_get_page_width (GtkPageSetup *setup,
 			       GtkUnit       unit)
 {
-  gdouble width;
-  
-  width = gtk_page_setup_get_paper_width (setup, GTK_UNIT_MM);
-  width -= setup->left_margin + setup->right_margin;
-  
-  return _gtk_print_convert_from_mm (width, unit);
+  return 0;
 }
 
 /**
@@ -464,12 +357,7 @@ gdouble
 gtk_page_setup_get_page_height (GtkPageSetup *setup,
 				GtkUnit       unit)
 {
-  gdouble height;
-  
-  height = gtk_page_setup_get_paper_height (setup, GTK_UNIT_MM);
-  height -= setup->top_margin + setup->bottom_margin;
-  
-  return _gtk_print_convert_from_mm (height, unit);
+  return 0;
 }
 
 /**
@@ -490,21 +378,11 @@ gtk_page_setup_load_file (GtkPageSetup *setup,
                           const gchar  *file_name,
 			  GError      **error)
 {
-  gboolean retval = FALSE;
-  GKeyFile *key_file;
-
-  g_return_val_if_fail (GTK_IS_PAGE_SETUP (setup), FALSE);
-  g_return_val_if_fail (file_name != NULL, FALSE);
-
-  key_file = g_key_file_new ();
-
-  if (g_key_file_load_from_file (key_file, file_name, 0, error) &&
-      gtk_page_setup_load_key_file (setup, key_file, NULL, error))
-    retval = TRUE;
-
-  g_key_file_free (key_file);
-
-  return retval;
+  g_set_error_literal (error,
+                       GTK_PRINT_ERROR,
+                       GTK_PRINT_ERROR_INVALID_FILE,
+                       "Printing is not supported");
+  return 0;
 }
 
 /**
@@ -524,36 +402,11 @@ GtkPageSetup *
 gtk_page_setup_new_from_file (const gchar  *file_name,
 			      GError      **error)
 {
-  GtkPageSetup *setup = gtk_page_setup_new ();
-
-  if (!gtk_page_setup_load_file (setup, file_name, error))
-    {
-      g_object_unref (setup);
-      setup = NULL;
-    }
-
-  return setup;
-}
-
-/* something like this should really be in gobject! */
-static guint
-string_to_enum (GType type,
-                const char *enum_string)
-{
-  GEnumClass *enum_class;
-  const GEnumValue *value;
-  guint retval = 0;
-
-  g_return_val_if_fail (enum_string != NULL, 0);
-
-  enum_class = g_type_class_ref (type);
-  value = g_enum_get_value_by_nick (enum_class, enum_string);
-  if (value)
-    retval = value->value;
-
-  g_type_class_unref (enum_class);
-
-  return retval;
+  g_set_error_literal (error,
+                       GTK_PRINT_ERROR,
+                       GTK_PRINT_ERROR_INVALID_FILE,
+                       "Printing is not supported");
+  return NULL;
 }
 
 /**
@@ -577,72 +430,11 @@ gtk_page_setup_load_key_file (GtkPageSetup *setup,
                               const gchar  *group_name,
                               GError      **error)
 {
-  GtkPaperSize *paper_size;
-  gdouble top, bottom, left, right;
-  char *orientation = NULL, *freeme = NULL;
-  gboolean retval = FALSE;
-  GError *err = NULL;
-
-  g_return_val_if_fail (GTK_IS_PAGE_SETUP (setup), FALSE);
-  g_return_val_if_fail (key_file != NULL, FALSE);
-
-  if (!group_name)
-    group_name = KEYFILE_GROUP_NAME;
-
-  if (!g_key_file_has_group (key_file, group_name))
-    {
-      g_set_error_literal (error,
-                           GTK_PRINT_ERROR,
-                           GTK_PRINT_ERROR_INVALID_FILE,
-                           _("Not a valid page setup file"));
-      goto out;
-    }
-
-#define GET_DOUBLE(kf, group, name, v) \
-  v = g_key_file_get_double (kf, group, name, &err); \
-  if (err != NULL) \
-    { \
-      g_propagate_error (error, err);\
-      goto out;\
-    }
-
-  GET_DOUBLE (key_file, group_name, "MarginTop", top);
-  GET_DOUBLE (key_file, group_name, "MarginBottom", bottom);
-  GET_DOUBLE (key_file, group_name, "MarginLeft", left);
-  GET_DOUBLE (key_file, group_name, "MarginRight", right);
-
-#undef GET_DOUBLE
-
-  paper_size = gtk_paper_size_new_from_key_file (key_file, group_name, &err);
-  if (!paper_size)
-    {
-      g_propagate_error (error, err);
-      goto out;
-    }
-
-  gtk_page_setup_set_paper_size (setup, paper_size);
-  gtk_paper_size_free (paper_size);
-
-  gtk_page_setup_set_top_margin (setup, top, GTK_UNIT_MM);
-  gtk_page_setup_set_bottom_margin (setup, bottom, GTK_UNIT_MM);
-  gtk_page_setup_set_left_margin (setup, left, GTK_UNIT_MM);
-  gtk_page_setup_set_right_margin (setup, right, GTK_UNIT_MM);
-
-  orientation = g_key_file_get_string (key_file, group_name,
-				       "Orientation", NULL);
-  if (orientation)
-    {
-      gtk_page_setup_set_orientation (setup,
-				      string_to_enum (GTK_TYPE_PAGE_ORIENTATION,
-						      orientation));
-      g_free (orientation);
-    }
-
-  retval = TRUE;
-
-out:
-  g_free (freeme);
-  return retval;
+  g_set_error_literal (error,
+                       GTK_PRINT_ERROR,
+                       GTK_PRINT_ERROR_INVALID_FILE,
+                       "Printing is not supported");
+  return 0;
 }
 
 /**
@@ -665,15 +457,11 @@ gtk_page_setup_new_from_key_file (GKeyFile     *key_file,
 				  const gchar  *group_name,
 				  GError      **error)
 {
-  GtkPageSetup *setup = gtk_page_setup_new ();
-
-  if (!gtk_page_setup_load_key_file (setup, key_file, group_name, error))
-    {
-      g_object_unref (setup);
-      setup = NULL;
-    }
-
-  return setup;
+  g_set_error_literal (error,
+                       GTK_PRINT_ERROR,
+                       GTK_PRINT_ERROR_INVALID_FILE,
+                       "Printing is not supported");
+  return NULL;
 }
 
 /**
@@ -693,48 +481,11 @@ gtk_page_setup_to_file (GtkPageSetup  *setup,
 		        const char    *file_name,
 			GError       **error)
 {
-  GKeyFile *key_file;
-  gboolean retval = FALSE;
-  char *data = NULL;
-  gsize len;
-
-  g_return_val_if_fail (GTK_IS_PAGE_SETUP (setup), FALSE);
-  g_return_val_if_fail (file_name != NULL, FALSE);
-
-  key_file = g_key_file_new ();
-  gtk_page_setup_to_key_file (setup, key_file, NULL);
-
-  data = g_key_file_to_data (key_file, &len, error);
-  if (!data)
-    goto out;
-
-  retval = g_file_set_contents (file_name, data, len, error);
-
-out:
-  g_key_file_free (key_file);
-  g_free (data);
-
-  return retval;
-}
-
-/* something like this should really be in gobject! */
-static char *
-enum_to_string (GType type,
-                guint enum_value)
-{
-  GEnumClass *enum_class;
-  GEnumValue *value;
-  char *retval = NULL;
-
-  enum_class = g_type_class_ref (type);
-
-  value = g_enum_get_value (enum_class, enum_value);
-  if (value)
-    retval = g_strdup (value->value_nick);
-
-  g_type_class_unref (enum_class);
-
-  return retval;
+  g_set_error_literal (error,
+                       GTK_PRINT_ERROR,
+                       GTK_PRINT_ERROR_INVALID_FILE,
+                       "Printing is not supported");
+  return 0;
 }
 
 /**
@@ -753,34 +504,6 @@ gtk_page_setup_to_key_file (GtkPageSetup *setup,
 			    GKeyFile     *key_file,
 			    const gchar  *group_name)
 {
-  GtkPaperSize *paper_size;
-  char *orientation;
-
-  g_return_if_fail (GTK_IS_PAGE_SETUP (setup));
-  g_return_if_fail (key_file != NULL);
-
-  if (!group_name)
-    group_name = KEYFILE_GROUP_NAME;
-
-  paper_size = gtk_page_setup_get_paper_size (setup);
-  g_assert (paper_size != NULL);
-
-  gtk_paper_size_to_key_file (paper_size, key_file, group_name);
-
-  g_key_file_set_double (key_file, group_name,
-			 "MarginTop", gtk_page_setup_get_top_margin (setup, GTK_UNIT_MM));
-  g_key_file_set_double (key_file, group_name,
-			 "MarginBottom", gtk_page_setup_get_bottom_margin (setup, GTK_UNIT_MM));
-  g_key_file_set_double (key_file, group_name,
-			 "MarginLeft", gtk_page_setup_get_left_margin (setup, GTK_UNIT_MM));
-  g_key_file_set_double (key_file, group_name,
-			 "MarginRight", gtk_page_setup_get_right_margin (setup, GTK_UNIT_MM));
-
-  orientation = enum_to_string (GTK_TYPE_PAGE_ORIENTATION,
-				gtk_page_setup_get_orientation (setup));
-  g_key_file_set_string (key_file, group_name,
-			 "Orientation", orientation);
-  g_free (orientation);
 }
 
 #define __GTK_PAGE_SETUP_C__

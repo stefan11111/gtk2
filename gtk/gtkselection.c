@@ -66,10 +66,6 @@
 #include "x11/gdkx.h"
 #endif
 
-#ifdef GDK_WINDOWING_WIN32
-#include "win32/gdkwin32.h"
-#endif
-
 
 
 #undef DEBUG_SELECTION
@@ -83,7 +79,6 @@
        ? XMaxRequestSize (GDK_DISPLAY_XDISPLAY (display)) - 100         \
        : XExtendedMaxRequestSize (GDK_DISPLAY_XDISPLAY (display)) - 100)
 #else
-/* No chunks on Win32 */
 #define GTK_SELECTION_MAX_SIZE(display) G_MAXINT
 #endif
 
@@ -894,9 +889,6 @@ gtk_selection_add_target (GtkWidget	    *widget,
 
   list = gtk_selection_target_list_get (widget, selection);
   gtk_target_list_add (list, target, 0, info);
-#ifdef GDK_WINDOWING_WIN32
-  gdk_win32_selection_add_targets (widget->window, selection, 1, &target);
-#endif
 }
 
 /**
@@ -923,18 +915,6 @@ gtk_selection_add_targets (GtkWidget            *widget,
   
   list = gtk_selection_target_list_get (widget, selection);
   gtk_target_list_add_table (list, targets, ntargets);
-
-#ifdef GDK_WINDOWING_WIN32
-  {
-    int i;
-    GdkAtom *atoms = g_new (GdkAtom, ntargets);
-
-    for (i = 0; i < ntargets; ++i)
-      atoms[i] = gdk_atom_intern (targets[i].target, FALSE);
-    gdk_win32_selection_add_targets (widget->window, selection, ntargets, atoms);
-    g_free (atoms);
-  }
-#endif
 }
 
 
@@ -2283,10 +2263,6 @@ _gtk_selection_request (GtkWidget *widget,
   /* Create GdkWindow structure for the requestor */
 #ifdef GDK_WINDOWING_X11
   info->requestor = gdk_x11_window_foreign_new_for_display (display, event->requestor);
-#elif defined GDK_WINDOWING_WIN32
-  info->requestor = gdk_win32_window_lookup_for_display (display, event->requestor);
-  if (!info->requestor)
-    info->requestor = gdk_win32_window_foreign_new_for_display (display, event->requestor);
 #else
   g_warning ("%s is not implemented", G_STRFUNC);
   info->requestor = NULL;
@@ -2790,7 +2766,7 @@ _gtk_selection_property_notify (GtkWidget	*widget,
   g_return_val_if_fail (widget != NULL, FALSE);
   g_return_val_if_fail (event != NULL, FALSE);
 
-#if defined(GDK_WINDOWING_WIN32) || defined(GDK_WINDOWING_X11)
+#if defined(GDK_WINDOWING_X11)
   if ((event->state != GDK_PROPERTY_NEW_VALUE) ||  /* property was deleted */
       (event->atom != gdk_atom_intern_static_string ("GDK_SELECTION"))) /* not the right property */
 #endif

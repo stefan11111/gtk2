@@ -46,19 +46,10 @@ get_char (const char **str)
 {
   gunichar c = g_utf8_get_char (*str);
   *str = g_utf8_next_char (*str);
-
-#ifdef G_PLATFORM_WIN32
-  c = g_unichar_tolower (c);
-#endif
-
   return c;
 }
 
-#if defined(G_OS_WIN32) || defined(G_WITH_CYGWIN)
-#define DO_ESCAPE 0
-#else  
-#define DO_ESCAPE 1
-#endif  
+#define DO_ESCAPE 1 
 
 static gunichar
 get_unescaped_char (const char **str,

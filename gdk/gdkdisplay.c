@@ -797,7 +797,9 @@ _gdk_display_add_pointer_grab (GdkDisplay *display,
 
   info = g_new0 (GdkPointerGrabInfo, 1);
 
+  if (window) {
   info->window = g_object_ref (window);
+  }
   info->native_window = g_object_ref (native_window);
   info->serial_start = serial_start;
   info->serial_end = G_MAXULONG;
@@ -841,7 +843,9 @@ _gdk_display_add_pointer_grab (GdkDisplay *display,
 static void
 free_pointer_grab (GdkPointerGrabInfo *info)
 {
+  if (info->window) {
   g_object_unref (info->window);
+  }
   g_object_unref (info->native_window);
   g_free (info);
 }

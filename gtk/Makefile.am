@@ -10,16 +10,8 @@ INTROSPECTION_COMPILER_ARGS = \
     --includedir=. \
     --includedir=../gdk
 
-GTK_PRINT_PREVIEW_COMMAND="evince --unlink-tempfile --preview --print-settings %s %f"
-
 SUBDIRS = .
 DIST_SUBDIRS=
-
-# manually remove if wanted
-# grep for DISABLE_PRINTING_BACKENDS to easly find
-#GTK_PRINT_BACKENDS=
-
-# disable print backends
 
 GTK_BASE_CFLAGS_DEFINES =				\
 	-DGTK_VERSION=\"$(GTK_VERSION)\"		\
@@ -35,8 +27,8 @@ GTK_PLAT_CFLAGS_DEFINES =				\
 	-DGTK_DATA_PREFIX=\"$(prefix)\"			\
 	-DGTK_SYSCONFDIR=\"$(sysconfdir)\"		\
 	-DGTK_HOST=\"$(host)\"				\
-	-DGTK_PRINT_BACKENDS=\"$(GTK_PRINT_BACKENDS)\"	\
-	-DGTK_PRINT_PREVIEW_COMMAND=\"$(GTK_PRINT_PREVIEW_COMMAND)\"
+	-DGTK_PRINT_BACKENDS=\"\"				\
+	-DGTK_PRINT_PREVIEW_COMMAND=\"\"
 
 INCLUDES =						\
 	$(GTK_BASE_CFLAGS_DEFINES)			\
@@ -308,7 +300,6 @@ gtk_private_h_sources =		\
 	gtkpathbar.h		\
 	gtkplugprivate.h	\
 	gtkprintoperation-private.h\
-	gtkprintutils.h		\
 	gtkrbtree.h		\
 	gtkrecentchooserdefault.h \
 	gtkrecentchooserprivate.h \
@@ -457,7 +448,6 @@ gtk_base_c_sources =            \
 	gtkprintoperation.c	\
 	gtkprintoperationpreview.c	\
 	gtkprintsettings.c	\
-	gtkprintutils.c		\
 	gtkprogressbar.c	\
 	gtkradioaction.c	\
 	gtkradiobutton.c	\
@@ -677,9 +667,6 @@ stamp_files =					\
 # that don't serve as direct make target sources, i.e. they don't have
 # their own .lo rules and don't get publically installed
 gtk_extra_sources =				\
-	paper_names.c				\
-	paper_names_offsets.c			\
-	gen-paper-names.c			\
 	gtkversion.h.in
 
 #
