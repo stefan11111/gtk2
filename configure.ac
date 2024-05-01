@@ -1517,7 +1517,6 @@ gdk/Makefile
 gdk/x11/Makefile
 gdk/directfb/Makefile
 gtk/Makefile
-gtk/makefile.msc
 gtk/gtkversion.h
 modules/Makefile
 modules/printbackends/Makefile
