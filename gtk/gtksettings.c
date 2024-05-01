@@ -35,11 +35,7 @@
 #include <pango/pangofc-fontmap.h>
 #endif
 
-#ifdef GDK_WINDOWING_QUARTZ
-#define DEFAULT_KEY_THEME "Mac"
-#else
 #define DEFAULT_KEY_THEME NULL
-#endif
 
 #define DEFAULT_TIMEOUT_INITIAL 200
 #define DEFAULT_TIMEOUT_REPEAT   20

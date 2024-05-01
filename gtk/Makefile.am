@@ -10,11 +10,7 @@ INTROSPECTION_COMPILER_ARGS = \
     --includedir=. \
     --includedir=../gdk
 
-if USE_QUARTZ
-GTK_PRINT_PREVIEW_COMMAND="open -b com.apple.Preview %f"
-else
 GTK_PRINT_PREVIEW_COMMAND="evince --unlink-tempfile --preview --print-settings %s %f"
-endif
 
 SUBDIRS = .
 DIST_SUBDIRS=
@@ -680,11 +676,6 @@ gtk_use_x11_c_sources = \
 	gtkxembed.c     \
 	gtktrayicon-x11.c \
 	gtkmountoperation-x11.c
-gtk_use_quartz_c_sources =	\
-	gtksearchenginequartz.c	\
-	gtkplug-stub.c		\
-	gtksocket-stub.c	\
-	gtkmountoperation-stub.c
 gtk_use_stub_c_sources = \
 	gtkplug-stub.c   \
 	gtksocket-stub.c \
@@ -694,22 +685,10 @@ if USE_X11
 gtk_private_h_sources += gtkxembed.h gtktrayicon.h xembed.h
 gtk_c_sources += $(gtk_use_x11_c_sources)
 else
-if USE_QUARTZ
-libgtk_quartz_2_0_la_CFLAGS = "-xobjective-c"
-gtk_private_h_sources += gtksearchenginequartz.h
-gtk_c_sources += $(gtk_use_quartz_c_sources)
-else
 gtk_c_sources += $(gtk_use_stub_c_sources)
 endif
-endif
 
-if USE_QUARTZ
-gtk_clipboard_dnd_c_sources = gtkclipboard-quartz.c gtkdnd-quartz.c gtkquartz.c
-gtk_clipboard_dnd_h_sources = gtkquartz.h
-else
 gtk_clipboard_dnd_c_sources = gtkclipboard.c gtkdnd.c
-endif
-EXTRA_DIST += gtkquartz.h
 
 # we use our own built_sources variable rules to avoid automake's
 # BUILT_SOURCES oddities
@@ -750,7 +729,6 @@ gtk_extra_sources =				\
 	paper_names.c				\
 	paper_names_offsets.c			\
 	gen-paper-names.c			\
-	gtkstatusicon-quartz.c                  \
 	gtk.symbols				\
 	gtkversion.h.in				\
 	gtkmarshalers.list			\
@@ -845,38 +823,26 @@ gtkunixprintincludedir = $(includedir)/gtk-unix-print-2.0/gtk
 gtkunixprintinclude_HEADERS = $(gtk_unix_print_public_h_sources)
 
 libgtk_x11_2_0_la_SOURCES = $(gtk_c_sources)
-libgtk_quartz_2_0_la_SOURCES = $(gtk_c_sources)
 libgtk_directfb_2_0_la_SOURCES = $(gtk_c_sources)
 
 libgtk_x11_2_0_la_LDFLAGS = $(libtool_opts)
-libgtk_quartz_2_0_la_LDFLAGS = $(libtool_opts)
 libgtk_directfb_2_0_la_LDFLAGS = $(libtool_opts)
 
 libgtk_x11_2_0_la_LIBADD = $(libadd)
-libgtk_quartz_2_0_la_LIBADD = $(libadd)
 libgtk_directfb_2_0_la_LIBADD = $(libadd)
 
 libgtk_x11_2_0_la_DEPENDENCIES = $(deps)
-libgtk_quartz_2_0_la_DEPENDENCIES = $(deps)
 libgtk_directfb_2_0_la_DEPENDENCIES = $(deps)
 
-EXTRA_LTLIBRARIES = libgtk-x11-2.0.la libgtk-quartz-2.0.la libgtk-directfb-2.0.la
+EXTRA_LTLIBRARIES = libgtk-x11-2.0.la libgtk-directfb-2.0.la
 
 install-exec-hook: 
 if DISABLE_EXPLICIT_DEPS
 	$(SHELL) $(top_srcdir)/sanitize-la.sh $(DESTDIR)$(libdir)/$(gtktargetlib)
 endif
 
-if USE_QUARTZ
-install-mac-key-theme:
-	$(mkinstalldirs) $(DESTDIR)$(datadir)/themes/Mac/gtk-2.0-key
-	$(INSTALL_DATA) $(srcdir)/gtkrc.key.mac $(DESTDIR)$(datadir)/themes/Mac/gtk-2.0-key/gtkrc
-uninstall-mac-key-theme:
-	rm -f $(DESTDIR)$(datadir)/themes/Mac/gtk-2.0-key/gtkrc
-else
 install-mac-key-theme:
 uninstall-mac-key-theme:
-endif
 
 dist-hook:	\
 	$(INTROSPECTION_INTERMEDIATE_ITEMS)
@@ -1269,7 +1235,6 @@ EXTRA_DIST +=                   \
 	tree_minus.xbm          \
 	tree_minus.xpm		\
 	tree_plus.xpm		\
-	gtksearchenginequartz.h \
 	gtkrc.default		\
 	gtkrc.key.default	\
 	gtkrc.key.emacs		\
