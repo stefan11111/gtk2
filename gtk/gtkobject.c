@@ -53,8 +53,6 @@ enum {
 static void       gtk_object_base_class_init     (GtkObjectClass *class);
 static void       gtk_object_base_class_finalize (GtkObjectClass *class);
 static void       gtk_object_class_init          (GtkObjectClass *klass);
-static void       gtk_object_init                (GtkObject      *object,
-						  GtkObjectClass *klass);
 static void	  gtk_object_set_property	 (GObject	 *object,
 						  guint           property_id,
 						  const GValue   *value,
@@ -95,7 +93,7 @@ gtk_object_get_type (void)
 	NULL,		/* class_data */
 	sizeof (GtkObject),
 	16,		/* n_preallocs */
-	(GInstanceInitFunc) gtk_object_init,
+	NULL,		/* instance_init */
 	NULL,		/* value_table */
       };
       
@@ -317,45 +315,12 @@ gtk_object_add_arg_type (const gchar *arg_name,
   g_object_class_install_property (oclass, arg_id, pspec);
 }
 
-static guint (*gobject_floating_flag_handler) (GtkObject*,gint) = NULL;
-
-static guint
-gtk_object_floating_flag_handler (GtkObject *object,
-                                  gint       job)
-{
-  /* FIXME: remove this whole thing once GTK+ breaks ABI */
-  if (!GTK_IS_OBJECT (object))
-    return gobject_floating_flag_handler (object, job);
-  switch (job)
-    {
-      guint32 oldvalue;
-    case +1:    /* force floating if possible */
-      do
-        oldvalue = g_atomic_int_get (&object->flags);
-      while (!g_atomic_int_compare_and_exchange ((gint *)&object->flags, oldvalue, oldvalue | GTK_FLOATING));
-      return oldvalue & GTK_FLOATING;
-    case -1:    /* sink if possible */
-      do
-        oldvalue = g_atomic_int_get (&object->flags);
-      while (!g_atomic_int_compare_and_exchange ((gint *)&object->flags, oldvalue, oldvalue & ~(guint32) GTK_FLOATING));
-      return oldvalue & GTK_FLOATING;
-    default:    /* check floating */
-      return 0 != (g_atomic_int_get (&object->flags) & GTK_FLOATING);
-    }
-}
-
 static void
 gtk_object_class_init (GtkObjectClass *class)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (class);
-  gboolean is_glib_2_10_1;
 
   parent_class = g_type_class_ref (G_TYPE_OBJECT);
-
-  is_glib_2_10_1 = g_object_compat_control (3, &gobject_floating_flag_handler);
-  if (!is_glib_2_10_1)
-    g_error ("this version of Gtk+ requires GLib-2.10.1");
-  g_object_compat_control (2, gtk_object_floating_flag_handler);
 
   gobject_class->set_property = gtk_object_set_property;
   gobject_class->get_property = gtk_object_get_property;
@@ -378,18 +343,6 @@ gtk_object_class_init (GtkObjectClass *class)
 		  NULL, NULL,
 		  _gtk_marshal_VOID__VOID,
 		  G_TYPE_NONE, 0);
-}
-
-static void
-gtk_object_init (GtkObject      *object,
-		 GtkObjectClass *klass)
-{
-  gboolean was_floating;
-  /* sink the GInitiallyUnowned floating flag */
-  was_floating = gobject_floating_flag_handler (object, -1);
-  /* set GTK_FLOATING via gtk_object_floating_flag_handler */
-  if (was_floating)
-    g_object_force_floating (G_OBJECT (object));
 }
 
 /********************************************

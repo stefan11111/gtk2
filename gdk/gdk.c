@@ -475,7 +475,7 @@ gdk_threads_init (void)
     g_error ("g_thread_init() must be called before gdk_threads_init()");
 #endif
 
-  gdk_threads_mutex = g_mutex_new ();
+  g_mutex_init(gdk_threads_mutex);
   if (!gdk_threads_lock)
     gdk_threads_lock = gdk_threads_impl_lock;
   if (!gdk_threads_unlock)
