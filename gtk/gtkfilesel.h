@@ -92,12 +92,6 @@ struct _GtkFileSelectionClass
 };
 
 
-#ifdef G_OS_WIN32
-/* Reserve old names for DLL ABI backward compatibility */
-#define gtk_file_selection_get_filename gtk_file_selection_get_filename_utf8
-#define gtk_file_selection_set_filename gtk_file_selection_set_filename_utf8
-#define gtk_file_selection_get_selections gtk_file_selection_get_selections_utf8
-#endif
 
 GType      gtk_file_selection_get_type            (void) G_GNUC_CONST;
 GtkWidget* gtk_file_selection_new                 (const gchar      *title);
