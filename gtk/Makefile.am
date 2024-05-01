@@ -10,16 +10,8 @@ INTROSPECTION_COMPILER_ARGS = \
     --includedir=. \
     --includedir=../gdk
 
-GTK_PRINT_PREVIEW_COMMAND="evince --unlink-tempfile --preview --print-settings %s %f"
-
 SUBDIRS = .
 DIST_SUBDIRS=
-
-# manually remove if wanted
-# grep for DISABLE_PRINTING_BACKENDS to easly find
-#GTK_PRINT_BACKENDS=
-
-# disable print backends
 
 GTK_BASE_CFLAGS_DEFINES =				\
 	-DGTK_VERSION=\"$(GTK_VERSION)\"		\
@@ -35,8 +27,8 @@ GTK_PLAT_CFLAGS_DEFINES =				\
 	-DGTK_DATA_PREFIX=\"$(prefix)\"			\
 	-DGTK_SYSCONFDIR=\"$(sysconfdir)\"		\
 	-DGTK_HOST=\"$(host)\"				\
-	-DGTK_PRINT_BACKENDS=\"$(GTK_PRINT_BACKENDS)\"	\
-	-DGTK_PRINT_PREVIEW_COMMAND=\"$(GTK_PRINT_PREVIEW_COMMAND)\"
+	-DGTK_PRINT_BACKENDS=\"\"				\
+	-DGTK_PRINT_PREVIEW_COMMAND=\"\"
 
 INCLUDES =						\
 	$(GTK_BASE_CFLAGS_DEFINES)			\
