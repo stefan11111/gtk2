@@ -233,7 +233,7 @@ struct _GtkTypeInfo
   GtkClassInitFunc	 base_class_init_func;
 };
 
-void            gtk_type_init   (GTypeDebugFlags    debug_flags);
+void            gtk_type_init   ();
 GtkType         gtk_type_unique (GtkType            parent_type,
                                  const GtkTypeInfo *gtkinfo);
 gpointer        gtk_type_class  (GtkType            type);

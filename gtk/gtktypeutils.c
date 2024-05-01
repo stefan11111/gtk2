@@ -119,18 +119,8 @@ gtk_type_new (GtkType type)
 }
 
 void
-gtk_type_init (GTypeDebugFlags debug_flags)
+gtk_type_init ()
 {
-  static gboolean initialized = FALSE;
-  
-  if (!initialized)
-    {
-      initialized = TRUE;
-
-      /* initialize GLib type system
-       */
-      g_type_init_with_debug_flags (debug_flags);
-    }
 }
 
 GType

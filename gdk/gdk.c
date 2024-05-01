@@ -214,8 +214,6 @@ gdk_pre_parse_libgtk_only (void)
       g_unsetenv ("GDK_NATIVE_WINDOWS");
     }
 
-  g_type_init ();
-
   /* Do any setup particular to the windowing system
    */
   _gdk_windowing_init ();  
