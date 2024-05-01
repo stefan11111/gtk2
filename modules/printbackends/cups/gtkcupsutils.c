@@ -1073,11 +1073,7 @@ _post_check (GtkCupsRequest *request)
   else if (http_status == HTTP_ERROR)
     {
       int error = httpError (request->http);
-#ifdef G_OS_WIN32
-      if (error != WSAENETDOWN && error != WSAENETUNREACH)
-#else
       if (error != ENETDOWN && error != ENETUNREACH)	  
-#endif /* G_OS_WIN32 */
         {
           request->attempts++;
           goto again;
