@@ -78,7 +78,7 @@
 #include "gtkimagemenuitem.h"
 #include "gtkintl.h"
 #include "gtklabel.h"
-
+#include "gtkmarshalers.h"
 #include "gtkmenuitem.h"
 #include "gtkstock.h"
 #include "gtktearoffmenuitem.h"
@@ -87,7 +87,7 @@
 #include "gtkprivate.h"
 #include "gtkbuildable.h"
 #include "gtkactivatable.h"
-
+#include "gtkalias.h"
 
 
 #define GTK_ACTION_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_ACTION, GtkActionPrivate))
@@ -1961,4 +1961,4 @@ gtk_action_create_menu (GtkAction *action)
 }
 
 #define __GTK_ACTION_C__
-
+#include "gtkaliasdef.c"

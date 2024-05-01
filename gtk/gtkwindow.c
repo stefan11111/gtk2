@@ -45,10 +45,10 @@
 #include "gtkmenubar.h"
 #include "gtkiconfactory.h"
 #include "gtkicontheme.h"
-
+#include "gtkmarshalers.h"
 #include "gtkplug.h"
 #include "gtkbuildable.h"
-
+#include "gtkalias.h"
 
 #ifdef GDK_WINDOWING_X11
 #include "x11/gdkx.h"
@@ -810,7 +810,7 @@ gtk_window_class_init (GtkWindowClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkWindowClass, set_focus),
                   NULL, NULL,
-                  NULL,
+                  _gtk_marshal_VOID__OBJECT,
                   G_TYPE_NONE, 1,
                   GTK_TYPE_WIDGET);
   
@@ -820,7 +820,7 @@ gtk_window_class_init (GtkWindowClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET(GtkWindowClass, frame_event),
                   _gtk_boolean_handled_accumulator, NULL,
-                  NULL,
+                  _gtk_marshal_BOOLEAN__BOXED,
                   G_TYPE_BOOLEAN, 1,
                   GDK_TYPE_EVENT);
 
@@ -839,7 +839,7 @@ gtk_window_class_init (GtkWindowClass *klass)
                   G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                   G_STRUCT_OFFSET (GtkWindowClass, activate_focus),
                   NULL, NULL,
-                  NULL,
+                  _gtk_marshal_VOID__VOID,
                   G_TYPE_NONE,
                   0);
 
@@ -858,7 +858,7 @@ gtk_window_class_init (GtkWindowClass *klass)
                   G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                   G_STRUCT_OFFSET (GtkWindowClass, activate_default),
                   NULL, NULL,
-                  NULL,
+                  _gtk_marshal_VOID__VOID,
                   G_TYPE_NONE,
                   0);
 
@@ -875,7 +875,7 @@ gtk_window_class_init (GtkWindowClass *klass)
                   G_SIGNAL_RUN_FIRST,
                   G_STRUCT_OFFSET (GtkWindowClass, keys_changed),
                   NULL, NULL,
-                  NULL,
+                  _gtk_marshal_VOID__VOID,
                   G_TYPE_NONE,
                   0);
 
@@ -7987,8 +7987,8 @@ gtk_XParseGeometry (const char   *string,
  * 
  * Parses a standard X Window System geometry string - see the
  * manual page for X (type 'man X') for details on this.
- * gtk_window_parse_geometry() does work on all GTK+ ports,
- * but is primarily intended for an X environment.
+ * gtk_window_parse_geometry() does work on all GTK+ ports
+ * including Win32 but is primarily intended for an X environment.
  *
  * If either a size or a position can be extracted from the
  * geometry string, gtk_window_parse_geometry() returns %TRUE
@@ -8565,5 +8565,48 @@ gtk_window_set_mnemonics_visible (GtkWindow *window,
   priv->mnemonics_visible_set = TRUE;
 }
 
-#define __GTK_WINDOW_C__
+#if defined (G_OS_WIN32) && !defined (_WIN64)
 
+#undef gtk_window_set_icon_from_file
+
+gboolean
+gtk_window_set_icon_from_file (GtkWindow   *window,
+			       const gchar *filename,
+			       GError     **err)
+{
+  gchar *utf8_filename = g_locale_to_utf8 (filename, -1, NULL, NULL, err);
+  gboolean retval;
+
+  if (utf8_filename == NULL)
+    return FALSE;
+
+  retval = gtk_window_set_icon_from_file_utf8 (window, utf8_filename, err);
+
+  g_free (utf8_filename);
+
+  return retval;
+}
+
+#undef gtk_window_set_default_icon_from_file
+
+gboolean
+gtk_window_set_default_icon_from_file (const gchar *filename,
+				       GError     **err)
+{
+  gchar *utf8_filename = g_locale_to_utf8 (filename, -1, NULL, NULL, err);
+  gboolean retval;
+
+  if (utf8_filename == NULL)
+    return FALSE;
+
+  retval = gtk_window_set_default_icon_from_file_utf8 (utf8_filename, err);
+
+  g_free (utf8_filename);
+
+  return retval;
+}
+
+#endif
+
+#define __GTK_WINDOW_C__
+#include "gtkaliasdef.c"

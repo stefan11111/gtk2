@@ -37,7 +37,7 @@
 #include "gtkicontheme.h"
 #include "gtkintl.h"
 #include "gtkprivate.h"
-
+#include "gtkalias.h"
 
 /**
  * SECTION:gtkimage
@@ -2480,5 +2480,37 @@ gtk_image_get_pixel_size (GtkImage *image)
   return priv->pixel_size;
 }
 
-#define __GTK_IMAGE_C__
+#if defined (G_OS_WIN32) && !defined (_WIN64)
 
+#undef gtk_image_new_from_file
+
+GtkWidget*
+gtk_image_new_from_file   (const gchar *filename)
+{
+  gchar *utf8_filename = g_locale_to_utf8 (filename, -1, NULL, NULL, NULL);
+  GtkWidget *retval;
+
+  retval = gtk_image_new_from_file_utf8 (utf8_filename);
+
+  g_free (utf8_filename);
+
+  return retval;
+}
+
+#undef gtk_image_set_from_file
+
+void
+gtk_image_set_from_file   (GtkImage    *image,
+                           const gchar *filename)
+{
+  gchar *utf8_filename = g_locale_to_utf8 (filename, -1, NULL, NULL, NULL);
+
+  gtk_image_set_from_file_utf8 (image, utf8_filename);
+
+  g_free (utf8_filename);
+}
+
+#endif
+
+#define __GTK_IMAGE_C__
+#include "gtkaliasdef.c"

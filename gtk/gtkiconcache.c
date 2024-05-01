@@ -22,7 +22,7 @@
 #include "gtkdebug.h"
 #include "gtkiconcache.h"
 #include "gtkiconcachevalidator.h"
-
+#include "gtkalias.h"
 
 #include <glib/gstdio.h>
 
@@ -31,6 +31,9 @@
 
 #ifdef HAVE_UNISTD_H
 #include <unistd.h>
+#endif
+#ifdef G_OS_WIN32
+#include <io.h>
 #endif
 #include <fcntl.h>
 #include <sys/types.h>
@@ -110,6 +113,20 @@ _gtk_icon_cache_new_for_path (const gchar *path)
   /* We need to know the correct function to call for the GStatBuf st we are using here,
    * because GStatBuf may not be stat on Windows
    */
+#ifdef G_OS_WIN32
+  if (GLIB_CHECK_VERSION (2, 57, 3))
+    {
+# ifdef __MINGW64_VERSION_MAJOR
+#  ifdef _WIN64
+#   define gtk_fstat _fstat64
+#  else
+#   define gtk_fstat _fstat32
+#  endif
+# elif defined (_MSC_VER) && !defined (_WIN64)
+#   define gtk_fstat _fstat32
+# endif
+    }
+#endif
 
 #ifndef gtk_fstat
 #define gtk_fstat fstat

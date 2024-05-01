@@ -21,10 +21,10 @@
 #include <stdlib.h>
 #include "gtkcellrenderertoggle.h"
 #include "gtkintl.h"
-
+#include "gtkmarshalers.h"
 #include "gtkprivate.h"
 #include "gtktreeprivate.h"
-
+#include "gtkalias.h"
 
 static void gtk_cell_renderer_toggle_get_property  (GObject                    *object,
 						    guint                       param_id,
@@ -177,7 +177,7 @@ gtk_cell_renderer_toggle_class_init (GtkCellRendererToggleClass *class)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkCellRendererToggleClass, toggled),
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_VOID__STRING,
 		  G_TYPE_NONE, 1,
 		  G_TYPE_STRING);
 
@@ -524,4 +524,4 @@ gtk_cell_renderer_toggle_set_activatable (GtkCellRendererToggle *toggle,
 }
 
 #define __GTK_CELL_RENDERER_TOGGLE_C__
-
+#include "gtkaliasdef.c"

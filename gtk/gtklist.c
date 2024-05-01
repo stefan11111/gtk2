@@ -35,10 +35,10 @@
 #include "gtkmain.h"
 #include "gtksignal.h"
 #include "gtklabel.h"
-
+#include "gtkmarshalers.h"
 #include "gtkintl.h"
 
-
+#include "gtkalias.h"
 
 enum {
   SELECTION_CHANGED,
@@ -253,14 +253,14 @@ gtk_list_class_init (GtkListClass *class)
 		    GTK_RUN_FIRST,
 		    GTK_CLASS_TYPE (object_class),
 		    GTK_SIGNAL_OFFSET (GtkListClass, selection_changed),
-		    NULL,
+		    _gtk_marshal_VOID__VOID,
 		    GTK_TYPE_NONE, 0);
   list_signals[SELECT_CHILD] =
     gtk_signal_new (I_("select-child"),
 		    GTK_RUN_FIRST,
 		    GTK_CLASS_TYPE (object_class),
 		    GTK_SIGNAL_OFFSET (GtkListClass, select_child),
-		    NULL,
+		    _gtk_marshal_VOID__OBJECT,
 		    GTK_TYPE_NONE, 1,
 		    GTK_TYPE_WIDGET);
   list_signals[UNSELECT_CHILD] =
@@ -268,7 +268,7 @@ gtk_list_class_init (GtkListClass *class)
 		    GTK_RUN_FIRST,
 		    GTK_CLASS_TYPE (object_class),
 		    GTK_SIGNAL_OFFSET (GtkListClass, unselect_child),
-		    NULL,
+		    _gtk_marshal_VOID__OBJECT,
 		    GTK_TYPE_NONE, 1,
 		    GTK_TYPE_WIDGET);
   
@@ -2584,4 +2584,4 @@ gtk_list_drag_begin (GtkWidget      *widget,
     }
 }
 
-
+#include "gtkaliasdef.c"

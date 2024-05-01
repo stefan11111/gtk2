@@ -43,7 +43,7 @@
 
 #include "gdkinputprivate.h"
 #include "gdksettings.c"
-
+#include "gdkalias.h"
 
 
 #ifdef HAVE_XKB
@@ -2438,6 +2438,10 @@ gdk_event_dispatch (GSource    *source,
  * @event: the #GdkEvent to send, which should be a #GdkEventClient.
  * @winid: the window to send the client message to.
  *
+ * On X11, sends an X ClientMessage event to a given window. On
+ * Windows, sends a message registered with the name
+ * GDK_WIN32_CLIENT_MESSAGE.
+ *
  * This could be used for communicating between different
  * applications, though the amount of data is limited to 20 bytes on
  * X11, and to just four bytes on Windows.
@@ -2540,6 +2544,10 @@ gdk_event_send_client_message_to_all_recurse (GdkDisplay *display,
  * as described in the Inter-Client Communication Conventions Manual (ICCCM).
  * If no windows are found with the WM_STATE property set, the message is 
  * sent to all children of the root window.
+ *
+ * On Windows, broadcasts a message registered with the name
+ * GDK_WIN32_CLIENT_MESSAGE to all top-level windows. The amount of
+ * data is limited to one long, i.e. four bytes.
  *
  * Since: 2.2
  */
@@ -2666,7 +2674,7 @@ fetch_net_wm_check_window (GdkScreen *screen)
   gulong bytes_after;
   guchar *data;
   Window *xwindow;
-  guint64 tv;
+  GTimeVal tv;
   gint error;
 
   screen_x11 = GDK_SCREEN_X11 (screen);
@@ -2674,12 +2682,12 @@ fetch_net_wm_check_window (GdkScreen *screen)
 
   g_return_if_fail (GDK_DISPLAY_X11 (display)->trusted_client);
   
-  tv = g_get_real_time ();
+  g_get_current_time (&tv);
 
-  if (ABS  ((long)tv - screen_x11->last_wmspec_check_time) < 15)
+  if (ABS  (tv.tv_sec - screen_x11->last_wmspec_check_time) < 15)
     return; /* we've checked recently */
 
-  screen_x11->last_wmspec_check_time = tv;
+  screen_x11->last_wmspec_check_time = tv.tv_sec;
 
   data = NULL;
   XGetWindowProperty (screen_x11->xdisplay, screen_x11->xroot_window,
@@ -3170,4 +3178,4 @@ _gdk_windowing_event_data_free (GdkEvent *event)
 }
 
 #define __GDK_EVENTS_X11_C__
-
+#include "gdkaliasdef.c"

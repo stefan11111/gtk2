@@ -26,13 +26,17 @@
 #include "gtkclipboard.h"
 #include "gtkinvisible.h"
 #include "gtkmain.h"
-
+#include "gtkmarshalers.h"
 #include "gtktextbufferrichtext.h"
 #include "gtkintl.h"
-
+#include "gtkalias.h"
 
 #ifdef GDK_WINDOWING_X11
 #include "x11/gdkx.h"
+#endif
+
+#ifdef GDK_WINDOWING_WIN32
+#include "win32/gdkwin32.h"
 #endif
 
 enum {
@@ -187,7 +191,7 @@ gtk_clipboard_class_init (GtkClipboardClass *class)
 		  G_SIGNAL_RUN_FIRST,
 		  G_STRUCT_OFFSET (GtkClipboardClass, owner_change),
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_VOID__BOXED,
 		  G_TYPE_NONE, 1,
 		  GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
 }
@@ -273,7 +277,8 @@ clipboard_display_closed (GdkDisplay   *display,
  * url="http://www.freedesktop.org/Standards/clipboards-spec">
  * http://www.freedesktop.org/Standards/clipboards-spec</ulink>
  * for a detailed discussion of the "CLIPBOARD" vs. "PRIMARY"
- * selections under the X window system.)
+ * selections under the X window system. On Win32 the
+ * #GDK_SELECTION_PRIMARY clipboard is essentially ignored.)
  *
  * It's possible to have arbitrary named clipboards; if you do invent
  * new clipboards, you should prefix the selection name with an
@@ -410,6 +415,8 @@ clipboard_get_timestamp (GtkClipboard *clipboard)
     {
 #ifdef GDK_WINDOWING_X11
       timestamp = gdk_x11_get_server_time (clipboard_widget->window);
+#elif defined GDK_WINDOWING_WIN32
+      timestamp = GetMessageTime ();
 #endif
     }
   else
@@ -2079,4 +2086,4 @@ _gtk_clipboard_store_all (void)
 }
 
 #define __GTK_CLIPBOARD_C__
-
+#include "gtkaliasdef.c"

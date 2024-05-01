@@ -73,7 +73,7 @@ SOFTWARE.
 #include <string.h>
 #include <gdkregion.h>
 #include "gdkregion-generic.h"
-
+#include "gdkalias.h"
 
 typedef void (* overlapFunc)    (GdkRegion    *pReg,
                                  GdkRegionBox *r1,
@@ -1906,4 +1906,4 @@ gdk_region_spans_intersect_foreach (GdkRegion     *region,
 }
 
 #define __GDK_REGION_GENERIC_C__
-
+#include "gdkaliasdef.c"

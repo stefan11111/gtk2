@@ -28,9 +28,9 @@
 #include "gdkdisplay.h"
 #include "gdkwindowimpl.h"
 #include "gdkinternals.h"
-
+#include "gdkmarshalers.h"
 #include "gdkscreen.h"
-
+#include "gdkalias.h"
 
 enum {
   CLOSED,
@@ -120,7 +120,7 @@ gdk_display_class_init (GdkDisplayClass *class)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GdkDisplayClass, closed),
 		  NULL, NULL,
-		  NULL,
+		  _gdk_marshal_VOID__BOOLEAN,
 		  G_TYPE_NONE,
 		  1,
 		  G_TYPE_BOOLEAN);
@@ -797,9 +797,7 @@ _gdk_display_add_pointer_grab (GdkDisplay *display,
 
   info = g_new0 (GdkPointerGrabInfo, 1);
 
-  if (window) {
   info->window = g_object_ref (window);
-  }
   info->native_window = g_object_ref (native_window);
   info->serial_start = serial_start;
   info->serial_end = G_MAXULONG;
@@ -843,9 +841,7 @@ _gdk_display_add_pointer_grab (GdkDisplay *display,
 static void
 free_pointer_grab (GdkPointerGrabInfo *info)
 {
-  if (info->window) {
   g_object_unref (info->window);
-  }
   g_object_unref (info->native_window);
   g_free (info);
 }
@@ -1308,4 +1304,4 @@ gdk_display_pointer_is_grabbed (GdkDisplay *display)
 }
 
 #define __GDK_DISPLAY_C__
-
+#include "gdkaliasdef.c"

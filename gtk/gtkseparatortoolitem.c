@@ -25,7 +25,7 @@
 #include "gtkintl.h"
 #include "gtktoolbar.h"
 #include "gtkprivate.h"
-
+#include "gtkalias.h"
 
 #define MENU_ID "gtk-separator-tool-item-menu-id"
 
@@ -282,4 +282,4 @@ gtk_separator_tool_item_set_draw (GtkSeparatorToolItem *item,
 }
 
 #define __GTK_SEPARATOR_TOOL_ITEM_C__
-
+#include "gtkaliasdef.c"

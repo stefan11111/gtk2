@@ -25,11 +25,11 @@
 #include <gtk/gtk.h>
 
 #include "gtktoolpaletteprivate.h"
-
+#include "gtkmarshalers.h"
 
 #include "gtkprivate.h"
 #include "gtkintl.h"
-
+#include "gtkalias.h"
 
 #define DEFAULT_ICON_SIZE       GTK_ICON_SIZE_SMALL_TOOLBAR
 #define DEFAULT_ORIENTATION     GTK_ORIENTATION_VERTICAL
@@ -965,7 +965,7 @@ gtk_tool_palette_class_init (GtkToolPaletteClass *cls)
                   G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                   G_STRUCT_OFFSET (GtkToolPaletteClass, set_scroll_adjustments),
                   NULL, NULL,
-                  NULL,
+                  _gtk_marshal_VOID__OBJECT_OBJECT,
                   G_TYPE_NONE, 2,
                   GTK_TYPE_ADJUSTMENT,
                   GTK_TYPE_ADJUSTMENT);
@@ -1928,4 +1928,4 @@ _gtk_tool_palette_get_size_group (GtkToolPalette *palette)
 
 
 #define __GTK_TOOL_PALETTE_C__
-
+#include "gtkaliasdef.c"

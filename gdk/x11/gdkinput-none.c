@@ -20,7 +20,7 @@
 #include "config.h"
 #include "gdkinputprivate.h"
 #include "gdkdisplay-x11.h"
-
+#include "gdkalias.h"
 
 /*
  * Modified by the GTK+ Team and others 1997-2000.  See the AUTHORS
@@ -123,4 +123,4 @@ gdk_device_set_mode (GdkDevice   *device,
 }
 
 #define __GDK_INPUT_NONE_C__
-
+#include "gdkaliasdef.c"

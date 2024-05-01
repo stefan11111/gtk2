@@ -39,7 +39,7 @@
 #include "gtkpreview.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
-
+#include "gtkalias.h"
 
 
 #define PREVIEW_CLASS(w)      GTK_PREVIEW_CLASS (GTK_OBJECT (w)->klass)
@@ -563,4 +563,4 @@ gtk_fill_lookup_array (guchar *array)
 }
 
 #define __GTK_PREVIEW_C__
-
+#include "gtkaliasdef.c"

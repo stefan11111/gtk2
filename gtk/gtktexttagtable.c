@@ -27,10 +27,10 @@
 #include "config.h"
 #include "gtktexttagtable.h"
 #include "gtkbuildable.h"
-
+#include "gtkmarshalers.h"
 #include "gtktextbuffer.h" /* just for the lame notify_will_remove_tag hack */
 #include "gtkintl.h"
-
+#include "gtkalias.h"
 
 #include <stdlib.h>
 
@@ -112,7 +112,7 @@ gtk_text_tag_table_class_init (GtkTextTagTableClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkTextTagTableClass, tag_changed),
                   NULL, NULL,
-                  NULL,
+                  _gtk_marshal_VOID__OBJECT_BOOLEAN,
                   G_TYPE_NONE,
                   2,
                   GTK_TYPE_TEXT_TAG,
@@ -124,7 +124,7 @@ gtk_text_tag_table_class_init (GtkTextTagTableClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkTextTagTableClass, tag_added),
                   NULL, NULL,
-                  NULL,
+                  _gtk_marshal_VOID__OBJECT,
                   G_TYPE_NONE,
                   1,
                   GTK_TYPE_TEXT_TAG);
@@ -135,7 +135,7 @@ gtk_text_tag_table_class_init (GtkTextTagTableClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkTextTagTableClass, tag_removed),
                   NULL, NULL,
-                  NULL,
+                  _gtk_marshal_VOID__OBJECT,
                   G_TYPE_NONE,
                   1,
                   GTK_TYPE_TEXT_TAG);
@@ -471,4 +471,4 @@ _gtk_text_tag_table_remove_buffer (GtkTextTagTable *table,
 }
 
 #define __GTK_TEXT_TAG_TABLE_C__
-
+#include "gtkaliasdef.c"

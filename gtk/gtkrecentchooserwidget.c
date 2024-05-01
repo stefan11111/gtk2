@@ -24,7 +24,7 @@
 #include "gtkrecentchooserdefault.h"
 #include "gtkrecentchooserutils.h"
 #include "gtktypebuiltins.h"
-
+#include "gtkalias.h"
 
 struct _GtkRecentChooserWidgetPrivate
 {
@@ -191,4 +191,4 @@ gtk_recent_chooser_widget_new_for_manager (GtkRecentManager *manager)
 }
 
 #define __GTK_RECENT_CHOOSER_WIDGET_C__
-
+#include "gtkaliasdef.c"

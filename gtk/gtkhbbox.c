@@ -28,7 +28,7 @@
 #include "gtkhbbox.h"
 #include "gtkorientable.h"
 #include "gtkintl.h"
-
+#include "gtkalias.h"
 
 
 static gint default_spacing = 30;
@@ -99,4 +99,4 @@ _gtk_hbutton_box_get_layout_default (void)
 }
 
 #define __GTK_HBUTTON_BOX_C__
-
+#include "gtkaliasdef.c"

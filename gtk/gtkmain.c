@@ -41,6 +41,11 @@
 #endif
 #include <sys/types.h>		/* For uid_t, gid_t */
 
+#ifdef G_OS_WIN32
+#define STRICT
+#include <windows.h>
+#undef STRICT
+#endif
 
 #include "gtkintl.h"
 
@@ -49,6 +54,7 @@
 #include "gtkclipboard.h"
 #include "gtkdnd.h"
 #include "gtkversion.h"
+#include "gtkmodules.h"
 #include "gtkrc.h"
 #include "gtkrecentmanager.h"
 #include "gtkselection.h"
@@ -57,12 +63,86 @@
 #include "gtkwindow.h"
 #include "gtktooltip.h"
 #include "gtkdebug.h"
-
+#include "gtkalias.h"
 #include "gtkmenu.h"
 #include "gdk/gdkkeysyms.h"
 
 #include "gdk/gdkprivate.h" /* for GDK_WINDOW_DESTROYED */
 
+#ifdef G_OS_WIN32
+
+static HMODULE gtk_dll;
+
+BOOL WINAPI
+DllMain (HINSTANCE hinstDLL,
+	 DWORD     fdwReason,
+	 LPVOID    lpvReserved)
+{
+  switch (fdwReason)
+    {
+    case DLL_PROCESS_ATTACH:
+      gtk_dll = (HMODULE) hinstDLL;
+      break;
+    }
+
+  return TRUE;
+}
+
+/* These here before inclusion of gtkprivate.h so that the original
+ * GTK_LIBDIR and GTK_LOCALEDIR definitions are seen. Yeah, this is a
+ * bit sucky.
+ */
+const gchar *
+_gtk_get_libdir (void)
+{
+  static char *gtk_libdir = NULL;
+  if (gtk_libdir == NULL)
+    {
+      gchar *root = g_win32_get_package_installation_directory_of_module (gtk_dll);
+      gchar *slash = root ? strrchr (root, '\\') : NULL;
+      if (slash != NULL &&
+          g_ascii_strcasecmp (slash + 1, ".libs") == 0)
+	gtk_libdir = GTK_LIBDIR;
+      else
+	gtk_libdir = g_build_filename (root, "lib", NULL);
+      g_free (root);
+    }
+
+  return gtk_libdir;
+}
+
+const gchar *
+_gtk_get_localedir (void)
+{
+  static char *gtk_localedir = NULL;
+  if (gtk_localedir == NULL)
+    {
+      const gchar *p;
+      gchar *root, *temp;
+      
+      /* GTK_LOCALEDIR ends in either /lib/locale or
+       * /share/locale. Scan for that slash.
+       */
+      p = GTK_LOCALEDIR + strlen (GTK_LOCALEDIR);
+      while (*--p != '/')
+	;
+      while (*--p != '/')
+	;
+
+      root = g_win32_get_package_installation_directory_of_module (gtk_dll);
+      temp = g_build_filename (root, p, NULL);
+      g_free (root);
+
+      /* gtk_localedir is passed to bindtextdomain() which isn't
+       * UTF-8-aware.
+       */
+      gtk_localedir = g_win32_locale_filename_from_utf8 (temp);
+      g_free (temp);
+    }
+  return gtk_localedir;
+}
+
+#endif
 
 #include "gtkprivate.h"
 
@@ -224,6 +304,8 @@ gtk_check_version (guint required_major,
 static gboolean
 check_setugid (void)
 {
+/* this isn't at all relevant on MS Windows and doesn't compile ... --hb */
+#ifndef G_OS_WIN32
   uid_t ruid, euid, suid; /* Real, effective and saved user ID's */
   gid_t rgid, egid, sgid; /* Real, effective and saved group ID's */
   
@@ -253,9 +335,51 @@ check_setugid (void)
 		 "Refusing to initialize GTK+.");
       exit (1);
     }
+#endif
   return TRUE;
 }
 
+#ifdef G_OS_WIN32
+
+const gchar *
+_gtk_get_datadir (void)
+{
+  static char *gtk_datadir = NULL;
+  if (gtk_datadir == NULL)
+    {
+      gchar *root = g_win32_get_package_installation_directory_of_module (gtk_dll);
+      gtk_datadir = g_build_filename (root, "share", NULL);
+      g_free (root);
+    }
+
+  return gtk_datadir;
+}
+
+const gchar *
+_gtk_get_sysconfdir (void)
+{
+  static char *gtk_sysconfdir = NULL;
+  if (gtk_sysconfdir == NULL)
+    {
+      gchar *root = g_win32_get_package_installation_directory_of_module (gtk_dll);
+      gtk_sysconfdir = g_build_filename (root, "etc", NULL);
+      g_free (root);
+    }
+
+  return gtk_sysconfdir;
+}
+
+const gchar *
+_gtk_get_data_prefix (void)
+{
+  static char *gtk_data_prefix = NULL;
+  if (gtk_data_prefix == NULL)
+    gtk_data_prefix = g_win32_get_package_installation_directory_of_module (gtk_dll);
+
+  return gtk_data_prefix;
+}
+
+#endif /* G_OS_WIN32 */
 
 static gboolean do_setlocale = TRUE;
 
@@ -280,6 +404,9 @@ gtk_disable_setlocale (void)
   do_setlocale = FALSE;
 }
 
+#ifdef G_PLATFORM_WIN32
+#undef gtk_init_check
+#endif
 
 static GString *gtk_modules_string = NULL;
 static gboolean g_fatal_warnings = FALSE;
@@ -339,6 +466,95 @@ static const GOptionEntry gtk_args[] = {
   { NULL }
 };
 
+#ifdef G_OS_WIN32
+
+static char *iso639_to_check = NULL;
+static char *iso3166_to_check = NULL;
+static char *script_to_check = NULL;
+static gboolean setlocale_called = FALSE;
+
+static BOOL CALLBACK
+enum_locale_proc (LPTSTR locale)
+{
+  LCID lcid;
+  char iso639[10];
+  char iso3166[10];
+  char *endptr;
+
+
+  lcid = strtoul (locale, &endptr, 16);
+  if (*endptr == '\0' &&
+      GetLocaleInfo (lcid, LOCALE_SISO639LANGNAME, iso639, sizeof (iso639)) &&
+      GetLocaleInfo (lcid, LOCALE_SISO3166CTRYNAME, iso3166, sizeof (iso3166)))
+    {
+      if (strcmp (iso639, iso639_to_check) == 0 &&
+	  ((iso3166_to_check != NULL &&
+	    strcmp (iso3166, iso3166_to_check) == 0) ||
+	   (iso3166_to_check == NULL &&
+	    SUBLANGID (LANGIDFROMLCID (lcid)) == SUBLANG_DEFAULT)))
+	{
+	  char language[100], country[100];
+	  char locale[300];
+
+	  if (script_to_check != NULL)
+	    {
+	      /* If lcid is the "other" script for this language,
+	       * return TRUE, i.e. continue looking.
+	       */
+	      if (strcmp (script_to_check, "Latn") == 0)
+		{
+		  switch (LANGIDFROMLCID (lcid))
+		    {
+		    case MAKELANGID (LANG_AZERI, SUBLANG_AZERI_CYRILLIC):
+		      return TRUE;
+		    case MAKELANGID (LANG_UZBEK, SUBLANG_UZBEK_CYRILLIC):
+		      return TRUE;
+		    case MAKELANGID (LANG_SERBIAN, SUBLANG_SERBIAN_CYRILLIC):
+		      return TRUE;
+		    case MAKELANGID (LANG_SERBIAN, 0x07):
+		      /* Serbian in Bosnia and Herzegovina, Cyrillic */
+		      return TRUE;
+		    }
+		}
+	      else if (strcmp (script_to_check, "Cyrl") == 0)
+		{
+		  switch (LANGIDFROMLCID (lcid))
+		    {
+		    case MAKELANGID (LANG_AZERI, SUBLANG_AZERI_LATIN):
+		      return TRUE;
+		    case MAKELANGID (LANG_UZBEK, SUBLANG_UZBEK_LATIN):
+		      return TRUE;
+		    case MAKELANGID (LANG_SERBIAN, SUBLANG_SERBIAN_LATIN):
+		      return TRUE;
+		    case MAKELANGID (LANG_SERBIAN, 0x06):
+		      /* Serbian in Bosnia and Herzegovina, Latin */
+		      return TRUE;
+		    }
+		}
+	    }
+
+	  SetThreadLocale (lcid);
+
+	  if (GetLocaleInfo (lcid, LOCALE_SENGLANGUAGE, language, sizeof (language)) &&
+	      GetLocaleInfo (lcid, LOCALE_SENGCOUNTRY, country, sizeof (country)))
+	    {
+	      strcpy (locale, language);
+	      strcat (locale, "_");
+	      strcat (locale, country);
+
+	      if (setlocale (LC_ALL, locale) != NULL)
+		setlocale_called = TRUE;
+	    }
+
+	  return FALSE;
+	}
+    }
+
+  return TRUE;
+}
+  
+#endif
+
 static void
 setlocale_initialization (void)
 {
@@ -350,8 +566,66 @@ setlocale_initialization (void)
 
   if (do_setlocale)
     {
+#ifdef G_OS_WIN32
+      /* If some of the POSIXish environment variables are set, set
+       * the Win32 thread locale correspondingly.
+       */ 
+      char *p = getenv ("LC_ALL");
+      if (p == NULL)
+	p = getenv ("LANG");
+
+      if (p != NULL)
+	{
+	  p = g_strdup (p);
+	  if (strcmp (p, "C") == 0)
+	    SetThreadLocale (LOCALE_SYSTEM_DEFAULT);
+	  else
+	    {
+	      /* Check if one of the supported locales match the
+	       * environment variable. If so, use that locale.
+	       */
+	      iso639_to_check = p;
+	      iso3166_to_check = strchr (iso639_to_check, '_');
+	      if (iso3166_to_check != NULL)
+		{
+		  *iso3166_to_check++ = '\0';
+
+		  script_to_check = strchr (iso3166_to_check, '@');
+		  if (script_to_check != NULL)
+		    *script_to_check++ = '\0';
+
+		  /* Handle special cases. */
+		  
+		  /* The standard code for Serbia and Montenegro was
+		   * "CS", but MSFT uses for some reason "SP". By now
+		   * (October 2006), SP has split into two, "RS" and
+		   * "ME", but don't bother trying to handle those
+		   * yet. Do handle the even older "YU", though.
+		   */
+		  if (strcmp (iso3166_to_check, "CS") == 0 ||
+		      strcmp (iso3166_to_check, "YU") == 0)
+		    iso3166_to_check = "SP";
+		}
+	      else
+		{
+		  script_to_check = strchr (iso639_to_check, '@');
+		  if (script_to_check != NULL)
+		    *script_to_check++ = '\0';
+		  /* LANG_SERBIAN == LANG_CROATIAN, recognize just "sr" */
+		  if (strcmp (iso639_to_check, "sr") == 0)
+		    iso3166_to_check = "SP";
+		}
+
+	      EnumSystemLocales (enum_locale_proc, LCID_SUPPORTED);
+	    }
+	  g_free (p);
+	}
+      if (!setlocale_called)
+	setlocale (LC_ALL, "");
+#else
       if (!setlocale (LC_ALL, ""))
 	g_warning ("Locale not supported by C library.\n\tUsing the fallback 'C' locale.");
+#endif
     }
 }
 
@@ -470,6 +744,9 @@ do_post_parse_initialization (int    *argc,
       g_warning ("Whoever translated default:LTR did so wrongly.\n");
   }
 
+  /* do what the call to gtk_type_init() used to do */
+  g_type_init ();
+
   _gtk_accel_map_init ();
   _gtk_rc_init ();
 
@@ -479,9 +756,14 @@ do_post_parse_initialization (int    *argc,
 
   /* load gtk modules */
   if (gtk_modules_string)
-  {
-    g_string_free (gtk_modules_string, TRUE);
-  }
+    {
+      _gtk_modules_init (argc, argv, gtk_modules_string->str);
+      g_string_free (gtk_modules_string, TRUE);
+    }
+  else
+    {
+      _gtk_modules_init (argc, argv, NULL);
+    }
 }
 
 
@@ -680,6 +962,9 @@ gtk_parse_args (int    *argc,
   return TRUE;
 }
 
+#ifdef G_PLATFORM_WIN32
+#undef gtk_init_check
+#endif
 
 /**
  * gtk_init_check:
@@ -708,6 +993,9 @@ gtk_init_check (int	 *argc,
   return gdk_display_open_default_libgtk_only () != NULL;
 }
 
+#ifdef G_PLATFORM_WIN32
+#undef gtk_init
+#endif
 
 /**
  * gtk_init:
@@ -759,6 +1047,60 @@ gtk_init (int *argc, char ***argv)
     }
 }
 
+#ifdef G_PLATFORM_WIN32
+
+static void
+check_sizeof_GtkWindow (size_t sizeof_GtkWindow)
+{
+  if (sizeof_GtkWindow != sizeof (GtkWindow))
+    g_error ("Incompatible build!\n"
+	     "The code using GTK+ thinks GtkWindow is of different\n"
+             "size than it actually is in this build of GTK+.\n"
+	     "On Windows, this probably means that you have compiled\n"
+	     "your code with gcc without the -mms-bitfields switch,\n"
+	     "or that you are using an unsupported compiler.");
+}
+
+/* In GTK+ 2.0 the GtkWindow struct actually is the same size in
+ * gcc-compiled code on Win32 whether compiled with -fnative-struct or
+ * not. Unfortunately this wan't noticed until after GTK+ 2.0.1. So,
+ * from GTK+ 2.0.2 on, check some other struct, too, where the use of
+ * -fnative-struct still matters. GtkBox is one such.
+ */
+static void
+check_sizeof_GtkBox (size_t sizeof_GtkBox)
+{
+  if (sizeof_GtkBox != sizeof (GtkBox))
+    g_error ("Incompatible build!\n"
+	     "The code using GTK+ thinks GtkBox is of different\n"
+             "size than it actually is in this build of GTK+.\n"
+	     "On Windows, this probably means that you have compiled\n"
+	     "your code with gcc without the -mms-bitfields switch,\n"
+	     "or that you are using an unsupported compiler.");
+}
+
+/* These two functions might get more checks added later, thus pass
+ * in the number of extra args.
+ */
+void
+gtk_init_abi_check (int *argc, char ***argv, int num_checks, size_t sizeof_GtkWindow, size_t sizeof_GtkBox)
+{
+  check_sizeof_GtkWindow (sizeof_GtkWindow);
+  if (num_checks >= 2)
+    check_sizeof_GtkBox (sizeof_GtkBox);
+  gtk_init (argc, argv);
+}
+
+gboolean
+gtk_init_check_abi_check (int *argc, char ***argv, int num_checks, size_t sizeof_GtkWindow, size_t sizeof_GtkBox)
+{
+  check_sizeof_GtkWindow (sizeof_GtkWindow);
+  if (num_checks >= 2)
+    check_sizeof_GtkBox (sizeof_GtkBox);
+  return gtk_init_check (argc, argv);
+}
+
+#endif
 
 void
 gtk_exit (gint errorcode)
@@ -829,7 +1171,35 @@ gtk_set_locale (void)
 gchar *
 _gtk_get_lc_ctype (void)
 {
+#ifdef G_OS_WIN32
+  /* Somebody might try to set the locale for this process using the
+   * LANG or LC_ environment variables. The Microsoft C library
+   * doesn't know anything about them. You set the locale in the
+   * Control Panel. Setting these env vars won't have any affect on
+   * locale-dependent C library functions like ctime(). But just for
+   * kicks, do obey LC_ALL, LC_CTYPE and LANG in GTK. (This also makes
+   * it easier to test GTK and Pango in various default languages, you
+   * don't have to clickety-click in the Control Panel, you can simply
+   * start the program with LC_ALL=something on the command line.)
+   */
+  gchar *p;
+
+  p = getenv ("LC_ALL");
+  if (p != NULL)
+    return g_strdup (p);
+
+  p = getenv ("LC_CTYPE");
+  if (p != NULL)
+    return g_strdup (p);
+
+  p = getenv ("LANG");
+  if (p != NULL)
+    return g_strdup (p);
+
+  return g_win32_getlocale ();
+#else
   return g_strdup (setlocale (LC_CTYPE, NULL));
+#endif
 }
 
 /**
@@ -2269,6 +2639,13 @@ _gtk_button_event_triggers_context_menu (GdkEventButton *event)
       if (event->button == 3 &&
           ! (event->state & (GDK_BUTTON1_MASK | GDK_BUTTON2_MASK)))
         return TRUE;
+
+#ifdef GDK_WINDOWING_QUARTZ
+      if (event->button == 1 &&
+          ! (event->state & (GDK_BUTTON2_MASK | GDK_BUTTON3_MASK)) &&
+          (event->state & GDK_CONTROL_MASK))
+        return TRUE;
+#endif
     }
 
   return FALSE;
@@ -2320,4 +2697,4 @@ _gtk_translate_keyboard_accel_state (GdkKeymap       *keymap,
 }
 
 #define __GTK_MAIN_C__
-
+#include "gtkaliasdef.c"

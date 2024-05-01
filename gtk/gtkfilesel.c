@@ -42,9 +42,15 @@
 #include <pwd.h>
 #endif
 
-#include <glib.h>
+#include <glib.h>		/* Include early to get G_OS_WIN32 etc */
 #include <glib/gstdio.h>
 
+#if defined(G_PLATFORM_WIN32)
+#include <ctype.h>
+#define STRICT
+#include <windows.h>
+#undef STRICT
+#endif /* G_PLATFORM_WIN32 */
 
 #include "gdk/gdkkeysyms.h"
 
@@ -77,7 +83,19 @@
 #define WANT_HPANED 1
 #include "gtkhpaned.h"
 
+#include "gtkalias.h"
 
+#ifdef G_OS_WIN32
+#include <direct.h>
+#include <io.h>
+#ifndef S_ISDIR
+#define S_ISDIR(mode) ((mode)&_S_IFDIR)
+#endif
+#endif /* G_OS_WIN32 */
+
+#ifdef G_WITH_CYGWIN
+#include <sys/cygwin.h>		/* For cygwin_conv_to_posix_path */
+#endif
 
 #define DIR_LIST_WIDTH   180
 #define DIR_LIST_HEIGHT  180
@@ -133,9 +151,12 @@ typedef struct _PossibleCompletion PossibleCompletion;
  */
 struct _CompletionDirSent
 {
+#ifndef G_PLATFORM_WIN32
   ino_t inode;
   time_t mtime;
   dev_t device;
+#endif
+
   gint entry_count;
   struct _CompletionDirEntry *entries;
 };
@@ -302,9 +323,11 @@ static gchar*              cmpl_completion_fullname (const gchar*, CompletionSta
 static CompletionDir* open_ref_dir         (gchar* text_to_complete,
 					    gchar** remaining_text,
 					    CompletionState* cmpl_state);
+#ifndef G_PLATFORM_WIN32
 static gboolean       check_dir            (gchar *dir_name, 
 					    GStatBuf *result, 
 					    gboolean *stat_subdirs);
+#endif
 static CompletionDir* open_dir             (gchar* dir_name,
 					    CompletionState* cmpl_state);
 #ifdef HAVE_PWD_H
@@ -319,7 +342,9 @@ static CompletionDirSent* open_new_dir     (gchar* dir_name,
 static gint           correct_dir_fullname (CompletionDir* cmpl_dir);
 static gint           correct_parent       (CompletionDir* cmpl_dir,
 					    GStatBuf *sbuf);
+#ifndef G_PLATFORM_WIN32
 static gchar*         find_parent_dir_fullname    (gchar* dirname);
+#endif
 static CompletionDir* attach_dir           (CompletionDirSent* sent,
 					    gchar* dir_name,
 					    CompletionState *cmpl_state);
@@ -394,12 +419,89 @@ static void gtk_file_selection_rename_file (GtkWidget *widget, gpointer data);
 
 static void free_selected_names (GPtrArray *names);
 
+#ifndef G_PLATFORM_WIN32
 
 #define compare_utf8_filenames(a, b) strcmp(a, b)
 #define compare_sys_filenames(a, b) strcmp(a, b)
 
+#else
+
+static gint
+compare_utf8_filenames (const gchar *a,
+			const gchar *b)
+{
+  gchar *a_folded, *b_folded;
+  gint retval;
+
+  a_folded = g_utf8_strdown (a, -1);
+  b_folded = g_utf8_strdown (b, -1);
+
+  retval = strcmp (a_folded, b_folded);
+
+  g_free (a_folded);
+  g_free (b_folded);
+
+  return retval;
+}
+
+static gint
+compare_sys_filenames (const gchar *a,
+		       const gchar *b)
+{
+  gchar *a_utf8, *b_utf8;
+  gint retval;
+
+  a_utf8 = g_filename_to_utf8 (a, -1, NULL, NULL, NULL);
+  b_utf8 = g_filename_to_utf8 (b, -1, NULL, NULL, NULL);
+
+  retval = compare_utf8_filenames (a_utf8, b_utf8);
+
+  g_free (a_utf8);
+  g_free (b_utf8);
+
+  return retval;
+}
+
+#endif
+
 /* Saves errno when something cmpl does fails. */
 static gint cmpl_errno;
+
+#ifdef G_WITH_CYGWIN
+/*
+ * Take the path currently in the file selection
+ * entry field and translate as necessary from
+ * a Win32 style to Cygwin style path.  For
+ * instance translate:
+ * x:\somepath\file.jpg
+ * to:
+ * /cygdrive/x/somepath/file.jpg
+ *
+ * Replace the path in the selection text field.
+ * Return a boolean value concerning whether a
+ * translation had to be made.
+ */
+static int
+translate_win32_path (GtkFileSelection *filesel)
+{
+  int updated = 0;
+  const gchar *path;
+  gchar newPath[MAX_PATH];
+
+  /*
+   * Retrieve the current path
+   */
+  path = gtk_entry_get_text (GTK_ENTRY (filesel->selection_entry));
+
+  cygwin_conv_to_posix_path (path, newPath);
+  updated = (strcmp (path, newPath) != 0);
+
+  if (updated)
+    gtk_entry_set_text (GTK_ENTRY (filesel->selection_entry), newPath);
+    
+  return updated;
+}
+#endif
 
 G_DEFINE_TYPE (GtkFileSelection, gtk_file_selection, GTK_TYPE_DIALOG)
 
@@ -1055,6 +1157,9 @@ gtk_file_selection_get_filename (GtkFileSelection *filesel)
 
   g_return_val_if_fail (GTK_IS_FILE_SELECTION (filesel), nothing);
 
+#ifdef G_WITH_CYGWIN
+  translate_win32_path (filesel);
+#endif
   text = gtk_entry_get_text (GTK_ENTRY (filesel->selection_entry));
   if (text)
     {
@@ -1409,6 +1514,9 @@ gtk_file_selection_delete_file (GtkWidget *widget,
   if (fs->fileop_dialog)
     return;
 
+#ifdef G_WITH_CYGWIN
+  translate_win32_path (fs);
+#endif
 
   filename = gtk_entry_get_text (GTK_ENTRY (fs->selection_entry));
   if (strlen (filename) < 1)
@@ -1659,7 +1767,9 @@ gtk_file_selection_key_press (GtkWidget   *widget,
       (event->state & gtk_accelerator_get_default_mod_mask ()) == 0)
     {
       fs = GTK_FILE_SELECTION (user_data);
-
+#ifdef G_WITH_CYGWIN
+      translate_win32_path (fs);
+#endif
       text = g_strdup (gtk_entry_get_text (GTK_ENTRY (fs->selection_entry)));
 
       gtk_file_selection_populate (fs, text, TRUE, TRUE);
@@ -1742,6 +1852,10 @@ gtk_file_selection_update_history_menu (GtkFileSelection *fs,
 	  /* another small hack to catch the full path */
 	  if (i != dir_len) 
 		  current_dir[i + 1] = '\0';
+#ifdef G_WITH_CYGWIN
+	  if (!strcmp (current_dir, "//"))
+	    continue;
+#endif
 	  menu_item = gtk_menu_item_new_with_label (current_dir);
 	  
 	  callback_arg = g_new (HistoryCallbackArg, 1);
@@ -1778,6 +1892,29 @@ static gchar *
 get_real_filename (gchar    *filename,
                    gboolean  free_old)
 {
+#ifdef G_WITH_CYGWIN
+  /* Check to see if the selection was a drive selector */
+  if (isalpha (filename[0]) && (filename[1] == ':'))
+    {
+      gchar temp_filename[MAX_PATH];
+      int len;
+
+      cygwin_conv_to_posix_path (filename, temp_filename);
+
+      /* we need trailing '/'. */
+      len = strlen (temp_filename);
+      if (len > 0 && temp_filename[len-1] != '/')
+        {
+          temp_filename[len]   = '/';
+          temp_filename[len+1] = '\0';
+        }
+      
+      if (free_old)
+	g_free (filename);
+
+      return g_strdup (temp_filename);
+    }
+#endif /* G_WITH_CYGWIN */
   return filename;
 }
 
@@ -1819,6 +1956,37 @@ gtk_file_selection_dir_activate (GtkTreeView       *tree_view,
   g_free (filename);
 }
 
+#ifdef G_PLATFORM_WIN32
+
+static void
+win32_gtk_add_drives_to_dir_list (GtkListStore *model)
+{
+  gchar *textPtr;
+  gchar buffer[128];
+  char formatBuffer[128];
+  GtkTreeIter iter;
+
+  /* Get the drives string */
+  GetLogicalDriveStrings (sizeof (buffer), buffer);
+
+  /* Add the drives as necessary */
+  textPtr = buffer;
+  while (*textPtr != '\0')
+    {
+      /* Ignore floppies (?) */
+      if (GetDriveType (textPtr) != DRIVE_REMOVABLE)
+	{
+	  /* Build the actual displayable string */
+	  g_snprintf (formatBuffer, sizeof (formatBuffer), "%c:\\", toupper (textPtr[0]));
+
+	  /* Add to the list */
+	  gtk_list_store_append (model, &iter);
+	  gtk_list_store_set (model, &iter, DIR_COLUMN, formatBuffer, -1);
+	}
+      textPtr += (strlen (textPtr) + 1);
+    }
+}
+#endif
 
 static gchar *
 escape_underscores (const gchar *str)
@@ -1905,6 +2073,11 @@ gtk_file_selection_populate (GtkFileSelection *fs,
 
       poss = cmpl_next_completion (cmpl_state);
     }
+
+#ifdef G_PLATFORM_WIN32
+  /* For Windows, add drives as potential selections */
+  win32_gtk_add_drives_to_dir_list (dir_model);
+#endif
 
   /* File lists are set. */
 
@@ -2639,8 +2812,22 @@ open_ref_dir (gchar           *text_to_complete,
 
   first_slash = strchr (text_to_complete, G_DIR_SEPARATOR);
 
+#ifdef G_WITH_CYGWIN
+  if (text_to_complete[0] == '/' && text_to_complete[1] == '/')
+    {
+      char root_dir[5];
+      g_snprintf (root_dir, sizeof (root_dir), "//%c", text_to_complete[2]);
+
+      new_dir = open_dir (root_dir, cmpl_state);
+
+      if (new_dir) {
+	*remaining_text = text_to_complete + 4;
+      }
+    }
+#else
   if (FALSE)
     ;
+#endif
 #ifdef HAVE_PWD_H
   else if (text_to_complete[0] == '~')
     {
@@ -2813,9 +3000,11 @@ open_new_dir (gchar    *dir_name,
   gchar *sys_dir_name;
 
   sent = g_new (CompletionDirSent, 1);
+#ifndef G_PLATFORM_WIN32
   sent->mtime = sbuf->st_mtime;
   sent->inode = sbuf->st_ino;
   sent->device = sbuf->st_dev;
+#endif
   path = g_string_sized_new (2*MAXPATHLEN + 10);
 
   sys_dir_name = g_filename_from_utf8 (dir_name, -1, NULL, NULL, NULL);
@@ -2909,6 +3098,8 @@ open_new_dir (gchar    *dir_name,
   return sent;
 }
 
+#ifndef G_PLATFORM_WIN32
+
 static gboolean
 check_dir (gchar    *dir_name,
 	   GStatBuf *result,
@@ -2973,16 +3164,21 @@ check_dir (gchar    *dir_name,
   return TRUE;
 }
 
+#endif
+
 /* open a directory by absolute pathname */
 static CompletionDir*
 open_dir (gchar           *dir_name,
 	  CompletionState *cmpl_state)
 {
+#ifndef G_PLATFORM_WIN32
   GStatBuf sbuf;
   gboolean stat_subdirs;
   GList* cdsl;
+#endif
   CompletionDirSent *sent;
 
+#ifndef G_PLATFORM_WIN32
   if (!check_dir (dir_name, &sbuf, &stat_subdirs))
     return NULL;
 
@@ -3001,6 +3197,9 @@ open_dir (gchar           *dir_name,
     }
 
   sent = open_new_dir (dir_name, &sbuf, stat_subdirs);
+#else
+  sent = open_new_dir (dir_name, NULL, TRUE);
+#endif
 
   if (sent)
     {
@@ -3144,7 +3343,9 @@ correct_parent (CompletionDir *cmpl_dir,
   GStatBuf parbuf;
   gchar *last_slash;
   gchar *first_slash;
+#ifndef G_PLATFORM_WIN32
   gchar *new_name;
+#endif
   gchar *sys_filename;
   gchar c = 0;
 
@@ -3152,7 +3353,8 @@ correct_parent (CompletionDir *cmpl_dir,
   g_assert (last_slash);
   first_slash = strchr (cmpl_dir->fullname, G_DIR_SEPARATOR);
 
-  /* Clever (?) way to check for top-level directory.
+  /* Clever (?) way to check for top-level directory that works also on
+   * Win32, where there is a drive letter and colon prefixed...
    */
   if (last_slash != first_slash)
     {
@@ -3183,6 +3385,7 @@ correct_parent (CompletionDir *cmpl_dir,
     }
   g_free (sys_filename);
 
+#ifndef G_PLATFORM_WIN32	/* No inode numbers on Win32 */
   if (parbuf.st_ino == sbuf->st_ino && parbuf.st_dev == sbuf->st_dev)
     /* it wasn't a link */
     return TRUE;
@@ -3202,10 +3405,12 @@ correct_parent (CompletionDir *cmpl_dir,
   g_free (cmpl_dir->fullname);
 
   cmpl_dir->fullname = new_name;
+#endif
 
   return TRUE;
 }
 
+#ifndef G_PLATFORM_WIN32
 
 static gchar*
 find_parent_dir_fullname (gchar* dirname)
@@ -3248,6 +3453,8 @@ find_parent_dir_fullname (gchar* dirname)
   g_free (sys_orig_dir);
   return result;
 }
+
+#endif
 
 /**********************************************************************/
 /*                        Completion Operations                       */
@@ -3314,7 +3521,16 @@ attempt_homedir_completion (gchar           *text_to_complete,
 
 #endif
 
+#ifdef G_PLATFORM_WIN32
+/* FIXME: determine whether we should casefold all Unicode letters
+ * here, too (and in in first_diff_index() walk through the strings with
+ * g_utf8_next_char()), or if this folding isn't actually needed at
+ * all.
+ */
+#define FOLD(c) (tolower(c))
+#else
 #define FOLD(c) (c)
+#endif
 
 /* returns the index (>= 0) of the first differing character,
  * PATTERN_MATCH if the completion matches */
@@ -3721,5 +3937,61 @@ cmpl_strerror (gint err)
     return g_strerror (err);
 }
 
-#define __GTK_FILESEL_C__
+#if defined (G_OS_WIN32) && !defined (_WIN64)
 
+/* DLL ABI stability backward compatibility versions */
+
+#undef gtk_file_selection_get_filename
+
+const gchar*
+gtk_file_selection_get_filename (GtkFileSelection *filesel)
+{
+  static gchar retval[MAXPATHLEN*2+1];
+  gchar *tem;
+
+  tem = g_locale_from_utf8 (gtk_file_selection_get_filename_utf8 (filesel),
+			    -1, NULL, NULL, NULL);
+
+  strncpy (retval, tem, sizeof (retval) - 1);
+  retval[sizeof (retval) - 1] = '\0';
+  g_free (tem);
+
+  return retval;
+}
+
+#undef gtk_file_selection_set_filename
+
+void
+gtk_file_selection_set_filename (GtkFileSelection *filesel,
+				 const gchar      *filename)
+{
+  gchar *utf8_filename = g_locale_to_utf8 (filename, -1, NULL, NULL, NULL);
+  gtk_file_selection_set_filename_utf8 (filesel, utf8_filename);
+  g_free (utf8_filename);
+}
+
+#undef gtk_file_selection_get_selections
+
+gchar **
+gtk_file_selection_get_selections (GtkFileSelection *filesel)
+{
+  int i = 0;
+  gchar **selections = gtk_file_selection_get_selections_utf8 (filesel);
+
+  if (selections != NULL)
+    while (selections[i] != NULL)
+      {
+	gchar *tem = selections[i];
+	selections[i] = g_locale_from_utf8 (selections[i],
+					    -1, NULL, NULL, NULL);
+	g_free (tem);
+	i++;
+      }
+
+  return selections;
+}
+
+#endif /* G_OS_WIN32 && !_WIN64 */
+
+#define __GTK_FILESEL_C__
+#include "gtkaliasdef.c"

@@ -41,10 +41,10 @@
 #include "gtkdnd.h"
 #include "gtkdrawingarea.h"
 #include "gtkframe.h"
-
+#include "gtkmarshalers.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
-
+#include "gtkalias.h"
 
 /* Size of checks and gray levels for alpha compositing checkerboard */
 #define CHECK_SIZE  4
@@ -227,7 +227,7 @@ gtk_color_button_class_init (GtkColorButtonClass *klass)
 						  G_SIGNAL_RUN_FIRST,
 						  G_STRUCT_OFFSET (GtkColorButtonClass, color_set),
 						  NULL, NULL,
-						  NULL,
+						  _gtk_marshal_VOID__VOID,
 						  G_TYPE_NONE, 0);
 
   g_type_class_add_private (gobject_class, sizeof (GtkColorButtonPrivate));
@@ -870,4 +870,4 @@ gtk_color_button_get_property (GObject    *object,
 }
 
 #define __GTK_COLOR_BUTTON_C__
-
+#include "gtkaliasdef.c"

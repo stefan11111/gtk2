@@ -30,7 +30,7 @@
 
 #include "gtkhruler.h"
 #include "gtkorientable.h"
-
+#include "gtkalias.h"
 
 G_DEFINE_TYPE (GtkHRuler, gtk_hruler, GTK_TYPE_RULER)
 
@@ -53,4 +53,4 @@ gtk_hruler_new (void)
 }
 
 #define __GTK_HRULER_C__
-
+#include "gtkaliasdef.c"

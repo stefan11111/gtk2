@@ -28,7 +28,7 @@
 
 #include "gtkhbox.h"
 #include "gtkorientable.h"
-
+#include "gtkalias.h"
 
 
 /**
@@ -82,4 +82,4 @@ gtk_hbox_new (gboolean homogeneous,
 }
 
 #define __GTK_HBOX_C__
-
+#include "gtkaliasdef.c"

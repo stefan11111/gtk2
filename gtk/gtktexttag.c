@@ -53,9 +53,9 @@
 #include "gtktexttypes.h"
 #include "gtktexttagtable.h"
 #include "gtkintl.h"
-
+#include "gtkmarshalers.h"
 #include "gtkprivate.h"
-
+#include "gtkalias.h"
 
 #include <stdlib.h>
 #include <string.h>
@@ -691,7 +691,7 @@ gtk_text_tag_class_init (GtkTextTagClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkTextTagClass, event),
                   _gtk_boolean_handled_accumulator, NULL,
-                  NULL,
+                  _gtk_marshal_BOOLEAN__OBJECT_BOXED_BOXED,
                   G_TYPE_BOOLEAN,
                   3,
                   G_TYPE_OBJECT,
@@ -2354,4 +2354,4 @@ _gtk_text_tag_affects_nonsize_appearance (GtkTextTag *tag)
 }
 
 #define __GTK_TEXT_TAG_C__
-
+#include "gtkaliasdef.c"

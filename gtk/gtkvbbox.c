@@ -28,7 +28,7 @@
 #include "gtkvbbox.h"
 #include "gtkorientable.h"
 #include "gtkintl.h"
-
+#include "gtkalias.h"
 
 /**
  * SECTION:gtkvbbox
@@ -156,4 +156,4 @@ _gtk_vbutton_box_get_layout_default (void)
 
 
 #define __GTK_VBBOX_C__
-
+#include "gtkaliasdef.c"

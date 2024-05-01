@@ -26,7 +26,7 @@
 #include "gtkorientable.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
-
+#include "gtkalias.h"
 
 
 typedef GtkOrientableIface GtkOrientableInterface;
@@ -97,4 +97,4 @@ gtk_orientable_get_orientation (GtkOrientable *orientable)
 }
 
 #define __GTK_ORIENTABLE_C__
-
+#include "gtkaliasdef.c"

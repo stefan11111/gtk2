@@ -25,7 +25,7 @@
 #include "gtkprivate.h"
 #include "gtksizegroup.h"
 #include "gtkbuildable.h"
-
+#include "gtkalias.h"
 
 enum {
   PROP_0,
@@ -941,4 +941,4 @@ gtk_size_group_buildable_custom_finished (GtkBuildable  *buildable,
 
 
 #define __GTK_SIZE_GROUP_C__
-
+#include "gtkaliasdef.c"

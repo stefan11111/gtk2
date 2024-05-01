@@ -30,7 +30,7 @@
 #include "gtkseparator.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
-
+#include "gtkalias.h"
 
 
 enum {
@@ -259,4 +259,4 @@ gtk_separator_new (GtkOrientation orientation)
 
 
 #define __GTK_SEPARATOR_C__
-
+#include "gtkaliasdef.c"

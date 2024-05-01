@@ -26,7 +26,7 @@
 #include "gdkinternals.h"
 #include "gdkscreen.h"
 #include "gdkintl.h"
-
+#include "gdkalias.h"
 
 
 static void    gdk_app_launch_context_finalize    (GObject           *object);
@@ -289,4 +289,4 @@ gdk_app_launch_context_new (void)
 }
 
 #define __GDK_APP_LAUNCH_CONTEXT_C__
-
+#include "gdkaliasdef.c"

@@ -29,13 +29,13 @@
 #include "gdk/gdkkeysyms.h"
 #include "gtkbindings.h"
 #include "gtkmain.h"
-
+#include "gtkmarshalers.h"
 #include "gtkorientable.h"
 #include "gtkpaned.h"
 #include "gtkwindow.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
-
+#include "gtkalias.h"
 
 enum {
   PROP_0,
@@ -348,7 +348,7 @@ gtk_paned_class_init (GtkPanedClass *class)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkPanedClass, cycle_child_focus),
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_BOOLEAN__BOOLEAN,
 		  G_TYPE_BOOLEAN, 1,
 		  G_TYPE_BOOLEAN);
 
@@ -371,7 +371,7 @@ gtk_paned_class_init (GtkPanedClass *class)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkPanedClass, toggle_handle_focus),
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_BOOLEAN__VOID,
 		  G_TYPE_BOOLEAN, 0);
 
   /**
@@ -392,7 +392,7 @@ gtk_paned_class_init (GtkPanedClass *class)
                   G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                   G_STRUCT_OFFSET (GtkPanedClass, move_handle),
                   NULL, NULL,
-                  NULL,
+                  _gtk_marshal_BOOLEAN__ENUM,
                   G_TYPE_BOOLEAN, 1,
                   GTK_TYPE_SCROLL_TYPE);
 
@@ -416,7 +416,7 @@ gtk_paned_class_init (GtkPanedClass *class)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkPanedClass, cycle_handle_focus),
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_BOOLEAN__BOOLEAN,
 		  G_TYPE_BOOLEAN, 1,
 		  G_TYPE_BOOLEAN);
 
@@ -439,7 +439,7 @@ gtk_paned_class_init (GtkPanedClass *class)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkPanedClass, accept_position),
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_BOOLEAN__VOID,
 		  G_TYPE_BOOLEAN, 0);
 
   /**
@@ -462,7 +462,7 @@ gtk_paned_class_init (GtkPanedClass *class)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkPanedClass, cancel_position),
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_BOOLEAN__VOID,
 		  G_TYPE_BOOLEAN, 0);
 
   binding_set = gtk_binding_set_by_class (class);
@@ -1524,6 +1524,14 @@ gtk_paned_set_position (GtkPaned *paned,
   g_object_thaw_notify (object);
 
   gtk_widget_queue_resize_no_redraw (GTK_WIDGET (paned));
+
+#ifdef G_OS_WIN32
+  /* Hacky work-around for bug #144269 */
+  if (paned->child2 != NULL)
+    {
+      gtk_widget_queue_draw (paned->child2);
+    }
+#endif
 }
 
 /**
@@ -2245,4 +2253,4 @@ gtk_paned_get_handle_window (GtkPaned *paned)
 }
 
 #define __GTK_PANED_C__
-
+#include "gtkaliasdef.c"

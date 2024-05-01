@@ -28,13 +28,13 @@
 #include "config.h"
 #include "gtkframe.h"
 #include "gtklabel.h"
-
+#include "gtkmarshalers.h"
 #include "gtkstatusbar.h"
 #include "gtkwindow.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
 #include "gtkbuildable.h"
-
+#include "gtkalias.h"
 
 typedef struct _GtkStatusbarMsg GtkStatusbarMsg;
 
@@ -164,7 +164,7 @@ gtk_statusbar_class_init (GtkStatusbarClass *class)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkStatusbarClass, text_pushed),
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_VOID__UINT_STRING,
 		  G_TYPE_NONE, 2,
 		  G_TYPE_UINT,
 		  G_TYPE_STRING);
@@ -183,7 +183,7 @@ gtk_statusbar_class_init (GtkStatusbarClass *class)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkStatusbarClass, text_popped),
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_VOID__UINT_STRING,
 		  G_TYPE_NONE, 2,
 		  G_TYPE_UINT,
 		  G_TYPE_STRING);
@@ -1063,4 +1063,4 @@ label_selectable_changed (GtkWidget  *label,
 }
 
 #define __GTK_STATUSBAR_C__
-
+#include "gtkaliasdef.c"

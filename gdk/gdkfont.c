@@ -30,7 +30,7 @@
 #include "gdkdisplay.h"
 #include "gdkfont.h"
 #include "gdkinternals.h"
-
+#include "gdkalias.h"
 
 GType
 gdk_font_get_type (void)
@@ -356,4 +356,4 @@ gdk_font_load (const gchar *font_name)
 }
 
 #define __GDK_FONT_C__
-
+#include "gdkaliasdef.c"

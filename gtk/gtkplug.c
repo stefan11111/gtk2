@@ -28,13 +28,13 @@
 #include "config.h"
 
 #include "gtkmain.h"
-
+#include "gtkmarshalers.h"
 #include "gtkplug.h"
 #include "gtkintl.h"
 #include "gtkprivate.h"
 #include "gtkplugprivate.h"
 
-
+#include "gtkalias.h"
 
 /**
  * SECTION:gtkplug
@@ -200,7 +200,7 @@ gtk_plug_class_init (GtkPlugClass *class)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkPlugClass, embedded),
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_VOID__VOID,
 		  G_TYPE_NONE, 0);
 }
 
@@ -1067,4 +1067,4 @@ _gtk_plug_focus_first_last (GtkPlug          *plug,
 }
 
 #define __GTK_PLUG_C__
-
+#include "gtkaliasdef.c"

@@ -39,7 +39,7 @@
 #include "gtkiconfactory.h"
 #include "gtkintl.h"
 #include "gtkprivate.h"
-
+#include "gtkalias.h"
 
 /**
  * SECTION:gtkmessagedialog
@@ -1028,4 +1028,4 @@ gtk_message_dialog_style_set (GtkWidget *widget,
 }
 
 #define __GTK_MESSAGE_DIALOG_C__
-
+#include "gtkaliasdef.c"

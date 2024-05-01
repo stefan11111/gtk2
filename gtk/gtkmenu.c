@@ -34,7 +34,7 @@
 #include "gtkcheckmenuitem.h"
 #include  <gobject/gvaluecollector.h>
 #include "gtkmain.h"
-
+#include "gtkmarshalers.h"
 #include "gtkmenu.h"
 #include "gtktearoffmenuitem.h"
 #include "gtkwindow.h"
@@ -43,7 +43,7 @@
 #include "gtksettings.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
-
+#include "gtkalias.h"
 
 
 #define NAVIGATION_REGION_OVERSHOOT 50  /* How much the navigation region
@@ -487,7 +487,7 @@ gtk_menu_class_init (GtkMenuClass *class)
                                 G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                                 G_CALLBACK (gtk_menu_real_move_scroll),
                                 NULL, NULL,
-                                NULL,
+                                _gtk_marshal_VOID__ENUM,
                                 G_TYPE_NONE, 1,
                                 GTK_TYPE_SCROLL_TYPE);
 
@@ -5367,4 +5367,4 @@ gtk_menu_get_reserve_toggle_size (GtkMenu *menu)
 }
 
 #define __GTK_MENU_C__
-
+#include "gtkaliasdef.c"

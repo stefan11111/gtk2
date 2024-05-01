@@ -42,7 +42,15 @@ typedef struct _GtkTextMarkBody GtkTextMarkBody;
  * Declarations for variables shared among the text-related files:
  */
 
+#ifdef G_OS_WIN32
+#ifdef GTK_COMPILATION
+#define VARIABLE extern __declspec(dllexport)
+#else
+#define VARIABLE extern __declspec(dllimport)
+#endif
+#else
 #define VARIABLE extern
+#endif
 
 /* In gtktextbtree.c */
 extern const GtkTextLineSegmentClass gtk_text_char_type;

@@ -23,7 +23,7 @@
 #include <errno.h>
 #include "gtkcelllayout.h"
 #include "gtkintl.h"
-
+#include "gtkalias.h"
 
 GType
 gtk_cell_layout_get_type (void)
@@ -444,4 +444,4 @@ _gtk_cell_layout_buildable_add_child (GtkBuildable      *buildable,
 }
 
 #define __GTK_CELL_LAYOUT_C__
-
+#include "gtkaliasdef.c"

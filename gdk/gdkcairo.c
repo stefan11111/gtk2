@@ -21,7 +21,7 @@
 #include "gdkdrawable.h"
 #include "gdkinternals.h"
 #include "gdkregion-generic.h"
-
+#include "gdkalias.h"
 
 static void
 gdk_ensure_surface_flush (gpointer surface)
@@ -350,4 +350,4 @@ gdk_cairo_set_source_window (cairo_t   *cr,
 
 
 #define __GDK_CAIRO_C__
-
+#include "gdkaliasdef.c"

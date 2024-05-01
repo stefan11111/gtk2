@@ -26,7 +26,11 @@
 
 #include "config.h"
 #include "gdk.h"
+#include "gdkalias.h"
 
+#ifdef GDK_WINDOWING_WIN32
+#include "win32/gdkprivate-win32.h"
+#endif
 
 /* Thanks to Markus G. Kuhn <mkuhn@acm.org> for the ksysym<->Unicode
  * mapping functions, from the xterm sources.
@@ -881,6 +885,15 @@ gdk_keyval_to_unicode (guint keyval)
   if ((keyval & 0xff000000) == 0x01000000)
     return keyval & 0x00ffffff;
 
+#if defined(GDK_WINDOWING_WIN32)
+  if (keyval == 0xffae)
+    {
+      GdkWin32Keymap *keymap = GDK_WIN32_KEYMAP (gdk_keymap_get_default ());
+
+      return (guint32) _gdk_win32_keymap_get_decimal_mark (keymap);
+    }
+#endif
+
   /* binary search in table */
   while (max >= min) {
     mid = (min + max) / 2;
@@ -1697,4 +1710,4 @@ gdk_unicode_to_keyval (guint32 wc)
 }
 
 #define __GDK_KEYUNI_C__
-
+#include "gdkaliasdef.c"

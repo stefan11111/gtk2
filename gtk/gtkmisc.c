@@ -29,7 +29,7 @@
 #include "gtkmisc.h"
 #include "gtkintl.h"
 #include "gtkprivate.h"
-
+#include "gtkalias.h"
 
 
 enum {
@@ -340,4 +340,4 @@ gtk_misc_realize (GtkWidget *widget)
 }
 
 #define __GTK_MISC_C__
-
+#include "gtkaliasdef.c"

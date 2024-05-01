@@ -25,9 +25,18 @@
 #include "gtksearchenginebeagle.h"
 #include "gtksearchenginesimple.h"
 #include "gtksearchenginetracker.h"
+#include "gtksearchenginequartz.h"
+
+#include <gdk/gdkconfig.h> /* for GDK_WINDOWING_QUARTZ */
+
+#ifndef G_OS_WIN32		/* Beagle and tracker are not ported
+				 * to Windows, as far as I know.
+				 */
 
 #define HAVE_BEAGLE  1 
 #define HAVE_TRACKER 1
+
+#endif
 
 enum 
 {
@@ -104,7 +113,7 @@ _gtk_search_engine_init (GtkSearchEngine *engine)
 GtkSearchEngine *
 _gtk_search_engine_new (void)
 {
-#if defined(HAVE_TRACKER) || defined(HAVE_BEAGLE)
+#if defined(HAVE_TRACKER) || defined(HAVE_BEAGLE) || defined (GDK_WINDOWING_QUARTZ)
   GtkSearchEngine *engine = NULL;
 #endif
 
@@ -116,6 +125,12 @@ _gtk_search_engine_new (void)
   
 #ifdef HAVE_BEAGLE
   engine = _gtk_search_engine_beagle_new ();
+  if (engine)
+    return engine;
+#endif
+
+#ifdef GDK_WINDOWING_QUARTZ
+  engine = _gtk_search_engine_quartz_new ();
   if (engine)
     return engine;
 #endif

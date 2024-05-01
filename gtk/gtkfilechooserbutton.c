@@ -48,12 +48,12 @@
 #include "gtkfilechooserdialog.h"
 #include "gtkfilechooserprivate.h"
 #include "gtkfilechooserutils.h"
-
+#include "gtkmarshalers.h"
 
 #include "gtkfilechooserbutton.h"
 
 #include "gtkprivate.h"
-
+#include "gtkalias.h"
 
 /* **************** *
  *  Private Macros  *
@@ -369,7 +369,7 @@ gtk_file_chooser_button_class_init (GtkFileChooserButtonClass * class)
 		  G_SIGNAL_RUN_FIRST,
 		  G_STRUCT_OFFSET (GtkFileChooserButtonClass, file_set),
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_VOID__VOID,
 		  G_TYPE_NONE, 0);
 
   /**
@@ -3154,4 +3154,4 @@ gtk_file_chooser_button_get_focus_on_click (GtkFileChooserButton *button)
 }
 
 #define __GTK_FILE_CHOOSER_BUTTON_C__
-
+#include "gtkaliasdef.c"

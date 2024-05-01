@@ -53,7 +53,7 @@
 #include "gdkinput-directfb.h"
 
 #include "gdkintl.h"
-
+#include "gdkalias.h"
 
 
 void
@@ -439,4 +439,4 @@ _gdk_windowing_pointer_grab (GdkWindow    *window,
 }
 
 #define __GDK_MAIN_X11_C__
-
+#include "gdkaliasdef.c"

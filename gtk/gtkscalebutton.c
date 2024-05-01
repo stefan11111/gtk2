@@ -35,7 +35,9 @@
 
 #include "config.h"
 
+#ifndef _WIN32
 #define _GNU_SOURCE
+#endif
 #include <math.h>
 #include <stdlib.h>
 #include <string.h>
@@ -46,7 +48,7 @@
 #include "gtkbindings.h"
 #include "gtkframe.h"
 #include "gtkmain.h"
-
+#include "gtkmarshalers.h"
 #include "gtkorientable.h"
 #include "gtkprivate.h"
 #include "gtkscale.h"
@@ -56,7 +58,7 @@
 #include "gtkwindow.h"
 
 #include "gtkintl.h"
-
+#include "gtkalias.h"
 
 #define SCALE_SIZE 100
 #define CLICK_TIMEOUT 250
@@ -270,7 +272,7 @@ gtk_scale_button_class_init (GtkScaleButtonClass *klass)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkScaleButtonClass, value_changed),
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_VOID__DOUBLE,
 		  G_TYPE_NONE, 1, G_TYPE_DOUBLE);
 
   /**
@@ -1573,4 +1575,4 @@ gtk_scale_button_scale_value_changed (GtkRange *range)
 }
 
 #define __GTK_SCALE_BUTTON_C__
-
+#include "gtkaliasdef.c"

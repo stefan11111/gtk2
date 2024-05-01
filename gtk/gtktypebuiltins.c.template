@@ -3,7 +3,7 @@
 #define GTK_ENABLE_BROKEN
 #include "gtk.h"
 #include "gtkprivate.h"
-
+#include "gtkalias.h"
 
 /*** END file-header ***/
 
@@ -36,5 +36,5 @@ GType
 
 /*** BEGIN file-tail ***/
 #define __GTK_TYPE_BUILTINS_C__
-
+#include "gtkaliasdef.c"
 /*** END file-tail ***/

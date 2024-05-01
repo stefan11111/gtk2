@@ -32,7 +32,7 @@
 #include "gdkimage.h"
 #include "gdkprivate.h"
 #include "gdkinternals.h"	/* For scratch_image code */
-
+#include "gdkalias.h"
 
 /**
  * gdk_image_ref:
@@ -656,4 +656,4 @@ gdk_image_new (GdkImageType  type,
 }
 
 #define __GDK_IMAGE_C__
-
+#include "gdkaliasdef.c"

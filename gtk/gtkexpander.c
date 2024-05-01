@@ -28,13 +28,13 @@
 #include "gtklabel.h"
 #include "gtkbuildable.h"
 #include "gtkcontainer.h"
-
+#include "gtkmarshalers.h"
 #include "gtkmain.h"
 #include "gtkintl.h"
 #include "gtkprivate.h"
 #include <gdk/gdkkeysyms.h>
 #include "gtkdnd.h"
-
+#include "gtkalias.h"
 
 #define GTK_EXPANDER_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), GTK_TYPE_EXPANDER, GtkExpanderPrivate))
 
@@ -265,7 +265,7 @@ gtk_expander_class_init (GtkExpanderClass *klass)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkExpanderClass, activate),
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_VOID__VOID,
 		  G_TYPE_NONE, 0);
 }
 
@@ -1826,5 +1826,5 @@ gtk_expander_get_label_fill (GtkExpander *expander)
 }
 
 #define __GTK_EXPANDER_C__
-
+#include "gtkaliasdef.c"
 

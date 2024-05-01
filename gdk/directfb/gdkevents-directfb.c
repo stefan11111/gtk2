@@ -47,12 +47,12 @@
 gboolean gdk_net_wm_supports (GdkAtom property);
 #endif
 
-
+#include "gdkalias.h"
 
 #define EventBuffer _gdk_display->buffer
 #define DirectFB _gdk_display->directfb
 
-
+#include "gdkaliasdef.c"
 
 D_DEBUG_DOMAIN (GDKDFB_Events, "GDKDFB/Events", "GDK DirectFB Events");
 D_DEBUG_DOMAIN (GDKDFB_MouseEvents, "GDKDFB/Events/Mouse", "GDK DirectFB Mouse Events");
@@ -366,7 +366,11 @@ gdk_event_send_client_message_for_display (GdkDisplay *display,
 guint32
 gdk_directfb_get_time (void)
 {
-  return (guint32) g_get_real_time();
+  GTimeVal tv;
+
+  g_get_current_time (&tv);
+
+  return (guint32) tv.tv_sec * 1000 + tv.tv_usec / 1000;
 }
 
 void
@@ -793,4 +797,4 @@ _gdk_windowing_event_data_free (GdkEvent *event)
 }
 
 #define __GDK_EVENTS_X11_C__
-
+#include "gdkaliasdef.c"

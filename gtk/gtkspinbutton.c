@@ -38,11 +38,11 @@
 #include "gtkspinbutton.h"
 #include "gtkentryprivate.h"
 #include "gtkmain.h"
-
+#include "gtkmarshalers.h"
 #include "gtksettings.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
-
+#include "gtkalias.h"
 
 #define MIN_SPIN_BUTTON_WIDTH 30
 #define MAX_TIMER_CALLS       5
@@ -287,7 +287,7 @@ gtk_spin_button_class_init (GtkSpinButtonClass *class)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkSpinButtonClass, input),
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_INT__POINTER,
 		  G_TYPE_INT, 1,
 		  G_TYPE_POINTER);
 
@@ -325,7 +325,7 @@ gtk_spin_button_class_init (GtkSpinButtonClass *class)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkSpinButtonClass, output),
 		  _gtk_boolean_handled_accumulator, NULL,
-		  NULL,
+		  _gtk_marshal_BOOLEAN__VOID,
 		  G_TYPE_BOOLEAN, 0);
 
   spinbutton_signals[VALUE_CHANGED] =
@@ -334,7 +334,7 @@ gtk_spin_button_class_init (GtkSpinButtonClass *class)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkSpinButtonClass, value_changed),
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_VOID__VOID,
 		  G_TYPE_NONE, 0);
 
   /**
@@ -352,7 +352,7 @@ gtk_spin_button_class_init (GtkSpinButtonClass *class)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkSpinButtonClass, wrapped),
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_VOID__VOID,
 		  G_TYPE_NONE, 0);
 
   /* Action signals */
@@ -362,7 +362,7 @@ gtk_spin_button_class_init (GtkSpinButtonClass *class)
                   G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                   G_STRUCT_OFFSET (GtkSpinButtonClass, change_value),
                   NULL, NULL,
-                  NULL,
+                  _gtk_marshal_VOID__ENUM,
                   G_TYPE_NONE, 1,
                   GTK_TYPE_SCROLL_TYPE);
   
@@ -1489,6 +1489,26 @@ gtk_spin_button_insert_text (GtkEditable *editable,
       else 
 	pos_sign = '+';
 
+#ifdef G_OS_WIN32
+      /* Workaround for bug caused by some Windows application messing
+       * up the positive sign of the current locale, more specifically
+       * HKEY_CURRENT_USER\Control Panel\International\sPositiveSign.
+       * See bug #330743 and for instance
+       * http://www.msnewsgroups.net/group/microsoft.public.dotnet.languages.csharp/topic36024.aspx
+       *
+       * I don't know if the positive sign always gets bogusly set to
+       * a digit when the above Registry value is corrupted as
+       * described. (In my test case, it got set to "8", and in the
+       * bug report above it presumably was set ot "0".) Probably it
+       * might get set to almost anything? So how to distinguish a
+       * bogus value from some correct one for some locale? That is
+       * probably hard, but at least we should filter out the
+       * digits...
+       */
+      if (pos_sign >= '0' && pos_sign <= '9')
+	pos_sign = '+';
+#endif
+
       for (sign=0, i=0; i<entry_length; i++)
 	if ((entry_text[i] == neg_sign) ||
 	    (entry_text[i] == pos_sign))
@@ -2330,4 +2350,4 @@ gtk_spin_button_update (GtkSpinButton *spin_button)
 }
 
 #define __GTK_SPIN_BUTTON_C__
-
+#include "gtkaliasdef.c"

@@ -34,8 +34,8 @@
 #include "gtklayout.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
-
-
+#include "gtkmarshalers.h"
+#include "gtkalias.h"
 
 typedef struct _GtkLayoutChild   GtkLayoutChild;
 
@@ -676,7 +676,7 @@ gtk_layout_class_init (GtkLayoutClass *class)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkLayoutClass, set_scroll_adjustments),
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_VOID__OBJECT_OBJECT,
 		  G_TYPE_NONE, 2,
 		  GTK_TYPE_ADJUSTMENT,
 		  GTK_TYPE_ADJUSTMENT);
@@ -1116,4 +1116,4 @@ gtk_layout_adjustment_changed (GtkAdjustment *adjustment,
 }
 
 #define __GTK_LAYOUT_C__
-
+#include "gtkaliasdef.c"

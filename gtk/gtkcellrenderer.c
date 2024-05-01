@@ -20,10 +20,10 @@
 #include "config.h"
 #include "gtkcellrenderer.h"
 #include "gtkintl.h"
-
+#include "gtkmarshalers.h"
 #include "gtkprivate.h"
 #include "gtktreeprivate.h"
-
+#include "gtkalias.h"
 
 static void gtk_cell_renderer_get_property  (GObject              *object,
 					     guint                 param_id,
@@ -122,7 +122,7 @@ gtk_cell_renderer_class_init (GtkCellRendererClass *class)
 		  G_SIGNAL_RUN_FIRST,
 		  G_STRUCT_OFFSET (GtkCellRendererClass, editing_canceled),
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_VOID__VOID,
 		  G_TYPE_NONE, 0);
 
   /**
@@ -166,7 +166,7 @@ gtk_cell_renderer_class_init (GtkCellRendererClass *class)
 		  G_SIGNAL_RUN_FIRST,
 		  G_STRUCT_OFFSET (GtkCellRendererClass, editing_started),
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_VOID__OBJECT_STRING,
 		  G_TYPE_NONE, 2,
 		  GTK_TYPE_CELL_EDITABLE,
 		  G_TYPE_STRING);
@@ -991,4 +991,4 @@ gtk_cell_renderer_stop_editing (GtkCellRenderer *cell,
 }
 
 #define __GTK_CELL_RENDERER_C__
-
+#include "gtkaliasdef.c"

@@ -78,13 +78,13 @@
 
 #define GTK_TEXT_USE_INTERNAL_UNSUPPORTED_API
 #include "config.h"
-
+#include "gtkmarshalers.h"
 #include "gtktextlayout.h"
 #include "gtktextbtree.h"
 #include "gtktextiterprivate.h"
 #include "gtktextutil.h"
 #include "gtkintl.h"
-
+#include "gtkalias.h"
 
 #include <stdlib.h>
 #include <string.h>
@@ -197,7 +197,7 @@ gtk_text_layout_class_init (GtkTextLayoutClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkTextLayoutClass, invalidated),
                   NULL, NULL,
-                  NULL,
+                  _gtk_marshal_VOID__VOID,
                   G_TYPE_NONE,
                   0);
 
@@ -207,7 +207,7 @@ gtk_text_layout_class_init (GtkTextLayoutClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkTextLayoutClass, changed),
                   NULL, NULL,
-                  NULL,
+                  _gtk_marshal_VOID__INT_INT_INT,
                   G_TYPE_NONE,
                   3,
                   G_TYPE_INT,
@@ -220,7 +220,7 @@ gtk_text_layout_class_init (GtkTextLayoutClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkTextLayoutClass, allocate_child),
                   NULL, NULL,
-                  NULL,
+                  _gtk_marshal_VOID__OBJECT_INT_INT,
                   G_TYPE_NONE,
                   3,
                   GTK_TYPE_OBJECT,
@@ -3723,4 +3723,4 @@ gtk_text_layout_buffer_delete_range (GtkTextBuffer *textbuffer,
 }
 
 #define __GTK_TEXT_LAYOUT_C__
-
+#include "gtkaliasdef.c"

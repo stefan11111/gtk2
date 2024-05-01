@@ -34,7 +34,7 @@
 #include "gtktoolbar.h"
 #include "gtkactivatable.h"
 #include "gtkprivate.h"
-
+#include "gtkalias.h"
 
 #include <string.h>
 
@@ -1296,4 +1296,4 @@ _gtk_tool_button_get_button (GtkToolButton *button)
 
 
 #define __GTK_TOOL_BUTTON_C__
-
+#include "gtkaliasdef.c"

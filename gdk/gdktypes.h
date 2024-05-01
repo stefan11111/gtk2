@@ -37,7 +37,15 @@
 #include <pango/pango.h>
 #include <glib-object.h>
 
-#define GDKVAR extern
+#ifdef G_OS_WIN32
+#  ifdef GDK_COMPILATION
+#    define GDKVAR extern __declspec(dllexport)
+#  else
+#    define GDKVAR extern __declspec(dllimport)
+#  endif
+#else
+#  define GDKVAR extern
+#endif
 
 /* The system specific file gdkconfig.h contains such configuration
  * settings that are needed not only when compiling GDK (or GTK)
@@ -64,7 +72,8 @@ typedef struct _GdkSpan	              GdkSpan;
 
 /*
  * Note that on some platforms the wchar_t type
- * is not the same as GdkWChar.
+ * is not the same as GdkWChar. For instance
+ * on Win32, wchar_t is unsigned short.
  */
 typedef guint32			    GdkWChar;
 

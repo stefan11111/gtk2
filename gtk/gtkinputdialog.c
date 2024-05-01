@@ -45,7 +45,7 @@
 #include "gtkhbox.h"
 #include "gtklabel.h"
 #include "gtkmain.h"
-
+#include "gtkmarshalers.h"
 #include "gtkmenu.h"
 #include "gtkmenuitem.h"
 #include "gtknotebook.h"
@@ -56,7 +56,7 @@
 #include "gtkvbox.h"
 
 #include "gtkintl.h"
-
+#include "gtkalias.h"
 
 typedef struct _GtkInputDialogPrivate GtkInputDialogPrivate;
 typedef struct _GtkInputKeyInfo       GtkInputKeyInfo;
@@ -159,7 +159,7 @@ gtk_input_dialog_class_init (GtkInputDialogClass *klass)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkInputDialogClass, enable_device),
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_VOID__OBJECT,
 		  G_TYPE_NONE, 1,
 		  GDK_TYPE_DEVICE);
 
@@ -169,7 +169,7 @@ gtk_input_dialog_class_init (GtkInputDialogClass *klass)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkInputDialogClass, disable_device),
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_VOID__OBJECT,
 		  G_TYPE_NONE, 1,
 		  GDK_TYPE_DEVICE);
 
@@ -761,4 +761,4 @@ gtk_input_dialog_fill_keys(GtkInputDialog *inputd, GdkDevice *info)
 }
 
 #define __GTK_INPUTDIALOG_C__
-
+#include "gtkaliasdef.c"

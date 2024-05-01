@@ -32,10 +32,11 @@
 #include <gtk/gtkenums.h>
 #include <gtk/gtktypeutils.h>
 #include <gtk/gtkobject.h>
+#include <gtk/gtkmarshal.h>
 
 G_BEGIN_DECLS
 
-#define	gtk_signal_default_marshaller	NULL
+#define	gtk_signal_default_marshaller	g_cclosure_marshal_VOID__VOID
 
 
 /* --- compat defines --- */

@@ -33,7 +33,7 @@
 #include "gdk-pixbuf/gdk-pixdata.h"
 #include "gtktextbufferserialize.h"
 #include "gtkintl.h"
-
+#include "gtkalias.h"
 
 
 typedef struct

@@ -30,7 +30,7 @@
 #include "gtkorientable.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
-
+#include "gtkalias.h"
 
 enum {
   PROP_0,
@@ -1263,4 +1263,4 @@ gtk_box_forall (GtkContainer *container,
 }
 
 #define __GTK_BOX_C__
-
+#include "gtkaliasdef.c"

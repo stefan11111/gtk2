@@ -29,7 +29,7 @@
 #include "gtkprivate.h"
 #include "gtktrayicon.h"
 
-
+#include "gtkalias.h"
 
 #include "x11/gdkx.h"
 #include <X11/Xatom.h>
@@ -752,5 +752,5 @@ _gtk_tray_icon_get_orientation (GtkTrayIcon *icon)
 
 
 #define __GTK_TRAY_ICON_X11_C__
-
+#include "gtkaliasdef.c"
 

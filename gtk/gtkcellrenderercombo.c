@@ -27,9 +27,9 @@
 #include "gtkcellrenderercombo.h"
 #include "gtkcellrenderertext.h"
 #include "gtkcombobox.h"
-
+#include "gtkmarshalers.h"
 #include "gtkprivate.h"
-
+#include "gtkalias.h"
 
 
 #define GTK_CELL_RENDERER_COMBO_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_CELL_RENDERER_COMBO, GtkCellRendererComboPrivate))
@@ -178,7 +178,7 @@ gtk_cell_renderer_combo_class_init (GtkCellRendererComboClass *klass)
 		  G_SIGNAL_RUN_LAST,
 		  0,
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_VOID__STRING_BOXED,
 		  G_TYPE_NONE, 2,
 		  G_TYPE_STRING,
 		  GTK_TYPE_TREE_ITER);
@@ -486,4 +486,4 @@ gtk_cell_renderer_combo_start_editing (GtkCellRenderer     *cell,
 }
 
 #define __GTK_CELL_RENDERER_COMBO_C__
-
+#include "gtkaliasdef.c"

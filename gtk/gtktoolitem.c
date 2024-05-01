@@ -27,14 +27,14 @@
 #undef GTK_DISABLE_DEPRECATED /* GtkTooltips */
 
 #include "gtktoolitem.h"
-
+#include "gtkmarshalers.h"
 #include "gtktoolshell.h"
 #include "gtkseparatormenuitem.h"
 #include "gtkactivatable.h"
 #include "gtkintl.h"
 #include "gtkmain.h"
 #include "gtkprivate.h"
-
+#include "gtkalias.h"
 
 /**
  * SECTION:gtktoolitem
@@ -247,7 +247,7 @@ gtk_tool_item_class_init (GtkToolItemClass *klass)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkToolItemClass, create_menu_proxy),
 		  _gtk_boolean_handled_accumulator, NULL,
-		  NULL,
+		  _gtk_marshal_BOOLEAN__VOID,
 		  G_TYPE_BOOLEAN, 0);
 
 /**
@@ -272,7 +272,7 @@ gtk_tool_item_class_init (GtkToolItemClass *klass)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkToolItemClass, toolbar_reconfigured),
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_VOID__VOID,
 		  G_TYPE_NONE, 0);
 /**
  * GtkToolItem::set-tooltip:
@@ -296,7 +296,7 @@ gtk_tool_item_class_init (GtkToolItemClass *klass)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkToolItemClass, set_tooltip),
 		  _gtk_boolean_handled_accumulator, NULL,
-		  NULL,
+		  _gtk_marshal_BOOLEAN__OBJECT_STRING_STRING,
 		  G_TYPE_BOOLEAN, 3,
 		  GTK_TYPE_TOOLTIPS,
 		  G_TYPE_STRING,
@@ -1488,4 +1488,4 @@ gtk_tool_item_toolbar_reconfigured (GtkToolItem *tool_item)
 }
 
 #define __GTK_TOOL_ITEM_C__
-
+#include "gtkaliasdef.c"

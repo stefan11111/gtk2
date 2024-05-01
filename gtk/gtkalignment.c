@@ -47,7 +47,7 @@
 #include "gtkalignment.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
-
+#include "gtkalias.h"
 
 enum {
   PROP_0,
@@ -648,4 +648,4 @@ gtk_alignment_get_padding (GtkAlignment    *alignment,
 }
 
 #define __GTK_ALIGNMENT_C__
-
+#include "gtkaliasdef.c"

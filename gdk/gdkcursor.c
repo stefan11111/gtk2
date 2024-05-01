@@ -28,7 +28,7 @@
 #include "gdkcursor.h"
 #include "gdkdisplay.h"
 #include "gdkinternals.h"
-
+#include "gdkalias.h"
 
 GType
 gdk_cursor_get_type (void)
@@ -116,4 +116,4 @@ gdk_cursor_get_cursor_type (GdkCursor *cursor)
 }
 
 #define __GDK_CURSOR_C__
-
+#include "gdkaliasdef.c"

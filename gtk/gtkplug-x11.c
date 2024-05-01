@@ -26,7 +26,7 @@
  */
 
 #include "gtkmain.h"
-
+#include "gtkmarshalers.h"
 #include "gtkplug.h"
 #include "gtkprivate.h"
 #include "gtkplugprivate.h"
@@ -34,7 +34,7 @@
 #include "x11/gdkx.h"
 
 #include "gtkxembed.h"
-
+#include "gtkalias.h"
 
 static void xembed_set_info            (GdkWindow     *window,
 					unsigned long  flags);

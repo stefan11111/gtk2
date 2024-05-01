@@ -19,11 +19,17 @@ EXTRA_DIST +=			\
 	keyname-table.h		\
 	gen-keyname-table.pl	\
 	gdkkeysyms-update.pl	\
+	gdk.def 		\
+	gdkmarshalers.list	\
 	gdkmedialib.h		\
 	gdkwindowimpl.h		\
 	makeenums.pl		\
+	makefile.msc		\
+	gdk.symbols		\
+	makegdkalias.pl		\
 	gdkenumtypes.c.template	\
 	gdkenumtypes.h.template	\
+	abicheck.sh		\
 	pltcheck.sh
 
 INCLUDES =                              \
@@ -98,7 +104,8 @@ gdk_public_h_sources =				\
 gdk_built_public_sources =			\
 	gdkenumtypes.h
 
-gdk_built_private_headers =
+gdk_built_private_headers =			\
+	gdkalias.h
 
 gdk_private_headers =   \
 	gdkinternals.h \
@@ -140,7 +147,10 @@ gdk_c_sources =                 \
 	gdkwindowimpl.c
 
 gdk_built_sources =				\
+	gdkaliasdef.c				\
 	gdkenumtypes.c				\
+	gdkmarshalers.h 			\
+	gdkmarshalers.c				\
 	$(gdk_built_public_sources)		\
 	$(gdk_built_private_headers)
 
@@ -154,7 +164,9 @@ gdkinclude_HEADERS = $(gdk_public_h_sources) $(gdk_built_public_sources)
 common_sources =                \
 	$(gdk_private_headers)      \
     $(gdk_c_sources)	\
-	gdkenumtypes.c
+	gdkenumtypes.c		\
+	gdkmarshalers.c		\
+	gdkmarshalers.h
 
 libgdk_directfb_2_0_la_SOURCES = $(common_sources)
 libgdk_directfb_2_0_la_LIBADD = directfb/libgdk-directfb.la $(GDK_DEP_LIBS)
@@ -241,9 +253,25 @@ CLEANFILES += $(gir_DATA) $(typelibs_DATA)
 
 endif # HAVE_INTROSPECTION
 
+install-def-file:
+uninstall-def-file:
+
+install-ms-lib:
+uninstall-ms-lib:
+
+# This places the generated .def file in srcdir, since it is expected to be there.
+# (The one from a tarball is)
+gdk.def: gdk.symbols
+	(echo -e EXPORTS; $(CPP) -P -DALL_FILES -DINCLUDE_VARIABLES - <$(srcdir)/gdk.symbols | sed -e '/^$$/d' -e 's/^/	/' -e 's/G_GNUC_[^ ]*//g') > $(srcdir)/gdk.def
+
+gdkalias.h: gdk.symbols
+	 $(PERL) $(srcdir)/makegdkalias.pl < $(srcdir)/gdk.symbols > gdkalias.h
+
+gdkaliasdef.c: gdk.symbols
+	 $(PERL) $(srcdir)/makegdkalias.pl -def < $(srcdir)/gdk.symbols > gdkaliasdef.c
 
 if OS_LINUX
-TESTS = pltcheck.sh
+TESTS = abicheck.sh pltcheck.sh
 endif
 
 
@@ -291,6 +319,17 @@ gdkenumtypes.c: @REBUILD@ $(gdk_public_h_sources) gdkenumtypes.c.template
 	&& cp xgen-getc gdkenumtypes.c  \
 	&& rm -f xgen-getc
 
+# 
+# Marshaller generation
+#
+gdkmarshalers.h: @REBUILD@ gdkmarshalers.list
+	$(GLIB_GENMARSHAL) --prefix=_gdk_marshal $(srcdir)/gdkmarshalers.list --header > gdkmarshalers-h.tmp \
+	&& mv gdkmarshalers-h.tmp gdkmarshalers.h \
+	|| ( rm -f gdkmarshalers-h.tmp && exit 1)
+gdkmarshalers.c: @REBUILD@ gdkmarshalers.list
+	(echo "#include \"gdkalias.h\""; $(GLIB_GENMARSHAL) --prefix=_gdk_marshal $(srcdir)/gdkmarshalers.list --body) > gdkmarshalers-c.tmp	\
+	&& mv gdkmarshalers-c.tmp gdkmarshalers.c \
+	|| ( rm -f gdkmarshalers-c.tmp && exit 1 )
 
 gdkconfig.h: stamp-gc-h
 	@if test -f gdkconfig.h; then :; \
@@ -304,9 +343,10 @@ dist-hook:	\
 
 DISTCLEANFILES = gdkconfig.h stamp-gc-h
 
-uninstall-local:
+install-data-local: install-ms-lib install-def-file
+
+uninstall-local: uninstall-ms-lib uninstall-def-file
 	rm -f $(DESTDIR)$(configexecincludedir)/gdkconfig.h
-.PHONY: uninstall-local
 
 # if srcdir!=builddir, clean out maintainer-clean files from builddir
 # this allows dist to pass.

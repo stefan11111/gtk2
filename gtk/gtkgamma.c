@@ -49,7 +49,7 @@
 #include "gtkvbox.h"
 #include "gtkwindow.h"
 #include "gtkintl.h"
-
+#include "gtkalias.h"
 
 /* forward declarations: */
 static void gtk_gamma_curve_destroy (GtkObject *object);
@@ -492,4 +492,4 @@ gtk_gamma_curve_destroy (GtkObject *object)
 }
 
 #define __GTK_GAMMA_CURVE_C__
-
+#include "gtkaliasdef.c"

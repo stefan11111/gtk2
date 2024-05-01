@@ -26,7 +26,7 @@
 #include "gtkcelllayout.h"
 #include "gtkbuildable.h"
 #include "gtkbuilderprivate.h"
-
+#include "gtkalias.h"
 
 /**
  * SECTION:gtkcomboboxtext
@@ -506,4 +506,4 @@ gtk_combo_box_text_get_active_text (GtkComboBoxText *combo_box)
 }
 
 #define __GTK_COMBO_BOX_TEXT_C__
-
+#include "gtkaliasdef.c"

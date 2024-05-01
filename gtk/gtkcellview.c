@@ -27,7 +27,7 @@
 #include "gtkprivate.h"
 #include <gobject/gmarshal.h>
 #include "gtkbuildable.h"
-
+#include "gtkalias.h"
 
 typedef struct _GtkCellViewCellInfo GtkCellViewCellInfo;
 struct _GtkCellViewCellInfo
@@ -1124,4 +1124,4 @@ gtk_cell_view_buildable_custom_tag_end (GtkBuildable *buildable,
 
 
 #define __GTK_CELL_VIEW_C__
-
+#include "gtkaliasdef.c"

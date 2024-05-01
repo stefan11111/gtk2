@@ -24,7 +24,7 @@
 #include "gtkdebug.h"
 #include "gtkkeyhash.h"
 #include "gtkprivate.h"
-
+#include "gtkalias.h"
 
 typedef struct _GtkKeyHashEntry GtkKeyHashEntry;
 

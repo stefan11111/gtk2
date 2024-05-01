@@ -30,14 +30,14 @@
 #include "gdk/gdkkeysyms.h"
 #include "gtkbindings.h"
 #include "gtkmain.h"
-
+#include "gtkmarshalers.h"
 #include "gtkmenubar.h"
 #include "gtkmenuitem.h"
 #include "gtksettings.h"
 #include "gtkintl.h"
 #include "gtkwindow.h"
 #include "gtkprivate.h"
-
+#include "gtkalias.h"
 
 
 #define BORDER_SPACING  0
@@ -931,4 +931,4 @@ gtk_menu_bar_set_child_pack_direction (GtkMenuBar       *menubar,
 }
 
 #define __GTK_MENU_BAR_C__
-
+#include "gtkaliasdef.c"

@@ -34,7 +34,7 @@
 #include "gtktooltip.h"
 #include "gtkintl.h"
 
-
+#include "gtkalias.h"
 
 /**
  * SECTION:gtkvolumebutton
@@ -166,4 +166,4 @@ cb_value_changed (GtkVolumeButton *button, gdouble value, gpointer user_data)
 }
 
 #define __GTK_VOLUME_BUTTON_C__
-
+#include "gtkaliasdef.c"

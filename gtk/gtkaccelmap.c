@@ -21,10 +21,10 @@
 
 #include "gtkaccelmap.h"
 
-
+#include "gtkmarshalers.h"
 #include "gtkwindow.h"  /* in lack of GtkAcceleratable */
 #include "gtkintl.h" 
-
+#include "gtkalias.h"
 
 #include <glib/gstdio.h>
 
@@ -33,6 +33,9 @@
 #include <fcntl.h>
 #ifdef HAVE_UNISTD_H
 #include <unistd.h>
+#endif
+#ifdef G_OS_WIN32
+#include <io.h>
 #endif
 
 
@@ -959,7 +962,7 @@ gtk_accel_map_class_init (GtkAccelMapClass *accel_map_class)
 					     G_SIGNAL_DETAILED|G_SIGNAL_RUN_LAST,
 					     0,
 					     NULL, NULL,
-					     NULL,
+					     _gtk_marshal_VOID__STRING_UINT_FLAGS,
 					     G_TYPE_NONE, 3,
 					     G_TYPE_STRING, G_TYPE_UINT, GDK_TYPE_MODIFIER_TYPE);
 }
@@ -1002,5 +1005,33 @@ do_accel_map_changed (AccelEntry *entry)
 		   entry->accel_mods);
 }
 
-#define __GTK_ACCEL_MAP_C__
+#if defined (G_OS_WIN32) && !defined (_WIN64)
 
+#undef gtk_accel_map_load
+
+void
+gtk_accel_map_load (const gchar *file_name)
+{
+  gchar *utf8_file_name = g_locale_to_utf8 (file_name, -1, NULL, NULL, NULL);
+
+  gtk_accel_map_load_utf8 (utf8_file_name);
+
+  g_free (utf8_file_name);
+}
+
+#undef gtk_accel_map_save
+
+void
+gtk_accel_map_save (const gchar *file_name)
+{
+  gchar *utf8_file_name = g_locale_to_utf8 (file_name, -1, NULL, NULL, NULL);
+
+  gtk_accel_map_save_utf8 (utf8_file_name);
+
+  g_free (utf8_file_name);
+}
+
+#endif
+
+#define __GTK_ACCEL_MAP_C__
+#include "gtkaliasdef.c"

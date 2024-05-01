@@ -30,7 +30,7 @@
 #include "gtktoggleaction.h"
 #include "gtkactivatable.h"
 #include "gtkprivate.h"
-
+#include "gtkalias.h"
 
 #define MENU_ID "gtk-toggle-tool-button-menu-id"
 
@@ -448,4 +448,4 @@ gtk_toggle_tool_button_get_active (GtkToggleToolButton *button)
 }
 
 #define __GTK_TOGGLE_TOOL_BUTTON_C__
-
+#include "gtkaliasdef.c"

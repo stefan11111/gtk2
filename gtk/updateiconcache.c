@@ -1460,8 +1460,10 @@ safe_fclose (FILE *f)
   g_assert (fd >= 0);
   if (fflush (f) == EOF)
     return FALSE;
+#ifndef G_OS_WIN32
   if (fsync (fd) < 0)
     return FALSE;
+#endif
   if (fclose (f) == EOF)
     return FALSE;
   return TRUE;
@@ -1471,6 +1473,9 @@ static void
 build_cache (const gchar *path)
 {
   gchar *cache_path, *tmp_cache_path;
+#ifdef G_OS_WIN32
+  gchar *bak_cache_path = NULL;
+#endif
   GHashTable *files;
   FILE *cache;
   GStatBuf path_stat, cache_stat;
@@ -1478,7 +1483,11 @@ build_cache (const gchar *path)
   GList *directories = NULL;
   int fd;
   int retry_count = 0;
+#ifndef G_OS_WIN32
   mode_t mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH;
+#else
+  int mode = _S_IWRITE | _S_IREAD;
+#endif
 #ifndef _O_BINARY
 #define _O_BINARY 0
 #endif
@@ -1549,6 +1558,25 @@ opentmp:
       exit (1);
     }
 
+#ifdef G_OS_WIN32
+  if (g_file_test (cache_path, G_FILE_TEST_EXISTS))
+    {
+      bak_cache_path = g_strconcat (cache_path, ".bak", NULL);
+      g_unlink (bak_cache_path);
+      if (g_rename (cache_path, bak_cache_path) == -1)
+	{
+          int errsv = errno;
+
+	  g_printerr (_("Could not rename %s to %s: %s, removing %s then.\n"),
+		      cache_path, bak_cache_path,
+		      g_strerror (errsv),
+		      cache_path);
+	  g_unlink (cache_path);
+	  bak_cache_path = NULL;
+	}
+    }
+#endif
+
   if (g_rename (tmp_cache_path, cache_path) == -1)
     {
       int errsv = errno;
@@ -1557,9 +1585,23 @@ opentmp:
 		  tmp_cache_path, cache_path,
 		  g_strerror (errsv));
       g_unlink (tmp_cache_path);
+#ifdef G_OS_WIN32
+      if (bak_cache_path != NULL)
+	if (g_rename (bak_cache_path, cache_path) == -1)
+          {
+            errsv = errno;
 
+            g_printerr (_("Could not rename %s back to %s: %s.\n"),
+                        bak_cache_path, cache_path,
+                        g_strerror (errsv));
+          }
+#endif
       exit (1);
     }
+#ifdef G_OS_WIN32
+  if (bak_cache_path != NULL)
+    g_unlink (bak_cache_path);
+#endif
 
   /* Update time */
   /* FIXME: What do do if an error occurs here? */
@@ -1670,6 +1712,9 @@ main (int argc, char **argv)
   g_option_context_parse (context, &argc, &argv, NULL);
   
   path = argv[1];
+#ifdef G_OS_WIN32
+  path = g_locale_to_utf8 (path, -1, NULL, NULL, NULL);
+#endif
   
   if (validate)
     {
@@ -1711,6 +1756,7 @@ main (int argc, char **argv)
   if (!force_update && is_cache_up_to_date (path))
     return 0;
 
+  g_type_init ();
   replace_backslashes_with_slashes (path);
   build_cache (path);
 

@@ -22,11 +22,11 @@
 #include "gtkcellrenderertext.h"
 #include "gtkeditable.h"
 #include "gtkentry.h"
-
+#include "gtkmarshalers.h"
 #include "gtkintl.h"
 #include "gtkprivate.h"
 #include "gtktreeprivate.h"
-
+#include "gtkalias.h"
 
 static void gtk_cell_renderer_text_finalize   (GObject                  *object);
 
@@ -579,7 +579,7 @@ gtk_cell_renderer_text_class_init (GtkCellRendererTextClass *class)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkCellRendererTextClass, edited),
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_VOID__STRING_STRING,
 		  G_TYPE_NONE, 2,
 		  G_TYPE_STRING,
 		  G_TYPE_STRING);
@@ -1931,4 +1931,4 @@ gtk_cell_renderer_text_set_fixed_height_from_font (GtkCellRendererText *renderer
 }
 
 #define __GTK_CELL_RENDERER_TEXT_C__
-
+#include "gtkaliasdef.c"

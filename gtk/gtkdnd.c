@@ -51,7 +51,7 @@
 #include "gtkwindow.h"
 #include "gtkintl.h"
 #include "gtkdndcursors.h"
-
+#include "gtkalias.h"
 
 static GSList *source_widgets = NULL;
 
@@ -4402,4 +4402,4 @@ gtk_drag_check_threshold (GtkWidget *widget,
 }
 
 #define __GTK_DND_C__
-
+#include "gtkaliasdef.c"

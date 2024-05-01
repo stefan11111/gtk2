@@ -50,7 +50,7 @@ SOFTWARE.
 #include <gdkregion.h>
 #include "gdkregion-generic.h"
 #include "gdkpoly-generic.h"
-
+#include "gdkalias.h"
 
 /*
  *     InsertEdgeInET
@@ -624,4 +624,4 @@ gdk_region_polygon (const GdkPoint *points,
 }
 
 #define __GDK_POLYREG_GENERIC_C__
-
+#include "gdkaliasdef.c"

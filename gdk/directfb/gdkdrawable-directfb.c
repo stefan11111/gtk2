@@ -45,7 +45,7 @@
 
 
 #include "gdkregion-generic.h"
-
+#include "gdkalias.h"
 
 #include "cairo-directfb.h"
 
@@ -1693,4 +1693,4 @@ gdk_directfb_ref_cairo_surface (GdkDrawable *drawable)
 }
 
 #define __GDK_DRAWABLE_X11_C__
-
+#include "gdkaliasdef.c"

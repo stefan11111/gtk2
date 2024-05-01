@@ -1128,6 +1128,22 @@ else
   AM_CONDITIONAL(USE_WIN32, false)
 fi
 
+AC_ARG_ENABLE(quartz-relocation,
+              [AS_HELP_STRING([--enable-quartz-relocation],
+                              [enable bundle-based relocation functions])],
+                              [quartz_relocation=yes])
+
+if test "x$gdktarget" = "xquartz"; then
+  GDK_EXTRA_LIBS="$GDK_EXTRA_LIBS -framework Cocoa"
+  AM_CONDITIONAL(USE_QUARTZ, true)
+  if test "x$quartz_relocation" = xyes; then
+    AC_DEFINE([QUARTZ_RELOCATION], [1], [Use NSBundle functions to determine load paths for libraries, translations, etc.])
+  fi
+
+else
+  AM_CONDITIONAL(USE_QUARTZ, false)
+fi
+
 if test "x$gdktarget" = "xdirectfb"; then
   DIRECTFB_REQUIRED_VERSION=1.0.0
   AC_MSG_CHECKING(for DirectFB)
@@ -1239,6 +1255,129 @@ AC_SUBST(GTK_XIM_FLAGS)
 GDK_PIXBUF_LIBS=`$PKG_CONFIG --libs gdk-pixbuf-2.0`
 AC_SUBST(GDK_PIXBUF_LIBS)
 
+
+################################################################
+# Printing system checks
+################################################################
+
+AC_ARG_ENABLE(cups,
+              [AC_HELP_STRING([--disable-cups]
+                              [disable cups print backend])],,
+              [enable_cups=auto])
+
+if test "x$enable_cups" = "xno"; then
+  AM_CONDITIONAL(HAVE_CUPS, false)
+else
+  AC_PATH_TOOL(CUPS_CONFIG, cups-config, no)
+  if test "x$CUPS_CONFIG" = "xno"; then
+    if test "x$enable_cups" = "xauto"; then
+      AM_CONDITIONAL(HAVE_CUPS, false)
+    else
+      AC_MSG_ERROR([
+*** cups not found.
+])
+    fi
+  else
+    CUPS_CFLAGS=`$CUPS_CONFIG --cflags | sed 's/-O[0-9]*//' | sed 's/-m[^\t]*//g'`
+    CUPS_LIBS=`$CUPS_CONFIG --libs`
+
+    CUPS_API_VERSION=`$CUPS_CONFIG --api-version`
+    CUPS_API_MAJOR=`echo $ECHO_N $CUPS_API_VERSION | awk -F. '{print $1}'`
+    CUPS_API_MINOR=`echo $ECHO_N $CUPS_API_VERSION | awk -F. '{print $2}'`
+
+    if test $CUPS_API_MAJOR -gt 1 -o \
+            $CUPS_API_MAJOR -eq 1 -a $CUPS_API_MINOR -ge 2; then
+      AC_DEFINE(HAVE_CUPS_API_1_2, 1, 
+                [Define to 1 if CUPS 1.2 API is available])
+    fi
+    if test $CUPS_API_MAJOR -gt 1 -o \
+	    $CUPS_API_MAJOR -eq 1 -a $CUPS_API_MINOR -ge 6; then
+      AC_DEFINE(HAVE_CUPS_API_1_6, 1,
+                [Define to 1 if CUPS 1.6 API is available])
+      have_cups_api_1_6=yes
+    fi
+
+    AC_SUBST(CUPS_API_MAJOR)
+    AC_SUBST(CUPS_API_MINOR)
+    AC_SUBST(CUPS_CFLAGS)
+    AC_SUBST(CUPS_LIBS)
+
+    AC_CHECK_HEADER(cups/cups.h,,AC_MSG_ERROR([[*** Sorry, cups-config present but cups/cups.h missing.]]))
+
+    AM_CONDITIONAL(HAVE_CUPS, true)
+
+    gtk_save_cflags="$CFLAGS"
+    CFLAGS="$CUPS_CFLAGS"
+    AC_TRY_COMPILE([#include <cups/http.h>],
+                   [http_t http; char *s = http.authstring;],
+                   [AC_DEFINE(HAVE_HTTP_AUTHSTRING, [],
+                              [Define if cups http_t authstring field is accessible])],)
+    CFLAGS="$gtk_save_cflags"
+
+    AC_SUBST(HAVE_HTTP_AUTHSTRING)
+
+    gtk_save_libs="$LIBS"
+    LIBS="$CUPS_LIBS"
+    AC_CHECK_FUNCS(httpGetAuthString)
+    LIBS="$gtk_save_libs"
+  fi
+fi
+
+# Checks to see if we should compile with PAPI backend for GTK+
+#
+
+AC_ARG_ENABLE(papi,
+              [AC_HELP_STRING([--disable-papi]
+                              [disable papi print backend])],,
+             [enable_papi=auto])
+
+if test "x$enable_papi" = "xno"; then
+  AM_CONDITIONAL(HAVE_PAPI, false)
+else
+  AC_MSG_CHECKING(libpapi)
+  AC_CHECK_LIB(papi, papiServiceCreate, have_papi=yes, have_papi=no)
+  if test $have_papi = yes; then
+    AC_DEFINE([HAVE_PAPI], [], [Define to 1 if libpapi available])
+  fi
+  AM_CONDITIONAL(HAVE_PAPI, test $have_papi = yes)
+  if test "x$enable_papi" = "xyes" -a "x$have_papi" = "xno"; then
+    AC_MSG_ERROR([
+*** papi not found.
+])
+  fi
+fi
+
+AM_CONDITIONAL(HAVE_PAPI_CUPS, test "x$have_papi" = "xyes" -a "x$CUPS_CONFIG" != "xno")
+
+gtk_save_cppflags="$CPPFLAGS"
+CPPFLAGS="$CPPFLAGS $GTK_DEP_CFLAGS $GDK_DEP_CFLAGS"
+
+AC_CHECK_HEADER(cairo-pdf.h,,AC_MSG_ERROR([
+*** Can't find cairo-pdf.h. You must build Cairo with the pdf
+*** backend enabled.]))
+
+if test "$os_win32" != "yes"; then
+  AC_CHECK_HEADER(cairo-ps.h,,AC_MSG_ERROR([
+*** Can't find cairo-ps.h. You must build Cairo with the 
+*** postscript backend enabled.]))
+
+  AC_CHECK_HEADER(cairo-svg.h,,AC_MSG_ERROR([
+*** Can't find cairo-svg.h. You must build Cairo with the
+*** svg backend enabled.]))
+fi   
+
+CPPFLAGS="$gtk_save_cppflags"
+     
+			  	
+AC_ARG_ENABLE(test-print-backend,
+              [AC_HELP_STRING([--enable-test-print-backend],
+                              [build test print backend])],,
+              [enable_test_print_backend=no])
+AM_CONDITIONAL(TEST_PRINT_BACKEND, test "x$enable_test_print_backend" != "xno")
+
+if test "$os_win32" = "yes"; then
+  AC_CHECK_TYPES([IPrintDialogCallback],[],[],[[#include <windows.h>]])
+fi
 
 ################################################################
 # Strip -export-dynamic from the link lines of various libraries
@@ -1360,6 +1499,16 @@ _______EOF
 if test "x$gdktarget" = "xx11" ; then
   gdk_windowing='
 #define GDK_WINDOWING_X11'
+elif test "x$gdktarget" = "xwin32" ; then
+  gdk_windowing='
+#define GDK_NATIVE_WINDOW_POINTER
+
+#define GDK_WINDOWING_WIN32'
+elif test "x$gdktarget" = "xquartz" ; then
+  gdk_windowing='
+#define GDK_NATIVE_WINDOW_POINTER
+
+#define GDK_WINDOWING_QUARTZ'
 elif test "x$gdktarget" = "xdirectfb" ; then
   gdk_windowing='
 #define GDK_WINDOWING_DIRECTFB'
@@ -1394,7 +1543,14 @@ gdk/Makefile
 gdk/x11/Makefile
 gdk/directfb/Makefile
 gtk/Makefile
+gtk/makefile.msc
 gtk/gtkversion.h
+modules/Makefile
+modules/printbackends/Makefile
+modules/printbackends/cups/Makefile
+modules/printbackends/lpr/Makefile
+modules/printbackends/file/Makefile
+modules/printbackends/papi/Makefile
 ])
 
 AC_OUTPUT

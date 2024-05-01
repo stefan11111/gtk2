@@ -34,9 +34,9 @@
 #include "gtkintl.h"
 #include "gtkmain.h"		/* For _gtk_boolean_handled_accumulator */
 #include "gdk/gdkkeysyms.h"
-
+#include "gtkmarshalers.h"
 #include "gtkprivate.h"
-
+#include "gtkalias.h"
 
 /**
  * SECTION:gtkaccelgroup
@@ -142,7 +142,7 @@ gtk_accel_group_class_init (GtkAccelGroupClass *class)
 		  G_SIGNAL_DETAILED,
 		  0,
 		  _gtk_boolean_handled_accumulator, NULL,
-		  NULL,
+		  _gtk_marshal_BOOLEAN__OBJECT_UINT_FLAGS,
 		  G_TYPE_BOOLEAN, 3,
 		  G_TYPE_OBJECT,
 		  G_TYPE_UINT,
@@ -167,7 +167,7 @@ gtk_accel_group_class_init (GtkAccelGroupClass *class)
 		  G_SIGNAL_RUN_FIRST | G_SIGNAL_DETAILED,
 		  G_STRUCT_OFFSET (GtkAccelGroupClass, accel_changed),
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_VOID__UINT_FLAGS_BOXED,
 		  G_TYPE_NONE, 3,
 		  G_TYPE_UINT,
 		  GDK_TYPE_MODIFIER_TYPE,
@@ -1489,4 +1489,4 @@ gtk_accelerator_get_default_mod_mask (void)
 }
 
 #define __GTK_ACCEL_GROUP_C__
-
+#include "gtkaliasdef.c"

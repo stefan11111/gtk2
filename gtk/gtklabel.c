@@ -32,7 +32,7 @@
 #include "gtkaccellabel.h"
 #include "gtkdnd.h"
 #include "gtkmain.h"
-
+#include "gtkmarshalers.h"
 #include "gtkpango.h"
 #include "gtkwindow.h"
 #include "gdk/gdkkeysyms.h"
@@ -50,7 +50,7 @@
 #include "gtkshow.h"
 #include "gtktooltip.h"
 #include "gtkprivate.h"
-
+#include "gtkalias.h"
 
 #define GTK_LABEL_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_LABEL, GtkLabelPrivate))
 
@@ -409,7 +409,7 @@ gtk_label_class_init (GtkLabelClass *class)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkLabelClass, move_cursor),
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_VOID__ENUM_INT_BOOLEAN,
 		  G_TYPE_NONE, 3,
 		  GTK_TYPE_MOVEMENT_STEP,
 		  G_TYPE_INT,
@@ -431,7 +431,7 @@ gtk_label_class_init (GtkLabelClass *class)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkLabelClass, copy_clipboard),
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_VOID__VOID,
 		  G_TYPE_NONE, 0);
   
   /**
@@ -452,7 +452,7 @@ gtk_label_class_init (GtkLabelClass *class)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkLabelClass, populate_popup),
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_VOID__OBJECT,
 		  G_TYPE_NONE, 1,
 		  GTK_TYPE_MENU);
 
@@ -476,7 +476,7 @@ gtk_label_class_init (GtkLabelClass *class)
                                   G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                                   G_CALLBACK (gtk_label_activate_current_link),
                                   NULL, NULL,
-                                  NULL,
+                                  _gtk_marshal_VOID__VOID,
                                   G_TYPE_NONE, 0);
 
     /**
@@ -498,7 +498,7 @@ gtk_label_class_init (GtkLabelClass *class)
                     G_SIGNAL_RUN_LAST,
                     G_STRUCT_OFFSET (GtkLabelClass, activate_link),
                     _gtk_boolean_handled_accumulator, NULL,
-                    NULL,
+                    _gtk_marshal_BOOLEAN__STRING,
                     G_TYPE_BOOLEAN, 1, G_TYPE_STRING);
 
   g_object_class_install_property (gobject_class,
@@ -6028,4 +6028,4 @@ gtk_label_query_tooltip (GtkWidget  *widget,
 
 
 #define __GTK_LABEL_C__
-
+#include "gtkaliasdef.c"

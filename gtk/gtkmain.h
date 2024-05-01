@@ -34,6 +34,10 @@
 
 #include <gdk/gdk.h>
 #include <gtk/gtkwidget.h>
+#ifdef G_PLATFORM_WIN32
+#include <gtk/gtkbox.h>
+#include <gtk/gtkwindow.h>
+#endif
 
 G_BEGIN_DECLS
 
@@ -61,7 +65,15 @@ typedef gint	(*GtkKeySnoopFunc)	    (GtkWidget	  *grab_widget,
 
 /* Gtk version.
  */
+#ifdef G_PLATFORM_WIN32
+#ifdef GTK_COMPILATION
+#define GTKMAIN_C_VAR extern __declspec(dllexport)
+#else
+#define GTKMAIN_C_VAR extern __declspec(dllimport)
+#endif
+#else
 #define GTKMAIN_C_VAR extern
+#endif
 
 GTKMAIN_C_VAR const guint gtk_major_version;
 GTKMAIN_C_VAR const guint gtk_minor_version;
@@ -94,6 +106,26 @@ gboolean gtk_init_with_args       (int            *argc,
 
 GOptionGroup *gtk_get_option_group (gboolean open_default_display);
   
+#ifdef G_PLATFORM_WIN32
+
+/* Variants that are used to check for correct struct packing
+ * when building GTK+-using code.
+ */
+void	 gtk_init_abi_check       (int	  *argc,
+				   char	***argv,
+				   int     num_checks,
+				   size_t  sizeof_GtkWindow,
+				   size_t  sizeof_GtkBox);
+gboolean gtk_init_check_abi_check (int	  *argc,
+				   char	***argv,
+				   int     num_checks,
+				   size_t  sizeof_GtkWindow,
+				   size_t  sizeof_GtkBox);
+
+#define gtk_init(argc, argv) gtk_init_abi_check (argc, argv, 2, sizeof (GtkWindow), sizeof (GtkBox))
+#define gtk_init_check(argc, argv) gtk_init_check_abi_check (argc, argv, 2, sizeof (GtkWindow), sizeof (GtkBox))
+
+#endif
 
 #ifndef GTK_DISABLE_DEPRECATED
 void     gtk_exit                 (gint    error_code);

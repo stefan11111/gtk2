@@ -28,7 +28,7 @@
 
 #include "config.h"
 #include "gtkmain.h"
-
+#include "gtkmarshalers.h"
 #include "gtksignal.h"
 #include "gtklist.h"
 
@@ -37,7 +37,7 @@
 #include "gtktreeitem.h"
 #include "gtkintl.h"
 
-
+#include "gtkalias.h"
 
 enum {
   SELECTION_CHANGED,
@@ -148,14 +148,14 @@ gtk_tree_class_init (GtkTreeClass *class)
 		    GTK_RUN_FIRST,
 		    GTK_CLASS_TYPE (object_class),
 		    GTK_SIGNAL_OFFSET (GtkTreeClass, selection_changed),
-		    NULL,
+		    _gtk_marshal_VOID__VOID,
 		    GTK_TYPE_NONE, 0);
   tree_signals[SELECT_CHILD] =
     gtk_signal_new (I_("select-child"),
 		    GTK_RUN_FIRST,
 		    GTK_CLASS_TYPE (object_class),
 		    GTK_SIGNAL_OFFSET (GtkTreeClass, select_child),
-		    NULL,
+		    _gtk_marshal_VOID__OBJECT,
 		    GTK_TYPE_NONE, 1,
 		    GTK_TYPE_WIDGET);
   tree_signals[UNSELECT_CHILD] =
@@ -163,7 +163,7 @@ gtk_tree_class_init (GtkTreeClass *class)
 		    GTK_RUN_FIRST,
 		    GTK_CLASS_TYPE (object_class),
 		    GTK_SIGNAL_OFFSET (GtkTreeClass, unselect_child),
-		    NULL,
+		    _gtk_marshal_VOID__OBJECT,
 		    GTK_TYPE_NONE, 1,
 		    GTK_TYPE_WIDGET);
 }
@@ -1124,4 +1124,4 @@ gtk_tree_set_view_lines (GtkTree       *tree,
 }
 
 #define __GTK_TREE_C__
-
+#include "gtkaliasdef.c"

@@ -42,7 +42,7 @@
 
 #include "gdkinternals.h"
 
-
+#include "gdkalias.h"
 
 static GHashTable *names_to_atoms;
 static GPtrArray  *atoms_to_names;
@@ -403,4 +403,4 @@ gdk_property_change (GdkWindow    *window,
 }
 
 #define __GDK_PROPERTY_X11_C__
-
+#include "gdkaliasdef.c"

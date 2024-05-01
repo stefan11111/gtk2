@@ -25,7 +25,7 @@
 #include "gtkintl.h"
 #include "gtkprivate.h"
 
-
+#include "gtkalias.h"
 
 typedef struct _GtkRecentFilterClass GtkRecentFilterClass;
 typedef struct _FilterRule FilterRule;
@@ -576,4 +576,4 @@ gtk_recent_filter_filter (GtkRecentFilter           *filter,
 }
 
 #define __GTK_RECENT_FILTER_C__
-
+#include "gtkaliasdef.c"

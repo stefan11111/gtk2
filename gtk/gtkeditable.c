@@ -28,9 +28,9 @@
 #include <string.h>
 
 #include "gtkeditable.h"
-
+#include "gtkmarshalers.h"
 #include "gtkintl.h"
-
+#include "gtkalias.h"
 
 
 static void gtk_editable_base_init (gpointer g_class);
@@ -88,7 +88,7 @@ gtk_editable_base_init (gpointer g_class)
 		    G_SIGNAL_RUN_LAST,
 		    G_STRUCT_OFFSET (GtkEditableClass, insert_text),
 		    NULL, NULL,
-		    NULL,
+		    _gtk_marshal_VOID__STRING_INT_POINTER,
 		    G_TYPE_NONE, 3,
 		    G_TYPE_STRING,
 		    G_TYPE_INT,
@@ -115,7 +115,7 @@ gtk_editable_base_init (gpointer g_class)
 		    G_SIGNAL_RUN_LAST,
 		    G_STRUCT_OFFSET (GtkEditableClass, delete_text),
 		    NULL, NULL,
-		    NULL,
+		    _gtk_marshal_VOID__INT_INT,
 		    G_TYPE_NONE, 2,
 		    G_TYPE_INT,
 		    G_TYPE_INT);
@@ -137,7 +137,7 @@ gtk_editable_base_init (gpointer g_class)
 		    G_SIGNAL_RUN_LAST,
 		    G_STRUCT_OFFSET (GtkEditableClass, changed),
 		    NULL, NULL,
-		    NULL,
+		    _gtk_marshal_VOID__VOID,
 		    G_TYPE_NONE, 0);
 
       initialized = TRUE;
@@ -426,4 +426,4 @@ gtk_editable_get_editable (GtkEditable *editable)
 }
 
 #define __GTK_EDITABLE_C__
-
+#include "gtkaliasdef.c"

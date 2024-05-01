@@ -32,11 +32,11 @@
 
 #include "gtkmenu.h"
 #include "gtkmenuitem.h"
-
+#include "gtkmarshalers.h"
 #include "gtkoptionmenu.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
-
+#include "gtkalias.h"
 
 #define CHILD_LEFT_SPACING        4
 #define CHILD_RIGHT_SPACING       1
@@ -136,7 +136,7 @@ gtk_option_menu_class_init (GtkOptionMenuClass *class)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkOptionMenuClass, changed),
                   NULL, NULL,
-                  NULL,
+                  _gtk_marshal_VOID__VOID,
                   G_TYPE_NONE, 0);
 
   gobject_class->set_property = gtk_option_menu_set_property;
@@ -1032,5 +1032,5 @@ gtk_option_menu_scroll_event (GtkWidget          *widget,
 }
 
 #define __GTK_OPTION_MENU_C__
-
+#include "gtkaliasdef.c"
 

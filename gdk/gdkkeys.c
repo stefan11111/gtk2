@@ -28,7 +28,7 @@
 
 #include "gdkdisplay.h"
 #include "gdkkeys.h"
-
+#include "gdkalias.h"
 
 enum {
   DIRECTION_CHANGED,
@@ -313,4 +313,4 @@ gdk_keymap_get_default (void)
 }
 
 #define __GDK_KEYS_C__
-
+#include "gdkaliasdef.c"

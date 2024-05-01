@@ -47,7 +47,7 @@
 #include "gtkintl.h"
 #include "gtklabel.h"
 #include "gtkmain.h"
-
+#include "gtkmarshalers.h"
 #include "gtkmenu.h"
 #include "gtkmenuitem.h"
 #include "gtkseparatormenuitem.h"
@@ -65,7 +65,7 @@
 #include "gtktooltip.h"
 #include "gtkiconfactory.h"
 #include "gtkicontheme.h"
-
+#include "gtkalias.h"
 
 #define GTK_ENTRY_COMPLETION_KEY "gtk-entry-completion-key"
 
@@ -1285,7 +1285,7 @@ gtk_entry_class_init (GtkEntryClass *class)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkEntryClass, populate_popup),
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_VOID__OBJECT,
 		  G_TYPE_NONE, 1,
 		  GTK_TYPE_MENU);
   
@@ -1310,7 +1310,7 @@ gtk_entry_class_init (GtkEntryClass *class)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkEntryClass, activate),
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_VOID__VOID,
 		  G_TYPE_NONE, 0);
   widget_class->activate_signal = signals[ACTIVATE];
 
@@ -1347,7 +1347,7 @@ gtk_entry_class_init (GtkEntryClass *class)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkEntryClass, move_cursor),
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_VOID__ENUM_INT_BOOLEAN,
 		  G_TYPE_NONE, 3,
 		  GTK_TYPE_MOVEMENT_STEP,
 		  G_TYPE_INT,
@@ -1371,7 +1371,7 @@ gtk_entry_class_init (GtkEntryClass *class)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkEntryClass, insert_at_cursor),
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_VOID__STRING,
 		  G_TYPE_NONE, 1,
 		  G_TYPE_STRING);
 
@@ -1399,7 +1399,7 @@ gtk_entry_class_init (GtkEntryClass *class)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkEntryClass, delete_from_cursor),
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_VOID__ENUM_INT,
 		  G_TYPE_NONE, 2,
 		  GTK_TYPE_DELETE_TYPE,
 		  G_TYPE_INT);
@@ -1421,7 +1421,7 @@ gtk_entry_class_init (GtkEntryClass *class)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkEntryClass, backspace),
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_VOID__VOID,
 		  G_TYPE_NONE, 0);
 
   /**
@@ -1441,7 +1441,7 @@ gtk_entry_class_init (GtkEntryClass *class)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkEntryClass, cut_clipboard),
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_VOID__VOID,
 		  G_TYPE_NONE, 0);
 
   /**
@@ -1461,7 +1461,7 @@ gtk_entry_class_init (GtkEntryClass *class)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkEntryClass, copy_clipboard),
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_VOID__VOID,
 		  G_TYPE_NONE, 0);
 
   /**
@@ -1482,7 +1482,7 @@ gtk_entry_class_init (GtkEntryClass *class)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkEntryClass, paste_clipboard),
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_VOID__VOID,
 		  G_TYPE_NONE, 0);
 
   /**
@@ -1501,7 +1501,7 @@ gtk_entry_class_init (GtkEntryClass *class)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkEntryClass, toggle_overwrite),
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_VOID__VOID,
 		  G_TYPE_NONE, 0);
 
   /**
@@ -1521,7 +1521,7 @@ gtk_entry_class_init (GtkEntryClass *class)
                   G_SIGNAL_RUN_LAST,
                   0,
                   NULL, NULL,
-                  NULL,
+                  _gtk_marshal_VOID__ENUM_BOXED,
                   G_TYPE_NONE, 2,
                   GTK_TYPE_ENTRY_ICON_POSITION,
                   GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
@@ -1543,7 +1543,7 @@ gtk_entry_class_init (GtkEntryClass *class)
                   G_SIGNAL_RUN_LAST,
                   0,
                   NULL, NULL,
-                  NULL,
+                  _gtk_marshal_VOID__ENUM_BOXED,
                   G_TYPE_NONE, 2,
                   GTK_TYPE_ENTRY_ICON_POSITION,
                   GDK_TYPE_EVENT | G_SIGNAL_TYPE_STATIC_SCOPE);
@@ -1565,7 +1565,7 @@ gtk_entry_class_init (GtkEntryClass *class)
                                 G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                                 NULL,
                                 NULL, NULL,
-                                NULL,
+                                _gtk_marshal_VOID__STRING,
                                 G_TYPE_NONE, 1,
                                 G_TYPE_STRING);
 
@@ -10167,4 +10167,4 @@ keymap_state_changed (GdkKeymap *keymap,
 }
 
 #define __GTK_ENTRY_C__
-
+#include "gtkaliasdef.c"

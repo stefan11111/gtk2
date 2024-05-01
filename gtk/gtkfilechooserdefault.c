@@ -50,7 +50,7 @@
 #include "gtkimagemenuitem.h"
 #include "gtkinfobar.h"
 #include "gtklabel.h"
-
+#include "gtkmarshalers.h"
 #include "gtkmessagedialog.h"
 #include "gtkmountoperation.h"
 #include "gtkpathbar.h"
@@ -72,7 +72,7 @@
 #include "gtkvbox.h"
 #include "gtkintl.h"
 
-
+#include "gtkalias.h"
 
 #include <errno.h>
 #include <string.h>
@@ -83,6 +83,9 @@
 
 #ifdef HAVE_UNISTD_H
 #include <unistd.h>
+#endif
+#ifdef G_OS_WIN32
+#include <io.h>
 #endif
 
 /* Profiling stuff */
@@ -504,7 +507,7 @@ _gtk_file_chooser_default_class_init (GtkFileChooserDefaultClass *class)
                                 G_SIGNAL_RUN_FIRST | G_SIGNAL_ACTION,
                                 G_CALLBACK (location_popup_handler),
                                 NULL, NULL,
-                                NULL,
+                                _gtk_marshal_VOID__STRING,
                                 G_TYPE_NONE, 1, G_TYPE_STRING);
 
   signals[LOCATION_POPUP_ON_PASTE] =
@@ -513,7 +516,7 @@ _gtk_file_chooser_default_class_init (GtkFileChooserDefaultClass *class)
                                 G_SIGNAL_RUN_FIRST | G_SIGNAL_ACTION,
                                 G_CALLBACK (location_popup_on_paste_handler),
                                 NULL, NULL,
-                                NULL,
+                                _gtk_marshal_VOID__VOID,
                                 G_TYPE_NONE, 0);
 
   signals[LOCATION_TOGGLE_POPUP] =
@@ -522,7 +525,7 @@ _gtk_file_chooser_default_class_init (GtkFileChooserDefaultClass *class)
                                 G_SIGNAL_RUN_FIRST | G_SIGNAL_ACTION,
                                 G_CALLBACK (location_toggle_popup_handler),
                                 NULL, NULL,
-                                NULL,
+                                _gtk_marshal_VOID__VOID,
                                 G_TYPE_NONE, 0);
 
   signals[UP_FOLDER] =
@@ -531,7 +534,7 @@ _gtk_file_chooser_default_class_init (GtkFileChooserDefaultClass *class)
                                 G_SIGNAL_RUN_FIRST | G_SIGNAL_ACTION,
                                 G_CALLBACK (up_folder_handler),
                                 NULL, NULL,
-                                NULL,
+                                _gtk_marshal_VOID__VOID,
                                 G_TYPE_NONE, 0);
 
   signals[DOWN_FOLDER] =
@@ -540,7 +543,7 @@ _gtk_file_chooser_default_class_init (GtkFileChooserDefaultClass *class)
                                 G_SIGNAL_RUN_FIRST | G_SIGNAL_ACTION,
                                 G_CALLBACK (down_folder_handler),
                                 NULL, NULL,
-                                NULL,
+                                _gtk_marshal_VOID__VOID,
                                 G_TYPE_NONE, 0);
 
   signals[HOME_FOLDER] =
@@ -549,7 +552,7 @@ _gtk_file_chooser_default_class_init (GtkFileChooserDefaultClass *class)
                                 G_SIGNAL_RUN_FIRST | G_SIGNAL_ACTION,
                                 G_CALLBACK (home_folder_handler),
                                 NULL, NULL,
-                                NULL,
+                                _gtk_marshal_VOID__VOID,
                                 G_TYPE_NONE, 0);
 
   signals[DESKTOP_FOLDER] =
@@ -558,7 +561,7 @@ _gtk_file_chooser_default_class_init (GtkFileChooserDefaultClass *class)
                                 G_SIGNAL_RUN_FIRST | G_SIGNAL_ACTION,
                                 G_CALLBACK (desktop_folder_handler),
                                 NULL, NULL,
-                                NULL,
+                                _gtk_marshal_VOID__VOID,
                                 G_TYPE_NONE, 0);
 
   signals[QUICK_BOOKMARK] =
@@ -567,7 +570,7 @@ _gtk_file_chooser_default_class_init (GtkFileChooserDefaultClass *class)
                                 G_SIGNAL_RUN_FIRST | G_SIGNAL_ACTION,
                                 G_CALLBACK (quick_bookmark_handler),
                                 NULL, NULL,
-                                NULL,
+                                _gtk_marshal_VOID__INT,
                                 G_TYPE_NONE, 1, G_TYPE_INT);
 
   signals[SHOW_HIDDEN] =
@@ -576,7 +579,7 @@ _gtk_file_chooser_default_class_init (GtkFileChooserDefaultClass *class)
                                 G_SIGNAL_RUN_FIRST | G_SIGNAL_ACTION,
                                 G_CALLBACK (show_hidden_handler),
                                 NULL, NULL,
-                                NULL,
+                                _gtk_marshal_VOID__VOID,
                                 G_TYPE_NONE, 0);
 
   signals[SEARCH_SHORTCUT] =
@@ -585,7 +588,7 @@ _gtk_file_chooser_default_class_init (GtkFileChooserDefaultClass *class)
                                 G_SIGNAL_RUN_FIRST | G_SIGNAL_ACTION,
                                 G_CALLBACK (search_shortcut_handler),
                                 NULL, NULL,
-                                NULL,
+                                _gtk_marshal_VOID__VOID,
                                 G_TYPE_NONE, 0);
 
   signals[RECENT_SHORTCUT] =
@@ -594,7 +597,7 @@ _gtk_file_chooser_default_class_init (GtkFileChooserDefaultClass *class)
                                 G_SIGNAL_RUN_FIRST | G_SIGNAL_ACTION,
                                 G_CALLBACK (recent_shortcut_handler),
                                 NULL, NULL,
-                                NULL,
+                                _gtk_marshal_VOID__VOID,
                                 G_TYPE_NONE, 0);
 
   binding_set = gtk_binding_set_by_class (class);
@@ -6533,7 +6536,7 @@ stop_loading_and_clear_list_model (GtkFileChooserDefault *impl,
 }
 
 static char *
-my_g_format_time_for_display (guint64 secs)
+my_g_format_time_for_display (glong secs)
 {
   GDate mtime, now;
   gint days_diff;
@@ -6543,6 +6546,12 @@ my_g_format_time_for_display (guint64 secs)
   gchar *locale_format = NULL;
   gchar buf[256];
   char *date_str = NULL;
+#ifdef G_OS_WIN32
+  const char *locale, *dot = NULL;
+  gint64 codepage = -1;
+  char charset[20];
+#endif
+
   time_mtime = secs;
 
 #ifdef HAVE_LOCALTIME_R
@@ -6581,11 +6590,45 @@ my_g_format_time_for_display (guint64 secs)
         format = "%x"; /* Any other date */
     }
 
+#ifdef G_OS_WIN32
+  /* g_locale_from_utf8() returns a string in the system
+   * code-page, which is not always the same as that used by the C
+   * library. For instance when running a GTK+ program with
+   * LANG=ko on an English version of Windows, the system
+   * code-page is 1252, but the code-page used by the C library is
+   * 949. (It's GTK+ itself that sets the C library locale when it
+   * notices the LANG environment variable. See gtkmain.c The
+   * Microsoft C library doesn't look at any locale environment
+   * variables.) We need to pass strftime() a string in the C
+   * library's code-page. See bug #509885.
+   */
+  locale = setlocale (LC_ALL, NULL);
+  if (locale != NULL)
+    dot = strchr (locale, '.');
+  if (dot != NULL)
+    {
+      codepage = g_ascii_strtoll (dot+1, NULL, 10);
+      
+      /* All codepages should fit in 16 bits AFAIK */
+      if (codepage > 0 && codepage < 65536)
+        {
+          sprintf (charset, "CP%u", (guint) codepage);
+          locale_format = g_convert (format, -1, charset, "UTF-8", NULL, NULL, NULL);
+        }
+    }
+#else
   locale_format = g_locale_from_utf8 (format, -1, NULL, NULL, NULL);
+#endif
   if (locale_format != NULL &&
       strftime (buf, sizeof (buf), locale_format, &tm_mtime) != 0)
     {
+#ifdef G_OS_WIN32
+      /* As above but in opposite direction... */
+      if (codepage > 0 && codepage < 65536)
+        date_str = g_convert (buf, -1, "UTF-8", charset, NULL, NULL, NULL);
+#else
       date_str = g_locale_to_utf8 (buf, -1, NULL, NULL, NULL);
+#endif
     }
 
   if (date_str == NULL)
@@ -6767,16 +6810,16 @@ file_system_model_set (GtkFileSystemModel *model,
     case MODEL_COL_MTIME:
     case MODEL_COL_MTIME_TEXT:
       {
-        guint64 tv;
+        GTimeVal tv;
         if (info == NULL)
           break;
-        tv = *(guint64*)g_file_info_get_modification_date_time (info);
+        g_file_info_get_modification_time (info, &tv);
         if (column == MODEL_COL_MTIME)
-          g_value_set_int64 (value, tv);
-        else if (tv == 0)
+          g_value_set_long (value, tv.tv_sec);
+        else if (tv.tv_sec == 0)
           g_value_set_static_string (value, _("Unknown"));
         else
-          g_value_take_string (value, my_g_format_time_for_display (tv));
+          g_value_take_string (value, my_g_format_time_for_display (tv.tv_sec));
         break;
       }
     case MODEL_COL_ELLIPSIZE:

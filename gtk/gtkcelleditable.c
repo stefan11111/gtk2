@@ -20,10 +20,10 @@
 
 #include "config.h"
 #include "gtkcelleditable.h"
-
+#include "gtkmarshalers.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
-
+#include "gtkalias.h"
 
 typedef GtkCellEditableIface GtkCellEditableInterface;
 G_DEFINE_INTERFACE(GtkCellEditable, gtk_cell_editable, GTK_TYPE_WIDGET)
@@ -64,7 +64,7 @@ gtk_cell_editable_default_init (GtkCellEditableInterface *iface)
                 G_SIGNAL_RUN_LAST,
                 G_STRUCT_OFFSET (GtkCellEditableIface, editing_done),
                 NULL, NULL,
-                NULL,
+                _gtk_marshal_VOID__VOID,
                 G_TYPE_NONE, 0);
 
   /**
@@ -88,7 +88,7 @@ gtk_cell_editable_default_init (GtkCellEditableInterface *iface)
                 G_SIGNAL_RUN_LAST,
                 G_STRUCT_OFFSET (GtkCellEditableIface, remove_widget),
                 NULL, NULL,
-                NULL,
+                _gtk_marshal_VOID__VOID,
                 G_TYPE_NONE, 0);
 }
 
@@ -139,4 +139,4 @@ gtk_cell_editable_remove_widget (GtkCellEditable *cell_editable)
 }
 
 #define __GTK_CELL_EDITABLE_C__
-
+#include "gtkaliasdef.c"

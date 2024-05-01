@@ -43,7 +43,7 @@
 #include "gtkframe.h"
 #include "gtktable.h"
 #include "gtklabel.h"
-
+#include "gtkmarshalers.h"
 #include "gtkimage.h"
 #include "gtkspinbutton.h"
 #include "gtkrange.h"
@@ -59,7 +59,7 @@
 #include "gtkaccessible.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
-
+#include "gtkalias.h"
 
 /* Keep it in sync with gtksettings.c:default_color_palette */
 #define DEFAULT_COLOR_PALETTE   "black:white:gray50:red:purple:blue:light blue:green:yellow:orange:lavender:brown:goldenrod4:dodger blue:pink:light green:gray10:gray30:gray75:gray90"
@@ -313,7 +313,7 @@ gtk_color_selection_class_init (GtkColorSelectionClass *klass)
 		  G_SIGNAL_RUN_FIRST,
 		  G_STRUCT_OFFSET (GtkColorSelectionClass, color_changed),
 		  NULL, NULL,
-		  NULL,
+		  _gtk_marshal_VOID__VOID,
 		  G_TYPE_NONE, 0);
 
   g_type_class_add_private (gobject_class, sizeof (ColorSelectionPrivate));
@@ -1790,7 +1790,7 @@ key_press (GtkWidget   *invisible,
       
       return TRUE;
 
-#if defined GDK_WINDOWING_X11
+#if defined GDK_WINDOWING_X11 || defined GDK_WINDOWING_WIN32
     case GDK_Up:
     case GDK_KP_Up:
       dy = state == GDK_MOD1_MASK ? -BIG_STEP : -1;
@@ -2903,5 +2903,5 @@ gtk_color_selection_set_change_palette_with_screen_hook (GtkColorSelectionChange
 }
 
 #define __GTK_COLOR_SELECTION_C__
-
+#include "gtkaliasdef.c"
 

@@ -27,7 +27,7 @@
 #include "gtkmain.h"
 #include "gtkwindow-decorate.h"
 #include "gtkintl.h"
-
+#include "gtkalias.h"
 
 
 #ifdef DECORATE_WINDOWS
@@ -833,4 +833,4 @@ gtk_decorated_window_move_resize_window (GtkWindow   *window,
 
 
 #define __GTK_WINDOW_DECORATE_C__
-
+#include "gtkaliasdef.c"

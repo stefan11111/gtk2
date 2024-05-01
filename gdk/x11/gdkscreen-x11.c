@@ -32,7 +32,7 @@
 #include "gdkdisplay.h"
 #include "gdkdisplay-x11.h"
 #include "gdkx.h"
-
+#include "gdkalias.h"
 
 #include <X11/Xatom.h>
 
@@ -1510,4 +1510,4 @@ gdk_screen_get_window_stack (GdkScreen *screen)
 }
 
 #define __GDK_SCREEN_X11_C__
-
+#include "gdkaliasdef.c"

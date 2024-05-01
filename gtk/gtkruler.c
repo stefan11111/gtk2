@@ -36,7 +36,7 @@
 #include "gtkruler.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
-
+#include "gtkalias.h"
 
 
 #define RULER_WIDTH           14
@@ -895,4 +895,4 @@ gtk_ruler_real_draw_pos (GtkRuler *ruler)
 }
 
 #define __GTK_RULER_C__
-
+#include "gtkaliasdef.c"
