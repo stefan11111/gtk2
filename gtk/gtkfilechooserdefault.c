@@ -84,9 +84,6 @@
 #ifdef HAVE_UNISTD_H
 #include <unistd.h>
 #endif
-#ifdef G_OS_WIN32
-#include <io.h>
-#endif
 
 /* Profiling stuff */
 #undef PROFILE_FILE_CHOOSER
@@ -6546,12 +6543,6 @@ my_g_format_time_for_display (guint64 secs)
   gchar *locale_format = NULL;
   gchar buf[256];
   char *date_str = NULL;
-#ifdef G_OS_WIN32
-  const char *locale, *dot = NULL;
-  gint64 codepage = -1;
-  char charset[20];
-#endif
-
   time_mtime = secs;
 
 #ifdef HAVE_LOCALTIME_R
@@ -6590,45 +6581,11 @@ my_g_format_time_for_display (guint64 secs)
         format = "%x"; /* Any other date */
     }
 
-#ifdef G_OS_WIN32
-  /* g_locale_from_utf8() returns a string in the system
-   * code-page, which is not always the same as that used by the C
-   * library. For instance when running a GTK+ program with
-   * LANG=ko on an English version of Windows, the system
-   * code-page is 1252, but the code-page used by the C library is
-   * 949. (It's GTK+ itself that sets the C library locale when it
-   * notices the LANG environment variable. See gtkmain.c The
-   * Microsoft C library doesn't look at any locale environment
-   * variables.) We need to pass strftime() a string in the C
-   * library's code-page. See bug #509885.
-   */
-  locale = setlocale (LC_ALL, NULL);
-  if (locale != NULL)
-    dot = strchr (locale, '.');
-  if (dot != NULL)
-    {
-      codepage = g_ascii_strtoll (dot+1, NULL, 10);
-      
-      /* All codepages should fit in 16 bits AFAIK */
-      if (codepage > 0 && codepage < 65536)
-        {
-          sprintf (charset, "CP%u", (guint) codepage);
-          locale_format = g_convert (format, -1, charset, "UTF-8", NULL, NULL, NULL);
-        }
-    }
-#else
   locale_format = g_locale_from_utf8 (format, -1, NULL, NULL, NULL);
-#endif
   if (locale_format != NULL &&
       strftime (buf, sizeof (buf), locale_format, &tm_mtime) != 0)
     {
-#ifdef G_OS_WIN32
-      /* As above but in opposite direction... */
-      if (codepage > 0 && codepage < 65536)
-        date_str = g_convert (buf, -1, "UTF-8", charset, NULL, NULL, NULL);
-#else
       date_str = g_locale_to_utf8 (buf, -1, NULL, NULL, NULL);
-#endif
     }
 
   if (date_str == NULL)

@@ -31,9 +31,6 @@
 #include "gtkintl.h"
 
 
-#ifdef GDK_WINDOWING_WIN32
-#include <win32/gdkwin32keys.h>
-#endif
 
 typedef struct _GtkComposeTable GtkComposeTable;
 typedef struct _GtkComposeTableCompact GtkComposeTableCompact;

@@ -15,6 +15,20 @@ GTK_PRINT_PREVIEW_COMMAND="evince --unlink-tempfile --preview --print-settings %
 SUBDIRS = .
 DIST_SUBDIRS=
 
+if HAVE_PAPI_CUPS
+GTK_PRINT_BACKENDS=file,papi,cups
+else
+if HAVE_CUPS
+GTK_PRINT_BACKENDS=file,cups
+else
+if HAVE_PAPI
+GTK_PRINT_BACKENDS=file,papi
+else
+GTK_PRINT_BACKENDS=file,lpr
+endif
+endif
+endif
+
 # manually remove if wanted
 # grep for DISABLE_PRINTING_BACKENDS to easly find
 #GTK_PRINT_BACKENDS=
@@ -46,6 +60,7 @@ INCLUDES =						\
 	-I$(top_builddir)/gtk				\
 	-I$(top_srcdir) -I../gdk			\
 	-I$(top_srcdir)/gdk				\
+	$(GMODULE_CFLAGS)				\
 	$(GTK_DEBUG_FLAGS)				\
 	$(GTK_DEP_CFLAGS)
 
@@ -60,6 +75,7 @@ endif
 libgtkincludedir = $(includedir)/gtk-2.0/gtk
 libadd =								\
 	$(top_builddir)/gdk/$(gdktargetlib)				\
+	$(GMODULE_LIBS) \
 	$(GTK_DEP_LIBS)
 deps =
 
@@ -176,6 +192,7 @@ gtk_public_h_sources =          \
 	gtkmenutoolbutton.h	\
 	gtkmessagedialog.h	\
 	gtkmisc.h		\
+	gtkmodules.h		\
 	gtkmountoperation.h     \
 	gtknotebook.h		\
 	gtkobject.h		\
@@ -442,6 +459,7 @@ gtk_base_c_sources =            \
 	gtkmessagedialog.c	\
 	gtkmisc.c		\
 	gtkmnemonichash.c	\
+	gtkmodules.c		\
 	gtkmountoperation.c     \
 	gtknotebook.c		\
 	gtkobject.c		\
@@ -780,7 +798,7 @@ distclean-local:
 
 DEPS = $(gtktargetlib) $(top_builddir)/gdk/$(gdktargetlib)
 
-TEST_DEPS = $(DEPS)
+TEST_DEPS = $(DEPS) immodules.cache
 
 LDADDS =								\
 	$(gtktargetlib)							\

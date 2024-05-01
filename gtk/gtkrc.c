@@ -51,15 +51,13 @@
 #include "gtkintl.h"
 #include "gtkiconfactory.h"
 #include "gtkmain.h"
+#include "gtkmodules.h"
 #include "gtkprivate.h"
 #include "gtksettings.h"
 #include "gtkwindow.h"
 
 
 
-#ifdef G_OS_WIN32
-#include <io.h>
-#endif
 
 typedef struct _GtkRcSet    GtkRcSet;
 typedef struct _GtkRcNode   GtkRcNode;
@@ -419,7 +417,11 @@ gtk_rc_make_default_dir (const gchar *type)
 gchar *
 gtk_rc_get_im_module_path (void)
 {
-  return NULL;
+  gchar **paths = _gtk_get_module_path ("immodules");
+  gchar *result = g_strjoinv (G_SEARCHPATH_SEPARATOR_S, paths);
+  g_strfreev (paths);
+
+  return result;
 }
 
 /**
@@ -3550,7 +3552,7 @@ gtk_rc_find_pixmap_in_path (GtkSettings  *settings,
 gchar*
 gtk_rc_find_module_in_path (const gchar *module_file)
 {
-  return "";
+  return _gtk_find_module (module_file, "engines");
 }
 
 static guint
@@ -4891,59 +4893,6 @@ _gtk_rc_match_widget_class (GSList  *list,
 {
   return match_widget_class_recursive (list, length, path, path_reversed);
 }
-
-#if defined (G_OS_WIN32) && !defined (_WIN64)
-
-/* DLL ABI stability backward compatibility versions */
-
-#undef gtk_rc_add_default_file
-
-void
-gtk_rc_add_default_file (const gchar *filename)
-{
-  gchar *utf8_filename = g_locale_to_utf8 (filename, -1, NULL, NULL, NULL);
-
-  gtk_rc_add_default_file_utf8 (utf8_filename);
-
-  g_free (utf8_filename);
-}
-
-#undef gtk_rc_set_default_files
-
-void
-gtk_rc_set_default_files (gchar **filenames)
-{
-  gchar **utf8_filenames;
-  int n = 0, i;
-
-  while (filenames[n++] != NULL)
-    ;
-
-  utf8_filenames = g_new (gchar *, n + 1);
-
-  for (i = 0; i < n; i++)
-    utf8_filenames[i] = g_locale_to_utf8 (filenames[i], -1, NULL, NULL, NULL);
-
-  utf8_filenames[n] = NULL;
-
-  gtk_rc_set_default_files_utf8 (utf8_filenames);
-
-  g_strfreev (utf8_filenames);
-}
-
-#undef gtk_rc_parse
-
-void
-gtk_rc_parse (const gchar *filename)
-{
-  gchar *utf8_filename = g_locale_to_utf8 (filename, -1, NULL, NULL, NULL);
-
-  gtk_rc_parse_utf8 (utf8_filename);
-
-  g_free (utf8_filename);
-}
-
-#endif
 
 #define __GTK_RC_C__
 

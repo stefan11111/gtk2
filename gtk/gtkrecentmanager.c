@@ -2277,12 +2277,7 @@ get_method_string (const gchar  *substring,
        p++)
     ;
 
-  if (*p == ':'
-#ifdef G_OS_WIN32
-                &&
-      !(p == substring + 1 && g_ascii_isalpha (*substring))
-#endif
-							   )
+  if (*p == ':')
     {
       /* Found toplevel method specification.  */
       method = g_strndup (substring, p - substring);

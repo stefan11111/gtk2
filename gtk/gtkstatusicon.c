@@ -603,220 +603,6 @@ gtk_status_icon_class_init (GtkStatusIconClass *class)
   g_type_class_add_private (class, sizeof (GtkStatusIconPrivate));
 }
 
-#ifdef GDK_WINDOWING_WIN32
-
-static void
-build_button_event (GtkStatusIconPrivate *priv,
-		    GdkEventButton       *e,
-		    guint                 button)
-{
-  POINT pos;
-  GdkRectangle monitor0;
-
-  /* We know that gdk/win32 puts the primary monitor at index 0 */
-  gdk_screen_get_monitor_geometry (gdk_screen_get_default (), 0, &monitor0);
-  e->window = g_object_ref (gdk_get_default_root_window ());
-  e->send_event = TRUE;
-  e->time = GetTickCount ();
-  GetCursorPos (&pos);
-  priv->last_click_x = e->x = pos.x + monitor0.x;
-  priv->last_click_y = e->y = pos.y + monitor0.y;
-  e->axes = NULL;
-  e->state = 0;
-  e->button = button;
-  e->device = gdk_display_get_default ()->core_pointer;
-  e->x_root = e->x;
-  e->y_root = e->y;
-}
-
-typedef struct
-{
-  GtkStatusIcon *status_icon;
-  GdkEventButton *event;
-} ButtonCallbackData;
-
-static gboolean
-button_callback (gpointer data)
-{
-  ButtonCallbackData *bc = (ButtonCallbackData *) data;
-
-  if (bc->event->type == GDK_BUTTON_PRESS)
-    gtk_status_icon_button_press (bc->status_icon, bc->event);
-  else
-    gtk_status_icon_button_release (bc->status_icon, bc->event);
-
-  gdk_event_free ((GdkEvent *) bc->event);
-  g_free (data);
-
-  return FALSE;
-}
-
-static UINT taskbar_created_msg = 0;
-static GSList *status_icons = NULL;
-static UINT status_icon_id = 0;
-
-static GtkStatusIcon *
-find_status_icon (UINT id)
-{
-  GSList *rover;
-
-  for (rover = status_icons; rover != NULL; rover = rover->next)
-    {
-      GtkStatusIcon *status_icon = GTK_STATUS_ICON (rover->data);
-      GtkStatusIconPrivate *priv = status_icon->priv;
-
-      if (priv->nid.uID == id)
-        return status_icon;
-    }
-
-  return NULL;
-}
-
-static LRESULT CALLBACK
-wndproc (HWND   hwnd,
-	 UINT   message,
-	 WPARAM wparam,
-	 LPARAM lparam)
-{
-  if (message == taskbar_created_msg)
-    {
-      GSList *rover;
-
-      for (rover = status_icons; rover != NULL; rover = rover->next)
-	{
-	  GtkStatusIcon *status_icon = GTK_STATUS_ICON (rover->data);
-	  GtkStatusIconPrivate *priv = status_icon->priv;
-
-	  /* taskbar_created_msg is also fired when DPI changes. Try to delete existing icons if possible. */
-	  if (!Shell_NotifyIconW (NIM_DELETE, &priv->nid))
-	  {
-		g_warning (G_STRLOC ": Shell_NotifyIcon(NIM_DELETE) on existing icon failed");
-	  }
-
-	  priv->nid.hWnd = hwnd;
-	  priv->nid.uID = status_icon_id++;
-	  priv->nid.uCallbackMessage = WM_GTK_TRAY_NOTIFICATION;
-	  priv->nid.uFlags = NIF_MESSAGE;
-
-	  if (!Shell_NotifyIconW (NIM_ADD, &priv->nid))
-	    {
-	      g_warning (G_STRLOC ": Shell_NotifyIcon(NIM_ADD) failed");
-	      priv->nid.hWnd = NULL;
-	      continue;
-	    }
-
-	  gtk_status_icon_update_image (status_icon);
-	}
-      return 0;
-    }
-
-  if (message == WM_GTK_TRAY_NOTIFICATION)
-    {
-      ButtonCallbackData *bc;
-      guint button;
-      
-      switch (lparam)
-	{
-	case WM_LBUTTONDOWN:
-	  button = 1;
-	  goto buttondown0;
-
-	case WM_MBUTTONDOWN:
-	  button = 2;
-	  goto buttondown0;
-
-	case WM_RBUTTONDOWN:
-	  button = 3;
-	  goto buttondown0;
-
-	case WM_XBUTTONDOWN:
-	  if (HIWORD (wparam) == XBUTTON1)
-	    button = 4;
-	  else
-	    button = 5;
-
-	buttondown0:
-	  bc = g_new (ButtonCallbackData, 1);
-	  bc->event = (GdkEventButton *) gdk_event_new (GDK_BUTTON_PRESS);
-	  bc->status_icon = find_status_icon (wparam);
-	  build_button_event (bc->status_icon->priv, bc->event, button);
-	  g_idle_add (button_callback, bc);
-	  break;
-
-	case WM_LBUTTONUP:
-	  button = 1;
-	  goto buttonup0;
-
-	case WM_MBUTTONUP:
-	  button = 2;
-	  goto buttonup0;
-
-	case WM_RBUTTONUP:
-	  button = 3;
-	  goto buttonup0;
-
-	case WM_XBUTTONUP:
-	  if (HIWORD (wparam) == XBUTTON1)
-	    button = 4;
-	  else
-	    button = 5;
-
-	buttonup0:
-	  bc = g_new (ButtonCallbackData, 1);
-	  bc->event = (GdkEventButton *) gdk_event_new (GDK_BUTTON_RELEASE);
-	  bc->status_icon = find_status_icon (wparam);
-	  build_button_event (bc->status_icon->priv, bc->event, button);
-	  g_idle_add (button_callback, bc);
-	  break;
-
-	default :
-	  break;
-	}
-	return 0;
-    }
-  else
-    {
-      return DefWindowProc (hwnd, message, wparam, lparam);
-    }
-}
-
-static HWND
-create_tray_observer (void)
-{
-  WNDCLASS    wclass;
-  static HWND hwnd = NULL;
-  ATOM        klass;
-  HINSTANCE   hmodule = GetModuleHandle (NULL);
-
-  if (hwnd)
-    return hwnd;
-
-  taskbar_created_msg = RegisterWindowMessage("TaskbarCreated");
-
-  memset (&wclass, 0, sizeof(WNDCLASS));
-  wclass.lpszClassName = "gtkstatusicon-observer";
-  wclass.lpfnWndProc   = wndproc;
-  wclass.hInstance     = hmodule;
-
-  klass = RegisterClass (&wclass);
-  if (!klass)
-    return NULL;
-
-  hwnd = CreateWindow (MAKEINTRESOURCE (klass),
-                       NULL, WS_POPUP,
-                       0, 0, 1, 1, NULL, NULL,
-                       hmodule, NULL);
-  if (!hwnd)
-    {
-      UnregisterClass (MAKEINTRESOURCE(klass), hmodule);
-      return NULL;
-    }
-
-  return hwnd;
-}
-
-#endif
-
 static void
 gtk_status_icon_init (GtkStatusIcon *status_icon)
 {
@@ -1049,9 +835,6 @@ gtk_status_icon_get_property (GObject    *object,
     case PROP_ORIENTATION:
 #ifdef GDK_WINDOWING_X11
       g_value_set_enum (value, _gtk_tray_icon_get_orientation (GTK_TRAY_ICON (status_icon->priv->tray_icon)));
-#endif
-#ifdef GDK_WINDOWING_WIN32
-      g_value_set_enum (value, status_icon->priv->orientation);
 #endif
       break;
     case PROP_HAS_TOOLTIP:
@@ -1300,9 +1083,6 @@ static void
 gtk_status_icon_update_image (GtkStatusIcon *status_icon)
 {
   GtkStatusIconPrivate *priv = status_icon->priv;
-#ifdef GDK_WINDOWING_WIN32
-  HICON prev_hicon;
-#endif
 
   if (priv->blink_off)
     {
@@ -2294,25 +2074,6 @@ gtk_status_icon_position_menu (GtkMenu  *menu,
 
   *push_in = FALSE;
 #endif /* GDK_WINDOWING_X11 */
-
-#ifdef GDK_WINDOWING_WIN32
-  GtkStatusIcon *status_icon;
-  GtkStatusIconPrivate *priv;
-  GtkRequisition menu_req;
-  
-  g_return_if_fail (GTK_IS_MENU (menu));
-  g_return_if_fail (GTK_IS_STATUS_ICON (user_data));
-
-  status_icon = GTK_STATUS_ICON (user_data);
-  priv = status_icon->priv;
-
-  gtk_widget_size_request (GTK_WIDGET (menu), &menu_req);
-
-  *x = priv->last_click_x;
-  *y = priv->taskbar_top - menu_req.height;
-
-  *push_in = TRUE;
-#endif
 }
 
 /**
