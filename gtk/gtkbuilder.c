@@ -170,52 +170,6 @@ gtk_builder_get_property (GObject    *object,
 
 
 /*
- * Try to map a type name to a _get_type function
- * and call it, eg:
- *
- * GtkWindow -> gtk_window_get_type
- * GtkHBox -> gtk_hbox_get_type
- * GtkUIManager -> gtk_ui_manager_get_type
- *
- */
-static GType
-_gtk_builder_resolve_type_lazily (const gchar *name)
-{
-  static GModule *module = NULL;
-  GTypeGetFunc func;
-  GString *symbol_name = g_string_new ("");
-  char c, *symbol;
-  int i;
-  GType gtype = G_TYPE_INVALID;
-
-  if (!module)
-    module = g_module_open (NULL, 0);
-  
-  for (i = 0; name[i] != '\0'; i++)
-    {
-      c = name[i];
-      /* skip if uppercase, first or previous is uppercase */
-      if ((c == g_ascii_toupper (c) &&
-           i > 0 && name[i-1] != g_ascii_toupper (name[i-1])) ||
-          (i > 2 && name[i]   == g_ascii_toupper (name[i]) &&
-           name[i-1] == g_ascii_toupper (name[i-1]) &&
-           name[i-2] == g_ascii_toupper (name[i-2])))
-        g_string_append_c (symbol_name, '_');
-      g_string_append_c (symbol_name, g_ascii_tolower (c));
-    }
-  g_string_append (symbol_name, "_get_type");
-  
-  symbol = g_string_free (symbol_name, FALSE);
-
-  if (g_module_symbol (module, symbol, (gpointer)&func))
-    gtype = func ();
-  
-  g_free (symbol);
-
-  return gtype;
-}
-
-/*
  * GtkBuilder virtual methods
  */
 
@@ -226,10 +180,7 @@ gtk_builder_real_get_type_from_name (GtkBuilder  *builder,
   GType gtype;
 
   gtype = g_type_from_name (type_name);
-  if (gtype != G_TYPE_INVALID)
-    return gtype;
-
-  return _gtk_builder_resolve_type_lazily (type_name);
+  return gtype;
 }
 
 typedef struct
@@ -703,55 +654,12 @@ gtk_builder_get_translation_domain (GtkBuilder *builder)
   return builder->priv->domain;
 }
 
-typedef struct {
-  GModule *module;
-  gpointer data;
-} connect_args;
-
-static void
-gtk_builder_connect_signals_default (GtkBuilder    *builder,
-				     GObject       *object,
-				     const gchar   *signal_name,
-				     const gchar   *handler_name,
-				     GObject       *connect_object,
-				     GConnectFlags  flags,
-				     gpointer       user_data)
-{
-  GCallback func;
-  connect_args *args = (connect_args*)user_data;
-  
-  if (!g_module_symbol (args->module, handler_name, (gpointer)&func))
-    {
-      g_warning ("Could not find signal handler '%s'", handler_name);
-      return;
-    }
-
-  if (connect_object)
-    g_signal_connect_object (object, signal_name, func, connect_object, flags);
-  else
-    g_signal_connect_data (object, signal_name, func, args->data, NULL, flags);
-}
-
 
 /**
  * gtk_builder_connect_signals:
  * @builder: a #GtkBuilder
  * @user_data: a pointer to a structure sent in as user data to all signals
  *
- * This method is a simpler variation of gtk_builder_connect_signals_full().
- * It uses #GModule's introspective features (by opening the module %NULL) 
- * to look at the application's symbol table. From here it tries to match
- * the signal handler names given in the interface description with
- * symbols in the application and connects the signals.
- * 
- * Note that this function will not work correctly if #GModule is not
- * supported on the platform.
- *
- * When compiling applications for Windows, you must declare signal callbacks
- * with #G_MODULE_EXPORT, or they will not be put in the symbol table.
- * On Linux and Unices, this is not necessary; applications should instead
- * be compiled with the -Wl,--export-dynamic CFLAGS, and linked against
- * gmodule-export-2.0.
  *
  * Since: 2.12
  **/
@@ -759,23 +667,6 @@ void
 gtk_builder_connect_signals (GtkBuilder *builder,
 			     gpointer    user_data)
 {
-  connect_args *args;
-  
-  g_return_if_fail (GTK_IS_BUILDER (builder));
-  
-  if (!g_module_supported ())
-    g_error ("gtk_builder_connect_signals() requires working GModule");
-
-  args = g_slice_new0 (connect_args);
-  args->module = g_module_open (NULL, G_MODULE_BIND_LAZY);
-  args->data = user_data;
-  
-  gtk_builder_connect_signals_full (builder,
-                                    gtk_builder_connect_signals_default,
-                                    args);
-  g_module_close (args->module);
-
-  g_slice_free (connect_args, args);
 }
 
 /**
@@ -804,8 +695,7 @@ gtk_builder_connect_signals (GtkBuilder *builder,
  * @user_data: arbitrary data that will be passed to the connection function
  *
  * This function can be thought of the interpreted language binding
- * version of gtk_builder_connect_signals(), except that it does not
- * require GModule to function correctly.
+ * version of gtk_builder_connect_signals().
  *
  * Since: 2.12
  */
