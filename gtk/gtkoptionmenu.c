@@ -136,7 +136,7 @@ gtk_option_menu_class_init (GtkOptionMenuClass *class)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkOptionMenuClass, changed),
                   NULL, NULL,
-                  _gtk_marshal_VOID__VOID,
+                  NULL,
                   G_TYPE_NONE, 0);
 
   gobject_class->set_property = gtk_option_menu_set_property;

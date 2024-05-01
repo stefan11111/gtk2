@@ -965,7 +965,7 @@ gtk_tool_palette_class_init (GtkToolPaletteClass *cls)
                   G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                   G_STRUCT_OFFSET (GtkToolPaletteClass, set_scroll_adjustments),
                   NULL, NULL,
-                  _gtk_marshal_VOID__OBJECT_OBJECT,
+                  NULL,
                   G_TYPE_NONE, 2,
                   GTK_TYPE_ADJUSTMENT,
                   GTK_TYPE_ADJUSTMENT);

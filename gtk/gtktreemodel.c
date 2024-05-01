@@ -160,7 +160,7 @@ gtk_tree_model_base_init (gpointer g_class)
                       G_SIGNAL_RUN_LAST, 
                       G_STRUCT_OFFSET (GtkTreeModelIface, row_changed),
                       NULL, NULL,
-                      _gtk_marshal_VOID__BOXED_BOXED,
+                      NULL,
                       G_TYPE_NONE, 2,
                       GTK_TYPE_TREE_PATH | G_SIGNAL_TYPE_STATIC_SCOPE,
                       GTK_TYPE_TREE_ITER);
@@ -198,7 +198,7 @@ gtk_tree_model_base_init (gpointer g_class)
                        G_SIGNAL_RUN_FIRST,
                        closure,
                        NULL, NULL,
-                       _gtk_marshal_VOID__BOXED_BOXED,
+                       NULL,
                        G_TYPE_NONE, 2,
                        row_inserted_params);
 
@@ -217,7 +217,7 @@ gtk_tree_model_base_init (gpointer g_class)
                       G_SIGNAL_RUN_LAST,
                       G_STRUCT_OFFSET (GtkTreeModelIface, row_has_child_toggled),
                       NULL, NULL,
-                      _gtk_marshal_VOID__BOXED_BOXED,
+                      NULL,
                       G_TYPE_NONE, 2,
                       GTK_TYPE_TREE_PATH | G_SIGNAL_TYPE_STATIC_SCOPE,
                       GTK_TYPE_TREE_ITER);
@@ -244,7 +244,7 @@ gtk_tree_model_base_init (gpointer g_class)
                        G_SIGNAL_RUN_FIRST,
                        closure,
                        NULL, NULL,
-                       _gtk_marshal_VOID__BOXED,
+                       NULL,
                        G_TYPE_NONE, 1,
                        row_deleted_params);
 
@@ -273,7 +273,7 @@ gtk_tree_model_base_init (gpointer g_class)
                        G_SIGNAL_RUN_FIRST,
                        closure,
                        NULL, NULL,
-                       _gtk_marshal_VOID__BOXED_BOXED_POINTER,
+                       NULL,
                        G_TYPE_NONE, 3,
                        rows_reordered_params);
       initialized = TRUE;

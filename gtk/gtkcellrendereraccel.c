@@ -189,7 +189,7 @@ gtk_cell_renderer_accel_class_init (GtkCellRendererAccelClass *cell_accel_class)
                                         G_SIGNAL_RUN_LAST,
                                         G_STRUCT_OFFSET (GtkCellRendererAccelClass, accel_edited),
                                         NULL, NULL,
-                                        _gtk_marshal_VOID__STRING_UINT_FLAGS_UINT,
+                                        NULL,
                                         G_TYPE_NONE, 4,
                                         G_TYPE_STRING,
                                         G_TYPE_UINT,

@@ -167,7 +167,7 @@ gtk_dialog_class_init (GtkDialogClass *class)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkDialogClass, response),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__INT,
+		  NULL,
 		  G_TYPE_NONE, 1,
 		  G_TYPE_INT);
 
@@ -187,7 +187,7 @@ gtk_dialog_class_init (GtkDialogClass *class)
 		  G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
 		  G_STRUCT_OFFSET (GtkDialogClass, close),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__VOID,
+		  NULL,
 		  G_TYPE_NONE, 0);
   
   gtk_widget_class_install_style_property (widget_class,

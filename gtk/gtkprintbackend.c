@@ -444,7 +444,7 @@ gtk_print_backend_class_init (GtkPrintBackendClass *class)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkPrintBackendClass, request_password),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__POINTER_POINTER_POINTER_POINTER_STRING,
+		  NULL,
 		  G_TYPE_NONE, 5, G_TYPE_POINTER, G_TYPE_POINTER, G_TYPE_POINTER, G_TYPE_POINTER, G_TYPE_STRING);
 }
 

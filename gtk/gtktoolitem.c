@@ -247,7 +247,7 @@ gtk_tool_item_class_init (GtkToolItemClass *klass)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkToolItemClass, create_menu_proxy),
 		  _gtk_boolean_handled_accumulator, NULL,
-		  _gtk_marshal_BOOLEAN__VOID,
+		  NULL,
 		  G_TYPE_BOOLEAN, 0);
 
 /**
@@ -272,7 +272,7 @@ gtk_tool_item_class_init (GtkToolItemClass *klass)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkToolItemClass, toolbar_reconfigured),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__VOID,
+		  NULL,
 		  G_TYPE_NONE, 0);
 /**
  * GtkToolItem::set-tooltip:
@@ -296,7 +296,7 @@ gtk_tool_item_class_init (GtkToolItemClass *klass)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkToolItemClass, set_tooltip),
 		  _gtk_boolean_handled_accumulator, NULL,
-		  _gtk_marshal_BOOLEAN__OBJECT_STRING_STRING,
+		  NULL,
 		  G_TYPE_BOOLEAN, 3,
 		  GTK_TYPE_TOOLTIPS,
 		  G_TYPE_STRING,

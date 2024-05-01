@@ -875,7 +875,7 @@ gtk_notebook_class_init (GtkNotebookClass *class)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkNotebookClass, switch_page),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__POINTER_UINT,
+		  NULL,
 		  G_TYPE_NONE, 2,
 		  G_TYPE_POINTER,
 		  G_TYPE_UINT);
@@ -885,7 +885,7 @@ gtk_notebook_class_init (GtkNotebookClass *class)
                   G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                   G_STRUCT_OFFSET (GtkNotebookClass, focus_tab),
                   NULL, NULL,
-                  _gtk_marshal_BOOLEAN__ENUM,
+                  NULL,
                   G_TYPE_BOOLEAN, 1,
                   GTK_TYPE_NOTEBOOK_TAB);
   notebook_signals[SELECT_PAGE] = 
@@ -894,7 +894,7 @@ gtk_notebook_class_init (GtkNotebookClass *class)
                   G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                   G_STRUCT_OFFSET (GtkNotebookClass, select_page),
                   NULL, NULL,
-                  _gtk_marshal_BOOLEAN__BOOLEAN,
+                  NULL,
                   G_TYPE_BOOLEAN, 1,
                   G_TYPE_BOOLEAN);
   notebook_signals[CHANGE_CURRENT_PAGE] = 
@@ -903,7 +903,7 @@ gtk_notebook_class_init (GtkNotebookClass *class)
                   G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                   G_STRUCT_OFFSET (GtkNotebookClass, change_current_page),
                   NULL, NULL,
-                  _gtk_marshal_BOOLEAN__INT,
+                  NULL,
                   G_TYPE_BOOLEAN, 1,
                   G_TYPE_INT);
   notebook_signals[MOVE_FOCUS_OUT] =
@@ -912,7 +912,7 @@ gtk_notebook_class_init (GtkNotebookClass *class)
                   G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                   G_STRUCT_OFFSET (GtkNotebookClass, move_focus_out),
                   NULL, NULL,
-                  _gtk_marshal_VOID__ENUM,
+                  NULL,
                   G_TYPE_NONE, 1,
                   GTK_TYPE_DIRECTION_TYPE);
   notebook_signals[REORDER_TAB] =
@@ -921,7 +921,7 @@ gtk_notebook_class_init (GtkNotebookClass *class)
                   G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                   G_STRUCT_OFFSET (GtkNotebookClass, reorder_tab),
                   NULL, NULL,
-                  _gtk_marshal_BOOLEAN__ENUM_BOOLEAN,
+                  NULL,
                   G_TYPE_BOOLEAN, 2,
                   GTK_TYPE_DIRECTION_TYPE,
 		  G_TYPE_BOOLEAN);
@@ -941,7 +941,7 @@ gtk_notebook_class_init (GtkNotebookClass *class)
                   G_TYPE_FROM_CLASS (gobject_class),
                   G_SIGNAL_RUN_LAST,
                   0, NULL, NULL,
-		  _gtk_marshal_VOID__OBJECT_UINT,
+		  NULL,
                   G_TYPE_NONE, 2,
 		  GTK_TYPE_WIDGET,
 		  G_TYPE_UINT);
@@ -961,7 +961,7 @@ gtk_notebook_class_init (GtkNotebookClass *class)
                   G_TYPE_FROM_CLASS (gobject_class),
                   G_SIGNAL_RUN_LAST,
                   0, NULL, NULL,
-		  _gtk_marshal_VOID__OBJECT_UINT,
+		  NULL,
                   G_TYPE_NONE, 2,
 		  GTK_TYPE_WIDGET,
 		  G_TYPE_UINT);
@@ -981,7 +981,7 @@ gtk_notebook_class_init (GtkNotebookClass *class)
                   G_TYPE_FROM_CLASS (gobject_class),
                   G_SIGNAL_RUN_LAST,
                   0, NULL, NULL,
-		  _gtk_marshal_VOID__OBJECT_UINT,
+		  NULL,
                   G_TYPE_NONE, 2,
 		  GTK_TYPE_WIDGET,
 		  G_TYPE_UINT);
@@ -1016,7 +1016,7 @@ gtk_notebook_class_init (GtkNotebookClass *class)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkNotebookClass, create_window),
                   gtk_object_handled_accumulator, NULL,
-                  _gtk_marshal_OBJECT__OBJECT_INT_INT,
+                  NULL,
                   GTK_TYPE_NOTEBOOK, 3,
                   GTK_TYPE_WIDGET, G_TYPE_INT, G_TYPE_INT);
  

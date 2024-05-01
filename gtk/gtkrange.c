@@ -292,7 +292,7 @@ gtk_range_class_init (GtkRangeClass *class)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkRangeClass, value_changed),
                   NULL, NULL,
-                  _gtk_marshal_VOID__VOID,
+                  NULL,
                   G_TYPE_NONE, 0);
   
   signals[ADJUST_BOUNDS] =
@@ -301,7 +301,7 @@ gtk_range_class_init (GtkRangeClass *class)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkRangeClass, adjust_bounds),
                   NULL, NULL,
-                  _gtk_marshal_VOID__DOUBLE,
+                  NULL,
                   G_TYPE_NONE, 1,
                   G_TYPE_DOUBLE);
   
@@ -318,7 +318,7 @@ gtk_range_class_init (GtkRangeClass *class)
                   G_SIGNAL_RUN_LAST | G_SIGNAL_ACTION,
                   G_STRUCT_OFFSET (GtkRangeClass, move_slider),
                   NULL, NULL,
-                  _gtk_marshal_VOID__ENUM,
+                  NULL,
                   G_TYPE_NONE, 1,
                   GTK_TYPE_SCROLL_TYPE);
 
@@ -354,7 +354,7 @@ gtk_range_class_init (GtkRangeClass *class)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkRangeClass, change_value),
                   _gtk_boolean_handled_accumulator, NULL,
-                  _gtk_marshal_BOOLEAN__ENUM_DOUBLE,
+                  NULL,
                   G_TYPE_BOOLEAN, 2,
                   GTK_TYPE_SCROLL_TYPE,
                   G_TYPE_DOUBLE);

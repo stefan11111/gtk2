@@ -315,7 +315,7 @@ gtk_about_dialog_class_init (GtkAboutDialogClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkAboutDialogClass, activate_link),
                   _gtk_boolean_handled_accumulator, NULL,
-                  _gtk_marshal_BOOLEAN__STRING,
+                  NULL,
                   G_TYPE_BOOLEAN, 1, G_TYPE_STRING);
 
   /**

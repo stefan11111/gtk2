@@ -227,7 +227,7 @@ gtk_color_button_class_init (GtkColorButtonClass *klass)
 						  G_SIGNAL_RUN_FIRST,
 						  G_STRUCT_OFFSET (GtkColorButtonClass, color_set),
 						  NULL, NULL,
-						  _gtk_marshal_VOID__VOID,
+						  NULL,
 						  G_TYPE_NONE, 0);
 
   g_type_class_add_private (gobject_class, sizeof (GtkColorButtonPrivate));

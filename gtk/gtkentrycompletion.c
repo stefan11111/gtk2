@@ -198,7 +198,7 @@ gtk_entry_completion_class_init (GtkEntryCompletionClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkEntryCompletionClass, insert_prefix),
                   _gtk_boolean_handled_accumulator, NULL,
-                  _gtk_marshal_BOOLEAN__STRING,
+                  NULL,
                   G_TYPE_BOOLEAN, 1,
                   G_TYPE_STRING);
 
@@ -223,7 +223,7 @@ gtk_entry_completion_class_init (GtkEntryCompletionClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkEntryCompletionClass, match_selected),
                   _gtk_boolean_handled_accumulator, NULL,
-                  _gtk_marshal_BOOLEAN__OBJECT_BOXED,
+                  NULL,
                   G_TYPE_BOOLEAN, 2,
                   GTK_TYPE_TREE_MODEL,
                   GTK_TYPE_TREE_ITER);
@@ -249,7 +249,7 @@ gtk_entry_completion_class_init (GtkEntryCompletionClass *klass)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkEntryCompletionClass, cursor_on_match),
 		  _gtk_boolean_handled_accumulator, NULL,
-		  _gtk_marshal_BOOLEAN__OBJECT_BOXED,
+		  NULL,
 		  G_TYPE_BOOLEAN, 2,
 		  GTK_TYPE_TREE_MODEL,
 		  GTK_TYPE_TREE_ITER);
@@ -269,7 +269,7 @@ gtk_entry_completion_class_init (GtkEntryCompletionClass *klass)
                   G_SIGNAL_RUN_LAST,
                   G_STRUCT_OFFSET (GtkEntryCompletionClass, action_activated),
                   NULL, NULL,
-                  _gtk_marshal_VOID__INT,
+                  NULL,
                   G_TYPE_NONE, 1,
                   G_TYPE_INT);
 

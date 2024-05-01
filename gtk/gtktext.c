@@ -576,7 +576,7 @@ gtk_text_class_init (GtkTextClass *class)
 		    GTK_RUN_LAST,
 		    GTK_CLASS_TYPE (object_class),
 		    GTK_SIGNAL_OFFSET (GtkTextClass, set_scroll_adjustments),
-		    _gtk_marshal_VOID__OBJECT_OBJECT,
+		    NULL,
 		    GTK_TYPE_NONE, 2, GTK_TYPE_ADJUSTMENT, GTK_TYPE_ADJUSTMENT);
 }
 

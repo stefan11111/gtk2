@@ -850,7 +850,7 @@ gtk_file_chooser_class_init (gpointer g_iface)
 		G_SIGNAL_RUN_LAST,
 		G_STRUCT_OFFSET (GtkFileChooserIface, confirm_overwrite),
 		confirm_overwrite_accumulator, NULL,
-		_gtk_marshal_ENUM__VOID,
+		NULL,
 		GTK_TYPE_FILE_CHOOSER_CONFIRMATION, 0);
   
   g_object_interface_install_property (g_iface,

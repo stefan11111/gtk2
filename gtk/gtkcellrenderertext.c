@@ -579,7 +579,7 @@ gtk_cell_renderer_text_class_init (GtkCellRendererTextClass *class)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkCellRendererTextClass, edited),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__STRING_STRING,
+		  NULL,
 		  G_TYPE_NONE, 2,
 		  G_TYPE_STRING,
 		  G_TYPE_STRING);

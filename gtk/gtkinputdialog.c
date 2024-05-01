@@ -159,7 +159,7 @@ gtk_input_dialog_class_init (GtkInputDialogClass *klass)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkInputDialogClass, enable_device),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__OBJECT,
+		  NULL,
 		  G_TYPE_NONE, 1,
 		  GDK_TYPE_DEVICE);
 
@@ -169,7 +169,7 @@ gtk_input_dialog_class_init (GtkInputDialogClass *klass)
 		  G_SIGNAL_RUN_LAST,
 		  G_STRUCT_OFFSET (GtkInputDialogClass, disable_device),
 		  NULL, NULL,
-		  _gtk_marshal_VOID__OBJECT,
+		  NULL,
 		  G_TYPE_NONE, 1,
 		  GDK_TYPE_DEVICE);
 

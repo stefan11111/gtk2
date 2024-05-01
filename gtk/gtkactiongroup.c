@@ -210,7 +210,7 @@ gtk_action_group_class_init (GtkActionGroupClass *klass)
     g_signal_new (I_("connect-proxy"),
 		  G_OBJECT_CLASS_TYPE (klass),
 		  0, 0, NULL, NULL,
-		  _gtk_marshal_VOID__OBJECT_OBJECT,
+		  NULL,
 		  G_TYPE_NONE, 2,
 		  GTK_TYPE_ACTION, GTK_TYPE_WIDGET);
 
@@ -233,7 +233,7 @@ gtk_action_group_class_init (GtkActionGroupClass *klass)
     g_signal_new (I_("disconnect-proxy"),
 		  G_OBJECT_CLASS_TYPE (klass),
 		  0, 0, NULL, NULL,
-		  _gtk_marshal_VOID__OBJECT_OBJECT,
+		  NULL,
 		  G_TYPE_NONE, 2, 
 		  GTK_TYPE_ACTION, GTK_TYPE_WIDGET);
 
@@ -254,7 +254,7 @@ gtk_action_group_class_init (GtkActionGroupClass *klass)
     g_signal_new (I_("pre-activate"),
 		  G_OBJECT_CLASS_TYPE (klass),
 		  0, 0, NULL, NULL,
-		  _gtk_marshal_VOID__OBJECT,
+		  NULL,
 		  G_TYPE_NONE, 1, 
 		  GTK_TYPE_ACTION);
 
@@ -275,7 +275,7 @@ gtk_action_group_class_init (GtkActionGroupClass *klass)
     g_signal_new (I_("post-activate"),
 		  G_OBJECT_CLASS_TYPE (klass),
 		  0, 0, NULL, NULL,
-		  _gtk_marshal_VOID__OBJECT,
+		  NULL,
 		  G_TYPE_NONE, 1, 
 		  GTK_TYPE_ACTION);
 
