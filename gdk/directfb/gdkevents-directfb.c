@@ -366,11 +366,7 @@ gdk_event_send_client_message_for_display (GdkDisplay *display,
 guint32
 gdk_directfb_get_time (void)
 {
-  GTimeVal tv;
-
-  g_get_current_time (&tv);
-
-  return (guint32) tv.tv_sec * 1000 + tv.tv_usec / 1000;
+  return (guint32) g_get_real_time();
 }
 
 void

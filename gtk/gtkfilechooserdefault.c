@@ -6536,7 +6536,7 @@ stop_loading_and_clear_list_model (GtkFileChooserDefault *impl,
 }
 
 static char *
-my_g_format_time_for_display (glong secs)
+my_g_format_time_for_display (guint64 secs)
 {
   GDate mtime, now;
   gint days_diff;
@@ -6810,16 +6810,16 @@ file_system_model_set (GtkFileSystemModel *model,
     case MODEL_COL_MTIME:
     case MODEL_COL_MTIME_TEXT:
       {
-        GTimeVal tv;
+        guint64 tv;
         if (info == NULL)
           break;
-        g_file_info_get_modification_time (info, &tv);
+        tv = *(guint64*)g_file_info_get_modification_date_time (info);
         if (column == MODEL_COL_MTIME)
-          g_value_set_long (value, tv.tv_sec);
-        else if (tv.tv_sec == 0)
+          g_value_set_int64 (value, tv);
+        else if (tv == 0)
           g_value_set_static_string (value, _("Unknown"));
         else
-          g_value_take_string (value, my_g_format_time_for_display (tv.tv_sec));
+          g_value_take_string (value, my_g_format_time_for_display (tv));
         break;
       }
     case MODEL_COL_ELLIPSIZE:
