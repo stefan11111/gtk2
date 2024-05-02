@@ -1462,7 +1462,7 @@ end_element_handler (GMarkupParseContext  *context,
       if (info->current_tag->name)
 	{
 	  /* Add tag to defined tags hash */
-	  GList *tmp = g_strdup (info->current_tag->name);
+	  gchar *tmp = g_strdup (info->current_tag->name);
 	  g_hash_table_insert (info->defined_tags,
 			       tmp, tmp);
 	}
