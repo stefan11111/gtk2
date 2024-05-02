@@ -81,7 +81,6 @@ bitmap1 (GdkImage    *image,
   int xx, yy;
   int bpl;
   register guint8 data;
-  guint8 *o;
   guint8 *srow = (guint8*)image->mem + y1 * image->bpl, *orow = pixels;
 
   d (printf ("bitmap, no alpha\n"));
@@ -90,7 +89,7 @@ bitmap1 (GdkImage    *image,
 
   for (yy = y1; yy < y2; yy++)
     {
-      o = orow;
+      guint8 *o = orow;
       
       for (xx = x1; xx < x2; xx ++)
 	{
@@ -290,8 +289,6 @@ rgb8 (GdkImage    *image,
   guint32 mask;
   register guint32 data;
   guint8 *srow = (guint8*)image->mem + y1 * image->bpl + x1 * image->bpp, *orow = pixels;
-  register guint8 *s;
-  register guint8 *o;
 
   bpl = image->bpl;
 
@@ -301,8 +298,8 @@ rgb8 (GdkImage    *image,
 
   for (yy = y1; yy < y2; yy++)
     {
-      s = srow;
-      o = orow;
+      register guint8 *s = srow;
+      register guint8 *o = orow;
       for (xx = x1; xx < x2; xx++)
         {
           data = *s++ & mask;
@@ -812,7 +809,6 @@ rgb888lsb (GdkImage    *image,
   int bpl;
 
   guint8 *srow = (guint8*)image->mem + y1 * image->bpl + x1 * image->bpp, *orow = pixels;
-  guint8 *o, *s;
 
   bpl = image->bpl;
 
@@ -820,8 +816,8 @@ rgb888lsb (GdkImage    *image,
 
   for (yy = y1; yy < y2; yy++)
     {
-      s = srow;
-      o = orow;
+      guint8 *s = srow;
+      guint8 *o = orow;
       for (xx = x1; xx < x2; xx++)
 	{
 	  *o++ = s[2];

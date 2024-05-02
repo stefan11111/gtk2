@@ -899,8 +899,6 @@ gdk_offscreen_window_move_resize_internal (GdkWindow *window,
 {
   GdkWindowObject *private = (GdkWindowObject *)window;
   GdkOffscreenWindow *offscreen;
-  GdkGC *gc;
-  GdkPixmap *old_pixmap;
 
   offscreen = GDK_OFFSCREEN_WINDOW (private->impl);
 
@@ -921,13 +919,13 @@ gdk_offscreen_window_move_resize_internal (GdkWindow *window,
       private->width = width;
       private->height = height;
 
-      old_pixmap = offscreen->pixmap;
+      GdkPixmap *old_pixmap = offscreen->pixmap;
       offscreen->pixmap = gdk_pixmap_new (GDK_DRAWABLE (old_pixmap),
 					  width,
 					  height,
 					  private->depth);
 
-      gc = _gdk_drawable_get_scratch_gc (offscreen->pixmap, FALSE);
+      GdkGC *gc = _gdk_drawable_get_scratch_gc (offscreen->pixmap, FALSE);
       gdk_draw_drawable (offscreen->pixmap,
 			 gc,
 			 old_pixmap,
