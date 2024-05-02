@@ -1671,8 +1671,6 @@ gtk_text_button_release (GtkWidget      *widget,
 			 GdkEventButton *event)
 {
   GtkText *text = GTK_TEXT (widget);
-  GtkOldEditable *old_editable;
-  GdkDisplay *display;
 
   gtk_grab_remove (widget);
   
@@ -1690,8 +1688,8 @@ gtk_text_button_release (GtkWidget      *widget,
   if (event->button == 1)
     {
       text = GTK_TEXT (widget);
-      old_editable = GTK_OLD_EDITABLE (widget);
-      display = gtk_widget_get_display (widget);
+      GtkOldEditable *old_editable = GTK_OLD_EDITABLE (widget);
+      GdkDisplay *display = gtk_widget_get_display (widget);
       
       gtk_grab_remove (widget);
       

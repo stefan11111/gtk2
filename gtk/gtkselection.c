@@ -833,19 +833,15 @@ void
 gtk_selection_clear_targets (GtkWidget *widget,
 			     GdkAtom    selection)
 {
-  GtkSelectionTargetList *sellist;
-  GList *tmp_list;
-  GList *lists;
-
   g_return_if_fail (GTK_IS_WIDGET (widget));
   g_return_if_fail (selection != GDK_NONE);
 
-  lists = g_object_get_data (G_OBJECT (widget), gtk_selection_handler_key);
+  GList *lists = g_object_get_data (G_OBJECT (widget), gtk_selection_handler_key);
   
-  tmp_list = lists;
+  GList *tmp_list = lists;
   while (tmp_list)
     {
-      sellist = tmp_list->data;
+      GtkSelectionTargetList *sellist = tmp_list->data;
       if (sellist->selection == selection)
 	{
 	  lists = g_list_delete_link (lists, tmp_list);
