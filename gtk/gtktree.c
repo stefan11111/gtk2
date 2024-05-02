@@ -828,58 +828,53 @@ static void
 gtk_tree_size_allocate (GtkWidget     *widget,
 			GtkAllocation *allocation)
 {
-  GtkTree *tree;
-  GtkWidget *child, *subtree;
-  GtkAllocation child_allocation;
-  GList *children;
-  
-  
   g_return_if_fail (GTK_IS_TREE (widget));
   g_return_if_fail (allocation != NULL);
-  
-  tree = GTK_TREE (widget);
-  
+
+  GtkAllocation child_allocation;
+
+  GtkTree *tree = GTK_TREE (widget);
+
   widget->allocation = *allocation;
   if (gtk_widget_get_realized (widget))
     gdk_window_move_resize (widget->window,
 			    allocation->x, allocation->y,
 			    allocation->width, allocation->height);
-  
-  if (tree->children)
+
+  if (!tree->children)
     {
-      child_allocation.x = GTK_CONTAINER (tree)->border_width;
-      child_allocation.y = GTK_CONTAINER (tree)->border_width;
-      child_allocation.width = MAX (1, (gint)allocation->width - child_allocation.x * 2);
-      
-      children = tree->children;
-      
-      while (children)
-	{
-	  child = children->data;
-	  children = children->next;
-	  
-	  if (gtk_widget_get_visible (child))
-	    {
-	      GtkRequisition child_requisition;
-	      gtk_widget_get_child_requisition (child, &child_requisition);
-	      
-	      child_allocation.height = child_requisition.height;
-	      
-	      gtk_widget_size_allocate (child, &child_allocation);
-	      
-	      child_allocation.y += child_allocation.height;
-	      
-	      if((subtree = GTK_TREE_ITEM(child)->subtree))
-		if(gtk_widget_get_visible (subtree))
-		  {
-		    child_allocation.height = subtree->requisition.height;
-		    gtk_widget_size_allocate (subtree, &child_allocation);
-		    child_allocation.y += child_allocation.height;
-		  }
-	    }
-	}
+      return;
     }
-  
+  child_allocation.x = GTK_CONTAINER (tree)->border_width;
+  child_allocation.y = GTK_CONTAINER (tree)->border_width;
+  child_allocation.width = MAX (1, (gint)allocation->width - child_allocation.x * 2);
+
+  GList *children = tree->children;
+
+  while (children)
+    {
+      GtkWidget *child = children->data;
+      children = children->next;
+
+      if (gtk_widget_get_visible (child))
+        {
+          GtkRequisition child_requisition;
+          gtk_widget_get_child_requisition (child, &child_requisition);
+
+          child_allocation.height = child_requisition.height;
+
+          gtk_widget_size_allocate (child, &child_allocation);
+
+          child_allocation.y += child_allocation.height;
+          GtkWidget *subtree = GTK_TREE_ITEM(child)->subtree;
+          if(subtree && gtk_widget_get_visible (subtree))
+            {
+              child_allocation.height = subtree->requisition.height;
+              gtk_widget_size_allocate (subtree, &child_allocation);
+              child_allocation.y += child_allocation.height;
+            }
+        }
+    }
 }
 
 static void
