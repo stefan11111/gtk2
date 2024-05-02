@@ -694,7 +694,7 @@ create_cursor_image (GdkPixbuf *pixbuf,
 		     gint       y)
 {
   guint width, height, rowstride, n_channels;
-  guchar *pixels, *src;
+  guchar *pixels;
   XcursorImage *xcimage;
   XcursorPixel *dest;
 
@@ -718,7 +718,7 @@ create_cursor_image (GdkPixbuf *pixbuf,
 
       for (j = 0; j < height; j++)
         {
-          src = pixels + j * rowstride;
+          guchar *src = pixels + j * rowstride;
           for (i = 0; i < width; i++)
             {
               *dest = (0xff << 24) | (src[0] << 16) | (src[1] << 8) | src[2];
@@ -778,7 +778,6 @@ gdk_cursor_new_from_pixbuf (GdkDisplay *display,
 			    gint        x,
 			    gint        y)
 {
-  XcursorImage *xcimage;
   Cursor xcursor;
   GdkCursorPrivate *private;
   GdkCursor *cursor;
@@ -817,7 +816,7 @@ gdk_cursor_new_from_pixbuf (GdkDisplay *display,
     xcursor = None;
   else 
     {
-      xcimage = create_cursor_image (pixbuf, x, y);
+      XcursorImage *xcimage = create_cursor_image (pixbuf, x, y);
       xcursor = XcursorImageLoadCursor (GDK_DISPLAY_XDISPLAY (display), xcimage);
       XcursorImageDestroy (xcimage);
     }

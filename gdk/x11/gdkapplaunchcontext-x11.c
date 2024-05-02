@@ -40,9 +40,7 @@ static char *
 get_display_name (GFile     *file,
                   GFileInfo *info)
 {
-  char *name, *tmp;
-
-  name = NULL;
+  char *name = NULL;
   if (info)
     name = g_strdup (g_file_info_get_display_name (info));
 
@@ -51,7 +49,7 @@ get_display_name (GFile     *file,
       name = g_file_get_basename (file);
       if (!g_utf8_validate (name, -1, NULL))
         {
-          tmp = name;
+          char *tmp = name;
           name =
             g_uri_escape_string (name, G_URI_RESERVED_CHARS_ALLOWED_IN_PATH, TRUE);
           g_free (tmp);
@@ -82,12 +80,11 @@ get_icon (GFile     *file,
 static char *
 gicon_to_string (GIcon *icon)
 {
-  GFile *file;
   const char *const *names;
 
   if (G_IS_FILE_ICON (icon))
     {
-      file = g_file_icon_get_file (G_FILE_ICON (icon));
+      GFile *file = g_file_icon_get_file (G_FILE_ICON (icon));
       if (file)
         return g_file_get_path (file);
     }
@@ -403,7 +400,6 @@ _gdk_windowing_launch_failed (GAppLaunchContext *context,
   GdkAppLaunchContextPrivate *priv;
   GdkScreen *screen;
   StartupTimeoutData *data;
-  StartupNotificationData *sn_data;
   GSList *l;
 
   priv = GDK_APP_LAUNCH_CONTEXT (context)->priv;
@@ -421,7 +417,7 @@ _gdk_windowing_launch_failed (GAppLaunchContext *context,
     {
       for (l = data->contexts; l != NULL; l = l->next)
         {
-          sn_data = l->data;
+          StartupNotificationData *sn_data = l->data;
           if (strcmp (startup_notify_id, sn_data->startup_id) == 0)
             {
               data->contexts = g_slist_remove (data->contexts, sn_data);
