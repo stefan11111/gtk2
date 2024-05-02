@@ -884,9 +884,9 @@ gtk_tree_size_request (GtkWidget      *widget,
 	  
 	  requisition->width = MAX (requisition->width, child_requisition.width);
 	  requisition->height += child_requisition.height;
-          GtkWidget *subtree = GTK_TREE_ITEM(child)->subtree);
+          GtkWidget *subtree = GTK_TREE_ITEM(child)->subtree;
 
-	  if((subtree && gtk_widget_get_visible (subtree))
+	  if(subtree && gtk_widget_get_visible (subtree))
 	    {
 	      gtk_widget_size_request (subtree, &child_requisition);
 	      
