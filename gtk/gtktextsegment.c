@@ -515,7 +515,6 @@ static GtkTextLineSegment *
 toggle_segment_cleanup_func (GtkTextLineSegment *segPtr, GtkTextLine *line)
 {
   GtkTextLineSegment *segPtr2, *prevPtr;
-  int counts;
 
   /*
    * If this is a toggle-off segment, look ahead through the next
@@ -538,7 +537,7 @@ toggle_segment_cleanup_func (GtkTextLineSegment *segPtr, GtkTextLine *line)
             {
               continue;
             }
-          counts = segPtr->body.toggle.inNodeCounts
+          int counts = segPtr->body.toggle.inNodeCounts
             + segPtr2->body.toggle.inNodeCounts;
           if (counts != 0)
             {

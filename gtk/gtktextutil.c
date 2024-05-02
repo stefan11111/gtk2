@@ -150,12 +150,11 @@ _gtk_text_util_append_special_char_menuitems (GtkMenuShell              *menushe
 static void
 append_n_lines (GString *str, const gchar *text, GSList *lines, gint n_lines)
 {
-  PangoLayoutLine *line;
   gint i;
 
   for (i = 0; i < n_lines; i++)
     {
-      line = lines->data;
+      PangoLayoutLine *line = lines->data;
       g_string_append_len (str, &text[line->start_index], line->length);
       lines = lines->next;
     }
@@ -164,34 +163,30 @@ append_n_lines (GString *str, const gchar *text, GSList *lines, gint n_lines)
 static void
 limit_layout_lines (PangoLayout *layout)
 {
-  const gchar *text;
-  GString     *str;
-  GSList      *lines, *elem;
-  gint         n_lines;
-
-  n_lines = pango_layout_get_line_count (layout);
+  gint n_lines = pango_layout_get_line_count (layout);
   
-  if (n_lines >= DRAG_ICON_MAX_LINES)
-    {
-      text  = pango_layout_get_text (layout);
-      str   = g_string_new (NULL);
-      lines = pango_layout_get_lines_readonly (layout);
+  if (n_lines < DRAG_ICON_MAX_LINES) {
+    return;
+  }
 
-      /* get first lines */
-      elem = lines;
-      append_n_lines (str, text, elem,
-                      DRAG_ICON_MAX_LINES / 2);
+  const gchar *text  = pango_layout_get_text (layout);
+  GString *str   = g_string_new (NULL);
+  GSList *lines = pango_layout_get_lines_readonly (layout);
 
-      g_string_append (str, "\n" ELLIPSIS_CHARACTER "\n");
+  /* get first lines */
+  GSList *elem = lines;
+  append_n_lines (str, text, elem,
+                  DRAG_ICON_MAX_LINES / 2);
 
-      /* get last lines */
-      elem = g_slist_nth (lines, n_lines - DRAG_ICON_MAX_LINES / 2);
-      append_n_lines (str, text, elem,
-                      DRAG_ICON_MAX_LINES / 2);
+  g_string_append (str, "\n" ELLIPSIS_CHARACTER "\n");
 
-      pango_layout_set_text (layout, str->str, -1);
-      g_string_free (str, TRUE);
-    }
+  /* get last lines */
+  elem = g_slist_nth (lines, n_lines - DRAG_ICON_MAX_LINES / 2);
+  append_n_lines (str, text, elem,
+                  DRAG_ICON_MAX_LINES / 2);
+
+  pango_layout_set_text (layout, str->str, -1);
+  g_string_free (str, TRUE);
 }
 
 /*
