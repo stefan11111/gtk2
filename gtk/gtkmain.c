@@ -1726,13 +1726,10 @@ gtk_quit_remove (guint id)
 void
 gtk_quit_remove_by_data (gpointer data)
 {
-  GtkQuitFunction *quitf;
-  GList *tmp_list;
-  
-  tmp_list = quit_functions;
+  GList *tmp_list = quit_functions;
   while (tmp_list)
     {
-      quitf = tmp_list->data;
+      GtkQuitFunction *quitf = tmp_list->data;
       
       if (quitf->data == data)
 	{

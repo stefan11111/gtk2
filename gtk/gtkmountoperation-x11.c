@@ -661,7 +661,7 @@ pid_get_env (GPid         pid,
       n = 0;
       while (TRUE)
         {
-          if (env[n] == '\0' || n >= env_len)
+          if (n >= env_len || env[n] == '\0')
             break;
 
           if (g_str_has_prefix (env + n, key) && (*(env + n + key_len) == '='))
@@ -674,7 +674,7 @@ pid_get_env (GPid         pid,
               break;
             }
 
-          for (; env[n] != '\0' && n < env_len; n++)
+          for (; n < env_len && env[n] != '\0'; n++)
             ;
           n++;
         }

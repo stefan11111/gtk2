@@ -290,23 +290,21 @@ static GdkAtom text_uri_list_atom;
 static void 
 init_atoms (void)
 {
-  gchar *tmp;
+  if (utf8_atom) {
+    return;
+  {
+
+  utf8_atom = gdk_atom_intern_static_string ("UTF8_STRING");
+  text_atom = gdk_atom_intern_static_string ("TEXT");
+  ctext_atom = gdk_atom_intern_static_string ("COMPOUND_TEXT");
+  text_plain_atom = gdk_atom_intern_static_string ("text/plain");
+  text_plain_utf8_atom = gdk_atom_intern_static_string ("text/plain;charset=utf-8");
   const gchar *charset;
-
-  if (!utf8_atom)
-    {
-      utf8_atom = gdk_atom_intern_static_string ("UTF8_STRING");
-      text_atom = gdk_atom_intern_static_string ("TEXT");
-      ctext_atom = gdk_atom_intern_static_string ("COMPOUND_TEXT");
-      text_plain_atom = gdk_atom_intern_static_string ("text/plain");
-      text_plain_utf8_atom = gdk_atom_intern_static_string ("text/plain;charset=utf-8");
-      g_get_charset (&charset);
-      tmp = g_strdup_printf ("text/plain;charset=%s", charset);
-      text_plain_locale_atom = gdk_atom_intern (tmp, FALSE);
-      g_free (tmp);
-
-      text_uri_list_atom = gdk_atom_intern_static_string ("text/uri-list");
-    }
+  g_get_charset (&charset);
+  gchar *tmp = g_strdup_printf ("text/plain;charset=%s", charset);
+  text_plain_locale_atom = gdk_atom_intern (tmp, FALSE);
+  g_free (tmp);
+  text_uri_list_atom = gdk_atom_intern_static_string ("text/uri-list");
 }
 
 /**

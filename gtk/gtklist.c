@@ -836,14 +836,13 @@ gtk_list_forall (GtkContainer  *container,
 		 gpointer	callback_data)
 {
   GtkList *list = GTK_LIST (container);
-  GtkWidget *child;
   GList *children;
 
   children = list->children;
 
   while (children)
     {
-      child = children->data;
+      GtkWidget *child = children->data;
       children = children->next;
 
       (* callback) (child, callback_data);

@@ -412,9 +412,9 @@ _gtk_rbtree_remove (GtkRBTree *tree)
 	  tmp_tree = tmp_tree->parent_tree;
 	}
     }
-
+#ifdef G_ENABLE_DEBUG
   tmp_tree = tree->parent_tree;
-  tmp_node = tree->parent_node;
+#endif
   _gtk_rbtree_free (tree);
 
 #ifdef G_ENABLE_DEBUG  
@@ -960,17 +960,14 @@ gint
 _gtk_rbtree_node_find_offset (GtkRBTree *tree,
 			      GtkRBNode *node)
 {
-  GtkRBNode *last;
-  gint retval;
-
   g_assert (node);
   g_assert (node->left);
   
-  retval = node->left->offset;
+  gint retval = node->left->offset;
 
   while (tree && node && node != tree->nil)
     {
-      last = node;
+      GtkRBNode *last = node;
       node = node->parent;
 
       /* Add left branch, plus children, iff we came from the right */
@@ -1225,7 +1222,6 @@ _gtk_rbtree_remove_node (GtkRBTree *tree,
 	node->flags = ((y->flags & (GTK_RBNODE_NON_COLORS)) | GTK_RBNODE_BLACK);
       else
 	node->flags = ((y->flags & (GTK_RBNODE_NON_COLORS)) | GTK_RBNODE_RED);
-      node->children = y->children;
       if (y->children)
 	{
 	  node->children = y->children;

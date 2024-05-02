@@ -101,13 +101,11 @@ _gtk_query_set_location (GtkQuery    *query,
 GList *
 _gtk_query_get_mime_types (GtkQuery *query)
 {
-  GList *list, *l;
-  gchar *mime_type;
+  GList *list = NULL, *l;
 
-  list = NULL;
   for (l = query->priv->mime_types; l; l = l->next)
     {
-      mime_type = (gchar*)l->data;
+      gchar *mime_type = (gchar*)l->data;
       list = g_list_prepend (list, g_strdup (mime_type));
     }
 
