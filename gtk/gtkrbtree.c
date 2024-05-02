@@ -991,17 +991,14 @@ gint
 _gtk_rbtree_node_find_parity (GtkRBTree *tree,
                               GtkRBNode *node)
 {
-  GtkRBNode *last;
-  gint retval;  
-  
   g_assert (node);
   g_assert (node->left);
   
-  retval = node->left->parity;
+  gint retval = node->left->parity;
 
   while (tree && node && node != tree->nil)
     {
-      last = node;
+      GtkRBNode *last = node;
       node = node->parent;
 
       /* Add left branch, plus children, iff we came from the right */
