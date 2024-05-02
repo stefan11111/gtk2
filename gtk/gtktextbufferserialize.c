@@ -281,7 +281,6 @@ serialize_tag (gpointer key,
 {
   SerializationContext *context = user_data;
   GtkTextTag *tag = data;
-  gchar *tag_name;
   gint tag_id;
   GParamSpec **pspecs;
   guint n_pspecs;
@@ -292,7 +291,7 @@ serialize_tag (gpointer key,
   /* Handle anonymous tags */
   if (tag->name)
     {
-      tag_name = g_markup_escape_text (tag->name, -1);
+      gchar *tag_name = g_markup_escape_text (tag->name, -1);
       g_string_append_printf (context->tag_table_str, "name=\"%s\"", tag_name);
       g_free (tag_name);
     }
@@ -1157,12 +1156,12 @@ parse_attr_element (GMarkupParseContext  *context,
   const gchar *name, *type, *value;
   GType gtype;
   GValue gvalue = { 0 };
-  GParamSpec *pspec;
 
   g_assert (peek_state (info) == STATE_TAG);
 
   if (ELEMENT_IS ("attr"))
     {
+      GParamSpec *pspec;
       if (!locate_attributes (context, element_name, attribute_names, attribute_values, FALSE, error,
 			      "name", &name, "type", &type, "value", &value, NULL))
 	return;
@@ -1436,7 +1435,6 @@ end_element_handler (GMarkupParseContext  *context,
 		     GError              **error)
 {
   ParseInfo *info = user_data;
-  gchar *tmp;
   GList *list;
 
   switch (peek_state (info))
@@ -1472,7 +1470,7 @@ end_element_handler (GMarkupParseContext  *context,
       if (info->current_tag->name)
 	{
 	  /* Add tag to defined tags hash */
-	  tmp = g_strdup (info->current_tag->name);
+	  GList *tmp = g_strdup (info->current_tag->name);
 	  g_hash_table_insert (info->defined_tags,
 			       tmp, tmp);
 	}
