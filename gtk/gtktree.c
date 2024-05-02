@@ -400,20 +400,15 @@ gtk_tree_forall (GtkContainer *container,
 		 GtkCallback   callback,
 		 gpointer      callback_data)
 {
-  GtkTree *tree;
-  GtkWidget *child;
-  GList *children;
-  
-  
   g_return_if_fail (GTK_IS_TREE (container));
   g_return_if_fail (callback != NULL);
   
-  tree = GTK_TREE (container);
-  children = tree->children;
+  GtkTree *tree = GTK_TREE (container);
+  GList *children = tree->children;
   
   while (children)
     {
-      child = children->data;
+      GtkWidget *child = children->data;
       children = children->next;
       
       (* callback) (child, callback_data);
@@ -423,16 +418,13 @@ gtk_tree_forall (GtkContainer *container,
 static void
 gtk_tree_unselect_all (GtkTree *tree)
 {
-  GList *tmp_list, *selection;
-  GtkWidget *tmp_item;
-      
-  selection = tree->selection;
+  GList *selection = tree->selection;
   tree->selection = NULL;
 
-  tmp_list = selection;
+  GList *tmp_list = selection;
   while (tmp_list)
     {
-      tmp_item = selection->data;
+      GtkWidget *tmp_item = selection->data;
 
       if (tmp_item->parent &&
 	  GTK_IS_TREE (tmp_item->parent) &&
@@ -872,34 +864,29 @@ static void
 gtk_tree_size_request (GtkWidget      *widget,
 		       GtkRequisition *requisition)
 {
-  GtkTree *tree;
-  GtkWidget *child, *subtree;
-  GList *children;
-  GtkRequisition child_requisition;
-  
-  
   g_return_if_fail (GTK_IS_TREE (widget));
   g_return_if_fail (requisition != NULL);
   
-  tree = GTK_TREE (widget);
+  GtkTree *tree = GTK_TREE (widget);
   requisition->width = 0;
   requisition->height = 0;
   
-  children = tree->children;
+  GList *children = tree->children;
   while (children)
     {
-      child = children->data;
+      GtkWidget *child = children->data;
       children = children->next;
       
       if (gtk_widget_get_visible (child))
 	{
+          GtkRequisition child_requisition;
 	  gtk_widget_size_request (child, &child_requisition);
 	  
 	  requisition->width = MAX (requisition->width, child_requisition.width);
 	  requisition->height += child_requisition.height;
-	  
-	  if((subtree = GTK_TREE_ITEM(child)->subtree) &&
-	     gtk_widget_get_visible (subtree))
+          GtkWidget *subtree = GTK_TREE_ITEM(child)->subtree);
+
+	  if((subtree && gtk_widget_get_visible (subtree))
 	    {
 	      gtk_widget_size_request (subtree, &child_requisition);
 	      
