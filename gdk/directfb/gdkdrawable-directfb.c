@@ -1383,7 +1383,7 @@ gdk_directfb_draw_pixbuf (GdkDrawable  *drawable,
                                    (void**)&data, &pitch) == DFB_OK) {
             (*composite_func) (pb_pixels + src_y * pb_rowstride + src_x * 4,
                                pb_rowstride,
-                               data + dest_y * pitch + DFB_BYTES_PER_LINE (impl->format, dest_x),
+                               (guchar*)data + dest_y * pitch + DFB_BYTES_PER_LINE (impl->format, dest_x),
                                pitch,
                                visual->byte_order,
                                width, height);

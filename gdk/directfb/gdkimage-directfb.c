@@ -112,10 +112,7 @@ gdk_image_new_bitmap (GdkVisual *visual,
                       gint       h)
 {
   GdkImage         *image;
-  GdkImageDirectFB *private;
-
   image = g_object_new (gdk_image_get_type (), NULL);
-  private = image->windowing_data;
 
   image->type   = GDK_IMAGE_SHARED;
   image->visual = visual;
