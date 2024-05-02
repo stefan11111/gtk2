@@ -1252,16 +1252,14 @@ parse_tag_element (GMarkupParseContext  *context,
 		   ParseInfo            *info,
 		   GError              **error)
 {
-  const gchar *name, *priority;
-  gchar *tag_name;
-  gint id;
-  gint prio;
-  gchar *tmp;
-
   g_assert (peek_state (info) == STATE_TAGS);
 
   if (ELEMENT_IS ("tag"))
     {
+      const gchar *name, *priority;
+      gint id;
+      gint prio;
+      gchar *tmp;
       if (!locate_attributes (context, element_name, attribute_names, attribute_values, TRUE, error,
 			      "priority", &priority, NULL))
 	return;
@@ -1293,7 +1291,7 @@ parse_tag_element (GMarkupParseContext  *context,
 
       if (name)
 	{
-	  tag_name = get_tag_name (info, name);
+	  gchar *tag_name = get_tag_name (info, name);
 	  info->current_tag = gtk_text_tag_new (tag_name);
 	  g_free (tag_name);
 	}
