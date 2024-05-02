@@ -169,14 +169,13 @@ _gdk_input_crossing_event (GdkWindow *window,
   GdkDisplay *display = GDK_WINDOW_DISPLAY (window);
   GdkDisplayX11 *display_impl = GDK_DISPLAY_X11 (display);
   GdkWindowObject *priv = (GdkWindowObject *)window;
-  GdkInputWindow *input_window;
   gint root_x, root_y;
 
   if (enter)
     {
       gdk_input_check_proximity(display);
 
-      input_window = priv->input_window;
+      GdkInputWindow *input_window = priv->input_window;
       if (input_window != NULL)
 	{
 	  _gdk_input_get_root_relative_geometry (window, &root_x, &root_y);

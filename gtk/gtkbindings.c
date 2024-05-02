@@ -703,7 +703,7 @@ gtk_binding_entry_clear_internal (GtkBindingSet  *binding_set,
   if (entry)
     binding_entry_destroy (entry);
 
-  entry = binding_entry_new (binding_set, keyval, modifiers);
+  binding_entry_new (binding_set, keyval, modifiers);
 }
 
 /**

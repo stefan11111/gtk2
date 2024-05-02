@@ -425,8 +425,6 @@ gtk_action_group_buildable_custom_tag_end (GtkBuildable *buildable,
 					   const gchar  *tagname,
 					   gpointer     *user_data)
 {
-  AcceleratorParserData *data;
-  
   if (strcmp (tagname, "accelerator") == 0)
     {
       GtkActionGroup *action_group;
@@ -434,7 +432,7 @@ gtk_action_group_buildable_custom_tag_end (GtkBuildable *buildable,
       GtkAction *action;
       gchar *accel_path;
       
-      data = (AcceleratorParserData*)user_data;
+      AcceleratorParserData *data = (AcceleratorParserData*)user_data;
       action_group = GTK_ACTION_GROUP (buildable);
       private = GTK_ACTION_GROUP_GET_PRIVATE (action_group);
       action = GTK_ACTION (child);

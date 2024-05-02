@@ -916,7 +916,6 @@ convert_real_slow (GdkImage    *image,
 {
   int xx, yy;
   guint8 *orow = pixels;
-  guint8 *o;
   guint32 pixel;
   GdkVisual *v;
   guint8 component;
@@ -939,7 +938,7 @@ convert_real_slow (GdkImage    *image,
 
   for (yy = y1; yy < y2; yy++)
     {
-      o = orow;
+      guint8 *o = orow;
       for (xx = x1; xx < x2; xx++)
 	{
 	  pixel = gdk_image_get_pixel (image, xx, yy);
