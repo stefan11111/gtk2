@@ -63,10 +63,9 @@ _gdk_input_find_device (GdkDisplay *display,
 			guint32     id)
 {
   GList *tmp_list = GDK_DISPLAY_X11 (display)->input_devices;
-  GdkDevicePrivate *gdkdev;
   while (tmp_list)
     {
-      gdkdev = (GdkDevicePrivate *)(tmp_list->data);
+      GdkDevicePrivate *gdkdev = (GdkDevicePrivate *)(tmp_list->data);
       if (gdkdev->deviceid == id)
 	return gdkdev;
       tmp_list = tmp_list->next;

@@ -163,8 +163,6 @@ gdk_wcstombs (const GdkWChar *src)
 	    {
 	      return NULL;
 	    }
-	  
-	  src = (GdkWChar *)tmp;
 	}
       /*
        * We must copy the string into an area allocated by glib, because

@@ -766,8 +766,6 @@ rgb888alsb (GdkImage    *image,
   int xx, yy;
   int bpl;
 
-  guint8 *s;	/* for byte order swapping */
-  guint8 *o;
   guint8 *srow = (guint8*)image->mem + y1 * image->bpl + x1 * image->bpp, *orow = pixels;
 
   bpl = image->bpl;
@@ -777,8 +775,8 @@ rgb888alsb (GdkImage    *image,
   /* lsb data */
   for (yy = y1; yy < y2; yy++)
     {
-      s = srow;
-      o = orow;
+      guint8 *s = srow;
+      guint8 *o = orow;
       for (xx = x1; xx < x2; xx++)
 	{
 	  *o++ = s[2];
