@@ -1493,7 +1493,8 @@ gdk_screen_get_window_stack (GdkScreen *screen)
 
           for (i = 0; i < nitems_return; i++)
             {
-              if(GdkWindow *win = gdk_window_foreign_new_for_display (screen_x11->display, (GdkNativeWindow)stack[i])) {
+              GdkWindow *win;
+              if(win = gdk_window_foreign_new_for_display (screen_x11->display, (GdkNativeWindow)stack[i])) {
                 ret = g_list_append (ret, win);
               }
             }
