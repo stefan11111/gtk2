@@ -139,13 +139,11 @@ gdk_drag_context_find (gboolean     is_source,
 		       GdkWindow   *dest)
 {
   GdkDragContext        *context;
-  GdkDragContextPrivate *private;
   GList                 *list;
 
   for (list = contexts; list; list = list->next)
     {
       context = (GdkDragContext *) list->data;
-      private = GDK_DRAG_CONTEXT_PRIVATE_DATA (context);
 
       if ((!context->is_source == !is_source) &&
 	  ((source == NULL) ||
@@ -535,13 +533,10 @@ gdk_drag_status (GdkDragContext   *context,
 		 GdkDragAction     action,
 		 guint32           time)
 {
-  GdkDragContextPrivate *private;
   GdkDragContext        *src_context;
   GdkEvent event;
 
   g_return_if_fail (context != NULL);
-
-  private = GDK_DRAG_CONTEXT_PRIVATE_DATA (context);
 
   src_context = gdk_drag_context_find (TRUE,
 				       context->source_window,
@@ -549,9 +544,7 @@ gdk_drag_status (GdkDragContext   *context,
 
   if (src_context)
     {
-      GdkDragContextPrivate *private;
-
-      private = GDK_DRAG_CONTEXT_PRIVATE_DATA (src_context);
+      GdkDragContextPrivate *private = GDK_DRAG_CONTEXT_PRIVATE_DATA (src_context);
 
       if (private->drag_status == GDK_DRAG_STATUS_MOTION_WAIT)
 	private->drag_status = GDK_DRAG_STATUS_DRAG;
@@ -581,13 +574,10 @@ gdk_drop_finish (GdkDragContext   *context,
 		 gboolean          success,
 		 guint32           time)
 {
-  GdkDragContextPrivate *private;
   GdkDragContext        *src_context;
   GdkEvent event;
 
   g_return_if_fail (context != NULL);
-
-  private = GDK_DRAG_CONTEXT_PRIVATE_DATA (context);
 
   src_context = gdk_drag_context_find (TRUE,
 				       context->source_window,
