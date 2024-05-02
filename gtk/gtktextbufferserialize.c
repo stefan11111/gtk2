@@ -319,7 +319,8 @@ serialize_tag (gpointer key,
 	continue;
 
       /* Now serialize the attr */
-      if (serialize_value (&value))
+      gchar *tmp2 = serialize_value (&value);
+      if (tmp2)
 	{
 	  gchar *tmp = g_markup_escape_text (pspecs[i]->name, -1);
 	  g_string_append_printf (context->tag_table_str, "   <attr name=\"%s\" ", tmp);
