@@ -723,8 +723,6 @@ create_cursor_image (GdkPixbuf *pixbuf,
             {
               *dest = (0xff << 24) | (src[0] << 16) | (src[1] << 8) | src[2];
             }
-
-	  src += n_channels;
 	  dest++;
 	}
     }
@@ -852,7 +850,6 @@ gdk_cursor_new_from_name (GdkDisplay  *display,
 			  const gchar *name)
 {
   Cursor xcursor;
-  Display *xdisplay;
   GdkCursorPrivate *private;
   GdkCursor *cursor;
 
@@ -872,8 +869,7 @@ gdk_cursor_new_from_name (GdkDisplay  *display,
           return (GdkCursor*) private;
         }
 
-      xdisplay = GDK_DISPLAY_XDISPLAY (display);
-      xcursor = XcursorLibraryLoadCursor (xdisplay, name);
+      xcursor = XcursorLibraryLoadCursor (GDK_DISPLAY_XDISPLAY (display), name);
       if (xcursor == None)
 	return NULL;
     }

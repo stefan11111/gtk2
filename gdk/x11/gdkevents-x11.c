@@ -317,7 +317,6 @@ GdkEvent*
 gdk_event_get_graphics_expose (GdkWindow *window)
 {
   XEvent xevent;
-  GdkEvent *event;
   
   g_return_val_if_fail (window != NULL, NULL);
 
@@ -326,7 +325,7 @@ gdk_event_get_graphics_expose (GdkWindow *window)
   
   if (xevent.xany.type == GraphicsExpose)
     {
-      event = gdk_event_new (GDK_NOTHING);
+      GdkEvent *event = gdk_event_new (GDK_NOTHING);
       
       if (gdk_event_translate (GDK_WINDOW_DISPLAY (window), event,
 			       &xevent, TRUE))
@@ -528,7 +527,6 @@ gdk_check_wm_desktop_changed (GdkWindow *window)
   gulong nitems;
   gulong bytes_after;
   guchar *data;
-  gulong *desktop;
 
   type = None;
   gdk_error_trap_push ();
@@ -542,7 +540,7 @@ gdk_check_wm_desktop_changed (GdkWindow *window)
 
   if (type != None)
     {
-      desktop = (gulong *)data;
+      gulong *desktop = (gulong *)data;
       toplevel->on_all_desktops = ((*desktop & 0xFFFFFFFF) == 0xFFFFFFFF);
       XFree (desktop);
     }
