@@ -1482,12 +1482,10 @@ convert_rgb_pixbuf_to_image (guchar  *src,
                              guint    width,
                              guint    height)
 {
-  guint   i;
-  guchar *s;
-
   while (height--)
     {
-      s = src;
+      guchar *s = src;
+      guint   i;
 
       for (i = 0; i < width; i++, s += 3)
         dest[i] = 0xFF000000 | (s[0] << 16) | (s[1] << 8) | s[2];

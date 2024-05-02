@@ -205,20 +205,14 @@ gdk_property_delete_2 (GdkWindow         *window,
                        GdkAtom            property,
                        GdkWindowProperty *prop)
 {
-  GdkWindowImplDirectFB *impl;
-  GdkEvent              *event;
-  GdkWindow             *event_window;
-
-  impl = GDK_WINDOW_IMPL_DIRECTFB (GDK_WINDOW_OBJECT (window)->impl);
+  GdkWindowImplDirectFB *impl = GDK_WINDOW_IMPL_DIRECTFB (GDK_WINDOW_OBJECT (window)->impl);
 
   g_hash_table_remove (impl->properties, GUINT_TO_POINTER (property));
   g_free (prop);
 
-  event_window = gdk_directfb_other_event_window (window, GDK_PROPERTY_NOTIFY);
-
-  if (event_window)
+  if(gdk_directfb_other_event_window (window, GDK_PROPERTY_NOTIFY))
     {
-      event                 = gdk_directfb_event_make (event_window, GDK_PROPERTY_NOTIFY);
+      GdkEvent *event                 = gdk_directfb_event_make (event_window, GDK_PROPERTY_NOTIFY);
       event->property.atom  = property;
       event->property.state = GDK_PROPERTY_DELETE;
     }

@@ -478,11 +478,9 @@ void
 _gdk_input_exit (void)
 {
   GList     *tmp_list;
-  GdkDevice *gdkdev;
-
   for (tmp_list = _gdk_input_devices; tmp_list; tmp_list = tmp_list->next)
     {
-      gdkdev = (GdkDevice *)(tmp_list->data);
+      GdkDevice *gdkdev = (GdkDevice *)(tmp_list->data);
       if (!GDK_IS_CORE (gdkdev))
 	{
 	  gdk_device_set_mode ((GdkDevice *)gdkdev, GDK_MODE_DISABLED);
