@@ -752,25 +752,19 @@ static gchar *
 get_name_for_window_with_pid (GtkMountOperationLookupContext *context,
                               GPid                            pid)
 {
-  Window window;
-  Window windowid_window;
-  gchar *ret;
+  gchar *ret = NULL;
 
-  ret = NULL;
-
-  window = GPOINTER_TO_INT (g_hash_table_lookup (context->pid_to_window, GINT_TO_POINTER (pid)));
+  Window window = GPOINTER_TO_INT (g_hash_table_lookup (context->pid_to_window, GINT_TO_POINTER (pid)));
   if (window == None)
     {
-      gchar *windowid_value;
-
       /* check for $WINDOWID (set by terminals) and see if we can get the title that way */
-      windowid_value = pid_get_env (pid, "WINDOWID");
+      gchar *windowid_value = pid_get_env (pid, "WINDOWID");
       if (windowid_value != NULL)
         {
           gchar *endp;
 
           endp = NULL;
-          windowid_window = (Window) g_ascii_strtoll (windowid_value, &endp, 10);
+          Window windowid_window = (Window) g_ascii_strtoll (windowid_value, &endp, 10);
           if (endp == NULL || *endp == '\0')
             {
               window = windowid_window;

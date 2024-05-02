@@ -1198,13 +1198,10 @@ gtk_box_remove (GtkContainer *container,
 		GtkWidget    *widget)
 {
   GtkBox *box = GTK_BOX (container);
-  GtkBoxChild *child;
-  GList *children;
-
-  children = box->children;
+  GList *children = box->children;
   while (children)
     {
-      child = children->data;
+      GtkBoxChild *child = children->data;
 
       if (child->widget == widget)
 	{

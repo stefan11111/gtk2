@@ -1703,13 +1703,12 @@ gtk_quit_add (guint	  main_level,
 void
 gtk_quit_remove (guint id)
 {
-  GtkQuitFunction *quitf;
   GList *tmp_list;
   
   tmp_list = quit_functions;
   while (tmp_list)
     {
-      quitf = tmp_list->data;
+      GtkQuitFunction *quitf = tmp_list->data;
       
       if (quitf->id == id)
 	{

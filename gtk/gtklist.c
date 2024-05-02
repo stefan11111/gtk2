@@ -405,7 +405,6 @@ gtk_list_size_allocate (GtkWidget     *widget,
 			GtkAllocation *allocation)
 {
   GtkList *list = GTK_LIST (widget);
-  GtkWidget *child;
   GtkAllocation child_allocation;
   GList *children;
 
@@ -426,7 +425,7 @@ gtk_list_size_allocate (GtkWidget     *widget,
 
       while (children)
 	{
-	  child = children->data;
+	  GtkWidget *child = children->data;
 	  children = children->next;
 
 	  if (gtk_widget_get_visible (child))
