@@ -331,55 +331,46 @@ gtk_tree_clear_items (GtkTree *tree,
 		      gint     start,
 		      gint     end)
 {
-  GtkWidget *widget;
-  GList *clear_list;
-  GList *tmp_list;
-  guint nchildren;
-  guint index;
-  
   g_return_if_fail (GTK_IS_TREE (tree));
-  
-  nchildren = g_list_length (tree->children);
-  
-  if (nchildren > 0)
+
+  guint nchildren = g_list_length (tree->children);
+
+  if (!nchildren)
     {
-      if ((end < 0) || (end > nchildren))
-	end = nchildren;
-      
-      if (start >= end)
-	return;
-      
-      tmp_list = g_list_nth (tree->children, start);
-      clear_list = NULL;
-      index = start;
-      while (tmp_list && index <= end)
-	{
-	  widget = tmp_list->data;
-	  tmp_list = tmp_list->next;
-	  index++;
-	  
-	  clear_list = g_list_prepend (clear_list, widget);
-	}
-      
-      gtk_tree_remove_items (tree, clear_list);
+      return;
     }
+  if ((end < 0) || (end > nchildren))
+    end = nchildren;
+
+  if (start >= end)
+    return;
+
+  GList *tmp_list = g_list_nth (tree->children, start);
+  GList *clear_list = NULL;
+  guint index = start;
+  while (tmp_list && index <= end)
+    {
+      GtkWidget *widget = tmp_list->data;
+      tmp_list = tmp_list->next;
+      index++;
+
+      clear_list = g_list_prepend (clear_list, widget);
+    }
+
+  gtk_tree_remove_items (tree, clear_list);
 }
 
 static void
 gtk_tree_destroy (GtkObject *object)
 {
-  GtkTree *tree;
-  GtkWidget *child;
-  GList *children;
-  
   g_return_if_fail (GTK_IS_TREE (object));
   
-  tree = GTK_TREE (object);
+  GtkTree *tree = GTK_TREE (object);
   
-  children = tree->children;
+  GList *children = tree->children;
   while (children)
     {
-      child = children->data;
+      GtkWidget *child = children->data;
       children = children->next;
       
       g_object_ref (child);
