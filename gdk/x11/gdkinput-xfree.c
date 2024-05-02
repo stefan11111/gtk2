@@ -48,7 +48,6 @@ gdk_device_set_mode (GdkDevice      *device,
 {
   GList *tmp_list;
   GdkDevicePrivate *gdkdev;
-  GdkInputWindow *input_window;
   GdkDisplayX11 *display_impl;
 
   if (GDK_IS_CORE (device))
@@ -69,7 +68,7 @@ gdk_device_set_mode (GdkDevice      *device,
   display_impl = GDK_DISPLAY_X11 (gdkdev->display);
   for (tmp_list = display_impl->input_windows; tmp_list; tmp_list = tmp_list->next)
     {
-      input_window = (GdkInputWindow *)tmp_list->data;
+      GdkInputWindow *input_window = (GdkInputWindow *)tmp_list->data;
       _gdk_input_select_events (input_window->impl_window, gdkdev);
     }
 
@@ -418,7 +417,6 @@ _gdk_input_ungrab_pointer (GdkDisplay *display,
 			   guint32 time)
 {
   GdkInputWindow *input_window = NULL; /* Quiet GCC */
-  GdkDevicePrivate *gdkdev;
   GList *tmp_list;
   GdkDisplayX11 *display_impl = GDK_DISPLAY_X11 (display);
 
@@ -438,7 +436,7 @@ _gdk_input_ungrab_pointer (GdkDisplay *display,
       tmp_list = display_impl->input_devices;
       while (tmp_list)
 	{
-	  gdkdev = (GdkDevicePrivate *)tmp_list->data;
+	  GdkDevicePrivate *gdkdev = (GdkDevicePrivate *)tmp_list->data;
 	  if (!GDK_IS_CORE (gdkdev) && gdkdev->xdevice)
 	    XUngrabDevice( display_impl->xdisplay, gdkdev->xdevice, time);
 

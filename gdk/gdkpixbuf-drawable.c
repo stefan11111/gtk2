@@ -878,8 +878,6 @@ rgb888msb (GdkImage    *image,
   int bpl;
 
   guint8 *srow = (guint8*)image->mem + y1 * image->bpl + x1 * image->bpp, *orow = pixels;
-  guint8 *s;
-  guint8 *o;
 
   d (printf ("32 bit, msb, no alpha\n"));
 
@@ -887,8 +885,8 @@ rgb888msb (GdkImage    *image,
 
   for (yy = y1; yy < y2; yy++)
     {
-      s = srow;
-      o = orow;
+      guint8 *s = srow;
+      guint8 *o = orow;
       for (xx = x1; xx < x2; xx++)
 	{
 	  *o++ = s[1];
