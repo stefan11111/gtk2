@@ -62,8 +62,6 @@ gdk_pixbuf_render_threshold_alpha (GdkPixbuf *pixbuf,
   GdkGC *gc;
   GdkColor color;
   int x, y;
-  int start_status;
-  int status;
 
   g_return_if_fail (gdk_pixbuf_get_colorspace (pixbuf) == GDK_COLORSPACE_RGB);
   g_return_if_fail (gdk_pixbuf_get_n_channels (pixbuf) == 3 ||
@@ -108,11 +106,11 @@ gdk_pixbuf_render_threshold_alpha (GdkPixbuf *pixbuf,
 	   + gdk_pixbuf_get_n_channels (pixbuf) - 1);
 	    
       int start = 0;
-      start_status = *p < alpha_threshold;
+      int start_status = *p < alpha_threshold;
 	    
       for (x = 0; x < width; x++)
 	{
-	  status = *p < alpha_threshold;
+	  int status = *p < alpha_threshold;
 	  
 	  if (status != start_status)
 	    {

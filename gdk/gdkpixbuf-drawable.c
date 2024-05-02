@@ -136,7 +136,6 @@ bitmap1a (GdkImage    *image,
   int xx, yy;
   int bpl;
   register guint8 data;
-  guint8 *o;
   guint8 *srow = (guint8*)image->mem + y1 * image->bpl, *orow = pixels;
 
   d (printf ("bitmap, with alpha\n"));
@@ -145,7 +144,7 @@ bitmap1a (GdkImage    *image,
 
   for (yy = y1; yy < y2; yy++)
     {
-      o = orow;
+      guint8 *o = orow;
       
       for (xx = x1; xx < x2; xx ++)
 	{

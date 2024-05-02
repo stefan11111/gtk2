@@ -23,8 +23,7 @@ EXTRA_DIST +=			\
 	gdkwindowimpl.h		\
 	makeenums.pl		\
 	gdkenumtypes.c.template	\
-	gdkenumtypes.h.template	\
-	pltcheck.sh
+	gdkenumtypes.h.template
 
 INCLUDES =                              \
 	-DG_LOG_DOMAIN=\"Gdk\"		\
@@ -239,11 +238,6 @@ typelibs_DATA = $(INTROSPECTION_GIRS:.gir=.typelib)
 CLEANFILES += $(gir_DATA) $(typelibs_DATA)
 
 endif # HAVE_INTROSPECTION
-
-
-if OS_LINUX
-TESTS = pltcheck.sh
-endif
 
 
 lib_LTLIBRARIES = $(gdktargetlib)

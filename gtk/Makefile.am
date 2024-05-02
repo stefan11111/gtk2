@@ -67,10 +67,6 @@ INCLUDES =						\
 gtarget=$(gdktarget)
 
 TESTS_ENVIRONMENT = srcdir="$(srcdir)" gtk_all_c_sources="$(gtk_all_c_sources)"
-TESTS = 
-if OS_LINUX
-TESTS += pltcheck.sh
-endif
 
 libgtkincludedir = $(includedir)/gtk-2.0/gtk
 libadd =								\
@@ -1150,7 +1146,6 @@ EXTRA_DIST +=                   \
 	gtkrc.key.default	\
 	gtkrc.key.emacs		\
 	gtkrc.key.mac		\
-	pltcheck.sh		\
 	gtktypebuiltins.c.template      \
 	gtktypebuiltins.h.template
 
