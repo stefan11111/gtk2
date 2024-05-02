@@ -1744,14 +1744,13 @@ gtk_container_real_set_focus_child (GtkContainer     *container,
     {
       GtkAdjustment *hadj;
       GtkAdjustment *vadj;
-      GtkWidget *focus_child;
       gint x, y;
 
       hadj = g_object_get_qdata (G_OBJECT (container), hadjustment_key_id);   
       vadj = g_object_get_qdata (G_OBJECT (container), vadjustment_key_id);
       if (hadj || vadj) 
 	{
-	  focus_child = container->focus_child;
+	  GtkWidget *focus_child = container->focus_child;
 	  while (GTK_IS_CONTAINER (focus_child) && 
 		 GTK_CONTAINER (focus_child)->focus_child)
 	    {
@@ -1798,8 +1797,6 @@ static gboolean
 gtk_container_focus (GtkWidget        *widget,
                      GtkDirectionType  direction)
 {
-  GList *children;
-  GList *sorted_children;
   gint return_val;
   GtkContainer *container;
 
@@ -1822,6 +1819,9 @@ gtk_container_focus (GtkWidget        *widget,
       /* Get a list of the containers children, allowing focus
        * chain to override.
        */
+
+      GList *children;
+      GList *sorted_children;
       if (container->has_focus_chain)
 	children = g_list_copy (get_focus_chain (container));
       else
@@ -2276,14 +2276,11 @@ gtk_container_focus_move (GtkContainer     *container,
 			  GList            *children,
 			  GtkDirectionType  direction)
 {
-  GtkWidget *focus_child;
-  GtkWidget *child;
-
-  focus_child = container->focus_child;
+  GtkWidget *focus_child = container->focus_child;
 
   while (children)
     {
-      child = children->data;
+      GtkWidget *child = children->data;
       children = children->next;
 
       if (!child)

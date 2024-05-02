@@ -557,10 +557,8 @@ gtk_curve_graph_events (GtkWidget *widget, GdkEvent *event, GtkCurve *c)
 			   c->num_ctlpoints * sizeof (*c->ctlpoint));
 	    }
 	}
-      new_type = GDK_FLEUR;
       c->grab_point = -1;
-      retval = TRUE;
-      break;
+      return TRUE;
 
     case GDK_MOTION_NOTIFY:
       mevent = (GdkEventMotion *) event;

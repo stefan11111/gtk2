@@ -276,14 +276,12 @@ gtk_combo_box_text_buildable_custom_finished (GtkBuildable *buildable,
 					      const gchar  *tagname,
 					      gpointer      user_data)
 {
-  ItemParserData *data;
-
   buildable_parent_iface->custom_finished (buildable, builder, child, 
 					   tagname, user_data);
 
   if (strcmp (tagname, "items") == 0)
     {
-      data = (ItemParserData*)user_data;
+      ItemParserData *data = (ItemParserData*)user_data;
 
       g_object_unref (data->object);
       g_object_unref (data->builder);

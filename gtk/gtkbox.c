@@ -257,7 +257,6 @@ gtk_box_size_request (GtkWidget      *widget,
 {
   GtkBox *box = GTK_BOX (widget);
   GtkBoxPrivate *private = GTK_BOX_GET_PRIVATE (box);
-  GtkBoxChild *child;
   GList *children;
   gint nvis_children;
   gint width;
@@ -270,7 +269,7 @@ gtk_box_size_request (GtkWidget      *widget,
   children = box->children;
   while (children)
     {
-      child = children->data;
+      GtkBoxChild *child = children->data;
       children = children->next;
 
       if (gtk_widget_get_visible (child->widget))
@@ -337,8 +336,8 @@ gtk_box_size_allocate (GtkWidget     *widget,
   GtkAllocation child_allocation;
   gint nvis_children = 0;
   gint nexpand_children = 0;
-  gint child_width = 0;
-  gint child_height = 0;
+  gint child_width;
+  gint child_height;
   gint width = 0;
   gint height = 0;
   gint extra = 0;
