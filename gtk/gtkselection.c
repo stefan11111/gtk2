@@ -292,7 +292,7 @@ init_atoms (void)
 {
   if (utf8_atom) {
     return;
-  {
+  }
 
   utf8_atom = gdk_atom_intern_static_string ("UTF8_STRING");
   text_atom = gdk_atom_intern_static_string ("TEXT");
