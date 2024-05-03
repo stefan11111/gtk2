@@ -403,7 +403,9 @@ get_clipboard_widget (GdkDisplay *display)
 static guint32
 clipboard_get_timestamp (GtkClipboard *clipboard)
 {
+#ifdef GDK_WINDOWING_X11
   GtkWidget *clipboard_widget = get_clipboard_widget (clipboard->display);
+#endif
   guint32 timestamp = gtk_get_current_event_time ();
 
   if (timestamp == GDK_CURRENT_TIME)
