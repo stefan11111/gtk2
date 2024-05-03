@@ -1951,20 +1951,17 @@ gtk_status_icon_get_blinking (GtkStatusIcon *status_icon)
 gboolean
 gtk_status_icon_is_embedded (GtkStatusIcon *status_icon)
 {
-#ifdef GDK_WINDOWING_X11
-  GtkPlug *plug;
-#endif
-
   g_return_val_if_fail (GTK_IS_STATUS_ICON (status_icon), FALSE);
 
 #ifdef GDK_WINDOWING_X11
-  plug = GTK_PLUG (status_icon->priv->tray_icon);
+  GtkPlug *plug = GTK_PLUG (status_icon->priv->tray_icon);
 
   if (plug->socket_window)
     return TRUE;
   else
     return FALSE;
 #endif
+  return FALSE;
 }
 
 /**
@@ -2396,9 +2393,9 @@ gtk_status_icon_set_name (GtkStatusIcon *status_icon,
 {
   g_return_if_fail (GTK_IS_STATUS_ICON (status_icon));
 
+ #ifdef GDK_WINDOWING_X11
   GtkStatusIconPrivate *priv = status_icon->priv;
 
-#ifdef GDK_WINDOWING_X11
   if (gtk_widget_get_realized (priv->tray_icon))
     {
       /* gtk_window_set_wmclass() only operates on non-realized windows,
