@@ -7990,7 +7990,7 @@ deleted file mode 100644
 index 20d157d..0000000
 --- a/modules/printbackends/file/gtkprintbackendfile.c
 +++ /dev/null
-@@ -1,808 +0,0 @@
+@@ -1,807 +0,0 @@
 -/* GTK - The GIMP Toolkit
 - * gtkprintbackendfile.c: Default implementation of GtkPrintBackend 
 - * for printing to a file
@@ -8509,13 +8509,12 @@ index 20d157d..0000000
 -				    GtkPrinterOptionSet *set)
 -{
 -  GtkPrinterOption *format_option;
--  const gchar *value;
 -  gint i;
 -
 -  format_option = gtk_printer_option_set_lookup (set, "output-file-format");
 -  if (format_option && format_option->value)
 -    {
--      value = format_option->value;
+-      const gchar *value = format_option->value;
 -      if (value)
 -        {
 -	  for (i = 0; i < N_FORMATS; ++i)

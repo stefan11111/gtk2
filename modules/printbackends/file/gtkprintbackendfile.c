@@ -516,13 +516,12 @@ set_printer_format_from_option_set (GtkPrinter          *printer,
 				    GtkPrinterOptionSet *set)
 {
   GtkPrinterOption *format_option;
-  const gchar *value;
   gint i;
 
   format_option = gtk_printer_option_set_lookup (set, "output-file-format");
   if (format_option && format_option->value)
     {
-      value = format_option->value;
+      const gchar *value = format_option->value;
       if (value)
         {
 	  for (i = 0; i < N_FORMATS; ++i)
