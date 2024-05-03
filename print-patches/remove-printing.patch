@@ -9468,7 +9468,7 @@ deleted file mode 100644
 index d349010..0000000
 --- a/modules/printbackends/papi/gtkprintbackendpapi.c
 +++ /dev/null
-@@ -1,861 +0,0 @@
+@@ -1,860 +0,0 @@
 -/* GTK - The GIMP Toolkit
 - * gtkprintbackendpapi.c: Default implementation of GtkPrintBackend 
 - * for printing to papi 
@@ -10114,7 +10114,7 @@ index d349010..0000000
 -{
 -  GtkPrintBackend *backend;
 -  GtkPrinterPapi *papi_printer;
--  gboolean status_changed = FALSE;
+-  /* gboolean status_changed = FALSE; */
 -
 -  backend = gtk_printer_get_backend (printer);
 -  papi_printer = GTK_PRINTER_PAPI (printer);
@@ -10266,7 +10266,6 @@ index d349010..0000000
 -  papi_service_t service;
 -  papi_attribute_t **attrs = NULL;
 -  papi_printer_t current_printer = NULL;
--  static int count = 0;
 -
 -  papi_printer = GTK_PRINTER_PAPI (printer);
 -  if (papiServiceCreate (&service, NULL, NULL, NULL, NULL, PAPI_ENCRYPT_NEVER,

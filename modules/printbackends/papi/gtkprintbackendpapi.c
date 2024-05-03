@@ -643,7 +643,7 @@ update_printer_status (GtkPrinter *printer)
 {
   GtkPrintBackend *backend;
   GtkPrinterPapi *papi_printer;
-  gboolean status_changed = FALSE;
+  /* gboolean status_changed = FALSE; */
 
   backend = gtk_printer_get_backend (printer);
   papi_printer = GTK_PRINTER_PAPI (printer);
@@ -795,7 +795,6 @@ papi_display_printer_status (gpointer user_data)
   papi_service_t service;
   papi_attribute_t **attrs = NULL;
   papi_printer_t current_printer = NULL;
-  static int count = 0;
 
   papi_printer = GTK_PRINTER_PAPI (printer);
   if (papiServiceCreate (&service, NULL, NULL, NULL, NULL, PAPI_ENCRYPT_NEVER,
