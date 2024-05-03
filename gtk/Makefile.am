@@ -15,6 +15,7 @@ GTK_PRINT_PREVIEW_COMMAND="evince --unlink-tempfile --preview --print-settings %
 SUBDIRS = .
 DIST_SUBDIRS=
 
+if HAVE_PRINT
 if HAVE_PAPI_CUPS
 GTK_PRINT_BACKENDS=file,papi,cups
 else
@@ -27,6 +28,9 @@ else
 GTK_PRINT_BACKENDS=file,lpr
 endif
 endif
+endif
+else
+GTK_PRINT_BACKENDS=
 endif
 
 # manually remove if wanted

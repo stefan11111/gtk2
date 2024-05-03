@@ -1189,6 +1189,13 @@ AC_SUBST(GDK_PIXBUF_LIBS)
 # Printing system checks
 ################################################################
 
+AC_ARG_ENABLE(print,
+              [AC_HELP_STRING([--enable-print]
+                              [enable print backends])],,
+               [enable_print=auto])
+
+AM_CONDITIONAL(HAVE_PRINT, [test "x$enable_print" = "xyes"])
+
 AC_ARG_ENABLE(cups,
               [AC_HELP_STRING([--disable-cups]
                               [disable cups print backend])],,
