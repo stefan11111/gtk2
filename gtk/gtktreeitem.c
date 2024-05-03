@@ -487,9 +487,6 @@ gtk_tree_item_size_allocate (GtkWidget     *widget,
 {
   GtkBin *bin = GTK_BIN (widget);
   GtkTreeItem *item = GTK_TREE_ITEM (widget);
-  GtkAllocation child_allocation;
-  gint border_width;
-  int temp;
 
   widget->allocation = *allocation;
   if (gtk_widget_get_realized (widget))
@@ -499,16 +496,17 @@ gtk_tree_item_size_allocate (GtkWidget     *widget,
 
   if (bin->child)
     {
-      border_width = (GTK_CONTAINER (widget)->border_width +
+      gint border_width = (GTK_CONTAINER (widget)->border_width +
 		      widget->style->xthickness);
 
+      GtkAllocation child_allocation;
       child_allocation.x = border_width + GTK_TREE(widget->parent)->current_indent;
       child_allocation.y = GTK_CONTAINER (widget)->border_width;
 
       child_allocation.width = item->pixmaps_box->requisition.width;
       child_allocation.height = item->pixmaps_box->requisition.height;
       
-      temp = allocation->height - child_allocation.height;
+      int temp = allocation->height - child_allocation.height;
       child_allocation.y += ( temp / 2 ) + ( temp % 2 );
 
       gtk_widget_size_allocate (item->pixmaps_box, &child_allocation);
@@ -690,8 +688,7 @@ gtk_tree_item_expose_child (GtkWidget *child,
       child_event->expose = *data->event;
       g_object_ref (child_event->expose.window);
 
-      child_event->expose.region = gtk_widget_region_intersect (child,
-								data->event->region);
+      child_event->expose.region = gtk_widget_region_intersect (child, data->event->region);
       if (!gdk_region_empty (child_event->expose.region))
         {
           gdk_region_get_clipbox (child_event->expose.region, &child_event->expose.area);
@@ -785,13 +782,11 @@ gtk_real_tree_item_toggle (GtkItem *item)
 static void
 gtk_real_tree_item_expand (GtkTreeItem *tree_item)
 {
-  GtkTree* tree;
-  
   g_return_if_fail (GTK_IS_TREE_ITEM (tree_item));
   
   if (tree_item->subtree && !tree_item->expanded)
     {
-      tree = GTK_TREE (GTK_WIDGET (tree_item)->parent); 
+      GtkTree *tree = GTK_TREE (GTK_WIDGET (tree_item)->parent); 
       
       /* hide subtree widget */
       gtk_widget_show (tree_item->subtree);

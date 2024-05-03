@@ -444,9 +444,6 @@ gtk_tree_parent_set (GtkWidget *widget,
 		     GtkWidget *previous_parent)
 {
   GtkTree *tree = GTK_TREE (widget);
-  GtkWidget *child;
-  GList *children;
-  
   if (GTK_IS_TREE (widget->parent))
     {
       gtk_tree_unselect_all (tree);
@@ -469,10 +466,10 @@ gtk_tree_parent_set (GtkWidget *widget,
       tree->current_indent = 0;
     }
 
-  children = tree->children;
+  GList *children = tree->children;
   while (children)
     {
-      child = children->data;
+      GtkWidget *child = children->data;
       children = children->next;
       
       if (GTK_TREE_ITEM (child)->subtree)

@@ -129,10 +129,10 @@ static void
 gtk_tree_model_base_init (gpointer g_class)
 {
   static gboolean initialized = FALSE;
-  GClosure *closure;
 
   if (! initialized)
     {
+      GClosure *closure;
       GType row_inserted_params[2];
       GType row_deleted_params[1];
       GType rows_reordered_params[3];
