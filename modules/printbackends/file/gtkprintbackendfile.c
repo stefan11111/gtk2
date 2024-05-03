@@ -222,7 +222,7 @@ output_file_from_settings (GtkPrintSettings *settings,
   if (uri == NULL)
     { 
       const gchar *extension;
-      gchar *name, *locale_name, *path;
+      gchar *name, *locale_name;
 
       if (default_format)
         extension = default_format;
@@ -254,7 +254,7 @@ output_file_from_settings (GtkPrintSettings *settings,
       if (locale_name != NULL)
         {
 	  gchar *current_dir = g_get_current_dir ();
-          path = g_build_filename (current_dir, locale_name, NULL);
+          gchar *path = g_build_filename (current_dir, locale_name, NULL);
           g_free (locale_name);
 
           uri = g_filename_to_uri (path, NULL, NULL);
@@ -622,7 +622,6 @@ file_printer_get_options (GtkPrinter           *printer,
   OutputFormat format;
   gchar *uri;
   gint current_format = 0;
-  _OutputFormatChangedData *format_changed_data;
 
   format = format_from_settings (settings);
 
@@ -708,7 +707,7 @@ file_printer_get_options (GtkPrinter           *printer,
       gtk_printer_option_set_add (set, option);
 
       set_printer_format_from_option_set (printer, set);
-      format_changed_data = g_new (_OutputFormatChangedData, 1);
+      _OutputFormatChangedData *format_changed_data = g_new (_OutputFormatChangedData, 1);
       format_changed_data->printer = printer;
       format_changed_data->set = set;
       g_signal_connect_data (option, "changed",
