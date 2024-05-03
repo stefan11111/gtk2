@@ -9468,7 +9468,7 @@ deleted file mode 100644
 index d349010..0000000
 --- a/modules/printbackends/papi/gtkprintbackendpapi.c
 +++ /dev/null
-@@ -1,863 +0,0 @@
+@@ -1,861 +0,0 @@
 -/* GTK - The GIMP Toolkit
 - * gtkprintbackendpapi.c: Default implementation of GtkPrintBackend 
 - * for printing to papi 
@@ -9813,7 +9813,6 @@ index d349010..0000000
 -				    gpointer                user_data,
 -				    GDestroyNotify          dnotify)
 -{
--  GError *print_error = NULL;
 -  GtkPrinterPapi *printer;
 -  _PrintStreamData *ps;
 -  GtkPrintSettings *settings;
@@ -10194,7 +10193,6 @@ index d349010..0000000
 -  GtkPageSet page_set;
 -  double scale;
 -  GtkPaperSize *papersize = NULL;
--  char *ppd_paper_name;
 -
 -  print_job->print_pages = gtk_print_settings_get_print_pages (settings);
 -  print_job->page_ranges = NULL;
@@ -10214,7 +10212,7 @@ index d349010..0000000
 -    print_job->scale = scale/100.0;
 -
 -  papersize = gtk_page_setup_get_paper_size (page_setup);
--  ppd_paper_name = gtk_paper_size_get_ppd_name (papersize);
+-  gtk_paper_size_get_ppd_name (papersize);
 -
 -  page_set = gtk_print_settings_get_page_set (settings);
 -  if (page_set == GTK_PAGE_SET_EVEN)

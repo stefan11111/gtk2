@@ -342,7 +342,6 @@ gtk_print_backend_papi_print_stream (GtkPrintBackend        *print_backend,
 				    gpointer                user_data,
 				    GDestroyNotify          dnotify)
 {
-  GError *print_error = NULL;
   GtkPrinterPapi *printer;
   _PrintStreamData *ps;
   GtkPrintSettings *settings;
@@ -723,7 +722,6 @@ papi_printer_prepare_for_print (GtkPrinter       *printer,
   GtkPageSet page_set;
   double scale;
   GtkPaperSize *papersize = NULL;
-  char *ppd_paper_name;
 
   print_job->print_pages = gtk_print_settings_get_print_pages (settings);
   print_job->page_ranges = NULL;
@@ -743,7 +741,7 @@ papi_printer_prepare_for_print (GtkPrinter       *printer,
     print_job->scale = scale/100.0;
 
   papersize = gtk_page_setup_get_paper_size (page_setup);
-  ppd_paper_name = gtk_paper_size_get_ppd_name (papersize);
+  gtk_paper_size_get_ppd_name (papersize);
 
   page_set = gtk_print_settings_get_page_set (settings);
   if (page_set == GTK_PAGE_SET_EVEN)
