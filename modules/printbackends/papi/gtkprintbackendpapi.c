@@ -62,10 +62,6 @@ struct _GtkPrintBackendPapi
   char *default_printer;  
 };
 
-typedef struct {
-  GtkPrinter *printer;
-} _PrinterStatus;
-
 static GObjectClass *backend_parent_class;
 
 static void                 gtk_print_backend_papi_class_init      (GtkPrintBackendPapiClass *class);
@@ -348,7 +344,6 @@ gtk_print_backend_papi_print_stream (GtkPrintBackend        *print_backend,
   gint argc;  
   gint in_fd;
   gchar **argv = NULL; 
-  const gchar *title;
   char *prtnm = NULL;
   GtkPrintDuplex val;
   papi_status_t pstatus = NULL;
@@ -359,7 +354,7 @@ gtk_print_backend_papi_print_stream (GtkPrintBackend        *print_backend,
   settings = gtk_print_job_get_settings (job);
 
   /* FIXME - the title should be set as the job-name */
-  title = gtk_print_job_get_title (job);
+  /* const gchar *title = */gtk_print_job_get_title (job);
 
   ps = g_new0 (_PrintStreamData, 1);
   ps->callback = callback;
@@ -577,7 +572,7 @@ papi_get_printer_list (GtkPrintBackendPapi *papi_backend)
   for (i = 0; printers[i] != NULL; i++) 
     {
       GtkPrinter *printer;
-      char *name = NULL, *url = NULL;
+      char *url = NULL;
       papi_attribute_t **attrs = NULL;
 
           printer = gtk_print_backend_find_printer (backend, printers[i]);
