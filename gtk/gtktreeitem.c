@@ -808,13 +808,11 @@ gtk_real_tree_item_expand (GtkTreeItem *tree_item)
 static void
 gtk_real_tree_item_collapse (GtkTreeItem *tree_item)
 {
-  GtkTree* tree;
-  
   g_return_if_fail (GTK_IS_TREE_ITEM (tree_item));
   
   if (tree_item->subtree && tree_item->expanded) 
     {
-      tree = GTK_TREE (GTK_WIDGET (tree_item)->parent);
+      GtkTree *tree = GTK_TREE (GTK_WIDGET (tree_item)->parent);
       
       /* hide subtree widget */
       gtk_widget_hide (tree_item->subtree);

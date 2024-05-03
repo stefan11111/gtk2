@@ -481,15 +481,13 @@ static void
 gtk_tree_map (GtkWidget *widget)
 {
   GtkTree *tree = GTK_TREE (widget);
-  GtkWidget *child;
-  GList *children;
-  
+
   gtk_widget_set_mapped (widget, TRUE);
   
-  children = tree->children;
+  GList *children = tree->children;
   while (children)
     {
-      child = children->data;
+      GtkWidget *child = children->data;
       children = children->next;
       
       if (gtk_widget_get_visible (child) &&
