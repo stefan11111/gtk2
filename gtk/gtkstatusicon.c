@@ -148,11 +148,11 @@ static gboolean gtk_status_icon_query_tooltip    (GtkStatusIcon *status_icon,
 static gboolean gtk_status_icon_key_press        (GtkStatusIcon  *status_icon,
 						  GdkEventKey    *event);
 static void     gtk_status_icon_popup_menu       (GtkStatusIcon  *status_icon);
-#endif
 static gboolean gtk_status_icon_button_press     (GtkStatusIcon  *status_icon,
 						  GdkEventButton *event);
 static gboolean gtk_status_icon_button_release   (GtkStatusIcon  *status_icon,
 						  GdkEventButton *event);
+#endif
 static void     gtk_status_icon_disable_blinking (GtkStatusIcon  *status_icon);
 static void     gtk_status_icon_reset_image_data (GtkStatusIcon  *status_icon);
 static void     gtk_status_icon_update_image    (GtkStatusIcon *status_icon);
@@ -660,13 +660,12 @@ gtk_status_icon_constructor (GType                  type,
                              guint                  n_construct_properties,
                              GObjectConstructParam *construct_params)
 {
-  GObject *object;
 #ifdef GDK_WINDOWING_X11
   GtkStatusIcon *status_icon;
   GtkStatusIconPrivate *priv;
 #endif
 
-  object = G_OBJECT_CLASS (gtk_status_icon_parent_class)->constructor (type,
+  GObject *object = G_OBJECT_CLASS (gtk_status_icon_parent_class)->constructor (type,
                                                                        n_construct_properties,
                                                                        construct_params);
 
@@ -1006,8 +1005,6 @@ emit_size_changed_signal (GtkStatusIcon *status_icon,
   return handled;
 }
 
-#endif
-
 static GdkPixbuf *
 gtk_status_icon_blank_icon (GtkStatusIcon *status_icon)
 {
@@ -1038,8 +1035,6 @@ gtk_status_icon_blank_icon (GtkStatusIcon *status_icon)
 
   return priv->blank_icon;
 }
-
-#ifdef GDK_WINDOWING_X11
 
 static GtkIconSize
 find_icon_size (GtkWidget *widget, 
@@ -1123,7 +1118,7 @@ gtk_status_icon_update_image (GtkStatusIcon *status_icon)
 
 #ifdef GDK_WINDOWING_X11
 	    gtk_image_set_from_pixbuf (GTK_IMAGE (priv->image), scaled);
-#endif			
+#endif
 	    g_object_unref (scaled);
 	  }
 	else
@@ -1145,7 +1140,7 @@ gtk_status_icon_update_image (GtkStatusIcon *status_icon)
 #endif
       }
       break;
-      
+
     case GTK_IMAGE_ICON_NAME:
       {
 #ifdef GDK_WINDOWING_X11
@@ -1222,10 +1217,6 @@ gtk_status_icon_screen_changed (GtkStatusIcon *status_icon,
     }
 }
 
-#endif
-
-#ifdef GDK_WINDOWING_X11
-
 static void
 gtk_status_icon_embedded_changed (GtkStatusIcon *status_icon)
 {
@@ -1266,8 +1257,6 @@ gtk_status_icon_popup_menu (GtkStatusIcon  *status_icon)
   emit_popup_menu_signal (status_icon, 0, gtk_get_current_event_time ());
 }
 
-#endif
-
 static gboolean
 gtk_status_icon_button_press (GtkStatusIcon  *status_icon,
 			      GdkEventButton *event)
@@ -1305,7 +1294,6 @@ gtk_status_icon_button_release (GtkStatusIcon  *status_icon,
   return handled;
 }
 
-#ifdef GDK_WINDOWING_X11
 static gboolean
 gtk_status_icon_scroll (GtkStatusIcon  *status_icon,
 			GdkEventScroll *event)
@@ -1753,9 +1741,8 @@ gtk_status_icon_get_screen (GtkStatusIcon *status_icon)
 
 #ifdef GDK_WINDOWING_X11
   return gtk_window_get_screen (GTK_WINDOW (status_icon->priv->tray_icon));
-#else
-  return gdk_screen_get_default ();
 #endif
+  return gdk_screen_get_default ();
 }
 
 /**
@@ -1953,20 +1940,17 @@ gtk_status_icon_get_blinking (GtkStatusIcon *status_icon)
 gboolean
 gtk_status_icon_is_embedded (GtkStatusIcon *status_icon)
 {
-#ifdef GDK_WINDOWING_X11
-  GtkPlug *plug;
-#endif
-
   g_return_val_if_fail (GTK_IS_STATUS_ICON (status_icon), FALSE);
 
 #ifdef GDK_WINDOWING_X11
-  plug = GTK_PLUG (status_icon->priv->tray_icon);
+  GtkPlug *plug = GTK_PLUG (status_icon->priv->tray_icon);
 
   if (plug->socket_window)
     return TRUE;
   else
     return FALSE;
 #endif
+  return FALSE;
 }
 
 /**
@@ -2157,13 +2141,10 @@ void
 gtk_status_icon_set_has_tooltip (GtkStatusIcon *status_icon,
 				 gboolean       has_tooltip)
 {
-  GtkStatusIconPrivate *priv;
-
   g_return_if_fail (GTK_IS_STATUS_ICON (status_icon));
-
-  priv = status_icon->priv;
-
 #ifdef GDK_WINDOWING_X11
+  GtkStatusIconPrivate *priv = status_icon->priv;
+
   gtk_widget_set_has_tooltip (priv->tray_icon, has_tooltip);
 #endif
 }
@@ -2182,17 +2163,14 @@ gtk_status_icon_set_has_tooltip (GtkStatusIcon *status_icon,
 gboolean
 gtk_status_icon_get_has_tooltip (GtkStatusIcon *status_icon)
 {
-  GtkStatusIconPrivate *priv;
-  gboolean has_tooltip = FALSE;
-
   g_return_val_if_fail (GTK_IS_STATUS_ICON (status_icon), FALSE);
 
-  priv = status_icon->priv;
-
 #ifdef GDK_WINDOWING_X11
-  has_tooltip = gtk_widget_get_has_tooltip (priv->tray_icon);
+  GtkStatusIconPrivate *priv = status_icon->priv;
+
+  return gtk_widget_get_has_tooltip (priv->tray_icon);
 #endif
-  return has_tooltip;
+  return FALSE;
 }
 
 /**
@@ -2215,13 +2193,10 @@ void
 gtk_status_icon_set_tooltip_text (GtkStatusIcon *status_icon,
 				  const gchar   *text)
 {
-  GtkStatusIconPrivate *priv;
-
   g_return_if_fail (GTK_IS_STATUS_ICON (status_icon));
 
-  priv = status_icon->priv;
-
 #ifdef GDK_WINDOWING_X11
+  GtkStatusIconPrivate *priv = status_icon->priv;
 
   gtk_widget_set_tooltip_text (priv->tray_icon, text);
 
@@ -2242,18 +2217,15 @@ gtk_status_icon_set_tooltip_text (GtkStatusIcon *status_icon,
 gchar *
 gtk_status_icon_get_tooltip_text (GtkStatusIcon *status_icon)
 {
-  GtkStatusIconPrivate *priv;
-  gchar *tooltip_text = NULL;
-
   g_return_val_if_fail (GTK_IS_STATUS_ICON (status_icon), NULL);
 
-  priv = status_icon->priv;
-
 #ifdef GDK_WINDOWING_X11
-  tooltip_text = gtk_widget_get_tooltip_text (priv->tray_icon);
+  GtkStatusIconPrivate *priv = status_icon->priv;
+
+  return gtk_widget_get_tooltip_text (priv->tray_icon);
 #endif
 
-  return tooltip_text;
+  return NULL;
 }
 
 /**
@@ -2276,16 +2248,11 @@ void
 gtk_status_icon_set_tooltip_markup (GtkStatusIcon *status_icon,
 				    const gchar   *markup)
 {
-  GtkStatusIconPrivate *priv;
-#ifndef GDK_WINDOWING_X11
-  gchar *text = NULL;
-#endif
-
   g_return_if_fail (GTK_IS_STATUS_ICON (status_icon));
 
-  priv = status_icon->priv;
-
 #ifdef GDK_WINDOWING_X11
+  GtkStatusIconPrivate *priv = status_icon->priv;
+
   gtk_widget_set_tooltip_markup (priv->tray_icon, markup);
 #endif
 }
@@ -2304,18 +2271,15 @@ gtk_status_icon_set_tooltip_markup (GtkStatusIcon *status_icon,
 gchar *
 gtk_status_icon_get_tooltip_markup (GtkStatusIcon *status_icon)
 {
-  GtkStatusIconPrivate *priv;
-  gchar *markup = NULL;
-
   g_return_val_if_fail (GTK_IS_STATUS_ICON (status_icon), NULL);
 
-  priv = status_icon->priv;
-
 #ifdef GDK_WINDOWING_X11
-  markup = gtk_widget_get_tooltip_markup (priv->tray_icon);
+  GtkStatusIconPrivate *priv = status_icon->priv;
+
+  return gtk_widget_get_tooltip_markup (priv->tray_icon);
 #endif
 
-  return markup;
+  return NULL;
 }
 
 /**
@@ -2365,13 +2329,11 @@ void
 gtk_status_icon_set_title (GtkStatusIcon *status_icon,
                            const gchar   *title)
 {
-  GtkStatusIconPrivate *priv;
-
   g_return_if_fail (GTK_IS_STATUS_ICON (status_icon));
 
-  priv = status_icon->priv;
-
 #ifdef GDK_WINDOWING_X11
+  GtkStatusIconPrivate *priv = status_icon->priv;
+
   gtk_window_set_title (GTK_WINDOW (priv->tray_icon), title);
 #endif
 
@@ -2391,15 +2353,14 @@ gtk_status_icon_set_title (GtkStatusIcon *status_icon,
 const gchar *
 gtk_status_icon_get_title (GtkStatusIcon *status_icon)
 {
-  GtkStatusIconPrivate *priv;
-
   g_return_val_if_fail (GTK_IS_STATUS_ICON (status_icon), NULL);
 
-  priv = status_icon->priv;
-
 #ifdef GDK_WINDOWING_X11
+  GtkStatusIconPrivate *priv = status_icon->priv;
+
   return gtk_window_get_title (GTK_WINDOW (priv->tray_icon));
 #endif
+  return NULL;
 }
 
 
@@ -2419,13 +2380,11 @@ void
 gtk_status_icon_set_name (GtkStatusIcon *status_icon,
                           const gchar   *name)
 {
-  GtkStatusIconPrivate *priv;
-
   g_return_if_fail (GTK_IS_STATUS_ICON (status_icon));
 
-  priv = status_icon->priv;
+ #ifdef GDK_WINDOWING_X11
+  GtkStatusIconPrivate *priv = status_icon->priv;
 
-#ifdef GDK_WINDOWING_X11
   if (gtk_widget_get_realized (priv->tray_icon))
     {
       /* gtk_window_set_wmclass() only operates on non-realized windows,
