@@ -1279,6 +1279,7 @@ selection_set_compound_text (GtkSelectionData *selection_data,
 			     const gchar      *str,
 			     gint              len)
 {
+#ifdef GDK_WINDOWING_X11
   gchar *tmp;
   guchar *text;
   GdkAtom encoding;
@@ -1286,7 +1287,6 @@ selection_set_compound_text (GtkSelectionData *selection_data,
   gint new_length;
   gboolean result = FALSE;
 
-#ifdef GDK_WINDOWING_X11
   tmp = g_strndup (str, len);
   if (gdk_x11_display_utf8_to_compound_text (selection_data->display, tmp,
                                              &encoding, &format, &text, &new_length))
@@ -1297,12 +1297,11 @@ selection_set_compound_text (GtkSelectionData *selection_data,
       result = TRUE;
     }
   g_free (tmp);
+  return result;
 #else
   g_warning ("%s is not implemented", G_STRFUNC);
-  result = FALSE;
+  return FALSE;
 #endif
-
-  return result;
 }
 
 /* Normalize \r and \n into \r\n

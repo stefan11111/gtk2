@@ -1759,7 +1759,9 @@ key_press (GtkWidget   *invisible,
 {  
   GdkDisplay *display = gtk_widget_get_display (invisible);
   GdkScreen *screen = gdk_event_get_screen ((GdkEvent *)event);
+#ifdef GDK_WINDOWING_X11
   guint state = event->state & gtk_accelerator_get_default_mod_mask ();
+#endif
   gint x, y;
   gint dx, dy;
 
@@ -1790,7 +1792,7 @@ key_press (GtkWidget   *invisible,
       
       return TRUE;
 
-#if defined GDK_WINDOWING_X11
+#ifdef GDK_WINDOWING_X11
     case GDK_Up:
     case GDK_KP_Up:
       dy = state == GDK_MOD1_MASK ? -BIG_STEP : -1;
