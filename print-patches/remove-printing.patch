@@ -7990,7 +7990,7 @@ deleted file mode 100644
 index 20d157d..0000000
 --- a/modules/printbackends/file/gtkprintbackendfile.c
 +++ /dev/null
-@@ -1,809 +0,0 @@
+@@ -1,808 +0,0 @@
 -/* GTK - The GIMP Toolkit
 - * gtkprintbackendfile.c: Default implementation of GtkPrintBackend 
 - * for printing to a file
@@ -8774,7 +8774,6 @@ index 20d157d..0000000
 -{
 -  GList *result = NULL;
 -  GList *papers, *p;
--  GtkPageSetup *page_setup;
 -
 -  papers = gtk_paper_size_get_paper_sizes (TRUE);
 -
@@ -8782,7 +8781,7 @@ index 20d157d..0000000
 -    {
 -      GtkPaperSize *paper_size = p->data;
 -
--      page_setup = gtk_page_setup_new ();
+-      GtkPageSetup *page_setup = gtk_page_setup_new ();
 -      gtk_page_setup_set_paper_size (page_setup, paper_size);
 -      gtk_paper_size_free (paper_size);
 -      result = g_list_prepend (result, page_setup);

@@ -781,7 +781,6 @@ file_printer_list_papers (GtkPrinter *printer)
 {
   GList *result = NULL;
   GList *papers, *p;
-  GtkPageSetup *page_setup;
 
   papers = gtk_paper_size_get_paper_sizes (TRUE);
 
@@ -789,7 +788,7 @@ file_printer_list_papers (GtkPrinter *printer)
     {
       GtkPaperSize *paper_size = p->data;
 
-      page_setup = gtk_page_setup_new ();
+      GtkPageSetup *page_setup = gtk_page_setup_new ();
       gtk_page_setup_set_paper_size (page_setup, paper_size);
       gtk_paper_size_free (paper_size);
       result = g_list_prepend (result, page_setup);
