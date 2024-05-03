@@ -660,13 +660,12 @@ gtk_status_icon_constructor (GType                  type,
                              guint                  n_construct_properties,
                              GObjectConstructParam *construct_params)
 {
-  GObject *object;
 #ifdef GDK_WINDOWING_X11
   GtkStatusIcon *status_icon;
   GtkStatusIconPrivate *priv;
 #endif
 
-  object = G_OBJECT_CLASS (gtk_status_icon_parent_class)->constructor (type,
+  GObject *object = G_OBJECT_CLASS (gtk_status_icon_parent_class)->constructor (type,
                                                                        n_construct_properties,
                                                                        construct_params);
 
@@ -1123,7 +1122,7 @@ gtk_status_icon_update_image (GtkStatusIcon *status_icon)
 
 #ifdef GDK_WINDOWING_X11
 	    gtk_image_set_from_pixbuf (GTK_IMAGE (priv->image), scaled);
-#endif			
+#endif
 	    g_object_unref (scaled);
 	  }
 	else
@@ -1145,7 +1144,7 @@ gtk_status_icon_update_image (GtkStatusIcon *status_icon)
 #endif
       }
       break;
-      
+
     case GTK_IMAGE_ICON_NAME:
       {
 #ifdef GDK_WINDOWING_X11
@@ -1753,9 +1752,8 @@ gtk_status_icon_get_screen (GtkStatusIcon *status_icon)
 
 #ifdef GDK_WINDOWING_X11
   return gtk_window_get_screen (GTK_WINDOW (status_icon->priv->tray_icon));
-#else
-  return gdk_screen_get_default ();
 #endif
+  return gdk_screen_get_default ();
 }
 
 /**
@@ -2287,18 +2285,15 @@ gtk_status_icon_set_tooltip_markup (GtkStatusIcon *status_icon,
 gchar *
 gtk_status_icon_get_tooltip_markup (GtkStatusIcon *status_icon)
 {
-  GtkStatusIconPrivate *priv;
-  gchar *markup = NULL;
-
   g_return_val_if_fail (GTK_IS_STATUS_ICON (status_icon), NULL);
 
-  priv = status_icon->priv;
-
 #ifdef GDK_WINDOWING_X11
-  markup = gtk_widget_get_tooltip_markup (priv->tray_icon);
+  GtkStatusIconPrivate *priv = status_icon->priv;
+
+  return gtk_widget_get_tooltip_markup (priv->tray_icon);
 #endif
 
-  return markup;
+  return NULL;
 }
 
 /**
@@ -2348,13 +2343,11 @@ void
 gtk_status_icon_set_title (GtkStatusIcon *status_icon,
                            const gchar   *title)
 {
-  GtkStatusIconPrivate *priv;
-
   g_return_if_fail (GTK_IS_STATUS_ICON (status_icon));
 
-  priv = status_icon->priv;
-
 #ifdef GDK_WINDOWING_X11
+  GtkStatusIconPrivate *priv = status_icon->priv;
+
   gtk_window_set_title (GTK_WINDOW (priv->tray_icon), title);
 #endif
 
@@ -2374,15 +2367,14 @@ gtk_status_icon_set_title (GtkStatusIcon *status_icon,
 const gchar *
 gtk_status_icon_get_title (GtkStatusIcon *status_icon)
 {
-  GtkStatusIconPrivate *priv;
-
   g_return_val_if_fail (GTK_IS_STATUS_ICON (status_icon), NULL);
 
-  priv = status_icon->priv;
-
 #ifdef GDK_WINDOWING_X11
+  GtkStatusIconPrivate *priv = status_icon->priv;
+
   return gtk_window_get_title (GTK_WINDOW (priv->tray_icon));
 #endif
+  return NULL;
 }
 
 
@@ -2402,11 +2394,9 @@ void
 gtk_status_icon_set_name (GtkStatusIcon *status_icon,
                           const gchar   *name)
 {
-  GtkStatusIconPrivate *priv;
-
   g_return_if_fail (GTK_IS_STATUS_ICON (status_icon));
 
-  priv = status_icon->priv;
+  GtkStatusIconPrivate *priv = status_icon->priv;
 
 #ifdef GDK_WINDOWING_X11
   if (gtk_widget_get_realized (priv->tray_icon))
