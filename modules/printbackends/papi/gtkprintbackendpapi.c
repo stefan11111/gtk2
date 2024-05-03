@@ -572,7 +572,6 @@ papi_get_printer_list (GtkPrintBackendPapi *papi_backend)
   for (i = 0; printers[i] != NULL; i++) 
     {
       GtkPrinter *printer;
-      char *url = NULL;
       papi_attribute_t **attrs = NULL;
 
           printer = gtk_print_backend_find_printer (backend, printers[i]);
