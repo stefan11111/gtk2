@@ -148,11 +148,11 @@ static gboolean gtk_status_icon_query_tooltip    (GtkStatusIcon *status_icon,
 static gboolean gtk_status_icon_key_press        (GtkStatusIcon  *status_icon,
 						  GdkEventKey    *event);
 static void     gtk_status_icon_popup_menu       (GtkStatusIcon  *status_icon);
-#endif
 static gboolean gtk_status_icon_button_press     (GtkStatusIcon  *status_icon,
 						  GdkEventButton *event);
 static gboolean gtk_status_icon_button_release   (GtkStatusIcon  *status_icon,
 						  GdkEventButton *event);
+#endif
 static void     gtk_status_icon_disable_blinking (GtkStatusIcon  *status_icon);
 static void     gtk_status_icon_reset_image_data (GtkStatusIcon  *status_icon);
 static void     gtk_status_icon_update_image    (GtkStatusIcon *status_icon);
@@ -1005,8 +1005,6 @@ emit_size_changed_signal (GtkStatusIcon *status_icon,
   return handled;
 }
 
-#endif
-
 static GdkPixbuf *
 gtk_status_icon_blank_icon (GtkStatusIcon *status_icon)
 {
@@ -1037,8 +1035,6 @@ gtk_status_icon_blank_icon (GtkStatusIcon *status_icon)
 
   return priv->blank_icon;
 }
-
-#ifdef GDK_WINDOWING_X11
 
 static GtkIconSize
 find_icon_size (GtkWidget *widget, 
@@ -1221,10 +1217,6 @@ gtk_status_icon_screen_changed (GtkStatusIcon *status_icon,
     }
 }
 
-#endif
-
-#ifdef GDK_WINDOWING_X11
-
 static void
 gtk_status_icon_embedded_changed (GtkStatusIcon *status_icon)
 {
@@ -1265,8 +1257,6 @@ gtk_status_icon_popup_menu (GtkStatusIcon  *status_icon)
   emit_popup_menu_signal (status_icon, 0, gtk_get_current_event_time ());
 }
 
-#endif
-
 static gboolean
 gtk_status_icon_button_press (GtkStatusIcon  *status_icon,
 			      GdkEventButton *event)
@@ -1304,7 +1294,6 @@ gtk_status_icon_button_release (GtkStatusIcon  *status_icon,
   return handled;
 }
 
-#ifdef GDK_WINDOWING_X11
 static gboolean
 gtk_status_icon_scroll (GtkStatusIcon  *status_icon,
 			GdkEventScroll *event)
