@@ -127,13 +127,10 @@ gint
 _gdk_font_strlen (GdkFont     *font,
                   const gchar *str)
 {
-  GdkFontDirectFB *font_private;
   gint             length = 0;
 
   g_return_val_if_fail (font != NULL, -1);
   g_return_val_if_fail (str != NULL, -1);
-
-  font_private = (GdkFontDirectFB*) font;
 
   if (font->type == GDK_FONT_FONT)
     {
@@ -155,11 +152,7 @@ _gdk_font_strlen (GdkFont     *font,
 gint
 gdk_font_id (const GdkFont *font)
 {
-  const GdkFontDirectFB *font_private;
-
   g_return_val_if_fail (font != NULL, 0);
-
-  font_private = (const GdkFontDirectFB*) font;
 
   if (font->type == GDK_FONT_FONT)
     {
@@ -175,14 +168,8 @@ gint
 gdk_font_equal (const GdkFont *fonta,
                 const GdkFont *fontb)
 {
-  const GdkFontDirectFB *privatea;
-  const GdkFontDirectFB *privateb;
-
   g_return_val_if_fail (fonta != NULL, FALSE);
   g_return_val_if_fail (fontb != NULL, FALSE);
-
-  privatea = (const GdkFontDirectFB*) fonta;
-  privateb = (const GdkFontDirectFB*) fontb;
 
   if (fonta == fontb)
     return TRUE;

@@ -896,11 +896,10 @@ gtk_main (void)
   if (quit_functions)
     {
       GList *reinvoke_list = NULL;
-      GtkQuitFunction *quitf;
 
       while (quit_functions)
 	{
-	  quitf = quit_functions->data;
+	  GtkQuitFunction *quitf = quit_functions->data;
 
 	  tmp_list = quit_functions;
 	  quit_functions = g_list_remove_link (quit_functions, quit_functions);
@@ -1494,16 +1493,14 @@ gtk_grab_notify (GtkWindowGroup *group,
 void
 gtk_grab_add (GtkWidget *widget)
 {
-  GtkWindowGroup *group;
-  GtkWidget *old_grab_widget;
-  
   g_return_if_fail (widget != NULL);
   
   if (!gtk_widget_has_grab (widget) && gtk_widget_is_sensitive (widget))
     {
+      GtkWidget *old_grab_widget;
       _gtk_widget_set_has_grab (widget, TRUE);
       
-      group = gtk_main_get_window_group (widget);
+      GtkWindowGroup *group = gtk_main_get_window_group (widget);
 
       if (group->grabs)
 	old_grab_widget = (GtkWidget *)group->grabs->data;
@@ -1528,9 +1525,7 @@ gtk_grab_add (GtkWidget *widget)
 GtkWidget*
 gtk_grab_get_current (void)
 {
-  GtkWindowGroup *group;
-
-  group = gtk_main_get_window_group (NULL);
+  GtkWindowGroup *group = gtk_main_get_window_group (NULL);
 
   if (group->grabs)
     return GTK_WIDGET (group->grabs->data);
@@ -1540,16 +1535,14 @@ gtk_grab_get_current (void)
 void
 gtk_grab_remove (GtkWidget *widget)
 {
-  GtkWindowGroup *group;
-  GtkWidget *new_grab_widget;
-  
   g_return_if_fail (widget != NULL);
   
   if (gtk_widget_has_grab (widget))
     {
+      GtkWidget *new_grab_widget;
       _gtk_widget_set_has_grab (widget, FALSE);
 
-      group = gtk_main_get_window_group (widget);
+      GtkWindowGroup *group = gtk_main_get_window_group (widget);
       group->grabs = g_slist_remove (group->grabs, widget);
       
       if (group->grabs)
@@ -1710,13 +1703,12 @@ gtk_quit_add (guint	  main_level,
 void
 gtk_quit_remove (guint id)
 {
-  GtkQuitFunction *quitf;
   GList *tmp_list;
   
   tmp_list = quit_functions;
   while (tmp_list)
     {
-      quitf = tmp_list->data;
+      GtkQuitFunction *quitf = tmp_list->data;
       
       if (quitf->id == id)
 	{
@@ -1734,13 +1726,10 @@ gtk_quit_remove (guint id)
 void
 gtk_quit_remove_by_data (gpointer data)
 {
-  GtkQuitFunction *quitf;
-  GList *tmp_list;
-  
-  tmp_list = quit_functions;
+  GList *tmp_list = quit_functions;
   while (tmp_list)
     {
-      quitf = tmp_list->data;
+      GtkQuitFunction *quitf = tmp_list->data;
       
       if (quitf->data == data)
 	{

@@ -200,21 +200,16 @@ gdk_directfb_pointer_event_window (GdkWindow    *window,
         }
 
       if (evmask & type_masks[type]) {
-
-        if (_gdk_directfb_pointer_grab_owner_events) {
-          return _gdk_directfb_pointer_grab_window;
+        GdkWindowObject *obj = GDK_WINDOW_OBJECT (window);
+        while (obj != NULL &&
+               obj != GDK_WINDOW_OBJECT (_gdk_directfb_pointer_grab_window)) {
+          obj = (GdkWindowObject *)obj->parent;
+        }
+        if (obj == GDK_WINDOW_OBJECT (_gdk_directfb_pointer_grab_window)) {
+          return window;
         } else {
-          GdkWindowObject *obj = GDK_WINDOW_OBJECT (window);
-          while (obj != NULL &&
-                 obj != GDK_WINDOW_OBJECT (_gdk_directfb_pointer_grab_window)) {
-            obj = (GdkWindowObject *)obj->parent;
-          }
-          if (obj == GDK_WINDOW_OBJECT (_gdk_directfb_pointer_grab_window)) {
-            return window;
-          } else {
-            //was not  child of the grab window so return the grab window
-            return _gdk_directfb_pointer_grab_window;
-          }
+          //was not  child of the grab window so return the grab window
+          return _gdk_directfb_pointer_grab_window;
         }
       }
     }

@@ -151,7 +151,6 @@ gdk_font_hash_lookup (GdkDisplay  *display,
 		      GdkFontType  type, 
 		      const gchar *font_name)
 {
-  GdkFont *result;
   GHashTable *hash;
   g_return_val_if_fail (GDK_IS_DISPLAY (display), NULL);
 
@@ -161,7 +160,7 @@ gdk_font_hash_lookup (GdkDisplay  *display,
     return NULL;
   else
     {
-      result = g_hash_table_lookup (hash, font_name);
+      GdkFont *result = g_hash_table_lookup (hash, font_name);
       if (result)
 	gdk_font_ref (result);
       
@@ -714,7 +713,6 @@ gdk_text_extents_wc (GdkFont        *font,
 {
   GdkFontPrivateX *private;
   XCharStruct overall;
-  XFontStruct *xfont;
   XFontSet    fontset;
   XRectangle  ink, logical;
   int direction;
@@ -733,7 +731,7 @@ gdk_text_extents_wc (GdkFont        *font,
 	gchar *text_8bit;
 	gint i;
 
-	xfont = (XFontStruct *) private->xfont;
+	XFontStruct *xfont = (XFontStruct *) private->xfont;
 	g_return_if_fail ((xfont->min_byte1 == 0) && (xfont->max_byte1 == 0));
 
 	text_8bit = g_new (gchar, text_length);

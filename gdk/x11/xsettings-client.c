@@ -367,18 +367,15 @@ read_settings (XSettingsClient *client)
   unsigned long n_items;
   unsigned long bytes_after;
   unsigned char *data;
-  int result;
 
-  int (*old_handler) (Display *, XErrorEvent *);
-  
   XSettingsList *old_list = client->settings;
 
   client->settings = NULL;
 
   if (client->manager_window)
     {
-      old_handler = XSetErrorHandler (ignore_errors);
-      result = XGetWindowProperty (client->display, client->manager_window,
+      int (*old_handler) (Display *, XErrorEvent *) = XSetErrorHandler (ignore_errors);
+      int result = XGetWindowProperty (client->display, client->manager_window,
 				   client->xsettings_atom, 0, LONG_MAX,
 				   False, client->xsettings_atom,
 				   &type, &format, &n_items, &bytes_after, &data);

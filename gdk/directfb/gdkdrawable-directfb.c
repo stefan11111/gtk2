@@ -1285,10 +1285,10 @@ gdk_directfb_draw_pixbuf (GdkDrawable  *drawable,
     char *data;
     int   pitch;
 
-    if (impl->surface->Lock (impl->surface, DSLF_READ | DSLF_WRITE, &data, &pitch) == DFB_OK) {
+    if (impl->surface->Lock (impl->surface, DSLF_READ | DSLF_WRITE, (void**)&data, &pitch) == DFB_OK) {
       composite_565 (pb_pixels + src_y * pb_rowstride + src_x * 4,
                      pb_rowstride,
-                     data + dest_y * pitch + dest_x * 2,
+                     (guchar*)data + dest_y * pitch + dest_x * 2,
                      pitch,
 #if G_BYTE_ORDER == G_BIG_ENDIAN
                      GDK_MSB_FIRST,
@@ -1380,10 +1380,10 @@ gdk_directfb_draw_pixbuf (GdkDrawable  *drawable,
 
           if (impl->surface->Lock (impl->surface,
                                    DSLF_READ | DSLF_WRITE,
-                                   &data, &pitch) == DFB_OK) {
+                                   (void**)&data, &pitch) == DFB_OK) {
             (*composite_func) (pb_pixels + src_y * pb_rowstride + src_x * 4,
                                pb_rowstride,
-                               data + dest_y * pitch + DFB_BYTES_PER_LINE (impl->format, dest_x),
+                               (guchar*)data + dest_y * pitch + DFB_BYTES_PER_LINE (impl->format, dest_x),
                                pitch,
                                visual->byte_order,
                                width, height);
@@ -1482,12 +1482,10 @@ convert_rgb_pixbuf_to_image (guchar  *src,
                              guint    width,
                              guint    height)
 {
-  guint   i;
-  guchar *s;
-
   while (height--)
     {
-      s = src;
+      guchar *s = src;
+      guint   i;
 
       for (i = 0; i < width; i++, s += 3)
         dest[i] = 0xFF000000 | (s[0] << 16) | (s[1] << 8) | s[2];

@@ -1671,8 +1671,6 @@ gtk_text_button_release (GtkWidget      *widget,
 			 GdkEventButton *event)
 {
   GtkText *text = GTK_TEXT (widget);
-  GtkOldEditable *old_editable;
-  GdkDisplay *display;
 
   gtk_grab_remove (widget);
   
@@ -1690,8 +1688,8 @@ gtk_text_button_release (GtkWidget      *widget,
   if (event->button == 1)
     {
       text = GTK_TEXT (widget);
-      old_editable = GTK_OLD_EDITABLE (widget);
-      display = gtk_widget_get_display (widget);
+      GtkOldEditable *old_editable = GTK_OLD_EDITABLE (widget);
+      GdkDisplay *display = gtk_widget_get_display (widget);
       
       gtk_grab_remove (widget);
       
@@ -2565,9 +2563,6 @@ delete_expose (GtkText* text, guint nchars, guint old_lines, guint old_pixels)
 static void
 correct_cache_insert (GtkText* text, gint nchars)
 {
-  GList *cache;
-  GtkPropertyMark *start;
-  GtkPropertyMark *end;
   gboolean was_split = FALSE;
   
   /* We need to distinguish whether the property was split in the
@@ -2588,7 +2583,7 @@ correct_cache_insert (GtkText* text, gint nchars)
    * line, we have to correct here, or fetch_lines will
    * fetch junk.
    */
-  start = &CACHE_DATA(text->current_line).start;
+  GtkPropertyMark *start = &CACHE_DATA(text->current_line).start;
 
   /* Check if if we split exactly at the beginning of the line:
    * (was_split won't be set if we are inserting at the end of the text, 
@@ -2608,12 +2603,12 @@ correct_cache_insert (GtkText* text, gint nchars)
    * second half of a property we split in insert_text_property(), so
    * we fix them up that way.  
    */
-  cache = text->current_line->next;
+  GList *cache = text->current_line->next;
   
   for (; cache; cache = cache->next)
     {
       start = &CACHE_DATA(cache).start;
-      end = &CACHE_DATA(cache).end;
+      GtkPropertyMark *end = &CACHE_DATA(cache).end;
       
       if (LAST_INDEX (text, text->point) &&
 	  start->index == text->point.index)
@@ -4725,7 +4720,6 @@ draw_line (GtkText* text,
 {
   GdkGCValues gc_values;
   gint i;
-  gint len = 0;
   guint running_offset = lp->tab_cont.pixel_offset;
   union { GdkWChar *wc; guchar *ch; } buffer;
   GdkGC *fg_gc;
@@ -4788,7 +4782,7 @@ draw_line (GtkText* text,
   
   while (chars > 0)
     {
-      len = 0;
+      gint len = 0;
       if ((text->use_wchar && buffer.wc[0] != '\t') ||
 	  (!text->use_wchar && buffer.ch[0] != '\t'))
 	{

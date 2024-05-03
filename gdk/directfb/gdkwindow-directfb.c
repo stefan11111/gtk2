@@ -1286,8 +1286,6 @@ gdk_directfb_window_hide (GdkWindow *window)
 
   if (!private->destroyed && GDK_WINDOW_IS_MAPPED (private))
     {
-      GdkEvent *event;
-
       if (!private->input_only && private->parent)
         {
           gdk_window_clear_area (GDK_WINDOW (private->parent),
@@ -1299,7 +1297,7 @@ gdk_directfb_window_hide (GdkWindow *window)
 
       event_win = gdk_directfb_other_event_window (window, GDK_UNMAP);
       if (event_win)
-        event = gdk_directfb_event_make (event_win, GDK_UNMAP);
+        gdk_directfb_event_make (event_win, GDK_UNMAP);
 
       mousewin = gdk_window_at_pointer (NULL, NULL);
       gdk_directfb_window_send_crossing_events (NULL,
@@ -1332,7 +1330,6 @@ _gdk_directfb_move_resize_child (GdkWindow *window,
   GdkWindowObject       *private;
   GdkWindowImplDirectFB *impl;
   GdkWindowImplDirectFB *parent_impl;
-  GList                 *list;
 
   g_return_if_fail (GDK_IS_WINDOW (window));
 
@@ -1504,7 +1501,6 @@ gdk_directfb_window_reparent (GdkWindow *window,
 {
   GdkWindowObject *window_private;
   GdkWindowObject *parent_private;
-  GdkWindowObject *old_parent_private;
   GdkWindowImplDirectFB *impl;
   GdkWindowImplDirectFB *parent_impl;
   GdkVisual             *visual;
@@ -1518,7 +1514,6 @@ gdk_directfb_window_reparent (GdkWindow *window,
     new_parent = _gdk_parent_root;
 
   window_private     = (GdkWindowObject *) window;
-  old_parent_private = (GdkWindowObject *) window_private->parent;
   parent_private     = (GdkWindowObject *) new_parent;
   parent_impl        = GDK_WINDOW_IMPL_DIRECTFB (parent_private->impl);
   visual             = gdk_drawable_get_visual (window);
@@ -2519,7 +2514,6 @@ gdk_window_foreign_new_for_display (GdkDisplay* display, GdkNativeWindow anid)
   GdkWindow             *parent         = NULL;
   GdkWindowObject       *private        = NULL;
   GdkWindowObject       *parent_private = NULL;
-  GdkWindowImplDirectFB *parent_impl    = NULL;
   GdkWindowImplDirectFB *impl           = NULL;
   DFBWindowOptions       options;
   DFBResult              ret;
@@ -2548,7 +2542,6 @@ gdk_window_foreign_new_for_display (GdkDisplay* display, GdkNativeWindow anid)
 
   if (parent) {
     parent_private = GDK_WINDOW_OBJECT (parent);
-    parent_impl = GDK_WINDOW_IMPL_DIRECTFB (parent_private->impl);
   }
 
   window = g_object_new (GDK_TYPE_WINDOW, NULL);
@@ -2956,15 +2949,12 @@ void
 gdk_window_set_opacity (GdkWindow *window,
 			gdouble    opacity)
 {
-  GdkDisplay *display;
   guint8 cardinal;
 
   g_return_if_fail (GDK_IS_WINDOW (window));
 
   if (GDK_WINDOW_DESTROYED (window))
     return;
-
-  display = gdk_drawable_get_display (window);
 
   if (opacity < 0)
     opacity = 0;

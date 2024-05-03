@@ -81,7 +81,6 @@ bitmap1 (GdkImage    *image,
   int xx, yy;
   int bpl;
   register guint8 data;
-  guint8 *o;
   guint8 *srow = (guint8*)image->mem + y1 * image->bpl, *orow = pixels;
 
   d (printf ("bitmap, no alpha\n"));
@@ -90,7 +89,7 @@ bitmap1 (GdkImage    *image,
 
   for (yy = y1; yy < y2; yy++)
     {
-      o = orow;
+      guint8 *o = orow;
       
       for (xx = x1; xx < x2; xx ++)
 	{
@@ -137,7 +136,6 @@ bitmap1a (GdkImage    *image,
   int xx, yy;
   int bpl;
   register guint8 data;
-  guint8 *o;
   guint8 *srow = (guint8*)image->mem + y1 * image->bpl, *orow = pixels;
 
   d (printf ("bitmap, with alpha\n"));
@@ -146,7 +144,7 @@ bitmap1a (GdkImage    *image,
 
   for (yy = y1; yy < y2; yy++)
     {
-      o = orow;
+      guint8 *o = orow;
       
       for (xx = x1; xx < x2; xx ++)
 	{
@@ -192,7 +190,6 @@ rgb1 (GdkImage    *image,
   int xx, yy;
   int bpl;
   register guint8 data;
-  guint8 *o;
   guint8 *srow = (guint8*)image->mem + y1 * image->bpl, *orow = pixels;
 
   d (printf ("1 bits/pixel\n"));
@@ -205,7 +202,7 @@ rgb1 (GdkImage    *image,
 
   for (yy = y1; yy < y2; yy++)
     {
-      o = orow;
+      guint8 *o = orow;
       
       for (xx = x1; xx < x2; xx ++)
 	{
@@ -240,7 +237,6 @@ rgb1a (GdkImage    *image,
   int xx, yy;
   int bpl;
   register guint8 data;
-  guint8 *o;
   guint8 *srow = (guint8*)image->mem + y1 * image->bpl, *orow = pixels;
   
   d (printf ("1 bits/pixel\n"));
@@ -252,7 +248,7 @@ rgb1a (GdkImage    *image,
 
   for (yy = y1; yy < y2; yy++)
     {
-      o = orow;
+      guint8 *o = orow;
       
       for (xx = x1; xx < x2; xx ++)
 	{
@@ -290,8 +286,6 @@ rgb8 (GdkImage    *image,
   guint32 mask;
   register guint32 data;
   guint8 *srow = (guint8*)image->mem + y1 * image->bpl + x1 * image->bpp, *orow = pixels;
-  register guint8 *s;
-  register guint8 *o;
 
   bpl = image->bpl;
 
@@ -301,8 +295,8 @@ rgb8 (GdkImage    *image,
 
   for (yy = y1; yy < y2; yy++)
     {
-      s = srow;
-      o = orow;
+      register guint8 *s = srow;
+      register guint8 *o = orow;
       for (xx = x1; xx < x2; xx++)
         {
           data = *s++ & mask;
@@ -772,8 +766,6 @@ rgb888alsb (GdkImage    *image,
   int xx, yy;
   int bpl;
 
-  guint8 *s;	/* for byte order swapping */
-  guint8 *o;
   guint8 *srow = (guint8*)image->mem + y1 * image->bpl + x1 * image->bpp, *orow = pixels;
 
   bpl = image->bpl;
@@ -783,8 +775,8 @@ rgb888alsb (GdkImage    *image,
   /* lsb data */
   for (yy = y1; yy < y2; yy++)
     {
-      s = srow;
-      o = orow;
+      guint8 *s = srow;
+      guint8 *o = orow;
       for (xx = x1; xx < x2; xx++)
 	{
 	  *o++ = s[2];
@@ -812,7 +804,6 @@ rgb888lsb (GdkImage    *image,
   int bpl;
 
   guint8 *srow = (guint8*)image->mem + y1 * image->bpl + x1 * image->bpp, *orow = pixels;
-  guint8 *o, *s;
 
   bpl = image->bpl;
 
@@ -820,8 +811,8 @@ rgb888lsb (GdkImage    *image,
 
   for (yy = y1; yy < y2; yy++)
     {
-      s = srow;
-      o = orow;
+      guint8 *s = srow;
+      guint8 *o = orow;
       for (xx = x1; xx < x2; xx++)
 	{
 	  *o++ = s[2];
@@ -887,8 +878,6 @@ rgb888msb (GdkImage    *image,
   int bpl;
 
   guint8 *srow = (guint8*)image->mem + y1 * image->bpl + x1 * image->bpp, *orow = pixels;
-  guint8 *s;
-  guint8 *o;
 
   d (printf ("32 bit, msb, no alpha\n"));
 
@@ -896,8 +885,8 @@ rgb888msb (GdkImage    *image,
 
   for (yy = y1; yy < y2; yy++)
     {
-      s = srow;
-      o = orow;
+      guint8 *s = srow;
+      guint8 *o = orow;
       for (xx = x1; xx < x2; xx++)
 	{
 	  *o++ = s[1];
@@ -927,7 +916,6 @@ convert_real_slow (GdkImage    *image,
 {
   int xx, yy;
   guint8 *orow = pixels;
-  guint8 *o;
   guint32 pixel;
   GdkVisual *v;
   guint8 component;
@@ -950,7 +938,7 @@ convert_real_slow (GdkImage    *image,
 
   for (yy = y1; yy < y2; yy++)
     {
-      o = orow;
+      guint8 *o = orow;
       for (xx = x1; xx < x2; xx++)
 	{
 	  pixel = gdk_image_get_pixel (image, xx, yy);

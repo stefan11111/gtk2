@@ -15,6 +15,7 @@ GTK_PRINT_PREVIEW_COMMAND="evince --unlink-tempfile --preview --print-settings %
 SUBDIRS = .
 DIST_SUBDIRS=
 
+if HAVE_PRINT
 if HAVE_PAPI_CUPS
 GTK_PRINT_BACKENDS=file,papi,cups
 else
@@ -27,6 +28,9 @@ else
 GTK_PRINT_BACKENDS=file,lpr
 endif
 endif
+endif
+else
+GTK_PRINT_BACKENDS=
 endif
 
 # manually remove if wanted
@@ -67,10 +71,6 @@ INCLUDES =						\
 gtarget=$(gdktarget)
 
 TESTS_ENVIRONMENT = srcdir="$(srcdir)" gtk_all_c_sources="$(gtk_all_c_sources)"
-TESTS = 
-if OS_LINUX
-TESTS += pltcheck.sh
-endif
 
 libgtkincludedir = $(includedir)/gtk-2.0/gtk
 libadd =								\
@@ -1150,7 +1150,6 @@ EXTRA_DIST +=                   \
 	gtkrc.key.default	\
 	gtkrc.key.emacs		\
 	gtkrc.key.mac		\
-	pltcheck.sh		\
 	gtktypebuiltins.c.template      \
 	gtktypebuiltins.h.template
 

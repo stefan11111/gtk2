@@ -448,16 +448,13 @@ display_closed_cb (GdkDisplay *display,
 		   gboolean    is_error)
 {
   GdkScreen *screen;
-  GtkSettings *settings;
   gint i;
 
   for (i = 0; i < gdk_display_get_n_screens (display); i++)
     {
       screen = gdk_display_get_screen (display, i);
 
-      settings = gtk_settings_get_for_screen (screen);
-
-      g_object_set_data_full (G_OBJECT (settings),
+      g_object_set_data_full (G_OBJECT (gtk_settings_get_for_screen (screen)),
 			      I_("gtk-modules"),
 			      NULL, NULL);
     }  

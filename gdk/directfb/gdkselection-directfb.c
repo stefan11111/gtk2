@@ -116,13 +116,10 @@ GdkWindow *
 gdk_selection_owner_get_for_display (GdkDisplay *display,
                                      GdkAtom     selection)
 {
-  OwnerInfo *info;
-  GSList    *tmp_list;
-
-  tmp_list = owner_list;
+  GSList    *tmp_list = owner_list;
   while (tmp_list)
     {
-      info = tmp_list->data;
+      OwnerInfo *info = tmp_list->data;
       if (info->selection == selection)
 	{
 	  return info->owner;
@@ -138,19 +135,14 @@ gdk_selection_convert (GdkWindow *requestor,
 		       GdkAtom    target,
 		       guint32    time)
 {
-  GdkEvent  *event;
-  GdkWindow *owner;
-  GdkWindow *event_window;
-
-  owner = gdk_selection_owner_get (selection);
+  GdkWindow *owner = gdk_selection_owner_get (selection);
 
   if (owner)
     {
-      event_window = gdk_directfb_other_event_window (owner,
-                                                      GDK_SELECTION_REQUEST);
+      GdkWindow *event_window = gdk_directfb_other_event_window (owner, GDK_SELECTION_REQUEST);
       if (event_window)
 	{
-	  event = gdk_directfb_event_make (event_window,
+	  GdkEvent  *event = gdk_directfb_event_make (event_window,
                                            GDK_SELECTION_REQUEST);
 	  event->selection.requestor = GDK_WINDOW_DFB_ID (requestor);
 	  event->selection.selection = selection;
@@ -228,10 +220,7 @@ gdk_selection_send_notify_for_display (GdkDisplay *display,
                                        GdkAtom     property,
                                        guint32     time)
 {
-  GdkEvent  *event;
-  GdkWindow *event_window;
-
-  event_window = gdk_window_lookup ((GdkNativeWindow) requestor);
+  GdkWindow *event_window = gdk_window_lookup ((GdkNativeWindow) requestor);
 
   if (!event_window)
     return;
@@ -241,7 +230,7 @@ gdk_selection_send_notify_for_display (GdkDisplay *display,
 
   if (event_window)
     {
-      event = gdk_directfb_event_make (event_window, GDK_SELECTION_NOTIFY);
+      GdkEvent  *event = gdk_directfb_event_make (event_window, GDK_SELECTION_NOTIFY);
       event->selection.selection = selection;
       event->selection.target = target;
       event->selection.property = property;

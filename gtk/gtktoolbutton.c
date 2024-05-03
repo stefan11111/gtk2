@@ -973,20 +973,16 @@ void
 gtk_tool_button_set_label (GtkToolButton *button,
 			   const gchar   *label)
 {
-  gchar *old_label;
-  gchar *elided_label;
-  
   g_return_if_fail (GTK_IS_TOOL_BUTTON (button));
 
-  old_label = button->priv->label_text;
+  gchar *old_label = button->priv->label_text;
 
   button->priv->label_text = g_strdup (label);
   button->priv->contents_invalid = TRUE;     
 
   if (label)
     {
-      elided_label = _gtk_toolbar_elide_underscores (label);
-      g_free (elided_label);
+      g_free (_gtk_toolbar_elide_underscores (label));
     }
 
   g_free (old_label);

@@ -274,10 +274,10 @@ gdk_cursor_new_for_display (GdkDisplay *display, GdkCursorType cursor_type)
                       u32 color = ((x - mx) < 0  || (y - my) < 0  ||
                                    (x - mx) >= stock_cursors[cursor_type].width  ||
                                    (y - my) >= stock_cursors[cursor_type].height)
-                        ? 0x00FFFFFF : (src[bit/8] & (1 << bit%8) ? 0 : 0x00FFFFFF);
+                        ? 0x00FFFFFF : ((src[bit/8] & (1 << bit%8)) ? 0 : 0x00FFFFFF);
 
 		      u8  a     = color ? 0xE0 : 0xFF;
-                      u32 alpha = mask[mbit/8] & (1 << mbit%8) ? (a << 24) : 0;
+                      u32 alpha = (mask[mbit/8] & (1 << mbit%8)) ? (a << 24) : 0;
 
                       dst[x + y*pitch] = alpha | color;
                     }

@@ -176,13 +176,11 @@ search_thread_add_hits_idle (gpointer user_data)
 static void
 send_batch (SearchThreadData *data)
 {
-  SearchHits *hits;
-  
   data->n_processed_files = 0;
   
   if (data->uri_hits) 
     {
-      hits = g_new (SearchHits, 1);
+      SearchHits *hits = g_new (SearchHits, 1);
       hits->uris = data->uri_hits;
       hits->thread_data = data;
       

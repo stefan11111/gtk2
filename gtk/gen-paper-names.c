@@ -143,7 +143,7 @@ main (int argc, char *argv[])
         if (i == j) continue;
 
         if (names[i].len < names[j].len ||
-            (names[i].len == names[j].len && j < i))
+            (j < i && names[i].len == names[j].len))
           {
             if (strcmp (names[i].s, names[j].s + names[j].len - names[i].len) == 0)
               {

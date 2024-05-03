@@ -200,19 +200,16 @@ beagle_hits_added (BeagleQuery             *query,
 		   BeagleHitsAddedResponse *response, 
 		   GtkSearchEngineBeagle   *engine)
 {
-  GSList *hits, *list;
-  GList *hit_uris;
-  const gchar *uri;
+  GSList *list;
+  GList *hit_uris = NULL;
   
-  hit_uris = NULL;
-  
-  hits = beagle_hits_added_response_get_hits (response);
+  GSList *hits = beagle_hits_added_response_get_hits (response);
   
   for (list = hits; list != NULL; list = list->next) 
     {
       BeagleHit *hit = BEAGLE_HIT (list->data);
       
-      uri = beagle_hit_get_uri (hit);
+      const gchar *uri = beagle_hit_get_uri (hit);
       
       if (engine->priv->current_query_uri_prefix &&
 	  !g_str_has_prefix (uri, engine->priv->current_query_uri_prefix)) 

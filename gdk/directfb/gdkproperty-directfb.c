@@ -205,20 +205,15 @@ gdk_property_delete_2 (GdkWindow         *window,
                        GdkAtom            property,
                        GdkWindowProperty *prop)
 {
-  GdkWindowImplDirectFB *impl;
-  GdkEvent              *event;
-  GdkWindow             *event_window;
-
-  impl = GDK_WINDOW_IMPL_DIRECTFB (GDK_WINDOW_OBJECT (window)->impl);
+  GdkWindowImplDirectFB *impl = GDK_WINDOW_IMPL_DIRECTFB (GDK_WINDOW_OBJECT (window)->impl);
 
   g_hash_table_remove (impl->properties, GUINT_TO_POINTER (property));
   g_free (prop);
 
-  event_window = gdk_directfb_other_event_window (window, GDK_PROPERTY_NOTIFY);
-
+  GdkWindow *event_window = gdk_directfb_other_event_window (window, GDK_PROPERTY_NOTIFY);
   if (event_window)
     {
-      event                 = gdk_directfb_event_make (event_window, GDK_PROPERTY_NOTIFY);
+      GdkEvent *event       = gdk_directfb_event_make (event_window, GDK_PROPERTY_NOTIFY);
       event->property.atom  = property;
       event->property.state = GDK_PROPERTY_DELETE;
     }
@@ -326,8 +321,6 @@ gdk_property_change (GdkWindow    *window,
   GdkWindowProperty     *prop;
   GdkWindowProperty     *new_prop;
   gint                   new_size = 0;
-  GdkEvent              *event;
-  GdkWindow             *event_window;
 
   g_return_if_fail (window == NULL || GDK_IS_WINDOW (window));
 
@@ -392,11 +385,11 @@ gdk_property_change (GdkWindow    *window,
                        GUINT_TO_POINTER (property), new_prop);
   g_free (prop);
 
-  event_window = gdk_directfb_other_event_window (window, GDK_PROPERTY_NOTIFY);
+  GdkWindow *event_window = gdk_directfb_other_event_window (window, GDK_PROPERTY_NOTIFY);
 
   if (event_window)
     {
-      event                 = gdk_directfb_event_make (event_window, GDK_PROPERTY_NOTIFY);
+      GdkEvent *event       = gdk_directfb_event_make (event_window, GDK_PROPERTY_NOTIFY);
       event->property.atom  = property;
       event->property.state = GDK_PROPERTY_NEW_VALUE;
     }

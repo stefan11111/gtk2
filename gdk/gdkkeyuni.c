@@ -869,7 +869,6 @@ gdk_keyval_to_unicode (guint keyval)
 {
   int min = 0;
   int max = G_N_ELEMENTS (gdk_keysym_to_unicode_tab) - 1;
-  int mid;
 
   /* First check for Latin-1 characters (1:1 mapping) */
   if ((keyval >= 0x0020 && keyval <= 0x007e) ||
@@ -883,7 +882,7 @@ gdk_keyval_to_unicode (guint keyval)
 
   /* binary search in table */
   while (max >= min) {
-    mid = (min + max) / 2;
+    int mid = (min + max) / 2;
     if (gdk_keysym_to_unicode_tab[mid].keysym < keyval)
       min = mid + 1;
     else if (gdk_keysym_to_unicode_tab[mid].keysym > keyval)
@@ -1669,7 +1668,6 @@ gdk_unicode_to_keyval (guint32 wc)
 {
   int min = 0;
   int max = G_N_ELEMENTS (gdk_unicode_to_keysym_tab) - 1;
-  int mid;
 
   /* First check for Latin-1 characters (1:1 mapping) */
   if ((wc >= 0x0020 && wc <= 0x007e) ||
@@ -1678,7 +1676,7 @@ gdk_unicode_to_keyval (guint32 wc)
 
   /* Binary search in table */
   while (max >= min) {
-    mid = (min + max) / 2;
+    int mid = (min + max) / 2;
     if (gdk_unicode_to_keysym_tab[mid].ucs < wc)
       min = mid + 1;
     else if (gdk_unicode_to_keysym_tab[mid].ucs > wc)

@@ -4,7 +4,11 @@ A fork of gtk2 without bloat, like atk and accessiblilty nonsense.
 
 Further debloating is tricky to do because it would either break api, break actual features, or both.
 
-There is also a patch to remove printing backends in the print-patches directory named remove-printing.patch.
+Printing support is optional and disabled by default.
+
+To enable, pass --enable-print to the configure script.
+
+This is needed even for the backends file and lpr.
 
 Here are some text files I removed from the main repo: https://github.com/stefan11111/gtk2-textfiles
 

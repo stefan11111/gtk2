@@ -713,17 +713,16 @@ set_grip_cursor (GtkStatusbar *statusbar)
     {
       GtkWidget *widget = GTK_WIDGET (statusbar);
       GdkDisplay *display = gtk_widget_get_display (widget);
-      GdkCursorType cursor_type;
-      GdkCursor *cursor;
       
       if (gtk_widget_is_sensitive (widget))
         {
+          GdkCursorType cursor_type;
           if (gtk_widget_get_direction (widget) == GTK_TEXT_DIR_LTR)
 	    cursor_type = GDK_BOTTOM_RIGHT_CORNER;
           else
 	    cursor_type = GDK_BOTTOM_LEFT_CORNER;
 
-          cursor = gdk_cursor_new_for_display (display, cursor_type);
+          GdkCursor *cursor = gdk_cursor_new_for_display (display, cursor_type);
           gdk_window_set_cursor (statusbar->grip_window, cursor);
           gdk_cursor_unref (cursor);
         }
@@ -944,13 +943,12 @@ static gboolean
 has_extra_children (GtkStatusbar *statusbar)
 {
   GList *l;
-  GtkBoxChild *child, *frame;
 
   /* If the internal frame has been modified assume we have extra children */
   if (gtk_bin_get_child (GTK_BIN (statusbar->frame)) != statusbar->label)
     return TRUE;
 
-  frame = NULL;
+  GtkBoxChild *frame = NULL;
   for (l = GTK_BOX (statusbar)->children; l; l = l->next)
     {
       frame = l->data;
@@ -961,7 +959,7 @@ has_extra_children (GtkStatusbar *statusbar)
   
   for (l = l->next; l; l = l->next)
     {
-      child = l->data;
+      GtkBoxChild *child = l->data;
 
       if (!gtk_widget_get_visible (child->widget))
 	continue;

@@ -222,7 +222,7 @@ output_file_from_settings (GtkPrintSettings *settings,
   if (uri == NULL)
     { 
       const gchar *extension;
-      gchar *name, *locale_name, *path;
+      gchar *name, *locale_name;
 
       if (default_format)
         extension = default_format;
@@ -254,7 +254,7 @@ output_file_from_settings (GtkPrintSettings *settings,
       if (locale_name != NULL)
         {
 	  gchar *current_dir = g_get_current_dir ();
-          path = g_build_filename (current_dir, locale_name, NULL);
+          gchar *path = g_build_filename (current_dir, locale_name, NULL);
           g_free (locale_name);
 
           uri = g_filename_to_uri (path, NULL, NULL);
@@ -516,13 +516,12 @@ set_printer_format_from_option_set (GtkPrinter          *printer,
 				    GtkPrinterOptionSet *set)
 {
   GtkPrinterOption *format_option;
-  const gchar *value;
   gint i;
 
   format_option = gtk_printer_option_set_lookup (set, "output-file-format");
   if (format_option && format_option->value)
     {
-      value = format_option->value;
+      const gchar *value = format_option->value;
       if (value)
         {
 	  for (i = 0; i < N_FORMATS; ++i)
@@ -623,7 +622,6 @@ file_printer_get_options (GtkPrinter           *printer,
   OutputFormat format;
   gchar *uri;
   gint current_format = 0;
-  _OutputFormatChangedData *format_changed_data;
 
   format = format_from_settings (settings);
 
@@ -709,7 +707,7 @@ file_printer_get_options (GtkPrinter           *printer,
       gtk_printer_option_set_add (set, option);
 
       set_printer_format_from_option_set (printer, set);
-      format_changed_data = g_new (_OutputFormatChangedData, 1);
+      _OutputFormatChangedData *format_changed_data = g_new (_OutputFormatChangedData, 1);
       format_changed_data->printer = printer;
       format_changed_data->set = set;
       g_signal_connect_data (option, "changed",
@@ -781,7 +779,6 @@ file_printer_list_papers (GtkPrinter *printer)
 {
   GList *result = NULL;
   GList *papers, *p;
-  GtkPageSetup *page_setup;
 
   papers = gtk_paper_size_get_paper_sizes (TRUE);
 
@@ -789,7 +786,7 @@ file_printer_list_papers (GtkPrinter *printer)
     {
       GtkPaperSize *paper_size = p->data;
 
-      page_setup = gtk_page_setup_new ();
+      GtkPageSetup *page_setup = gtk_page_setup_new ();
       gtk_page_setup_set_paper_size (page_setup, paper_size);
       gtk_paper_size_free (paper_size);
       result = g_list_prepend (result, page_setup);

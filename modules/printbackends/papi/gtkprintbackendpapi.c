@@ -62,10 +62,6 @@ struct _GtkPrintBackendPapi
   char *default_printer;  
 };
 
-typedef struct {
-  GtkPrinter *printer;
-} _PrinterStatus;
-
 static GObjectClass *backend_parent_class;
 
 static void                 gtk_print_backend_papi_class_init      (GtkPrintBackendPapiClass *class);
@@ -342,14 +338,12 @@ gtk_print_backend_papi_print_stream (GtkPrintBackend        *print_backend,
 				    gpointer                user_data,
 				    GDestroyNotify          dnotify)
 {
-  GError *print_error = NULL;
   GtkPrinterPapi *printer;
   _PrintStreamData *ps;
   GtkPrintSettings *settings;
   gint argc;  
   gint in_fd;
   gchar **argv = NULL; 
-  const gchar *title;
   char *prtnm = NULL;
   GtkPrintDuplex val;
   papi_status_t pstatus = NULL;
@@ -360,7 +354,7 @@ gtk_print_backend_papi_print_stream (GtkPrintBackend        *print_backend,
   settings = gtk_print_job_get_settings (job);
 
   /* FIXME - the title should be set as the job-name */
-  title = gtk_print_job_get_title (job);
+  /* const gchar *title = */gtk_print_job_get_title (job);
 
   ps = g_new0 (_PrintStreamData, 1);
   ps->callback = callback;
@@ -578,7 +572,6 @@ papi_get_printer_list (GtkPrintBackendPapi *papi_backend)
   for (i = 0; printers[i] != NULL; i++) 
     {
       GtkPrinter *printer;
-      char *name = NULL, *url = NULL;
       papi_attribute_t **attrs = NULL;
 
           printer = gtk_print_backend_find_printer (backend, printers[i]);
@@ -644,7 +637,7 @@ update_printer_status (GtkPrinter *printer)
 {
   GtkPrintBackend *backend;
   GtkPrinterPapi *papi_printer;
-  gboolean status_changed = FALSE;
+  /* gboolean status_changed = FALSE; */
 
   backend = gtk_printer_get_backend (printer);
   papi_printer = GTK_PRINTER_PAPI (printer);
@@ -723,7 +716,6 @@ papi_printer_prepare_for_print (GtkPrinter       *printer,
   GtkPageSet page_set;
   double scale;
   GtkPaperSize *papersize = NULL;
-  char *ppd_paper_name;
 
   print_job->print_pages = gtk_print_settings_get_print_pages (settings);
   print_job->page_ranges = NULL;
@@ -743,7 +735,7 @@ papi_printer_prepare_for_print (GtkPrinter       *printer,
     print_job->scale = scale/100.0;
 
   papersize = gtk_page_setup_get_paper_size (page_setup);
-  ppd_paper_name = gtk_paper_size_get_ppd_name (papersize);
+  gtk_paper_size_get_ppd_name (papersize);
 
   page_set = gtk_print_settings_get_page_set (settings);
   if (page_set == GTK_PAGE_SET_EVEN)
@@ -797,7 +789,6 @@ papi_display_printer_status (gpointer user_data)
   papi_service_t service;
   papi_attribute_t **attrs = NULL;
   papi_printer_t current_printer = NULL;
-  static int count = 0;
 
   papi_printer = GTK_PRINTER_PAPI (printer);
   if (papiServiceCreate (&service, NULL, NULL, NULL, NULL, PAPI_ENCRYPT_NEVER,

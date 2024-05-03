@@ -115,7 +115,7 @@ _gdk_visual_init (void)
   DFBDisplayLayerConfig  dlc;
   DFBSurfaceDescription  desc;
   IDirectFBSurface      *dest;
-  gint                   i, c;
+  gint                   i;
 
 
   _gdk_display->layer->GetConfiguration (_gdk_display->layer, &dlc);

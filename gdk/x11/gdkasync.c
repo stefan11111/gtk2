@@ -689,11 +689,11 @@ _gdk_x11_get_window_child_info (GdkDisplay       *display,
   for (i = 0; i < state.nchildren; i++)
     {
       xResourceReq *resource_req;
-      xGetPropertyReq *prop_req;
       Window window = state.children[i];
       
       if (get_wm_state)
 	{
+          xGetPropertyReq *prop_req;
 	  GetReq (GetProperty, prop_req);
 	  prop_req->window = window;
 	  prop_req->property = wm_state_atom;

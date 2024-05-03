@@ -63,10 +63,9 @@ _gdk_input_find_device (GdkDisplay *display,
 			guint32     id)
 {
   GList *tmp_list = GDK_DISPLAY_X11 (display)->input_devices;
-  GdkDevicePrivate *gdkdev;
   while (tmp_list)
     {
-      gdkdev = (GdkDevicePrivate *)(tmp_list->data);
+      GdkDevicePrivate *gdkdev = (GdkDevicePrivate *)(tmp_list->data);
       if (gdkdev->deviceid == id)
 	return gdkdev;
       tmp_list = tmp_list->next;
@@ -325,7 +324,6 @@ _gdk_input_select_events (GdkWindow *impl_window,
   XEventClass classes[GDK_MAX_DEVICE_CLASSES];
   gint num_classes;
   guint event_mask;
-  GdkWindowObject *w;
   GdkInputWindow *iw;
   GList *l;
 
@@ -337,7 +335,7 @@ _gdk_input_select_events (GdkWindow *impl_window,
     {
       for (l = iw->windows; l != NULL; l = l->next)
 	{
-	  w = l->data;
+	  GdkWindowObject *w = l->data;
 	  if (gdkdev->info.has_cursor || (w->extension_events & GDK_ALL_DEVICES_MASK))
 	    event_mask |= w->extension_events;
 	}
@@ -372,7 +370,7 @@ _gdk_input_common_init (GdkDisplay *display,
 			gint        include_core)
 {
   XDeviceInfo   *devices;
-  int num_devices, loop;
+  int num_devices;
   int ignore, event_base;
   GdkDisplayX11 *display_x11 = GDK_DISPLAY_X11 (display);
 
@@ -388,6 +386,7 @@ _gdk_input_common_init (GdkDisplay *display,
       devices = XListInputDevices(display_x11->xdisplay, &num_devices);
       if (devices)
 	{
+          int loop;
 	  for(loop=0; loop<num_devices; loop++)
 	    {
 	      GdkDevicePrivate *gdkdev = gdk_input_device_new(display,

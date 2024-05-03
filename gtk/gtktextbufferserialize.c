@@ -281,7 +281,6 @@ serialize_tag (gpointer key,
 {
   SerializationContext *context = user_data;
   GtkTextTag *tag = data;
-  gchar *tag_name;
   gint tag_id;
   GParamSpec **pspecs;
   guint n_pspecs;
@@ -292,7 +291,7 @@ serialize_tag (gpointer key,
   /* Handle anonymous tags */
   if (tag->name)
     {
-      tag_name = g_markup_escape_text (tag->name, -1);
+      gchar *tag_name = g_markup_escape_text (tag->name, -1);
       g_string_append_printf (context->tag_table_str, "name=\"%s\"", tag_name);
       g_free (tag_name);
     }
@@ -311,7 +310,6 @@ serialize_tag (gpointer key,
   for (i = 0; i < n_pspecs; i++)
     {
       GValue value = { 0 };
-      gchar *tmp, *tmp2;
 
       if (!(pspecs[i]->flags & G_PARAM_READABLE) ||
 	  !(pspecs[i]->flags & G_PARAM_WRITABLE))
@@ -321,11 +319,10 @@ serialize_tag (gpointer key,
 	continue;
 
       /* Now serialize the attr */
-      tmp2 = serialize_value (&value);
-
+      gchar *tmp2 = serialize_value (&value);
       if (tmp2)
 	{
-	  tmp = g_markup_escape_text (pspecs[i]->name, -1);
+	  gchar *tmp = g_markup_escape_text (pspecs[i]->name, -1);
 	  g_string_append_printf (context->tag_table_str, "   <attr name=\"%s\" ", tmp);
 	  g_free (tmp);
 
@@ -482,14 +479,13 @@ serialize_text (GtkTextBuffer        *buffer,
       for (tmp = added; tmp; tmp = tmp->next)
 	{
 	  GtkTextTag *tag = tmp->data;
-	  gchar *tag_name;
 
 	  /* Add it to the tag hash table */
 	  g_hash_table_insert (context->tags, tag, tag);
 
 	  if (tag->name)
 	    {
-	      tag_name = g_markup_escape_text (tag->name, -1);
+	      gchar *tag_name = g_markup_escape_text (tag->name, -1);
 
 	      g_string_append_printf (context->text_str, "<apply_tag name=\"%s\">", tag_name);
 	      g_free (tag_name);
@@ -999,8 +995,6 @@ tag_exists (GMarkupParseContext *context,
 	    ParseInfo           *info,
 	    GError             **error)
 {
-  const gchar *real_name;
-
   if (info->create_tags)
     {
       /* If we have an anonymous tag, just return it directly */
@@ -1009,7 +1003,7 @@ tag_exists (GMarkupParseContext *context,
 				    GINT_TO_POINTER (id));
 
       /* First, try the substitutions */
-      real_name = g_hash_table_lookup (info->substitutions, name);
+      const gchar *real_name = g_hash_table_lookup (info->substitutions, name);
 
       if (real_name)
 	return gtk_text_tag_table_lookup (info->buffer->tag_table, real_name);
@@ -1089,7 +1083,6 @@ parse_apply_tag_element (GMarkupParseContext  *context,
 {
   const gchar *name, *priority;
   gint id;
-  GtkTextTag *tag;
 
   g_assert (peek_state (info) == STATE_TEXT ||
 	    peek_state (info) == STATE_APPLY_TAG);
@@ -1105,7 +1098,7 @@ parse_apply_tag_element (GMarkupParseContext  *context,
 	return;
 
 
-      tag = tag_exists (context, name, id, info, error);
+      GtkTextTag *tag = tag_exists (context, name, id, info, error);
 
       if (!tag)
 	return;
@@ -1157,12 +1150,12 @@ parse_attr_element (GMarkupParseContext  *context,
   const gchar *name, *type, *value;
   GType gtype;
   GValue gvalue = { 0 };
-  GParamSpec *pspec;
 
   g_assert (peek_state (info) == STATE_TAG);
 
   if (ELEMENT_IS ("attr"))
     {
+      GParamSpec *pspec;
       if (!locate_attributes (context, element_name, attribute_names, attribute_values, FALSE, error,
 			      "name", &name, "type", &type, "value", &value, NULL))
 	return;
@@ -1259,16 +1252,14 @@ parse_tag_element (GMarkupParseContext  *context,
 		   ParseInfo            *info,
 		   GError              **error)
 {
-  const gchar *name, *priority;
-  gchar *tag_name;
-  gint id;
-  gint prio;
-  gchar *tmp;
-
   g_assert (peek_state (info) == STATE_TAGS);
 
   if (ELEMENT_IS ("tag"))
     {
+      const gchar *name, *priority;
+      gint id;
+      gint prio;
+      gchar *tmp;
       if (!locate_attributes (context, element_name, attribute_names, attribute_values, TRUE, error,
 			      "priority", &priority, NULL))
 	return;
@@ -1300,7 +1291,7 @@ parse_tag_element (GMarkupParseContext  *context,
 
       if (name)
 	{
-	  tag_name = get_tag_name (info, name);
+	  gchar *tag_name = get_tag_name (info, name);
 	  info->current_tag = gtk_text_tag_new (tag_name);
 	  g_free (tag_name);
 	}
@@ -1436,7 +1427,6 @@ end_element_handler (GMarkupParseContext  *context,
 		     GError              **error)
 {
   ParseInfo *info = user_data;
-  gchar *tmp;
   GList *list;
 
   switch (peek_state (info))
@@ -1472,7 +1462,7 @@ end_element_handler (GMarkupParseContext  *context,
       if (info->current_tag->name)
 	{
 	  /* Add tag to defined tags hash */
-	  tmp = g_strdup (info->current_tag->name);
+	  gchar *tmp = g_strdup (info->current_tag->name);
 	  g_hash_table_insert (info->defined_tags,
 			       tmp, tmp);
 	}

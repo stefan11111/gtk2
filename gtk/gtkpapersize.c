@@ -65,13 +65,11 @@ lookup_paper_info (const gchar *name)
 {
   int lower = 0;
   int upper = G_N_ELEMENTS (standard_names_offsets) - 1;
-  int mid;
-  int cmp;
 
   do 
     {
-       mid = (lower + upper) / 2;
-       cmp = strcmp (name, paper_names + standard_names_offsets[mid].name);
+       int mid = (lower + upper) / 2;
+       int cmp = strcmp (name, paper_names + standard_names_offsets[mid].name);
        if (cmp < 0)
          upper = mid - 1;
        else if (cmp > 0)

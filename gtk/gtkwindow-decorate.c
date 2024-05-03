@@ -550,11 +550,9 @@ gtk_decorated_window_window_state (GtkWidget	       *widget,
 {
   GtkWindow *window;
   GtkWindowDecoration *deco;
-  GdkWindowObject *priv;
       
   window = GTK_WINDOW (widget);
   deco = get_decoration (window);
-  priv = GDK_WINDOW_OBJECT (window->frame);
 
   if (event->changed_mask & GDK_WINDOW_STATE_MAXIMIZED)
     {
@@ -783,7 +781,6 @@ gtk_decorated_window_recalculate_regions (GtkWindow *window)
       region->rect.width = DECORATION_BORDER_RIGHT;
       region->rect.height = DECORATION_BORDER_BOTTOM + 10;
       region->type = GTK_WINDOW_REGION_BR_RESIZE;
-      region++;
     }
 }
 

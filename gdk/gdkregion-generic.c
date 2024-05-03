@@ -532,16 +532,14 @@ miIntersectO (GdkRegion    *pReg,
 	      gint          y1,
 	      gint          y2)
 {
-  int  	x1;
-  int  	x2;
   GdkRegionBox *pNextRect;
 
   pNextRect = &pReg->rects[pReg->numRects];
 
   while ((r1 != r1End) && (r2 != r2End))
     {
-      x1 = MAX (r1->x1,r2->x1);
-      x2 = MIN (r1->x2,r2->x2);
+      int x1 = MAX (r1->x1,r2->x1);
+      int x2 = MIN (r1->x2,r2->x2);
 
       /*
        * If there's any overlap between the two rectangles, add that
@@ -1394,7 +1392,6 @@ miSubtractO (GdkRegion    *pReg,
 	   * Left part of subtrahend covers part of minuend: add uncovered
 	   * part of minuend to region and skip to next subtrahend.
 	   */
-	  g_assert(x1<r2->x1);
 	  MEMCHECK(pReg, pNextRect, pReg->rects);
 	  pNextRect->x1 = x1;
 	  pNextRect->y1 = y1;

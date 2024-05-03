@@ -370,7 +370,6 @@ gtk_list_size_request (GtkWidget      *widget,
 		       GtkRequisition *requisition)
 {
   GtkList *list = GTK_LIST (widget);
-  GtkWidget *child;
   GList *children;
 
   requisition->width = 0;
@@ -379,7 +378,7 @@ gtk_list_size_request (GtkWidget      *widget,
   children = list->children;
   while (children)
     {
-      child = children->data;
+      GtkWidget *child = children->data;
       children = children->next;
 
       if (gtk_widget_get_visible (child))
@@ -406,7 +405,6 @@ gtk_list_size_allocate (GtkWidget     *widget,
 			GtkAllocation *allocation)
 {
   GtkList *list = GTK_LIST (widget);
-  GtkWidget *child;
   GtkAllocation child_allocation;
   GList *children;
 
@@ -427,7 +425,7 @@ gtk_list_size_allocate (GtkWidget     *widget,
 
       while (children)
 	{
-	  child = children->data;
+	  GtkWidget *child = children->data;
 	  children = children->next;
 
 	  if (gtk_widget_get_visible (child))
@@ -569,9 +567,7 @@ gtk_list_motion_notify (GtkWidget      *widget,
       if (row < 0)
 	{
 	  item = GTK_WIDGET (work->data);
-	  if (item->allocation.y > y || 
-	      (item->allocation.y <= y &&
-	       item->allocation.y + item->allocation.height > y))
+	  if (item->allocation.y > y || item->allocation.y + item->allocation.height > y)
 	    row = length;
 	}
 
@@ -840,14 +836,13 @@ gtk_list_forall (GtkContainer  *container,
 		 gpointer	callback_data)
 {
   GtkList *list = GTK_LIST (container);
-  GtkWidget *child;
   GList *children;
 
   children = list->children;
 
   while (children)
     {
-      child = children->data;
+      GtkWidget *child = children->data;
       children = children->next;
 
       (* callback) (child, callback_data);
@@ -1113,7 +1108,6 @@ gtk_list_clear_items (GtkList *list,
 		      gint     end)
 {
   GtkContainer *container;
-  GtkWidget *widget;
   GtkWidget *new_focus_child = NULL;
   GList *start_list;
   GList *end_list;
@@ -1174,7 +1168,7 @@ gtk_list_clear_items (GtkList *list,
   tmp_list = start_list;
   while (tmp_list)
     {
-      widget = tmp_list->data;
+      GtkWidget *widget = tmp_list->data;
       tmp_list = tmp_list->next;
 
       g_object_ref (widget);
@@ -1481,7 +1475,6 @@ void
 gtk_list_unselect_all (GtkList *list)
 {
   GtkContainer *container;
-  GtkWidget *item;
   GList *work;
  
   g_return_if_fail (GTK_IS_LIST (list));
@@ -1517,7 +1510,7 @@ gtk_list_unselect_all (GtkList *list)
 
   while (work)
     {
-      item = work->data;
+      GtkWidget *item = work->data;
       work = work->next;
       gtk_list_unselect_child (list, item);
     }

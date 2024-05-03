@@ -694,7 +694,7 @@ create_cursor_image (GdkPixbuf *pixbuf,
 		     gint       y)
 {
   guint width, height, rowstride, n_channels;
-  guchar *pixels, *src;
+  guchar *pixels;
   XcursorImage *xcimage;
   XcursorPixel *dest;
 
@@ -718,13 +718,11 @@ create_cursor_image (GdkPixbuf *pixbuf,
 
       for (j = 0; j < height; j++)
         {
-          src = pixels + j * rowstride;
+          guchar *src = pixels + j * rowstride;
           for (i = 0; i < width; i++)
             {
               *dest = (0xff << 24) | (src[0] << 16) | (src[1] << 8) | src[2];
             }
-
-	  src += n_channels;
 	  dest++;
 	}
     }
@@ -778,7 +776,6 @@ gdk_cursor_new_from_pixbuf (GdkDisplay *display,
 			    gint        x,
 			    gint        y)
 {
-  XcursorImage *xcimage;
   Cursor xcursor;
   GdkCursorPrivate *private;
   GdkCursor *cursor;
@@ -817,7 +814,7 @@ gdk_cursor_new_from_pixbuf (GdkDisplay *display,
     xcursor = None;
   else 
     {
-      xcimage = create_cursor_image (pixbuf, x, y);
+      XcursorImage *xcimage = create_cursor_image (pixbuf, x, y);
       xcursor = XcursorImageLoadCursor (GDK_DISPLAY_XDISPLAY (display), xcimage);
       XcursorImageDestroy (xcimage);
     }
@@ -853,7 +850,6 @@ gdk_cursor_new_from_name (GdkDisplay  *display,
 			  const gchar *name)
 {
   Cursor xcursor;
-  Display *xdisplay;
   GdkCursorPrivate *private;
   GdkCursor *cursor;
 
@@ -873,8 +869,7 @@ gdk_cursor_new_from_name (GdkDisplay  *display,
           return (GdkCursor*) private;
         }
 
-      xdisplay = GDK_DISPLAY_XDISPLAY (display);
-      xcursor = XcursorLibraryLoadCursor (xdisplay, name);
+      xcursor = XcursorLibraryLoadCursor (GDK_DISPLAY_XDISPLAY (display), name);
       if (xcursor == None)
 	return NULL;
     }

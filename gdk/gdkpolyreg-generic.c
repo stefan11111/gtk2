@@ -391,7 +391,6 @@ PtsToRegion (int         numFullPtBlocks,
     GdkRegionBox *rects;
     GdkPoint *pts;
     POINTBLOCK *CurPtBlock;
-    int i;
     GdkRegionBox *extents;
     int numRects;
 
@@ -408,7 +407,7 @@ PtsToRegion (int         numFullPtBlocks,
  
     for ( ; numFullPtBlocks >= 0; numFullPtBlocks--) {
 	/* the loop uses 2 points per iteration */
-	i = NUMPTSTOBUFFER >> 1;
+	int i = NUMPTSTOBUFFER >> 1;
 	if (!numFullPtBlocks)
 	    i = iCurPtBlock >> 1;
 	for (pts = CurPtBlock->pts; i--; pts += 2) {

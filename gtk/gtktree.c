@@ -331,55 +331,46 @@ gtk_tree_clear_items (GtkTree *tree,
 		      gint     start,
 		      gint     end)
 {
-  GtkWidget *widget;
-  GList *clear_list;
-  GList *tmp_list;
-  guint nchildren;
-  guint index;
-  
   g_return_if_fail (GTK_IS_TREE (tree));
-  
-  nchildren = g_list_length (tree->children);
-  
-  if (nchildren > 0)
+
+  guint nchildren = g_list_length (tree->children);
+
+  if (!nchildren)
     {
-      if ((end < 0) || (end > nchildren))
-	end = nchildren;
-      
-      if (start >= end)
-	return;
-      
-      tmp_list = g_list_nth (tree->children, start);
-      clear_list = NULL;
-      index = start;
-      while (tmp_list && index <= end)
-	{
-	  widget = tmp_list->data;
-	  tmp_list = tmp_list->next;
-	  index++;
-	  
-	  clear_list = g_list_prepend (clear_list, widget);
-	}
-      
-      gtk_tree_remove_items (tree, clear_list);
+      return;
     }
+  if ((end < 0) || (end > nchildren))
+    end = nchildren;
+
+  if (start >= end)
+    return;
+
+  GList *tmp_list = g_list_nth (tree->children, start);
+  GList *clear_list = NULL;
+  guint index = start;
+  while (tmp_list && index <= end)
+    {
+      GtkWidget *widget = tmp_list->data;
+      tmp_list = tmp_list->next;
+      index++;
+
+      clear_list = g_list_prepend (clear_list, widget);
+    }
+
+  gtk_tree_remove_items (tree, clear_list);
 }
 
 static void
 gtk_tree_destroy (GtkObject *object)
 {
-  GtkTree *tree;
-  GtkWidget *child;
-  GList *children;
-  
   g_return_if_fail (GTK_IS_TREE (object));
   
-  tree = GTK_TREE (object);
+  GtkTree *tree = GTK_TREE (object);
   
-  children = tree->children;
+  GList *children = tree->children;
   while (children)
     {
-      child = children->data;
+      GtkWidget *child = children->data;
       children = children->next;
       
       g_object_ref (child);
@@ -409,20 +400,15 @@ gtk_tree_forall (GtkContainer *container,
 		 GtkCallback   callback,
 		 gpointer      callback_data)
 {
-  GtkTree *tree;
-  GtkWidget *child;
-  GList *children;
-  
-  
   g_return_if_fail (GTK_IS_TREE (container));
   g_return_if_fail (callback != NULL);
   
-  tree = GTK_TREE (container);
-  children = tree->children;
+  GtkTree *tree = GTK_TREE (container);
+  GList *children = tree->children;
   
   while (children)
     {
-      child = children->data;
+      GtkWidget *child = children->data;
       children = children->next;
       
       (* callback) (child, callback_data);
@@ -432,16 +418,13 @@ gtk_tree_forall (GtkContainer *container,
 static void
 gtk_tree_unselect_all (GtkTree *tree)
 {
-  GList *tmp_list, *selection;
-  GtkWidget *tmp_item;
-      
-  selection = tree->selection;
+  GList *selection = tree->selection;
   tree->selection = NULL;
 
-  tmp_list = selection;
+  GList *tmp_list = selection;
   while (tmp_list)
     {
-      tmp_item = selection->data;
+      GtkWidget *tmp_item = selection->data;
 
       if (tmp_item->parent &&
 	  GTK_IS_TREE (tmp_item->parent) &&
@@ -461,9 +444,6 @@ gtk_tree_parent_set (GtkWidget *widget,
 		     GtkWidget *previous_parent)
 {
   GtkTree *tree = GTK_TREE (widget);
-  GtkWidget *child;
-  GList *children;
-  
   if (GTK_IS_TREE (widget->parent))
     {
       gtk_tree_unselect_all (tree);
@@ -486,10 +466,10 @@ gtk_tree_parent_set (GtkWidget *widget,
       tree->current_indent = 0;
     }
 
-  children = tree->children;
+  GList *children = tree->children;
   while (children)
     {
-      child = children->data;
+      GtkWidget *child = children->data;
       children = children->next;
       
       if (GTK_TREE_ITEM (child)->subtree)
@@ -501,15 +481,13 @@ static void
 gtk_tree_map (GtkWidget *widget)
 {
   GtkTree *tree = GTK_TREE (widget);
-  GtkWidget *child;
-  GList *children;
-  
+
   gtk_widget_set_mapped (widget, TRUE);
   
-  children = tree->children;
+  GList *children = tree->children;
   while (children)
     {
-      child = children->data;
+      GtkWidget *child = children->data;
       children = children->next;
       
       if (gtk_widget_get_visible (child) &&
@@ -828,92 +806,82 @@ static void
 gtk_tree_size_allocate (GtkWidget     *widget,
 			GtkAllocation *allocation)
 {
-  GtkTree *tree;
-  GtkWidget *child, *subtree;
-  GtkAllocation child_allocation;
-  GList *children;
-  
-  
   g_return_if_fail (GTK_IS_TREE (widget));
   g_return_if_fail (allocation != NULL);
-  
-  tree = GTK_TREE (widget);
-  
+
+  GtkAllocation child_allocation;
+
+  GtkTree *tree = GTK_TREE (widget);
+
   widget->allocation = *allocation;
   if (gtk_widget_get_realized (widget))
     gdk_window_move_resize (widget->window,
 			    allocation->x, allocation->y,
 			    allocation->width, allocation->height);
-  
-  if (tree->children)
+
+  if (!tree->children)
     {
-      child_allocation.x = GTK_CONTAINER (tree)->border_width;
-      child_allocation.y = GTK_CONTAINER (tree)->border_width;
-      child_allocation.width = MAX (1, (gint)allocation->width - child_allocation.x * 2);
-      
-      children = tree->children;
-      
-      while (children)
-	{
-	  child = children->data;
-	  children = children->next;
-	  
-	  if (gtk_widget_get_visible (child))
-	    {
-	      GtkRequisition child_requisition;
-	      gtk_widget_get_child_requisition (child, &child_requisition);
-	      
-	      child_allocation.height = child_requisition.height;
-	      
-	      gtk_widget_size_allocate (child, &child_allocation);
-	      
-	      child_allocation.y += child_allocation.height;
-	      
-	      if((subtree = GTK_TREE_ITEM(child)->subtree))
-		if(gtk_widget_get_visible (subtree))
-		  {
-		    child_allocation.height = subtree->requisition.height;
-		    gtk_widget_size_allocate (subtree, &child_allocation);
-		    child_allocation.y += child_allocation.height;
-		  }
-	    }
-	}
+      return;
     }
-  
+  child_allocation.x = GTK_CONTAINER (tree)->border_width;
+  child_allocation.y = GTK_CONTAINER (tree)->border_width;
+  child_allocation.width = MAX (1, (gint)allocation->width - child_allocation.x * 2);
+
+  GList *children = tree->children;
+
+  while (children)
+    {
+      GtkWidget *child = children->data;
+      children = children->next;
+
+      if (gtk_widget_get_visible (child))
+        {
+          GtkRequisition child_requisition;
+          gtk_widget_get_child_requisition (child, &child_requisition);
+
+          child_allocation.height = child_requisition.height;
+
+          gtk_widget_size_allocate (child, &child_allocation);
+
+          child_allocation.y += child_allocation.height;
+          GtkWidget *subtree = GTK_TREE_ITEM(child)->subtree;
+          if(subtree && gtk_widget_get_visible (subtree))
+            {
+              child_allocation.height = subtree->requisition.height;
+              gtk_widget_size_allocate (subtree, &child_allocation);
+              child_allocation.y += child_allocation.height;
+            }
+        }
+    }
 }
 
 static void
 gtk_tree_size_request (GtkWidget      *widget,
 		       GtkRequisition *requisition)
 {
-  GtkTree *tree;
-  GtkWidget *child, *subtree;
-  GList *children;
-  GtkRequisition child_requisition;
-  
-  
   g_return_if_fail (GTK_IS_TREE (widget));
   g_return_if_fail (requisition != NULL);
   
-  tree = GTK_TREE (widget);
+  GtkTree *tree = GTK_TREE (widget);
   requisition->width = 0;
   requisition->height = 0;
   
-  children = tree->children;
+  GList *children = tree->children;
   while (children)
     {
-      child = children->data;
+      GtkWidget *child = children->data;
       children = children->next;
       
       if (gtk_widget_get_visible (child))
 	{
+          GtkRequisition child_requisition;
 	  gtk_widget_size_request (child, &child_requisition);
 	  
 	  requisition->width = MAX (requisition->width, child_requisition.width);
 	  requisition->height += child_requisition.height;
-	  
-	  if((subtree = GTK_TREE_ITEM(child)->subtree) &&
-	     gtk_widget_get_visible (subtree))
+          GtkWidget *subtree = GTK_TREE_ITEM(child)->subtree;
+
+	  if(subtree && gtk_widget_get_visible (subtree))
 	    {
 	      gtk_widget_size_request (subtree, &child_requisition);
 	      

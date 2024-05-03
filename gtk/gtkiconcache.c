@@ -545,7 +545,7 @@ _gtk_icon_cache_get_icon_data  (GtkIconCache *cache,
   if (offset)
     {
       gint n_names;
-      gchar *lang, *name;
+      gchar *name;
       gchar **langs;
       GHashTable *table = g_hash_table_new (g_str_hash, g_str_equal);
 
@@ -553,7 +553,7 @@ _gtk_icon_cache_get_icon_data  (GtkIconCache *cache,
       
       for (i = 0; i < n_names; i++)
 	{
-	  lang = cache->buffer + GET_UINT32 (cache->buffer, offset + 4 + 8 * i);
+	  char *lang = cache->buffer + GET_UINT32 (cache->buffer, offset + 4 + 8 * i);
 	  name = cache->buffer + GET_UINT32 (cache->buffer, offset + 4 + 8 * i + 4);
 	  
 	  g_hash_table_insert (table, lang, name);

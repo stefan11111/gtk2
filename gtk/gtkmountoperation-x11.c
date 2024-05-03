@@ -661,7 +661,7 @@ pid_get_env (GPid         pid,
       n = 0;
       while (TRUE)
         {
-          if (env[n] == '\0' || n >= env_len)
+          if (n >= env_len || env[n] == '\0')
             break;
 
           if (g_str_has_prefix (env + n, key) && (*(env + n + key_len) == '='))
@@ -674,7 +674,7 @@ pid_get_env (GPid         pid,
               break;
             }
 
-          for (; env[n] != '\0' && n < env_len; n++)
+          for (; n < env_len && env[n] != '\0'; n++)
             ;
           n++;
         }
@@ -752,25 +752,19 @@ static gchar *
 get_name_for_window_with_pid (GtkMountOperationLookupContext *context,
                               GPid                            pid)
 {
-  Window window;
-  Window windowid_window;
-  gchar *ret;
+  gchar *ret = NULL;
 
-  ret = NULL;
-
-  window = GPOINTER_TO_INT (g_hash_table_lookup (context->pid_to_window, GINT_TO_POINTER (pid)));
+  Window window = GPOINTER_TO_INT (g_hash_table_lookup (context->pid_to_window, GINT_TO_POINTER (pid)));
   if (window == None)
     {
-      gchar *windowid_value;
-
       /* check for $WINDOWID (set by terminals) and see if we can get the title that way */
-      windowid_value = pid_get_env (pid, "WINDOWID");
+      gchar *windowid_value = pid_get_env (pid, "WINDOWID");
       if (windowid_value != NULL)
         {
           gchar *endp;
 
           endp = NULL;
-          windowid_window = (Window) g_ascii_strtoll (windowid_value, &endp, 10);
+          Window windowid_window = (Window) g_ascii_strtoll (windowid_value, &endp, 10);
           if (endp == NULL || *endp == '\0')
             {
               window = windowid_window;
