@@ -45,21 +45,37 @@ static GSList *gtk_modules = NULL;
 
 static gboolean default_display_opened = FALSE;
 
+static char *
+trim_string (const char *str)
+{
+  g_return_val_if_fail (str != NULL, NULL);
+
+  while (*str == ' ') {
+    str++;
+  }
+
+  int len = strlen (str);
+  while (len > 0 && str[len-1] == ' ') {
+    len--;
+  }
+
+  return g_strndup (str, len);
+}
+
 static char**
 split_file_list (const char *str)
 {
   int i = 0;
-  int j;
-  char **files;
-  files = g_strsplit (str, G_SEARCHPATH_SEPARATOR_S, -1);
+  char **files = g_strsplit (str, G_SEARCHPATH_SEPARATOR_S, -1);
   while (files[i])
     {
-      char *file = _pango_trim_string (files[i]);
+      char *file = trim_string (files[i]);
       /* If the resulting file is empty, skip it */
       if (file[0] == '\0')
 	{
 	  g_free(file);
 	  g_free (files[i]);
+          int j;
 	  for (j = i + 1; files[j]; j++)
 	    files[j - 1] = files[j];
 	  files[j - 1] = NULL;
