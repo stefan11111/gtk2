@@ -57,7 +57,6 @@ static void      gtk_gc_key_destroy      (GtkGCKey      *key);
 static gpointer  gtk_gc_new              (gpointer       key);
 static void      gtk_gc_destroy          (gpointer       value);
 static guint     gtk_gc_key_hash         (gpointer       key);
-static guint     gtk_gc_value_hash       (gpointer       value);
 static gint      gtk_gc_key_equal        (gpointer       a,
 					  gpointer       b);
 static guint     gtk_gc_drawable_hash    (GtkGCDrawable *d);
@@ -141,7 +140,8 @@ gtk_gc_init (void)
 
   gc_table = g_hash_table_new_full ((GHashFunc) gtk_gc_key_hash,
                                     (GEqualFunc) gtk_gc_key_equal,
-                                    NULL, (GDestroyNotify)gtk_gc_destroy);
+                                    (GDestroyNotify)gtk_gc_key_destroy,
+                                    (GDestroyNotify)gtk_gc_destroy);
 
 }
 
@@ -281,12 +281,6 @@ gtk_gc_key_hash (gpointer key)
     }
 
   return hash_val;
-}
-
-static guint
-gtk_gc_value_hash (gpointer value)
-{
-  return (gulong) value;
 }
 
 static gboolean
