@@ -45,6 +45,44 @@ static GSList *gtk_modules = NULL;
 
 static gboolean default_display_opened = FALSE;
 
+static char**
+split_file_list (const char *str)
+{
+  int i = 0;
+  int j;
+  char **files;
+  files = g_strsplit (str, G_SEARCHPATH_SEPARATOR_S, -1);
+  while (files[i])
+    {
+      char *file = _pango_trim_string (files[i]);
+      /* If the resulting file is empty, skip it */
+      if (file[0] == '\0')
+	{
+	  g_free(file);
+	  g_free (files[i]);
+	  for (j = i + 1; files[j]; j++)
+	    files[j - 1] = files[j];
+	  files[j - 1] = NULL;
+	  continue;
+	}
+      if (file[0] == '~' && file[1] == G_DIR_SEPARATOR)
+	{
+	  char *tmp = g_strconcat (g_get_home_dir(), file + 1, NULL);
+	  g_free (file);
+	  file = tmp;
+	}
+      else if (file[0] == '~' && file[1] == '\0')
+	{
+	  g_free (file);
+	  file = g_strdup (g_get_home_dir());
+	}
+      g_free (files[i]);
+      files[i] = file;
+      i++;
+    }
+  return files;
+}
+
 /* Saved argc, argv for delayed module initialization
  */
 static gint    gtk_argc = 0;
@@ -92,7 +130,7 @@ get_module_path (void)
   g_free (home_gtk_dir);
   g_free (default_dir);
 
-  result = pango_split_file_list (module_path);
+  result = split_file_list (module_path);
   g_free (module_path);
 
   return result;
@@ -407,7 +445,7 @@ load_modules (const char *module_str)
 
   GTK_NOTE (MODULES, g_print ("Loading module list: %s\n", module_str));
 
-  module_names = pango_split_file_list (module_str);
+  module_names = split_file_list (module_str);
   for (i = 0; module_names[i]; i++) 
     module_list = load_module (module_list, module_names[i]);
 
