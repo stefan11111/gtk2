@@ -687,6 +687,42 @@ scan_icon_size_name (const char **pos, GString *out)
   return TRUE;
 }
 
+static gboolean
+skip_space (const char** pos)
+{
+#if 0
+  if (!pos) {
+    return FALSE;
+  }
+#endif
+  while (**pos == ' ') {
+    (*pos)++;
+  }
+
+  return **pos;
+}
+
+static gboolean
+scan_int (const char **pos, int *out)
+{
+  char *end;
+  long temp;
+  errno = 0;
+  temp = strtol (*pos, &end, 10);
+  if (errno == ERANGE)
+    {
+      errno = 0;
+      return FALSE;
+    }
+  *out = (int)temp;
+  if ((long)(*out) != temp)
+    {
+      return FALSE;
+    }
+  *pos = end;
+  return TRUE;
+}
+
 static void
 icon_size_setting_parse (GtkSettings *settings,
 			 const gchar *icon_size_string)
@@ -694,14 +730,14 @@ icon_size_setting_parse (GtkSettings *settings,
   GString *name_buf = g_string_new (NULL);
   const gchar *p = icon_size_string;
 
-  while (pango_skip_space (&p))
+  while (skip_space (&p))
     {
       gint width, height;
 
       if (!scan_icon_size_name (&p, name_buf))
 	goto err;
 
-      if (!pango_skip_space (&p))
+      if (!skip_space (&p))
 	goto err;
 
       if (*p != '=')
@@ -709,10 +745,10 @@ icon_size_setting_parse (GtkSettings *settings,
 
       p++;
 
-      if (!pango_scan_int (&p, &width))
+      if (!scan_int (&p, &width))
 	goto err;
 
-      if (!pango_skip_space (&p))
+      if (!skip_space (&p))
 	goto err;
 
       if (*p != ',')
@@ -720,7 +756,7 @@ icon_size_setting_parse (GtkSettings *settings,
 
       p++;
 
-      if (!pango_scan_int (&p, &height))
+      if (!scan_int (&p, &height))
 	goto err;
 
       if (width > 0 && height > 0)
@@ -733,7 +769,7 @@ icon_size_setting_parse (GtkSettings *settings,
 	  g_warning ("Invalid size in gtk-icon-sizes: %d,%d\n", width, height);
 	}
 
-      pango_skip_space (&p);
+      skip_space (&p);
       if (*p == '\0')
 	break;
       if (*p == ':')
