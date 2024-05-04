@@ -39,8 +39,6 @@
 
 #include <string.h>
 
-#include <glib.h>
-
 #define BATCH_SIZE 500
 
 typedef struct 
@@ -191,7 +189,7 @@ send_batch (SearchThreadData *data)
   data->uri_hits = NULL;
 }
 
-static GPrivate search_thread_data = G_PRIVATE_INIT;
+static GPrivate search_thread_data = G_STTAIC_PRIVATE_INIT;
 
 #ifdef HAVE_FTW_H
 static int
