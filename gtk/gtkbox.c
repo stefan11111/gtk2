@@ -763,6 +763,27 @@ gtk_box_pack (GtkBox      *box,
 
 /**
  * gtk_box_new:
+ * @orientation: the box’s orientation.
+ * @spacing: the number of pixels to place by default between children.
+ *
+ * Creates a new #GtkBox.
+ *
+ * Returns: a new #GtkBox.
+ *
+ * Since: 3.0
+ **/
+GtkWidget*
+gtk_box_new (GtkOrientation orientation,
+             gint           spacing)
+{
+  return g_object_new (GTK_TYPE_BOX,
+                       "orientation", orientation,
+                       "spacing",     spacing,
+                       NULL);
+}
+
+/**
+ * gtk_box_new:
  * @orientation: the box' orientation.
  * @homogeneous: %TRUE if all children are to be given equal space allocations.
  * @spacing: the number of pixels to place by default between children.
