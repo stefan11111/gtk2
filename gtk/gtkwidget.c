@@ -380,6 +380,54 @@ GObjectNotifyContext   *_gtk_widget_child_property_notify_context = NULL;
 
 /* --- functions --- */
 
+gboolean
+gtk_widget_get_hexpand (GtkWidget *widget)
+{
+  return FALSE;
+}
+
+void
+gtk_widget_set_hexpand (GtkWidget      *widget,
+                        gboolean        expand)
+{
+}
+
+gboolean
+gtk_widget_get_hexpand_set (GtkWidget      *widget)
+{
+  return FALSE;
+}
+
+void
+gtk_widget_set_hexpand_set (GtkWidget      *widget,
+                            gboolean        set)
+{
+}
+
+gboolean
+gtk_widget_get_vexpand (GtkWidget *widget)
+{
+  return FALSE;
+}
+
+void
+gtk_widget_set_vexpand (GtkWidget      *widget,
+                        gboolean        expand)
+{
+}
+
+gboolean
+gtk_widget_get_vexpand_set (GtkWidget      *widget)
+{
+  return FALSE;
+}
+
+void
+gtk_widget_set_vexpand_set (GtkWidget      *widget,
+                            gboolean        set)
+{
+}
+
 /**
  * gtk_widget_get_allocated_width:
  * @widget: the widget to query
