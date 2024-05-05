@@ -381,6 +381,24 @@ GObjectNotifyContext   *_gtk_widget_child_property_notify_context = NULL;
 /* --- functions --- */
 
 /**
+ * gtk_widget_get_allocated_width:
+ * @widget: the widget to query
+ *
+ * Returns the width that has currently been allocated to @widget.
+ * This function is intended to be used when implementing handlers
+ * for the #GtkWidget::draw function.
+ *
+ * Returns: the width of the @widget
+ **/
+int
+gtk_widget_get_allocated_width (GtkWidget *widget)
+{
+  g_return_val_if_fail (GTK_IS_WIDGET (widget), 0);
+
+  return widget->allocation.width;
+}
+
+/**
  * gtk_widget_get_allocated_height:
  * @widget: the widget to query
  *

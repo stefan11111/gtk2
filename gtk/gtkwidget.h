@@ -830,6 +830,7 @@ struct _GtkWidgetShapeInfo
 };
 
 GtkStyleContext * gtk_widget_get_style_context (GtkWidget *widget);
+int gtk_widget_get_allocated_width        (GtkWidget *widget);
 int gtk_widget_get_allocated_height       (GtkWidget *widget);
 GType	   gtk_widget_get_type		  (void) G_GNUC_CONST;
 GtkWidget* gtk_widget_new		  (GType		type,
