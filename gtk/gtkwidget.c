@@ -380,6 +380,12 @@ GObjectNotifyContext   *_gtk_widget_child_property_notify_context = NULL;
 
 /* --- functions --- */
 
+GtkWidget *
+gtk_grid_new (void)
+{
+  return NULL;
+}
+
 gboolean
 gtk_widget_get_hexpand (GtkWidget *widget)
 {

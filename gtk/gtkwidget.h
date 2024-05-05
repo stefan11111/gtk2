@@ -829,6 +829,7 @@ struct _GtkWidgetShapeInfo
   GdkBitmap *shape_mask;
 };
 
+GtkWidget * gtk_grid_new (void);
 gboolean gtk_widget_get_hexpand (GtkWidget *widget);
 void gtk_widget_set_hexpand (GtkWidget      *widget,
                              gboolean        expand);
