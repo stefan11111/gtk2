@@ -86,9 +86,6 @@ static const GDebugKey gdk_debug_keys[] = {
 
 static const int gdk_ndebug_keys = G_N_ELEMENTS (gdk_debug_keys);
 
-#endif /* G_ENABLE_DEBUG */
-
-#ifdef G_ENABLE_DEBUG
 static gboolean
 gdk_arg_debug_cb (const char *key, const char *value, gpointer user_data, GError **error)
 {
