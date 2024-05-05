@@ -127,11 +127,6 @@ gdk_arg_no_debug_cb (const char *key, const char *value, gpointer user_data, GEr
 }
 #endif /* G_ENABLE_DEBUG */
 
-void
-gdk_disable_multidevice (void)
-{
-}
-
 static gboolean
 gdk_arg_class_cb (const char *key, const char *value, gpointer user_data, GError **error)
 {

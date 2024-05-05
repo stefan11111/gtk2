@@ -829,24 +829,6 @@ struct _GtkWidgetShapeInfo
   GdkBitmap *shape_mask;
 };
 
-typedef struct _GtkStyleContext GtkStyleContext;
-
-GtkWidget * gtk_grid_new (void);
-gboolean gtk_widget_get_hexpand (GtkWidget *widget);
-void gtk_widget_set_hexpand (GtkWidget      *widget,
-                             gboolean        expand);
-gboolean gtk_widget_get_hexpand_set (GtkWidget      *widget);
-void gtk_widget_set_hexpand_set (GtkWidget      *widget,
-                                 gboolean        set);
-gboolean gtk_widget_get_vexpand (GtkWidget *widget);
-void gtk_widget_set_vexpand (GtkWidget      *widget,
-                             gboolean        expand);
-gboolean gtk_widget_get_vexpand_set (GtkWidget      *widget);
-void gtk_widget_set_vexpand_set (GtkWidget      *widget,
-                                 gboolean        set);
-GtkStyleContext * gtk_widget_get_style_context (GtkWidget *widget);
-int gtk_widget_get_allocated_width        (GtkWidget *widget);
-int gtk_widget_get_allocated_height       (GtkWidget *widget);
 GType	   gtk_widget_get_type		  (void) G_GNUC_CONST;
 GtkWidget* gtk_widget_new		  (GType		type,
 					   const gchar	       *first_property_name,
