@@ -63,7 +63,7 @@ enum {
   PROP_RIGHT_PADDING
 };
 
-#define GTK_ALIGNMENT_GET_PRIVATE(o)  (G_TYPE_INSTANCE_GET_PRIVATE ((o), GTK_TYPE_ALIGNMENT, GtkAlignmentPrivate))
+#define GTK_ALIGNMENT_GET_PRIVATE(o)  ((GtkAlignmentPrivate*)gtk_alignment_get_instance_private (o))
 
 struct _GtkAlignmentPrivate
 {
@@ -86,7 +86,7 @@ static void gtk_alignment_get_property (GObject         *object,
                                         GValue          *value,
                                         GParamSpec      *pspec);
 
-G_DEFINE_TYPE (GtkAlignment, gtk_alignment, GTK_TYPE_BIN)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkAlignment, gtk_alignment, GTK_TYPE_BIN)
 
 static void
 gtk_alignment_class_init (GtkAlignmentClass *class)
@@ -209,8 +209,6 @@ gtk_alignment_class_init (GtkAlignmentClass *class)
                                                       G_MAXINT,
                                                       0,
                                                       GTK_PARAM_READWRITE));
-
-  g_type_class_add_private (gobject_class, sizeof (GtkAlignmentPrivate));  
 }
 
 static void
