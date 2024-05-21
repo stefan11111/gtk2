@@ -71,7 +71,7 @@ struct _GtkCellRendererSpinnerPrivate
 };
 
 #define GTK_CELL_RENDERER_SPINNER_GET_PRIVATE(object) \
-		(GtkCellRendererSpinnerPrivate*)gtk_cell_renderer_spinner_get_instance_private(object))
+		((GtkCellRendererSpinnerPrivate*)gtk_cell_renderer_spinner_get_instance_private(object))
 
 static void gtk_cell_renderer_spinner_get_property (GObject         *object,
                                                     guint            param_id,
