@@ -155,13 +155,14 @@ static guint menu_item_signals[LAST_SIGNAL] = { 0 };
 static GtkBuildableIface *parent_buildable_iface;
 
 G_DEFINE_TYPE_WITH_CODE (GtkMenuItem, gtk_menu_item, GTK_TYPE_ITEM,
+			 G_ADD_PRIVATE (GtkMenuItem)
 			 G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
 						gtk_menu_item_buildable_interface_init)
 			 G_IMPLEMENT_INTERFACE (GTK_TYPE_ACTIVATABLE,
 						gtk_menu_item_activatable_interface_init))
 
 #define GET_PRIVATE(object)  \
-  (G_TYPE_INSTANCE_GET_PRIVATE ((object), GTK_TYPE_MENU_ITEM, GtkMenuItemPrivate))
+  ((GtkMenuItemPrivate*)gtk_menu_item_get_instance_private (object))
 
 static void
 gtk_menu_item_class_init (GtkMenuItemClass *klass)
@@ -383,8 +384,6 @@ gtk_menu_item_class_init (GtkMenuItemClass *klass)
                                                              P_("The minimum desired width of the menu item in characters"),
                                                              0, G_MAXINT, 12,
                                                              GTK_PARAM_READABLE));
-
-  g_type_class_add_private (object_class, sizeof (GtkMenuItemPrivate));
 }
 
 static void
