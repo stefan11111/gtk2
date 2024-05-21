@@ -33,7 +33,7 @@
 #include "gtkbuildable.h"
 
 
-#define GTK_COMBO_BOX_ENTRY_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_COMBO_BOX_ENTRY, GtkComboBoxEntryPrivate))
+#define GTK_COMBO_BOX_ENTRY_GET_PRIVATE(obj) ((GtkComboBoxEntryPrivate*)gtk_combo_box_entry_get_instance_private(obj))
 
 struct _GtkComboBoxEntryPrivate
 {
@@ -77,6 +77,7 @@ enum
 };
 
 G_DEFINE_TYPE_WITH_CODE (GtkComboBoxEntry, gtk_combo_box_entry, GTK_TYPE_COMBO_BOX,
+			 G_ADD_PRIVATE (GtkComboBoxEntry)
 			 G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
 						gtk_combo_box_entry_buildable_interface_init))
 
@@ -112,9 +113,6 @@ gtk_combo_box_entry_class_init (GtkComboBoxEntryClass *klass)
                                                      G_MAXINT,
                                                      -1,
                                                      GTK_PARAM_READWRITE));
-
-  g_type_class_add_private ((GObjectClass *) klass,
-                            sizeof (GtkComboBoxEntryPrivate));
 }
 
 static void
