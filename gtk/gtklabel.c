@@ -3130,12 +3130,10 @@ gtk_label_size_request (GtkWidget      *widget,
 			GtkRequisition *requisition)
 {
   GtkLabel *label = GTK_LABEL (widget);
-  GtkLabelPrivate *priv;
+  GtkLabelPrivate *priv = GTK_LABEL_GET_PRIVATE (label);
   gint width, height;
   PangoRectangle logical_rect;
   GtkWidgetAuxInfo *aux_info;
-
-  priv = GTK_LABEL_GET_PRIVATE (widget);
 
   /*  
    * If word wrapping is on, then the height requisition can depend

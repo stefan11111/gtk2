@@ -106,8 +106,6 @@ static void   gtk_mount_operation_show_processes (GMountOperation *op,
 
 static void   gtk_mount_operation_aborted      (GMountOperation *op);
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkMountOperation, gtk_mount_operation, G_TYPE_MOUNT_OPERATION);
-
 enum {
   PROP_0,
   PROP_PARENT,
@@ -136,6 +134,8 @@ struct _GtkMountOperationPrivate {
   GtkWidget *process_tree_view;
   GtkListStore *process_list_store;
 };
+
+G_DEFINE_TYPE_WITH_PRIVATE (GtkMountOperation, gtk_mount_operation, G_TYPE_MOUNT_OPERATION)
 
 static void
 gtk_mount_operation_class_init (GtkMountOperationClass *klass)
