@@ -77,7 +77,7 @@ struct _FilterLevel
   FilterLevel *parent_level;
 };
 
-#define GTK_TREE_MODEL_FILTER_GET_PRIVATE(obj)  (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_TREE_MODEL_FILTER, GtkTreeModelFilterPrivate))
+#define GTK_TREE_MODEL_FILTER_GET_PRIVATE(obj)  ((GtkTreeModelFilterPrivate*) gtk_tree_model_filter_get_instance_private(obj))
 
 struct _GtkTreeModelFilterPrivate
 {
@@ -281,6 +281,7 @@ static FilterElt   *bsearch_elt_with_offset                               (GArra
 
 
 G_DEFINE_TYPE_WITH_CODE (GtkTreeModelFilter, gtk_tree_model_filter, G_TYPE_OBJECT,
+			 G_ADD_PRIVATE (GtkTreeModelFilter)
 			 G_IMPLEMENT_INTERFACE (GTK_TYPE_TREE_MODEL,
 						gtk_tree_model_filter_tree_model_init)
 			 G_IMPLEMENT_INTERFACE (GTK_TYPE_TREE_DRAG_SOURCE,
@@ -329,8 +330,6 @@ gtk_tree_model_filter_class_init (GtkTreeModelFilterClass *filter_class)
                                                        ("The virtual root (relative to the child model) for this filtermodel"),
                                                        GTK_TYPE_TREE_PATH,
                                                        GTK_PARAM_READWRITE | G_PARAM_CONSTRUCT_ONLY));
-
-  g_type_class_add_private (object_class, sizeof (GtkTreeModelFilterPrivate));
 }
 
 static void
