@@ -34,7 +34,7 @@
 #include "gtkintl.h"
 
 
-#define GTK_CELL_RENDERER_PROGRESS_GET_PRIVATE(object) ((GtkCellRendererProgressPrivate*)gtk_cell_renderer_progress (object))
+#define GTK_CELL_RENDERER_PROGRESS_GET_PRIVATE(object) ((GtkCellRendererProgressPrivate*)gtk_cell_renderer_progress_get_instance_private (object))
 
 enum
 {
