@@ -87,10 +87,10 @@ enum {
   PRINTER_LIST_N_COLS
 };
 
-G_DEFINE_TYPE (GtkCustomPaperUnixDialog, gtk_custom_paper_unix_dialog, GTK_TYPE_DIALOG)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkCustomPaperUnixDialog, gtk_custom_paper_unix_dialog, GTK_TYPE_DIALOG)
 
 #define GTK_CUSTOM_PAPER_UNIX_DIALOG_GET_PRIVATE(o)  \
-   (G_TYPE_INSTANCE_GET_PRIVATE ((o), GTK_TYPE_CUSTOM_PAPER_UNIX_DIALOG, GtkCustomPaperUnixDialogPrivate))
+   ((GtkCustomPaperUnixDialogPrivate*)gtk_custom_paper_unix_dialog_get_instance_private (o))
 
 static void gtk_custom_paper_unix_dialog_finalize  (GObject                *object);
 static void populate_dialog                        (GtkCustomPaperUnixDialog *dialog);
@@ -251,8 +251,6 @@ gtk_custom_paper_unix_dialog_class_init (GtkCustomPaperUnixDialogClass *class)
   object_class = (GObjectClass *) class;
 
   object_class->finalize = gtk_custom_paper_unix_dialog_finalize;
-
-  g_type_class_add_private (class, sizeof (GtkCustomPaperUnixDialogPrivate));
 }
 
 static void
