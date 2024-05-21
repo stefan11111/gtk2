@@ -52,7 +52,7 @@
 #include "gtkprivate.h"
 
 
-#define GTK_LABEL_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_LABEL, GtkLabelPrivate))
+#define GTK_LABEL_GET_PRIVATE(obj) ((GtkLabelPrivate*)gtk_label_get_instance_private (obj))
 
 typedef struct
 {
@@ -307,6 +307,7 @@ static GQuark quark_angle = 0;
 static GtkBuildableIface *buildable_parent_iface = NULL;
 
 G_DEFINE_TYPE_WITH_CODE (GtkLabel, gtk_label, GTK_TYPE_MISC,
+			 G_ADD_PRIVATE (GtkLabel)
 			 G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
 						gtk_label_buildable_interface_init));
 
@@ -854,8 +855,6 @@ gtk_label_class_init (GtkLabelClass *class)
 				"activate-current-link", 0);
   gtk_binding_entry_add_signal (binding_set, GDK_KP_Enter, 0,
 				"activate-current-link", 0);
-
-  g_type_class_add_private (class, sizeof (GtkLabelPrivate));
 }
 
 static void 
