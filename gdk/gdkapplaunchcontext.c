@@ -35,7 +35,7 @@ static gchar * gdk_app_launch_context_get_display (GAppLaunchContext *context,
                                                    GList             *files);
 
 
-G_DEFINE_TYPE (GdkAppLaunchContext, gdk_app_launch_context,
+G_DEFINE_TYPE_WITH_PRIVATE (GdkAppLaunchContext, gdk_app_launch_context,
 	       G_TYPE_APP_LAUNCH_CONTEXT)
 
 static void
@@ -49,16 +49,12 @@ gdk_app_launch_context_class_init (GdkAppLaunchContextClass *klass)
   context_class->get_display = gdk_app_launch_context_get_display;
   context_class->get_startup_notify_id = _gdk_windowing_get_startup_notify_id;
   context_class->launch_failed = _gdk_windowing_launch_failed;
-
-  g_type_class_add_private (klass, sizeof (GdkAppLaunchContextPrivate));
 }
 
 static void
 gdk_app_launch_context_init (GdkAppLaunchContext *context)
 {
-  context->priv = G_TYPE_INSTANCE_GET_PRIVATE (context,
-					       GDK_TYPE_APP_LAUNCH_CONTEXT,
-					       GdkAppLaunchContextPrivate);
+  context->priv = gdk_app_launch_context_get_instance_private (context);
   context->priv->workspace = -1;
 }
 
