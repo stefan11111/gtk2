@@ -468,7 +468,7 @@ gtk_alignment_size_request (GtkWidget      *widget,
   GtkAlignmentPrivate *priv;
 
   bin = GTK_BIN (widget);
-  priv = GTK_ALIGNMENT_GET_PRIVATE (widget);
+  priv = GTK_ALIGNMENT_GET_PRIVATE ((GtkAlignment*)widget);
 
   requisition->width = GTK_CONTAINER (widget)->border_width * 2;
   requisition->height = GTK_CONTAINER (widget)->border_width * 2;
@@ -514,7 +514,7 @@ gtk_alignment_size_allocate (GtkWidget     *widget,
 
       border_width = GTK_CONTAINER (alignment)->border_width;
 
-      priv = GTK_ALIGNMENT_GET_PRIVATE (widget);
+      priv = GTK_ALIGNMENT_GET_PRIVATE ((GtkAlignment*)widget);
       padding_horizontal = priv->padding_left + priv->padding_right;
       padding_vertical = priv->padding_top + priv->padding_bottom;
 
