@@ -70,10 +70,8 @@ struct _GtkCellRendererSpinnerPrivate
   gint size;
 };
 
-#define GTK_CELL_RENDERER_SPINNER_GET_PRIVATE(object)        \
-                (G_TYPE_INSTANCE_GET_PRIVATE ((object),        \
-                        GTK_TYPE_CELL_RENDERER_SPINNER, \
-                        GtkCellRendererSpinnerPrivate))
+#define GTK_CELL_RENDERER_SPINNER_GET_PRIVATE(object) \
+		(GtkCellRendererSpinnerPrivate*)gtk_cell_renderer_spinner_get_instance_private(object))
 
 static void gtk_cell_renderer_spinner_get_property (GObject         *object,
                                                     guint            param_id,
@@ -98,7 +96,7 @@ static void gtk_cell_renderer_spinner_render       (GtkCellRenderer *cell,
                                                     GdkRectangle    *expose_area,
                                                     guint            flags);
 
-G_DEFINE_TYPE (GtkCellRendererSpinner, gtk_cell_renderer_spinner, GTK_TYPE_CELL_RENDERER)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkCellRendererSpinner, gtk_cell_renderer_spinner, GTK_TYPE_CELL_RENDERER)
 
 static void
 gtk_cell_renderer_spinner_class_init (GtkCellRendererSpinnerClass *klass)
@@ -159,9 +157,6 @@ gtk_cell_renderer_spinner_class_init (GtkCellRendererSpinnerClass *klass)
                                                       P_("The GtkIconSize value that specifies the size of the rendered spinner"),
                                                       GTK_TYPE_ICON_SIZE, GTK_ICON_SIZE_MENU,
                                                       G_PARAM_READWRITE));
-
-
-  g_type_class_add_private (object_class, sizeof (GtkCellRendererSpinnerPrivate));
 }
 
 static void
