@@ -90,7 +90,7 @@
 
 
 
-#define GTK_ACTION_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_ACTION, GtkActionPrivate))
+#define GTK_ACTION_GET_PRIVATE(obj) ((GtkActionPrivate*)gtk_action_get_instance_private(obj))
 
 struct _GtkActionPrivate 
 {
@@ -161,6 +161,7 @@ static void gtk_action_buildable_set_name         (GtkBuildable *buildable,
 static const gchar* gtk_action_buildable_get_name (GtkBuildable *buildable);
 
 G_DEFINE_TYPE_WITH_CODE (GtkAction, gtk_action, G_TYPE_OBJECT,
+			 G_ADD_PRIVATE (GtkAction)
 			 G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
 						gtk_action_buildable_init))
 
@@ -429,8 +430,6 @@ gtk_action_class_init (GtkActionClass *klass)
 		  G_STRUCT_OFFSET (GtkActionClass, activate),  NULL, NULL,
 		  g_cclosure_marshal_VOID__VOID,
 		  G_TYPE_NONE, 0);
-
-  g_type_class_add_private (gobject_class, sizeof (GtkActionPrivate));
 }
 
 
