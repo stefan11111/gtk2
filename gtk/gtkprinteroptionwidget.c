@@ -43,7 +43,7 @@
 
 
 #define GTK_PRINTER_OPTION_WIDGET_GET_PRIVATE(o)  \
-   (G_TYPE_INSTANCE_GET_PRIVATE ((o), GTK_TYPE_PRINTER_OPTION_WIDGET, GtkPrinterOptionWidgetPrivate))
+   ((GtkPrinterOptionWidgetPrivate*)gtk_printer_option_widget_get_instance_private (o))
 
 static void gtk_printer_option_widget_finalize (GObject *object);
 
@@ -77,7 +77,7 @@ enum {
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE (GtkPrinterOptionWidget, gtk_printer_option_widget, GTK_TYPE_HBOX)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkPrinterOptionWidget, gtk_printer_option_widget, GTK_TYPE_HBOX)
 
 static void gtk_printer_option_widget_set_property (GObject      *object,
 						    guint         prop_id,
@@ -104,8 +104,6 @@ gtk_printer_option_widget_class_init (GtkPrinterOptionWidgetClass *class)
   object_class->get_property = gtk_printer_option_widget_get_property;
 
   widget_class->mnemonic_activate = gtk_printer_option_widget_mnemonic_activate;
-
-  g_type_class_add_private (class, sizeof (GtkPrinterOptionWidgetPrivate));  
 
   signals[CHANGED] =
     g_signal_new ("changed",

@@ -36,7 +36,7 @@
 #include "gtkdnd.h"
 
 
-#define GTK_EXPANDER_GET_PRIVATE(o) ((GtkExpanderPrivate*)gtk_expander_get_instance_type (o))
+#define GTK_EXPANDER_GET_PRIVATE(o) ((GtkExpanderPrivate*)gtk_expander_get_instance_private (o))
 
 #define DEFAULT_EXPANDER_SIZE 10
 #define DEFAULT_EXPANDER_SPACING 2

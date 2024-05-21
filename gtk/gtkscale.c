@@ -157,7 +157,7 @@ gtk_scale_notify (GObject    *object,
     }
   else if (strcmp (pspec->name, "inverted") == 0)
     {
-      GtkScalePrivate *priv = GTK_SCALE_GET_PRIVATE (object);
+      GtkScalePrivate *priv = GTK_SCALE_GET_PRIVATE ((GtkScale*)object);
       GtkScaleMark *mark;
       GSList *m;
       gint i, n;
