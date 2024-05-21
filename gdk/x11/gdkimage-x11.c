@@ -73,24 +73,22 @@ static void gdk_image_finalize    (GObject       *object);
 
 #define PRIVATE_DATA(image) ((GdkImagePrivateX11 *) GDK_IMAGE (image)->windowing_data)
 
-G_DEFINE_TYPE (GdkImage, gdk_image, G_TYPE_OBJECT)
+typedef struct _GdkImagePrivateX11     GdkImagePrivate;
 
-static void
+G_DEFINE_TYPE_WITH_PRIVATE (GdkImage, gdk_image, G_TYPE_OBJECT)
+
+static inline void
 gdk_image_init (GdkImage *image)
 {
-  image->windowing_data = G_TYPE_INSTANCE_GET_PRIVATE (image, 
-						       GDK_TYPE_IMAGE, 
-						       GdkImagePrivateX11);
+  image->windowing_data = gdk_image_get_instance_private (image);
 }
 
-static void
+static inline void
 gdk_image_class_init (GdkImageClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   object_class->finalize = gdk_image_finalize;
-
-  g_type_class_add_private (object_class, sizeof (GdkImagePrivateX11));
 }
 
 static void

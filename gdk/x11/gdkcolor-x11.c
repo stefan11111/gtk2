@@ -68,15 +68,14 @@ static void     gdk_colormap_sync        (GdkColormap *colormap,
 
 static void gdk_colormap_finalize   (GObject              *object);
 
-G_DEFINE_TYPE (GdkColormap, gdk_colormap, G_TYPE_OBJECT)
+typedef struct _GdkColormapPrivateX11  GdkColormapPrivate;
+
+G_DEFINE_TYPE_WITH_PRIVATE (GdkColormap, gdk_colormap, G_TYPE_OBJECT)
 
 static void
 gdk_colormap_init (GdkColormap *colormap)
 {
-  GdkColormapPrivateX11 *private;
-
-  private = G_TYPE_INSTANCE_GET_PRIVATE (colormap, GDK_TYPE_COLORMAP, 
-					 GdkColormapPrivateX11);
+  GdkColormapPrivateX11 *private = gdk_colormap_get_instance_private (colormap);
 
   colormap->windowing_data = private;
   
@@ -89,14 +88,12 @@ gdk_colormap_init (GdkColormap *colormap)
   colormap->colors = NULL;
 }
 
-static void
+static inline void
 gdk_colormap_class_init (GdkColormapClass *klass)
 {
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   object_class->finalize = gdk_colormap_finalize;
-
-  g_type_class_add_private (object_class, sizeof (GdkColormapPrivateX11));
 }
 
 static void
