@@ -102,7 +102,7 @@
 
 typedef struct _GtkTextViewPrivate GtkTextViewPrivate;
 
-#define GTK_TEXT_VIEW_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_TEXT_VIEW, GtkTextViewPrivate))
+#define GTK_TEXT_VIEW_GET_PRIVATE(obj) ((GtkTextViewPrivate*)gtk_text_view_get_instance_private (obj))
 
 struct _GtkTextViewPrivate 
 {
@@ -439,7 +439,7 @@ static gint           text_window_get_height      (GtkTextWindow     *win);
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE (GtkTextView, gtk_text_view, GTK_TYPE_CONTAINER)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkTextView, gtk_text_view, GTK_TYPE_CONTAINER)
 
 static void
 add_move_binding (GtkBindingSet  *binding_set,
@@ -1281,8 +1281,6 @@ gtk_text_view_class_init (GtkTextViewClass *klass)
   gtk_binding_entry_add_signal (binding_set, GDK_KP_Tab, GDK_SHIFT_MASK | GDK_CONTROL_MASK,
 				"move-focus", 1,
 				GTK_TYPE_DIRECTION_TYPE, GTK_DIR_TAB_BACKWARD);
-
-  g_type_class_add_private (gobject_class, sizeof (GtkTextViewPrivate));
 }
 
 static void
