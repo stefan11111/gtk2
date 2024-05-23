@@ -55,6 +55,7 @@ static void response_cb (GtkDialog *dialog,
 			 gint       response_id);
 
 G_DEFINE_TYPE_WITH_CODE (GtkFileChooserDialog, gtk_file_chooser_dialog, GTK_TYPE_DIALOG,
+			 G_ADD_PRIVATE (GtkFileChooserDialog)
 			 G_IMPLEMENT_INTERFACE (GTK_TYPE_FILE_CHOOSER,
 						_gtk_file_chooser_delegate_iface_init))
 
@@ -72,16 +73,12 @@ gtk_file_chooser_dialog_class_init (GtkFileChooserDialogClass *class)
   widget_class->map       = gtk_file_chooser_dialog_map;
 
   _gtk_file_chooser_install_properties (gobject_class);
-
-  g_type_class_add_private (class, sizeof (GtkFileChooserDialogPrivate));
 }
 
 static void
 gtk_file_chooser_dialog_init (GtkFileChooserDialog *dialog)
 {
-  GtkFileChooserDialogPrivate *priv = G_TYPE_INSTANCE_GET_PRIVATE (dialog,
-								   GTK_TYPE_FILE_CHOOSER_DIALOG,
-								   GtkFileChooserDialogPrivate);
+  GtkFileChooserDialogPrivate *priv = gtk_file_chooser_dialog_get_instance_private (dialog);
   GtkDialog *fc_dialog = GTK_DIALOG (dialog);
 
   dialog->priv = priv;
