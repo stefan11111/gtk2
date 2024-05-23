@@ -43,7 +43,7 @@ enum {
 };
 
 
-#define GTK_EVENT_BOX_GET_PRIVATE(obj)  G_TYPE_INSTANCE_GET_PRIVATE((obj), GTK_TYPE_EVENT_BOX, GtkEventBoxPrivate)
+#define GTK_EVENT_BOX_GET_PRIVATE(obj)  ((GtkEventBoxPrivate*)gtk_event_box_get_instance_private (obj))
 
 static void     gtk_event_box_realize       (GtkWidget        *widget);
 static void     gtk_event_box_unrealize     (GtkWidget        *widget);
@@ -66,7 +66,7 @@ static void     gtk_event_box_get_property  (GObject          *object,
                                              GValue           *value,
                                              GParamSpec       *pspec);
 
-G_DEFINE_TYPE (GtkEventBox, gtk_event_box, GTK_TYPE_BIN)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkEventBox, gtk_event_box, GTK_TYPE_BIN)
 
 static void
 gtk_event_box_class_init (GtkEventBoxClass *class)
@@ -99,8 +99,6 @@ gtk_event_box_class_init (GtkEventBoxClass *class)
                                                         P_("Whether the event-trapping window of the eventbox is above the window of the child widget as opposed to below it."),
                                                         FALSE,
                                                         GTK_PARAM_READWRITE));
-  
-  g_type_class_add_private (class, sizeof (GtkEventBoxPrivate));
 }
 
 static void
