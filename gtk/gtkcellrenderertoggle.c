@@ -75,7 +75,7 @@ enum {
 
 static guint toggle_cell_signals[LAST_SIGNAL] = { 0 };
 
-#define GTK_CELL_RENDERER_TOGGLE_GET_PRIVATE(obj) ((GtkCellRendererTogglePrivate*)gtk_cell_renderer_toggle_get_instance_private (obj))
+#define GTK_CELL_RENDERER_TOGGLE_GET_PRIVATE(obj) ((GtkCellRendererTogglePrivate*)gtk_cell_renderer_toggle_get_instance_private ((GtkCellRendererToggle*)obj))
 
 typedef struct _GtkCellRendererTogglePrivate GtkCellRendererTogglePrivate;
 struct _GtkCellRendererTogglePrivate
