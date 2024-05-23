@@ -145,7 +145,7 @@ static void     gtk_handle_box_end_drag      (GtkHandleBox   *hb,
 
 static guint handle_box_signals[SIGNAL_LAST] = { 0 };
 
-G_DEFINE_TYPE (GtkHandleBox, gtk_handle_box, GTK_TYPE_BIN)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkHandleBox, gtk_handle_box, GTK_TYPE_BIN)
 
 static void
 gtk_handle_box_class_init (GtkHandleBoxClass *class)
@@ -246,14 +246,6 @@ gtk_handle_box_class_init (GtkHandleBoxClass *class)
 		  NULL,
 		  G_TYPE_NONE, 1,
 		  GTK_TYPE_WIDGET);
-
-  g_type_class_add_private (gobject_class, sizeof (GtkHandleBoxPrivate));    
-}
-
-static GtkHandleBoxPrivate *
-gtk_handle_box_get_private (GtkHandleBox *hb)
-{
-  return G_TYPE_INSTANCE_GET_PRIVATE (hb, GTK_TYPE_HANDLE_BOX, GtkHandleBoxPrivate);
 }
 
 static void
@@ -272,7 +264,7 @@ gtk_handle_box_init (GtkHandleBox *handle_box)
   handle_box->snap_edge = -1;
 }
 
-static void 
+static void
 gtk_handle_box_set_property (GObject         *object,
 			     guint            prop_id,
 			     const GValue    *value,
@@ -1074,7 +1066,7 @@ gtk_handle_box_button_press (GtkWidget      *widget,
 	{
 	  if (event->type == GDK_BUTTON_PRESS) /* Start a drag */
 	    {
-	      GtkHandleBoxPrivate *private = gtk_handle_box_get_private (hb);
+	      GtkHandleBoxPrivate *private = gtk_handle_box_get_instance_private (hb);
 	      GtkWidget *invisible = gtk_handle_box_get_invisible ();
 	      gint desk_x, desk_y;
 	      gint root_x, root_y;
@@ -1177,7 +1169,7 @@ gtk_handle_box_motion (GtkWidget      *widget,
 			   &new_x, &new_y, NULL);
   if (pointer_screen != screen)
     {
-      GtkHandleBoxPrivate *private = gtk_handle_box_get_private (hb);
+      GtkHandleBoxPrivate *private = gtk_handle_box_get_instance_private (hb);
 
       new_x = private->orig_x;
       new_y = private->orig_y;
