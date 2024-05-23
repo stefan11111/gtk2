@@ -77,7 +77,7 @@ static void gtk_recent_chooser_iface_init (GtkRecentChooserIface *iface);
 G_DEFINE_TYPE_WITH_CODE (GtkRecentAction,
                          gtk_recent_action,
                          GTK_TYPE_ACTION,
-                         G_ADD_PRIVATE
+                         G_ADD_PRIVATE (GtkRecentAction)
                          G_IMPLEMENT_INTERFACE (GTK_TYPE_RECENT_CHOOSER,
                                                 gtk_recent_chooser_iface_init));
 
