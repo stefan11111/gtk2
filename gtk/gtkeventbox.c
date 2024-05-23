@@ -387,7 +387,7 @@ gtk_event_box_realize (GtkWidget *widget)
 			| GDK_ENTER_NOTIFY_MASK
 			| GDK_LEAVE_NOTIFY_MASK;
 
-  priv = GTK_EVENT_BOX_GET_PRIVATE (widget);
+  priv = GTK_EVENT_BOX_GET_PRIVATE ((GtkEventBox*)widget);
 
   visible_window = gtk_widget_get_has_window (widget);
   if (visible_window)
@@ -433,7 +433,7 @@ gtk_event_box_unrealize (GtkWidget *widget)
 {
   GtkEventBoxPrivate *priv;
   
-  priv = GTK_EVENT_BOX_GET_PRIVATE (widget);
+  priv = GTK_EVENT_BOX_GET_PRIVATE ((GtkEventBox*)widget);
   
   if (priv->event_window != NULL)
     {
@@ -450,7 +450,7 @@ gtk_event_box_map (GtkWidget *widget)
 {
   GtkEventBoxPrivate *priv;
 
-  priv = GTK_EVENT_BOX_GET_PRIVATE (widget);
+  priv = GTK_EVENT_BOX_GET_PRIVATE ((GtkEventBox*)widget);
 
   if (priv->event_window != NULL && !priv->above_child)
     gdk_window_show (priv->event_window);
@@ -466,7 +466,7 @@ gtk_event_box_unmap (GtkWidget *widget)
 {
   GtkEventBoxPrivate *priv;
 
-  priv = GTK_EVENT_BOX_GET_PRIVATE (widget);
+  priv = GTK_EVENT_BOX_GET_PRIVATE ((GtkEventBox*)widget);
 
   if (priv->event_window != NULL)
     gdk_window_hide (priv->event_window);
@@ -522,7 +522,7 @@ gtk_event_box_size_allocate (GtkWidget     *widget,
 
   if (gtk_widget_get_realized (widget))
     {
-      priv = GTK_EVENT_BOX_GET_PRIVATE (widget);
+      priv = GTK_EVENT_BOX_GET_PRIVATE ((GtkEventBox*)widget);
 
       if (priv->event_window != NULL)
 	gdk_window_move_resize (priv->event_window,

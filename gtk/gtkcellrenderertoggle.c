@@ -75,7 +75,7 @@ enum {
 
 static guint toggle_cell_signals[LAST_SIGNAL] = { 0 };
 
-#define GTK_CELL_RENDERER_TOGGLE_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_CELL_RENDERER_TOGGLE, GtkCellRendererTogglePrivate))
+#define GTK_CELL_RENDERER_TOGGLE_GET_PRIVATE(obj) ((GtkCellRendererTogglePrivate*)gtk_cell_renderer_toggle_get_instance_private (obj))
 
 typedef struct _GtkCellRendererTogglePrivate GtkCellRendererTogglePrivate;
 struct _GtkCellRendererTogglePrivate
@@ -86,7 +86,7 @@ struct _GtkCellRendererTogglePrivate
 };
 
 
-G_DEFINE_TYPE (GtkCellRendererToggle, gtk_cell_renderer_toggle, GTK_TYPE_CELL_RENDERER)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkCellRendererToggle, gtk_cell_renderer_toggle, GTK_TYPE_CELL_RENDERER)
 
 static void
 gtk_cell_renderer_toggle_init (GtkCellRendererToggle *celltoggle)
@@ -180,8 +180,6 @@ gtk_cell_renderer_toggle_class_init (GtkCellRendererToggleClass *class)
 		  NULL,
 		  G_TYPE_NONE, 1,
 		  G_TYPE_STRING);
-
-  g_type_class_add_private (object_class, sizeof (GtkCellRendererTogglePrivate));
 }
 
 static void
