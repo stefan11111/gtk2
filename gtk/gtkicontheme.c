@@ -236,7 +236,7 @@ static GHashTable *icon_theme_builtin_icons;
 GtkIconCache *_builtin_cache = NULL;
 static GList *builtin_dirs = NULL;
 
-G_DEFINE_TYPE (GtkIconTheme, gtk_icon_theme, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkIconTheme, gtk_icon_theme, G_TYPE_OBJECT)
 
 /**
  * gtk_icon_theme_new:
@@ -343,8 +343,6 @@ gtk_icon_theme_class_init (GtkIconThemeClass *klass)
 				 NULL, NULL,
 				 g_cclosure_marshal_VOID__VOID,
 				 G_TYPE_NONE, 0);
-
-  g_type_class_add_private (klass, sizeof (GtkIconThemePrivate));
 }
 
 
@@ -542,12 +540,10 @@ pixbuf_supports_svg (void)
 static void
 gtk_icon_theme_init (GtkIconTheme *icon_theme)
 {
-  GtkIconThemePrivate *priv;
   const gchar * const *xdg_data_dirs;
   int i, j;
   
-  priv = g_type_instance_get_private ((GTypeInstance *)icon_theme,
-				      GTK_TYPE_ICON_THEME);
+  GtkIconThemePrivate *priv = gtk_icon_theme_get_instance_private (icon_theme);
   icon_theme->priv = priv;
 
   priv->custom_theme = FALSE;
