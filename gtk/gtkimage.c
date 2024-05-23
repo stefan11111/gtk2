@@ -140,7 +140,7 @@ struct _GtkImagePrivate
   guint need_calc_size : 1;
 };
 
-#define GTK_IMAGE_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_IMAGE, GtkImagePrivate))
+#define GTK_IMAGE_GET_PRIVATE(obj) ((GtkImagePrivate*)gtk_image_get_instance_private ((GtkImage*)obj))
 
 
 #define DEFAULT_ICON_SIZE GTK_ICON_SIZE_BUTTON
@@ -191,7 +191,7 @@ enum
   PROP_GICON
 };
 
-G_DEFINE_TYPE (GtkImage, gtk_image, GTK_TYPE_MISC)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkImage, gtk_image, GTK_TYPE_MISC)
 
 static void
 gtk_image_class_init (GtkImageClass *class)
@@ -350,8 +350,6 @@ gtk_image_class_init (GtkImageClass *class)
                                                       GTK_TYPE_IMAGE_TYPE,
                                                       GTK_IMAGE_EMPTY,
                                                       GTK_PARAM_READABLE));
-
-  g_type_class_add_private (object_class, sizeof (GtkImagePrivate));
 }
 
 static void
