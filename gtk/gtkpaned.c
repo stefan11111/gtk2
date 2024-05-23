@@ -566,7 +566,7 @@ gtk_paned_init (GtkPaned *paned)
    */
   gtk_widget_set_redraw_on_allocate (GTK_WIDGET (paned), FALSE);
 
-  paned->priv = gtk_paned_instance_get_private (paned);
+  paned->priv = gtk_paned_get_instance_private (paned);
 
   paned->priv->orientation = GTK_ORIENTATION_HORIZONTAL;
   paned->cursor_type = GDK_SB_H_DOUBLE_ARROW;
