@@ -172,7 +172,7 @@ struct _GtkNotebookPage
   gulong notify_visible_handler;
 };
 
-#define GTK_NOTEBOOK_GET_PRIVATE(obj) ((GtkNotebookPrivate*)gtk_notebook ((GtkNotebook*)obj))
+#define GTK_NOTEBOOK_GET_PRIVATE(obj) ((GtkNotebookPrivate*)gtk_notebook_get_instance_private ((GtkNotebook*)obj))
 
 typedef struct _GtkNotebookPrivate GtkNotebookPrivate;
 
