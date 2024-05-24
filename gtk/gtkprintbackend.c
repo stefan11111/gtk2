@@ -28,6 +28,8 @@
 #include "gtkprivate.h"
 #include "gtkprintbackend.h"
 
+typedef GtkPrintBackendPrivate GtkPrintBackendModulePrivate;
+
 #define GTK_PRINT_BACKEND_GET_PRIVATE(o)  \
    ((GtkPrintBackendPrivate*)_gtk_print_backend_module_get_instance_private ((GtkPrintBackend*)o))
 

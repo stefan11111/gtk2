@@ -63,7 +63,7 @@ struct _GtkRulerPrivate
   GtkOrientation orientation;
 };
 
-#define GTK_RULER_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_RULER, GtkRulerPrivate))
+#define GTK_RULER_GET_PRIVATE(obj) ((GtkRulerPrivate*)gtk_ruler_get_instance_private ((GtkRuler*)obj))
 
 
 static void     gtk_ruler_set_property    (GObject        *object,
@@ -98,6 +98,7 @@ static const GtkRulerMetric ruler_metrics[] =
 
 
 G_DEFINE_TYPE_WITH_CODE (GtkRuler, gtk_ruler, GTK_TYPE_WIDGET,
+                         G_ADD_PRIVATE (GtkRuler)
                          G_IMPLEMENT_INTERFACE (GTK_TYPE_ORIENTABLE,
                                                 NULL))
 
@@ -180,7 +181,6 @@ gtk_ruler_class_init (GtkRulerClass *class)
 						      GTK_PIXELS,
 						      GTK_PARAM_READWRITE));  
 
-  g_type_class_add_private (gobject_class, sizeof (GtkRulerPrivate));
 }
 
 static void
