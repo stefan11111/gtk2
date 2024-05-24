@@ -43,7 +43,7 @@
 
 
 
-#define GTK_TEXT_BUFFER_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_TEXT_BUFFER, GtkTextBufferPrivate))
+#define GTK_TEXT_BUFFER_GET_PRIVATE(obj) ((GtkTextBufferPrivate*)gtk_text_buffer_get_instance_private ((GtkTextBuffer*)obj))
 
 typedef struct _GtkTextBufferPrivate GtkTextBufferPrivate;
 
@@ -152,7 +152,7 @@ static void gtk_text_buffer_get_property (GObject         *object,
 static void gtk_text_buffer_notify       (GObject         *object,
                                           GParamSpec      *pspec);
 
-G_DEFINE_TYPE (GtkTextBuffer, gtk_text_buffer, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkTextBuffer, gtk_text_buffer, G_TYPE_OBJECT)
 
 static void
 gtk_text_buffer_class_init (GtkTextBufferClass *klass)
@@ -602,8 +602,6 @@ gtk_text_buffer_class_init (GtkTextBufferClass *klass)
                   G_TYPE_NONE,
                   1,
                   GTK_TYPE_CLIPBOARD);
-
-  g_type_class_add_private (object_class, sizeof (GtkTextBufferPrivate));
 }
 
 static void

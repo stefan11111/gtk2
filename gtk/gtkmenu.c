@@ -3424,7 +3424,7 @@ gtk_menu_do_timeout_scroll (GtkMenu  *menu,
        * release. Therefore we need to ignore button release here
        */
       GTK_MENU_SHELL (menu)->ignore_enter = TRUE;
-      gtk_menu_get_instance_private (menu)->ignore_button_release = TRUE;
+      ((GtkMenuPrivate*)gtk_menu_get_instance_private (menu))->ignore_button_release = TRUE;
     }
 }
 
