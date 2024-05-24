@@ -311,11 +311,11 @@ static GtkToolbarStyle toolbar_get_style                    (GtkToolShell       
 static GtkReliefStyle  toolbar_get_relief_style             (GtkToolShell        *shell);
 static void            toolbar_rebuild_menu                 (GtkToolShell        *shell);
 
-#define GTK_TOOLBAR_GET_PRIVATE(o)  \
-  (G_TYPE_INSTANCE_GET_PRIVATE ((o), GTK_TYPE_TOOLBAR, GtkToolbarPrivate))
+#define GTK_TOOLBAR_GET_PRIVATE(o)  ((GtkToolbarPrivate*)gtk_toolbar_get_instance_private ((GtkToolbar*)o)GtkToolbarPrivate))
 
 
 G_DEFINE_TYPE_WITH_CODE (GtkToolbar, gtk_toolbar, GTK_TYPE_CONTAINER,
+                         G_ADD_PRIVATE (GtkToolbar)
                          G_IMPLEMENT_INTERFACE (GTK_TYPE_TOOL_SHELL,
                                                 toolbar_tool_shell_iface_init)
                          G_IMPLEMENT_INTERFACE (GTK_TYPE_ORIENTABLE,
@@ -650,8 +650,6 @@ gtk_toolbar_class_init (GtkToolbarClass *klass)
   
   add_ctrl_tab_bindings (binding_set, 0, GTK_DIR_TAB_FORWARD);
   add_ctrl_tab_bindings (binding_set, GDK_SHIFT_MASK, GTK_DIR_TAB_BACKWARD);
-  
-  g_type_class_add_private (gobject_class, sizeof (GtkToolbarPrivate));  
 }
 
 static void
