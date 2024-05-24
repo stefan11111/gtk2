@@ -31,7 +31,7 @@
 typedef GtkPrintBackendPrivate GtkPrintBackendModulePrivate;
 
 #define GTK_PRINT_BACKEND_GET_PRIVATE(o)  \
-   ((GtkPrintBackendPrivate*)_gtk_print_backend_module_get_instance_private ((GtkPrintBackend*)o))
+   ((GtkPrintBackendPrivate*)_gtk_print_backend_module_get_instance_private ((GtkPrintBackendModule*)o))
 
 static void gtk_print_backend_dispose      (GObject      *object);
 static void gtk_print_backend_set_property (GObject      *object,
