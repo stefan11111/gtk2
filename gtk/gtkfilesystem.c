@@ -40,8 +40,8 @@
 #define DEBUG(x)
 #endif
 
-#define GTK_FILE_SYSTEM_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), GTK_TYPE_FILE_SYSTEM, GtkFileSystemPrivate))
-#define GTK_FOLDER_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), GTK_TYPE_FOLDER, GtkFolderPrivate))
+#define GTK_FILE_SYSTEM_GET_PRIVATE(o) ((GtkFileSystemPrivate*)_gtk_file_system_get_instance_private ((GtkFileSystem*)o))
+#define GTK_FOLDER_GET_PRIVATE(o) ((GtkFolderPrivate*)_gtk_folder_get_instance_private ((GtkFolder*)o))
 #define FILES_PER_QUERY 100
 
 /* The pointers we return for a GtkFileSystemVolume are opaque tokens; they are
@@ -126,9 +126,9 @@ struct GtkFileSystemBookmark
   gchar *label;
 };
 
-G_DEFINE_TYPE (GtkFileSystem, _gtk_file_system, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkFileSystem, _gtk_file_system, G_TYPE_OBJECT)
 
-G_DEFINE_TYPE (GtkFolder, _gtk_folder, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkFolder, _gtk_folder, G_TYPE_OBJECT)
 
 
 static void gtk_folder_set_finished_loading (GtkFolder *folder,
@@ -237,8 +237,6 @@ _gtk_file_system_class_init (GtkFileSystemClass *class)
 		  NULL, NULL,
 		  g_cclosure_marshal_VOID__VOID,
 		  G_TYPE_NONE, 0);
-
-  g_type_class_add_private (object_class, sizeof (GtkFileSystemPrivate));
 }
 
 static GFile *
@@ -1411,8 +1409,6 @@ _gtk_folder_class_init (GtkFolderClass *class)
 		  NULL, NULL,
 		  g_cclosure_marshal_VOID__VOID,
 		  G_TYPE_NONE, 0);
-
-  g_type_class_add_private (object_class, sizeof (GtkFolderPrivate));
 }
 
 static void
