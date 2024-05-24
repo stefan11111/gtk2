@@ -46,6 +46,7 @@ static void     gtk_file_chooser_widget_get_property (GObject               *obj
 						      GParamSpec            *pspec);
 
 G_DEFINE_TYPE_WITH_CODE (GtkFileChooserWidget, gtk_file_chooser_widget, GTK_TYPE_VBOX,
+			 G_ADD_PRIVATE (GtkFileChooserWidget)
 			 G_IMPLEMENT_INTERFACE (GTK_TYPE_FILE_CHOOSER,
 						_gtk_file_chooser_delegate_iface_init)
 			 G_IMPLEMENT_INTERFACE (GTK_TYPE_FILE_CHOOSER_EMBED,
@@ -62,17 +63,12 @@ gtk_file_chooser_widget_class_init (GtkFileChooserWidgetClass *class)
   gobject_class->finalize = gtk_file_chooser_widget_finalize;
 
   _gtk_file_chooser_install_properties (gobject_class);
-
-  g_type_class_add_private (class, sizeof (GtkFileChooserWidgetPrivate));
 }
 
-static void
+static inline void
 gtk_file_chooser_widget_init (GtkFileChooserWidget *chooser_widget)
 {
-  GtkFileChooserWidgetPrivate *priv = G_TYPE_INSTANCE_GET_PRIVATE (chooser_widget,
-								   GTK_TYPE_FILE_CHOOSER_WIDGET,
-								   GtkFileChooserWidgetPrivate);
-  chooser_widget->priv = priv;
+  chooser_widget->priv = gtk_file_chooser_widget_get_instance_private (chooser_widget);
 }
 
 static void
