@@ -255,18 +255,12 @@ static const gchar attach_data_key[] = "gtk-menu-attach-data";
 
 static guint menu_signals[LAST_SIGNAL] = { 0 };
 
-static GtkMenuPrivate *
-gtk_menu_get_private (GtkMenu *menu)
-{
-  return G_TYPE_INSTANCE_GET_PRIVATE (menu, GTK_TYPE_MENU, GtkMenuPrivate);
-}
-
-G_DEFINE_TYPE (GtkMenu, gtk_menu, GTK_TYPE_MENU_SHELL)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkMenu, gtk_menu, GTK_TYPE_MENU_SHELL)
 
 static void
 menu_queue_resize (GtkMenu *menu)
 {
-  GtkMenuPrivate *priv = gtk_menu_get_private (menu);
+  GtkMenuPrivate *priv = gtk_menu_get_instance_private (menu);
 
   priv->have_layout = FALSE;
   gtk_widget_queue_resize (GTK_WIDGET (menu));
@@ -306,7 +300,7 @@ is_grid_attached (AttachInfo *ai)
 static void
 menu_ensure_layout (GtkMenu *menu)
 {
-  GtkMenuPrivate *priv = gtk_menu_get_private (menu);
+  GtkMenuPrivate *priv = gtk_menu_get_instance_private (menu);
 
   if (!priv->have_layout)
     {
@@ -393,7 +387,7 @@ menu_ensure_layout (GtkMenu *menu)
 static gint
 gtk_menu_get_n_columns (GtkMenu *menu)
 {
-  GtkMenuPrivate *priv = gtk_menu_get_private (menu);
+  GtkMenuPrivate *priv = gtk_menu_get_instance_private (menu);
 
   menu_ensure_layout (menu);
 
@@ -403,7 +397,7 @@ gtk_menu_get_n_columns (GtkMenu *menu)
 static gint
 gtk_menu_get_n_rows (GtkMenu *menu)
 {
-  GtkMenuPrivate *priv = gtk_menu_get_private (menu);
+  GtkMenuPrivate *priv = gtk_menu_get_instance_private (menu);
 
   menu_ensure_layout (menu);
 
@@ -798,8 +792,6 @@ gtk_menu_class_init (GtkMenuClass *class)
 				"move-scroll", 1,
 				GTK_TYPE_SCROLL_TYPE,
 				GTK_SCROLL_PAGE_DOWN);
-
-  g_type_class_add_private (gobject_class, sizeof (GtkMenuPrivate));
 }
 
 
@@ -987,7 +979,7 @@ gtk_menu_window_size_request (GtkWidget      *window,
 			      GtkRequisition *requisition,
 			      GtkMenu        *menu)
 {
-  GtkMenuPrivate *private = gtk_menu_get_private (menu);
+  GtkMenuPrivate *private = gtk_menu_get_instance_private (menu);
 
   if (private->have_position)
     {
@@ -1007,7 +999,7 @@ gtk_menu_window_size_request (GtkWidget      *window,
 static void
 gtk_menu_init (GtkMenu *menu)
 {
-  GtkMenuPrivate *priv = gtk_menu_get_private (menu);
+  GtkMenuPrivate *priv = gtk_menu_get_instance_private (menu);
 
   menu->parent_menu_item = NULL;
   menu->old_active_menu_item = NULL;
@@ -1100,7 +1092,7 @@ gtk_menu_destroy (GtkObject *object)
   if (menu->tearoff_window)
     gtk_widget_destroy (menu->tearoff_window);
 
-  priv = gtk_menu_get_private (menu);
+  priv = gtk_menu_get_instance_private (menu);
 
   if (priv->heights)
     {
@@ -1121,7 +1113,7 @@ static void
 menu_change_screen (GtkMenu   *menu,
 		    GdkScreen *new_screen)
 {
-  GtkMenuPrivate *private = gtk_menu_get_private (menu);
+  GtkMenuPrivate *private = gtk_menu_get_instance_private (menu);
 
   if (gtk_widget_has_screen (GTK_WIDGET (menu)))
     {
@@ -1432,7 +1424,7 @@ gtk_menu_popup (GtkMenu		    *menu,
 
   widget = GTK_WIDGET (menu);
   menu_shell = GTK_MENU_SHELL (menu);
-  priv = gtk_menu_get_private (menu);
+  priv = gtk_menu_get_instance_private (menu);
 
   menu_shell->parent_menu_shell = parent_menu_shell;
 
@@ -1627,7 +1619,7 @@ gtk_menu_popdown (GtkMenu *menu)
   g_return_if_fail (GTK_IS_MENU (menu));
   
   menu_shell = GTK_MENU_SHELL (menu);
-  private = gtk_menu_get_private (menu);
+  private = gtk_menu_get_instance_private (menu);
 
   menu_shell->parent_menu_shell = NULL;
   menu_shell->active = FALSE;
@@ -2154,7 +2146,7 @@ gtk_menu_set_title (GtkMenu     *menu,
 
   g_return_if_fail (GTK_IS_MENU (menu));
 
-  priv = gtk_menu_get_private (menu);
+  priv = gtk_menu_get_instance_private (menu);
 
   old_title = priv->title;
   priv->title = g_strdup (title);
@@ -2181,7 +2173,7 @@ gtk_menu_get_title (GtkMenu *menu)
 
   g_return_val_if_fail (GTK_IS_MENU (menu), NULL);
 
-  priv = gtk_menu_get_private (menu);
+  priv = gtk_menu_get_instance_private (menu);
 
   return priv->title;
 }
@@ -2438,7 +2430,7 @@ gtk_menu_size_request (GtkWidget      *widget,
   
   menu = GTK_MENU (widget);
   menu_shell = GTK_MENU_SHELL (widget);
-  priv = gtk_menu_get_private (menu);
+  priv = gtk_menu_get_instance_private (menu);
   
   requisition->width = 0;
   requisition->height = 0;
@@ -2552,7 +2544,7 @@ gtk_menu_size_allocate (GtkWidget     *widget,
   
   menu = GTK_MENU (widget);
   menu_shell = GTK_MENU_SHELL (widget);
-  priv = gtk_menu_get_private (menu);
+  priv = gtk_menu_get_instance_private (menu);
 
   widget->allocation = *allocation;
   gtk_widget_get_child_requisition (GTK_WIDGET (menu), &child_requisition);
@@ -2782,7 +2774,7 @@ gtk_menu_paint (GtkWidget      *widget,
   g_return_if_fail (GTK_IS_MENU (widget));
 
   menu = GTK_MENU (widget);
-  priv = gtk_menu_get_private (menu);
+  priv = gtk_menu_get_instance_private (menu);
 
   get_arrows_visible_area (menu, &border, &upper, &lower, &arrow_space);
 
@@ -2980,7 +2972,7 @@ static gboolean
 gtk_menu_button_release (GtkWidget      *widget,
 			 GdkEventButton *event)
 {
-  GtkMenuPrivate *priv = gtk_menu_get_private (GTK_MENU (widget));
+  GtkMenuPrivate *priv = gtk_menu_get_instance_private (GTK_MENU (widget));
 
   if (priv->ignore_button_release)
     {
@@ -3231,7 +3223,7 @@ gtk_menu_has_navigation_triangle (GtkMenu *menu)
 {
   GtkMenuPrivate *priv;
 
-  priv = gtk_menu_get_private (menu);
+  priv = gtk_menu_get_instance_private (menu);
 
   return priv->navigation_height && priv->navigation_width;
 }
@@ -3248,7 +3240,7 @@ gtk_menu_motion_notify (GtkWidget      *widget,
 
   if (GTK_IS_MENU (widget))
     {
-      GtkMenuPrivate *priv = gtk_menu_get_private (GTK_MENU (widget));
+      GtkMenuPrivate *priv = gtk_menu_get_instance_private (GTK_MENU (widget));
 
       if (priv->ignore_button_release)
         priv->ignore_button_release = FALSE;
@@ -3341,7 +3333,7 @@ gtk_menu_motion_notify (GtkWidget      *widget,
 static gboolean
 get_double_arrows (GtkMenu *menu)
 {
-  GtkMenuPrivate   *priv = gtk_menu_get_private (menu);
+  GtkMenuPrivate   *priv = gtk_menu_get_instance_private (menu);
   gboolean          double_arrows;
   GtkArrowPlacement arrow_placement;
 
@@ -3432,7 +3424,7 @@ gtk_menu_do_timeout_scroll (GtkMenu  *menu,
        * release. Therefore we need to ignore button release here
        */
       GTK_MENU_SHELL (menu)->ignore_enter = TRUE;
-      gtk_menu_get_private (menu)->ignore_button_release = TRUE;
+      gtk_menu_get_instance_private (menu)->ignore_button_release = TRUE;
     }
 }
 
@@ -3617,7 +3609,7 @@ gtk_menu_handle_scrolling (GtkMenu *menu,
   gint top_x, top_y;
   gboolean touchscreen_mode;
 
-  priv = gtk_menu_get_private (menu);
+  priv = gtk_menu_get_instance_private (menu);
 
   menu_shell = GTK_MENU_SHELL (menu);
 
@@ -3878,7 +3870,7 @@ gtk_menu_enter_notify (GtkWidget        *widget,
       
       if (GTK_IS_MENU (menu))
 	{
-	  GtkMenuPrivate *priv = gtk_menu_get_private (GTK_MENU (menu));
+	  GtkMenuPrivate *priv = gtk_menu_get_instance_private (GTK_MENU (menu));
 	  GtkMenuShell *menu_shell = GTK_MENU_SHELL (menu);
 
 	  if (priv->seen_item_enter)
@@ -3978,7 +3970,7 @@ gtk_menu_leave_notify (GtkWidget        *widget,
 static void 
 gtk_menu_stop_navigating_submenu (GtkMenu *menu)
 {
-  GtkMenuPrivate *priv = gtk_menu_get_private (menu);
+  GtkMenuPrivate *priv = gtk_menu_get_instance_private (menu);
 
   priv->navigation_x = 0;
   priv->navigation_y = 0;
@@ -4035,7 +4027,7 @@ gtk_menu_navigating_submenu (GtkMenu *menu,
   if (!gtk_menu_has_navigation_triangle (menu))
     return FALSE;
 
-  priv = gtk_menu_get_private (menu);
+  priv = gtk_menu_get_instance_private (menu);
   width = priv->navigation_width;
   height = priv->navigation_height;
 
@@ -4089,7 +4081,7 @@ gtk_menu_set_submenu_navigation_region (GtkMenu          *menu,
   g_return_if_fail (menu_item->submenu != NULL);
   g_return_if_fail (event != NULL);
   
-  priv = gtk_menu_get_private (menu);
+  priv = gtk_menu_get_instance_private (menu);
 
   event_widget = gtk_get_event_widget ((GdkEvent*) event);
   
@@ -4212,7 +4204,7 @@ gtk_menu_position (GtkMenu  *menu,
       y = MAX (0, (gdk_screen_get_height (screen) - requisition.height) / 2);
     }
 
-  private = gtk_menu_get_private (menu);
+  private = gtk_menu_get_instance_private (menu);
   private->monitor_num = gdk_screen_get_monitor_at_point (screen, x, y);
 
   private->initially_pushed_in = FALSE;
@@ -4489,7 +4481,7 @@ gtk_menu_scroll_to (GtkMenu *menu,
           (offset > 0 && menu->scroll_offset > 0) ||
           (offset < 0 && menu->scroll_offset < 0))
         {
-          GtkMenuPrivate *priv = gtk_menu_get_private (menu);
+          GtkMenuPrivate *priv = gtk_menu_get_instance_private (menu);
           GtkStateType    upper_arrow_previous_state = priv->upper_arrow_state;
           GtkStateType    lower_arrow_previous_state = priv->lower_arrow_state;
 
@@ -4620,7 +4612,7 @@ compute_child_offset (GtkMenu   *menu,
 		      gint      *height,
 		      gboolean  *is_last_child)
 {
-  GtkMenuPrivate *priv = gtk_menu_get_private (menu);
+  GtkMenuPrivate *priv = gtk_menu_get_instance_private (menu);
   gint item_top_attach;
   gint item_bottom_attach;
   gint child_offset = 0;
@@ -5252,7 +5244,7 @@ gtk_menu_set_monitor (GtkMenu *menu,
   GtkMenuPrivate *priv;
   g_return_if_fail (GTK_IS_MENU (menu));
 
-  priv = gtk_menu_get_private (menu);
+  priv = gtk_menu_get_instance_private (menu);
   
   priv->monitor_num = monitor_num;
 }
@@ -5274,7 +5266,7 @@ gtk_menu_get_monitor (GtkMenu *menu)
   GtkMenuPrivate *priv;
   g_return_val_if_fail (GTK_IS_MENU (menu), -1);
 
-  priv = gtk_menu_get_private (menu);
+  priv = gtk_menu_get_instance_private (menu);
   
   return priv->monitor_num;
 }
@@ -5334,7 +5326,7 @@ void
 gtk_menu_set_reserve_toggle_size (GtkMenu  *menu,
                                   gboolean  reserve_toggle_size)
 {
-  GtkMenuPrivate *priv = gtk_menu_get_private (menu);
+  GtkMenuPrivate *priv = gtk_menu_get_instance_private (menu);
   gboolean no_toggle_size;
   
   no_toggle_size = !reserve_toggle_size;
@@ -5361,7 +5353,7 @@ gtk_menu_set_reserve_toggle_size (GtkMenu  *menu,
 gboolean
 gtk_menu_get_reserve_toggle_size (GtkMenu *menu)
 {
-  GtkMenuPrivate *priv = gtk_menu_get_private (menu);
+  GtkMenuPrivate *priv = gtk_menu_get_instance_private (menu);
 
   return !priv->no_toggle_size;
 }
