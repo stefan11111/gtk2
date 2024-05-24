@@ -311,7 +311,7 @@ static GtkToolbarStyle toolbar_get_style                    (GtkToolShell       
 static GtkReliefStyle  toolbar_get_relief_style             (GtkToolShell        *shell);
 static void            toolbar_rebuild_menu                 (GtkToolShell        *shell);
 
-#define GTK_TOOLBAR_GET_PRIVATE(o)  ((GtkToolbarPrivate*)gtk_toolbar_get_instance_private ((GtkToolbar*)o)GtkToolbarPrivate))
+#define GTK_TOOLBAR_GET_PRIVATE(o)  ((GtkToolbarPrivate*)gtk_toolbar_get_instance_private ((GtkToolbar*)o))
 
 
 G_DEFINE_TYPE_WITH_CODE (GtkToolbar, gtk_toolbar, GTK_TYPE_CONTAINER,
