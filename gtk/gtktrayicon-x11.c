@@ -112,14 +112,12 @@ gtk_tray_icon_class_init (GtkTrayIconClass *class)
 						      GTK_TYPE_ORIENTATION,
 						      GTK_ORIENTATION_HORIZONTAL,
 						      GTK_PARAM_READABLE));
-
-  g_type_class_add_private (class, sizeof (GtkTrayIconPrivate));
 }
 
 static void
 gtk_tray_icon_init (GtkTrayIcon *icon)
 {
-  icon->priv = gtk_tray_icon_get_private (icon);
+  icon->priv = gtk_tray_icon_get_instance_private (icon);
   icon->priv->stamp = 1;
   icon->priv->orientation = GTK_ORIENTATION_HORIZONTAL;
 
