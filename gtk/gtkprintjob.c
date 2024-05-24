@@ -63,8 +63,7 @@ struct _GtkPrintJobPrivate
 };
 
 
-#define GTK_PRINT_JOB_GET_PRIVATE(o)  \
-   (G_TYPE_INSTANCE_GET_PRIVATE ((o), GTK_TYPE_PRINT_JOB, GtkPrintJobPrivate))
+#define GTK_PRINT_JOB_GET_PRIVATE(o) ((GtkPrintJobPrivate*)gtk_print_job_get_instance_private ((GtkPrintJob*)o))
 
 static void     gtk_print_job_finalize     (GObject               *object);
 static void     gtk_print_job_set_property (GObject               *object,
@@ -95,20 +94,17 @@ enum {
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE (GtkPrintJob, gtk_print_job, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkPrintJob, gtk_print_job, G_TYPE_OBJECT)
 
 static void
 gtk_print_job_class_init (GtkPrintJobClass *class)
 {
-  GObjectClass *object_class;
-  object_class = (GObjectClass *) class;
+  GObjectClass *object_class = (GObjectClass *) class;
 
   object_class->finalize = gtk_print_job_finalize;
   object_class->constructor = gtk_print_job_constructor;
   object_class->set_property = gtk_print_job_set_property;
   object_class->get_property = gtk_print_job_get_property;
-
-  g_type_class_add_private (class, sizeof (GtkPrintJobPrivate));
 
   g_object_class_install_property (object_class,
                                    PROP_TITLE,
