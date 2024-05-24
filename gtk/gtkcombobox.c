@@ -100,7 +100,7 @@ struct _ComboCellInfo
   guint pack : 1;
 };
 
-#define GTK_COMBO_BOX_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_COMBO_BOX, GtkComboBoxPrivate))
+#define GTK_COMBO_BOX_GET_PRIVATE(obj) ((GtkComboBoxPrivate*)gtk_combo_box_get_instance_private ((GtkComboBox*)obj))
 
 struct _GtkComboBoxPrivate
 {
@@ -522,6 +522,7 @@ static void gtk_combo_box_start_editing (GtkCellEditable *cell_editable,
 
 
 G_DEFINE_TYPE_WITH_CODE (GtkComboBox, gtk_combo_box, GTK_TYPE_BIN,
+			 G_ADD_PRIVATE (GtkComboBox)
 			 G_IMPLEMENT_INTERFACE (GTK_TYPE_CELL_LAYOUT,
 						gtk_combo_box_cell_layout_init)
 			 G_IMPLEMENT_INTERFACE (GTK_TYPE_CELL_EDITABLE,
@@ -975,8 +976,6 @@ gtk_combo_box_class_init (GtkComboBoxClass *klass)
                                                               GTK_TYPE_SHADOW_TYPE,
                                                               GTK_SHADOW_NONE,
                                                               GTK_PARAM_READABLE));
-
-  g_type_class_add_private (object_class, sizeof (GtkComboBoxPrivate));
 }
 
 static void
