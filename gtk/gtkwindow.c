@@ -165,7 +165,7 @@ struct _GtkWindowGeometryInfo
   GtkWindowLastGeometryInfo last;
 };
 
-#define GTK_WINDOW_GET_PRIVATE(obj) ((GtkWindowPrivate*)gtk_window ((GtkWindow*)obj))
+#define GTK_WINDOW_GET_PRIVATE(obj) ((GtkWindowPrivate*)gtk_window_get_instance_private ((GtkWindow*)obj))
 
 typedef struct _GtkWindowPrivate GtkWindowPrivate;
 
