@@ -165,7 +165,7 @@ struct _GtkWindowGeometryInfo
   GtkWindowLastGeometryInfo last;
 };
 
-#define GTK_WINDOW_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_WINDOW, GtkWindowPrivate))
+#define GTK_WINDOW_GET_PRIVATE(obj) ((GtkWindowPrivate*)gtk_window ((GtkWindow*)obj))
 
 typedef struct _GtkWindowPrivate GtkWindowPrivate;
 
@@ -351,6 +351,7 @@ static void gtk_window_buildable_custom_finished (GtkBuildable  *buildable,
 
 
 G_DEFINE_TYPE_WITH_CODE (GtkWindow, gtk_window, GTK_TYPE_BIN,
+                         G_ADD_PRIVATE (GtkWindow)
                          G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
 						gtk_window_buildable_interface_init))
 
@@ -473,8 +474,6 @@ gtk_window_class_init (GtkWindowClass *klass)
   klass->activate_focus = gtk_window_real_activate_focus;
   klass->move_focus = gtk_window_move_focus;
   klass->keys_changed = gtk_window_keys_changed;
-  
-  g_type_class_add_private (gobject_class, sizeof (GtkWindowPrivate));
   
   /* Construct */
   g_object_class_install_property (gobject_class,

@@ -113,6 +113,8 @@ static void     gtk_hsv_move           (GtkHSV           *hsv,
 
 static guint hsv_signals[LAST_SIGNAL];
 
+typedef HSVPrivate GtkHSVPrivate;
+
 G_DEFINE_TYPE_WITH_PRIVATE (GtkHSV, gtk_hsv, GTK_TYPE_WIDGET)
 
 /* Class initialization function for the HSV color selector */
