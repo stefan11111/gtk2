@@ -172,7 +172,7 @@ struct _GtkNotebookPage
   gulong notify_visible_handler;
 };
 
-#define GTK_NOTEBOOK_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_NOTEBOOK, GtkNotebookPrivate))
+#define GTK_NOTEBOOK_GET_PRIVATE(obj) ((GtkNotebookPrivate*)gtk_notebook ((GtkNotebook*)obj))
 
 typedef struct _GtkNotebookPrivate GtkNotebookPrivate;
 
@@ -457,6 +457,7 @@ static GDestroyNotify window_creation_hook_destroy = NULL;
 static guint notebook_signals[LAST_SIGNAL] = { 0 };
 
 G_DEFINE_TYPE_WITH_CODE (GtkNotebook, gtk_notebook, GTK_TYPE_CONTAINER,
+			 G_ADD_PRIVATE (GtkNotebook)
 			 G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
 						gtk_notebook_buildable_init))
 
@@ -1081,8 +1082,6 @@ gtk_notebook_class_init (GtkNotebookClass *class)
 
   add_tab_bindings (binding_set, GDK_CONTROL_MASK, GTK_DIR_TAB_FORWARD);
   add_tab_bindings (binding_set, GDK_CONTROL_MASK | GDK_SHIFT_MASK, GTK_DIR_TAB_BACKWARD);
-
-  g_type_class_add_private (class, sizeof (GtkNotebookPrivate));
 }
 
 static void
