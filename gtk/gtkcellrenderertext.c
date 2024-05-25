@@ -123,7 +123,7 @@ static guint text_cell_renderer_signals [LAST_SIGNAL];
 
 #define GTK_CELL_RENDERER_TEXT_PATH "gtk-cell-renderer-text-path"
 
-#define GTK_CELL_RENDERER_TEXT_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_CELL_RENDERER_TEXT, GtkCellRendererTextPrivate))
+#define GTK_CELL_RENDERER_TEXT_GET_PRIVATE(obj) ((GtkCellRendererTextPrivate*)gtk_cell_renderer_text_get_instance_private ((GtkCellRendererText*)obj))
 
 typedef struct _GtkCellRendererTextPrivate GtkCellRendererTextPrivate;
 struct _GtkCellRendererTextPrivate
@@ -150,7 +150,7 @@ struct _GtkCellRendererTextPrivate
   GtkWidget *entry;
 };
 
-G_DEFINE_TYPE (GtkCellRendererText, gtk_cell_renderer_text, GTK_TYPE_CELL_RENDERER)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkCellRendererText, gtk_cell_renderer_text, GTK_TYPE_CELL_RENDERER)
 
 static void
 gtk_cell_renderer_text_init (GtkCellRendererText *celltext)
@@ -583,8 +583,6 @@ gtk_cell_renderer_text_class_init (GtkCellRendererTextClass *class)
 		  G_TYPE_NONE, 2,
 		  G_TYPE_STRING,
 		  G_TYPE_STRING);
-
-  g_type_class_add_private (object_class, sizeof (GtkCellRendererTextPrivate));
 }
 
 static void
