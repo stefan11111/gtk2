@@ -54,8 +54,6 @@
  */
 
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkSpinner, gtk_spinner, GTK_TYPE_DRAWING_AREA);
-
 enum {
   PROP_0,
   PROP_ACTIVE
@@ -69,6 +67,8 @@ struct _GtkSpinnerPrivate
   gboolean active;
   guint timeout;
 };
+
+G_DEFINE_TYPE_WITH_PRIVATE (GtkSpinner, gtk_spinner, GTK_TYPE_DRAWING_AREA);
 
 static void gtk_spinner_class_init     (GtkSpinnerClass *klass);
 static void gtk_spinner_init           (GtkSpinner      *spinner);
