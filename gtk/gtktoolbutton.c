@@ -106,13 +106,15 @@ struct _GtkToolButtonPrivate
 static GObjectClass        *parent_class = NULL;
 static GtkActivatableIface *parent_activatable_iface;
 static guint                toolbutton_signals[LAST_SIGNAL] = { 0 };
-/*
-#define GTK_TOOL_BUTTON_GET_PRIVATE(obj)((GtkToolButtonPrivate*)_gtk_tool_button_get_instance_private ((GtkToolButton*)obj))
 
-G_DEFINE_TYPE_WITH_PRIVATE (GtkToolButton, _gtk_tool_button, GTK_TYPE_TOOL_ITEM)
-*/
+#define GTK_TOOL_BUTTON_GET_PRIVATE(obj)((GtkToolButtonPrivate*)gtk_tool_button_get_instance_private ((GtkToolButton*)obj))
 
-#define GTK_TOOL_BUTTON_GET_PRIVATE(obj)(G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_TOOL_BUTTON, GtkToolButtonPrivate))
+static gint GtkToolButton_private_offset;
+
+static inline gpointer gtk_tool_button_get_instance_private (GtkToolButton *self)
+{
+  return (G_STRUCT_MEMBER_P (self, GtkToolButton_private_offset));
+}
 
 GType
 gtk_tool_button_get_type (void)
@@ -136,6 +138,8 @@ gtk_tool_button_get_type (void)
 					    (GInstanceInitFunc) gtk_tool_button_init,
 					    0);
 
+      GtkToolButton_private_offset = g_type_add_instance_private (type, sizeof (GtkToolButtonPrivate));
+
       g_type_add_interface_static (type, GTK_TYPE_ACTIVATABLE,
                                    &activatable_info);
     }
@@ -150,6 +154,9 @@ gtk_tool_button_class_init (GtkToolButtonClass *klass)
   GtkToolItemClass *tool_item_class;
   
   parent_class = g_type_class_peek_parent (klass);
+  if (GtkToolButton_private_offset != 0) {
+    g_type_class_adjust_private_offset (klass, &GtkToolButton_private_offset);
+  }
   
   object_class = (GObjectClass *)klass;
   widget_class = (GtkWidgetClass *)klass;
@@ -287,8 +294,6 @@ gtk_tool_button_class_init (GtkToolButtonClass *klass)
 		  NULL, NULL,
 		  g_cclosure_marshal_VOID__VOID,
 		  G_TYPE_NONE, 0);
-
-  g_type_class_add_private (object_class, sizeof (GtkToolButtonPrivate));
 }
 
 static void
