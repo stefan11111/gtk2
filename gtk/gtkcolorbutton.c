@@ -51,8 +51,6 @@
 #define CHECK_DARK  (1.0 / 3.0)
 #define CHECK_LIGHT (2.0 / 3.0)
 
-#define GTK_COLOR_BUTTON_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_COLOR_BUTTON, GtkColorButtonPrivate))
-
 struct _GtkColorButtonPrivate 
 {
   GtkWidget *draw_area; /* Widget where we draw the color sample */
@@ -127,7 +125,7 @@ static guint color_button_signals[LAST_SIGNAL] = { 0 };
 
 static const GtkTargetEntry drop_types[] = { { "application/x-color", 0, 0 } };
 
-G_DEFINE_TYPE (GtkColorButton, gtk_color_button, GTK_TYPE_BUTTON)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkColorButton, gtk_color_button, GTK_TYPE_BUTTON)
 
 static void
 gtk_color_button_class_init (GtkColorButtonClass *klass)
@@ -229,8 +227,6 @@ gtk_color_button_class_init (GtkColorButtonClass *klass)
 						  NULL, NULL,
 						  NULL,
 						  G_TYPE_NONE, 0);
-
-  g_type_class_add_private (gobject_class, sizeof (GtkColorButtonPrivate));
 }
 
 static gboolean
@@ -429,7 +425,7 @@ gtk_color_button_init (GtkColorButton *color_button)
   PangoRectangle rect;
 
   /* Create the widgets */
-  color_button->priv = GTK_COLOR_BUTTON_GET_PRIVATE (color_button);
+  color_button->priv = gtk_color_button_get_instance_private (color_button);
 
   gtk_widget_push_composite_child ();
 
