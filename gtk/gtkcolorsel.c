@@ -255,6 +255,8 @@ static const guchar dropper_mask[] = {
   0x1e, 0x00, 0x00, 0x00,  0x0d, 0x00, 0x00, 0x00,
   0x02, 0x00, 0x00, 0x00 };
 
+typedef ColorSelectionPrivate GtkColorSelectionPrivate;
+
 G_DEFINE_TYPE_WITH_PRIVATE (GtkColorSelection, gtk_color_selection, GTK_TYPE_VBOX)
 
 static void

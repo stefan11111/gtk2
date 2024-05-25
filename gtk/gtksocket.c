@@ -155,6 +155,9 @@ enum {
 
 static guint socket_signals[LAST_SIGNAL] = { 0 };
 
+
+G_DEFINE_TYPE_WITH_PRIVATE (GtkSocket, gtk_socket, GTK_TYPE_CONTAINER)
+
 /*
  * _gtk_socket_get_private:
  *
@@ -166,10 +169,8 @@ static guint socket_signals[LAST_SIGNAL] = { 0 };
 GtkSocketPrivate *
 _gtk_socket_get_private (GtkSocket *socket)
 {
-  return G_TYPE_INSTANCE_GET_PRIVATE (socket, GTK_TYPE_SOCKET, GtkSocketPrivate);
+  return gtk_socket_get_instance_private (socket);
 }
-
-G_DEFINE_TYPE (GtkSocket, gtk_socket, GTK_TYPE_CONTAINER)
 
 static void
 gtk_socket_finalize (GObject *object)
@@ -249,8 +250,6 @@ gtk_socket_class_init (GtkSocketClass *class)
                   _gtk_boolean_handled_accumulator, NULL,
 		  NULL,
 		  G_TYPE_BOOLEAN, 0);
-
-  g_type_class_add_private (gobject_class, sizeof (GtkSocketPrivate));
 }
 
 static void
@@ -441,7 +440,7 @@ gtk_socket_realize (GtkWidget *widget)
 void
 _gtk_socket_end_embedding (GtkSocket *socket)
 {
-  GtkSocketPrivate *private = _gtk_socket_get_private (socket);
+  GtkSocketPrivate *private = gtk_socket_get_instance_private (socket);
   GtkWidget *toplevel = gtk_widget_get_toplevel (GTK_WIDGET (socket));
   
   if (GTK_IS_WINDOW (toplevel))
@@ -529,7 +528,7 @@ gtk_socket_size_allocate (GtkWidget     *widget,
 	}
       else if (socket->plug_window)
 	{
-	  GtkSocketPrivate *private = _gtk_socket_get_private (socket);
+	  GtkSocketPrivate *private = gtk_socket_get_instance_private (socket);
 	  
 	  gdk_error_trap_push ();
 	  
