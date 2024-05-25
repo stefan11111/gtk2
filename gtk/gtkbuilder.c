@@ -100,7 +100,7 @@ gtk_builder_class_init (GtkBuilderClass *klass)
 static void
 gtk_builder_init (GtkBuilder *builder)
 {
-  builder->priv = gtk_builder_get_instance_type (builder);
+  builder->priv = gtk_builder_get_instance_private (builder);
   builder->priv->domain = NULL;
   builder->priv->objects = g_hash_table_new_full (g_str_hash, g_str_equal,
                                                   g_free, g_object_unref);
