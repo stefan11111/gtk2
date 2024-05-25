@@ -46,7 +46,7 @@ struct _GtkSeparatorPrivate
   GtkOrientation orientation;
 };
 
-#define GTK_SEPARATOR_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_SEPARATOR, GtkSeparatorPrivate))
+#define GTK_SEPARATOR_GET_PRIVATE(obj) ((GtkSeparatorPrivate*)gtk_separator_get_instance_private ((GtkSeparator*)obj))
 
 
 static void       gtk_separator_set_property (GObject        *object,
@@ -65,6 +65,7 @@ static gboolean   gtk_separator_expose       (GtkWidget      *widget,
 
 
 G_DEFINE_ABSTRACT_TYPE_WITH_CODE (GtkSeparator, gtk_separator, GTK_TYPE_WIDGET,
+                                  G_ADD_PRIVATE (GtkSeparator)
                                   G_IMPLEMENT_INTERFACE (GTK_TYPE_ORIENTABLE,
                                                          NULL))
 
@@ -84,8 +85,6 @@ gtk_separator_class_init (GtkSeparatorClass *class)
   g_object_class_override_property (object_class,
                                     PROP_ORIENTATION,
                                     "orientation");
-
-  g_type_class_add_private (object_class, sizeof (GtkSeparatorPrivate));
 }
 
 static void
