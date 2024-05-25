@@ -58,7 +58,7 @@ struct _GtkBoxPrivate
   guint          spacing_set    : 1;
 };
 
-#define GTK_BOX_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_BOX, GtkBoxPrivate))
+#define GTK_BOX_GET_PRIVATE(obj) ((GtkBoxPrivate*)gtk_box_get_instance_private ((GtkBox*)obj))
 
 
 static void gtk_box_set_property       (GObject        *object,
@@ -97,6 +97,7 @@ static GType gtk_box_child_type        (GtkContainer   *container);
 
 
 G_DEFINE_ABSTRACT_TYPE_WITH_CODE (GtkBox, gtk_box, GTK_TYPE_CONTAINER,
+                                  G_ADD_PRIVATE (GtkBox)
                                   G_IMPLEMENT_INTERFACE (GTK_TYPE_ORIENTABLE,
                                                          NULL));
 
@@ -177,8 +178,6 @@ gtk_box_class_init (GtkBoxClass *class)
 								P_("The index of the child in the parent"),
 								-1, G_MAXINT, 0,
 								GTK_PARAM_READWRITE));
-
-  g_type_class_add_private (object_class, sizeof (GtkBoxPrivate));
 }
 
 static void
