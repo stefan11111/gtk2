@@ -106,8 +106,13 @@ struct _GtkToolButtonPrivate
 static GObjectClass        *parent_class = NULL;
 static GtkActivatableIface *parent_activatable_iface;
 static guint                toolbutton_signals[LAST_SIGNAL] = { 0 };
+/*
+#define GTK_TOOL_BUTTON_GET_PRIVATE(obj)((GtkToolButtonPrivate*)_gtk_tool_button_get_instance_private ((GtkToolButton*)obj))
 
-#define GTK_TOOL_BUTTON_GET_PRIVATE(obj)((GtkToolButtonPrivate*)((char*)(obj) + sizeof(GtkToolItem)))
+G_DEFINE_TYPE_WITH_PRIVATE (GtkToolButton, _gtk_tool_button, GTK_TYPE_TOOL_ITEM)
+*/
+
+#define GTK_TOOL_BUTTON_GET_PRIVATE(obj)(G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_TOOL_BUTTON, GtkToolButtonPrivate))
 
 GType
 gtk_tool_button_get_type (void)
@@ -282,6 +287,8 @@ gtk_tool_button_class_init (GtkToolButtonClass *klass)
 		  NULL, NULL,
 		  g_cclosure_marshal_VOID__VOID,
 		  G_TYPE_NONE, 0);
+
+  g_type_class_add_private (object_class, sizeof (GtkToolButtonPrivate));
 }
 
 static void

@@ -449,10 +449,6 @@ node_should_be_visible (GtkFileSystemModel *model, guint id, gboolean filtered_o
   if (node->info == NULL)
     return FALSE;
 
-  if (!model->show_hidden &&
-      (g_file_info_get_is_hidden (node->info) || g_file_info_get_is_backup (node->info)))
-    return FALSE;
-
   if (_gtk_file_info_consider_as_directory (node->info))
     {
       if (!model->show_folders)
