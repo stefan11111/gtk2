@@ -37,7 +37,7 @@ static void set_cell_bg_color               (GtkCellRenderer      *cell,
 					     GdkColor             *color);
 
 
-#define GTK_CELL_RENDERER_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_CELL_RENDERER, GtkCellRendererPrivate))
+#define GTK_CELL_RENDERER_GET_PRIVATE(obj) ((GtkCellRendererPrivate*)gtk_cell_renderer_get_instance_private ((GtkCellRenderer*)obj))
 
 typedef struct _GtkCellRendererPrivate GtkCellRendererPrivate;
 struct _GtkCellRendererPrivate
@@ -74,7 +74,7 @@ enum {
 
 static guint cell_renderer_signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_ABSTRACT_TYPE (GtkCellRenderer, gtk_cell_renderer, GTK_TYPE_OBJECT)
+G_DEFINE_ABSTRACT_TYPE_WITH_PRIVATE (GtkCellRenderer, gtk_cell_renderer, GTK_TYPE_OBJECT)
 
 static void
 gtk_cell_renderer_init (GtkCellRenderer *cell)
@@ -302,8 +302,6 @@ gtk_cell_renderer_class_init (GtkCellRendererClass *class)
   ADD_SET_PROP ("cell-background-set", PROP_CELL_BACKGROUND_SET,
                 P_("Cell background set"),
                 P_("Whether this tag affects the cell background color"));
-
-  g_type_class_add_private (object_class, sizeof (GtkCellRendererPrivate));
 }
 
 static void
