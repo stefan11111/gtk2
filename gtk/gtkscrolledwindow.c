@@ -78,7 +78,7 @@ typedef struct {
 	GtkCornerType real_window_placement;
 } GtkScrolledWindowPrivate;
 
-#define GTK_SCROLLED_WINDOW_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_SCROLLED_WINDOW, GtkScrolledWindowPrivate))
+#define GTK_SCROLLED_WINDOW_GET_PRIVATE(obj) ((GtkScrolledWindowPrivate*)gtk_scrolled_window_get_instance_private ((GtkScrolledWindow*)obj))
 
 enum {
   PROP_0,
@@ -144,7 +144,7 @@ static void  gtk_scrolled_window_update_real_placement (GtkScrolledWindow *scrol
 
 static guint signals[LAST_SIGNAL] = {0};
 
-G_DEFINE_TYPE (GtkScrolledWindow, gtk_scrolled_window, GTK_TYPE_BIN)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkScrolledWindow, gtk_scrolled_window, GTK_TYPE_BIN)
 
 static void
 add_scroll_binding (GtkBindingSet  *binding_set,
@@ -352,8 +352,6 @@ gtk_scrolled_window_class_init (GtkScrolledWindowClass *class)
 
   add_tab_bindings (binding_set, GDK_CONTROL_MASK, GTK_DIR_TAB_FORWARD);
   add_tab_bindings (binding_set, GDK_CONTROL_MASK | GDK_SHIFT_MASK, GTK_DIR_TAB_BACKWARD);
-
-  g_type_class_add_private (class, sizeof (GtkScrolledWindowPrivate));
 }
 
 static void
