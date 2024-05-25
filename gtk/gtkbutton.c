@@ -77,7 +77,7 @@ enum {
   PROP_ACTIVATABLE_USE_ACTION_APPEARANCE
 };
 
-#define GTK_BUTTON_GET_PRIVATE(o)       (G_TYPE_INSTANCE_GET_PRIVATE ((o), GTK_TYPE_BUTTON, GtkButtonPrivate))
+#define GTK_BUTTON_GET_PRIVATE(o)       ((GtkButtonPrivate*)gtk_button_get_instance_private ((GtkButton*)o))
 typedef struct _GtkButtonPrivate GtkButtonPrivate;
 
 struct _GtkButtonPrivate
@@ -162,6 +162,7 @@ static void gtk_button_set_use_action_appearance (GtkButton            *button,
 static guint button_signals[LAST_SIGNAL] = { 0 };
 
 G_DEFINE_TYPE_WITH_CODE (GtkButton, gtk_button, GTK_TYPE_BIN,
+			 G_ADD_PRIVATE (GtkButton)
 			 G_IMPLEMENT_INTERFACE (GTK_TYPE_ACTIVATABLE,
 						gtk_button_activatable_interface_init))
 
@@ -518,8 +519,6 @@ gtk_button_class_init (GtkButtonClass *klass)
 							     G_MAXINT,
 							     2,
 							     GTK_PARAM_READABLE));
-
-  g_type_class_add_private (gobject_class, sizeof (GtkButtonPrivate));
 }
 
 static void
