@@ -446,6 +446,14 @@ node_should_be_visible (GtkFileSystemModel *model, guint id, gboolean filtered_o
   FileModelNode *node = get_node (model, id);
   gboolean result;
 
+  if (!model->show_hidden &&
+      ((g_file_info_has_attribute (node->info, G_FILE_ATTRIBUTE_STANDARD_IS_HIDDEN) &&
+        g_file_info_get_is_hidden (node->info)) ||
+       (g_file_info_has_attribute (node->info, G_FILE_ATTRIBUTE_STANDARD_IS_BACKUP) &&
+        g_file_info_get_is_backup (node->info))) {
+    return FALSE;
+  }
+
   if (node->info == NULL)
     return FALSE;
 
