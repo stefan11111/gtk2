@@ -86,8 +86,6 @@ typedef enum {
   STEPPER_D
 } Stepper;
 
-#define GTK_RANGE_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_RANGE, GtkRangeLayout))
-
 struct _GtkRangeLayout
 {
   /* These are in widget->window coordinates */
@@ -233,6 +231,7 @@ static gboolean      gtk_range_key_press                (GtkWidget     *range,
 
 
 G_DEFINE_ABSTRACT_TYPE_WITH_CODE (GtkRange, gtk_range, GTK_TYPE_WIDGET,
+                                  G_ADD_PRIVATE (GtkRange)
                                   G_IMPLEMENT_INTERFACE (GTK_TYPE_ORIENTABLE,
                                                          NULL))
 
@@ -612,8 +611,6 @@ gtk_range_class_init (GtkRangeClass *class)
                                                                  P_("When TRUE, the detail string for rendering the steppers is suffixed with position information"),
                                                                  FALSE,
                                                                  GTK_PARAM_READABLE));
-
-  g_type_class_add_private (class, sizeof (GtkRangeLayout));
 }
 
 static void
@@ -733,7 +730,7 @@ gtk_range_init (GtkRange *range)
   range->has_stepper_d = FALSE;
   range->need_recalc = TRUE;
   range->round_digits = -1;
-  range->layout = GTK_RANGE_GET_PRIVATE (range);
+  range->layout = gtk_range_get_instance_private (range);
   range->layout->mouse_location = MOUSE_OUTSIDE;
   range->layout->mouse_x = -1;
   range->layout->mouse_y = -1;
