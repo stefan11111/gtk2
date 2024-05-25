@@ -230,6 +230,8 @@ static gboolean      gtk_range_key_press                (GtkWidget     *range,
 							 GdkEventKey   *event);
 
 
+typedef GtkRangeLayout GtkRangePrivate;
+
 G_DEFINE_ABSTRACT_TYPE_WITH_CODE (GtkRange, gtk_range, GTK_TYPE_WIDGET,
                                   G_ADD_PRIVATE (GtkRange)
                                   G_IMPLEMENT_INTERFACE (GTK_TYPE_ORIENTABLE,
