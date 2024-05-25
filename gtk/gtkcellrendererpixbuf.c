@@ -67,7 +67,7 @@ enum {
 };
 
 
-#define GTK_CELL_RENDERER_PIXBUF_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_CELL_RENDERER_PIXBUF, GtkCellRendererPixbufPrivate))
+#define GTK_CELL_RENDERER_PIXBUF_GET_PRIVATE(obj) ((GtkCellRendererPixbufPrivate*)gtk_cell_renderer_pixbuf_get_instance_private ((GtkCellRendererPixbuf*)obj))
 
 typedef struct _GtkCellRendererPixbufPrivate GtkCellRendererPixbufPrivate;
 struct _GtkCellRendererPixbufPrivate
@@ -80,7 +80,7 @@ struct _GtkCellRendererPixbufPrivate
   GIcon *gicon;
 };
 
-G_DEFINE_TYPE (GtkCellRendererPixbuf, gtk_cell_renderer_pixbuf, GTK_TYPE_CELL_RENDERER)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkCellRendererPixbuf, gtk_cell_renderer_pixbuf, GTK_TYPE_CELL_RENDERER)
 
 static void
 gtk_cell_renderer_pixbuf_init (GtkCellRendererPixbuf *cellpixbuf)
@@ -206,10 +206,6 @@ gtk_cell_renderer_pixbuf_class_init (GtkCellRendererPixbufClass *class)
                                                         P_("The GIcon being displayed"),
                                                         G_TYPE_ICON,
                                                         GTK_PARAM_READWRITE));
-
-
-
-  g_type_class_add_private (object_class, sizeof (GtkCellRendererPixbufPrivate));
 }
 
 static void
