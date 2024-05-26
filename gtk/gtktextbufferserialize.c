@@ -1126,7 +1126,7 @@ get_pixbuf_from_headers (GList   *headers,
   if (!header)
     return NULL;
 
-  if (!gdk_pixdata_deserialize (&pixdata, header->length,
+  if (!_gdk_pixdata_deserialize (&pixdata, header->length,
                                 (const guint8 *) header->start, error))
     return NULL;
 
