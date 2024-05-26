@@ -434,6 +434,61 @@ pixbuf_destroy_cb (guchar   *pixels,
   _gtk_icon_cache_unref (cache);
 }
 
+#define	return_header_corrupt(error)	{ \
+  g_set_error_literal (error, GDK_PIXBUF_ERROR, \
+                       GDK_PIXBUF_ERROR_CORRUPT_IMAGE, _("Image header corrupt")); \
+  return FALSE; \
+}
+#define	return_invalid_format(error)	{ \
+  g_set_error_literal (error, GDK_PIXBUF_ERROR, \
+                       GDK_PIXBUF_ERROR_UNKNOWN_TYPE, _("Image format unknown")); \
+  return FALSE; \
+}
+#define	return_pixel_corrupt(error)	{ \
+  g_set_error_literal (error, GDK_PIXBUF_ERROR, \
+                       GDK_PIXBUF_ERROR_CORRUPT_IMAGE, _("Image pixel data corrupt")); \
+  return FALSE; \
+}
+
+static gboolean
+_gdk_pixdata_deserialize (GdkPixdata   *pixdata,
+			 guint         stream_length,
+			 const guint8 *stream,
+			 GError	     **error)
+{
+  guint color_type, sample_width, encoding;
+  g_return_val_if_fail (pixdata != NULL, FALSE);
+  if (stream_length < GDK_PIXDATA_HEADER_LENGTH)
+    return_header_corrupt (error);
+  g_return_val_if_fail (stream != NULL, FALSE);
+  /* deserialize header */
+  stream = get_uint32 (stream, &pixdata->magic);
+  stream = get_uint32 (stream, (guint32 *)&pixdata->length);
+  if (pixdata->magic != GDK_PIXBUF_MAGIC_NUMBER || pixdata->length < GDK_PIXDATA_HEADER_LENGTH)
+    return_header_corrupt (error);
+  stream = get_uint32 (stream, &pixdata->pixdata_type);
+  stream = get_uint32 (stream, &pixdata->rowstride);
+  stream = get_uint32 (stream, &pixdata->width);
+  stream = get_uint32 (stream, &pixdata->height);
+  if (pixdata->width < 1 || pixdata->height < 1 ||
+      pixdata->rowstride < pixdata->width)
+    return_header_corrupt (error);
+  color_type = pixdata->pixdata_type & GDK_PIXDATA_COLOR_TYPE_MASK;
+  sample_width = pixdata->pixdata_type & GDK_PIXDATA_SAMPLE_WIDTH_MASK;
+  encoding = pixdata->pixdata_type & GDK_PIXDATA_ENCODING_MASK;
+  if ((color_type != GDK_PIXDATA_COLOR_TYPE_RGB &&
+       color_type != GDK_PIXDATA_COLOR_TYPE_RGBA) ||
+      sample_width != GDK_PIXDATA_SAMPLE_WIDTH_8 ||
+      (encoding != GDK_PIXDATA_ENCODING_RAW &&
+       encoding != GDK_PIXDATA_ENCODING_RLE))
+    return_invalid_format (error);
+  /* deserialize pixel data */
+  if (stream_length < pixdata->length - GDK_PIXDATA_HEADER_LENGTH)
+    return_pixel_corrupt (error);
+  pixdata->pixel_data = (guint8 *)stream;
+  return TRUE;
+}
+
 GdkPixbuf *
 _gtk_icon_cache_get_icon (GtkIconCache *cache,
 			  const gchar  *icon_name,
@@ -465,7 +520,7 @@ _gtk_icon_cache_get_icon (GtkIconCache *cache,
 
   length = GET_UINT32 (cache->buffer, pixel_data_offset + 4);
   
-  if (!gdk_pixdata_deserialize (&pixdata, length, 
+  if (!_gdk_pixdata_deserialize (&pixdata, length,
 				(guchar *)(cache->buffer + pixel_data_offset + 8),
 				&error))
     {
