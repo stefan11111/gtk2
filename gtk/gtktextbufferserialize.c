@@ -675,8 +675,18 @@ _gdk_pixdata_serialize (const GdkPixdata *pixdata,
   return stream;
 }
 
-static guint8 *                         /* dest buffer bound */
+static gboolean
+diff2_rgb (const guint8 *ip)
+{
+  return ip[0] != ip[3] || ip[1] != ip[4] || ip[2] != ip[5];
+}
+static gboolean
+diff2_rgba (const guint8 *ip)
+{
+  return ip[0] != ip[4] || ip[1] != ip[5] || ip[2] != ip[6] || ip[3] != ip[7];
+}
 
+static guint8 *                         /* dest buffer bound */
 rl_encode_rgbx (guint8       *bp,       /* dest buffer */
                 const guint8 *ip,       /* image pointer */
                 const guint8 *limit,    /* image upper bound */
