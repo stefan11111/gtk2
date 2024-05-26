@@ -675,6 +675,92 @@ _gdk_pixdata_serialize (const GdkPixdata *pixdata,
   return stream;
 }
 
+static guint8 *                         /* dest buffer bound */
+
+rl_encode_rgbx (guint8       *bp,       /* dest buffer */
+                const guint8 *ip,       /* image pointer */
+                const guint8 *limit,    /* image upper bound */
+                guint         n_ch)
+{
+  gboolean (*diff2_pix) (const guint8 *) = n_ch > 3 ? diff2_rgba : diff2_rgb;
+  const guint8 *ilimit = limit - n_ch;
+  while (ip < limit)
+    {
+      g_assert (ip < ilimit); /* paranoid */
+      if (diff2_pix (ip))
+	{
+	  const guint8 *s_ip = ip;
+	  guint l = 1;
+	  ip += n_ch;
+	  while (l < 127 && ip < ilimit && diff2_pix (ip))
+	    { ip += n_ch; l += 1; }
+	  if (ip == ilimit && l < 127)
+	    { ip += n_ch; l += 1; }
+	  *(bp++) = l;
+	  memcpy (bp, s_ip, l * n_ch);
+	  bp += l * n_ch;
+	}
+      else
+	{
+	  guint l = 2;
+	  ip += n_ch;
+	  while (l < 127 && ip < ilimit && !diff2_pix (ip))
+	    { ip += n_ch; l += 1; }
+	  *(bp++) = l | 128;
+	  memcpy (bp, ip, n_ch);
+	  ip += n_ch;
+	  bp += n_ch;
+	}
+      if (ip == ilimit)
+	{
+	  *(bp++) = 1;
+	  memcpy (bp, ip, n_ch);
+	  ip += n_ch;
+	  bp += n_ch;
+	}
+    }
+  return bp;
+}
+
+typedef enum {
+        STORAGE_UNINITIALIZED,
+        STORAGE_PIXELS,
+        STORAGE_BYTES
+} Storage;
+typedef struct {
+        /* The pixel array */
+        guchar *pixels;
+        /* Destroy notification function; it is supposed to free the pixel array */
+        GdkPixbufDestroyNotify destroy_fn;
+        /* User data for the destroy notification function */
+        gpointer destroy_fn_data;
+} Pixels;
+typedef struct {
+        GBytes *bytes;
+
+} Bytes;
+
+struct _GdkPixbuf {
+        GObject parent_instance;
+	/* Color space */
+	GdkColorspace colorspace;
+	/* Number of channels, alpha included */
+	int n_channels;
+	/* Bits per channel */
+	int bits_per_sample;
+	/* Size */
+	int width, height;
+	/* Offset between rows */
+	int rowstride;
+        Storage storage;
+        struct {
+                Pixels pixels;
+                Bytes bytes;
+        } s;
+	/* Do we have an alpha channel? */
+	guint has_alpha : 1;
+};
+
 static gpointer
 _gdk_pixdata_from_pixbuf (GdkPixdata      *pixdata,
 			 const GdkPixbuf *pixbuf,
