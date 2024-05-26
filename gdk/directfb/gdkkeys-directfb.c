@@ -1811,7 +1811,7 @@ gdk_keymap_get_entries_for_keycode (GdkKeymap     *keymap,
     }
   if (keyvals)
     {
-      *keyvals = g_new (guint, num);
+      *keyvals = g_new (guint, (guint)num);
 
       for (i = 0, j = 0; num > 0 && i < 4; i++)
         if (directfb_keymap[index + i] != GDK_VoidSymbol)
