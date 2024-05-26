@@ -450,6 +450,13 @@ pixbuf_destroy_cb (guchar   *pixels,
   return FALSE; \
 }
 
+static inline const guint8 *
+get_uint32 (const guint8 *stream, guint *result)
+{
+  *result = (stream[0] << 24) + (stream[1] << 16) + (stream[2] << 8) + stream[3];
+  return stream + 4;
+}
+
 static gboolean
 _gdk_pixdata_deserialize (GdkPixdata   *pixdata,
 			 guint         stream_length,
