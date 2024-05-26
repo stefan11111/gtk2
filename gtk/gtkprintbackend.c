@@ -27,14 +27,8 @@
 #include "gtkmodules.h"
 #include "gtkprivate.h"
 #include "gtkprintbackend.h"
-/*
-typedef GtkPrintBackendPrivate GtkPrintBackendModulePrivate;
 
-#define GTK_PRINT_BACKEND_GET_PRIVATE(o)  \
-   ((GtkPrintBackendPrivate*)_gtk_print_backend_module_get_instance_private ((GtkPrintBackendModule*)o))
-*/
-#define GTK_PRINT_BACKEND_GET_PRIVATE(o)  \
-  (G_TYPE_INSTANCE_GET_PRIVATE ((o), GTK_TYPE_PRINT_BACKEND, GtkPrintBackendPrivate))
+#define GTK_PRINT_BACKEND_GET_PRIVATE(o) ((GtkPrintBackendPrivate*)gtk_print_backend_get_instance_private ((GtkPrintBackend*)o))
 
 static void gtk_print_backend_dispose      (GObject      *object);
 static void gtk_print_backend_set_property (GObject      *object,
@@ -109,9 +103,7 @@ struct _GtkPrintBackendModuleClass
 {
   GTypeModuleClass parent_class;
 };
-/*
-G_DEFINE_TYPE_WITH_PRIVATE (GtkPrintBackendModule, _gtk_print_backend_module, G_TYPE_TYPE_MODULE)
-*/
+
 G_DEFINE_TYPE (GtkPrintBackendModule, _gtk_print_backend_module, G_TYPE_TYPE_MODULE)
 #define GTK_TYPE_PRINT_BACKEND_MODULE      (_gtk_print_backend_module_get_type ())
 #define GTK_PRINT_BACKEND_MODULE(module)   (G_TYPE_CHECK_INSTANCE_CAST ((module), GTK_TYPE_PRINT_BACKEND_MODULE, GtkPrintBackendModule))
@@ -353,7 +345,7 @@ gtk_print_backend_load_modules (void)
  *             GtkPrintBackend           *
  *****************************************/
 
-G_DEFINE_TYPE (GtkPrintBackend, gtk_print_backend, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkPrintBackend, gtk_print_backend, G_TYPE_OBJECT)
 
 static void                 fallback_printer_request_details       (GtkPrinter          *printer);
 static gboolean             fallback_printer_mark_conflicts        (GtkPrinter          *printer,
@@ -403,8 +395,6 @@ gtk_print_backend_class_init (GtkPrintBackendClass *class)
                                                      GTK_PRINT_BACKEND_STATUS_UNKNOWN,
                                                      GTK_PARAM_READWRITE));
   
-  g_type_class_add_private (class, sizeof (GtkPrintBackendPrivate));
-
   signals[PRINTER_LIST_CHANGED] =
     g_signal_new (I_("printer-list-changed"),
 		  G_TYPE_FROM_CLASS (class),
