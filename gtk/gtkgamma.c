@@ -305,6 +305,68 @@ gtk_gamma_curve_init (GtkGammaCurve *curve)
   gtk_widget_show (curve->curve);
 }
 
+#define	return_header_corrupt(error)	{ \
+  g_set_error_literal (error, GDK_PIXBUF_ERROR, \
+                       GDK_PIXBUF_ERROR_CORRUPT_IMAGE, "Image header corrupt"); \
+  return FALSE; \
+}
+#define	return_invalid_format(error)	{ \
+  g_set_error_literal (error, GDK_PIXBUF_ERROR, \
+                       GDK_PIXBUF_ERROR_UNKNOWN_TYPE, "Image format unknown"); \
+  return FALSE; \
+}
+#define	return_pixel_corrupt(error)	{ \
+  g_set_error_literal (error, GDK_PIXBUF_ERROR, \
+                       GDK_PIXBUF_ERROR_CORRUPT_IMAGE, "Image pixel data corrupt"); \
+  return FALSE; \
+}
+
+static inline const guint8 *
+get_uint32 (const guint8 *stream, guint *result)
+{
+  *result = (stream[0] << 24) + (stream[1] << 16) + (stream[2] << 8) + stream[3];
+  return stream + 4;
+}
+
+static gboolean
+_gdk_pixdata_deserialize (GdkPixdata   *pixdata,
+			 guint         stream_length,
+			 const guint8 *stream,
+			 GError	     **error)
+{
+  guint color_type, sample_width, encoding;
+  g_return_val_if_fail (pixdata != NULL, FALSE);
+  if (stream_length < GDK_PIXDATA_HEADER_LENGTH)
+    return_header_corrupt (error);
+  g_return_val_if_fail (stream != NULL, FALSE);
+  /* deserialize header */
+  stream = get_uint32 (stream, &pixdata->magic);
+  stream = get_uint32 (stream, (guint32 *)&pixdata->length);
+  if (pixdata->magic != GDK_PIXBUF_MAGIC_NUMBER || pixdata->length < GDK_PIXDATA_HEADER_LENGTH)
+    return_header_corrupt (error);
+  stream = get_uint32 (stream, &pixdata->pixdata_type);
+  stream = get_uint32 (stream, &pixdata->rowstride);
+  stream = get_uint32 (stream, &pixdata->width);
+  stream = get_uint32 (stream, &pixdata->height);
+  if (pixdata->width < 1 || pixdata->height < 1 ||
+      pixdata->rowstride < pixdata->width)
+    return_header_corrupt (error);
+  color_type = pixdata->pixdata_type & GDK_PIXDATA_COLOR_TYPE_MASK;
+  sample_width = pixdata->pixdata_type & GDK_PIXDATA_SAMPLE_WIDTH_MASK;
+  encoding = pixdata->pixdata_type & GDK_PIXDATA_ENCODING_MASK;
+  if ((color_type != GDK_PIXDATA_COLOR_TYPE_RGB &&
+       color_type != GDK_PIXDATA_COLOR_TYPE_RGBA) ||
+      sample_width != GDK_PIXDATA_SAMPLE_WIDTH_8 ||
+      (encoding != GDK_PIXDATA_ENCODING_RAW &&
+       encoding != GDK_PIXDATA_ENCODING_RLE))
+    return_invalid_format (error);
+  /* deserialize pixel data */
+  if (stream_length < pixdata->length - GDK_PIXDATA_HEADER_LENGTH)
+    return_pixel_corrupt (error);
+  pixdata->pixel_data = (guint8 *)stream;
+  return TRUE;
+}
+
 static void
 button_realize_callback (GtkWidget *w)
 {
@@ -324,7 +386,7 @@ button_realize_callback (GtkWidget *w)
   int i;
 
   i = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (w), "_GtkGammaCurveIndex"));
-  gdk_pixdata_deserialize (&pixdata, streams[i].length, streams[i].stream, NULL);
+  _gdk_pixdata_deserialize (&pixdata, streams[i].length, streams[i].stream, NULL);
   pixbuf = gdk_pixbuf_from_pixdata (&pixdata, TRUE, NULL);
   image = gtk_image_new_from_pixbuf (pixbuf);
   gtk_container_add (GTK_CONTAINER (w), image);
