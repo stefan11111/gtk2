@@ -1449,10 +1449,8 @@ _gdk_pixbuf_from_pixdata (const GdkPixdata *pixdata,
 	{
 	  g_set_error (error, GDK_PIXBUF_ERROR,
 		       GDK_PIXBUF_ERROR_INSUFFICIENT_MEMORY,
-		       g_dngettext(GETTEXT_PACKAGE,
-				   "failed to allocate image buffer of %u byte",
-				   "failed to allocate image buffer of %u bytes",
-				   pixdata->rowstride * pixdata->height),
+		       ixdata->rowstride * pixdata->height == 1 ? "failed to allocate image buffer of %u byte" :
+		                                                  "failed to allocate image buffer of %u bytes",
 		       pixdata->rowstride * pixdata->height);
 	  return NULL;
 	}
@@ -1556,7 +1554,6 @@ get_pixbuf_from_headers (GList   *headers,
 {
   Header *header;
   GdkPixdata pixdata;
-  GdkPixbuf *pixbuf;
 
   header = g_list_nth_data (headers, id);
 
