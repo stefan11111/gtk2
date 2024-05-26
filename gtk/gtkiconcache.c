@@ -436,17 +436,17 @@ pixbuf_destroy_cb (guchar   *pixels,
 
 #define	return_header_corrupt(error)	{ \
   g_set_error_literal (error, GDK_PIXBUF_ERROR, \
-                       GDK_PIXBUF_ERROR_CORRUPT_IMAGE, _("Image header corrupt")); \
+                       GDK_PIXBUF_ERROR_CORRUPT_IMAGE, "Image header corrupt"); \
   return FALSE; \
 }
 #define	return_invalid_format(error)	{ \
   g_set_error_literal (error, GDK_PIXBUF_ERROR, \
-                       GDK_PIXBUF_ERROR_UNKNOWN_TYPE, _("Image format unknown")); \
+                       GDK_PIXBUF_ERROR_UNKNOWN_TYPE, "Image format unknown"); \
   return FALSE; \
 }
 #define	return_pixel_corrupt(error)	{ \
   g_set_error_literal (error, GDK_PIXBUF_ERROR, \
-                       GDK_PIXBUF_ERROR_CORRUPT_IMAGE, _("Image pixel data corrupt")); \
+                       GDK_PIXBUF_ERROR_CORRUPT_IMAGE, "Image pixel data corrupt"); \
   return FALSE; \
 }
 
