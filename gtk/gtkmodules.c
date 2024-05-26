@@ -45,6 +45,21 @@ static GSList *gtk_modules = NULL;
 
 static gboolean default_display_opened = FALSE;
 
+static gchar*
+module_build_path (const gchar *directory,
+		   const gchar *module_name)
+{
+  if (directory && *directory) {
+    if (strncmp (module_name, "lib", 3) == 0)
+      return g_strconcat (directory, "/", module_name, NULL);
+    else
+      return g_strconcat (directory, "/lib", module_name, ".so", NULL);
+  } else if (strncmp (module_name, "lib", 3) == 0)
+    return g_strdup (module_name);
+  else
+    return g_strconcat ("lib", module_name, ".so", NULL);
+}
+
 static char *
 trim_string (const char *str)
 {
@@ -253,7 +268,7 @@ _gtk_find_module (const gchar *name,
     {
       gchar *tmp_name;
 
-      tmp_name = g_module_build_path (*path, name);
+      tmp_name = module_build_path (*path, name);
       if (g_file_test (tmp_name, G_FILE_TEST_EXISTS))
 	{
 	  module_name = tmp_name;
@@ -287,7 +302,7 @@ find_module (const gchar *name)
       /* As last resort, try loading without an absolute path (using system
        * library path)
        */
-      module_name = g_module_build_path (NULL, name);;
+      module_name = module_build_path (NULL, name);;
     }
 
   module = g_module_open (module_name, G_MODULE_BIND_LOCAL | G_MODULE_BIND_LAZY);

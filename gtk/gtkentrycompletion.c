@@ -64,7 +64,7 @@ enum
   PROP_INLINE_SELECTION
 };
 
-#define GTK_ENTRY_COMPLETION_GET_PRIVATE(obj)(G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_ENTRY_COMPLETION, GtkEntryCompletionPrivate))
+#define GTK_ENTRY_COMPLETION_GET_PRIVATE(obj) ((GtkEntryCompletionPrivate*)gtk_entry_completion_get_instance_private ((GtkEntryCompletion*)obj))
 
 static void                                                             gtk_entry_completion_cell_layout_init    (GtkCellLayoutIface      *iface);
 static void     gtk_entry_completion_set_property        (GObject      *object,
@@ -153,6 +153,7 @@ static guint entry_completion_signals[LAST_SIGNAL] = { 0 };
 static void     gtk_entry_completion_buildable_init      (GtkBuildableIface  *iface);
 
 G_DEFINE_TYPE_WITH_CODE (GtkEntryCompletion, gtk_entry_completion, G_TYPE_OBJECT,
+			 G_ADD_PRIVATE (GtkEntryCompletion)
 			 G_IMPLEMENT_INTERFACE (GTK_TYPE_CELL_LAYOUT,
 						gtk_entry_completion_cell_layout_init)
 			 G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
@@ -389,8 +390,6 @@ gtk_entry_completion_class_init (GtkEntryCompletionClass *klass)
 							 P_("Your description here"),
 							 FALSE,
 							 GTK_PARAM_READWRITE));
-
-  g_type_class_add_private (object_class, sizeof (GtkEntryCompletionPrivate));
 }
 
 static void

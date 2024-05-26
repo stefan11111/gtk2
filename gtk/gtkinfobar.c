@@ -120,10 +120,7 @@
  * </refsect2>
  */
 
-#define GTK_INFO_BAR_GET_PRIVATE(object) \
-  (G_TYPE_INSTANCE_GET_PRIVATE ((object), \
-                                GTK_TYPE_INFO_BAR, \
-                                GtkInfoBarPrivate))
+#define GTK_INFO_BAR_GET_PRIVATE(object) ((GtkInfoBarPrivate*)gtk_info_bar_get_instance_private ((GtkInfoBar*)object))
 
 enum
 {
@@ -186,6 +183,7 @@ static void      gtk_info_bar_buildable_custom_finished    (GtkBuildable  *build
 
 
 G_DEFINE_TYPE_WITH_CODE (GtkInfoBar, gtk_info_bar, GTK_TYPE_HBOX,
+			 G_ADD_PRIVATE (GtkInfoBar)
                          G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
                                                 gtk_info_bar_buildable_interface_init))
 
@@ -491,8 +489,6 @@ gtk_info_bar_class_init (GtkInfoBarClass *klass)
   binding_set = gtk_binding_set_by_class (klass);
 
   gtk_binding_entry_add_signal (binding_set, GDK_Escape, 0, "close", 0);
-
-  g_type_class_add_private (object_class, sizeof (GtkInfoBarPrivate));
 }
 
 static void

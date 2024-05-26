@@ -64,7 +64,7 @@
 
 
 
-#define GTK_ASSISTANT_GET_PRIVATE(o) (G_TYPE_INSTANCE_GET_PRIVATE ((o), GTK_TYPE_ASSISTANT, GtkAssistantPrivate))
+#define GTK_ASSISTANT_GET_PRIVATE(o) ((GtkAssistantPrivate*)gtk_assistant_get_instance_private ((GtkAssistant*)o))
 
 #define HEADER_SPACING 12
 #define ACTION_AREA_SPACING 12
@@ -185,6 +185,7 @@ static guint signals [LAST_SIGNAL] = { 0 };
 
 
 G_DEFINE_TYPE_WITH_CODE (GtkAssistant, gtk_assistant, GTK_TYPE_WINDOW,
+			 G_ADD_PRIVATE (GtkAssistant)
                          G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
                                                 gtk_assistant_buildable_interface_init))
 
@@ -400,8 +401,6 @@ gtk_assistant_class_init (GtkAssistantClass *class)
 								    P_("Whether all required fields on the page have been filled out"),
 								    FALSE,
 								    G_PARAM_READWRITE));
-
-  g_type_class_add_private (gobject_class, sizeof (GtkAssistantPrivate));
 }
 
 static gint

@@ -157,8 +157,6 @@ struct _GtkAboutDialogPrivate
   guint wrap_license : 1;
 };
 
-#define GTK_ABOUT_DIALOG_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_ABOUT_DIALOG, GtkAboutDialogPrivate))
-
 
 enum
 {
@@ -276,7 +274,7 @@ enum {
 
 static guint signals[LAST_SIGNAL] = { 0 };
 
-G_DEFINE_TYPE (GtkAboutDialog, gtk_about_dialog, GTK_TYPE_DIALOG)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkAboutDialog, gtk_about_dialog, GTK_TYPE_DIALOG)
 
 static void
 gtk_about_dialog_class_init (GtkAboutDialogClass *klass)
@@ -547,9 +545,6 @@ gtk_about_dialog_class_init (GtkAboutDialogClass *klass)
                                                          P_("Whether to wrap the license text."),
                                                          FALSE,
                                                          GTK_PARAM_READWRITE));
-
-
-  g_type_class_add_private (object_class, sizeof (GtkAboutDialogPrivate));
 }
 
 static gboolean
@@ -571,7 +566,7 @@ gtk_about_dialog_init (GtkAboutDialog *about)
   GtkWidget *vbox, *hbox, *button, *close_button, *image;
 
   /* Data */
-  priv = GTK_ABOUT_DIALOG_GET_PRIVATE (about);
+  priv = gtk_about_dialog_get_instance_private (about);
   about->private_data = priv;
 
   priv->name = NULL;

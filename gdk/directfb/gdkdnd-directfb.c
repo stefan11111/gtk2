@@ -71,16 +71,12 @@ static GdkDragContext *current_dest_drag = NULL;
 
 static void gdk_drag_context_finalize (GObject *object);
 
-G_DEFINE_TYPE (GdkDragContext, gdk_drag_context, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (GdkDragContext, gdk_drag_context, G_TYPE_OBJECT)
 
 static void
 gdk_drag_context_init (GdkDragContext *dragcontext)
 {
-  GdkDragContextPrivate *private;
-
-  private = G_TYPE_INSTANCE_GET_PRIVATE (dragcontext,
-                                         GDK_TYPE_DRAG_CONTEXT,
-                                         GdkDragContextPrivate);
+  GdkDragContextPrivate *private = gdk_drag_context_get_instance_private (dragcontext);
 
   dragcontext->windowing_data = private;
 
@@ -93,8 +89,6 @@ gdk_drag_context_class_init (GdkDragContextClass *klass)
   GObjectClass *object_class = G_OBJECT_CLASS (klass);
 
   object_class->finalize = gdk_drag_context_finalize;
-
-  g_type_class_add_private (object_class, sizeof (GdkDragContextPrivate));
 }
 
 static void

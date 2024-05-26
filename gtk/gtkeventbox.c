@@ -43,7 +43,7 @@ enum {
 };
 
 
-#define GTK_EVENT_BOX_GET_PRIVATE(obj)  G_TYPE_INSTANCE_GET_PRIVATE((obj), GTK_TYPE_EVENT_BOX, GtkEventBoxPrivate)
+#define GTK_EVENT_BOX_GET_PRIVATE(obj)  ((GtkEventBoxPrivate*)gtk_event_box_get_instance_private (obj))
 
 static void     gtk_event_box_realize       (GtkWidget        *widget);
 static void     gtk_event_box_unrealize     (GtkWidget        *widget);
@@ -66,7 +66,7 @@ static void     gtk_event_box_get_property  (GObject          *object,
                                              GValue           *value,
                                              GParamSpec       *pspec);
 
-G_DEFINE_TYPE (GtkEventBox, gtk_event_box, GTK_TYPE_BIN)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkEventBox, gtk_event_box, GTK_TYPE_BIN)
 
 static void
 gtk_event_box_class_init (GtkEventBoxClass *class)
@@ -99,8 +99,6 @@ gtk_event_box_class_init (GtkEventBoxClass *class)
                                                         P_("Whether the event-trapping window of the eventbox is above the window of the child widget as opposed to below it."),
                                                         FALSE,
                                                         GTK_PARAM_READWRITE));
-  
-  g_type_class_add_private (class, sizeof (GtkEventBoxPrivate));
 }
 
 static void
@@ -389,7 +387,7 @@ gtk_event_box_realize (GtkWidget *widget)
 			| GDK_ENTER_NOTIFY_MASK
 			| GDK_LEAVE_NOTIFY_MASK;
 
-  priv = GTK_EVENT_BOX_GET_PRIVATE (widget);
+  priv = GTK_EVENT_BOX_GET_PRIVATE ((GtkEventBox*)widget);
 
   visible_window = gtk_widget_get_has_window (widget);
   if (visible_window)
@@ -435,7 +433,7 @@ gtk_event_box_unrealize (GtkWidget *widget)
 {
   GtkEventBoxPrivate *priv;
   
-  priv = GTK_EVENT_BOX_GET_PRIVATE (widget);
+  priv = GTK_EVENT_BOX_GET_PRIVATE ((GtkEventBox*)widget);
   
   if (priv->event_window != NULL)
     {
@@ -452,7 +450,7 @@ gtk_event_box_map (GtkWidget *widget)
 {
   GtkEventBoxPrivate *priv;
 
-  priv = GTK_EVENT_BOX_GET_PRIVATE (widget);
+  priv = GTK_EVENT_BOX_GET_PRIVATE ((GtkEventBox*)widget);
 
   if (priv->event_window != NULL && !priv->above_child)
     gdk_window_show (priv->event_window);
@@ -468,7 +466,7 @@ gtk_event_box_unmap (GtkWidget *widget)
 {
   GtkEventBoxPrivate *priv;
 
-  priv = GTK_EVENT_BOX_GET_PRIVATE (widget);
+  priv = GTK_EVENT_BOX_GET_PRIVATE ((GtkEventBox*)widget);
 
   if (priv->event_window != NULL)
     gdk_window_hide (priv->event_window);
@@ -524,7 +522,7 @@ gtk_event_box_size_allocate (GtkWidget     *widget,
 
   if (gtk_widget_get_realized (widget))
     {
-      priv = GTK_EVENT_BOX_GET_PRIVATE (widget);
+      priv = GTK_EVENT_BOX_GET_PRIVATE ((GtkEventBox*)widget);
 
       if (priv->event_window != NULL)
 	gdk_window_move_resize (priv->event_window,

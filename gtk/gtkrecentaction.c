@@ -34,10 +34,7 @@
 
 #define FALLBACK_ITEM_LIMIT     10
 
-#define GTK_RECENT_ACTION_GET_PRIVATE(obj)      \
-        (G_TYPE_INSTANCE_GET_PRIVATE ((obj),    \
-         GTK_TYPE_RECENT_ACTION,                \
-         GtkRecentActionPrivate))
+#define GTK_RECENT_ACTION_GET_PRIVATE(obj) ((GtkRecentActionPrivate*)gtk_recent_action_get_instance_private ((GtkRecentAction*)obj))
 
 struct _GtkRecentActionPrivate
 {
@@ -77,6 +74,7 @@ static void gtk_recent_chooser_iface_init (GtkRecentChooserIface *iface);
 G_DEFINE_TYPE_WITH_CODE (GtkRecentAction,
                          gtk_recent_action,
                          GTK_TYPE_ACTION,
+                         G_ADD_PRIVATE (GtkRecentAction)
                          G_IMPLEMENT_INTERFACE (GTK_TYPE_RECENT_CHOOSER,
                                                 gtk_recent_chooser_iface_init));
 
@@ -591,8 +589,6 @@ gtk_recent_action_class_init (GtkRecentActionClass *klass)
 {
   GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
   GtkActionClass *action_class = GTK_ACTION_CLASS (klass);
-
-  g_type_class_add_private (klass, sizeof (GtkRecentActionPrivate));
 
   gobject_class->finalize = gtk_recent_action_finalize;
   gobject_class->dispose = gtk_recent_action_dispose;

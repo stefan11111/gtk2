@@ -99,8 +99,6 @@ enum {
 #define FALLBACK_ITEM_LIMIT 	10
 #define DEFAULT_LABEL_WIDTH     30
 
-#define GTK_RECENT_CHOOSER_MENU_GET_PRIVATE(obj)	(G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_RECENT_CHOOSER_MENU, GtkRecentChooserMenuPrivate))
-
 static void     gtk_recent_chooser_menu_finalize    (GObject                   *object);
 static void     gtk_recent_chooser_menu_dispose     (GObject                   *object);
 static GObject *gtk_recent_chooser_menu_constructor (GType                      type,
@@ -170,6 +168,7 @@ static void gtk_recent_chooser_sync_action_properties (GtkActivatable       *act
 G_DEFINE_TYPE_WITH_CODE (GtkRecentChooserMenu,
 			 gtk_recent_chooser_menu,
 			 GTK_TYPE_MENU,
+			 G_ADD_PRIVATE (GtkRecentChooserMenu)
 			 G_IMPLEMENT_INTERFACE (GTK_TYPE_RECENT_CHOOSER,
 				 		gtk_recent_chooser_iface_init)
 			 G_IMPLEMENT_INTERFACE (GTK_TYPE_ACTIVATABLE,
@@ -232,16 +231,12 @@ gtk_recent_chooser_menu_class_init (GtkRecentChooserMenuClass *klass)
 
   g_object_class_override_property (gobject_class, PROP_ACTIVATABLE_RELATED_ACTION, "related-action");
   g_object_class_override_property (gobject_class, PROP_ACTIVATABLE_USE_ACTION_APPEARANCE, "use-action-appearance");
-
-  g_type_class_add_private (klass, sizeof (GtkRecentChooserMenuPrivate));
 }
 
 static void
 gtk_recent_chooser_menu_init (GtkRecentChooserMenu *menu)
 {
-  GtkRecentChooserMenuPrivate *priv;
-  
-  priv = GTK_RECENT_CHOOSER_MENU_GET_PRIVATE (menu);
+  GtkRecentChooserMenuPrivate *priv = gtk_recent_chooser_menu_get_instance_private (menu);
   
   menu->priv = priv;
   

@@ -32,7 +32,7 @@
 #define __GTK_TOGGLE_ACTION_PRIVATE_H__
 
 
-#define GTK_TOGGLE_ACTION_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_TOGGLE_ACTION, GtkToggleActionPrivate))
+#define GTK_TOGGLE_ACTION_GET_PRIVATE(obj) ((GtkToggleActionPrivate*)gtk_toggle_action_get_instance_private ((GtkToggleAction*)obj))
 
 struct _GtkToggleActionPrivate 
 {

@@ -52,6 +52,7 @@ static void     gtk_recent_chooser_widget_finalize     (GObject               *o
 G_DEFINE_TYPE_WITH_CODE (GtkRecentChooserWidget,
 		         gtk_recent_chooser_widget,
 			 GTK_TYPE_VBOX,
+			 G_ADD_PRIVATE (GtkRecentChooserWidget)
 			 G_IMPLEMENT_INTERFACE (GTK_TYPE_RECENT_CHOOSER,
 						_gtk_recent_chooser_delegate_iface_init))
 
@@ -66,16 +67,13 @@ gtk_recent_chooser_widget_class_init (GtkRecentChooserWidgetClass *klass)
   gobject_class->finalize = gtk_recent_chooser_widget_finalize;
 
   _gtk_recent_chooser_install_properties (gobject_class);
-
-  g_type_class_add_private (klass, sizeof (GtkRecentChooserWidgetPrivate));
 }
 
 
-static void
+static inline void
 gtk_recent_chooser_widget_init (GtkRecentChooserWidget *widget)
 {
-  widget->priv = G_TYPE_INSTANCE_GET_PRIVATE (widget, GTK_TYPE_RECENT_CHOOSER_WIDGET,
-					      GtkRecentChooserWidgetPrivate);
+  widget->priv = gtk_recent_chooser_widget_get_instance_private (widget);
 }
 
 static GObject *

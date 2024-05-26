@@ -157,7 +157,7 @@ static void     gtk_status_icon_disable_blinking (GtkStatusIcon  *status_icon);
 static void     gtk_status_icon_reset_image_data (GtkStatusIcon  *status_icon);
 static void     gtk_status_icon_update_image    (GtkStatusIcon *status_icon);
 
-G_DEFINE_TYPE (GtkStatusIcon, gtk_status_icon, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkStatusIcon, gtk_status_icon, G_TYPE_OBJECT)
 
 static void
 gtk_status_icon_class_init (GtkStatusIconClass *class)
@@ -599,17 +599,12 @@ gtk_status_icon_class_init (GtkStatusIconClass *class)
 		  G_TYPE_INT,
 		  G_TYPE_BOOLEAN,
 		  GTK_TYPE_TOOLTIP);
-
-  g_type_class_add_private (class, sizeof (GtkStatusIconPrivate));
 }
 
 static void
 gtk_status_icon_init (GtkStatusIcon *status_icon)
 {
-  GtkStatusIconPrivate *priv;
-
-  priv = G_TYPE_INSTANCE_GET_PRIVATE (status_icon, GTK_TYPE_STATUS_ICON,
-				      GtkStatusIconPrivate);
+  GtkStatusIconPrivate *priv = gtk_status_icon_get_instance_private (status_icon);
   status_icon->priv = priv;
   
   priv->storage_type = GTK_IMAGE_EMPTY;
@@ -971,6 +966,8 @@ gtk_status_icon_new_from_gicon (GIcon *icon)
 		       NULL);
 }
 
+#ifdef GDK_WINDOWING_X11
+
 static void
 emit_activate_signal (GtkStatusIcon *status_icon)
 {
@@ -988,8 +985,6 @@ emit_popup_menu_signal (GtkStatusIcon *status_icon,
 		 button,
 		 activate_time);
 }
-
-#ifdef GDK_WINDOWING_X11
 
 static gboolean
 emit_size_changed_signal (GtkStatusIcon *status_icon,

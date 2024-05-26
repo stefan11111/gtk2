@@ -106,8 +106,6 @@ static void   gtk_mount_operation_show_processes (GMountOperation *op,
 
 static void   gtk_mount_operation_aborted      (GMountOperation *op);
 
-G_DEFINE_TYPE (GtkMountOperation, gtk_mount_operation, G_TYPE_MOUNT_OPERATION);
-
 enum {
   PROP_0,
   PROP_PARENT,
@@ -137,13 +135,13 @@ struct _GtkMountOperationPrivate {
   GtkListStore *process_list_store;
 };
 
+G_DEFINE_TYPE_WITH_PRIVATE (GtkMountOperation, gtk_mount_operation, G_TYPE_MOUNT_OPERATION)
+
 static void
 gtk_mount_operation_class_init (GtkMountOperationClass *klass)
 {
   GObjectClass         *object_class = G_OBJECT_CLASS (klass);
   GMountOperationClass *mount_op_class = G_MOUNT_OPERATION_CLASS (klass);
-
-  g_type_class_add_private (klass, sizeof (GtkMountOperationPrivate));
 
   object_class->finalize     = gtk_mount_operation_finalize;
   object_class->get_property = gtk_mount_operation_get_property;
@@ -182,9 +180,7 @@ gtk_mount_operation_class_init (GtkMountOperationClass *klass)
 static void
 gtk_mount_operation_init (GtkMountOperation *operation)
 {
-  operation->priv = G_TYPE_INSTANCE_GET_PRIVATE (operation,
-                                                 GTK_TYPE_MOUNT_OPERATION,
-                                                 GtkMountOperationPrivate);
+  operation->priv = gtk_mount_operation_get_instance_private (operation);
 }
 
 static void

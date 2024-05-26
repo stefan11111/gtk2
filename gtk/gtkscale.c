@@ -49,7 +49,7 @@
 				 *    unrelated code portions otherwise
 				 */
 
-#define GTK_SCALE_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_SCALE, GtkScalePrivate))
+#define GTK_SCALE_GET_PRIVATE(obj) ((GtkScalePrivate*)gtk_scale_get_instance_private (obj))
 
 typedef struct _GtkScalePrivate GtkScalePrivate;
 
@@ -127,6 +127,7 @@ static void     gtk_scale_buildable_custom_finished  (GtkBuildable  *buildable,
 
 
 G_DEFINE_ABSTRACT_TYPE_WITH_CODE (GtkScale, gtk_scale, GTK_TYPE_RANGE,
+				  G_ADD_PRIVATE (GtkScale)
                                   G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
                                                          gtk_scale_buildable_interface_init))
 
@@ -156,7 +157,7 @@ gtk_scale_notify (GObject    *object,
     }
   else if (strcmp (pspec->name, "inverted") == 0)
     {
-      GtkScalePrivate *priv = GTK_SCALE_GET_PRIVATE (object);
+      GtkScalePrivate *priv = GTK_SCALE_GET_PRIVATE ((GtkScale*)object);
       GtkScaleMark *mark;
       GSList *m;
       gint i, n;
@@ -431,8 +432,6 @@ gtk_scale_class_init (GtkScaleClass *class)
 
   add_slider_binding (binding_set, GDK_KP_End, 0,
                       GTK_SCROLL_END);
-
-  g_type_class_add_private (gobject_class, sizeof (GtkScalePrivate));
 }
 
 static void

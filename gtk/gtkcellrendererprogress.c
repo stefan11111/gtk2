@@ -34,9 +34,7 @@
 #include "gtkintl.h"
 
 
-#define GTK_CELL_RENDERER_PROGRESS_GET_PRIVATE(object) (G_TYPE_INSTANCE_GET_PRIVATE ((object),                        \
-                                                                                     GTK_TYPE_CELL_RENDERER_PROGRESS, \
-                                                                                     GtkCellRendererProgressPrivate))
+#define GTK_CELL_RENDERER_PROGRESS_GET_PRIVATE(object) ((GtkCellRendererProgressPrivate*)gtk_cell_renderer_progress_get_instance_private (object))
 
 enum
 {
@@ -99,7 +97,7 @@ static void gtk_cell_renderer_progress_render       (GtkCellRenderer         *ce
 						     guint                    flags);
 
      
-G_DEFINE_TYPE (GtkCellRendererProgress, gtk_cell_renderer_progress, GTK_TYPE_CELL_RENDERER)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkCellRendererProgress, gtk_cell_renderer_progress, GTK_TYPE_CELL_RENDERER)
 
 static void
 gtk_cell_renderer_progress_class_init (GtkCellRendererProgressClass *klass)
@@ -223,10 +221,6 @@ gtk_cell_renderer_progress_class_init (GtkCellRendererProgressClass *klass)
                                                       GTK_TYPE_PROGRESS_BAR_ORIENTATION,
                                                       GTK_PROGRESS_LEFT_TO_RIGHT,
                                                       GTK_PARAM_READWRITE));
-
-
-  g_type_class_add_private (object_class, 
-			    sizeof (GtkCellRendererProgressPrivate));
 }
 
 static void

@@ -96,7 +96,7 @@
  * </refsect2>
  */
 
-#define GTK_MESSAGE_DIALOG_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_MESSAGE_DIALOG, GtkMessageDialogPrivate))
+#define GTK_MESSAGE_DIALOG_GET_PRIVATE(obj) ((GtkMessageDialogPrivate*)gtk_message_dialog_get_instance_private (obj))
 
 typedef struct _GtkMessageDialogPrivate GtkMessageDialogPrivate;
 
@@ -141,6 +141,7 @@ enum {
 };
 
 G_DEFINE_TYPE_WITH_CODE (GtkMessageDialog, gtk_message_dialog, GTK_TYPE_DIALOG,
+			 G_ADD_PRIVATE (GtkMessageDialog)
                          G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
                                                 gtk_message_dialog_buildable_interface_init))
 
@@ -323,9 +324,6 @@ gtk_message_dialog_class_init (GtkMessageDialogClass *class)
 							P_("GtkVBox that holds the dialog's primary and secondary labels"),
 							GTK_TYPE_WIDGET,
 							GTK_PARAM_READABLE));
-
-  g_type_class_add_private (gobject_class,
-			    sizeof (GtkMessageDialogPrivate));
 }
 
 static void

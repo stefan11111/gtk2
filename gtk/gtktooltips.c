@@ -51,7 +51,7 @@
 #define STICKY_REVERT_DELAY 1000    /* Delay before sticky tooltips revert
 				     * to normal
                                      */
-#define GTK_TOOLTIPS_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_TOOLTIPS, GtkTooltipsPrivate))
+#define GTK_TOOLTIPS_GET_PRIVATE(obj) ((GtkTooltipsPrivate*)gtk_tooltips_get_instance_private ((GtkTooltips*)obj))
 
 typedef struct _GtkTooltipsPrivate GtkTooltipsPrivate;
 
@@ -72,7 +72,7 @@ static void gtk_tooltips_widget_remove     (GtkWidget       *widget,
 static const gchar  tooltips_data_key[] = "_GtkTooltipsData";
 static const gchar  tooltips_info_key[] = "_GtkTooltipsInfo";
 
-G_DEFINE_TYPE (GtkTooltips, gtk_tooltips, GTK_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkTooltips, gtk_tooltips, GTK_TYPE_OBJECT)
 
 static void
 gtk_tooltips_class_init (GtkTooltipsClass *class)
@@ -83,8 +83,6 @@ gtk_tooltips_class_init (GtkTooltipsClass *class)
   gobject_class->finalize = gtk_tooltips_finalize;
 
   object_class->destroy = gtk_tooltips_destroy;
-
-  g_type_class_add_private (gobject_class, sizeof (GtkTooltipsPrivate));
 }
 
 static void

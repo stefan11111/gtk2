@@ -53,14 +53,14 @@ static gint     get_space_size                            (GtkToolItem          
 
 
 
-#define GTK_SEPARATOR_TOOL_ITEM_GET_PRIVATE(obj)(G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_SEPARATOR_TOOL_ITEM, GtkSeparatorToolItemPrivate))
+#define GTK_SEPARATOR_TOOL_ITEM_GET_PRIVATE(obj)((GtkSeparatorToolItemPrivate*)gtk_separator_tool_item_get_instance_private ((GtkSeparatorToolItem*)obj))
 
 struct _GtkSeparatorToolItemPrivate
 {
   guint draw : 1;
 };
 
-G_DEFINE_TYPE (GtkSeparatorToolItem, gtk_separator_tool_item, GTK_TYPE_TOOL_ITEM)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkSeparatorToolItem, gtk_separator_tool_item, GTK_TYPE_TOOL_ITEM)
 
 static gint
 get_space_size (GtkToolItem *tool_item)
@@ -106,8 +106,6 @@ gtk_separator_tool_item_class_init (GtkSeparatorToolItemClass *class)
 							 P_("Whether the separator is drawn, or just blank"),
 							 TRUE,
 							 GTK_PARAM_READWRITE));
-  
-  g_type_class_add_private (object_class, sizeof (GtkSeparatorToolItemPrivate));
 }
 
 static void

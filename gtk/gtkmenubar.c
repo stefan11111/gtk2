@@ -57,8 +57,7 @@ struct _GtkMenuBarPrivate
   GtkPackDirection child_pack_direction;
 };
 
-#define GTK_MENU_BAR_GET_PRIVATE(o)  \
-  (G_TYPE_INSTANCE_GET_PRIVATE ((o), GTK_TYPE_MENU_BAR, GtkMenuBarPrivate))
+#define GTK_MENU_BAR_GET_PRIVATE(o) ((GtkMenuBarPrivate*)gtk_menu_bar_get_instance_private ((GtkMenuBar*)o))
 
 
 static void gtk_menu_bar_set_property      (GObject             *object,
@@ -85,7 +84,7 @@ static void gtk_menu_bar_move_current      (GtkMenuShell     *menu_shell,
 
 static GtkShadowType get_shadow_type   (GtkMenuBar      *menubar);
 
-G_DEFINE_TYPE (GtkMenuBar, gtk_menu_bar, GTK_TYPE_MENU_SHELL)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkMenuBar, gtk_menu_bar, GTK_TYPE_MENU_SHELL)
 
 static void
 gtk_menu_bar_class_init (GtkMenuBarClass *class)
@@ -205,8 +204,6 @@ gtk_menu_bar_class_init (GtkMenuBarClass *class)
 							     G_MAXINT,
                                                              DEFAULT_IPADDING,
                                                              GTK_PARAM_READABLE));
-
-  g_type_class_add_private (gobject_class, sizeof (GtkMenuBarPrivate));
 }
 
 static void

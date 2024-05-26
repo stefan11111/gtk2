@@ -255,7 +255,9 @@ static const guchar dropper_mask[] = {
   0x1e, 0x00, 0x00, 0x00,  0x0d, 0x00, 0x00, 0x00,
   0x02, 0x00, 0x00, 0x00 };
 
-G_DEFINE_TYPE (GtkColorSelection, gtk_color_selection, GTK_TYPE_VBOX)
+typedef ColorSelectionPrivate GtkColorSelectionPrivate;
+
+G_DEFINE_TYPE_WITH_PRIVATE (GtkColorSelection, gtk_color_selection, GTK_TYPE_VBOX)
 
 static void
 gtk_color_selection_class_init (GtkColorSelectionClass *klass)
@@ -315,8 +317,6 @@ gtk_color_selection_class_init (GtkColorSelectionClass *klass)
 		  NULL, NULL,
 		  NULL,
 		  G_TYPE_NONE, 0);
-
-  g_type_class_add_private (gobject_class, sizeof (ColorSelectionPrivate));
 }
 
 static void
@@ -333,7 +333,7 @@ gtk_color_selection_init (GtkColorSelection *colorsel)
   
   gtk_widget_push_composite_child ();
 
-  priv = colorsel->private_data = G_TYPE_INSTANCE_GET_PRIVATE (colorsel, GTK_TYPE_COLOR_SELECTION, ColorSelectionPrivate);
+  priv = colorsel->private_data = gtk_color_selection_get_instance_private (colorsel);
   priv->changing = FALSE;
   priv->default_set = FALSE;
   priv->default_alpha_set = FALSE;

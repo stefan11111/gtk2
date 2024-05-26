@@ -154,6 +154,7 @@ struct _GtkPanedPrivate
 
 
 G_DEFINE_ABSTRACT_TYPE_WITH_CODE (GtkPaned, gtk_paned, GTK_TYPE_CONTAINER,
+				  G_ADD_PRIVATE (GtkPaned)
                                   G_IMPLEMENT_INTERFACE (GTK_TYPE_ORIENTABLE,
                                                          NULL))
 
@@ -543,8 +544,6 @@ gtk_paned_class_init (GtkPanedClass *class)
   add_move_binding (binding_set, GDK_KP_Home, 0, GTK_SCROLL_START);
   add_move_binding (binding_set, GDK_End, 0, GTK_SCROLL_END);
   add_move_binding (binding_set, GDK_KP_End, 0, GTK_SCROLL_END);
-
-  g_type_class_add_private (object_class, sizeof (GtkPanedPrivate));
 }
 
 static GType
@@ -567,7 +566,7 @@ gtk_paned_init (GtkPaned *paned)
    */
   gtk_widget_set_redraw_on_allocate (GTK_WIDGET (paned), FALSE);
 
-  paned->priv = G_TYPE_INSTANCE_GET_PRIVATE (paned, GTK_TYPE_PANED, GtkPanedPrivate);
+  paned->priv = gtk_paned_get_instance_private (paned);
 
   paned->priv->orientation = GTK_ORIENTATION_HORIZONTAL;
   paned->cursor_type = GDK_SB_H_DOUBLE_ARROW;

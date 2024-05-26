@@ -88,7 +88,7 @@ struct _GtkRecentInfo
   gint ref_count;
 };
 
-#define GTK_RECENT_MANAGER_GET_PRIVATE(obj)     (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_RECENT_MANAGER, GtkRecentManagerPrivate))
+#define GTK_RECENT_MANAGER_GET_PRIVATE(obj)     ((GtkRecentManagerPrivate*)gtk_recent_manager_get_instance_private ((GtkRecentManager*)obj))
 
 struct _GtkRecentManagerPrivate
 {
@@ -158,7 +158,7 @@ static guint signal_changed = 0;
 
 static GtkRecentManager *recent_manager_singleton = NULL;
 
-G_DEFINE_TYPE (GtkRecentManager, gtk_recent_manager, G_TYPE_OBJECT)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkRecentManager, gtk_recent_manager, G_TYPE_OBJECT)
 
 static void
 filename_warning (const gchar *format, 
@@ -281,8 +281,6 @@ gtk_recent_manager_class_init (GtkRecentManagerClass *klass)
 		  G_TYPE_NONE, 0);
   
   klass->changed = gtk_recent_manager_real_changed;
-  
-  g_type_class_add_private (klass, sizeof (GtkRecentManagerPrivate));
 }
 
 static void

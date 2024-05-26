@@ -45,7 +45,14 @@
 #include "gtkintl.h"
 
 
-#define GTK_ACTION_GROUP_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_ACTION_GROUP, GtkActionGroupPrivate))
+#define GTK_ACTION_GROUP_GET_PRIVATE(obj) ((GtkActionGroupPrivate*)gtk_action_group_get_instance_private((GtkActionGroup*)obj))
+
+static gint GtkActionGroup_private_offset;
+
+static inline gpointer gtk_action_group_get_instance_private (GtkActionGroup *self)
+{
+  return (G_STRUCT_MEMBER_P (self, GtkActionGroup_private_offset));
+}
 
 struct _GtkActionGroupPrivate 
 {
@@ -141,6 +148,8 @@ gtk_action_group_get_type (void)
       type = g_type_register_static (G_TYPE_OBJECT, I_("GtkActionGroup"),
 				     &type_info, 0);
 
+      GtkActionGroup_private_offset = g_type_add_instance_private (type, sizeof (GtkActionGroupPrivate));
+
       g_type_add_interface_static (type,
 				   GTK_TYPE_BUILDABLE,
 				   &buildable_info);
@@ -158,6 +167,10 @@ gtk_action_group_class_init (GtkActionGroupClass *klass)
 
   gobject_class = G_OBJECT_CLASS (klass);
   parent_class = g_type_class_peek_parent (klass);
+
+  if (GtkActionGroup_private_offset != 0) {
+    g_type_class_adjust_private_offset (klass, &GtkActionGroup_private_offset);
+  }
 
   gobject_class->finalize = gtk_action_group_finalize;
   gobject_class->set_property = gtk_action_group_set_property;
@@ -278,8 +291,6 @@ gtk_action_group_class_init (GtkActionGroupClass *klass)
 		  NULL,
 		  G_TYPE_NONE, 1, 
 		  GTK_TYPE_ACTION);
-
-  g_type_class_add_private (gobject_class, sizeof (GtkActionGroupPrivate));
 }
 
 

@@ -122,7 +122,7 @@ static void       gtk_cell_view_buildable_custom_tag_end       (GtkBuildable  	 
 
 static GtkBuildableIface *parent_buildable_iface;
 
-#define GTK_CELL_VIEW_GET_PRIVATE(obj)    (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_CELL_VIEW, GtkCellViewPrivate))
+#define GTK_CELL_VIEW_GET_PRIVATE(obj)    ((GtkCellViewPrivate*)gtk_cell_view_get_instance_private (obj))
 
 enum
 {
@@ -133,7 +133,8 @@ enum
   PROP_MODEL
 };
 
-G_DEFINE_TYPE_WITH_CODE (GtkCellView, gtk_cell_view, GTK_TYPE_WIDGET, 
+G_DEFINE_TYPE_WITH_CODE (GtkCellView, gtk_cell_view, GTK_TYPE_WIDGET,
+			 G_ADD_PRIVATE (GtkCellView)
 			 G_IMPLEMENT_INTERFACE (GTK_TYPE_CELL_LAYOUT,
 						gtk_cell_view_cell_layout_init)
 			 G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
@@ -189,8 +190,6 @@ gtk_cell_view_class_init (GtkCellViewClass *klass)
   ADD_SET_PROP ("background-set", PROP_BACKGROUND_SET,
                 P_("Background set"),
                 P_("Whether this tag affects the background color"));
-
-  g_type_class_add_private (gobject_class, sizeof (GtkCellViewPrivate));
 }
 
 static void

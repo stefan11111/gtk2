@@ -63,7 +63,7 @@ enum {
   PROP_RIGHT_PADDING
 };
 
-#define GTK_ALIGNMENT_GET_PRIVATE(o)  (G_TYPE_INSTANCE_GET_PRIVATE ((o), GTK_TYPE_ALIGNMENT, GtkAlignmentPrivate))
+#define GTK_ALIGNMENT_GET_PRIVATE(o)  ((GtkAlignmentPrivate*)gtk_alignment_get_instance_private (o))
 
 struct _GtkAlignmentPrivate
 {
@@ -86,7 +86,7 @@ static void gtk_alignment_get_property (GObject         *object,
                                         GValue          *value,
                                         GParamSpec      *pspec);
 
-G_DEFINE_TYPE (GtkAlignment, gtk_alignment, GTK_TYPE_BIN)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkAlignment, gtk_alignment, GTK_TYPE_BIN)
 
 static void
 gtk_alignment_class_init (GtkAlignmentClass *class)
@@ -209,8 +209,6 @@ gtk_alignment_class_init (GtkAlignmentClass *class)
                                                       G_MAXINT,
                                                       0,
                                                       GTK_PARAM_READWRITE));
-
-  g_type_class_add_private (gobject_class, sizeof (GtkAlignmentPrivate));  
 }
 
 static void
@@ -470,7 +468,7 @@ gtk_alignment_size_request (GtkWidget      *widget,
   GtkAlignmentPrivate *priv;
 
   bin = GTK_BIN (widget);
-  priv = GTK_ALIGNMENT_GET_PRIVATE (widget);
+  priv = GTK_ALIGNMENT_GET_PRIVATE ((GtkAlignment*)widget);
 
   requisition->width = GTK_CONTAINER (widget)->border_width * 2;
   requisition->height = GTK_CONTAINER (widget)->border_width * 2;
@@ -516,7 +514,7 @@ gtk_alignment_size_allocate (GtkWidget     *widget,
 
       border_width = GTK_CONTAINER (alignment)->border_width;
 
-      priv = GTK_ALIGNMENT_GET_PRIVATE (widget);
+      priv = GTK_ALIGNMENT_GET_PRIVATE ((GtkAlignment*)widget);
       padding_horizontal = priv->padding_left + priv->padding_right;
       padding_vertical = priv->padding_top + priv->padding_bottom;
 

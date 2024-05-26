@@ -88,7 +88,7 @@ static GQuark          quark_capslock_feedback = 0;
 
 typedef struct _GtkEntryPrivate GtkEntryPrivate;
 
-#define GTK_ENTRY_GET_PRIVATE(obj) (G_TYPE_INSTANCE_GET_PRIVATE ((obj), GTK_TYPE_ENTRY, GtkEntryPrivate))
+#define GTK_ENTRY_GET_PRIVATE(obj) ((GtkEntryPrivate*)gtk_entry_get_instance_private ((GtkEntry*)obj))
 
 typedef struct
 {
@@ -524,6 +524,7 @@ static GtkEntryBuffer *get_buffer                      (GtkEntry       *entry);
 
 
 G_DEFINE_TYPE_WITH_CODE (GtkEntry, gtk_entry, GTK_TYPE_WIDGET,
+                         G_ADD_PRIVATE (GtkEntry)
                          G_IMPLEMENT_INTERFACE (GTK_TYPE_EDITABLE,
                                                 gtk_entry_editable_init)
                          G_IMPLEMENT_INTERFACE (GTK_TYPE_CELL_EDITABLE,
@@ -1755,8 +1756,6 @@ gtk_entry_class_init (GtkEntryClass *class)
                                                                   P_("Whether to pass a proper state when drawing shadow or background"),
                                                                   FALSE,
                                                                   GTK_PARAM_READABLE));
-
-  g_type_class_add_private (gobject_class, sizeof (GtkEntryPrivate));
 }
 
 static void

@@ -51,7 +51,7 @@ enum {
   PROP_ACTIVE
 };
 
-G_DEFINE_TYPE (GtkToggleAction, gtk_toggle_action, GTK_TYPE_ACTION)
+G_DEFINE_TYPE_WITH_PRIVATE (GtkToggleAction, gtk_toggle_action, GTK_TYPE_ACTION)
 
 static void gtk_toggle_action_activate     (GtkAction       *action);
 static void set_property                   (GObject         *object,
@@ -129,8 +129,6 @@ gtk_toggle_action_class_init (GtkToggleActionClass *klass)
 		  NULL, NULL,
                   g_cclosure_marshal_VOID__VOID,
                   G_TYPE_NONE, 0);
-
-  g_type_class_add_private (gobject_class, sizeof (GtkToggleActionPrivate));
 }
 
 static void
