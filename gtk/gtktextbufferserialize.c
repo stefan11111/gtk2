@@ -686,6 +686,13 @@ diff2_rgba (const guint8 *ip)
   return ip[0] != ip[4] || ip[1] != ip[5] || ip[2] != ip[6] || ip[3] != ip[7];
 }
 
+/* Used as the destroy notification function for gdk_pixbuf_new() */
+static void
+free_buffer (guchar *pixels, gpointer data)
+{
+	g_free (pixels);
+}
+
 static guint8 *                         /* dest buffer bound */
 rl_encode_rgbx (guint8       *bp,       /* dest buffer */
                 const guint8 *ip,       /* image pointer */
