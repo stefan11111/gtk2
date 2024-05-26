@@ -26,7 +26,7 @@
 
 #include <glib/gstdio.h>
 
-#undef GDK_PIXBUF_DISABLE_DEPRECATED
+//#undef GDK_PIXBUF_DISABLE_DEPRECATED
 #include <gdk-pixbuf/gdk-pixdata.h>
 
 #ifdef HAVE_UNISTD_H
