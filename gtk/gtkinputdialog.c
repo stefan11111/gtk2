@@ -137,7 +137,6 @@ input_dialog_from_widget (GtkWidget *widget)
 static void
 gtk_input_dialog_class_init (GtkInputDialogClass *klass)
 {
-  GObjectClass *object_class = (GObjectClass *) klass;
   GtkWidgetClass *widget_class = (GtkWidgetClass *)klass;
   
   widget_class->screen_changed = gtk_input_dialog_screen_changed;

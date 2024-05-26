@@ -121,13 +121,11 @@ G_DEFINE_TYPE_WITH_PRIVATE (GtkHSV, gtk_hsv, GTK_TYPE_WIDGET)
 static void
 gtk_hsv_class_init (GtkHSVClass *class)
 {
-  GObjectClass   *gobject_class;
   GtkObjectClass *object_class;
   GtkWidgetClass *widget_class;
   GtkHSVClass    *hsv_class;
   GtkBindingSet  *binding_set;
   
-  gobject_class = (GObjectClass *) class;
   object_class = (GtkObjectClass *) class;
   widget_class = (GtkWidgetClass *) class;
   hsv_class = GTK_HSV_CLASS (class);

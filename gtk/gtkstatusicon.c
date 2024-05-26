@@ -966,6 +966,8 @@ gtk_status_icon_new_from_gicon (GIcon *icon)
 		       NULL);
 }
 
+#ifdef GDK_WINDOWING_X11
+
 static void
 emit_activate_signal (GtkStatusIcon *status_icon)
 {
@@ -983,8 +985,6 @@ emit_popup_menu_signal (GtkStatusIcon *status_icon,
 		 button,
 		 activate_time);
 }
-
-#ifdef GDK_WINDOWING_X11
 
 static gboolean
 emit_size_changed_signal (GtkStatusIcon *status_icon,
