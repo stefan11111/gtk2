@@ -579,6 +579,102 @@ serialize_text (GtkTextBuffer        *buffer,
   g_string_append (context->text_str, "</text>\n</text_view_markup>\n");
 }
 
+static guint
+pixdata_get_length (const GdkPixdata *pixdata)
+{
+  guint bpp, length;
+  if ((pixdata->pixdata_type & GDK_PIXDATA_COLOR_TYPE_MASK) == GDK_PIXDATA_COLOR_TYPE_RGB)
+    bpp = 3;
+  else if ((pixdata->pixdata_type & GDK_PIXDATA_COLOR_TYPE_MASK) == GDK_PIXDATA_COLOR_TYPE_RGBA)
+    bpp = 4;
+  else
+    return 0;	/* invalid format */
+  switch (pixdata->pixdata_type & GDK_PIXDATA_ENCODING_MASK)
+    {
+      guint8 *rle_buffer;
+
+      guint max_length;
+    case GDK_PIXDATA_ENCODING_RAW:
+      length = pixdata->rowstride * pixdata->height;
+      break;
+    case GDK_PIXDATA_ENCODING_RLE:
+      /* need an RLE walk to determine size */
+      max_length = pixdata->rowstride * pixdata->height;
+      rle_buffer = pixdata->pixel_data;
+      length = 0;
+      while (length < max_length)
+	{
+	  guint chunk_length = *(rle_buffer++);
+	  if (chunk_length & 128)
+	    {
+	      chunk_length = chunk_length - 128;
+	      if (!chunk_length)	/* RLE data corrupted */
+		return 0;
+	      length += chunk_length * bpp;
+	      rle_buffer += bpp;
+	    }
+	  else
+	    {
+	      if (!chunk_length)        /* RLE data corrupted */
+		return 0;
+	      chunk_length *= bpp;
+	      length += chunk_length;
+	      rle_buffer += chunk_length;
+	    }
+	}
+      length = rle_buffer - pixdata->pixel_data;
+      break;
+    default:
+      length = 0;
+      break;
+    }
+  return length;
+}
+
+static guint8* /* free result */
+_gdk_pixdata_serialize (const GdkPixdata *pixdata,
+		       guint            *stream_length_p)
+{
+  guint8 *stream, *s;
+  guint32 *istream;
+  guint length;
+  /* check args passing */
+  g_return_val_if_fail (pixdata != NULL, NULL);
+  g_return_val_if_fail (stream_length_p != NULL, NULL);
+  /* check pixdata contents */
+  g_return_val_if_fail (pixdata->magic == GDK_PIXBUF_MAGIC_NUMBER, NULL);
+  g_return_val_if_fail (pixdata->width > 0, NULL);
+  g_return_val_if_fail (pixdata->height > 0, NULL);
+
+  g_return_val_if_fail (pixdata->rowstride >= pixdata->width, NULL);
+  g_return_val_if_fail ((pixdata->pixdata_type & GDK_PIXDATA_COLOR_TYPE_MASK) == GDK_PIXDATA_COLOR_TYPE_RGB ||
+			(pixdata->pixdata_type & GDK_PIXDATA_COLOR_TYPE_MASK) == GDK_PIXDATA_COLOR_TYPE_RGBA, NULL);
+  g_return_val_if_fail ((pixdata->pixdata_type & GDK_PIXDATA_SAMPLE_WIDTH_MASK) == GDK_PIXDATA_SAMPLE_WIDTH_8, NULL);
+  g_return_val_if_fail ((pixdata->pixdata_type & GDK_PIXDATA_ENCODING_MASK) == GDK_PIXDATA_ENCODING_RAW ||
+			(pixdata->pixdata_type & GDK_PIXDATA_ENCODING_MASK) == GDK_PIXDATA_ENCODING_RLE, NULL);
+  g_return_val_if_fail (pixdata->pixel_data != NULL, NULL);
+  length = pixdata_get_length (pixdata);
+  /* check length field */
+  g_return_val_if_fail (length != 0, NULL);
+  
+  stream = g_malloc (GDK_PIXDATA_HEADER_LENGTH + length);
+  istream = (guint32*) stream;
+  /* store header */
+  *istream++ = g_htonl (GDK_PIXBUF_MAGIC_NUMBER);
+  *istream++ = g_htonl (GDK_PIXDATA_HEADER_LENGTH + length);
+  *istream++ = g_htonl (pixdata->pixdata_type);
+  *istream++ = g_htonl (pixdata->rowstride);
+  *istream++ = g_htonl (pixdata->width);
+  *istream++ = g_htonl (pixdata->height);
+  /* copy pixel data */
+  s = (guint8*) istream;
+  memcpy (s, pixdata->pixel_data, length);
+  s += length;
+  *stream_length_p = GDK_PIXDATA_HEADER_LENGTH + length;
+  g_assert (s - stream == *stream_length_p);	/* paranoid */
+  return stream;
+}
+
 static void
 serialize_pixbufs (SerializationContext *context,
 		   GString              *text)
@@ -593,7 +689,7 @@ serialize_pixbufs (SerializationContext *context,
       guint len;
 
       gdk_pixdata_from_pixbuf (&pixdata, pixbuf, FALSE);
-      tmp = gdk_pixdata_serialize (&pixdata, &len);
+      tmp = _gdk_pixdata_serialize (&pixdata, &len);
 
       serialize_section_header (text, "GTKTEXTBUFFERPIXBDATA-0001", len);
       g_string_append_len (text, (gchar *) tmp, len);
