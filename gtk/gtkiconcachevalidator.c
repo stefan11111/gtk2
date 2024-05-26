@@ -166,7 +166,7 @@ check_directory_list (CacheInfo *info,
 }
 
 static inline const guint8 *
-get_uint32 (const guint8 *stream, guint *result)
+_get_uint32 (const guint8 *stream, guint *result)
 {
   *result = (stream[0] << 24) + (stream[1] << 16) + (stream[2] << 8) + stream[3];
   return stream + 4;
@@ -184,14 +184,14 @@ _gdk_pixdata_deserialize (GdkPixdata   *pixdata,
     return_header_corrupt (error);
   g_return_val_if_fail (stream != NULL, FALSE);
   /* deserialize header */
-  stream = get_uint32 (stream, &pixdata->magic);
-  stream = get_uint32 (stream, (guint32 *)&pixdata->length);
+  stream = _get_uint32 (stream, &pixdata->magic);
+  stream = _get_uint32 (stream, (guint32 *)&pixdata->length);
   if (pixdata->magic != GDK_PIXBUF_MAGIC_NUMBER || pixdata->length < GDK_PIXDATA_HEADER_LENGTH)
     return_header_corrupt (error);
-  stream = get_uint32 (stream, &pixdata->pixdata_type);
-  stream = get_uint32 (stream, &pixdata->rowstride);
-  stream = get_uint32 (stream, &pixdata->width);
-  stream = get_uint32 (stream, &pixdata->height);
+  stream = _get_uint32 (stream, &pixdata->pixdata_type);
+  stream = _get_uint32 (stream, &pixdata->rowstride);
+  stream = _get_uint32 (stream, &pixdata->width);
+  stream = _get_uint32 (stream, &pixdata->height);
   if (pixdata->width < 1 || pixdata->height < 1 ||
       pixdata->rowstride < pixdata->width)
     return_header_corrupt (error);
