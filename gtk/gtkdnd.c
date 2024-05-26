@@ -29,6 +29,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "gdk-pixbuf/gdk-pixdata.h"
+
 #include "gdkconfig.h"
 
 #include "gdk/gdkkeysyms.h"
