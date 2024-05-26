@@ -188,50 +188,6 @@ _gtk_print_backend_module_class_init (GtkPrintBackendModuleClass *class)
   gobject_class->finalize = gtk_print_backend_module_finalize;
 }
 
-static void 
-gtk_print_backend_set_property (GObject      *object,
-                                guint         prop_id,
-                                const GValue *value,
-                                GParamSpec   *pspec)
-{
-  GtkPrintBackend *backend = GTK_PRINT_BACKEND (object);
-  GtkPrintBackendPrivate *priv;
-
-  priv = backend->priv = GTK_PRINT_BACKEND_GET_PRIVATE (backend); 
-
-  switch (prop_id)
-    {
-    case PROP_STATUS:
-      priv->status = g_value_get_int (value);
-      break;
-    default:
-      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-      break;
-    }
-}
-
-static void 
-gtk_print_backend_get_property (GObject    *object,
-                                guint       prop_id,
-                                GValue     *value,
-                                GParamSpec *pspec)
-{
-  GtkPrintBackend *backend = GTK_PRINT_BACKEND (object);
-  GtkPrintBackendPrivate *priv;
-
-  priv = backend->priv = GTK_PRINT_BACKEND_GET_PRIVATE (backend); 
-
-  switch (prop_id)
-    {
-    case PROP_STATUS:
-      g_value_set_int (value, priv->status);
-      break;
-    default:
-      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
-      break;
-    }
-}
-
 static void
 _gtk_print_backend_module_init (GtkPrintBackendModule *pb_module)
 {
@@ -365,6 +321,50 @@ static void                 request_password                       (GtkPrintBack
                                                                     gpointer             auth_info_visible,
                                                                     const gchar         *prompt);
   
+static void
+gtk_print_backend_set_property (GObject      *object,
+                                guint         prop_id,
+                                const GValue *value,
+                                GParamSpec   *pspec)
+{
+  GtkPrintBackend *backend = GTK_PRINT_BACKEND (object);
+  GtkPrintBackendPrivate *priv;
+
+  priv = backend->priv = GTK_PRINT_BACKEND_GET_PRIVATE (backend);
+
+  switch (prop_id)
+    {
+    case PROP_STATUS:
+      priv->status = g_value_get_int (value);
+      break;
+    default:
+      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+      break;
+    }
+}
+
+static void
+gtk_print_backend_get_property (GObject    *object,
+                                guint       prop_id,
+                                GValue     *value,
+                                GParamSpec *pspec)
+{
+  GtkPrintBackend *backend = GTK_PRINT_BACKEND (object);
+  GtkPrintBackendPrivate *priv;
+
+  priv = backend->priv = GTK_PRINT_BACKEND_GET_PRIVATE (backend);
+
+  switch (prop_id)
+    {
+    case PROP_STATUS:
+      g_value_set_int (value, priv->status);
+      break;
+    default:
+      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+      break;
+    }
+}
+
 static void
 gtk_print_backend_class_init (GtkPrintBackendClass *class)
 {
