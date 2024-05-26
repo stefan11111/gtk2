@@ -34,10 +34,7 @@
 
 #define FALLBACK_ITEM_LIMIT     10
 
-#define GTK_RECENT_ACTION_GET_PRIVATE(obj)      \
-        (G_TYPE_INSTANCE_GET_PRIVATE ((obj),    \
-         GTK_TYPE_RECENT_ACTION,                \
-         GtkRecentActionPrivate))
+#define GTK_RECENT_ACTION_GET_PRIVATE(obj) ((GtkRecentActionPrivate*)gtk_recent_action_get_instance_private ((GtkRecentAction*)obj))
 
 struct _GtkRecentActionPrivate
 {
