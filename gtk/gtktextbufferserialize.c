@@ -675,6 +675,84 @@ _gdk_pixdata_serialize (const GdkPixdata *pixdata,
   return stream;
 }
 
+static gpointer
+_gdk_pixdata_from_pixbuf (GdkPixdata      *pixdata,
+			 const GdkPixbuf *pixbuf,
+			 gboolean         use_rle)
+{
+  gpointer free_me = NULL;
+  guint height, rowstride, encoding, bpp, length;
+  const guint8 *pixels = NULL;
+  guint8 *img_buffer;
+
+  g_return_val_if_fail (pixdata != NULL, NULL);
+  g_return_val_if_fail (GDK_IS_PIXBUF (pixbuf), NULL);
+  g_return_val_if_fail (pixbuf->bits_per_sample == 8, NULL);
+  g_return_val_if_fail ((pixbuf->n_channels == 3 && !pixbuf->has_alpha) ||
+			(pixbuf->n_channels == 4 && pixbuf->has_alpha), NULL);
+  g_return_val_if_fail (pixbuf->rowstride >= pixbuf->width, NULL);
+
+  height = pixbuf->height;
+  rowstride = pixbuf->rowstride;
+  bpp = pixbuf->has_alpha ? 4 : 3;
+  encoding = use_rle && ((rowstride / bpp | height) > 1) ? GDK_PIXDATA_ENCODING_RLE : GDK_PIXDATA_ENCODING_RAW;
+
+  if (encoding == GDK_PIXDATA_ENCODING_RLE)
+    {
+      guint pad, n_bytes = rowstride * height;
+      guint8 *img_buffer_end, *data;
+      GdkPixbuf *buf = NULL;
+
+      if (n_bytes % bpp != 0) 
+	{
+	  rowstride = pixbuf->width * bpp;
+	  n_bytes = rowstride * height;
+	  data = g_malloc (n_bytes);
+	  buf = gdk_pixbuf_new_from_data (data,
+					  GDK_COLORSPACE_RGB,
+					  pixbuf->has_alpha, 8,
+					  pixbuf->width,
+					  pixbuf->height,
+					  rowstride,
+					  free_buffer, NULL);
+	  gdk_pixbuf_copy_area (pixbuf, 0, 0, pixbuf->width, pixbuf->height,
+				buf, 0, 0);
+	}
+      else
+        buf = (GdkPixbuf *)pixbuf;
+
+      pixels = gdk_pixbuf_read_pixels (buf);
+      pad = rowstride;
+      pad = MAX (pad, 130 + n_bytes / 127);
+      data = g_new (guint8, pad + n_bytes);
+      free_me = data;
+      img_buffer = data;
+      img_buffer_end = rl_encode_rgbx (img_buffer,
+				       pixels, pixels + n_bytes,
+				       bpp);
+      length = img_buffer_end - img_buffer;
+      if (buf != pixbuf)
+	g_object_unref (buf);
+    }
+  else
+    {
+      img_buffer = (guint8 *) gdk_pixbuf_read_pixels (pixbuf);
+      length = rowstride * height;
+    }
+
+  pixdata->magic = GDK_PIXBUF_MAGIC_NUMBER;
+  pixdata->length = GDK_PIXDATA_HEADER_LENGTH + length;
+  pixdata->pixdata_type = pixbuf->has_alpha ? GDK_PIXDATA_COLOR_TYPE_RGBA : GDK_PIXDATA_COLOR_TYPE_RGB;
+  pixdata->pixdata_type |= GDK_PIXDATA_SAMPLE_WIDTH_8;
+  pixdata->pixdata_type |= encoding;
+  pixdata->rowstride = rowstride;
+  pixdata->width = pixbuf->width;
+  pixdata->height = height;
+  pixdata->pixel_data = img_buffer;
+
+  return free_me;
+}
+
 static void
 serialize_pixbufs (SerializationContext *context,
 		   GString              *text)
@@ -688,7 +766,7 @@ serialize_pixbufs (SerializationContext *context,
       guint8 *tmp;
       guint len;
 
-      gdk_pixdata_from_pixbuf (&pixdata, pixbuf, FALSE);
+      _gdk_pixdata_from_pixbuf (&pixdata, pixbuf, FALSE);
       tmp = _gdk_pixdata_serialize (&pixdata, &len);
 
       serialize_section_header (text, "GTKTEXTBUFFERPIXBDATA-0001", len);
