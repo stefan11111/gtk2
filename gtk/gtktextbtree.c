@@ -559,6 +559,44 @@ _gtk_text_btree_segments_changed (GtkTextBTree *tree)
  * Indexable segment mutation
  */
 
+#include <fribidi.h>
+
+static PangoDirection
+_pango_unichar_direction (gunichar ch)
+{
+  FriBidiCharType fribidi_ch_type;
+
+  G_STATIC_ASSERT (sizeof (FriBidiChar) == sizeof (gunichar));
+
+  fribidi_ch_type = fribidi_get_bidi_type (ch);
+
+  if (!FRIBIDI_IS_STRONG (fribidi_ch_type))
+    return PANGO_DIRECTION_NEUTRAL;
+  else if (FRIBIDI_IS_RTL (fribidi_ch_type))
+    return PANGO_DIRECTION_RTL;
+  else
+    return PANGO_DIRECTION_LTR;
+}
+
+static PangoDirection
+_pango_find_base_dir (const gchar *text,
+		     gint         length)
+{
+  PangoDirection dir = PANGO_DIRECTION_NEUTRAL;
+  const gchar *p;
+  g_return_val_if_fail (text != NULL || length == 0, PANGO_DIRECTION_NEUTRAL);
+  p = text;
+  while ((length < 0 || p < text + length) && *p)
+    {
+      gunichar wc = g_utf8_get_char (p);
+      dir = _pango_unichar_direction (wc);
+      if (dir != PANGO_DIRECTION_NEUTRAL)
+	break;
+      p = g_utf8_next_char (p);
+    }
+  return dir;
+}
+
 /*
  *  The following function is responsible for resolving the bidi direction
  *  for the lines between start and end. But it also calculates any
@@ -596,7 +634,7 @@ gtk_text_btree_resolve_bidi (GtkTextIter *start,
             {
 	      PangoDirection pango_dir;
 
-              pango_dir = pango_find_base_dir (seg->body.chars,
+              pango_dir = _pango_find_base_dir (seg->body.chars,
 					       seg->byte_count);
 	      
               if (pango_dir != PANGO_DIRECTION_NEUTRAL)
