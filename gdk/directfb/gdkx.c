@@ -1,4 +1,4 @@
-#include "gdkx.h"
+#include <gdk/gdkprivate.h>
 
 Display *gdk_x11_drawable_get_xdisplay    (){return 0;}
 XID      gdk_x11_drawable_get_xid         (){return 0;}
