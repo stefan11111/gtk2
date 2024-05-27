@@ -31,7 +31,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#undef GDK_PIXBUF_DISABLE_DEPRECATED
 #include <gdk-pixbuf/gdk-pixdata.h>
 
 #include "gtkgamma.h"
@@ -305,6 +304,227 @@ gtk_gamma_curve_init (GtkGammaCurve *curve)
   gtk_widget_show (curve->curve);
 }
 
+#define	return_header_corrupt(error)	{ \
+  g_set_error_literal (error, GDK_PIXBUF_ERROR, \
+                       GDK_PIXBUF_ERROR_CORRUPT_IMAGE, "Image header corrupt"); \
+  return FALSE; \
+}
+#define	return_invalid_format(error)	{ \
+  g_set_error_literal (error, GDK_PIXBUF_ERROR, \
+                       GDK_PIXBUF_ERROR_UNKNOWN_TYPE, "Image format unknown"); \
+  return FALSE; \
+}
+#define	return_pixel_corrupt(error)	{ \
+  g_set_error_literal (error, GDK_PIXBUF_ERROR, \
+                       GDK_PIXBUF_ERROR_CORRUPT_IMAGE, "Image pixel data corrupt"); \
+  return FALSE; \
+}
+
+static inline const guint8 *
+get_uint32 (const guint8 *stream, guint *result)
+{
+  *result = (stream[0] << 24) + (stream[1] << 16) + (stream[2] << 8) + stream[3];
+  return stream + 4;
+}
+
+static gboolean
+_gdk_pixdata_deserialize (GdkPixdata   *pixdata,
+			 guint         stream_length,
+			 const guint8 *stream,
+			 GError	     **error)
+{
+  guint color_type, sample_width, encoding;
+  g_return_val_if_fail (pixdata != NULL, FALSE);
+  if (stream_length < GDK_PIXDATA_HEADER_LENGTH)
+    return_header_corrupt (error);
+  g_return_val_if_fail (stream != NULL, FALSE);
+  /* deserialize header */
+  stream = get_uint32 (stream, &pixdata->magic);
+  stream = get_uint32 (stream, (guint32 *)&pixdata->length);
+  if (pixdata->magic != GDK_PIXBUF_MAGIC_NUMBER || pixdata->length < GDK_PIXDATA_HEADER_LENGTH)
+    return_header_corrupt (error);
+  stream = get_uint32 (stream, &pixdata->pixdata_type);
+  stream = get_uint32 (stream, &pixdata->rowstride);
+  stream = get_uint32 (stream, &pixdata->width);
+  stream = get_uint32 (stream, &pixdata->height);
+  if (pixdata->width < 1 || pixdata->height < 1 ||
+      pixdata->rowstride < pixdata->width)
+    return_header_corrupt (error);
+  color_type = pixdata->pixdata_type & GDK_PIXDATA_COLOR_TYPE_MASK;
+  sample_width = pixdata->pixdata_type & GDK_PIXDATA_SAMPLE_WIDTH_MASK;
+  encoding = pixdata->pixdata_type & GDK_PIXDATA_ENCODING_MASK;
+  if ((color_type != GDK_PIXDATA_COLOR_TYPE_RGB &&
+       color_type != GDK_PIXDATA_COLOR_TYPE_RGBA) ||
+      sample_width != GDK_PIXDATA_SAMPLE_WIDTH_8 ||
+      (encoding != GDK_PIXDATA_ENCODING_RAW &&
+       encoding != GDK_PIXDATA_ENCODING_RLE))
+    return_invalid_format (error);
+  /* deserialize pixel data */
+  if (stream_length < pixdata->length - GDK_PIXDATA_HEADER_LENGTH)
+    return_pixel_corrupt (error);
+  pixdata->pixel_data = (guint8 *)stream;
+  return TRUE;
+}
+
+/* From glib's gmem.c */
+#define SIZE_OVERFLOWS(a,b) (G_UNLIKELY ((b) > 0 && (a) > G_MAXSIZE / (b)))
+#define RLE_OVERRUN(offset) (rle_buffer_limit == NULL ? FALSE : rle_buffer + (offset) > rle_buffer_limit)
+
+static GdkPixbuf*
+_gdk_pixbuf_from_pixdata (const GdkPixdata *pixdata,
+			 gboolean          copy_pixels,
+			 GError          **error)
+{
+  guint encoding, bpp;
+  guint8 *data = NULL;
+
+  g_return_val_if_fail (pixdata != NULL, NULL);
+  g_return_val_if_fail (pixdata->width > 0, NULL);
+  g_return_val_if_fail (pixdata->height > 0, NULL);
+  g_return_val_if_fail (pixdata->rowstride >= pixdata->width, NULL);
+  g_return_val_if_fail ((pixdata->pixdata_type & GDK_PIXDATA_COLOR_TYPE_MASK) == GDK_PIXDATA_COLOR_TYPE_RGB ||
+			(pixdata->pixdata_type & GDK_PIXDATA_COLOR_TYPE_MASK) == GDK_PIXDATA_COLOR_TYPE_RGBA, NULL);
+  g_return_val_if_fail ((pixdata->pixdata_type & GDK_PIXDATA_SAMPLE_WIDTH_MASK) == GDK_PIXDATA_SAMPLE_WIDTH_8, NULL);
+  g_return_val_if_fail ((pixdata->pixdata_type & GDK_PIXDATA_ENCODING_MASK) == GDK_PIXDATA_ENCODING_RAW ||
+			(pixdata->pixdata_type & GDK_PIXDATA_ENCODING_MASK) == GDK_PIXDATA_ENCODING_RLE, NULL);
+  g_return_val_if_fail (pixdata->pixel_data != NULL, NULL);
+
+  bpp = (pixdata->pixdata_type & GDK_PIXDATA_COLOR_TYPE_MASK) == GDK_PIXDATA_COLOR_TYPE_RGB ? 3 : 4;
+  encoding = pixdata->pixdata_type & GDK_PIXDATA_ENCODING_MASK;
+
+  g_debug ("gdk_pixbuf_from_pixdata() called on:");
+  g_debug ("\tEncoding %s", encoding == GDK_PIXDATA_ENCODING_RAW ? "raw" : "rle");
+  g_debug ("\tDimensions: %d x %d", pixdata->width, pixdata->height);
+  g_debug ("\tRowstride: %d, Length: %d", pixdata->rowstride, pixdata->length);
+  g_debug ("\tCopy pixels == %s", copy_pixels ? "true" : "false");
+
+  if (encoding == GDK_PIXDATA_ENCODING_RLE)
+    copy_pixels = TRUE;
+
+  /* Sanity check the length and dimensions */
+  if (SIZE_OVERFLOWS (pixdata->height, pixdata->rowstride))
+    {
+      g_set_error_literal (error, GDK_PIXBUF_ERROR,
+                           GDK_PIXBUF_ERROR_CORRUPT_IMAGE,
+                           _("Image pixel data corrupt"));
+      return NULL;
+    }
+
+  if (encoding == GDK_PIXDATA_ENCODING_RAW &&
+      pixdata->length >= 1 &&
+      pixdata->length < pixdata->height * pixdata->rowstride - GDK_PIXDATA_HEADER_LENGTH)
+    {
+      g_set_error_literal (error, GDK_PIXBUF_ERROR,
+                           GDK_PIXBUF_ERROR_CORRUPT_IMAGE,
+                           _("Image pixel data corrupt"));
+      return NULL;
+    }
+
+  if (copy_pixels)
+    {
+      data = g_try_malloc_n (pixdata->height, pixdata->rowstride);
+      if (!data)
+	{
+	  g_set_error (error, GDK_PIXBUF_ERROR,
+		       GDK_PIXBUF_ERROR_INSUFFICIENT_MEMORY,
+		       pixdata->rowstride * pixdata->height == 1 ? "failed to allocate image buffer of %u byte" :
+		                                                   "failed to allocate image buffer of %u bytes",
+		       pixdata->rowstride * pixdata->height);
+	  return NULL;
+	}
+    }
+  if (encoding == GDK_PIXDATA_ENCODING_RLE)
+    {
+      const guint8 *rle_buffer = pixdata->pixel_data;
+      guint8 *rle_buffer_limit = NULL;
+      guint8 *image_buffer = data;
+      guint8 *image_limit = data + pixdata->rowstride * pixdata->height;
+      gboolean check_overrun = FALSE;
+
+      if (pixdata->length >= 1)
+        rle_buffer_limit = pixdata->pixel_data + pixdata->length - GDK_PIXDATA_HEADER_LENGTH;
+
+      while (image_buffer < image_limit &&
+             (rle_buffer_limit != NULL || rle_buffer > rle_buffer_limit))
+	{
+	  guint length;
+
+	  if (RLE_OVERRUN(1))
+	    {
+	      check_overrun = TRUE;
+	      break;
+	    }
+
+	  length = *(rle_buffer++);
+
+	  if (length & 128)
+	    {
+	      length = length - 128;
+	      check_overrun = image_buffer + length * bpp > image_limit;
+	      if (check_overrun)
+		length = (image_limit - image_buffer) / bpp;
+	      if (RLE_OVERRUN(bpp < 4 ? 3 : 4))
+	        {
+	          check_overrun = TRUE;
+	          break;
+	        }
+	      if (bpp < 4)	/* RGB */
+		do
+		  {
+		    memcpy (image_buffer, rle_buffer, 3);
+		    image_buffer += 3;
+		  }
+		while (--length);
+	      else		/* RGBA */
+		do
+		  {
+		    memcpy (image_buffer, rle_buffer, 4);
+		    image_buffer += 4;
+		  }
+		while (--length);
+	      if (RLE_OVERRUN(bpp))
+	        {
+	          check_overrun = TRUE;
+	          break;
+		}
+	      rle_buffer += bpp;
+	    }
+	  else
+	    {
+	      length *= bpp;
+	      check_overrun = image_buffer + length > image_limit;
+	      if (check_overrun)
+		length = image_limit - image_buffer;
+	      if (RLE_OVERRUN(length))
+	        {
+	          check_overrun = TRUE;
+	          break;
+		}
+	      memcpy (image_buffer, rle_buffer, length);
+	      image_buffer += length;
+	      rle_buffer += length;
+	    }
+	}
+      if (check_overrun)
+	{
+	  g_free (data);
+	  g_set_error_literal (error, GDK_PIXBUF_ERROR,
+                               GDK_PIXBUF_ERROR_CORRUPT_IMAGE,
+                               _("Image pixel data corrupt"));
+	  return NULL;
+	}
+    }
+  else if (copy_pixels)
+    memcpy (data, pixdata->pixel_data, pixdata->rowstride * pixdata->height);
+  else
+    data = pixdata->pixel_data;
+
+  return gdk_pixbuf_new_from_data (data, GDK_COLORSPACE_RGB,
+				   (pixdata->pixdata_type & GDK_PIXDATA_COLOR_TYPE_MASK) == GDK_PIXDATA_COLOR_TYPE_RGBA,
+				   8, pixdata->width, pixdata->height, pixdata->rowstride,
+				   copy_pixels ? (GdkPixbufDestroyNotify) g_free : NULL, data);
+}
+
 static void
 button_realize_callback (GtkWidget *w)
 {
@@ -324,8 +544,8 @@ button_realize_callback (GtkWidget *w)
   int i;
 
   i = GPOINTER_TO_INT (g_object_get_data (G_OBJECT (w), "_GtkGammaCurveIndex"));
-  gdk_pixdata_deserialize (&pixdata, streams[i].length, streams[i].stream, NULL);
-  pixbuf = gdk_pixbuf_from_pixdata (&pixdata, TRUE, NULL);
+  _gdk_pixdata_deserialize (&pixdata, streams[i].length, streams[i].stream, NULL);
+  pixbuf = _gdk_pixbuf_from_pixdata (&pixdata, TRUE, NULL);
   image = gtk_image_new_from_pixbuf (pixbuf);
   gtk_container_add (GTK_CONTAINER (w), image);
   gtk_widget_show (image);
