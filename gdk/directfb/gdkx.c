@@ -62,7 +62,6 @@ XID      gdk_x11_screen_get_monitor_output   (){return 0;}
 #ifndef GDK_MULTIHEAD_SAFE
 #ifndef GDK_DISABLE_DEPRECATED
 gpointer      gdk_xid_table_lookup   (){return 0;}
-gboolean      gdk_net_wm_supports    (){return 0;}
 #endif
 void          gdk_x11_grab_server    (){}
 void          gdk_x11_ungrab_server  (){}
