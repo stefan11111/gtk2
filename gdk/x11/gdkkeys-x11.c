@@ -552,6 +552,25 @@ get_effective_keymap (GdkKeymap  *keymap,
 }
 
 #if HAVE_XKB
+#include <fribidi.h>
+
+static PangoDirection
+_pango_unichar_direction (gunichar ch)
+{
+  FriBidiCharType fribidi_ch_type;
+
+  G_STATIC_ASSERT (sizeof (FriBidiChar) == sizeof (gunichar));
+
+  fribidi_ch_type = fribidi_get_bidi_type (ch);
+
+  if (!FRIBIDI_IS_STRONG (fribidi_ch_type))
+    return PANGO_DIRECTION_NEUTRAL;
+  else if (FRIBIDI_IS_RTL (fribidi_ch_type))
+    return PANGO_DIRECTION_RTL;
+  else
+    return PANGO_DIRECTION_LTR;
+}
+
 static PangoDirection
 get_direction (XkbDescRec *xkb, 
 	       gint group)
@@ -564,7 +583,7 @@ get_direction (XkbDescRec *xkb,
     {
       gint level = 0;
       KeySym sym = XkbKeySymEntry (xkb, code, level, group);
-      PangoDirection dir = pango_unichar_direction (gdk_keyval_to_unicode (sym));
+      PangoDirection dir = _pango_unichar_direction (gdk_keyval_to_unicode (sym));
 
       switch (dir)
 	{
