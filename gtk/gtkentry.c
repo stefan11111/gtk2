@@ -5379,6 +5379,44 @@ gtk_entry_recompute (GtkEntry *entry)
     }
 }
 
+#include <fribidi.h>
+
+static PangoDirection
+_pango_unichar_direction (gunichar ch)
+{
+  FriBidiCharType fribidi_ch_type;
+
+  G_STATIC_ASSERT (sizeof (FriBidiChar) == sizeof (gunichar));
+
+  fribidi_ch_type = fribidi_get_bidi_type (ch);
+
+  if (!FRIBIDI_IS_STRONG (fribidi_ch_type))
+    return PANGO_DIRECTION_NEUTRAL;
+  else if (FRIBIDI_IS_RTL (fribidi_ch_type))
+    return PANGO_DIRECTION_RTL;
+  else
+    return PANGO_DIRECTION_LTR;
+}
+
+static PangoDirection
+_pango_find_base_dir (const gchar *text,
+		     gint         length)
+{
+  PangoDirection dir = PANGO_DIRECTION_NEUTRAL;
+  const gchar *p;
+  g_return_val_if_fail (text != NULL || length == 0, PANGO_DIRECTION_NEUTRAL);
+  p = text;
+  while ((length < 0 || p < text + length) && *p)
+    {
+      gunichar wc = g_utf8_get_char (p);
+      dir = _pango_unichar_direction (wc);
+      if (dir != PANGO_DIRECTION_NEUTRAL)
+	break;
+      p = g_utf8_next_char (p);
+    }
+  return dir;
+}
+
 static PangoLayout *
 gtk_entry_create_layout (GtkEntry *entry,
 			 gboolean  include_preedit)
@@ -5425,7 +5463,7 @@ gtk_entry_create_layout (GtkEntry *entry,
       PangoDirection pango_dir;
       
       if (gtk_entry_get_display_mode (entry) == DISPLAY_NORMAL)
-	pango_dir = pango_find_base_dir (display, n_bytes);
+	pango_dir = _pango_find_base_dir (display, n_bytes);
       else
 	pango_dir = PANGO_DIRECTION_NEUTRAL;
 
