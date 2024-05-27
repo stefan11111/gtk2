@@ -48,10 +48,12 @@ libgdk_directfb_la_SOURCES =	\
 	gdkdirectfb.h		\
 	gdkwindow-directfb.c	\
 	gdkwindowid.c		\
+	gdkx.c			\
 	x-cursors.xbm
 
 libgdkinclude_HEADERS =		\
 	gdkdirectfb.h 		\
+	gdkx.c			\
 	gdkprivate-directfb.h
 
 
