@@ -53,7 +53,7 @@ libgdk_directfb_la_SOURCES =	\
 
 libgdkinclude_HEADERS =		\
 	gdkdirectfb.h 		\
-	gdkx.c			\
+	gdkx.h			\
 	gdkprivate-directfb.h
 
 
