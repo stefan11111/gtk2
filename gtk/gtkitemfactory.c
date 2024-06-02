@@ -27,6 +27,7 @@
  * GTK+ at ftp://ftp.gtk.org/pub/gtk/. 
  */
 
+#include	<config.h>
 
 #include "gdk-pixbuf/gdk-pixdata.h"
 
@@ -49,7 +50,9 @@
 #include	"gtkintl.h"
 #include	<string.h>
 #include	<fcntl.h>
+#ifdef HAVE_UNISTD_H
 #include	<unistd.h>
+#endif
 #include	<stdio.h>
 
 
