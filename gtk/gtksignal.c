@@ -19,7 +19,6 @@
 
 #undef GTK_DISABLE_DEPRECATED
 
-#include	<config.h>
 #include	"gtksignal.h"
 
 

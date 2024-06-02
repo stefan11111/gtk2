@@ -1,0 +1,6 @@
+# CHECK_HAVE(sys/sysinfo.h)
+# CHECK_HAVE(_GNU_SOURCE, unistd.h, getresuid)
+# CHECK_HAVE(xshm.h)
+# CHECK_HAVE(shm.h)
+# CHECK_HAVE(sys/param.h)
+# CHECK_HAVE(ipc.h)
