@@ -3,6 +3,7 @@
 
 #define GDK_ENABLE_BROKEN
 #include "gdk.h"
+
 /* enumerations from "gdkcursor.h" */
 GType
 gdk_cursor_type_get_type (void)
@@ -955,6 +956,7 @@ gdk_window_edge_get_type (void)
     return etype;
 }
 #define __GDK_ENUM_TYPES_C__
+
 
 /* Generated data ends here */
 

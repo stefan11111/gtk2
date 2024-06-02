@@ -81,7 +81,9 @@
 #include <sys/types.h>
 #include <locale.h>
 
+#ifdef HAVE_UNISTD_H
 #include <unistd.h>
+#endif
 
 /* Profiling stuff */
 #undef PROFILE_FILE_CHOOSER

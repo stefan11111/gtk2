@@ -5,6 +5,7 @@
 #define GTK_ENABLE_BROKEN
 #include "gtk.h"
 #include "gtkprivate.h"
+
 /* enumerations from "gtkaccelgroup.h" */
 GType
 gtk_accel_flags_get_type (void)
@@ -2040,6 +2041,7 @@ gtk_widget_help_type_get_type (void)
     return etype;
 }
 #define __GTK_TYPE_BUILTINS_C__
+
 
 /* Generated data ends here */
 

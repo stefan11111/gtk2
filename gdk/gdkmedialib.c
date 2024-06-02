@@ -30,9 +30,13 @@
 #include <stdlib.h>
 #include <dlfcn.h>
 
+#ifdef HAVE_STRINGS_H
 #include <strings.h>
+#endif
 
+#ifdef HAVE_STRING_H
 #include <string.h>
+#endif
 
 #if defined(HAVE_SYS_SYSTEMINFO_H)
 #include <sys/systeminfo.h>
