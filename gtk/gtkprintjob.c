@@ -23,9 +23,7 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <errno.h>
-#ifdef HAVE_UNISTD_H
 #include <unistd.h>
-#endif
 #include <sys/types.h>
 #include <sys/stat.h>
 

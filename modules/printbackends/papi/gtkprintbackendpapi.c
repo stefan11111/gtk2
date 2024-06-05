@@ -28,7 +28,6 @@
 #include <string.h>
 #include <papi.h>
 
-#include <config.h>
 #include <errno.h>
 #include <cairo.h>
 #include <cairo-ps.h>

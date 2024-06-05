@@ -30,9 +30,7 @@
 #define _XOPEN_SOURCE 500
 #define _GNU_SOURCE 
 
-#ifdef HAVE_FTW_H
 #include <ftw.h>
-#endif
 
 #include "gtksearchenginesimple.h"
 #include "gtkprivate.h"
@@ -191,7 +189,6 @@ send_batch (SearchThreadData *data)
 
 static GPrivate search_thread_data;
 
-#ifdef HAVE_FTW_H
 static int
 search_visit_func (const char        *fpath,
 		   const struct stat *sb,
@@ -261,12 +258,10 @@ search_visit_func (const char        *fpath,
   return 0;
 #endif /* HAVE_GNU_FTW */
 }
-#endif /* HAVE_FTW_H */
 
 static gpointer 
 search_thread_func (gpointer user_data)
 {
-#ifdef HAVE_FTW_H
   SearchThreadData *data;
   
   data = user_data;
@@ -282,7 +277,6 @@ search_thread_func (gpointer user_data)
   send_batch (data);
   
   gdk_threads_add_idle (search_thread_done_idle, data);
-#endif /* HAVE_FTW_H */
   
   return NULL;
 }
@@ -370,9 +364,5 @@ _gtk_search_engine_simple_init (GtkSearchEngineSimple *engine)
 GtkSearchEngine *
 _gtk_search_engine_simple_new (void)
 {
-#ifdef HAVE_FTW_H
   return g_object_new (GTK_TYPE_SEARCH_ENGINE_SIMPLE, NULL);
-#else
-  return NULL;
-#endif
 }
