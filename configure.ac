@@ -1470,12 +1470,11 @@ gdk/x11/Makefile
 gdk/directfb/Makefile
 gtk/Makefile
 gtk/gtkversion.h
-modules/Makefile
-modules/printbackends/Makefile
-modules/printbackends/cups/Makefile
-modules/printbackends/lpr/Makefile
-modules/printbackends/file/Makefile
-modules/printbackends/papi/Makefile
+printbackends/Makefile
+printbackends/cups/Makefile
+printbackends/lpr/Makefile
+printbackends/file/Makefile
+printbackends/papi/Makefile
 ])
 
 AC_OUTPUT
