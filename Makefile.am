@@ -1,7 +1,7 @@
 ## Makefile.am for GTK+
 include $(top_srcdir)/Makefile.decl
 
-SRC_SUBDIRS = gdk gtk modules
+SRC_SUBDIRS = gdk gtk printbackends
 SUBDIRS = $(SRC_SUBDIRS) m4macros build
 
 # require automake 1.4

@@ -33,14 +33,10 @@
 #include <sys/param.h>
 #endif
 #include <stdlib.h>
-#ifdef HAVE_UNISTD_H
 #include <unistd.h>
-#endif
 #include <string.h>
 #include <errno.h>
-#ifdef HAVE_PWD_H
 #include <pwd.h>
-#endif
 
 #include <glib.h>
 #include <glib/gstdio.h>
@@ -307,10 +303,8 @@ static gboolean       check_dir            (gchar *dir_name,
 					    gboolean *stat_subdirs);
 static CompletionDir* open_dir             (gchar* dir_name,
 					    CompletionState* cmpl_state);
-#ifdef HAVE_PWD_H
 static CompletionDir* open_user_dir        (const gchar* text_to_complete,
 					    CompletionState *cmpl_state);
-#endif
 static CompletionDir* open_relative_dir    (gchar* dir_name, CompletionDir* dir,
 					    CompletionState *cmpl_state);
 static CompletionDirSent* open_new_dir     (gchar* dir_name, 
@@ -328,20 +322,16 @@ static void           free_dir      (CompletionDir  *dir);
 static void           prune_memory_usage(CompletionState *cmpl_state);
 
 /* Completion operations */
-#ifdef HAVE_PWD_H
 static PossibleCompletion* attempt_homedir_completion(gchar* text_to_complete,
 						      CompletionState *cmpl_state);
-#endif
 static PossibleCompletion* attempt_file_completion(CompletionState *cmpl_state);
 static CompletionDir* find_completion_dir(gchar* text_to_complete,
 					  gchar** remaining_text,
 					  CompletionState* cmpl_state);
 static PossibleCompletion* append_completion_text(gchar* text,
 						  CompletionState* cmpl_state);
-#ifdef HAVE_PWD_H
 static gint get_pwdb(CompletionState* cmpl_state);
 static gint compare_user_dir(const void* a, const void* b);
-#endif
 static gint first_diff_index(gchar* pat, gchar* text);
 static gint compare_cmpl_dir(const void* a, const void* b);
 static void update_cmpl(PossibleCompletion* poss,
@@ -2311,7 +2301,6 @@ cmpl_completion_fullname (const gchar     *text,
     {
       return g_strdup (text);
     }
-#ifdef HAVE_PWD_H
   else if (text[0] == '~')
     {
       CompletionDir* dir;
@@ -2327,7 +2316,6 @@ cmpl_completion_fullname (const gchar     *text,
 	  return g_strconcat (dir->fullname, slash, NULL);
 	}
     }
-#endif
   
   return g_build_filename (cmpl_state->reference_dir->fullname,
 			   text,
@@ -2542,9 +2530,7 @@ cmpl_completion_matches (gchar           *text_to_complete,
 			 gchar          **remaining_text,
 			 CompletionState *cmpl_state)
 {
-#ifdef HAVE_PWD_H
   gchar* first_slash;
-#endif
   PossibleCompletion *poss;
 
   prune_memory_usage (cmpl_state);
@@ -2559,7 +2545,6 @@ cmpl_completion_matches (gchar           *text_to_complete,
   cmpl_state->updated_text[0] = 0;
   cmpl_state->re_complete = FALSE;
 
-#ifdef HAVE_PWD_H
   first_slash = strchr (text_to_complete, G_DIR_SEPARATOR);
 
   if (text_to_complete[0] == '~' && !first_slash)
@@ -2573,7 +2558,6 @@ cmpl_completion_matches (gchar           *text_to_complete,
 
       return poss;
     }
-#endif
   cmpl_state->reference_dir =
     open_ref_dir (text_to_complete, remaining_text, cmpl_state);
 
@@ -2610,14 +2594,10 @@ cmpl_next_completion (CompletionState* cmpl_state)
 
   cmpl_state->the_completion.text[0] = 0;
 
-#ifdef HAVE_PWD_H
   if (cmpl_state->user_completion_index >= 0)
     poss = attempt_homedir_completion (cmpl_state->last_completion_text, cmpl_state);
   else
     poss = attempt_file_completion (cmpl_state);
-#else
-  poss = attempt_file_completion (cmpl_state);
-#endif
 
   update_cmpl (poss, cmpl_state);
 
@@ -2641,7 +2621,6 @@ open_ref_dir (gchar           *text_to_complete,
 
   if (FALSE)
     ;
-#ifdef HAVE_PWD_H
   else if (text_to_complete[0] == '~')
     {
       new_dir = open_user_dir (text_to_complete, cmpl_state);
@@ -2658,7 +2637,6 @@ open_ref_dir (gchar           *text_to_complete,
 	  return NULL;
 	}
     }
-#endif
   else if (g_path_is_absolute (text_to_complete) || !cmpl_state->reference_dir)
     {
       gchar *tmp = g_strdup (text_to_complete);
@@ -2713,7 +2691,6 @@ open_ref_dir (gchar           *text_to_complete,
   return new_dir;
 }
 
-#ifdef HAVE_PWD_H
 
 /* open a directory by user name */
 static CompletionDir*
@@ -2769,7 +2746,6 @@ open_user_dir (const gchar     *text_to_complete,
   return result;
 }
 
-#endif
 
 /* open a directory relative to the current relative directory */
 static CompletionDir*
@@ -3253,7 +3229,6 @@ find_parent_dir_fullname (gchar* dirname)
 /*                        Completion Operations                       */
 /**********************************************************************/
 
-#ifdef HAVE_PWD_H
 
 static PossibleCompletion*
 attempt_homedir_completion (gchar           *text_to_complete,
@@ -3312,7 +3287,6 @@ attempt_homedir_completion (gchar           *text_to_complete,
     }
 }
 
-#endif
 
 #define FOLD(c) (c)
 
@@ -3603,7 +3577,6 @@ attempt_file_completion (CompletionState *cmpl_state)
     }
 }
 
-#ifdef HAVE_PWD_H
 
 static gint
 get_pwdb (CompletionState* cmpl_state)
@@ -3693,7 +3666,6 @@ compare_user_dir (const void *a,
 		 (((CompletionUserDir*)b))->login);
 }
 
-#endif
 
 static gint
 compare_cmpl_dir (const void *a,
