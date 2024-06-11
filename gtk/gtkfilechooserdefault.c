@@ -6768,7 +6768,7 @@ file_system_model_set (GtkFileSystemModel *model,
         guint64 tv;
         if (info == NULL)
           break;
-        tv = *(guint64*)g_file_info_get_modification_date_time (info);
+        tv = g_date_time_to_unix(g_file_info_get_modification_date_time (info));
         if (column == MODEL_COL_MTIME)
           g_value_set_int64 (value, tv);
         else if (tv == 0)
