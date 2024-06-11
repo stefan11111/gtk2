@@ -137,7 +137,7 @@ static void     gtk_recent_manager_real_changed        (GtkRecentManager  *manag
 static void     gtk_recent_manager_set_filename        (GtkRecentManager  *manager,
                                                         const gchar       *filename);
 static void     gtk_recent_manager_clamp_to_age        (GtkRecentManager  *manager,
-                                                        gint               age);
+                                                        time_t             age);
 static void     gtk_recent_manager_clamp_to_size       (GtkRecentManager  *manager,
                                                         const gint         size);
 
@@ -414,7 +414,7 @@ gtk_recent_manager_real_changed (GtkRecentManager *manager)
       else
         {
           GtkSettings *settings = gtk_settings_get_default ();
-          gint age = 30;
+          time_t age = 30;
           gint max_size = MAX_LIST_SIZE;
 
           g_object_get (G_OBJECT (settings), "gtk-recent-files-max-age", &age, NULL);
@@ -1243,9 +1243,9 @@ build_recent_info (GBookmarkFile  *bookmarks,
     
   info->is_private = g_bookmark_file_get_is_private (bookmarks, info->uri, NULL);
   
-  info->added = *(guint64*)g_bookmark_file_get_added_date_time (bookmarks, info->uri, NULL);
-  info->modified = *(guint64*)g_bookmark_file_get_modified_date_time (bookmarks, info->uri, NULL);
-  info->visited = *(guint64*)g_bookmark_file_get_visited_date_time (bookmarks, info->uri, NULL);
+  info->added = g_date_time_to_unix(g_bookmark_file_get_added_date_time (bookmarks, info->uri, NULL));
+  info->modified = g_date_time_to_unix(g_bookmark_file_get_modified_date_time (bookmarks, info->uri, NULL));
+  info->visited = g_date_time_to_unix(g_bookmark_file_get_visited_date_time (bookmarks, info->uri, NULL));
   
   groups = g_bookmark_file_get_groups (bookmarks, info->uri, &groups_len, NULL);
   for (i = 0; i < groups_len; i++)
@@ -1279,7 +1279,7 @@ build_recent_info (GBookmarkFile  *bookmarks,
       app_info = recent_app_info_new (app_name);
       app_info->exec = app_exec;
       app_info->count = count;
-      app_info->stamp = *(guint64*)stamp;
+      app_info->stamp = g_date_time_to_unix(stamp);
       
       info->applications = g_slist_prepend (info->applications, app_info);
       g_hash_table_replace (info->apps_lookup, app_info->name, app_info);
@@ -1560,7 +1560,7 @@ gtk_recent_manager_changed (GtkRecentManager *manager)
 
 static void
 gtk_recent_manager_clamp_to_age (GtkRecentManager *manager,
-                                 gint              age)
+                                 time_t            age)
 {
   GtkRecentManagerPrivate *priv = manager->priv;
   gchar **uris;
@@ -1577,11 +1577,9 @@ gtk_recent_manager_clamp_to_age (GtkRecentManager *manager,
   for (i = 0; i < n_uris; i++)
     {
       const gchar *uri = uris[i];
-      time_t modified;
-      gint item_age;
 
-      modified = *(guint64*)g_bookmark_file_get_modified_date_time (priv->recent_items, uri, NULL);
-      item_age = (gint) ((now - modified) / (60 * 60 * 24));
+      time_t modified = g_date_time_to_unix(g_bookmark_file_get_modified_date_time (priv->recent_items, uri, NULL));
+      time_t item_age = ((now - modified) / (60 * 60 * 24));
       if (item_age > age)
         g_bookmark_file_remove_item (priv->recent_items, uri, NULL);
     }
