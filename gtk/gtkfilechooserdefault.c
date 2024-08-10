@@ -212,7 +212,7 @@ enum {
 	MODEL_COL_NUM_COLUMNS,					\
 	G_TYPE_STRING,		  /* MODEL_COL_NAME */		\
 	G_TYPE_INT64,		  /* MODEL_COL_SIZE */		\
-	G_TYPE_LONG,		  /* MODEL_COL_MTIME */		\
+	G_TYPE_UINT64,		  /* MODEL_COL_MTIME */		\
 	G_TYPE_FILE,		  /* MODEL_COL_FILE */		\
 	G_TYPE_STRING,		  /* MODEL_COL_NAME_COLLATED */	\
 	G_TYPE_BOOLEAN,		  /* MODEL_COL_IS_FOLDER */	\
@@ -6140,10 +6140,10 @@ mtime_sort_func (GtkTreeModel *model,
   COMPARE_DIRECTORIES;
   else
     {
-      glong ta, tb;
+      guint64 ta, tb;
 
-      ta = g_value_get_long (_gtk_file_system_model_get_value (fs_model, a, MODEL_COL_MTIME));
-      tb = g_value_get_long (_gtk_file_system_model_get_value (fs_model, b, MODEL_COL_MTIME));
+      ta = g_value_get_uint64 (_gtk_file_system_model_get_value (fs_model, a, MODEL_COL_MTIME));
+      tb = g_value_get_uint64 (_gtk_file_system_model_get_value (fs_model, b, MODEL_COL_MTIME));
 
       return ta < tb ? -1 : (ta == tb ? 0 : 1);
     }
@@ -6770,7 +6770,7 @@ file_system_model_set (GtkFileSystemModel *model,
           break;
         tv = g_date_time_to_unix(g_file_info_get_modification_date_time (info));
         if (column == MODEL_COL_MTIME)
-          g_value_set_int64 (value, tv);
+          g_value_set_uint64 (value, tv);
         else if (tv == 0)
           g_value_set_static_string (value, _("Unknown"));
         else
