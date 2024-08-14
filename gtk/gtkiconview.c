@@ -7661,12 +7661,6 @@ typedef struct
 
 } GtkIconViewAccessiblePrivate;
 
-static void *
-gtk_icon_view_get_accessible (GtkWidget *widget)
-{
-  return NULL;
-}
-
 static gboolean
 gtk_icon_view_buildable_custom_tag_start (GtkBuildable  *buildable,
 					  GtkBuilder    *builder,
