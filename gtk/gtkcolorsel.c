@@ -56,7 +56,6 @@
 #include "gtkmain.h"
 #include "gtksettings.h"
 #include "gtkstock.h"
-#include "gtkaccessible.h"
 #include "gtkprivate.h"
 #include "gtkintl.h"
 
