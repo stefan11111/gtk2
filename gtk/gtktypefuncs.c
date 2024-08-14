@@ -81,7 +81,7 @@
 *tp++ = gtk_accel_group_get_type();
 *tp++ = gtk_accel_label_get_type();
 *tp++ = gtk_accel_map_get_type();
-*tp++ = gtk_accessible_get_type();
+/* *tp++ = gtk_accessible_get_type(); */
 *tp++ = gtk_action_get_type();
 *tp++ = gtk_action_group_get_type();
 *tp++ = gtk_activatable_get_type();
