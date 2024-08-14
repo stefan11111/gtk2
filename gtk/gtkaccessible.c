@@ -37,7 +37,7 @@ static void gtk_accessible_real_connect_widget_destroyed (GtkAccessible *accessi
 
 struct _GtkAccessible
 {
-  void *foo;
+  GtkWidget *GSEAL (widget);
   char padding[sizeof(GtkObject) - sizeof(void*)];
 };
 
