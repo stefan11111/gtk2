@@ -91,13 +91,13 @@ test_type (gconstpointer data)
   klass = g_type_class_ref (type);
   
   if (g_type_is_a (type, GTK_TYPE_SETTINGS))
-    instance = g_object_ref (gtk_settings_get_default ());
+    instance = g_object_ref ((GObject*)gtk_settings_get_default ());
   else if (g_type_is_a (type, GDK_TYPE_PANGO_RENDERER))
-    instance = g_object_ref (gdk_pango_renderer_get_default (gdk_screen_get_default ()));
+    instance = g_object_ref ((GObject*)gdk_pango_renderer_get_default (gdk_screen_get_default ()));
   else if (g_type_is_a (type, GDK_TYPE_PIXMAP))
-    instance = g_object_ref (gdk_pixmap_new (NULL, 1, 1, 1));
+    instance = g_object_ref ((GObject*)gdk_pixmap_new (NULL, 1, 1, 1));
   else if (g_type_is_a (type, GDK_TYPE_COLORMAP))
-    instance = g_object_ref (gdk_colormap_new (gdk_visual_get_best (), TRUE));
+    instance = g_object_ref ((GObject*)gdk_colormap_new (gdk_visual_get_best (), TRUE));
   else if (g_type_is_a (type, GDK_TYPE_WINDOW))
     {
       GdkWindowAttr attributes;

@@ -21,7 +21,7 @@
 #include <gtk/gtk.h>
 
 static GtkWidget *
-create_menu (depth)
+create_menu (int depth)
 {
     GtkWidget *menu;
     GtkWidget *menuitem;
