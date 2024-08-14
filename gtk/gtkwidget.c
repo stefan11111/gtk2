@@ -48,7 +48,6 @@
 #include <gobject/gvaluecollector.h>
 #include <gobject/gobjectnotifyqueue.c>
 #include "gdk/gdkkeysyms.h"
-#include "gtkaccessible.h"
 #include "gtktooltip.h"
 #include "gtkinvisible.h"
 #include "gtkbuildable.h"
