@@ -27,6 +27,8 @@
 #include <gtk/gtk.h>
 #include <gdk/gdkkeysyms.h>
 
+#include <atk/atkrelationtype.h>
+
 /* Copied from gtkiconfactory.c; keep in sync! */
 struct _GtkIconSet
 {
