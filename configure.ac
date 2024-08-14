@@ -1471,12 +1471,15 @@ gtk+-unix-print-2.0.pc
 gdk-2.0-uninstalled.pc
 gtk+-2.0-uninstalled.pc
 m4macros/Makefile
+tests/Makefile
 build/Makefile
 gdk/Makefile
 gdk/x11/Makefile
 gdk/directfb/Makefile
+gdk/tests/Makefile
 gtk/Makefile
 gtk/gtkversion.h
+gtk/tests/Makefile
 printbackends/Makefile
 printbackends/cups/Makefile
 printbackends/lpr/Makefile
