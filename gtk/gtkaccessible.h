@@ -38,6 +38,8 @@ G_BEGIN_DECLS
 typedef struct _GtkAccessible                GtkAccessible;
 typedef struct _GtkAccessibleClass           GtkAccessibleClass;
 
+#ifndef HACK_TO_DEFINE_ACCESSIBLE_TYPE
+
   /*
    * This object is a thin wrapper, in the GTK+ namespace
    */
@@ -49,8 +51,6 @@ struct _GtkAccessible
    */
   GtkWidget *GSEAL (widget);
 };
-
-#ifndef HACK_TO_DEFINE_ACCESSIBLE_TYPE
 
 struct _GtkAccessibleClass
 {
