@@ -197,6 +197,13 @@ AM_CONDITIONAL(OS_WIN32, test "$os_win32" = "yes")
 AM_CONDITIONAL(OS_UNIX, test "$os_win32" != "yes")
 AM_CONDITIONAL(OS_LINUX, test "$os_linux" = "yes")
 
+AC_ARG_ENABLE(tests,
+              [AC_HELP_STRING([--enable-tests]
+                              [build tests])],,
+               [enable_tests=auto])
+
+AM_CONDITIONAL(BUILD_TESTS, [test "x$enable_tests" = "xyes"])
+
 if test "$os_win32" = "yes"; then
   AC_CHECK_TOOL(WINDRES, windres, no)
   if test "$WINDRES" = no; then

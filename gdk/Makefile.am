@@ -12,6 +12,11 @@ INTROSPECTION_COMPILER_ARGS = \
 SUBDIRS = $(gdktarget) .
 DIST_SUBDIRS = x11 directfb
 
+if BUILD_TESTS
+SUBDIRS += tests
+DIST_SUBDIRS += tests
+endif
+
 CLEANFILES =
 
 EXTRA_DIST +=			\
