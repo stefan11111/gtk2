@@ -22,6 +22,7 @@
 
 #include "gtkwidget.h"
 #include "gtkintl.h"
+#define HACK_TO_DEFINE_ACCESSIBLE_TYPE
 #include "gtkaccessible.h"
 
 
@@ -34,7 +35,13 @@
 
 static void gtk_accessible_real_connect_widget_destroyed (GtkAccessible *accessible);
 
-G_DEFINE_TYPE (GtkAccessible, gtk_accessible, 1)
+struct _GtkAccessibleClass
+{
+  void (*connect_widget_destroyed)              (GtkAccessible     *accessible);
+  char padding[sizeof(GtkObjectClass) - sizeof(void (*)())]
+}
+
+G_DEFINE_TYPE (GtkAccessible, gtk_accessible, GTK_TYPE_OBJECT)
 
 static void
 gtk_accessible_init (GtkAccessible *object)

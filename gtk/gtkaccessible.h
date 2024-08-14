@@ -50,6 +50,8 @@ struct _GtkAccessible
   GtkWidget *GSEAL (widget);
 };
 
+#ifndef HACK_TO_DEFINE_ACCESSIBLE_TYPE
+
 struct _GtkAccessibleClass
 {
   void (*connect_widget_destroyed)              (GtkAccessible     *accessible);
@@ -60,6 +62,8 @@ struct _GtkAccessibleClass
   void (*_gtk_reserved3) (void);
   void (*_gtk_reserved4) (void);
 };
+
+#endif
 
 GType gtk_accessible_get_type (void) G_GNUC_CONST;
 
