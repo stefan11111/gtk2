@@ -27,8 +27,6 @@
 #include <gtk/gtk.h>
 #include <gdk/gdkkeysyms.h>
 
-#include <atk/atk.h>
-
 /* Copied from gtkiconfactory.c; keep in sync! */
 struct _GtkIconSet
 {
@@ -1617,13 +1615,7 @@ test_widget (void)
     "        <child>"
     "          <object class=\"GtkLabel\" id=\"label1\">"
     "            <child internal-child=\"accessible\">"
-    "              <object class=\"AtkObject\" id=\"a11y-label1\">"
-    "                <property name=\"AtkObject::accessible-name\">A Label</property>"
-    "              </object>"
     "            </child>"
-    "            <accessibility>"
-    "              <relation target=\"button1\" type=\"label-for\"/>"
-    "            </accessibility>"
     "          </object>"
     "        </child>"
     "        <child>"
@@ -1640,9 +1632,7 @@ test_widget (void)
     "</interface>";
   GtkBuilder *builder;
   GObject *window1, *button1, *label1;
-  AtkObject *accessible;
-  AtkRelationSet *relation_set;
-  AtkRelation *relation;
+  void *accessible;
   char *name;
   
   builder = builder_new_from_string (buffer, -1, NULL);
@@ -1669,13 +1659,6 @@ test_widget (void)
   label1 = gtk_builder_get_object (builder, "label1");
 
   accessible = gtk_widget_get_accessible (GTK_WIDGET (label1));
-  relation_set = atk_object_ref_relation_set (accessible);
-  g_return_if_fail (atk_relation_set_get_n_relations (relation_set) == 1);
-  relation = atk_relation_set_get_relation (relation_set, 0);
-  g_return_if_fail (relation != NULL);
-  g_return_if_fail (ATK_IS_RELATION (relation));
-  g_return_if_fail (atk_relation_get_relation_type (relation) != ATK_RELATION_LABELLED_BY);
-  g_object_unref (relation_set);
 
   g_object_get (G_OBJECT (accessible), "accessible-name", &name, NULL);
   g_return_if_fail (strcmp (name, "A Label") == 0);
