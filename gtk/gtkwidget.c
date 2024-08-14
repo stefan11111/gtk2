@@ -10171,7 +10171,7 @@ gtk_requisition_get_type (void)
 void*
 gtk_widget_get_accessible (GtkWidget *widget)
 {
-  return widget;
+  return NULL;
 }
 
 /*
@@ -10216,14 +10216,11 @@ gtk_widget_buildable_get_name (GtkBuildable *buildable)
   return g_object_get_qdata (G_OBJECT (buildable), quark_builder_set_name);
 }
 
-static GObject *
+static inline GObject *
 gtk_widget_buildable_get_internal_child (GtkBuildable *buildable,
 					 GtkBuilder   *builder,
 					 const gchar  *childname)
 {
-  if (strcmp (childname, "accessible") == 0)
-    return G_OBJECT (gtk_widget_get_accessible (GTK_WIDGET (buildable)));
-
   return NULL;
 }
 
