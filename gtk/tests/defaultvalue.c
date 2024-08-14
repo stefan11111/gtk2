@@ -105,7 +105,7 @@ test_type (gconstpointer data)
       attributes.event_mask = 0;
       attributes.width = 100;
       attributes.height = 100;
-      instance = g_object_ref (gdk_window_new (NULL, &attributes, 0));
+      instance = g_object_ref ((GObject*)gdk_window_new (NULL, &attributes, 0));
     }
   else
     instance = g_object_new (type, NULL);
