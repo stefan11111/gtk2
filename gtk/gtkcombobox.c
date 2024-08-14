@@ -6063,20 +6063,6 @@ gtk_combo_box_set_title (GtkComboBox *combo_box,
     }
 }
 
-/**
- * gtk_combo_box_get_popup_accessible:
- * @combo_box: a #GtkComboBox
- *
- * Gets the accessible object corresponding to the combo box's popup.
- *
- * This function is mostly intended for use by accessibility technologies;
- * applications should have little use for it.
- *
- * Returns: (transfer none): the accessible object corresponding
- *     to the combo box's popup.
- *
- * Since: 2.6
- */
 void*
 gtk_combo_box_get_popup_accessible (GtkComboBox *combo_box)
 {

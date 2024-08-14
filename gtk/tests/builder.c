@@ -1614,16 +1614,10 @@ test_widget (void)
     "      <object class=\"GtkVBox\" id=\"vbox1\">"
     "        <child>"
     "          <object class=\"GtkLabel\" id=\"label1\">"
-    "            <child internal-child=\"accessible\">"
-    "            </child>"
     "          </object>"
     "        </child>"
     "        <child>"
     "          <object class=\"GtkButton\" id=\"button1\">"
-    "            <accessibility>"
-    "              <action action_name=\"click\" description=\"Sliff\"/>"
-    "              <action action_name=\"clack\" translatable=\"yes\">Sniff</action>"
-    "            </accessibility>"
     "          </object>"
     "        </child>"
     "      </object>"
@@ -1632,8 +1626,6 @@ test_widget (void)
     "</interface>";
   GtkBuilder *builder;
   GObject *window1, *button1, *label1;
-  void *accessible;
-  char *name;
   
   builder = builder_new_from_string (buffer, -1, NULL);
   button1 = gtk_builder_get_object (builder, "button1");
@@ -1657,12 +1649,6 @@ test_widget (void)
 
   window1 = gtk_builder_get_object (builder, "window1");
   label1 = gtk_builder_get_object (builder, "label1");
-
-  accessible = gtk_widget_get_accessible (GTK_WIDGET (label1));
-
-  g_object_get (G_OBJECT (accessible), "accessible-name", &name, NULL);
-  g_return_if_fail (strcmp (name, "A Label") == 0);
-  g_free (name);
   
   gtk_widget_destroy (GTK_WIDGET (window1));
   g_object_unref (builder);
