@@ -39,7 +39,7 @@ struct _GtkAccessibleClass
 {
   void (*connect_widget_destroyed)              (GtkAccessible     *accessible);
   char padding[sizeof(GtkObjectClass) - sizeof(void (*)())]
-}
+};
 
 G_DEFINE_TYPE (GtkAccessible, gtk_accessible, GTK_TYPE_OBJECT)
 
