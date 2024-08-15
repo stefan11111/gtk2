@@ -32,11 +32,6 @@
 #include <gtk/gtk.h>
 #include <gtk/gtkfilesystem.h>
 
-#ifdef G_OS_WIN32
-#include <direct.h>
-#define rmdir(d) _rmdir(d)
-#endif
-
 #define CALLBACK_TIMEOUT_MS 3000	/* Period after which the callback must have been called */
 #define CANCEL_TIMEOUT_MS 100		/* We'll sleep for this much time before cancelling */
 
@@ -68,14 +63,10 @@ get_file_system (void)
     {
 #if defined (G_OS_UNIX)
       file_system = gtk_file_system_unix_new ();
-#elif defined (G_OS_WIN32)
-      file_system = gtk_file_system_win32_new ();
 #else
 #error "No default filesystem implementation on the platform"
 #endif
     }
-
-#endif
 
   return file_system;
 }

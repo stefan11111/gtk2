@@ -4524,7 +4524,7 @@ setup_backing_rect_method (BackingRectMethod *method, GdkWindow *window, GdkWind
  */
 
 /* Actually computing this flag is left as an exercise for the reader */
-#if defined (G_OS_UNIX)
+#ifdef G_OS_UNIX
 #  define GDK_CAIRO_REPEAT_IS_FAST 0
 #else
 #  define GDK_CAIRO_REPEAT_IS_FAST 1
