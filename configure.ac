@@ -103,26 +103,6 @@ AC_SUBST(LT_CURRENT_MINUS_AGE)
 AC_CANONICAL_HOST
 
 MATH_LIB=-lm
-AC_MSG_CHECKING([for native Win32])
-LIB_EXE_MACHINE_FLAG=X86
-EXE_MANIFEST_ARCHITECTURE=X86
-case "$host" in
-  *-*-mingw*)
-    os_win32=yes
-    gio_can_sniff=no
-    MATH_LIB=
-    case "$host" in
-    x86_64-*-*)
-      LIB_EXE_MACHINE_FLAG=X64
-      EXE_MANIFEST_ARCHITECTURE=AMD64
-      ;;
-    esac
-    ;;
-  *)
-    os_win32=no
-    ;;
-esac
-AC_MSG_RESULT([$os_win32])
 
 AC_SUBST(LIB_EXE_MACHINE_FLAG)
 AC_SUBST(EXE_MANIFEST_ARCHITECTURE)
@@ -155,18 +135,6 @@ AM_CONDITIONAL(HAVE_OBJC, test "$OBJC" = "yes")
 CXXFLAGS="$gtk_save_cxxflags"
 AC_LANG_RESTORE
 
-if test "$os_win32" = "yes"; then
-  if test x$enable_static = xyes -o x$enable_static = x; then
-    AC_MSG_WARN([Disabling static library build, must build as DLL on Windows.])
-    enable_static=no
-  fi
-  if test x$enable_shared = xno; then
-    AC_MSG_WARN([Enabling shared library build, must build as DLL on Windows.])
-  fi
-  enable_shared=yes
-fi
-
-AC_LIBTOOL_WIN32_DLL
 AM_PROG_LIBTOOL
 dnl when using libtool 2.x create libtool early, because it's used in configure
 m4_ifdef([LT_OUTPUT], [LT_OUTPUT])
@@ -181,20 +149,6 @@ AC_CHECK_TOOL(NM, nm, nm)
 dnl Initialize maintainer mode
 AM_MAINTAINER_MODE([enable])
 
-AC_MSG_CHECKING([for some Win32 platform])
-case "$host" in
-  *-*-mingw*|*-*-cygwin*)
-    platform_win32=yes
-    ;;
-  *)
-    platform_win32=no
-    ;;
-esac
-AC_MSG_RESULT([$platform_win32])
-AM_CONDITIONAL(PLATFORM_WIN32, test "$platform_win32" = "yes")
-
-AM_CONDITIONAL(OS_WIN32, test "$os_win32" = "yes")
-AM_CONDITIONAL(OS_UNIX, test "$os_win32" != "yes")
 AM_CONDITIONAL(OS_LINUX, test "$os_linux" = "yes")
 
 AC_ARG_ENABLE(tests,
@@ -204,13 +158,6 @@ AC_ARG_ENABLE(tests,
 
 AM_CONDITIONAL(BUILD_TESTS, [test "x$enable_tests" = "xyes"])
 
-if test "$os_win32" = "yes"; then
-  AC_CHECK_TOOL(WINDRES, windres, no)
-  if test "$WINDRES" = no; then
-    AC_MSG_ERROR([*** Could not find an implementation of windres in your PATH.])
-  fi
-  AC_CHECK_PROG(ms_librarian, lib.exe, yes, no)
-fi
 AM_CONDITIONAL(MS_LIB_AVAILABLE, test x$ms_librarian = xyes)
 
 m4_define([debug_default],
@@ -245,11 +192,7 @@ AC_ARG_ENABLE(visibility,
 AC_ARG_WITH(xinput,
             [AC_HELP_STRING([--with-xinput=@<:@no/yes@:>@], [support XInput])])
 
-if test "$platform_win32" = yes; then
-  gdktarget=win32
-else
-  gdktarget=x11
-fi
+gdktarget=x11
 
 AC_ARG_WITH(gdktarget, [  --with-gdktarget=[[x11/directfb]] select non-default GDK target],
 	gdktarget=$with_gdktarget)
@@ -319,41 +262,6 @@ changequote([,])dnl
 
 CPPFLAGS="$CPPFLAGS -DG_DISABLE_SINGLE_INCLUDES -DGDK_PIXBUF_DISABLE_SINGLE_INCLUDES -DGTK_DISABLE_SINGLE_INCLUDES"
 
-# Ensure MSVC-compatible struct packing convention is used when
-# compiling for Win32 with gcc.
-# What flag to depends on gcc version: gcc3 uses "-mms-bitfields", while
-# gcc2 uses "-fnative-struct".
-if test x"$os_win32" = xyes; then
-  if test x"$GCC" = xyes; then
-    msnative_struct=''
-    AC_MSG_CHECKING([how to get MSVC-compatible struct packing])
-    if test -z "$ac_cv_prog_CC"; then
-      our_gcc="$CC"
-    else
-      our_gcc="$ac_cv_prog_CC"
-    fi
-    case `$our_gcc --version | sed -e 's,\..*,.,' -e q` in
-      2.)
-	if $our_gcc -v --help 2>/dev/null | grep fnative-struct >/dev/null; then
-	  msnative_struct='-fnative-struct'
-	fi
-	;;
-      *)
-	if $our_gcc -v --help 2>/dev/null | grep ms-bitfields >/dev/null; then
-	  msnative_struct='-mms-bitfields'
-	fi
-	;;
-    esac
-    if test x"$msnative_struct" = x ; then
-      AC_MSG_RESULT([no way])
-      AC_MSG_WARN([produced libraries might be incompatible with MSVC-compiled code])
-    else
-      CFLAGS="$CFLAGS $msnative_struct"
-      AC_MSG_RESULT([${msnative_struct}])
-    fi
-  fi
-fi
-
 # Honor aclocal flags
 ACLOCAL="$ACLOCAL $ACLOCAL_FLAGS"
 
@@ -371,7 +279,7 @@ PKG_CHECK_MODULES(BASE_DEPENDENCIES,
 
 ## In addition to checking that cairo is present, we also need to
 ## check that the correct cairo backend is there. E.g. if the GDK
-## target is win32 we need the cairo-win32 backend and so on.
+## target is x11 we need the cairo-x11 backend and so on.
 cairo_backend=$gdktarget
 
 # GDK calls the xlib backend "x11," cairo calls it "xlib." Other
@@ -384,14 +292,9 @@ PKG_CHECK_MODULES(CAIRO_BACKEND,
 
 PKG_CHECK_MODULES(GMODULE, [gmodule-2.0])
 
-if test "$os_win32" != yes; then
-    # libtool option to control which symbols are exported
-    # right now, symbols starting with _ are not exported
-    LIBTOOL_EXPORT_OPTIONS='-export-symbols-regex "^[[^_]].*"'
-else
-    # We currently use .def files on Windows (for gdk and gtk)
-    LIBTOOL_EXPORT_OPTIONS=
-fi
+# libtool option to control which symbols are exported
+# right now, symbols starting with _ are not exported
+LIBTOOL_EXPORT_OPTIONS='-export-symbols-regex "^[[^_]].*"'
 AC_SUBST(LIBTOOL_EXPORT_OPTIONS)
 
 dnl ******************************************************
@@ -1073,13 +976,6 @@ else
   AM_CONDITIONAL(HAVE_X11R6, false)
 fi
 
-if test "x$gdktarget" = "xwin32"; then
-  GDK_EXTRA_LIBS="$GDK_EXTRA_LIBS -lgdi32 -limm32 -lshell32 -lole32 -Wl,-luuid"
-  AM_CONDITIONAL(USE_WIN32, true)
-else
-  AM_CONDITIONAL(USE_WIN32, false)
-fi
-
 if test "x$gdktarget" = "xdirectfb"; then
   DIRECTFB_REQUIRED_VERSION=1.0.0
   AC_MSG_CHECKING(for DirectFB)
@@ -1093,11 +989,7 @@ fi
 
 # Check for Pango flags
 
-if test "x$gdktarget" = "xwin32"; then
-	PANGO_PACKAGES="pangowin32 pangocairo"
-else
-	PANGO_PACKAGES="pango pangocairo"
-fi
+PANGO_PACKAGES="pango pangocairo"
 
 AC_MSG_CHECKING(Pango flags)
 if $PKG_CONFIG --exists $PANGO_PACKAGES ; then
@@ -1166,10 +1058,6 @@ GTK_EXTRA_LIBS=
 GTK_EXTRA_CFLAGS= 
 GTK_DEP_LIBS="$GDK_EXTRA_LIBS $GTK_DEP_LIBS_FOR_X `$PKG_CONFIG --libs $PANGO_PACKAGES $GTK_PACKAGES_FOR_X $GTK_PACKAGES` $GTK_EXTRA_LIBS $MATH_LIB"
 GTK_DEP_CFLAGS="`$PKG_CONFIG --cflags  gthread-2.0 $GDK_PACKAGES $GTK_PACKAGES` $GDK_EXTRA_CFLAGS $GTK_EXTRA_CFLAGS"
-
-if test x"$os_win32" = xyes; then
-  GTK_EXTRA_CFLAGS="$msnative_struct"
-fi
 
 GLIB_PREFIX="`$PKG_CONFIG --variable=prefix glib-2.0`"
 PANGO_PREFIX="`$PKG_CONFIG --variable=prefix pango`"
@@ -1299,12 +1187,11 @@ AC_CHECK_HEADER(cairo-pdf.h,,AC_MSG_ERROR([
 *** Can't find cairo-pdf.h. You must build Cairo with the pdf
 *** backend enabled.]))
 
-if test "$os_win32" != "yes"; then
-  AC_CHECK_HEADER(cairo-ps.h,,AC_MSG_ERROR([
+AC_CHECK_HEADER(cairo-ps.h,,AC_MSG_ERROR([
 *** Can't find cairo-ps.h. You must build Cairo with the 
 *** postscript backend enabled.]))
 
-  AC_CHECK_HEADER(cairo-svg.h,,AC_MSG_ERROR([
+AC_CHECK_HEADER(cairo-svg.h,,AC_MSG_ERROR([
 *** Can't find cairo-svg.h. You must build Cairo with the
 *** svg backend enabled.]))
 fi   
@@ -1317,10 +1204,6 @@ AC_ARG_ENABLE(test-print-backend,
                               [build test print backend])],,
               [enable_test_print_backend=no])
 AM_CONDITIONAL(TEST_PRINT_BACKEND, test "x$enable_test_print_backend" != "xno")
-
-if test "$os_win32" = "yes"; then
-  AC_CHECK_TYPES([IPrintDialogCallback],[],[],[[#include <windows.h>]])
-fi
 
 ################################################################
 # Strip -export-dynamic from the link lines of various libraries

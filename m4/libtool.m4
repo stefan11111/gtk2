@@ -975,166 +975,6 @@ _lt_linker_boilerplate=`cat conftest.err`
 $RM -r conftest*
 ])# _LT_LINKER_BOILERPLATE
 
-# _LT_REQUIRED_DARWIN_CHECKS
-# -------------------------
-m4_defun_once([_LT_REQUIRED_DARWIN_CHECKS],[
-  case $host_os in
-    rhapsody* | darwin*)
-    AC_CHECK_TOOL([DSYMUTIL], [dsymutil], [:])
-    AC_CHECK_TOOL([NMEDIT], [nmedit], [:])
-    AC_CHECK_TOOL([LIPO], [lipo], [:])
-    AC_CHECK_TOOL([OTOOL], [otool], [:])
-    AC_CHECK_TOOL([OTOOL64], [otool64], [:])
-    _LT_DECL([], [DSYMUTIL], [1],
-      [Tool to manipulate archived DWARF debug symbol files on Mac OS X])
-    _LT_DECL([], [NMEDIT], [1],
-      [Tool to change global to local symbols on Mac OS X])
-    _LT_DECL([], [LIPO], [1],
-      [Tool to manipulate fat objects and archives on Mac OS X])
-    _LT_DECL([], [OTOOL], [1],
-      [ldd/readelf like tool for Mach-O binaries on Mac OS X])
-    _LT_DECL([], [OTOOL64], [1],
-      [ldd/readelf like tool for 64 bit Mach-O binaries on Mac OS X 10.4])
-
-    AC_CACHE_CHECK([for -single_module linker flag],[lt_cv_apple_cc_single_mod],
-      [lt_cv_apple_cc_single_mod=no
-      if test -z "$LT_MULTI_MODULE"; then
-	# By default we will add the -single_module flag. You can override
-	# by either setting the environment variable LT_MULTI_MODULE
-	# non-empty at configure time, or by adding -multi_module to the
-	# link flags.
-	rm -rf libconftest.dylib*
-	echo "int foo(void){return 1;}" > conftest.c
-	echo "$LTCC $LTCFLAGS $LDFLAGS -o libconftest.dylib \
--dynamiclib -Wl,-single_module conftest.c" >&AS_MESSAGE_LOG_FD
-	$LTCC $LTCFLAGS $LDFLAGS -o libconftest.dylib \
-	  -dynamiclib -Wl,-single_module conftest.c 2>conftest.err
-        _lt_result=$?
-	# If there is a non-empty error log, and "single_module"
-	# appears in it, assume the flag caused a linker warning
-        if test -s conftest.err && $GREP single_module conftest.err; then
-	  cat conftest.err >&AS_MESSAGE_LOG_FD
-	# Otherwise, if the output was created with a 0 exit code from
-	# the compiler, it worked.
-	elif test -f libconftest.dylib && test 0 = "$_lt_result"; then
-	  lt_cv_apple_cc_single_mod=yes
-	else
-	  cat conftest.err >&AS_MESSAGE_LOG_FD
-	fi
-	rm -rf libconftest.dylib*
-	rm -f conftest.*
-      fi])
-
-    AC_CACHE_CHECK([for -exported_symbols_list linker flag],
-      [lt_cv_ld_exported_symbols_list],
-      [lt_cv_ld_exported_symbols_list=no
-      save_LDFLAGS=$LDFLAGS
-      echo "_main" > conftest.sym
-      LDFLAGS="$LDFLAGS -Wl,-exported_symbols_list,conftest.sym"
-      AC_LINK_IFELSE([AC_LANG_PROGRAM([],[])],
-	[lt_cv_ld_exported_symbols_list=yes],
-	[lt_cv_ld_exported_symbols_list=no])
-	LDFLAGS=$save_LDFLAGS
-    ])
-
-    AC_CACHE_CHECK([for -force_load linker flag],[lt_cv_ld_force_load],
-      [lt_cv_ld_force_load=no
-      cat > conftest.c << _LT_EOF
-int forced_loaded() { return 2;}
-_LT_EOF
-      echo "$LTCC $LTCFLAGS -c -o conftest.o conftest.c" >&AS_MESSAGE_LOG_FD
-      $LTCC $LTCFLAGS -c -o conftest.o conftest.c 2>&AS_MESSAGE_LOG_FD
-      echo "$AR $AR_FLAGS libconftest.a conftest.o" >&AS_MESSAGE_LOG_FD
-      $AR $AR_FLAGS libconftest.a conftest.o 2>&AS_MESSAGE_LOG_FD
-      echo "$RANLIB libconftest.a" >&AS_MESSAGE_LOG_FD
-      $RANLIB libconftest.a 2>&AS_MESSAGE_LOG_FD
-      cat > conftest.c << _LT_EOF
-int main() { return 0;}
-_LT_EOF
-      echo "$LTCC $LTCFLAGS $LDFLAGS -o conftest conftest.c -Wl,-force_load,./libconftest.a" >&AS_MESSAGE_LOG_FD
-      $LTCC $LTCFLAGS $LDFLAGS -o conftest conftest.c -Wl,-force_load,./libconftest.a 2>conftest.err
-      _lt_result=$?
-      if test -s conftest.err && $GREP force_load conftest.err; then
-	cat conftest.err >&AS_MESSAGE_LOG_FD
-      elif test -f conftest && test 0 = "$_lt_result" && $GREP forced_load conftest >/dev/null 2>&1; then
-	lt_cv_ld_force_load=yes
-      else
-	cat conftest.err >&AS_MESSAGE_LOG_FD
-      fi
-        rm -f conftest.err libconftest.a conftest conftest.c
-        rm -rf conftest.dSYM
-    ])
-    case $host_os in
-    rhapsody* | darwin1.[[012]])
-      _lt_dar_allow_undefined='$wl-undefined ${wl}suppress' ;;
-    darwin1.*)
-      _lt_dar_allow_undefined='$wl-flat_namespace $wl-undefined ${wl}suppress' ;;
-    darwin*)
-      case $MACOSX_DEPLOYMENT_TARGET,$host in
-        10.[[012]],*|,*powerpc*-darwin[[5-8]]*)
-          _lt_dar_allow_undefined='$wl-flat_namespace $wl-undefined ${wl}suppress' ;;
-        *)
-          _lt_dar_allow_undefined='$wl-undefined ${wl}dynamic_lookup' ;;
-      esac
-    ;;
-  esac
-    if test yes = "$lt_cv_apple_cc_single_mod"; then
-      _lt_dar_single_mod='$single_module'
-    fi
-    if test yes = "$lt_cv_ld_exported_symbols_list"; then
-      _lt_dar_export_syms=' $wl-exported_symbols_list,$output_objdir/$libname-symbols.expsym'
-    else
-      _lt_dar_export_syms='~$NMEDIT -s $output_objdir/$libname-symbols.expsym $lib'
-    fi
-    if test : != "$DSYMUTIL" && test no = "$lt_cv_ld_force_load"; then
-      _lt_dsymutil='~$DSYMUTIL $lib || :'
-    else
-      _lt_dsymutil=
-    fi
-    ;;
-  esac
-])
-
-
-# _LT_DARWIN_LINKER_FEATURES([TAG])
-# ---------------------------------
-# Checks for linker and compiler features on darwin
-m4_defun([_LT_DARWIN_LINKER_FEATURES],
-[
-  m4_require([_LT_REQUIRED_DARWIN_CHECKS])
-  _LT_TAGVAR(archive_cmds_need_lc, $1)=no
-  _LT_TAGVAR(hardcode_direct, $1)=no
-  _LT_TAGVAR(hardcode_automatic, $1)=yes
-  _LT_TAGVAR(hardcode_shlibpath_var, $1)=unsupported
-  if test yes = "$lt_cv_ld_force_load"; then
-    _LT_TAGVAR(whole_archive_flag_spec, $1)='`for conv in $convenience\"\"; do test  -n \"$conv\" && new_convenience=\"$new_convenience $wl-force_load,$conv\"; done; func_echo_all \"$new_convenience\"`'
-    m4_case([$1], [F77], [_LT_TAGVAR(compiler_needs_object, $1)=yes],
-                  [FC],  [_LT_TAGVAR(compiler_needs_object, $1)=yes])
-  else
-    _LT_TAGVAR(whole_archive_flag_spec, $1)=''
-  fi
-  _LT_TAGVAR(link_all_deplibs, $1)=yes
-  _LT_TAGVAR(allow_undefined_flag, $1)=$_lt_dar_allow_undefined
-  case $cc_basename in
-     ifort*|nagfor*) _lt_dar_can_shared=yes ;;
-     *) _lt_dar_can_shared=$GCC ;;
-  esac
-  if test yes = "$_lt_dar_can_shared"; then
-    output_verbose_link_cmd=func_echo_all
-    _LT_TAGVAR(archive_cmds, $1)="\$CC -dynamiclib \$allow_undefined_flag -o \$lib \$libobjs \$deplibs \$compiler_flags -install_name \$rpath/\$soname \$verstring $_lt_dar_single_mod$_lt_dsymutil"
-    _LT_TAGVAR(module_cmds, $1)="\$CC \$allow_undefined_flag -o \$lib -bundle \$libobjs \$deplibs \$compiler_flags$_lt_dsymutil"
-    _LT_TAGVAR(archive_expsym_cmds, $1)="$SED 's|^|_|' < \$export_symbols > \$output_objdir/\$libname-symbols.expsym~\$CC -dynamiclib \$allow_undefined_flag -o \$lib \$libobjs \$deplibs \$compiler_flags -install_name \$rpath/\$soname \$verstring $_lt_dar_single_mod$_lt_dar_export_syms$_lt_dsymutil"
-    _LT_TAGVAR(module_expsym_cmds, $1)="$SED -e 's|^|_|' < \$export_symbols > \$output_objdir/\$libname-symbols.expsym~\$CC \$allow_undefined_flag -o \$lib -bundle \$libobjs \$deplibs \$compiler_flags$_lt_dar_export_syms$_lt_dsymutil"
-    m4_if([$1], [CXX],
-[   if test yes != "$lt_cv_apple_cc_single_mod"; then
-      _LT_TAGVAR(archive_cmds, $1)="\$CC -r -keep_private_externs -nostdlib -o \$lib-master.o \$libobjs~\$CC -dynamiclib \$allow_undefined_flag -o \$lib \$lib-master.o \$deplibs \$compiler_flags -install_name \$rpath/\$soname \$verstring$_lt_dsymutil"
-      _LT_TAGVAR(archive_expsym_cmds, $1)="$SED 's|^|_|' < \$export_symbols > \$output_objdir/\$libname-symbols.expsym~\$CC -r -keep_private_externs -nostdlib -o \$lib-master.o \$libobjs~\$CC -dynamiclib \$allow_undefined_flag -o \$lib \$lib-master.o \$deplibs \$compiler_flags -install_name \$rpath/\$soname \$verstring$_lt_dar_export_syms$_lt_dsymutil"
-    fi
-],[])
-  else
-  _LT_TAGVAR(ld_shlibs, $1)=no
-  fi
-])
 
 # _LT_SYS_MODULE_PATH_AIX([TAGNAME])
 # ----------------------------------
@@ -1567,11 +1407,7 @@ if test -n "$RANLIB"; then
   old_archive_cmds="$old_archive_cmds~\$RANLIB \$tool_oldlib"
 fi
 
-case $host_os in
-  darwin*)
-    lock_old_archive_extraction=yes ;;
-  *)
-    lock_old_archive_extraction=no ;;
+  lock_old_archive_extraction=no ;;
 esac
 _LT_DECL([], [old_postinstall_cmds], [2])
 _LT_DECL([], [old_postuninstall_cmds], [2])
@@ -1725,7 +1561,7 @@ AC_CACHE_VAL([lt_cv_sys_max_cmd_len], [dnl
     lt_cv_sys_max_cmd_len=8192;
     ;;
 
-  bitrig* | darwin* | dragonfly* | freebsd* | midnightbsd* | netbsd* | openbsd*)
+  bitrig* | dragonfly* | freebsd* | midnightbsd* | netbsd* | openbsd*)
     # This has been around since 386BSD, at least.  Likely further.
     if test -x /sbin/sysctl; then
       lt_cv_sys_max_cmd_len=`/sbin/sysctl -n kern.argmax`
@@ -1944,26 +1780,6 @@ else
     lt_cv_dlopen=load_add_on
     lt_cv_dlopen_libs=
     lt_cv_dlopen_self=yes
-    ;;
-
-  mingw* | pw32* | cegcc*)
-    lt_cv_dlopen=LoadLibrary
-    lt_cv_dlopen_libs=
-    ;;
-
-  cygwin*)
-    lt_cv_dlopen=dlopen
-    lt_cv_dlopen_libs=
-    ;;
-
-  darwin*)
-    # if libdl is installed we need to link against it
-    AC_CHECK_LIB([dl], [dlopen],
-		[lt_cv_dlopen=dlopen lt_cv_dlopen_libs=-ldl],[
-    lt_cv_dlopen=dyld
-    lt_cv_dlopen_libs=
-    lt_cv_dlopen_self=yes
-    ])
     ;;
 
   tpf*)
@@ -2227,12 +2043,6 @@ else
     AC_MSG_RESULT([yes])
   else
     case $host_os in
-    darwin*)
-      # FIXME - insert some real tests, host_os isn't really good enough
-      striplib="$STRIP -x"
-      old_striplib="$STRIP -S"
-      AC_MSG_RESULT([yes])
-      ;;
     freebsd*)
       if $STRIP -V 2>&1 | $GREP "elftoolchain" >/dev/null; then
         old_striplib="$STRIP --strip-debug"
@@ -2309,14 +2119,6 @@ AC_MSG_CHECKING([dynamic linker characteristics])
 m4_if([$1],
 	[], [
 if test yes = "$GCC"; then
-  case $host_os in
-    darwin*) lt_awk_arg='/^libraries:/,/LR/' ;;
-    *) lt_awk_arg='/^libraries:/' ;;
-  esac
-  case $host_os in
-    mingw* | cegcc*) lt_sed_strip_eq='s|=\([[A-Za-z]]:\)|\1|g' ;;
-    *) lt_sed_strip_eq='s|=/|/|g' ;;
-  esac
   lt_search_path_spec=`$CC -print-search-dirs | awk $lt_awk_arg | $SED -e "s/^libraries://" -e $lt_sed_strip_eq`
   case $lt_search_path_spec in
   *\;*)
@@ -2539,131 +2341,6 @@ bsdi[[45]]*)
   # the default ld.so.conf also contains /usr/contrib/lib and
   # /usr/X11R6/lib (/usr/X11 is a link to /usr/X11R6), but let us allow
   # libtool to hard-code these into programs
-  ;;
-
-cygwin* | mingw* | pw32* | cegcc*)
-  version_type=windows
-  shrext_cmds=.dll
-  need_version=no
-  need_lib_prefix=no
-
-  case $GCC,$cc_basename in
-  yes,*)
-    # gcc
-    library_names_spec='$libname.dll.a'
-    # DLL is installed to $(libdir)/../bin by postinstall_cmds
-    postinstall_cmds='base_file=`basename \$file`~
-      dlpath=`$SHELL 2>&1 -c '\''. $dir/'\''\$base_file'\''i; echo \$dlname'\''`~
-      dldir=$destdir/`dirname \$dlpath`~
-      test -d \$dldir || mkdir -p \$dldir~
-      $install_prog $dir/$dlname \$dldir/$dlname~
-      chmod a+x \$dldir/$dlname~
-      if test -n '\''$stripme'\'' && test -n '\''$striplib'\''; then
-        eval '\''$striplib \$dldir/$dlname'\'' || exit \$?;
-      fi'
-    postuninstall_cmds='dldll=`$SHELL 2>&1 -c '\''. $file; echo \$dlname'\''`~
-      dlpath=$dir/\$dldll~
-       $RM \$dlpath'
-    shlibpath_overrides_runpath=yes
-
-    case $host_os in
-    cygwin*)
-      # Cygwin DLLs use 'cyg' prefix rather than 'lib'
-      soname_spec='`echo $libname | $SED -e 's/^lib/cyg/'``echo $release | $SED -e 's/[[.]]/-/g'`$versuffix$shared_ext'
-m4_if([$1], [],[
-      sys_lib_search_path_spec="$sys_lib_search_path_spec /usr/lib/w32api"])
-      ;;
-    mingw* | cegcc*)
-      # MinGW DLLs use traditional 'lib' prefix
-      soname_spec='$libname`echo $release | $SED -e 's/[[.]]/-/g'`$versuffix$shared_ext'
-      ;;
-    pw32*)
-      # pw32 DLLs use 'pw' prefix rather than 'lib'
-      library_names_spec='`echo $libname | $SED -e 's/^lib/pw/'``echo $release | $SED -e 's/[[.]]/-/g'`$versuffix$shared_ext'
-      ;;
-    esac
-    dynamic_linker='Win32 ld.exe'
-    ;;
-
-  *,cl* | *,icl*)
-    # Native MSVC or ICC
-    libname_spec='$name'
-    soname_spec='$libname`echo $release | $SED -e 's/[[.]]/-/g'`$versuffix$shared_ext'
-    library_names_spec='$libname.dll.lib'
-
-    case $build_os in
-    mingw*)
-      sys_lib_search_path_spec=
-      lt_save_ifs=$IFS
-      IFS=';'
-      for lt_path in $LIB
-      do
-        IFS=$lt_save_ifs
-        # Let DOS variable expansion print the short 8.3 style file name.
-        lt_path=`cd "$lt_path" 2>/dev/null && cmd //C "for %i in (".") do @echo %~si"`
-        sys_lib_search_path_spec="$sys_lib_search_path_spec $lt_path"
-      done
-      IFS=$lt_save_ifs
-      # Convert to MSYS style.
-      sys_lib_search_path_spec=`$ECHO "$sys_lib_search_path_spec" | $SED -e 's|\\\\|/|g' -e 's| \\([[a-zA-Z]]\\):| /\\1|g' -e 's|^ ||'`
-      ;;
-    cygwin*)
-      # Convert to unix form, then to dos form, then back to unix form
-      # but this time dos style (no spaces!) so that the unix form looks
-      # like /cygdrive/c/PROGRA~1:/cygdr...
-      sys_lib_search_path_spec=`cygpath --path --unix "$LIB"`
-      sys_lib_search_path_spec=`cygpath --path --dos "$sys_lib_search_path_spec" 2>/dev/null`
-      sys_lib_search_path_spec=`cygpath --path --unix "$sys_lib_search_path_spec" | $SED -e "s/$PATH_SEPARATOR/ /g"`
-      ;;
-    *)
-      sys_lib_search_path_spec=$LIB
-      if $ECHO "$sys_lib_search_path_spec" | [$GREP ';[c-zC-Z]:/' >/dev/null]; then
-        # It is most probably a Windows format PATH.
-        sys_lib_search_path_spec=`$ECHO "$sys_lib_search_path_spec" | $SED -e 's/;/ /g'`
-      else
-        sys_lib_search_path_spec=`$ECHO "$sys_lib_search_path_spec" | $SED -e "s/$PATH_SEPARATOR/ /g"`
-      fi
-      # FIXME: find the short name or the path components, as spaces are
-      # common. (e.g. "Program Files" -> "PROGRA~1")
-      ;;
-    esac
-
-    # DLL is installed to $(libdir)/../bin by postinstall_cmds
-    postinstall_cmds='base_file=`basename \$file`~
-      dlpath=`$SHELL 2>&1 -c '\''. $dir/'\''\$base_file'\''i; echo \$dlname'\''`~
-      dldir=$destdir/`dirname \$dlpath`~
-      test -d \$dldir || mkdir -p \$dldir~
-      $install_prog $dir/$dlname \$dldir/$dlname'
-    postuninstall_cmds='dldll=`$SHELL 2>&1 -c '\''. $file; echo \$dlname'\''`~
-      dlpath=$dir/\$dldll~
-       $RM \$dlpath'
-    shlibpath_overrides_runpath=yes
-    dynamic_linker='Win32 link.exe'
-    ;;
-
-  *)
-    # Assume MSVC and ICC wrapper
-    library_names_spec='$libname`echo $release | $SED -e 's/[[.]]/-/g'`$versuffix$shared_ext $libname.lib'
-    dynamic_linker='Win32 ld.exe'
-    ;;
-  esac
-  # FIXME: first we should search . and the directory the executable is in
-  shlibpath_var=PATH
-  ;;
-
-darwin* | rhapsody*)
-  dynamic_linker="$host_os dyld"
-  version_type=darwin
-  need_lib_prefix=no
-  need_version=no
-  library_names_spec='$libname$release$versuffix$shared_ext $libname$release$major$shared_ext $libname$shared_ext'
-  soname_spec='$libname$release$major$shared_ext'
-  shlibpath_overrides_runpath=yes
-  shlibpath_var=DYLD_LIBRARY_PATH
-  shrext_cmds='`test .$module = .yes && echo .bundle || echo .dylib`'
-m4_if([$1], [],[
-  sys_lib_search_path_spec="$sys_lib_search_path_spec /usr/local/lib"])
-  sys_lib_dlsearch_path_spec='/usr/local/lib /lib /usr/lib'
   ;;
 
 dgux*)
@@ -3397,20 +3074,6 @@ case $reload_flag in
 *) reload_flag=" $reload_flag" ;;
 esac
 reload_cmds='$LD$reload_flag -o $output$reload_objs'
-case $host_os in
-  cygwin* | mingw* | pw32* | cegcc*)
-    if test yes != "$GCC"; then
-      reload_cmds=false
-    fi
-    ;;
-  darwin*)
-    if test yes = "$GCC"; then
-      reload_cmds='$LTCC $LTCFLAGS -nostdlib $wl-r -o $output$reload_objs'
-    else
-      reload_cmds='$LD$reload_flag -o $output$reload_objs'
-    fi
-    ;;
-esac
 _LT_TAGDECL([], [reload_flag], [1], [How to create reloadable object files])dnl
 _LT_TAGDECL([], [reload_cmds], [2])dnl
 ])# _LT_CMD_RELOAD
@@ -3489,36 +3152,6 @@ bsdi[[45]]*)
   lt_cv_deplibs_check_method='file_magic ELF [[0-9]][[0-9]]*-bit [[ML]]SB (shared object|dynamic lib)'
   lt_cv_file_magic_cmd='$FILECMD -L'
   lt_cv_file_magic_test_file=/shlib/libc.so
-  ;;
-
-cygwin*)
-  # func_win32_libid is a shell function defined in ltmain.sh
-  lt_cv_deplibs_check_method='file_magic ^x86 archive import|^x86 DLL'
-  lt_cv_file_magic_cmd='func_win32_libid'
-  ;;
-
-mingw* | pw32*)
-  # Base MSYS/MinGW do not provide the 'file' command needed by
-  # func_win32_libid shell function, so use a weaker test based on 'objdump',
-  # unless we find 'file', for example because we are cross-compiling.
-  if ( file / ) >/dev/null 2>&1; then
-    lt_cv_deplibs_check_method='file_magic ^x86 archive import|^x86 DLL'
-    lt_cv_file_magic_cmd='func_win32_libid'
-  else
-    # Keep this pattern in sync with the one in func_win32_libid.
-    lt_cv_deplibs_check_method='file_magic file format (pei*-i386(.*architecture: i386)?|pe-arm-wince|pe-x86-64)'
-    lt_cv_file_magic_cmd='$OBJDUMP -f'
-  fi
-  ;;
-
-cegcc*)
-  # use the weaker test based on 'objdump'. See mingw*.
-  lt_cv_deplibs_check_method='file_magic file format pe-arm-.*little(.*architecture: arm)?'
-  lt_cv_file_magic_cmd='$OBJDUMP -f'
-  ;;
-
-darwin* | rhapsody*)
-  lt_cv_deplibs_check_method=pass_all
   ;;
 
 freebsd* | dragonfly* | midnightbsd*)
@@ -3874,7 +3507,7 @@ AC_DEFUN([LT_LIB_M],
 [AC_REQUIRE([AC_CANONICAL_HOST])dnl
 LIBM=
 case $host in
-*-*-beos* | *-*-cegcc* | *-*-cygwin* | *-*-haiku* | *-*-pw32* | *-*-darwin*)
+*-*-beos* | *-*-cygwin* | *-*-haiku* )
   # These system don't have libm, or don't need it
   ;;
 *-ncr-sysv4.3*)
@@ -4098,11 +3731,7 @@ _LT_EOF
 	if $GREP ' nm_test_func$' "$nlist" >/dev/null; then
 	  cat <<_LT_EOF > conftest.$ac_ext
 /* Keep this code in sync between libtool.m4, ltmain, lt_system.h, and tests.  */
-#if defined _WIN32 || defined __CYGWIN__ || defined _WIN32_WCE
-/* DATA imports from DLLs on WIN32 can't be const, because runtime
-   relocations are performed -- see ld's documentation on pseudo-relocs.  */
-# define LT@&t@_DLSYM_CONST
-#elif defined __osf__
+#if defined __osf__
 /* This system does not cope well with relocations in const data.  */
 # define LT@&t@_DLSYM_CONST
 #else
@@ -4267,11 +3896,6 @@ m4_if([$1], [CXX], [
 	_LT_TAGVAR(lt_prog_compiler_static, $1)='$wl-static'
 	;;
       esac
-      ;;
-    darwin* | rhapsody*)
-      # PIC is the default on this platform
-      # Common symbols not allowed in MH_DYLIB files
-      _LT_TAGVAR(lt_prog_compiler_pic, $1)='-fno-common'
       ;;
     *djgpp*)
       # DJGPP does not support shared libraries at all
@@ -4593,12 +4217,6 @@ m4_if([$1], [CXX], [
       esac
       ;;
 
-    darwin* | rhapsody*)
-      # PIC is the default on this platform
-      # Common symbols not allowed in MH_DYLIB files
-      _LT_TAGVAR(lt_prog_compiler_pic, $1)='-fno-common'
-      ;;
-
     haiku*)
       # PIC is the default for Haiku.
       # The "-static" flag exists, but is broken.
@@ -4667,32 +4285,6 @@ m4_if([$1], [CXX], [
       else
 	_LT_TAGVAR(lt_prog_compiler_static, $1)='-bnso -bI:/lib/syscalls.exp'
       fi
-      ;;
-
-    darwin* | rhapsody*)
-      # PIC is the default on this platform
-      # Common symbols not allowed in MH_DYLIB files
-      _LT_TAGVAR(lt_prog_compiler_pic, $1)='-fno-common'
-      case $cc_basename in
-      nagfor*)
-        # NAG Fortran compiler
-        _LT_TAGVAR(lt_prog_compiler_wl, $1)='-Wl,-Wl,,'
-        _LT_TAGVAR(lt_prog_compiler_pic, $1)='-PIC'
-        _LT_TAGVAR(lt_prog_compiler_static, $1)='-Bstatic'
-        ;;
-      esac
-      ;;
-
-    mingw* | cygwin* | pw32* | os2* | cegcc*)
-      # This hack is so that the source file can tell whether it is being
-      # built for inclusion in a dll (and should export symbols for example).
-      m4_if([$1], [GCJ], [],
-	[_LT_TAGVAR(lt_prog_compiler_pic, $1)='-DDLL_EXPORT'])
-      case $host_os in
-      os2*)
-	_LT_TAGVAR(lt_prog_compiler_static, $1)='$wl-static'
-	;;
-      esac
       ;;
 
     hpux9* | hpux10* | hpux11*)
@@ -5652,10 +5244,6 @@ _LT_EOF
 	_LT_TAGVAR(enable_shared_with_static_runtimes, $1)=yes
 	;;
       esac
-      ;;
-
-    darwin* | rhapsody*)
-      _LT_DARWIN_LINKER_FEATURES($1)
       ;;
 
     dgux*)
@@ -6734,9 +6322,6 @@ if test yes != "$_lt_caught_CXX_error"; then
 	  fi
 	  ;;
 	esac
-	;;
-      darwin* | rhapsody*)
-        _LT_DARWIN_LINKER_FEATURES($1)
 	;;
 
       os2*)

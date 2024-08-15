@@ -290,14 +290,12 @@ gtk_public_h_sources =          \
 	gtkwidget.h		\
 	gtkwindow.h
 
-if OS_UNIX
 gtk_unix_print_public_h_sources =    \
 	gtkpagesetupunixdialog.h	\
 	gtkprintunixdialog.h		\
 	gtkprinter.h			\
 	gtkprintjob.h			\
 	gtkunixprint.h
-endif
 
 # Installed header files without compatibility guarantees
 # that are not included in gtk/gtk.h
@@ -639,7 +637,7 @@ gtk_os_unix_c_sources = \
 	gtksearchenginebeagle.c		\
 	gtksearchenginetracker.c
 gtk_all_c_sources += $(gtk_os_unix_c_sources)
-if OS_UNIX
+
 gtk_private_h_sources += \
 	gtkiconcachevalidator.h		\
 	gtkprintbackend.h		\
@@ -650,7 +648,7 @@ gtk_private_h_sources += \
 	gtksearchenginebeagle.h		\
 	gtksearchenginetracker.h
 gtk_c_sources += $(gtk_os_unix_c_sources)
-endif
+
 
 gtk_use_x11_c_sources = \
 	gtkplug-x11.c   \

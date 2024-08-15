@@ -56,9 +56,7 @@ gdk-$(GDKTARGET)-2.0-uninstalled.pc: gdk-2.0-uninstalled.pc
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA= gdk-$(GDKTARGET)-2.0.pc gtk+-$(GDKTARGET)-2.0.pc
 
-if OS_UNIX
 pkgconfig_DATA += gtk+-unix-print-2.0.pc
-endif
 
 DISTCLEANFILES =				\
 	gtk+-unix-print-2.0.pc			\

@@ -70,8 +70,6 @@ m4_if([$1],[LT_INIT],[
   dnl specified:
   _LT_UNLESS_OPTIONS([LT_INIT], [dlopen], [enable_dlopen=no
   ])
-  _LT_UNLESS_OPTIONS([LT_INIT], [win32-dll], [enable_win32_dll=no
-  ])
   dnl
   dnl If no reference was made to various pairs of opposing options, then
   dnl we run the default mode handler for the pair.  For example, if neither
@@ -119,43 +117,6 @@ put the 'dlopen' option into LT_INIT's first parameter.])
 
 dnl aclocal-1.4 backwards compatibility:
 dnl AC_DEFUN([AC_LIBTOOL_DLOPEN], [])
-
-
-# win32-dll
-# ---------
-# Declare package support for building win32 dll's.
-LT_OPTION_DEFINE([LT_INIT], [win32-dll],
-[enable_win32_dll=yes
-
-case $host in
-*-*-cygwin* | *-*-mingw* | *-*-pw32* | *-*-cegcc*)
-  AC_CHECK_TOOL(AS, as, false)
-  AC_CHECK_TOOL(DLLTOOL, dlltool, false)
-  AC_CHECK_TOOL(OBJDUMP, objdump, false)
-  ;;
-esac
-
-test -z "$AS" && AS=as
-_LT_DECL([], [AS],      [1], [Assembler program])dnl
-
-test -z "$DLLTOOL" && DLLTOOL=dlltool
-_LT_DECL([], [DLLTOOL], [1], [DLL creation program])dnl
-
-test -z "$OBJDUMP" && OBJDUMP=objdump
-_LT_DECL([], [OBJDUMP], [1], [Object dumper program])dnl
-])# win32-dll
-
-AU_DEFUN([AC_LIBTOOL_WIN32_DLL],
-[AC_REQUIRE([AC_CANONICAL_HOST])dnl
-_LT_SET_OPTION([LT_INIT], [win32-dll])
-AC_DIAGNOSE([obsolete],
-[$0: Remove this warning and the call to _LT_SET_OPTION when you
-put the 'win32-dll' option into LT_INIT's first parameter.])
-])
-
-dnl aclocal-1.4 backwards compatibility:
-dnl AC_DEFUN([AC_LIBTOOL_WIN32_DLL], [])
-
 
 # _LT_ENABLE_SHARED([DEFAULT])
 # ----------------------------
