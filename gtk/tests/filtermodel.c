@@ -2317,7 +2317,6 @@ specific_filter_add_child (void)
   GtkTreeIter iter_first;
   GtkTreeIter child;
   GtkTreeStore *store;
-  GtkTreeModel *filter;
 
   store = gtk_tree_store_new (1, G_TYPE_STRING);
 
@@ -2333,7 +2332,7 @@ specific_filter_add_child (void)
   gtk_tree_store_append (store, &iter, NULL);
   gtk_tree_store_set (store, &iter, 0, "Hello", -1);
 
-  filter = gtk_tree_model_filter_new (GTK_TREE_MODEL (store), NULL);
+  gtk_tree_model_filter_new (GTK_TREE_MODEL (store), NULL);
 
   gtk_tree_store_set (store, &iter, 0, "Hello", -1);
   gtk_tree_store_append (store, &child, &iter_first);
@@ -2346,7 +2345,6 @@ specific_list_store_clear (void)
   GtkTreeIter iter;
   GtkListStore *list;
   GtkTreeModel *filter;
-  GtkWidget *view;
 
   list = gtk_list_store_new (1, G_TYPE_INT);
   gtk_list_store_insert_with_values (list, &iter, 0, 0, 1, -1);
@@ -2359,7 +2357,7 @@ specific_list_store_clear (void)
   gtk_list_store_insert_with_values (list, &iter, 7, 0, 8, -1);
 
   filter = gtk_tree_model_filter_new (GTK_TREE_MODEL (list), NULL);
-  view = gtk_tree_view_new_with_model (filter);
+  gtk_tree_view_new_with_model (filter);
 
   gtk_list_store_clear (list);
 }
@@ -2429,7 +2427,6 @@ specific_bug_301558 (void)
   GtkTreeModel *filter;
   GtkTreeModel *sort;
   GtkTreeIter root, iter, iter2;
-  GtkWidget *view;
   int i;
   gboolean add;
 
@@ -2447,7 +2444,7 @@ specific_bug_301558 (void)
   filter = gtk_tree_model_filter_new (sort, NULL);
   gtk_tree_model_filter_set_visible_column (GTK_TREE_MODEL_FILTER (filter), 1);
 
-  view = gtk_tree_view_new_with_model (filter);
+  gtk_tree_view_new_with_model (filter);
 
   while (gtk_events_pending ())
     gtk_main_iteration ();
@@ -2501,7 +2498,6 @@ specific_bug_311955 (void)
   GtkTreeModel *sort;
   GtkTreeModel *filter;
 
-  GtkWidget *window;
   GtkWidget *tree_view;
   int i;
   int n;
@@ -2524,7 +2520,7 @@ specific_bug_311955 (void)
                                           specific_bug_311955_filter_func,
                                           NULL, NULL);
 
-  window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+  gtk_window_new (GTK_WINDOW_TOPLEVEL);
   tree_view = gtk_tree_view_new_with_model (filter);
   g_object_unref (store);
 
@@ -2680,7 +2676,6 @@ specific_bug_464173 (void)
   GtkTreeStore *model;
   GtkTreeModelFilter *f_model;
   GtkTreeIter iter1, iter2;
-  GtkWidget *view;
   gboolean visible = TRUE;
 
   model = gtk_tree_store_new (1, G_TYPE_STRING);
@@ -2694,7 +2689,7 @@ specific_bug_464173 (void)
                                           specific_bug_464173_visible_func,
                                           &visible, NULL);
 
-  view = gtk_tree_view_new_with_model (GTK_TREE_MODEL (f_model));
+  gtk_tree_view_new_with_model (GTK_TREE_MODEL (f_model));
 
   visible = FALSE;
   gtk_tree_model_filter_refilter (f_model);
@@ -2723,15 +2718,13 @@ specific_bug_540201 (void)
   GtkTreeStore *store;
   GtkTreeModel *filter;
 
-  GtkWidget *tree_view;
-
   store = gtk_tree_store_new (1, G_TYPE_INT);
 
   gtk_tree_store_append (store, &root, NULL);
   gtk_tree_store_set (store, &root, 0, 33, -1);
 
   filter = gtk_tree_model_filter_new (GTK_TREE_MODEL (store), NULL);
-  tree_view = gtk_tree_view_new_with_model (filter);
+  gtk_tree_view_new_with_model (filter);
 
   gtk_tree_model_filter_set_visible_func (GTK_TREE_MODEL_FILTER (filter),
                                           specific_bug_540201_filter_func,
@@ -2772,7 +2765,6 @@ specific_bug_549287 (void)
   int i;
   GtkTreeStore *store;
   GtkTreeModel *filtered;
-  GtkWidget *view;
   GtkTreeIter iter;
   GtkTreeIter *swap, *parent, *child;
 
@@ -2782,7 +2774,7 @@ specific_bug_549287 (void)
                                           specific_bug_549287_visible_func,
                                           NULL, NULL);
 
-  view = gtk_tree_view_new_with_model (filtered);
+  gtk_tree_view_new_with_model (filtered);
 
   for (i = 0; i < 4; i++)
     {
