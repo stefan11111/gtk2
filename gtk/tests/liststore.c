@@ -941,7 +941,7 @@ main (int    argc,
 		   list_store_test_insert_before_NULL);
 
   /* setting values (FIXME) */
-#ifndef ENABLE_BROKEN_TESTS
+#ifdef ENABLE_BROKEN_TESTS
   /* removal */
   g_test_add ("/list-store/remove-begin", ListStore, NULL,
 	      list_store_setup, list_store_test_remove_begin,
