@@ -246,9 +246,9 @@ test_run (gchar        *title,
 #else
       memused = 0;
 #endif
-      g_print ("%d \t%f \t%f  \t%dk\n", 
+      g_print ("%d \t%f \t%f  \t%zuk\n",
 	       items, elapsed, elapsed/items, memused);
-    }  
+    }
 }
 
 int
