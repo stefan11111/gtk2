@@ -289,8 +289,7 @@ main (int   argc,
     g_test_add_func ("/ui-tests/send-shift-key", test_send_shift_key);
     g_test_add_func ("/ui-tests/slider-ranges", test_slider_ranges);
     g_test_add_func ("/ui-tests/xserver-sync", test_xserver_sync);
+    g_test_add_func ("/ui-tests/spin-button-arrows", test_spin_button_arrows);
   }
-  g_test_add_func ("/ui-tests/spin-button-arrows", test_spin_button_arrows);
-
   return g_test_run();
 }
