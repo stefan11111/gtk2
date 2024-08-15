@@ -586,14 +586,14 @@ gdk_rgb_create_info (GdkVisual *visual, GdkColormap *colormap)
 
   /* We used to use the 2x2x2 color cube for pseudo-color with depths
    * 5, 6, 7 as well but now only use it for depths (3 and) 4 in
-   * pseudo-color. The reason for this is that on Win32 we let the
+   * pseudo-color. The reason for this is that we let the
    * user restrict the color allocation for PSEUDO_COLOR visuals
    * (i.e., 256-color mode) and we probably want to do the full
    * gdk_rgb_do_colormaps() if we are doing that. (Though the color
    * sharing code won't really be right.)
    *
    * (The actual usefulness of this user-requested restriction remains
-   * to be seen, but the code is there in gdkvisual-win32.c. The
+   * to be seen. The
    * thought is that it might occasionally be useful to restrict the
    * palette size in a GTK application in order to reduce color
    * flashing.)
@@ -3218,7 +3218,7 @@ gdk_rgb_select_conv (GdkRgbInfo *image_info)
 #endif
 	    ))
     {
-      /* Mainly for Win32: use these conversion functions also for the
+      /* Use these conversion functions also for the
        * explicitly (on user request) restricted palette versions of
        * 256-color, i.e. depths 5, 6 and 7. On X11, such depths
        * probably never occur.

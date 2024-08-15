@@ -117,7 +117,7 @@
  * remove a custom clip region.
  */
 
-#define USE_BACKING_STORE	/* Appears to work on Win32, too, now. */
+#define USE_BACKING_STORE
 
 /* This adds a local value to the GdkVisibilityState enum */
 #define GDK_VISIBILITY_NOT_VIEWABLE 3
@@ -5524,7 +5524,7 @@ gdk_window_process_updates_internal (GdkWindow *window)
    * window in the update queue that has an empty update_area.
    * just ignore it.
    *
-   * We run this multiple times if needed because on win32 the
+   * We run this multiple times if needed because the
    * first run can cause new (synchronous) updates from
    * gdk_window_flush_outstanding_moves(). However, we
    * limit it to two iterations to avoid any potential loops.
@@ -8836,9 +8836,6 @@ gdk_window_merge_child_shapes (GdkWindow *window)
  * On the X11 platform, this requires version 1.1 of the
  * shape extension.
  *
- * On the Win32 platform, this functionality is not present and the
- * function does nothing.
- *
  * Since: 2.10
  */
 void
@@ -8884,10 +8881,7 @@ gdk_window_input_shape_combine_mask (GdkWindow *window,
  *
  * On the X11 platform, this requires version 1.1 of the
  * shape extension.
- *
- * On the Win32 platform, this functionality is not present and the
- * function does nothing.
- *
+ *\
  * Since: 2.10
  */
 void

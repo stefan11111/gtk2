@@ -65,8 +65,6 @@ gdk_set_locale (void)
  * of wide characters. The string is newly allocated. The array of
  * wide characters must be null-terminated. If the conversion is
  * failed, it returns NULL.
- *
- * On Win32, we always use UTF-8.
  */
 gchar *
 gdk_wcstombs (const GdkWChar *src)
@@ -162,10 +160,6 @@ gdk_wcstombs (const GdkWChar *src)
  * returns the number of wide characters written. The string 'src'
  * must be null-terminated. If the conversion is failed, it returns
  * -1.
- *
- * On Win32, the string is assumed to be in UTF-8.  Also note that
- * GdkWChar is 32 bits, while wchar_t, and the wide characters the
- * Windows API uses, are 16 bits!
  */
 
 /* First a helper function for not zero-terminated strings */

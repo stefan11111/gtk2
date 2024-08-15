@@ -38,13 +38,12 @@ G_BEGIN_DECLS
 /* Types of images.
  *   Normal: Normal X image type. These are slow as they involve passing
  *	     the entire image through the X connection each time a draw
- *	     request is required. On Win32, a bitmap.
+ *	     request is required.
  *   Shared: Shared memory X image type. These are fast as the X server
  *	     and the program actually use the same piece of memory. They
  *	     should be used with care though as there is the possibility
  *	     for both the X server and the program to be reading/writing
  *	     the image simultaneously and producing undesired results.
- *	     On Win32, also a bitmap.
  */
 typedef enum
 {
