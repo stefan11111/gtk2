@@ -25,9 +25,6 @@
 
 #include <glib/gstdio.h>
 #include <gdk/gdk.h>
-#ifdef CAIRO_HAS_QUARTZ_SURFACE
-#include <cairo-quartz.h>
-#endif
 
 static void
 test (cairo_t* cr)
@@ -80,11 +77,7 @@ test_pixmap_orientation (void)
 	g_object_unref (pixmap);
 
 	/* create "cairosurface.png" via pure cairo */
-#ifndef CAIRO_HAS_QUARTZ_SURFACE
 	surface = cairo_image_surface_create (CAIRO_FORMAT_RGB24, 100, 80);
-#else
-	surface = cairo_quartz_surface_create (CAIRO_FORMAT_RGB24, 100, 80);
-#endif
 	cr = cairo_create (surface);
 	test (cr);
 	cairo_destroy (cr);
