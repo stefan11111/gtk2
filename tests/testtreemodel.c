@@ -214,7 +214,7 @@ test_run (gchar        *title,
   gint i, k, d, items;
   GTimer *timer;
   gdouble elapsed;
-  int uordblks_before = 0, memused;
+  size_t uordblks_before = 0, memused;
 
   g_print ("%s (average over %d runs, time in milliseconds)\n"
 	   "items \ttime      \ttime/item \tused memory\n", title, repeats);
@@ -242,7 +242,7 @@ test_run (gchar        *title,
       
       elapsed = elapsed * 1000 / repeats;
 #ifdef HAVE_MALLINFO
-      memused = (mallinfo().uordblks - uordblks_before) / 1024;
+      memused = (mallinfo2().uordblks - uordblks_before) / 1024;
 #else
       memused = 0;
 #endif
