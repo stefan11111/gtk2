@@ -1,6 +1,10 @@
 include $(top_srcdir)/Makefile.decl
 
-SUBDIRS = file lpr
+SUBDIRS = 
+
+if HAVE_PRINT
+SUBDIRS += file lpr
+endif
 
 if HAVE_CUPS
 SUBDIRS += cups
