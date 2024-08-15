@@ -283,9 +283,9 @@ main (int   argc,
 
   g_test_add_func ("/tests/statusbar-remove-all", test_statusbar_remove_all);
   g_test_add_func ("/ui-tests/text-access", test_text_access);
-#if defined(__x86_64__) || defined(_M_X64)
-  g_test_add_func ("/ui-tests/button-clicks", test_button_clicks);
-#endif
+  if (sizeof(void*) == 8 && CHAR_BIT == 8) {
+    g_test_add_func ("/ui-tests/button-clicks", test_button_clicks);
+  }
   g_test_add_func ("/ui-tests/keys-events", test_button_keys);
   g_test_add_func ("/ui-tests/send-shift-key", test_send_shift_key);
   g_test_add_func ("/ui-tests/slider-ranges", test_slider_ranges);
