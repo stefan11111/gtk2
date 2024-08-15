@@ -313,6 +313,7 @@ main (int   argc,
         G_TYPE_IS_OBJECT (otypes[i]) &&
         !G_TYPE_IS_ABSTRACT (otypes[i]))
       {
+        if ((sizeof(void*) != 8 || CHAR_BIT != 8) && !strcmp(otypes[i], "GtkInvisible"))
         gchar *testpath = g_strdup_printf ("/properties/%s", g_type_name (otypes[i]));
         g_test_add_data_func (testpath, (void*) otypes[i], widget_property_tests);
         g_free (testpath);

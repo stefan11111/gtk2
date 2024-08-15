@@ -107,12 +107,6 @@ MATH_LIB=-lm
 AC_SUBST(LIB_EXE_MACHINE_FLAG)
 AC_SUBST(EXE_MANIFEST_ARCHITECTURE)
 
-case $host in
-  *-*-linux*)
-    os_linux=yes
-    ;;
-esac
-
 dnl Initialize libtool
 AC_PROG_CC
 AM_DISABLE_STATIC
@@ -148,8 +142,6 @@ AC_CHECK_TOOL(NM, nm, nm)
 
 dnl Initialize maintainer mode
 AM_MAINTAINER_MODE([enable])
-
-AM_CONDITIONAL(OS_LINUX, test "$os_linux" = "yes")
 
 AC_ARG_ENABLE(tests,
               [AC_HELP_STRING([--enable-tests]
