@@ -53,7 +53,7 @@ recent_manager_add (void)
   recent_data->mime_type = NULL;
   recent_data->app_name = "testrecentchooser";
   recent_data->app_exec = "testrecentchooser %u";
-  if (g_test_trap_fork (0, G_TEST_TRAP_SILENCE_STDERR))
+  if (g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT))
     {
       res = gtk_recent_manager_add_full (manager,
                                          uri,
