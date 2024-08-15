@@ -15,10 +15,10 @@ SUBDIRS += papi
 endif
 
 if BUILD_TESTS
-SUBDIRS += test
+SUBDIRS += tests
 endif
 
 
-DIST_SUBDIRS = cups file lpr papi test
+DIST_SUBDIRS = cups file lpr papi tests
 
 -include $(top_srcdir)/git.mk

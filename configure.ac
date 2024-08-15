@@ -1367,6 +1367,7 @@ printbackends/cups/Makefile
 printbackends/lpr/Makefile
 printbackends/file/Makefile
 printbackends/papi/Makefile
+printbackends/tests/Makefile
 ])
 
 AC_OUTPUT
