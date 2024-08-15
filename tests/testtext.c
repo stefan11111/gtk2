@@ -704,7 +704,7 @@ fill_file_buffer (GtkTextBuffer *buffer, const char *filename)
       gtk_text_buffer_insert (buffer, &iter, buf, leftover - buf);
 
       remaining = (buf + remaining + count) - leftover;
-      g_memmove (buf, leftover, remaining);
+      memmove (buf, leftover, remaining);
 
       if (remaining > 6 || count < to_read)
 	  break;
