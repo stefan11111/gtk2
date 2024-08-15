@@ -541,7 +541,6 @@ preview_cb (GtkPrintOperation        *op,
 	    GtkWindow                *parent,
 	    gpointer                  data)
 {
-  GtkPrintSettings *settings;
   GtkWidget *window, *close, *page, *hbox, *vbox, *da;
   gdouble width, height;
   cairo_t *cr;
@@ -551,7 +550,7 @@ preview_cb (GtkPrintOperation        *op,
   pop = g_new0 (PreviewOp, 1);
 
   pop->data = print_data;
-  settings = gtk_print_operation_get_print_settings (op);
+  gtk_print_operation_get_print_settings (op);
 
   width = 200;
   height = 300;

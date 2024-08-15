@@ -74,7 +74,6 @@ main (int argc, char **argv)
 {
   GtkWidget *window;
   GtkWidget *vbox;
-  GtkWidget *button;
 
   gtk_init (&argc, &argv);
 
@@ -96,20 +95,20 @@ main (int argc, char **argv)
 		       "GtkWidget::parent", window,
 		       "GtkWidget::visible", TRUE,
 		       NULL);
-  button = g_object_connect (g_object_new (gtk_button_get_type (),
-					   "GtkButton::label", "send known client message",
-					   "GtkWidget::parent", vbox,
-					   "GtkWidget::visible", TRUE,
-					   NULL),
-			     "signal::clicked", send_known, NULL,
-			     NULL);
-  button = g_object_connect (g_object_new (gtk_button_get_type (),
-					   "GtkButton::label", "send random client message",
-					   "GtkWidget::parent", vbox,
-					   "GtkWidget::visible", TRUE,
-					   NULL),
-			     "signal::clicked", send_random, NULL,
-			     NULL);
+  g_object_connect (g_object_new (gtk_button_get_type (),
+				  "GtkButton::label", "send known client message",
+				  "GtkWidget::parent", vbox,
+				  "GtkWidget::visible", TRUE,
+				  NULL),
+		    "signal::clicked", send_known, NULL,
+		    NULL);
+  g_object_connect (g_object_new (gtk_button_get_type (),
+				  "GtkButton::label", "send random client message",
+				  "GtkWidget::parent", vbox,
+				  "GtkWidget::visible", TRUE,
+				  NULL),
+		    "signal::clicked", send_random, NULL,
+		    NULL);
   gdk_display_add_client_message_filter (gdk_display_get_default (),
 					 my_type,
 					 filter_func,

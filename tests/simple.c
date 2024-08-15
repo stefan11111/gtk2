@@ -31,7 +31,6 @@ int
 main (int argc, char *argv[])
 {
   GtkWidget *window;
-  GtkWidget *button;
 
   /* FIXME: This is not allowable - what is this supposed to be? */
   /*  gdk_progclass = g_strdup ("XTerm"); */
@@ -47,13 +46,13 @@ main (int argc, char *argv[])
 					     NULL),
 			     "signal::destroy", gtk_main_quit, NULL,
 			     NULL);
-  button = g_object_connect (g_object_new (gtk_button_get_type (),
-					     "GtkButton::label", "hello world",
-					     "GtkWidget::parent", window,
-					     "GtkWidget::visible", TRUE,
-					     NULL),
-			     "signal::clicked", hello, NULL,
-			     NULL);
+  g_object_connect (g_object_new (gtk_button_get_type (),
+				  "GtkButton::label", "hello world",
+				  "GtkWidget::parent", window,
+				  "GtkWidget::visible", TRUE,
+				  NULL),
+		    "signal::clicked", hello, NULL,
+		    NULL);
   gtk_widget_show (window);
 
   gtk_main ();
