@@ -716,12 +716,11 @@ test_editable_position (GtkWidget   *tree_view,
 			GtkTreePath *cursor_path)
 {
 	GdkRectangle rect;
-	GtkAdjustment *vadj;
 
 	gtk_tree_view_get_background_area (GTK_TREE_VIEW (tree_view),
 					   cursor_path, NULL, &rect);
 
-	vadj = gtk_tree_view_get_vadjustment (GTK_TREE_VIEW (tree_view));
+	gtk_tree_view_get_vadjustment (GTK_TREE_VIEW (tree_view));
 
 	/* There are all in bin_window coordinates */
 	g_assert (editable->allocation.y == rect.y + ((rect.height - editable->allocation.height) / 2));
