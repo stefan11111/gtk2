@@ -1625,7 +1625,7 @@ test_widget (void)
     "  </object>"
     "</interface>";
   GtkBuilder *builder;
-  GObject *window1, *button1, *label1;
+  GObject *window1, *button1;
   
   builder = builder_new_from_string (buffer, -1, NULL);
   button1 = gtk_builder_get_object (builder, "button1");
@@ -1648,7 +1648,7 @@ test_widget (void)
   builder = builder_new_from_string (buffer3, -1, NULL);
 
   window1 = gtk_builder_get_object (builder, "window1");
-  label1 = gtk_builder_get_object (builder, "label1");
+  gtk_builder_get_object (builder, "label1");
   
   gtk_widget_destroy (GTK_WIDGET (window1));
   g_object_unref (builder);
@@ -2476,11 +2476,9 @@ test_file (const gchar *filename)
 
       if (GTK_IS_DIALOG (obj))
 	{
-	  int response;
-
 	  g_print ("Running dialog %s.\n",
 		   gtk_widget_get_name (GTK_WIDGET (obj)));
-	  response = gtk_dialog_run (GTK_DIALOG (obj));
+	  gtk_dialog_run (GTK_DIALOG (obj));
 	}
       else if (GTK_IS_WINDOW (obj))
 	{
