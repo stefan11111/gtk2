@@ -29,14 +29,6 @@
 #endif
 #include <gtk/gtk.h>
 
-#ifdef G_OS_WIN32
-# include <io.h>
-# define localtime_r(t,b) *(b) = localtime (t)
-# ifndef S_ISREG
-#  define S_ISREG(m) ((m) & _S_IFREG)
-# endif
-#endif
-
 #include "prop-editor.h"
 
 static void

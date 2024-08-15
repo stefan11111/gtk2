@@ -61,13 +61,13 @@ get_file_system (void)
 
   if (!file_system)
     {
-#if defined (G_OS_UNIX)
+#ifdef G_OS_UNIX
       file_system = gtk_file_system_unix_new ();
 #else
 #error "No default filesystem implementation on the platform"
 #endif
     }
-
+#endif
   return file_system;
 }
 

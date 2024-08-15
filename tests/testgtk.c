@@ -47,10 +47,6 @@
 #include "gdk/gdkkeysyms.h"
 #include "glib/gstdio.h"
 
-#ifdef G_OS_WIN32
-#define sleep(n) _sleep(n)
-#endif
-
 #include "prop-editor.h"
 
 #include "circles.xbm"
