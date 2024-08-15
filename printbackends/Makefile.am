@@ -11,7 +11,7 @@ SUBDIRS += papi
 endif
 
 if BUILD_TESTS
-SRC_SUBDIRS += test
+SUBDIRS += test
 endif
 
 
