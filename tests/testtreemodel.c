@@ -230,7 +230,7 @@ test_run (gchar        *title,
 	  (*clear)(store);
 #ifdef HAVE_MALLINFO
 	  /* Peculiar location of this, btw.  -- MW.  */
-	  uordblks_before = mallinfo().uordblks;
+	  uordblks_before = mallinfo2().uordblks;
 #endif
 	  g_timer_reset (timer);
 	  g_timer_start (timer);
