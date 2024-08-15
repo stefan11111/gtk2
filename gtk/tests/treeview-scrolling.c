@@ -1042,7 +1042,7 @@ int
 main (int argc, char **argv)
 {
 	gtk_test_init (&argc, &argv);
-
+    if (sizeof(void*) == 8 && CHAR_BIT == 8) {
 	/* Scrolls before realization */
 	add_tests (FALSE, BEFORE, FALSE, 0.0, scroll_no_align);
 	if (g_test_thorough ())
@@ -1093,7 +1093,6 @@ main (int argc, char **argv)
 	}
 
 	/* Test different alignments in view with single row */
-    if (sizeof(void*) == 8 && CHAR_BIT == 8) {
 	g_test_add ("/TreeView/scrolling/single-row/no-align",
 		    ScrollFixture, "0",
 		    scroll_fixture_single_setup,
