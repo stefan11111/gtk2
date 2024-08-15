@@ -1041,6 +1041,9 @@ add_tests (gboolean mixed,
 int
 main (int argc, char **argv)
 {
+  if (sizeof(void*) != 8 || CHAR_BIT != 8) {
+    return 0;
+  }
 	gtk_test_init (&argc, &argv);
 
 	/* Scrolls before realization */
