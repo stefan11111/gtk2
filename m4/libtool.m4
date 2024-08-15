@@ -1539,17 +1539,6 @@ AC_CACHE_VAL([lt_cv_sys_max_cmd_len], [dnl
     lt_cv_sys_max_cmd_len=-1;
     ;;
 
-  cygwin* | mingw* | cegcc*)
-    # On Win9x/ME, this test blows up -- it succeeds, but takes
-    # about 5 minutes as the teststring grows exponentially.
-    # Worse, since 9x/ME are not pre-emptively multitasking,
-    # you end up with a "frozen" computer, even though with patience
-    # the test eventually succeeds (with a max line length of 256k).
-    # Instead, let's just punt: use the minimum linelength reported by
-    # all of the supported platforms: 8192 (on NT/2K/XP).
-    lt_cv_sys_max_cmd_len=8192;
-    ;;
-
   mint*)
     # On MiNT this can take a long time and run out of memory.
     lt_cv_sys_max_cmd_len=8192;
@@ -2173,10 +2162,6 @@ BEGIN {RS = " "; FS = "/|\n";} {
 }'`
   # AWK program above erroneously prepends '/' to C:/dos/paths
   # for these hosts.
-  case $host_os in
-    mingw* | cegcc*) lt_search_path_spec=`$ECHO "$lt_search_path_spec" |\
-      $SED 's|/\([[A-Za-z]]:\)|\1|g'` ;;
-  esac
   sys_lib_search_path_spec=`$ECHO "$lt_search_path_spec" | $lt_NL2SP`
 else
   sys_lib_search_path_spec="/lib /usr/lib /usr/local/lib"
@@ -2965,13 +2950,7 @@ ac_prog=ld
 if test yes = "$GCC"; then
   # Check if gcc -print-prog-name=ld gives a path.
   AC_MSG_CHECKING([for ld used by $CC])
-  case $host in
-  *-*-mingw*)
-    # gcc leaves a trailing carriage return, which upsets mingw
-    ac_prog=`($CC -print-prog-name=ld) 2>&5 | tr -d '\015'` ;;
-  *)
-    ac_prog=`($CC -print-prog-name=ld) 2>&5` ;;
-  esac
+  ac_prog=`($CC -print-prog-name=ld) 2>&5` ;;
   case $ac_prog in
     # Accept absolute paths.
     [[\\/]]* | ?:[[\\/]]*)
@@ -3292,17 +3271,6 @@ esac
 
 file_magic_glob=
 want_nocaseglob=no
-if test "$build" = "$host"; then
-  case $host_os in
-  mingw* | pw32*)
-    if ( shopt | grep nocaseglob ) >/dev/null 2>&1; then
-      want_nocaseglob=yes
-    else
-      file_magic_glob=`echo aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpPqQrRsStTuUvVwWxXyYzZ | $SED -e "s/\(..\)/s\/[[\1]]\/[[\1]]\/g;/g"`
-    fi
-    ;;
-  esac
-fi
 
 file_magic_cmd=$lt_cv_file_magic_cmd
 deplibs_check_method=$lt_cv_deplibs_check_method
@@ -3344,11 +3312,8 @@ else
 	# Adding the 'sed 1q' prevents false positives on HP-UX, which says:
 	#   nm: unknown option "B" ignored
 	# Tru64's nm complains that /dev/null is an invalid object file
-	# MSYS converts /dev/null to NUL, MinGW nm treats NUL as empty
-	case $build_os in
-	mingw*) lt_bad_file=conftest.nm/nofile ;;
-	*) lt_bad_file=/dev/null ;;
-	esac
+	# MSYS converts /dev/null to NUL;
+	lt_bad_file=/dev/null ;;
 	case `"$tmp_nm" -B $lt_bad_file 2>&1 | $SED '1q'` in
 	*$lt_bad_file* | *'Invalid file or object type'*)
 	  lt_cv_path_NM="$tmp_nm -B"
@@ -3436,24 +3401,8 @@ AC_CACHE_CHECK([how to associate runtime and link libraries],
 lt_cv_sharedlib_from_linklib_cmd,
 [lt_cv_sharedlib_from_linklib_cmd='unknown'
 
-case $host_os in
-cygwin* | mingw* | pw32* | cegcc*)
-  # two different shell functions defined in ltmain.sh;
-  # decide which one to use based on capabilities of $DLLTOOL
-  case `$DLLTOOL --help 2>&1` in
-  *--identify-strict*)
-    lt_cv_sharedlib_from_linklib_cmd=func_cygming_dll_for_implib
-    ;;
-  *)
-    lt_cv_sharedlib_from_linklib_cmd=func_cygming_dll_for_implib_fallback
-    ;;
-  esac
-  ;;
-*)
-  # fallback: assume linklib IS sharedlib
-  lt_cv_sharedlib_from_linklib_cmd=$ECHO
-  ;;
-esac
+# fallback: assume linklib IS sharedlib
+lt_cv_sharedlib_from_linklib_cmd=$ECHO
 ])
 sharedlib_from_linklib_cmd=$lt_cv_sharedlib_from_linklib_cmd
 test -z "$sharedlib_from_linklib_cmd" && sharedlib_from_linklib_cmd=$ECHO
@@ -3507,7 +3456,7 @@ AC_DEFUN([LT_LIB_M],
 [AC_REQUIRE([AC_CANONICAL_HOST])dnl
 LIBM=
 case $host in
-*-*-beos* | *-*-cygwin* | *-*-haiku* )
+*-*-beos* | *-*-haiku* )
   # These system don't have libm, or don't need it
   ;;
 *-ncr-sysv4.3*)
@@ -3582,9 +3531,6 @@ case $host_os in
 aix*)
   symcode='[[BCDT]]'
   ;;
-cygwin* | mingw* | pw32* | cegcc*)
-  symcode='[[ABCDGISTW]]'
-  ;;
 hpux*)
   if test ia64 = "$host_cpu"; then
     symcode='[[ABCDEGRST]]'
@@ -3658,13 +3604,7 @@ $lt_c_name_lib_hook\
 " -e 's/^$symcode$symcode* .* \(lib.*\)$/  {\"\1\", (void *) \&\1},/p'"\
 " -e 's/^$symcode$symcode* .* \(.*\)$/  {\"lib\1\", (void *) \&\1},/p'"
 
-# Handle CRLF in mingw tool chain
 opt_cr=
-case $build_os in
-mingw*)
-  opt_cr=`$ECHO 'x\{0,1\}' | tr x '\015'` # option cr in regexp
-  ;;
-esac
 
 # Try without a prefix underscore, then with it.
 for ac_symprfx in "" "_"; do
@@ -3884,18 +3824,8 @@ m4_if([$1], [CXX], [
     beos* | irix5* | irix6* | nonstopux* | osf3* | osf4* | osf5*)
       # PIC is the default for these OSes.
       ;;
-    mingw* | cygwin* | os2* | pw32* | cegcc*)
-      # This hack is so that the source file can tell whether it is being
-      # built for inclusion in a dll (and should export symbols for example).
-      # Although the cygwin gcc ignores -fPIC, still need this for old-style
-      # (--disable-auto-import) libraries
-      m4_if([$1], [GCJ], [],
-	[_LT_TAGVAR(lt_prog_compiler_pic, $1)='-DDLL_EXPORT'])
-      case $host_os in
-      os2*)
-	_LT_TAGVAR(lt_prog_compiler_static, $1)='$wl-static'
-	;;
-      esac
+    os2*)
+      _LT_TAGVAR(lt_prog_compiler_static, $1)='$wl-static'
       ;;
     *djgpp*)
       # DJGPP does not support shared libraries at all
@@ -3955,7 +3885,7 @@ m4_if([$1], [CXX], [
 	  ;;
 	esac
 	;;
-      mingw* | cygwin* | os2* | pw32* | cegcc*)
+      os2*)
 	# This hack is so that the source file can tell whether it is being
 	# built for inclusion in a dll (and should export symbols for example).
 	m4_if([$1], [GCJ], [],
@@ -4203,18 +4133,8 @@ m4_if([$1], [CXX], [
       # PIC is the default for these OSes.
       ;;
 
-    mingw* | cygwin* | pw32* | os2* | cegcc*)
-      # This hack is so that the source file can tell whether it is being
-      # built for inclusion in a dll (and should export symbols for example).
-      # Although the cygwin gcc ignores -fPIC, still need this for old-style
-      # (--disable-auto-import) libraries
-      m4_if([$1], [GCJ], [],
-	[_LT_TAGVAR(lt_prog_compiler_pic, $1)='-DDLL_EXPORT'])
-      case $host_os in
-      os2*)
-	_LT_TAGVAR(lt_prog_compiler_static, $1)='$wl-static'
-	;;
-      esac
+    os2*)
+      _LT_TAGVAR(lt_prog_compiler_static, $1)='$wl-static'
       ;;
 
     haiku*)
@@ -4547,20 +4467,6 @@ m4_if([$1], [CXX], [
       _LT_TAGVAR(export_symbols_cmds, $1)='`func_echo_all $NM | $SED -e '\''s/B\([[^B]]*\)$/P\1/'\''` -PCpgl $libobjs $convenience | awk '\''{ if (((\$ 2 == "T") || (\$ 2 == "D") || (\$ 2 == "B") || (\$ 2 == "L") || (\$ 2 == "W") || (\$ 2 == "V") || (\$ 2 == "Z")) && ([substr](\$ 1,1,1) != ".")) { if ((\$ 2 == "W") || (\$ 2 == "V") || (\$ 2 == "Z")) { print \$ 1 " weak" } else { print \$ 1 } } }'\'' | sort -u > $export_symbols'
     fi
     ;;
-  pw32*)
-    _LT_TAGVAR(export_symbols_cmds, $1)=$ltdll_cmds
-    ;;
-  cygwin* | mingw* | cegcc*)
-    case $cc_basename in
-    cl* | icl*)
-      _LT_TAGVAR(exclude_expsyms, $1)='_NULL_IMPORT_DESCRIPTOR|_IMPORT_DESCRIPTOR_.*'
-      ;;
-    *)
-      _LT_TAGVAR(export_symbols_cmds, $1)='$NM $libobjs $convenience | $global_symbol_pipe | $SED -e '\''/^[[BCDGRS]][[ ]]/s/.*[[ ]]\([[^ ]]*\)/\1 DATA/;s/^.*[[ ]]__nm__\([[^ ]]*\)[[ ]][[^ ]]*/\1 DATA/;/^I[[ ]]/d;/^[[AITW]][[ ]]/s/.* //'\'' | sort | uniq > $export_symbols'
-      _LT_TAGVAR(exclude_expsyms, $1)=['[_]+GLOBAL_OFFSET_TABLE_|[_]+GLOBAL__[FID]_.*|[_]+head_[A-Za-z0-9_]+_dll|[A-Za-z0-9_]+_dll_iname']
-      ;;
-    esac
-    ;;
   *)
     _LT_TAGVAR(export_symbols_cmds, $1)='$NM $libobjs $convenience | $global_symbol_pipe | $SED '\''s/.* //'\'' | sort | uniq > $export_symbols'
     ;;
@@ -4608,14 +4514,6 @@ dnl Note also adjust exclude_expsyms for C++ above.
   extract_expsyms_cmds=
 
   case $host_os in
-  cygwin* | mingw* | pw32* | cegcc*)
-    # FIXME: the MSVC++ and ICC port hasn't been tested in a loooong time
-    # When not using gcc, we currently assume that we are using
-    # Microsoft Visual C++ or Intel C++ Compiler.
-    if test yes != "$GCC"; then
-      with_gnu_ld=no
-    fi
-    ;;
   interix*)
     # we just hope/assume this is gcc and not c89 (= MSVC++ or ICC)
     with_gnu_ld=yes
@@ -4718,33 +4616,6 @@ _LT_EOF
 	# Joseph Beckenbach <jrb3@best.com> says some releases of gcc
 	# support --undefined.  This deserves some investigation.  FIXME
 	_LT_TAGVAR(archive_cmds, $1)='$CC -nostart $libobjs $deplibs $compiler_flags $wl-soname $wl$soname -o $lib'
-      else
-	_LT_TAGVAR(ld_shlibs, $1)=no
-      fi
-      ;;
-
-    cygwin* | mingw* | pw32* | cegcc*)
-      # _LT_TAGVAR(hardcode_libdir_flag_spec, $1) is actually meaningless,
-      # as there is no search path for DLLs.
-      _LT_TAGVAR(hardcode_libdir_flag_spec, $1)='-L$libdir'
-      _LT_TAGVAR(export_dynamic_flag_spec, $1)='$wl--export-all-symbols'
-      _LT_TAGVAR(allow_undefined_flag, $1)=unsupported
-      _LT_TAGVAR(always_export_symbols, $1)=no
-      _LT_TAGVAR(enable_shared_with_static_runtimes, $1)=yes
-      _LT_TAGVAR(export_symbols_cmds, $1)='$NM $libobjs $convenience | $global_symbol_pipe | $SED -e '\''/^[[BCDGRS]][[ ]]/s/.*[[ ]]\([[^ ]]*\)/\1 DATA/;s/^.*[[ ]]__nm__\([[^ ]]*\)[[ ]][[^ ]]*/\1 DATA/;/^I[[ ]]/d;/^[[AITW]][[ ]]/s/.* //'\'' | sort | uniq > $export_symbols'
-      _LT_TAGVAR(exclude_expsyms, $1)=['[_]+GLOBAL_OFFSET_TABLE_|[_]+GLOBAL__[FID]_.*|[_]+head_[A-Za-z0-9_]+_dll|[A-Za-z0-9_]+_dll_iname']
-
-      if $LD --help 2>&1 | $GREP 'auto-import' > /dev/null; then
-        _LT_TAGVAR(archive_cmds, $1)='$CC -shared $libobjs $deplibs $compiler_flags -o $output_objdir/$soname $wl--enable-auto-image-base -Xlinker --out-implib -Xlinker $lib'
-	# If the export-symbols file already is a .def file, use it as
-	# is; otherwise, prepend EXPORTS...
-	_LT_TAGVAR(archive_expsym_cmds, $1)='if _LT_DLL_DEF_P([$export_symbols]); then
-          cp $export_symbols $output_objdir/$soname.def;
-        else
-          echo EXPORTS > $output_objdir/$soname.def;
-          cat $export_symbols >> $output_objdir/$soname.def;
-        fi~
-        $CC -shared $output_objdir/$soname.def $libobjs $deplibs $compiler_flags -o $output_objdir/$soname $wl--enable-auto-image-base -Xlinker --out-implib -Xlinker $lib'
       else
 	_LT_TAGVAR(ld_shlibs, $1)=no
       fi
@@ -5178,72 +5049,6 @@ _LT_EOF
 
     bsdi[[45]]*)
       _LT_TAGVAR(export_dynamic_flag_spec, $1)=-rdynamic
-      ;;
-
-    cygwin* | mingw* | pw32* | cegcc*)
-      # When not using gcc, we currently assume that we are using
-      # Microsoft Visual C++ or Intel C++ Compiler.
-      # hardcode_libdir_flag_spec is actually meaningless, as there is
-      # no search path for DLLs.
-      case $cc_basename in
-      cl* | icl*)
-	# Native MSVC or ICC
-	_LT_TAGVAR(hardcode_libdir_flag_spec, $1)=' '
-	_LT_TAGVAR(allow_undefined_flag, $1)=unsupported
-	_LT_TAGVAR(always_export_symbols, $1)=yes
-	_LT_TAGVAR(file_list_spec, $1)='@'
-	# Tell ltmain to make .lib files, not .a files.
-	libext=lib
-	# Tell ltmain to make .dll files, not .so files.
-	shrext_cmds=.dll
-	# FIXME: Setting linknames here is a bad hack.
-	_LT_TAGVAR(archive_cmds, $1)='$CC -o $output_objdir/$soname $libobjs $compiler_flags $deplibs -Wl,-DLL,-IMPLIB:"$tool_output_objdir$libname.dll.lib"~linknames='
-	_LT_TAGVAR(archive_expsym_cmds, $1)='if _LT_DLL_DEF_P([$export_symbols]); then
-            cp "$export_symbols" "$output_objdir/$soname.def";
-            echo "$tool_output_objdir$soname.def" > "$output_objdir/$soname.exp";
-          else
-            $SED -e '\''s/^/-link -EXPORT:/'\'' < $export_symbols > $output_objdir/$soname.exp;
-          fi~
-          $CC -o $tool_output_objdir$soname $libobjs $compiler_flags $deplibs "@$tool_output_objdir$soname.exp" -Wl,-DLL,-IMPLIB:"$tool_output_objdir$libname.dll.lib"~
-          linknames='
-	# The linker will not automatically build a static lib if we build a DLL.
-	# _LT_TAGVAR(old_archive_from_new_cmds, $1)='true'
-	_LT_TAGVAR(enable_shared_with_static_runtimes, $1)=yes
-	_LT_TAGVAR(exclude_expsyms, $1)='_NULL_IMPORT_DESCRIPTOR|_IMPORT_DESCRIPTOR_.*'
-	_LT_TAGVAR(export_symbols_cmds, $1)='$NM $libobjs $convenience | $global_symbol_pipe | $SED -e '\''/^[[BCDGRS]][[ ]]/s/.*[[ ]]\([[^ ]]*\)/\1,DATA/'\'' | $SED -e '\''/^[[AITW]][[ ]]/s/.*[[ ]]//'\'' | sort | uniq > $export_symbols'
-	# Don't use ranlib
-	_LT_TAGVAR(old_postinstall_cmds, $1)='chmod 644 $oldlib'
-	_LT_TAGVAR(postlink_cmds, $1)='lt_outputfile="@OUTPUT@"~
-          lt_tool_outputfile="@TOOL_OUTPUT@"~
-          case $lt_outputfile in
-            *.exe|*.EXE) ;;
-            *)
-              lt_outputfile=$lt_outputfile.exe
-              lt_tool_outputfile=$lt_tool_outputfile.exe
-              ;;
-          esac~
-          if test : != "$MANIFEST_TOOL" && test -f "$lt_outputfile.manifest"; then
-            $MANIFEST_TOOL -manifest "$lt_tool_outputfile.manifest" -outputresource:"$lt_tool_outputfile" || exit 1;
-            $RM "$lt_outputfile.manifest";
-          fi'
-	;;
-      *)
-	# Assume MSVC and ICC wrapper
-	_LT_TAGVAR(hardcode_libdir_flag_spec, $1)=' '
-	_LT_TAGVAR(allow_undefined_flag, $1)=unsupported
-	# Tell ltmain to make .lib files, not .a files.
-	libext=lib
-	# Tell ltmain to make .dll files, not .so files.
-	shrext_cmds=.dll
-	# FIXME: Setting linknames here is a bad hack.
-	_LT_TAGVAR(archive_cmds, $1)='$CC -o $lib $libobjs $compiler_flags `func_echo_all "$deplibs" | $SED '\''s/ -lc$//'\''` -link -dll~linknames='
-	# The linker will automatically build a .lib file if we build a DLL.
-	_LT_TAGVAR(old_archive_from_new_cmds, $1)='true'
-	# FIXME: Should let the user specify the lib program.
-	_LT_TAGVAR(old_archive_cmds, $1)='lib -OUT:$oldlib$oldobjs$old_deplibs'
-	_LT_TAGVAR(enable_shared_with_static_runtimes, $1)=yes
-	;;
-      esac
       ;;
 
     dgux*)
@@ -6251,78 +6056,6 @@ if test yes != "$_lt_caught_CXX_error"; then
 	  ;;
         esac
         ;;
-
-      cygwin* | mingw* | pw32* | cegcc*)
-	case $GXX,$cc_basename in
-	,cl* | no,cl* | ,icl* | no,icl*)
-	  # Native MSVC or ICC
-	  # hardcode_libdir_flag_spec is actually meaningless, as there is
-	  # no search path for DLLs.
-	  _LT_TAGVAR(hardcode_libdir_flag_spec, $1)=' '
-	  _LT_TAGVAR(allow_undefined_flag, $1)=unsupported
-	  _LT_TAGVAR(always_export_symbols, $1)=yes
-	  _LT_TAGVAR(file_list_spec, $1)='@'
-	  # Tell ltmain to make .lib files, not .a files.
-	  libext=lib
-	  # Tell ltmain to make .dll files, not .so files.
-	  shrext_cmds=.dll
-	  # FIXME: Setting linknames here is a bad hack.
-	  _LT_TAGVAR(archive_cmds, $1)='$CC -o $output_objdir/$soname $libobjs $compiler_flags $deplibs -Wl,-DLL,-IMPLIB:"$tool_output_objdir$libname.dll.lib"~linknames='
-	  _LT_TAGVAR(archive_expsym_cmds, $1)='if _LT_DLL_DEF_P([$export_symbols]); then
-              cp "$export_symbols" "$output_objdir/$soname.def";
-              echo "$tool_output_objdir$soname.def" > "$output_objdir/$soname.exp";
-            else
-              $SED -e '\''s/^/-link -EXPORT:/'\'' < $export_symbols > $output_objdir/$soname.exp;
-            fi~
-            $CC -o $tool_output_objdir$soname $libobjs $compiler_flags $deplibs "@$tool_output_objdir$soname.exp" -Wl,-DLL,-IMPLIB:"$tool_output_objdir$libname.dll.lib"~
-            linknames='
-	  # The linker will not automatically build a static lib if we build a DLL.
-	  # _LT_TAGVAR(old_archive_from_new_cmds, $1)='true'
-	  _LT_TAGVAR(enable_shared_with_static_runtimes, $1)=yes
-	  # Don't use ranlib
-	  _LT_TAGVAR(old_postinstall_cmds, $1)='chmod 644 $oldlib'
-	  _LT_TAGVAR(postlink_cmds, $1)='lt_outputfile="@OUTPUT@"~
-            lt_tool_outputfile="@TOOL_OUTPUT@"~
-            case $lt_outputfile in
-              *.exe|*.EXE) ;;
-              *)
-                lt_outputfile=$lt_outputfile.exe
-                lt_tool_outputfile=$lt_tool_outputfile.exe
-                ;;
-            esac~
-            func_to_tool_file "$lt_outputfile"~
-            if test : != "$MANIFEST_TOOL" && test -f "$lt_outputfile.manifest"; then
-              $MANIFEST_TOOL -manifest "$lt_tool_outputfile.manifest" -outputresource:"$lt_tool_outputfile" || exit 1;
-              $RM "$lt_outputfile.manifest";
-            fi'
-	  ;;
-	*)
-	  # g++
-	  # _LT_TAGVAR(hardcode_libdir_flag_spec, $1) is actually meaningless,
-	  # as there is no search path for DLLs.
-	  _LT_TAGVAR(hardcode_libdir_flag_spec, $1)='-L$libdir'
-	  _LT_TAGVAR(export_dynamic_flag_spec, $1)='$wl--export-all-symbols'
-	  _LT_TAGVAR(allow_undefined_flag, $1)=unsupported
-	  _LT_TAGVAR(always_export_symbols, $1)=no
-	  _LT_TAGVAR(enable_shared_with_static_runtimes, $1)=yes
-
-	  if $LD --help 2>&1 | $GREP 'auto-import' > /dev/null; then
-	    _LT_TAGVAR(archive_cmds, $1)='$CC -shared -nostdlib $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags -o $output_objdir/$soname $wl--enable-auto-image-base -Xlinker --out-implib -Xlinker $lib'
-	    # If the export-symbols file already is a .def file, use it as
-	    # is; otherwise, prepend EXPORTS...
-	    _LT_TAGVAR(archive_expsym_cmds, $1)='if _LT_DLL_DEF_P([$export_symbols]); then
-              cp $export_symbols $output_objdir/$soname.def;
-            else
-              echo EXPORTS > $output_objdir/$soname.def;
-              cat $export_symbols >> $output_objdir/$soname.def;
-            fi~
-            $CC -shared -nostdlib $output_objdir/$soname.def $predep_objects $libobjs $deplibs $postdep_objects $compiler_flags -o $output_objdir/$soname $wl--enable-auto-image-base -Xlinker --out-implib -Xlinker $lib'
-	  else
-	    _LT_TAGVAR(ld_shlibs, $1)=no
-	  fi
-	  ;;
-	esac
-	;;
 
       os2*)
 	_LT_TAGVAR(hardcode_libdir_flag_spec, $1)='-L$libdir'
@@ -7934,44 +7667,13 @@ _LT_DECL([NL2SP], [lt_NL2SP], [1], [turn newlines into spaces])dnl
 # -----------------------------
 # Determine what file name conversion functions should be used by
 # func_to_host_file (and, implicitly, by func_to_host_path).  These are needed
-# for certain cross-compile configurations and native mingw.
+# for certain cross-compile configurations.
 m4_defun([_LT_PATH_CONVERSION_FUNCTIONS],
 [AC_REQUIRE([AC_CANONICAL_HOST])dnl
 AC_REQUIRE([AC_CANONICAL_BUILD])dnl
 AC_MSG_CHECKING([how to convert $build file names to $host format])
 AC_CACHE_VAL(lt_cv_to_host_file_cmd,
-[case $host in
-  *-*-mingw* )
-    case $build in
-      *-*-mingw* ) # actually msys
-        lt_cv_to_host_file_cmd=func_convert_file_msys_to_w32
-        ;;
-      *-*-cygwin* )
-        lt_cv_to_host_file_cmd=func_convert_file_cygwin_to_w32
-        ;;
-      * ) # otherwise, assume *nix
-        lt_cv_to_host_file_cmd=func_convert_file_nix_to_w32
-        ;;
-    esac
-    ;;
-  *-*-cygwin* )
-    case $build in
-      *-*-mingw* ) # actually msys
-        lt_cv_to_host_file_cmd=func_convert_file_msys_to_cygwin
-        ;;
-      *-*-cygwin* )
-        lt_cv_to_host_file_cmd=func_convert_file_noop
-        ;;
-      * ) # otherwise, assume *nix
-        lt_cv_to_host_file_cmd=func_convert_file_nix_to_cygwin
-        ;;
-    esac
-    ;;
-  * ) # unhandled hosts (and "normal" native builds)
-    lt_cv_to_host_file_cmd=func_convert_file_noop
-    ;;
-esac
-])
+[lt_cv_to_host_file_cmd=func_convert_file_noop]
 to_host_file_cmd=$lt_cv_to_host_file_cmd
 AC_MSG_RESULT([$lt_cv_to_host_file_cmd])
 _LT_DECL([to_host_file_cmd], [lt_cv_to_host_file_cmd],
@@ -7981,15 +7683,6 @@ AC_MSG_CHECKING([how to convert $build file names to toolchain format])
 AC_CACHE_VAL(lt_cv_to_tool_file_cmd,
 [#assume ordinary cross tools, or native build.
 lt_cv_to_tool_file_cmd=func_convert_file_noop
-case $host in
-  *-*-mingw* )
-    case $build in
-      *-*-mingw* ) # actually msys
-        lt_cv_to_tool_file_cmd=func_convert_file_msys_to_w32
-        ;;
-    esac
-    ;;
-esac
 ])
 to_tool_file_cmd=$lt_cv_to_tool_file_cmd
 AC_MSG_RESULT([$lt_cv_to_tool_file_cmd])
