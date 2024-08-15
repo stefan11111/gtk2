@@ -113,7 +113,6 @@ build_option_menu (gchar           *items[],
 {
   GtkWidget *omenu;
   GtkWidget *menu;
-  GSList *group;
   gint i;
 
   omenu = gtk_combo_box_text_new ();
@@ -121,7 +120,6 @@ build_option_menu (gchar           *items[],
 		    G_CALLBACK (func), data);
       
   menu = gtk_menu_new ();
-  group = NULL;
   
   for (i = 0; i < num_items; i++)
       gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (omenu), items[i]);
@@ -5731,7 +5729,6 @@ cursor_expose_event (GtkWidget *widget,
 		     GdkEvent  *event,
 		     gpointer   user_data)
 {
-  GtkDrawingArea *darea;
   GdkDrawable *drawable;
   guint max_width;
   guint max_height;
@@ -5740,7 +5737,6 @@ cursor_expose_event (GtkWidget *widget,
   g_return_val_if_fail (widget != NULL, TRUE);
   g_return_val_if_fail (GTK_IS_DRAWING_AREA (widget), TRUE);
 
-  darea = GTK_DRAWING_AREA (widget);
   drawable = widget->window;
   max_width = widget->allocation.width;
   max_height = widget->allocation.height;
@@ -11855,8 +11851,6 @@ static void
 query_properties (GtkButton *button,
 		  struct PropertiesData *data)
 {
-  gint failure;
-
   g_signal_connect (button, "event",
 		    G_CALLBACK (property_query_event), data);
 
@@ -11865,12 +11859,12 @@ query_properties (GtkButton *button,
     data->cursor = gdk_cursor_new_for_display (gtk_widget_get_display (GTK_WIDGET (button)),
 					       GDK_TARGET);
   
-  failure = gdk_pointer_grab (GTK_WIDGET (button)->window,
-			      TRUE,
-			      GDK_BUTTON_RELEASE_MASK,
-			      NULL,
-			      data->cursor,
-			      GDK_CURRENT_TIME);
+  gdk_pointer_grab (GTK_WIDGET (button)->window,
+		    TRUE,
+		    GDK_BUTTON_RELEASE_MASK,
+		    NULL,
+		    data->cursor,
+		    GDK_CURRENT_TIME);
 
   gtk_grab_add (GTK_WIDGET (button));
 
@@ -12015,8 +12009,6 @@ static void
 snapshot_widget (GtkButton *button,
 		 struct SnapshotData *data)
 {
-  gint failure;
-
   g_signal_connect (button, "event",
 		    G_CALLBACK (snapshot_widget_event), data);
 
@@ -12026,12 +12018,12 @@ snapshot_widget (GtkButton *button,
     data->cursor = gdk_cursor_new_for_display (gtk_widget_get_display (GTK_WIDGET (button)),
 					       GDK_TARGET);
   
-  failure = gdk_pointer_grab (GTK_WIDGET (button)->window,
-			      TRUE,
-			      GDK_BUTTON_RELEASE_MASK,
-			      NULL,
-			      data->cursor,
-			      GDK_CURRENT_TIME);
+  gdk_pointer_grab (GTK_WIDGET (button)->window,
+		    TRUE,
+		    GDK_BUTTON_RELEASE_MASK,
+		    NULL,
+		    data->cursor,
+		    GDK_CURRENT_TIME);
 
   gtk_grab_add (GTK_WIDGET (button));
 
