@@ -1188,17 +1188,16 @@ AC_CHECK_HEADER(cairo-pdf.h,,AC_MSG_ERROR([
 *** backend enabled.]))
 
 AC_CHECK_HEADER(cairo-ps.h,,AC_MSG_ERROR([
-*** Can't find cairo-ps.h. You must build Cairo with the 
+*** Can't find cairo-ps.h. You must build Cairo with the
 *** postscript backend enabled.]))
 
 AC_CHECK_HEADER(cairo-svg.h,,AC_MSG_ERROR([
 *** Can't find cairo-svg.h. You must build Cairo with the
 *** svg backend enabled.]))
-fi   
 
 CPPFLAGS="$gtk_save_cppflags"
-     
-			  	
+
+
 AC_ARG_ENABLE(test-print-backend,
               [AC_HELP_STRING([--enable-test-print-backend],
                               [build test print backend])],,
