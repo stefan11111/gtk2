@@ -1041,9 +1041,6 @@ add_tests (gboolean mixed,
 int
 main (int argc, char **argv)
 {
-  if (sizeof(void*) != 8 || CHAR_BIT != 8) {
-    return 0;
-  }
 	gtk_test_init (&argc, &argv);
 
 	/* Scrolls before realization */
@@ -1096,6 +1093,7 @@ main (int argc, char **argv)
 	}
 
 	/* Test different alignments in view with single row */
+    if (sizeof(void*) == 8 && CHAR_BIT == 8) {
 	g_test_add ("/TreeView/scrolling/single-row/no-align",
 		    ScrollFixture, "0",
 		    scroll_fixture_single_setup,
@@ -1116,7 +1114,7 @@ main (int argc, char **argv)
 		    scroll_fixture_single_setup,
 		    scroll_align_1_0,
 		    scroll_fixture_teardown);
-
+    }
 	/* Test scrolling in a very large model; also very slow */
 	if (g_test_slow ()) {
 		g_test_add ("/TreeView/scrolling/large-model/constant-height/middle-no-align",
