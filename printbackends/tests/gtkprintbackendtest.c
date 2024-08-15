@@ -405,12 +405,11 @@ gtk_print_backend_test_print_stream (GtkPrintBackend        *print_backend,
 				     GDestroyNotify          dnotify)
 {
   GError *internal_error = NULL;
-  GtkPrinter *printer;
   _PrintStreamData *ps;
   GtkPrintSettings *settings;
   gchar *uri, *testname;
 
-  printer = gtk_print_job_get_printer (job);
+  gtk_print_job_get_printer (job);
   settings = gtk_print_job_get_settings (job);
 
   ps = g_new0 (_PrintStreamData, 1);
@@ -492,9 +491,8 @@ test_printer_get_options (GtkPrinter           *printer,
   GtkPrinterOptionSet *set;
   GtkPrinterOption *option;
   const gchar *n_up[] = { "1" };
-  OutputFormat format;
 
-  format = format_from_settings (settings);
+  format_from_settings (settings);
 
   set = gtk_printer_option_set_new ();
 
