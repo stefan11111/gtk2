@@ -48,7 +48,6 @@
 #include <gobject/gvaluecollector.h>
 #include <gobject/gobjectnotifyqueue.c>
 #include "gdk/gdkkeysyms.h"
-#include "gtkaccessible.h"
 #include "gtktooltip.h"
 #include "gtkinvisible.h"
 #include "gtkbuildable.h"
@@ -93,28 +92,6 @@
  * <programlisting><![CDATA[
  * <object class="GtkButton">
  *   <accelerator key="q" modifiers="GDK_CONTROL_MASK" signal="clicked"/>
- * </object>
- * ]]></programlisting>
- * </example>
- * <para>
- * In addition to accelerators, <structname>GtkWidget</structname> also support a
- * custom &lt;accessible&gt; element, which supports actions and relations.
- * Properties on the accessible implementation of an object can be set by accessing the
- * internal child "accessible" of a <structname>GtkWidget</structname>.
- * </para>
- * <example>
- * <title>A UI definition fragment specifying an accessible</title>
- * <programlisting><![CDATA[
- * <object class="GtkButton" id="label1"/>
- *   <property name="label">I am a Label for a Button</property>
- * </object>
- * <object class="GtkButton" id="button1">
- *   <accessibility>
- *     <action action_name="click" translatable="yes">Click the button.</action>
- *     <relation target="label1" type="labelled-by"/>
- *   </accessibility>
- *   <child internal-child="accessible">
- *   </child>
  * </object>
  * ]]></programlisting>
  * </example>
@@ -303,7 +280,6 @@ static gint		gtk_widget_event_internal		(GtkWidget	  *widget,
 static gboolean		gtk_widget_real_mnemonic_activate	(GtkWidget	  *widget,
 								 gboolean	   group_cycling);
 static void		gtk_widget_aux_info_destroy		(GtkWidgetAuxInfo *aux_info);
-static void*	gtk_widget_real_get_accessible		(GtkWidget	  *widget);
 static void             gtk_widget_invalidate_widget_windows    (GtkWidget        *widget,
 								 GdkRegion        *region);
 static GdkScreen *      gtk_widget_get_screen_unchecked         (GtkWidget        *widget);
@@ -370,7 +346,6 @@ static GQuark		quark_input_shape_info = 0;
 static GQuark		quark_colormap = 0;
 static GQuark		quark_pango_context = 0;
 static GQuark		quark_rc_style = 0;
-static GQuark		quark_accessible_object = 0;
 static GQuark		quark_mnemonic_labels = 0;
 static GQuark		quark_tooltip_markup = 0;
 static GQuark		quark_has_tooltip = 0;
@@ -449,7 +424,6 @@ gtk_widget_class_init (GtkWidgetClass *klass)
   quark_colormap = g_quark_from_static_string ("gtk-colormap");
   quark_pango_context = g_quark_from_static_string ("gtk-pango-context");
   quark_rc_style = g_quark_from_static_string ("gtk-rc-style");
-  quark_accessible_object = g_quark_from_static_string ("gtk-accessible-object");
   quark_mnemonic_labels = g_quark_from_static_string ("gtk-mnemonic-labels");
   quark_tooltip_markup = g_quark_from_static_string ("gtk-tooltip-markup");
   quark_has_tooltip = g_quark_from_static_string ("gtk-has-tooltip");
@@ -528,9 +502,8 @@ gtk_widget_class_init (GtkWidgetClass *klass)
   klass->query_tooltip = gtk_widget_real_query_tooltip;
 
   klass->show_help = gtk_widget_real_show_help;
-  
-  /* Accessibility support */
-  klass->get_accessible = gtk_widget_real_get_accessible;
+
+  klass->get_accessible = NULL;
 
   klass->no_expose_event = NULL;
 
@@ -8806,7 +8779,6 @@ gtk_widget_finalize (GObject *object)
 {
   GtkWidget *widget = GTK_WIDGET (object);
   GtkWidgetAuxInfo *aux_info;
-  GtkAccessible *accessible;
   
   gtk_grab_remove (widget);
 
@@ -8818,10 +8790,6 @@ gtk_widget_finalize (GObject *object)
   aux_info =_gtk_widget_get_aux_info (widget, FALSE);
   if (aux_info)
     gtk_widget_aux_info_destroy (aux_info);
-
-  accessible = g_object_get_qdata (G_OBJECT (widget), quark_accessible_object);
-  if (accessible)
-    g_object_unref (accessible);
 
   G_OBJECT_CLASS (gtk_widget_parent_class)->finalize (object);
 }
@@ -10200,35 +10168,10 @@ gtk_requisition_get_type (void)
   return our_type;
 }
 
-/**
- * gtk_widget_get_accessible:
- * @widget: a #GtkWidget
- *
- * Returns the accessible object that describes the widget to an
- * assistive technology. 
- */
 void*
 gtk_widget_get_accessible (GtkWidget *widget)
 {
-  GtkWidgetClass *klass;
-
-  g_return_val_if_fail (GTK_IS_WIDGET (widget), NULL);
-
-  klass = GTK_WIDGET_GET_CLASS (widget);
-
-  g_return_val_if_fail (klass->get_accessible != NULL, NULL);
-
-  return klass->get_accessible (widget);
-}
-
-static void* 
-gtk_widget_real_get_accessible (GtkWidget *widget)
-{
-  void* accessible;
-
-  accessible = g_object_get_qdata (G_OBJECT (widget), 
-                                   quark_accessible_object);
-  return accessible;
+  return NULL;
 }
 
 /*
@@ -10273,14 +10216,11 @@ gtk_widget_buildable_get_name (GtkBuildable *buildable)
   return g_object_get_qdata (G_OBJECT (buildable), quark_builder_set_name);
 }
 
-static GObject *
+static inline GObject *
 gtk_widget_buildable_get_internal_child (GtkBuildable *buildable,
 					 GtkBuilder   *builder,
 					 const gchar  *childname)
 {
-  if (strcmp (childname, "accessible") == 0)
-    return G_OBJECT (gtk_widget_get_accessible (GTK_WIDGET (buildable)));
-
   return NULL;
 }
 

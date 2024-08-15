@@ -34,7 +34,6 @@
 #include <stdlib.h>
 
 #include "gtkinfobar.h"
-#include "gtkaccessible.h"
 #include "gtkbuildable.h"
 #include "gtkbox.h"
 #include "gtkvbbox.h"
