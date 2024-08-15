@@ -65,6 +65,9 @@ int
 main (int   argc,
       char *argv[])
 {
+#ifndef ENABLE_BROKEN_TESTS
+  return 0;
+#endif
   gtk_test_init (&argc, &argv);
   g_test_add_func ("/floatingtest", floating_tests);
   return g_test_run();

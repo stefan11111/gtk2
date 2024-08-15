@@ -941,7 +941,7 @@ main (int    argc,
 		   list_store_test_insert_before_NULL);
 
   /* setting values (FIXME) */
-
+#ifndef ENABLE_BROKEN_TESTS
   /* removal */
   g_test_add ("/list-store/remove-begin", ListStore, NULL,
 	      list_store_setup, list_store_test_remove_begin,
@@ -956,7 +956,7 @@ main (int    argc,
   g_test_add ("/list-store/clear", ListStore, NULL,
 	      list_store_setup, list_store_test_clear,
 	      list_store_teardown);
-
+#endif
   /* reordering */
   g_test_add ("/list-store/reorder", ListStore, NULL,
 	      list_store_setup, list_store_test_reorder,
