@@ -229,7 +229,7 @@ output_test_from_settings (GtkPrintSettings *settings,
         }
  
       /* default filename used for print-to-test */ 
-      name = g_strdup_printf (_("test-output.%s"), extension);
+      name = g_strdup_printf ("test-output.%s", extension);
       locale_name = g_filename_from_utf8 (name, -1, NULL, NULL, NULL);
       g_free (name);
 
@@ -462,7 +462,7 @@ gtk_print_backend_test_init (GtkPrintBackendTest *backend)
     {
       char *name;
  
-      name = g_strdup_printf ("%s %i", _("Print to Test Printer"), i);
+      name = g_strdup_printf ("%s %i", "Print to Test Printer", i);
       printer = g_object_new (GTK_TYPE_PRINTER,
 			      "name", name,
 			      "backend", backend,
@@ -498,7 +498,7 @@ test_printer_get_options (GtkPrinter           *printer,
 
   set = gtk_printer_option_set_new ();
 
-  option = gtk_printer_option_new ("gtk-n-up", _("Pages per _sheet:"), GTK_PRINTER_OPTION_TYPE_PICKONE);
+  option = gtk_printer_option_new ("gtk-n-up", "Pages per _sheet:", GTK_PRINTER_OPTION_TYPE_PICKONE);
   gtk_printer_option_choices_from_array (option, G_N_ELEMENTS (n_up),
 					 (char **) n_up, (char **) n_up /* FIXME i18n (localised digits)! */);
   gtk_printer_option_set (option, "1");
