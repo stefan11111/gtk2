@@ -53,30 +53,36 @@ recent_manager_add (void)
   recent_data->mime_type = NULL;
   recent_data->app_name = "testrecentchooser";
   recent_data->app_exec = "testrecentchooser %u";
-  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
-  res = gtk_recent_manager_add_full (manager,
-                                     uri,
-                                     recent_data);
+  if (g_test_trap_fork (0, G_TEST_TRAP_SILENCE_STDERR))
+    {
+      res = gtk_recent_manager_add_full (manager,
+                                         uri,
+                                         recent_data);
+    }
   g_test_trap_assert_failed ();
 
   /* app name is mandatory */
   recent_data->mime_type = "text/plain";
   recent_data->app_name = NULL;
   recent_data->app_exec = "testrecentchooser %u";
-  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
-  res = gtk_recent_manager_add_full (manager,
-                                     uri,
-                                     recent_data);
+  if (g_test_trap_fork (0, G_TEST_TRAP_SILENCE_STDERR))
+    {
+      res = gtk_recent_manager_add_full (manager,
+                                         uri,
+                                         recent_data);
+    }
   g_test_trap_assert_failed ();
 
   /* app exec is mandatory */
   recent_data->mime_type = "text/plain";
   recent_data->app_name = "testrecentchooser";
   recent_data->app_exec = NULL;
-  g_test_trap_subprocess (NULL, 0, G_TEST_SUBPROCESS_DEFAULT);
-  res = gtk_recent_manager_add_full (manager,
-                                     uri,
-                                     recent_data);
+  if (g_test_trap_fork (0, G_TEST_TRAP_SILENCE_STDERR))
+    {
+      res = gtk_recent_manager_add_full (manager,
+                                         uri,
+                                         recent_data);
+    }
   g_test_trap_assert_failed ();
 
   recent_data->mime_type = "text/plain";
