@@ -84,8 +84,6 @@ main (int argc, char **argv)
   GtkPrintOperationResult res;
   GtkPrintSettings *settings;
 
-  g_type_init (); 
- 
   loop = g_main_loop_new (NULL, TRUE);
 
   settings = gtk_print_settings_new ();

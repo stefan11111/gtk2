@@ -86,8 +86,6 @@ main (int argc, char **argv)
 {
   int i, start;
   GThreadPool *pool;
-  
-  g_type_init ();
 
   if (!g_thread_supported ())
     g_thread_init (NULL);

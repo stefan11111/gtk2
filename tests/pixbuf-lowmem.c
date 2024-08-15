@@ -197,7 +197,6 @@ main (int argc, char **argv)
   /* Set a malloc which emulates low mem */
   g_mem_set_vtable (&limited_table);
   
-  g_type_init ();
   g_log_set_always_fatal (G_LOG_LEVEL_WARNING | G_LOG_LEVEL_ERROR | G_LOG_LEVEL_CRITICAL);
   
   /* memory tests */

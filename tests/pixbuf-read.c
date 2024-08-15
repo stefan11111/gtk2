@@ -52,7 +52,6 @@ main (int argc, char **argv)
 {
   int i;
   
-  g_type_init ();
   g_log_set_always_fatal (G_LOG_LEVEL_WARNING | G_LOG_LEVEL_ERROR | G_LOG_LEVEL_CRITICAL);
 
   if (argc == 1)
