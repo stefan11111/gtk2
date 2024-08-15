@@ -627,17 +627,18 @@ create_tree_model (void)
   GtkTreeStore *store;
   gint i;
   GType *t;
-  volatile GType dummy; /* G_GNUC_CONST makes the optimizer remove
-                         * get_type calls if you don't do something
-                         * like this
-                         */
-  
+  volatile GType _dummy;
+  volatile GType *dummy; /* G_GNUC_CONST makes the optimizer remove
+                          * get_type calls if you don't do something
+                          * like this
+                          */
+  dummy = &_dummy;
   /* Make the tree more interesting */
-  dummy = gtk_scrolled_window_get_type ();
-  dummy = gtk_label_get_type ();
-  dummy = gtk_hscrollbar_get_type ();
-  dummy = gtk_vscrollbar_get_type ();
-  dummy = pango_layout_get_type ();
+  *dummy = gtk_scrolled_window_get_type ();
+  *dummy = gtk_label_get_type ();
+  *dummy = gtk_hscrollbar_get_type ();
+  *dummy = gtk_vscrollbar_get_type ();
+  *dummy = pango_layout_get_type ();
 
   t = get_model_types ();
   
