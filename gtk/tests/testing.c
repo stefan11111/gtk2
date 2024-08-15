@@ -287,8 +287,8 @@ main (int   argc,
     g_test_add_func ("/ui-tests/button-clicks", test_button_clicks);
     g_test_add_func ("/ui-tests/keys-events", test_button_keys);
     g_test_add_func ("/ui-tests/send-shift-key", test_send_shift_key);
+    g_test_add_func ("/ui-tests/slider-ranges", test_slider_ranges);
   }
-  g_test_add_func ("/ui-tests/slider-ranges", test_slider_ranges);
   g_test_add_func ("/ui-tests/xserver-sync", test_xserver_sync);
   g_test_add_func ("/ui-tests/spin-button-arrows", test_spin_button_arrows);
 
