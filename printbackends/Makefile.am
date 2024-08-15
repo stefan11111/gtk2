@@ -10,6 +10,11 @@ if HAVE_PAPI
 SUBDIRS += papi
 endif
 
+if BUILD_TESTS
+SRC_SUBDIRS += test
+endif
+
+
 DIST_SUBDIRS = cups file lpr papi
 
 -include $(top_srcdir)/git.mk
