@@ -5843,8 +5843,6 @@ create_cursors (GtkWidget *widget)
   GtkWidget *label;
   GtkWidget *any;
   GtkAdjustment *adj;
-  GtkWidget *entry;
-  GtkWidget *size;  
 
   if (!window)
     {
@@ -5880,11 +5878,11 @@ create_cursors (GtkWidget *widget)
       gtk_misc_set_alignment (GTK_MISC (label), 0, 0.5);
       gtk_box_pack_start (GTK_BOX (hbox), label, FALSE, TRUE, 0);
 
-      entry = gtk_entry_new ();
+      GtkWidget *entry = gtk_entry_new ();
       gtk_entry_set_text (GTK_ENTRY (entry), "default");
       gtk_box_pack_start (GTK_BOX (hbox), entry, FALSE, TRUE, 0);
 
-      size = gtk_spin_button_new_with_range (1.0, 64.0, 1.0);
+      GtkWidget *size = gtk_spin_button_new_with_range (1.0, 64.0, 1.0);
       gtk_spin_button_set_value (GTK_SPIN_BUTTON (size), 24.0);
       gtk_box_pack_start (GTK_BOX (hbox), size, TRUE, TRUE, 0);
       
