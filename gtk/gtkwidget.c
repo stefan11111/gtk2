@@ -10412,21 +10412,17 @@ gtk_widget_buildable_custom_finished (GtkBuildable *buildable,
 				      const gchar  *tagname,
 				      gpointer      user_data)
 {
-  AccelGroupParserData *accel_data;
-  AccessibilitySubParserData *a11y_data;
-  GtkWidget *toplevel;
-
   if (strcmp (tagname, "accelerator") == 0)
     {
-      accel_data = (AccelGroupParserData*)user_data;
-      g_assert (accel_data->object);
-
-      toplevel = gtk_widget_get_toplevel (GTK_WIDGET (accel_data->object));
-
-      _gtk_widget_buildable_finish_accelerator (GTK_WIDGET (buildable), toplevel, user_data);
+      return;
     }
 
-      g_slice_free (AccessibilitySubParserData, a11y_data);
+  AccelGroupParserData *accel_data = (AccelGroupParserData*)user_data;
+  g_assert (accel_data->object);
+
+  GtkWidget *toplevel = gtk_widget_get_toplevel (GTK_WIDGET (accel_data->object));
+
+  _gtk_widget_buildable_finish_accelerator (GTK_WIDGET (buildable), toplevel, user_data);
 }
 
 
