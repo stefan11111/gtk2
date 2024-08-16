@@ -88,6 +88,7 @@ main (int   argc,
       char *argv[])
 {
   gtk_test_init (&argc, &argv);
+  if ((sizeof(void*) == 8 && CHAR_BIT == 8))
   g_test_add_func ("/expander/click-expander", test_click_expander);
   g_test_add_func ("/expander/click-content-widget", test_click_content_widget);
   return g_test_run();
