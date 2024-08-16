@@ -1084,11 +1084,11 @@ AC_ARG_ENABLE(print,
 AM_CONDITIONAL(HAVE_PRINT, [test "x$enable_print" = "xyes"])
 
 AC_ARG_ENABLE(cups,
-              [AC_HELP_STRING([--disable-cups]
-                              [disable cups print backend])],,
+              [AC_HELP_STRING([--enable-cups]
+                              [enable cups print backend])],,
               [enable_cups=auto])
 
-if test "x$enable_cups" = "xno"; then
+if test "x$enable_cups" != "xyes"; then
   AM_CONDITIONAL(HAVE_CUPS, false)
 else
   AC_PATH_TOOL(CUPS_CONFIG, cups-config, no)
