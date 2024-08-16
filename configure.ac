@@ -150,13 +150,6 @@ AC_ARG_ENABLE(tests,
 
 AM_CONDITIONAL(BUILD_TESTS, [test "x$enable_tests" = "xyes"])
 
-AC_ARG_ENABLE(perf,
-              [AC_HELP_STRING([--enable-perf]
-                              [build pref])],,
-               [enable_perf=auto])
-
-AM_CONDITIONAL(BUILD_PERF, [test "x$enable_perf" = "xyes"])
-
 m4_define([debug_default],
           m4_if(m4_eval(gtk_minor_version % 2), [1], [yes], [minimum]))
 
@@ -1365,7 +1358,6 @@ printbackends/lpr/Makefile
 printbackends/file/Makefile
 printbackends/papi/Makefile
 printbackends/tests/Makefile
-perf/Makefile
 ])
 
 AC_OUTPUT

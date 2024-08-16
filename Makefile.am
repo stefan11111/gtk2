@@ -11,10 +11,6 @@ if BUILD_TESTS
 SRC_SUBDIRS += tests
 endif
 
-if BUILD_PERF
-SRC_SUBDIRS += perf
-endif
-
 SUBDIRS = $(SRC_SUBDIRS) m4macros build
 
 # require automake 1.4
