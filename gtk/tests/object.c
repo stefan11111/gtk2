@@ -313,7 +313,7 @@ main (int   argc,
         G_TYPE_IS_OBJECT (otypes[i]) &&
         !G_TYPE_IS_ABSTRACT (otypes[i]))
       {
-        if ((sizeof(void*) != 8 || CHAR_BIT != 8) && !strcmp(otypes[i], "GtkInvisible")) {
+        if ((sizeof(void*) != 8 || CHAR_BIT != 8) && !strcmp(g_type_name (otypes[i]), "GtkInvisible")) {
           continue;
         }
         gchar *testpath = g_strdup_printf ("/properties/%s", g_type_name (otypes[i]));
