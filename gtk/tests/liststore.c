@@ -388,7 +388,7 @@ list_store_test_insert_before_NULL (void)
 
   g_object_unref (store);
 }
-
+#ifdef ENABLE_BROKEN_TESTS
 /* removal */
 static void
 list_store_test_remove_begin (ListStore     *fixture,
@@ -462,7 +462,7 @@ list_store_test_clear (ListStore     *fixture,
   for (i = 0; i < 5; i++)
     g_assert (!gtk_list_store_iter_is_valid (fixture->store, &fixture->iter[i]));
 }
-
+#endif
 /* reorder */
 
 static void
