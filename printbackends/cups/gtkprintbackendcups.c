@@ -2525,7 +2525,7 @@ done:
 
   gdk_threads_leave ();
 }
-
+#if 0 /* unused */
 static void
 cups_request_avahi_printer_info (const gchar         *printer_uri,
                                  const gchar         *host,
@@ -2573,7 +2573,7 @@ cups_request_avahi_printer_info (const gchar         *printer_uri,
                             (GDestroyNotify) avahi_service_free);
     }
 }
-#if 0 /* unused */
+
 typedef struct
 {
   gchar               *printer_uri;
