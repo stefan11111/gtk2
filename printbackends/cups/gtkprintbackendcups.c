@@ -2573,7 +2573,7 @@ cups_request_avahi_printer_info (const gchar         *printer_uri,
                             (GDestroyNotify) avahi_service_free);
     }
 }
-
+#if 0 /* unused */
 typedef struct
 {
   gchar               *printer_uri;
@@ -2651,7 +2651,7 @@ avahi_create_browsers (GObject      *source_object,
                        gpointer      user_data)
 {
 }
-
+#endif
 static void
 avahi_request_printer_list (GtkPrintBackendCups *cups_backend)
 {
