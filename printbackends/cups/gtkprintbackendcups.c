@@ -2378,6 +2378,7 @@ set_default_printer (GtkPrintBackendCups *cups_backend,
 }
 
 #ifdef HAVE_CUPS_API_1_6
+#if 0 /* unused */
 typedef struct
 {
   gchar *name;
@@ -2525,7 +2526,7 @@ done:
 
   gdk_threads_leave ();
 }
-#if 0 /* unused */
+
 static void
 cups_request_avahi_printer_info (const gchar         *printer_uri,
                                  const gchar         *host,
