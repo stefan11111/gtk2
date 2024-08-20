@@ -11,7 +11,7 @@ if BUILD_TESTS
 SRC_SUBDIRS += tests
 endif
 
-SUBDIRS = $(SRC_SUBDIRS) m4macros build
+SUBDIRS = $(SRC_SUBDIRS) m4macros
 
 # require automake 1.4
 AUTOMAKE_OPTIONS = 1.7

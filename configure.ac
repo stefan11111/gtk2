@@ -1344,7 +1344,6 @@ gdk-2.0-uninstalled.pc
 gtk+-2.0-uninstalled.pc
 m4macros/Makefile
 tests/Makefile
-build/Makefile
 gdk/Makefile
 gdk/x11/Makefile
 gdk/directfb/Makefile
