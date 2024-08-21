@@ -5,15 +5,15 @@ da_expose (GtkWidget *widget,
            GdkEventExpose *event,
            gpointer user_data)
 {
-  if (!gtk_widget_is_drawable (widget)) {
-    return FALSE;
-  }
-
-  GdkPixmap *pixmap = gtk_offscreen_window_get_pixmap ((GtkOffscreenWindow *)user_data);
-  cairo_t *cr = gdk_cairo_create (widget->window);
-  gdk_cairo_set_source_pixmap (cr, pixmap, 50, 50);
-  cairo_paint (cr);
-  cairo_destroy (cr);
+  if (gtk_widget_is_drawable (widget))
+    {
+      GdkPixmap *pixmap = gtk_offscreen_window_get_pixmap ((GtkOffscreenWindow *)user_data);
+      cairo_t *cr = gdk_cairo_create (widget->window);
+      gdk_cairo_set_source_pixmap (cr, pixmap, 50, 50);
+      cairo_paint (cr);
+      cairo_destroy (cr);
+    }
+  return FALSE;
 }
 
 static gboolean
