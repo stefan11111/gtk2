@@ -235,7 +235,6 @@ gtk_offscreen_box_realize (GtkWidget *widget)
   GdkWindowAttr attributes;
   gint attributes_mask;
   gint border_width;
-  GtkRequisition child_requisition;
   int start_y = 0;
 
   gtk_widget_set_realized (widget, TRUE);
@@ -295,7 +294,6 @@ gtk_offscreen_box_realize (GtkWidget *widget)
 
   /* Child 2 */
   attributes.y = start_y;
-  child_requisition.width = child_requisition.height = 0;
   if (offscreen_box->child2 && gtk_widget_get_visible (offscreen_box->child2))
     {
       attributes.width = offscreen_box->child2->allocation.width;
