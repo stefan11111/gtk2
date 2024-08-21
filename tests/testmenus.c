@@ -68,7 +68,6 @@ create_menu (gint     depth,
 static gboolean
 change_item (gpointer user_data)
 {
-  GtkWidget *widget;
   GtkMenuShell *shell = GTK_MENU_SHELL (user_data);
   static gint step = 0;
 
@@ -76,7 +75,7 @@ change_item (gpointer user_data)
     {
       g_message ("Idle add");
 
-      widget = gtk_menu_item_new_with_label ("Foo");
+      GtkWidget *widget = gtk_menu_item_new_with_label ("Foo");
       gtk_widget_show (widget);
   
       gtk_menu_shell_append (shell, widget);
