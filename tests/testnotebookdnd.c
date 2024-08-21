@@ -104,16 +104,13 @@ on_notebook_drag_begin (GtkWidget      *widget,
 			GdkDragContext *context,
 			gpointer        data)
 {
-  GdkPixbuf *pixbuf;
-  guint page_num;
-
-  page_num = gtk_notebook_get_current_page (GTK_NOTEBOOK (widget));
+  guint page_num = gtk_notebook_get_current_page (GTK_NOTEBOOK (widget));
 
   if (page_num > 2)
     {
-      pixbuf = gtk_widget_render_icon (widget,
-  				   (page_num % 2) ? GTK_STOCK_HELP : GTK_STOCK_STOP,
-				   GTK_ICON_SIZE_DND, NULL);
+      GdkPixbuf *pixbuf = gtk_widget_render_icon (widget,
+  						  (page_num % 2) ? GTK_STOCK_HELP : GTK_STOCK_STOP,
+						  GTK_ICON_SIZE_DND, NULL);
 
       gtk_drag_set_icon_pixbuf (context, pixbuf, 0, 0);
       g_object_unref (pixbuf);
@@ -148,10 +145,9 @@ create_notebook (gchar           **labels,
 		 gint              packing,
 		 GtkPositionType   pos)
 {
-  GtkWidget *notebook, *title, *page;
   gint count = 0;
 
-  notebook = gtk_notebook_new ();
+  GtkWidget *notebook = gtk_notebook_new ();
   g_signal_connect (notebook, "create-window",
                     G_CALLBACK (window_creation_function), NULL);
 
@@ -162,10 +158,10 @@ create_notebook (gchar           **labels,
 
   while (*labels)
     {
-      page = gtk_entry_new ();
+      GtkWidget *page = gtk_entry_new ();
       gtk_entry_set_text (GTK_ENTRY (page), *labels);
 
-      title = gtk_label_new (*labels);
+      GtkWidget *title = gtk_label_new (*labels);
 
       gtk_notebook_append_page (GTK_NOTEBOOK (notebook), page, title);
       gtk_notebook_set_tab_reorderable (GTK_NOTEBOOK (notebook), page, TRUE);
