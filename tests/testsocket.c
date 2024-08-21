@@ -216,7 +216,6 @@ void
 add_child (GtkWidget *window,
 	   gboolean   active)
 {
-  Socket *socket;
   char *argv[3] = { "./testsocket_child", NULL, NULL };
   char buffer[20];
   int out_fd;
@@ -225,7 +224,7 @@ add_child (GtkWidget *window,
 
   if (active)
     {
-      socket = create_socket ();
+      Socket *socket = create_socket ();
       gtk_box_pack_start (GTK_BOX (box), socket->box, TRUE, TRUE, 0);
       gtk_widget_show (socket->box);
       sprintf(buffer, "%#lx", (gulong) gtk_socket_get_id (GTK_SOCKET (socket->socket)));

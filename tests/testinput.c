@@ -163,12 +163,10 @@ static guint32 motion_time;
 static void
 print_axes (GdkDevice *device, gdouble *axes)
 {
-  int i;
-  
   if (axes)
     {
       g_print ("%s ", device->name);
-      
+      int i;
       for (i=0; i<device->num_axes; i++)
 	g_print ("%g ", axes[i]);
 

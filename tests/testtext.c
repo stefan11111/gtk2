@@ -2015,11 +2015,9 @@ static gboolean
 save_buffer (Buffer *buffer)
 {
   GtkTextIter start, end;
-  gchar *chars;
   gboolean result = FALSE;
   gboolean have_backup = FALSE;
   gchar *bak_filename;
-  FILE *file;
 
   g_return_val_if_fail (buffer->filename != NULL, FALSE);
 
@@ -2039,7 +2037,7 @@ save_buffer (Buffer *buffer)
   else
     have_backup = TRUE;
   
-  file = fopen (buffer->filename, "w");
+  FILE *file = fopen (buffer->filename, "w");
   if (!file)
     {
       gchar *err = g_strdup_printf ("Cannot back up '%s' to '%s': %s",
@@ -2051,7 +2049,7 @@ save_buffer (Buffer *buffer)
       gtk_text_buffer_get_iter_at_offset (buffer->buffer, &start, 0);
       gtk_text_buffer_get_end_iter (buffer->buffer, &end);
   
-      chars = gtk_text_buffer_get_slice (buffer->buffer, &start, &end, FALSE);
+      gchar *chars = gtk_text_buffer_get_slice (buffer->buffer, &start, &end, FALSE);
 
       if (fputs (chars, file) == EOF ||
 	  fclose (file) == EOF)
@@ -2390,7 +2388,6 @@ hsv_to_rgb (gdouble *h,
     {
       *h = *v;
       *s = *v;
-      *v = *v; /* heh */
     }
   else
     {

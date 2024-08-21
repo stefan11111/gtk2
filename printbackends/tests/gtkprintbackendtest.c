@@ -216,7 +216,7 @@ output_test_from_settings (GtkPrintSettings *settings,
   if (uri == NULL)
     { 
       const gchar *extension;
-      gchar *name, *locale_name, *path;
+      gchar *name, *locale_name;
 
       if (default_format)
         extension = default_format;
@@ -236,7 +236,7 @@ output_test_from_settings (GtkPrintSettings *settings,
       if (locale_name != NULL)
         {
 	  gchar *current_dir = g_get_current_dir ();
-          path = g_build_filename (current_dir, locale_name, NULL);
+          gchar *path = g_build_filename (current_dir, locale_name, NULL);
           g_free (locale_name);
 
           uri = g_filename_to_uri (path, NULL, NULL);
@@ -453,7 +453,6 @@ error:
 static void
 gtk_print_backend_test_init (GtkPrintBackendTest *backend)
 {
-  GtkPrinter *printer;
   int i;
 
   /* make 100 of these printers */
@@ -462,7 +461,7 @@ gtk_print_backend_test_init (GtkPrintBackendTest *backend)
       char *name;
  
       name = g_strdup_printf ("%s %i", "Print to Test Printer", i);
-      printer = g_object_new (GTK_TYPE_PRINTER,
+      GtkPrinter *printer = g_object_new (GTK_TYPE_PRINTER,
 			      "name", name,
 			      "backend", backend,
 			      "is-virtual", FALSE, /* treat printer like a real one*/

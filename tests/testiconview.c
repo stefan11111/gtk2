@@ -31,7 +31,6 @@ fill_model (GtkTreeModel *model)
 {
   GdkPixbuf *pixbuf;
   int i;
-  char *str, *str2;
   GtkTreeIter iter;
   GtkListStore *store = GTK_LIST_STORE (model);
   gint32 size;
@@ -56,8 +55,8 @@ fill_model (GtkTreeModel *model)
       size = g_random_int_range (20, 70);
       pb = gdk_pixbuf_scale_simple (pixbuf, size, size, GDK_INTERP_NEAREST);
 
-      str = g_strdup_printf ("Icon %d", i);
-      str2 = g_strdup_printf ("Icon <b>%d</b>", i);	
+      gchar *str = g_strdup_printf ("Icon %d", i);
+      gchar *str2 = g_strdup_printf ("Icon <b>%d</b>", i);	
       gtk_list_store_prepend (store, &iter);
       gtk_list_store_set (store, &iter,
 			  0, pb,
@@ -133,7 +132,6 @@ add_n_items (GtkIconView *icon_list, gint n)
   GtkTreeIter iter;
   GtkListStore *store;
   GdkPixbuf *pixbuf;
-  gchar *str, *str2;
   gint i;
 
   store = GTK_LIST_STORE (gtk_icon_view_get_model (icon_list));
@@ -142,8 +140,8 @@ add_n_items (GtkIconView *icon_list, gint n)
 
   for (i = 0; i < n; i++)
     {
-      str = g_strdup_printf ("Icon %d", count);
-      str2 = g_strdup_printf ("Icon <b>%d</b>", count);	
+      gchar *str = g_strdup_printf ("Icon %d", count);
+      gchar *str2 = g_strdup_printf ("Icon <b>%d</b>", count);	
       gtk_list_store_prepend (store, &iter);
       gtk_list_store_set (store, &iter,
 			  0, pixbuf,
@@ -340,13 +338,12 @@ do_popup_menu (GtkWidget      *icon_list,
   GtkTreePath *path = NULL;
   int button, event_time;
   ItemData *data;
-  GList *list;
 
   if (event)
     path = gtk_icon_view_get_path_at_pos (icon_view, event->x, event->y);
   else
     {
-      list = gtk_icon_view_get_selected_items (icon_view);
+      GList *list = gtk_icon_view_get_selected_items (icon_view);
 
       if (list)
         {

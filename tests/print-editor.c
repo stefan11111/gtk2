@@ -149,7 +149,6 @@ do_open (GtkAction *action)
 {
   GtkWidget *dialog;
   gint response;
-  char *open_filename;
   
   dialog = gtk_file_chooser_dialog_new ("Select file",
 					GTK_WINDOW (main_window),
@@ -162,7 +161,7 @@ do_open (GtkAction *action)
 
   if (response == GTK_RESPONSE_OK)
     {
-      open_filename = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (dialog));
+      char *open_filename = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (dialog));
       load_file (open_filename);
       g_free (open_filename);
     }
@@ -191,13 +190,13 @@ save_file (const char *save_filename)
     }
   else
     {
-      error_dialog = gtk_message_dialog_new (GTK_WINDOW (main_window),
-					     GTK_DIALOG_DESTROY_WITH_PARENT,
-					     GTK_MESSAGE_ERROR,
-					     GTK_BUTTONS_CLOSE,
-					     "Error saving to file %s:\n%s",
-					     filename,
-					     error->message);
+      GtkWidget *error_dialog = gtk_message_dialog_new (GTK_WINDOW (main_window),
+							GTK_DIALOG_DESTROY_WITH_PARENT,
+							GTK_MESSAGE_ERROR,
+							GTK_BUTTONS_CLOSE,
+							"Error saving to file %s:\n%s",
+							filename,
+							error->message);
       
       g_signal_connect (error_dialog, "response", G_CALLBACK (gtk_widget_destroy), NULL);
       gtk_widget_show (error_dialog);
@@ -211,7 +210,6 @@ do_save_as (GtkAction *action)
 {
   GtkWidget *dialog;
   gint response;
-  char *save_filename;
   
   dialog = gtk_file_chooser_dialog_new ("Select file",
 					GTK_WINDOW (main_window),
@@ -224,7 +222,7 @@ do_save_as (GtkAction *action)
 
   if (response == GTK_RESPONSE_OK)
     {
-      save_filename = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (dialog));
+      char *save_filename = gtk_file_chooser_get_filename (GTK_FILE_CHOOSER (dialog));
       save_file (save_filename);
       g_free (save_filename);
     }
@@ -255,7 +253,6 @@ begin_print (GtkPrintOperation *operation,
 	     PrintData *print_data)
 {
   PangoFontDescription *desc;
-  PangoLayoutLine *layout_line;
   double width, height;
   double page_height;
   GList *page_breaks;
@@ -285,7 +282,7 @@ begin_print (GtkPrintOperation *operation,
       PangoRectangle ink_rect, logical_rect;
       double line_height;
       
-      layout_line = pango_layout_get_line (print_data->layout, line);
+      PangoLayoutLine *layout_line = pango_layout_get_line (print_data->layout, line);
       pango_layout_line_get_extents (layout_line, &ink_rect, &logical_rect);
 
       line_height = logical_rect.height / 1024.0;
@@ -341,15 +338,13 @@ draw_page (GtkPrintOperation *operation,
   do
     {
       PangoRectangle   logical_rect;
-      PangoLayoutLine *line;
-      int              baseline;
 
       if (i >= start)
 	{
-	  line = pango_layout_iter_get_line (iter);
+	  PangoLayoutLine *line = pango_layout_iter_get_line (iter);
 
 	  pango_layout_iter_get_line_extents (iter, NULL, &logical_rect);
-	  baseline = pango_layout_iter_get_baseline (iter);
+	  int baseline = pango_layout_iter_get_baseline (iter);
 	  
 	  if (i == start)
 	    start_pos = logical_rect.y / 1024.0;
