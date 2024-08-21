@@ -559,7 +559,7 @@ struct {
 int
 main (int argc, gchar *argv[])
 {
-  GtkWidget *window, *box, *button;
+  GtkWidget *window, *box;
   gint i;
 
   gtk_init (&argc, &argv);
@@ -579,7 +579,7 @@ main (int argc, gchar *argv[])
 
   for (i = 0; i < G_N_ELEMENTS (buttons); i++)
     {
-      button = gtk_button_new_with_label (buttons[i].text);
+      GtkWidget *button = gtk_button_new_with_label (buttons[i].text);
 
       if (buttons[i].func)
 	g_signal_connect (G_OBJECT (button), "clicked",

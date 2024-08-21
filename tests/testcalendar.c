@@ -244,19 +244,15 @@ calendar_toggle_flag (GtkWidget    *toggle,
 void calendar_select_font (GtkWidget    *button,
                                  CalendarData *calendar)
 {
-  const char *font = NULL;
-  GtkRcStyle *style;
+  const char *font = calendar->window ? gtk_font_button_get_font_name (GTK_FONT_BUTTON (button)) : NULL;
 
-  if (calendar->window)
-    font = gtk_font_button_get_font_name (GTK_FONT_BUTTON (button));
-
-  if (font)
-	{
-	  style = gtk_rc_style_new ();
-	  pango_font_description_free (style->font_desc);
-      style->font_desc = pango_font_description_from_string (font);
-	  gtk_widget_modify_style (calendar->window, style);
-	}
+  if (!font) {
+     return;
+  }
+  GtkRcStyle *style = gtk_rc_style_new ();
+  pango_font_description_free (style->font_desc);
+  style->font_desc = pango_font_description_from_string (font);
+  gtk_widget_modify_style (calendar->window, style);
 }
 
 static gchar*

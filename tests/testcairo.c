@@ -59,8 +59,6 @@ fill_checks (cairo_t *cr,
              int x,     int y,
              int width, int height)
 {
-  int i, j;
-  
 #define CHECK_SIZE 32
 
   cairo_rectangle (cr, x, y, width, height);
@@ -68,12 +66,12 @@ fill_checks (cairo_t *cr,
   cairo_fill (cr);
 
   /* Only works for CHECK_SIZE a power of 2 */
-  j = x & (-CHECK_SIZE);
+  int j;
   
-  for (; j < height; j += CHECK_SIZE)
+  for (j = x & (-CHECK_SIZE); j < height; j += CHECK_SIZE)
     {
-      i = y & (-CHECK_SIZE);
-      for (; i < width; i += CHECK_SIZE)
+      int i;
+      for (i = y & (-CHECK_SIZE); i < width; i += CHECK_SIZE)
 	if ((i / CHECK_SIZE + j / CHECK_SIZE) % 2 == 0)
 	  cairo_rectangle (cr, i, j, CHECK_SIZE, CHECK_SIZE);
     }

@@ -30,25 +30,21 @@
 static GdkPixbuf *
 create_color_pixbuf (const char *color)
 {
-        GdkPixbuf *pixbuf;
         GdkColor col;
-
-        int x;
-        int num;
-        guchar *pixels, *p;
 
         if (!gdk_color_parse (color, &col))
                 return NULL;
 
-        pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB,
+        GdkPixbuf *pixbuf = gdk_pixbuf_new (GDK_COLORSPACE_RGB,
                                  FALSE, 8,
                                  16, 16);
 
-        p = pixels = gdk_pixbuf_get_pixels (pixbuf);
+        guchar *p =  gdk_pixbuf_get_pixels (pixbuf);
 
-        num = gdk_pixbuf_get_width (pixbuf) *
+        int num = gdk_pixbuf_get_width (pixbuf) *
                 gdk_pixbuf_get_height (pixbuf);
 
+        int x;
         for (x = 0; x < num; x++) {
                 p[0] = col.red / 65535.0 * 255;
                 p[1] = col.green / 65535.0 * 255;
