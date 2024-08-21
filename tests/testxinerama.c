@@ -70,6 +70,7 @@ monitors_changed_cb (GdkScreen *screen,
 
 int
 main (int argc, char *argv[])
+{
   gtk_init (&argc, &argv);
 
   GdkScreen *screen = gdk_screen_get_default ();
