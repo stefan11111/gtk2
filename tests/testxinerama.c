@@ -70,14 +70,9 @@ monitors_changed_cb (GdkScreen *screen,
 
 int
 main (int argc, char *argv[])
-{
-  GtkWidget *window, *label, *vbox, *button;
-  GdkScreen *screen;
-  gint i;
-
   gtk_init (&argc, &argv);
 
-  screen = gdk_screen_get_default ();
+  GdkScreen *screen = gdk_screen_get_default ();
 
   num_monitors = gdk_screen_get_n_monitors (screen);
   if (num_monitors == 1)
@@ -85,19 +80,20 @@ main (int argc, char *argv[])
 
   primary_monitor = gdk_screen_get_primary_monitor (screen);
 
+  gint i;
   for (i = 0; i < num_monitors; i++)
     {
       GdkRectangle monitor; 
       gchar *str;
       
-      window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+      GtkWidget *window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
       
       gdk_screen_get_monitor_geometry (screen, i, &monitor);
       gtk_window_set_default_size (GTK_WINDOW (window), 200, 200);
       gtk_window_move (GTK_WINDOW (window), (monitor.width - 200) / 2 + monitor.x,
 		       (monitor.height - 200) / 2 + monitor.y);
       
-      label = gtk_label_new (NULL);
+      GtkWidget *label = gtk_label_new (NULL);
       str = g_strdup_printf ("<big><span foreground='white' background='black'>"
 			     "Monitor %d of %d</span></big>\n"
 			     "<i>Width - Height       </i>: (%d,%d)\n"
@@ -109,10 +105,10 @@ main (int argc, char *argv[])
                              primary_monitor);
       gtk_label_set_markup (GTK_LABEL (label), str);
       g_free (str);
-      vbox = gtk_vbox_new (TRUE, 1);
+      GtkWidget *vbox = gtk_vbox_new (TRUE, 1);
       gtk_container_add (GTK_CONTAINER (window), vbox);
       gtk_container_add (GTK_CONTAINER (vbox), label);
-      button = gtk_button_new_with_label ("Query current monitor");
+      GtkWidget *button = gtk_button_new_with_label ("Query current monitor");
       g_signal_connect (button, "clicked", G_CALLBACK (request), label);
       gtk_container_add (GTK_CONTAINER (vbox), button);
       button = gtk_button_new_with_label ("Close");

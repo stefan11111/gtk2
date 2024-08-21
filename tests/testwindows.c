@@ -284,13 +284,11 @@ save_children (GString *s,
 	       GdkWindow *window)
 {
   GList *l;
-  GdkWindow *child;
-
   for (l = g_list_reverse (gdk_window_peek_children (window));
        l != NULL;
        l = l->next)
     {
-      child = l->data;
+      GdkWindow *child = l->data;
 
       save_window (s, child);
     }
@@ -301,15 +299,11 @@ static void
 save_clicked (GtkWidget *button, 
 	      gpointer data)
 {
-  GString *s;
-  GtkWidget *dialog;
-  GFile *file;
-
-  s = g_string_new ("");
+  GString *s = g_string_new ("");
 
   save_children (s, darea->window);
 
-  dialog = gtk_file_chooser_dialog_new ("Filename for window data",
+  GtkWidget *dialog = gtk_file_chooser_dialog_new ("Filename for window data",
 					NULL,
 					GTK_FILE_CHOOSER_ACTION_SAVE,
 					GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL,
@@ -320,7 +314,7 @@ save_clicked (GtkWidget *button,
   
   if (gtk_dialog_run (GTK_DIALOG (dialog)) == GTK_RESPONSE_ACCEPT)
     {
-      file = gtk_file_chooser_get_file (GTK_FILE_CHOOSER (dialog));
+      GFile *file = gtk_file_chooser_get_file (GTK_FILE_CHOOSER (dialog));
 
       g_file_replace_contents (file,
 			       s->str, s->len,
@@ -357,7 +351,6 @@ parse_window (GdkWindow *parent, char **lines)
   int x, y, w, h, r, g, b, native, n_children;
   GdkWindow *window;
   GdkColor color;
-  int i;
 
   if (*lines == NULL)
     return lines;
@@ -372,7 +365,7 @@ parse_window (GdkWindow *parent, char **lines)
       window = create_window (parent, x, y, w, h, &color);
       if (native)
 	gdk_window_ensure_native (window);
-      
+      int i;
       for (i = 0; i < n_children; i++)
 	lines = parse_window (window, lines);
     }
@@ -406,22 +399,15 @@ static void
 move_window_clicked (GtkWidget *button, 
 		     gpointer data)
 {
-  GdkWindow *window;
-  GtkDirectionType direction;
-  GList *selected, *l;
-  gint x, y;
-
-  direction = GPOINTER_TO_INT (data);
-    
-  selected = get_selected_windows ();
-
+  GList *selected = get_selected_windows ();
+  GList *l;
   for (l = selected; l != NULL; l = l->next)
     {
-      window = l->data;
-      
+      GdkWindow *window = l->data;
+      gint x, y;
       gdk_window_get_position (window, &x, &y);
-      
-      switch (direction) {
+
+      switch (GPOINTER_TO_INT (data)) {
       case GTK_DIR_UP:
 	y -= 10;
 	break;
