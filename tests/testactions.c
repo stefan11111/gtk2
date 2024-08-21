@@ -292,9 +292,7 @@ add_cb (GtkWidget *button,
 	GtkUIManager *manager)
 {
   GtkWidget *spinbutton;
-  GtkAction *action;
   int i, num;
-  char *name, *label;
   
   if (ui_id != 0 || dag != NULL)
     return;
@@ -309,10 +307,10 @@ add_cb (GtkWidget *button,
   
   for (i = 0; i < num; i++)
     {
-      name = g_strdup_printf ("DynAction%u", i);
-      label = g_strdup_printf ("Dynamic Item %d", i);
+      char *name = g_strdup_printf ("DynAction%u", i);
+      char *label = g_strdup_printf ("Dynamic Item %d", i);
       
-      action = g_object_new (GTK_TYPE_ACTION,
+      GtkAction *action = g_object_new (GTK_TYPE_ACTION,
 			     "name", name,
 			     "label", label,
 			     NULL);
