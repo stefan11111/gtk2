@@ -32,7 +32,6 @@ load_image (gpointer  data,
 {
   gchar *filename = data;
   FILE *file;
-  int nbytes;
   guchar buf[1024];
   size_t bufsize = 1024;
   GdkPixbufLoader *loader;
@@ -48,7 +47,7 @@ load_image (gpointer  data,
   if (verbose) g_print ("%p start image %s\n", self, filename);
   while (!feof (file)) 
     {
-      nbytes = fread (buf, 1, bufsize, file);
+      int nbytes = fread (buf, 1, bufsize, file);
       if (!gdk_pixbuf_loader_write (loader, buf, nbytes, &error)) 
 	{
 	  g_warning ("Error writing %s to loader: %s", filename, error->message);

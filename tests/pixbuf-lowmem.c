@@ -137,12 +137,11 @@ mem_test (const gchar *bytes, gsize len)
 {
   gboolean did_fail = FALSE;
   GError *err = NULL;
-  GdkPixbufLoader *loader; 
   GList *loaders = NULL;
   GList *i;
   
   do {
-    loader = gdk_pixbuf_loader_new ();
+    GdkPixbufLoader *loader = gdk_pixbuf_loader_new ();
     gdk_pixbuf_loader_write (loader, (guchar *) bytes, len, &err);
     if (err)
       {

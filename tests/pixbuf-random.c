@@ -28,7 +28,6 @@
 static void
 assault (const guchar *header, gsize header_size, int n_images)
 {
-  FILE *f;
   enum { N_CHARACTERS = 10000 };
 
   int j;
@@ -39,7 +38,7 @@ assault (const guchar *header, gsize header_size, int n_images)
       int i;
       GdkPixbufLoader *loader;
       
-      f = fopen ("pixbuf-random-image", "w");
+      FILE *f = fopen ("pixbuf-random-image", "w");
       if (!f)
 	{
 	  perror ("fopen");
