@@ -214,7 +214,7 @@ test_run (gchar        *title,
   gint i, k, d, items;
   GTimer *timer;
   gdouble elapsed;
-  size_t uordblks_before = 0, memused;
+  size_t uordblks_before, memused;
 
   g_print ("%s (average over %d runs, time in milliseconds)\n"
 	   "items \ttime      \ttime/item \tused memory\n", title, repeats);

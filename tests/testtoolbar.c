@@ -80,14 +80,11 @@ change_show_arrow (GtkWidget *button, GtkWidget *toolbar)
 static void
 set_toolbar_style_toggled (GtkCheckButton *button, GtkToolbar *toolbar)
 {
-  GtkWidget *option_menu;
-  int style;
-  
-  option_menu = g_object_get_data (G_OBJECT (button), "option-menu");
+  GtkWidget *option_menu = g_object_get_data (G_OBJECT (button), "option-menu");
 
   if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button)))
     {
-      style = gtk_option_menu_get_history (GTK_OPTION_MENU (option_menu));
+      int style = gtk_option_menu_get_history (GTK_OPTION_MENU (option_menu));
 
       gtk_toolbar_set_style (toolbar, style);
       gtk_widget_set_sensitive (option_menu, TRUE);
@@ -315,14 +312,11 @@ bold_toggled (GtkToggleToolButton *button)
 static void
 set_icon_size_toggled (GtkCheckButton *button, GtkToolbar *toolbar)
 {
-  GtkWidget *option_menu;
-  int icon_size;
-  
-  option_menu = g_object_get_data (G_OBJECT (button), "option-menu");
+  GtkWidget *option_menu = g_object_get_data (G_OBJECT (button), "option-menu");
 
   if (gtk_toggle_button_get_active (GTK_TOGGLE_BUTTON (button)))
     {
-      icon_size = gtk_option_menu_get_history (GTK_OPTION_MENU (option_menu));
+      int icon_size = gtk_option_menu_get_history (GTK_OPTION_MENU (option_menu));
       icon_size += GTK_ICON_SIZE_SMALL_TOOLBAR;
 
       gtk_toolbar_set_icon_size (toolbar, icon_size);
@@ -556,7 +550,6 @@ main (gint argc, gchar **argv)
   gtk_widget_set_sensitive (option_menu, FALSE);  
   g_object_set_data (G_OBJECT (checkbox), "option-menu", option_menu);
   
-  menu = gtk_menu_new();
   for (i = 0; i < G_N_ELEMENTS (toolbar_styles); i++)
     gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (option_menu), toolbar_styles[i]);
   gtk_combo_box_set_active (GTK_COMBO_BOX (option_menu),
@@ -599,8 +592,7 @@ main (gint argc, gchar **argv)
   menu = gtk_menu_new ();
   for (i = 0; i < 20; i++)
     {
-      char *text;
-      text = g_strdup_printf ("Menuitem %d", i);
+      char *text = g_strdup_printf ("Menuitem %d", i);
       menuitem = gtk_menu_item_new_with_label (text);
       g_free (text);
       gtk_widget_show (menuitem);

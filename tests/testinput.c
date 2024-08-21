@@ -210,19 +210,18 @@ key_press_event (GtkWidget *widget, GdkEventKey *event)
 static gint
 motion_notify_event (GtkWidget *widget, GdkEventMotion *event)
 {
-  GdkTimeCoord **events;
-  int n_events;
-  int i;
-
   current_device = event->device;
   cursor_proximity = TRUE;
 
   if (event->state & GDK_BUTTON1_MASK && pixmap != NULL)
     {
+      GdkTimeCoord **events;
+      int n_events;
       if (gdk_device_get_history (event->device, event->window, 
 				  motion_time, event->time,
 				  &events, &n_events))
 	{
+	  int i;
 	  for (i=0; i<n_events; i++)
 	    {
 	      double x = 0, y = 0, pressure = 0.5;

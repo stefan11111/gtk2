@@ -188,10 +188,9 @@ create_notebook_with_notebooks (gchar           **labels,
 			        gint              packing,
 			        GtkPositionType   pos)
 {
-  GtkWidget *notebook, *title, *page;
   gint count = 0;
 
-  notebook = gtk_notebook_new ();
+  GtkWidget *notebook = gtk_notebook_new ();
   g_signal_connect (notebook, "create-window",
                     G_CALLBACK (window_creation_function), NULL);
 
@@ -202,10 +201,10 @@ create_notebook_with_notebooks (gchar           **labels,
 
   while (*labels)
     {
-      page = create_notebook (labels, group, packing, pos);
+      GtkWidget *page = create_notebook (labels, group, packing, pos);
       gtk_notebook_popup_enable (GTK_NOTEBOOK (page));
       
-      title = gtk_label_new (*labels);
+      GtkWidget *title = gtk_label_new (*labels);
 
       gtk_notebook_append_page (GTK_NOTEBOOK (notebook), page, title);
       gtk_notebook_set_tab_reorderable (GTK_NOTEBOOK (notebook), page, TRUE);

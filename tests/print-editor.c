@@ -173,10 +173,7 @@ static void
 save_file (const char *save_filename)
 {
   char *text = get_text ();
-  GtkWidget *error_dialog;
-  GError *error;
-
-  error = NULL;
+  GError *error = NULL;
   if (g_file_set_contents (save_filename,
 			   text, -1, &error))
     {
