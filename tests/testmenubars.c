@@ -92,16 +92,16 @@ int
 main (int argc, char **argv)
 {
   static GtkWidget *window = NULL;
-  GtkWidget *box1;
-  GtkWidget *box2;
-  GtkWidget *box3;
-  GtkWidget *button;
-  GtkWidget *separator;
 
   gtk_init (&argc, &argv);
   
   if (!window)
     {
+      GtkWidget *box1;
+      GtkWidget *box2;
+      GtkWidget *box3;
+      GtkWidget *button;
+      GtkWidget *separator;
       GtkWidget *menubar1;
       GtkWidget *menubar2;
       GtkWidget *menubar3;
@@ -174,6 +174,7 @@ main (int argc, char **argv)
       gtk_widget_destroy (window);
       window = NULL;
     }
+
 
   gtk_main ();
 
