@@ -145,10 +145,7 @@ timeout_toggle_toggled (GtkToggleButton *toggle)
 static void
 icon_activated (GtkStatusIcon *icon)
 {
-  GtkWidget *dialog;
-  GtkWidget *toggle;
-
-  dialog = g_object_get_data (G_OBJECT (icon), "test-status-icon-dialog");
+  GtkWidget *dialog = g_object_get_data (G_OBJECT (icon), "test-status-icon-dialog");
   if (dialog == NULL)
     {
       dialog = gtk_message_dialog_new (NULL, 0,
@@ -167,7 +164,7 @@ icon_activated (GtkStatusIcon *icon)
       g_signal_connect (dialog, "delete_event", 
 			G_CALLBACK (gtk_widget_hide_on_delete), NULL);
 
-      toggle = gtk_toggle_button_new_with_mnemonic ("_Show the icon");
+      GtkWidget *toggle = gtk_toggle_button_new_with_mnemonic ("_Show the icon");
       gtk_box_pack_end (GTK_BOX (GTK_DIALOG (dialog)->vbox), toggle, TRUE, TRUE, 6);
       gtk_widget_show (toggle);
 
