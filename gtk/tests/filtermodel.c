@@ -571,8 +571,6 @@ filter_test_append_refilter_signals_recurse (FilterTest  *fixture,
   if (rows_deleted == LEVEL_LENGTH
       && gtk_tree_path_get_depth (filter_path) > 1)
     {
-      GtkTreePath *real_path;
-
       gtk_tree_path_up (store_path);
       gtk_tree_path_up (filter_path);
 
@@ -582,7 +580,7 @@ filter_test_append_refilter_signals_recurse (FilterTest  *fixture,
               && gtk_tree_path_is_descendant (store_path, root_path)
               && gtk_tree_path_compare (store_path, root_path)))
         {
-          real_path = strip_virtual_root (filter_path, root_path);
+          GtkTreePath *real_path = strip_virtual_root (filter_path, root_path);
           signal_monitor_append_signal_path (fixture->monitor,
                                              ROW_HAS_CHILD_TOGGLED,
                                              real_path);
