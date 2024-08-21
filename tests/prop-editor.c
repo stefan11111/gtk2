@@ -945,14 +945,8 @@ static GtkWidget *
 properties_from_type (GObject *object,
 		      GType    type)
 {
-  GtkWidget *prop_edit;
-  GtkWidget *label;
-  GtkWidget *sw;
-  GtkWidget *vbox;
-  GtkWidget *table;
   GParamSpec **specs;
   guint n_specs;
-  int i;
 
   if (G_TYPE_IS_INTERFACE (type))
     {
@@ -970,17 +964,17 @@ properties_from_type (GObject *object,
     return NULL;
   }
   
-  table = gtk_table_new (n_specs, 2, FALSE);
+  GtkWidget *table = gtk_table_new (n_specs, 2, FALSE);
   gtk_table_set_col_spacing (GTK_TABLE (table), 0, 10);
   gtk_table_set_row_spacings (GTK_TABLE (table), 3);
 
-  i = 0;
+  unsigned int i = 0;
   while (i < n_specs)
     {
       GParamSpec *spec = specs[i];
       gboolean can_modify;
       
-      prop_edit = NULL;
+      GtkWidget *prop_edit = NULL;
 
       can_modify = ((spec->flags & G_PARAM_WRITABLE) != 0 &&
                     (spec->flags & G_PARAM_CONSTRUCT_ONLY) == 0);
@@ -999,7 +993,7 @@ properties_from_type (GObject *object,
 	  continue;
 	}
 
-      label = gtk_label_new (g_param_spec_get_nick (spec));
+      GtkWidget *label = gtk_label_new (g_param_spec_get_nick (spec));
       gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
       gtk_table_attach_defaults (GTK_TABLE (table), label, 0, 1, i, i + 1);
       
@@ -1022,10 +1016,10 @@ properties_from_type (GObject *object,
     }
 
 
-  vbox = gtk_vbox_new (FALSE, 0);
+  GtkWidget *vbox = gtk_vbox_new (FALSE, 0);
   gtk_box_pack_start (GTK_BOX (vbox), table, FALSE, FALSE, 0);
 
-  sw = gtk_scrolled_window_new (NULL, NULL);
+  GtkWidget *sw = gtk_scrolled_window_new (NULL, NULL);
   gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
                                   GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
   
@@ -1127,19 +1121,17 @@ child_properties (GtkWidget *button,
 static GtkWidget *
 children_from_object (GObject *object)
 {
-  GList *children, *c;
-  GtkWidget *table, *prop_edit, *button, *vbox, *sw;
-  gint i;
-
   if (!GTK_IS_CONTAINER (object))
     return NULL;
 
-  children = gtk_container_get_children (GTK_CONTAINER (object));
+  GList *children = gtk_container_get_children (GTK_CONTAINER (object));
 
-  table = gtk_table_new (g_list_length (children), 2, FALSE);
+  GtkWidget *table = gtk_table_new (g_list_length (children), 2, FALSE);
   gtk_table_set_col_spacing (GTK_TABLE (table), 0, 10);
   gtk_table_set_row_spacings (GTK_TABLE (table), 3);
- 
+
+  GList *c;
+  gint i;
   for (c = children, i = 0; c; c = c->next, i++)
     {
       object = c->data;
@@ -1148,12 +1140,12 @@ children_from_object (GObject *object)
       gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
       gtk_table_attach_defaults (GTK_TABLE (table), label, 0, 1, i, i + 1);
 
-      prop_edit = gtk_hbox_new (FALSE, 5);
+      GtkWidget *prop_edit = gtk_hbox_new (FALSE, 5);
 
       gchar *str = object_label (object, NULL);
       label = gtk_label_new (str);
       g_free (str);
-      button = gtk_button_new_with_label ("Properties");
+      GtkWidget *button = gtk_button_new_with_label ("Properties");
       g_signal_connect (button, "clicked",
                         G_CALLBACK (child_properties),
                         object);
@@ -1164,10 +1156,10 @@ children_from_object (GObject *object)
       gtk_table_attach_defaults (GTK_TABLE (table), prop_edit, 1, 2, i, i + 1);
     }
 
-  vbox = gtk_vbox_new (FALSE, 0);
+  GtkWidget *vbox = gtk_vbox_new (FALSE, 0);
   gtk_box_pack_start (GTK_BOX (vbox), table, FALSE, FALSE, 0);
 
-  sw = gtk_scrolled_window_new (NULL, NULL);
+  GtkWidget *sw = gtk_scrolled_window_new (NULL, NULL);
   gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
                                   GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
   
@@ -1181,34 +1173,31 @@ children_from_object (GObject *object)
 static GtkWidget *
 cells_from_object (GObject *object)
 {
-  GList *cells, *c;
-  GtkWidget *table, *label, *prop_edit, *button, *vbox, *sw;
-  gchar *str;
-  gint i;
-
   if (!GTK_IS_CELL_LAYOUT (object))
     return NULL;
 
-  cells = gtk_cell_layout_get_cells (GTK_CELL_LAYOUT (object));
+  GList *cells = gtk_cell_layout_get_cells (GTK_CELL_LAYOUT (object));
 
-  table = gtk_table_new (g_list_length (cells), 2, FALSE);
+  GtkWidget *table = gtk_table_new (g_list_length (cells), 2, FALSE);
   gtk_table_set_col_spacing (GTK_TABLE (table), 0, 10);
   gtk_table_set_row_spacings (GTK_TABLE (table), 3);
- 
+
+  GList *c;
+  gint i;
   for (c = cells, i = 0; c; c = c->next, i++)
     {
       object = c->data;
 
-      label = gtk_label_new ("Cell");
+      GtkWidget *label = gtk_label_new ("Cell");
       gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
       gtk_table_attach_defaults (GTK_TABLE (table), label, 0, 1, i, i + 1);
 
-      prop_edit = gtk_hbox_new (FALSE, 5);
+      GtkWidget *prop_edit = gtk_hbox_new (FALSE, 5);
 
-      str = object_label (object, NULL);
+      gchar *str = object_label (object, NULL);
       label = gtk_label_new (str);
       g_free (str);
-      button = gtk_button_new_with_label ("Properties");
+      GtkWidget *button = gtk_button_new_with_label ("Properties");
       g_signal_connect (button, "clicked",
                         G_CALLBACK (child_properties),
                         object);
@@ -1219,10 +1208,10 @@ cells_from_object (GObject *object)
       gtk_table_attach_defaults (GTK_TABLE (table), prop_edit, 1, 2, i, i + 1);
     }
 
-  vbox = gtk_vbox_new (FALSE, 0);
+  GtkWidget *vbox = gtk_vbox_new (FALSE, 0);
   gtk_box_pack_start (GTK_BOX (vbox), table, FALSE, FALSE, 0);
 
-  sw = gtk_scrolled_window_new (NULL, NULL);
+  GtkWidget *sw = gtk_scrolled_window_new (NULL, NULL);
   gtk_scrolled_window_set_policy (GTK_SCROLLED_WINDOW (sw),
                                   GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
   
