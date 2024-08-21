@@ -52,8 +52,10 @@ combochange_log (const char *fmt,
   int i;
 
   va_start (vap, fmt);
-  
+
   msg = g_strdup_vprintf (fmt, vap);
+
+  va_end(vap);
 
   gtk_text_buffer_get_end_iter (buffer, &iter);
   gtk_text_buffer_insert (buffer, &iter, msg, -1);
