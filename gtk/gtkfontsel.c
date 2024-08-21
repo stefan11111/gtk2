@@ -55,7 +55,6 @@
 #include "gtkvbox.h"
 #include "gtkscrolledwindow.h"
 #include "gtkintl.h"
-#include "gtkaccessible.h"
 #include "gtkprivate.h"
 #include "gtkbuildable.h"
 

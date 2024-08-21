@@ -1,6 +1,10 @@
 include $(top_srcdir)/Makefile.decl
 
-SUBDIRS = file lpr
+SUBDIRS = 
+
+if HAVE_PRINT
+SUBDIRS += file lpr
+endif
 
 if HAVE_CUPS
 SUBDIRS += cups
@@ -10,6 +14,11 @@ if HAVE_PAPI
 SUBDIRS += papi
 endif
 
-DIST_SUBDIRS = cups file lpr papi
+if BUILD_TESTS
+SUBDIRS += tests
+endif
+
+
+DIST_SUBDIRS = $(SUBDIRS)
 
 -include $(top_srcdir)/git.mk

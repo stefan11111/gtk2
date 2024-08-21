@@ -49,7 +49,6 @@
 
 #include "gtkassistant.h"
 
-#include "gtkaccessible.h"
 #include "gtkbutton.h"
 #include "gtkhbox.h"
 #include "gtkhbbox.h"
@@ -140,9 +139,6 @@ static void     gtk_assistant_get_child_property (GtkContainer      *container,
 						  guint              property_id,
 						  GValue            *value,
 						  GParamSpec        *pspec);
-
-static void *gtk_assistant_get_accessible   (GtkWidget         *widget);
-
 static void       gtk_assistant_buildable_interface_init     (GtkBuildableIface *iface);
 static GObject   *gtk_assistant_buildable_get_internal_child (GtkBuildable  *buildable,
                                                               GtkBuilder    *builder,
@@ -213,7 +209,7 @@ gtk_assistant_class_init (GtkAssistantClass *class)
   widget_class->delete_event = gtk_assistant_delete_event;
   widget_class->expose_event = gtk_assistant_expose;
   widget_class->focus = gtk_assistant_focus;
-  widget_class->get_accessible = gtk_assistant_get_accessible;
+  widget_class->get_accessible = NULL;
 
   container_class->add = gtk_assistant_add;
   container_class->remove = gtk_assistant_remove;
@@ -2303,15 +2299,6 @@ gtk_assistant_commit (GtkAssistant *assistant)
   set_assistant_buttons_state (assistant);
 }
 
-
-
-/* accessible implementation */
-
-static void *
-gtk_assistant_get_accessible (GtkWidget *widget)
-{
-  return GTK_WIDGET_CLASS (gtk_assistant_parent_class)->get_accessible (widget);
-}
 
 
 static GtkBuildableIface *parent_buildable_iface;

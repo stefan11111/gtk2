@@ -2378,6 +2378,7 @@ set_default_printer (GtkPrintBackendCups *cups_backend,
 }
 
 #ifdef HAVE_CUPS_API_1_6
+#if 0 /* unused */
 typedef struct
 {
   gchar *name;
@@ -2651,7 +2652,7 @@ avahi_create_browsers (GObject      *source_object,
                        gpointer      user_data)
 {
 }
-
+#endif
 static void
 avahi_request_printer_list (GtkPrintBackendCups *cups_backend)
 {
@@ -3009,7 +3010,6 @@ cups_request_ppd_cb (GtkPrintBackendCups *print_backend,
                      GtkCupsResult       *result,
                      GetPPDData          *data)
 {
-  ipp_t *response;
   GtkPrinter *printer;
 
   GDK_THREADS_ENTER ();
@@ -3043,7 +3043,7 @@ cups_request_ppd_cb (GtkPrintBackendCups *print_backend,
       goto done;
     }
 
-  response = gtk_cups_result_get_response (result);
+  gtk_cups_result_get_response (result);
 
   /* let ppdOpenFd take over the ownership of the open file */
   g_io_channel_seek_position (data->ppd_io, 0, G_SEEK_SET, NULL);

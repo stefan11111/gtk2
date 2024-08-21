@@ -38,6 +38,8 @@ G_BEGIN_DECLS
 typedef struct _GtkAccessible                GtkAccessible;
 typedef struct _GtkAccessibleClass           GtkAccessibleClass;
 
+#ifndef HACK_TO_DEFINE_ACCESSIBLE_TYPE
+
   /*
    * This object is a thin wrapper, in the GTK+ namespace
    */
@@ -60,6 +62,8 @@ struct _GtkAccessibleClass
   void (*_gtk_reserved3) (void);
   void (*_gtk_reserved4) (void);
 };
+
+#endif
 
 GType gtk_accessible_get_type (void) G_GNUC_CONST;
 
