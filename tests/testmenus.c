@@ -99,16 +99,16 @@ int
 main (int argc, char **argv)
 {
   static GtkWidget *window = NULL;
-  GtkWidget *box1;
-  GtkWidget *box2;
-  GtkWidget *button;
-  GtkWidget *optionmenu;
-  GtkWidget *separator;
 
   gtk_init (&argc, &argv);
   
   if (!window)
     {
+      GtkWidget *box1;
+      GtkWidget *box2;
+      GtkWidget *button;
+      GtkWidget *optionmenu;
+      GtkWidget *separator;
       GtkWidget *menubar;
       GtkWidget *menu;
       GtkWidget *submenu;
