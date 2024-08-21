@@ -1039,7 +1039,6 @@ properties_from_type (GObject *object,
 static GtkWidget *
 child_properties_from_object (GObject *object)
 {
-  GtkWidget *prop_edit;
   GtkWidget *label;
   GtkWidget *sw;
   GtkWidget *vbox;
@@ -1069,7 +1068,7 @@ child_properties_from_object (GObject *object)
       GParamSpec *spec = specs[i];
       gboolean can_modify;
       
-      prop_edit = NULL;
+      GtkWidget *prop_edit = NULL;
 
       can_modify = ((spec->flags & G_PARAM_WRITABLE) != 0 &&
                     (spec->flags & G_PARAM_CONSTRUCT_ONLY) == 0);
@@ -1129,8 +1128,7 @@ static GtkWidget *
 children_from_object (GObject *object)
 {
   GList *children, *c;
-  GtkWidget *table, *label, *prop_edit, *button, *vbox, *sw;
-  gchar *str;
+  GtkWidget *table, *prop_edit, *button, *vbox, *sw;
   gint i;
 
   if (!GTK_IS_CONTAINER (object))
@@ -1146,13 +1144,13 @@ children_from_object (GObject *object)
     {
       object = c->data;
 
-      label = gtk_label_new ("Child");
+      GtkWidget *label = gtk_label_new ("Child");
       gtk_misc_set_alignment (GTK_MISC (label), 0.0, 0.5);
       gtk_table_attach_defaults (GTK_TABLE (table), label, 0, 1, i, i + 1);
 
       prop_edit = gtk_hbox_new (FALSE, 5);
 
-      str = object_label (object, NULL);
+      gchar *str = object_label (object, NULL);
       label = gtk_label_new (str);
       g_free (str);
       button = gtk_button_new_with_label ("Properties");
@@ -1241,9 +1239,7 @@ create_prop_editor (GObject   *object,
 		    GType      type)
 {
   GtkWidget *win;
-  GtkWidget *notebook;
   GtkWidget *properties;
-  GtkWidget *label;
   gchar *title;
   GType *ifaces;
   guint n_ifaces;
@@ -1265,7 +1261,8 @@ create_prop_editor (GObject   *object,
 
   if (type == 0)
     {
-      notebook = gtk_notebook_new ();
+      GtkWidget *label;
+      GtkWidget *notebook = gtk_notebook_new ();
       gtk_notebook_set_tab_pos (GTK_NOTEBOOK (notebook), GTK_POS_LEFT);
       
       gtk_container_add (GTK_CONTAINER (win), notebook);
