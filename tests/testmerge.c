@@ -88,12 +88,12 @@ toggle_tearoffs (GtkWidget    *button,
 static gint
 delayed_toggle_dynamic (GtkUIManager *merge)
 {
-  GtkAction *dyn;
   static GtkActionGroup *dynamic = NULL;
   static guint merge_id = 0;
 
   if (!dynamic)
     {
+      GtkAction *dyn;
       dynamic = gtk_action_group_new ("dynamic");
       gtk_ui_manager_insert_action_group (merge, dynamic, 0);
       dyn = g_object_new (GTK_TYPE_ACTION,
@@ -223,11 +223,9 @@ add_widget (GtkUIManager *merge,
 	    GtkWidget    *widget, 
 	    GtkBox       *box)
 {
-  GtkWidget *handle_box;
-
   if (GTK_IS_TOOLBAR (widget))
     {
-      handle_box = gtk_handle_box_new ();
+      GtkWidget *handle_box = gtk_handle_box_new ();
       gtk_widget_show (handle_box);
       gtk_container_add (GTK_CONTAINER (handle_box), widget);
       gtk_box_pack_start (box, handle_box, FALSE, FALSE, 0);
