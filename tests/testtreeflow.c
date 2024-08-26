@@ -98,12 +98,14 @@ futz_row (void)
     case 2:
       /* modify */
       return;
+#if 0 /* https://gitlab.gnome.org/GNOME/gtk/-/commit/b2539ba480120a48a5c062b72cce23da43ac3b69 */
       if (gtk_tree_model_iter_n_children (model, NULL) == 0)
 	return;
       gtk_list_store_set (GTK_LIST_STORE (model), &iter,
       			  TEXT_COLUMN, words[g_rand_int_range (grand, 0, NUM_WORDS)],
       			  -1);
       break;
+#endif
     }
 }
 

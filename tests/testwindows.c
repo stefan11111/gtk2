@@ -332,14 +332,13 @@ static void
 destroy_children (GdkWindow *window)
 {
   GList *l;
-  GdkWindow *child;
 
   for (l = gdk_window_peek_children (window);
        l != NULL;
        l = l->next)
     {
-      child = l->data;
-      
+      GdkWindow *child = l->data;
+
       destroy_children (child);
       gdk_window_destroy (child);
     }
@@ -434,7 +433,6 @@ static void
 manual_clicked (GtkWidget *button, 
 		gpointer data)
 {
-  GdkWindow *window;
   GList *selected, *l;
   int x, y, w, h;
   GtkWidget *dialog, *table, *label, *xspin, *yspin, *wspin, *hspin;
@@ -521,7 +519,7 @@ manual_clicked (GtkWidget *button,
   
   for (l = selected; l != NULL; l = l->next)
     {
-      window = l->data;
+      GdkWindow *window = l->data;
       
       gdk_window_move_resize (window, x, y, w, h);
     }
@@ -799,7 +797,6 @@ main (int argc, char **argv)
   GtkTreeViewColumn *column;
   GtkCellRenderer *renderer;
   GdkColor black = {0};
-  GFile *file;
   
   gtk_init (&argc, &argv);
 
@@ -1081,7 +1078,7 @@ main (int argc, char **argv)
 
   if (argc == 2)
     {
-      file = g_file_new_for_commandline_arg (argv[1]);
+      GFile *file = g_file_new_for_commandline_arg (argv[1]);
       load_file (file);
       g_object_unref (file);
     }
