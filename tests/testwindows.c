@@ -348,7 +348,6 @@ static char **
 parse_window (GdkWindow *parent, char **lines)
 {
   int x, y, w, h, r, g, b, native, n_children;
-  GdkWindow *window;
   GdkColor color;
 
   if (*lines == NULL)
@@ -361,7 +360,7 @@ parse_window (GdkWindow *parent, char **lines)
       color.red = r;
       color.green = g;
       color.blue = b;
-      window = create_window (parent, x, y, w, h, &color);
+      GdkWindow *window = create_window (parent, x, y, w, h, &color);
       if (native)
 	gdk_window_ensure_native (window);
       int i;
@@ -553,7 +552,6 @@ static void
 scroll_window_clicked (GtkWidget *button, 
 		       gpointer data)
 {
-  GdkWindow *window;
   GtkDirectionType direction;
   GList *selected, *l;
   gint dx, dy;
@@ -582,7 +580,7 @@ scroll_window_clicked (GtkWidget *button,
   
   for (l = selected; l != NULL; l = l->next)
     {
-      window = l->data;
+      GdkWindow *window = l->data;
 
       gdk_window_scroll (window, dx, dy);
     }
@@ -596,13 +594,12 @@ raise_window_clicked (GtkWidget *button,
 		      gpointer data)
 {
   GList *selected, *l;
-  GdkWindow *window;
     
   selected = get_selected_windows ();
 
   for (l = selected; l != NULL; l = l->next)
     {
-      window = l->data;
+      GdkWindow *window = l->data;
       
       gdk_window_raise (window);
     }
@@ -617,13 +614,12 @@ lower_window_clicked (GtkWidget *button,
 		      gpointer data)
 {
   GList *selected, *l;
-  GdkWindow *window;
     
   selected = get_selected_windows ();
 
   for (l = selected; l != NULL; l = l->next)
     {
-      window = l->data;
+      GdkWindow *window = l->data;
       
       gdk_window_lower (window);
     }
@@ -639,14 +635,13 @@ smaller_window_clicked (GtkWidget *button,
 			gpointer data)
 {
   GList *selected, *l;
-  GdkWindow *window;
   int w, h;
 
   selected = get_selected_windows ();
 
   for (l = selected; l != NULL; l = l->next)
     {
-      window = l->data;
+      GdkWindow *window = l->data;
       
       gdk_drawable_get_size (GDK_DRAWABLE (window), &w, &h);
       
@@ -668,14 +663,13 @@ larger_window_clicked (GtkWidget *button,
 			gpointer data)
 {
   GList *selected, *l;
-  GdkWindow *window;
   int w, h;
 
   selected = get_selected_windows ();
 
   for (l = selected; l != NULL; l = l->next)
     {
-      window = l->data;
+      GdkWindow *window = l->data;
       
       gdk_drawable_get_size (GDK_DRAWABLE (window), &w, &h);
       
@@ -693,13 +687,12 @@ native_window_clicked (GtkWidget *button,
 			gpointer data)
 {
   GList *selected, *l;
-  GdkWindow *window;
 
   selected = get_selected_windows ();
 
   for (l = selected; l != NULL; l = l->next)
     {
-      window = l->data;
+      GdkWindow *window = l->data;
       
       gdk_window_ensure_native (window);
     }
