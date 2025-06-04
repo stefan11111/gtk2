@@ -721,6 +721,10 @@ void       gdk_window_redirect_to_drawable   (GdkWindow     *window,
                                               gint           height);
 void       gdk_window_remove_redirection     (GdkWindow     *window);
 
+/* expose gtk2 internals */
+cairo_surface_t *gtk2_gdk_window_ref_cairo_surface (GdkDrawable *drawable);
+void gtk2_gdk_window_cairo_surface_destroy (void *data);
+
 #ifndef GDK_DISABLE_DEPRECATED
 #ifndef GDK_MULTIHEAD_SAFE
 GdkPointerHooks *gdk_set_pointer_hooks (const GdkPointerHooks *new_hooks);   

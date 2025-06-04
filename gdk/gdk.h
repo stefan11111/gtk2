@@ -63,6 +63,9 @@
 G_BEGIN_DECLS
 
 
+/* expose gtk2 internals */
+int* gtk2_gdk_initialized (void);
+
 /* Initialization, exit and events
  */
 #define	  GDK_PRIORITY_EVENTS		(G_PRIORITY_DEFAULT)

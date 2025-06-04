@@ -64,6 +64,13 @@ static int gdk_initialized = 0;			    /* 1 if the library is initialized,
 
 static gchar  *gdk_progclass = NULL;
 
+/* expose gtk2 internals */
+int *
+gtk2_gdk_initialized (void)
+{
+  return &gdk_initialized;
+}
+
 #ifdef G_ENABLE_DEBUG
 static const GDebugKey gdk_debug_keys[] = {
   {"events",	    GDK_DEBUG_EVENTS},

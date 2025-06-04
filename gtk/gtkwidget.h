@@ -1345,6 +1345,11 @@ void         _gtk_widget_buildable_finish_accelerator (GtkWidget *widget,
 						       GtkWidget *toplevel,
 						       gpointer   user_data);
 
+/* expose gtk2 internals */
+GParamSpecPool **gtk2_gtk_widget_child_property_pool (void);
+/* GObjectNotifyContext */ void **gtk2_gtk_widget_child_property_notify_context (void);
+
+
 G_END_DECLS
 
 #endif /* __GTK_WIDGET_H__ */

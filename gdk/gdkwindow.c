@@ -5146,6 +5146,13 @@ gdk_window_cairo_surface_destroy (void *data)
   private->impl_window->outstanding_surfaces--;
 }
 
+/* expose gtk2 internals */
+void
+gtk2_gdk_window_cairo_surface_destroy (void *data)
+{
+  gdk_window_cairo_surface_destroy (data);
+}
+
 static cairo_surface_t *
 gdk_window_create_cairo_surface (GdkDrawable *drawable,
 				 int width,
@@ -5206,6 +5213,13 @@ gdk_window_ref_cairo_surface (GdkDrawable *drawable)
     }
 
   return surface;
+}
+
+/* expose gtk2 internals */
+cairo_surface_t *
+gtk2_gdk_window_ref_cairo_surface (GdkDrawable *drawable)
+{
+  return gdk_window_ref_cairo_surface (drawable);
 }
 
 static void

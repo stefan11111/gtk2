@@ -354,6 +354,21 @@ GParamSpecPool         *_gtk_widget_child_property_pool = NULL;
 GObjectNotifyContext   *_gtk_widget_child_property_notify_context = NULL;
 
 /* --- functions --- */
+
+/* expose gtk2 internals */
+GParamSpecPool **
+gtk2_gtk_widget_child_property_pool (void)
+{
+  return &_gtk_widget_child_property_pool;
+}
+
+/* expose gtk2 internals */
+/* GObjectNotifyContext */ void ** /* this type can't be in a header */
+gtk2_gtk_widget_child_property_notify_context (void)
+{
+  return (void**)&_gtk_widget_child_property_notify_context;
+}
+
 GType
 gtk_widget_get_type (void)
 {

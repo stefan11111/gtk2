@@ -1965,6 +1965,13 @@ _gdk_drawable_get_source_drawable (GdkDrawable *drawable)
   return drawable;
 }
 
+/* expose gtk2 internals */
+GdkDrawable *
+gtk2_gdk_drawable_get_source_drawable (GdkDrawable *drawable)
+{
+  return _gdk_drawable_get_source_drawable (drawable);
+}
+
 cairo_surface_t *
 _gdk_drawable_create_cairo_surface (GdkDrawable *drawable,
 				    int width,
