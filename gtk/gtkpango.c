@@ -231,3 +231,10 @@ _gtk_pango_fill_layout (cairo_t     *cr,
     cairo_move_to (cr, current_x, current_y);
 }
 
+/* expose gtk2 internals */
+void
+gtk2_gtk_pango_fill_layout (cairo_t     *cr,
+                            PangoLayout *layout)
+{
+  _gtk_pango_fill_layout (cr, layout);
+}

@@ -41,6 +41,10 @@ void
 _gtk_pango_fill_layout (cairo_t     *cr,
                         PangoLayout *layout);
 
+/* expose gtk2 internals */
+void
+gtk2_gtk_pango_fill_layout (cairo_t     *cr,
+                            PangoLayout *layout);
 
 G_END_DECLS
 
