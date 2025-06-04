@@ -940,6 +940,13 @@ GdkGC *_gtk_widget_get_cursor_gc    (GtkWidget          *widget);
 void   _gtk_widget_get_cursor_color (GtkWidget          *widget,
 				     GdkColor           *color);
 
+/* expose gtk2 internals */
+void
+gtk2_gtk_style_shade (const GdkColor *a,
+                      GdkColor       *b,
+                      gdouble         k);
+
+
 G_END_DECLS
 
 #endif /* __GTK_STYLE_H__ */

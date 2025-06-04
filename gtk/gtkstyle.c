@@ -5747,6 +5747,15 @@ _gtk_style_shade (const GdkColor *a,
   b->blue = blue * 65535.0;
 }
 
+/* expose gtk2 internals */
+void
+gtk2_gtk_style_shade (const GdkColor *a,
+                      GdkColor       *b,
+                      gdouble         k)
+{
+  _gtk_style_shade (a, b, k);
+}
+
 static void
 rgb_to_hls (gdouble *r,
             gdouble *g,
