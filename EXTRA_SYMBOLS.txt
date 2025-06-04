@@ -1,0 +1,8 @@
+Symbols that are in this fork, but not in upstream gtk2:
+
+gtk2_gtk_pango_fill_layout
+gtk2_gtk_style_shade
+gtk2_gtk_widget_child_property_pool
+gtk2_gtk_widget_child_property_notify_context
+gtk2_gdk_window_ref_cairo_surface
+gtk2_gdk_initialized

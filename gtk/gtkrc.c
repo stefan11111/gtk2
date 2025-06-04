@@ -3296,15 +3296,6 @@ _gtk_rc_style_lookup_rc_property (GtkRcStyle *rc_style,
   return node;
 }
 
-/* expose gtk2 internals */
-const GtkRcProperty*
-gtk2_gtk_rc_style_lookup_rc_property (GtkRcStyle *rc_style,
-                                      GQuark      type_name,
-                                      GQuark      property_name)
-{
-  return _gtk_rc_style_lookup_rc_property (rc_style, type_name, property_name);
-}
-
 static guint
 gtk_rc_parse_bg (GScanner   *scanner,
 		 GtkRcStyle *style)
