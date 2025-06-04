@@ -260,6 +260,12 @@ GSList     * _gtk_rc_style_get_color_hashes        (GtkRcStyle *rc_style);
 const gchar* _gtk_rc_context_get_default_font_name (GtkSettings *settings);
 void         _gtk_rc_context_destroy               (GtkSettings *settings);
 
+/* expose gtk2 internals */
+const GtkRcProperty*
+gtk2_gtk_rc_style_lookup_rc_property (GtkRcStyle *rc_style,
+                                      GQuark      type_name,
+                                      GQuark      property_name);
+
 G_END_DECLS
 
 #endif /* __GTK_RC_H__ */
