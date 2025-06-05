@@ -1185,3 +1185,19 @@ _gtk_builder_parser_parse_buffer (GtkBuilder   *builder,
   /* restore the original domain */
   gtk_builder_set_translation_domain (builder, domain);
 }
+
+/* expose gtk2 internals */
+void gtk2_gtk_builder_parser_parse_buffer (GtkBuilder   *builder,
+                                           const gchar  *filename,
+                                           const gchar  *buffer,
+                                           gsize         length,
+                                           gchar       **requested_objs,
+                                           GError      **error)
+{
+  _gtk_builder_parser_parse_buffer (builder,
+                                    filename,
+                                    buffer,
+                                    length,
+                                    requested_objs,
+                                    error);
+}

@@ -7,3 +7,4 @@ gtk2_gtk_widget_child_property_notify_context
 gtk2_gdk_window_ref_cairo_surface
 gtk2_gdk_initialized
 gtk2_do_theme_change
+gtk2_gtk_builder_parser_parse_buffer

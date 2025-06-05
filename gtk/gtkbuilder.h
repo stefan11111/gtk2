@@ -135,6 +135,14 @@ gboolean     gtk_builder_value_from_string_type  (GtkBuilder    *builder,
                                                   GValue       	*value,
 						  GError       **error);
 
+/* expose gtk2 internals */
+void gtk2_gtk_builder_parser_parse_buffer (GtkBuilder   *builder,
+                                           const gchar  *filename,
+                                           const gchar  *buffer,
+                                           gsize         length,
+                                           gchar       **requested_objs,
+                                           GError      **error);
+
 #define GTK_BUILDER_WARN_INVALID_CHILD_TYPE(object, type) \
   g_warning ("'%s' is not a valid child type of '%s'", type, g_type_name (G_OBJECT_TYPE (object)))
 
