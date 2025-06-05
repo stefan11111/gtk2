@@ -147,6 +147,9 @@ void gtk_clipboard_set_can_store (GtkClipboard         *clipboard,
 
 void gtk_clipboard_store         (GtkClipboard   *clipboard);
 
+/* expose gtk2 internals */
+void gtk2_gtk_clipboard_store_all (void);
+
 /* private */
 void     _gtk_clipboard_handle_event    (GdkEventOwnerChange *event);
 

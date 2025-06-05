@@ -2580,5 +2580,12 @@ _gtk_recent_manager_sync (void)
     }
 }
 
+/* expose gtk2 internals */
+void
+gtk2_gtk_recent_manager_sync (void)
+{
+  _gtk_recent_manager_sync ();
+}
+
 #define __GTK_RECENT_MANAGER_C__
 

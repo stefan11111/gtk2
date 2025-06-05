@@ -2082,5 +2082,12 @@ _gtk_clipboard_store_all (void)
   
 }
 
+/* expose gtk2 internals */
+void
+gtk2_gtk_clipboard_store_all (void)
+{
+  _gtk_clipboard_store_all ();
+}
+
 #define __GTK_CLIPBOARD_C__
 

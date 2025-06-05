@@ -211,6 +211,10 @@ gboolean              gtk_recent_info_match                (GtkRecentInfo  *info
 /* private */
 void _gtk_recent_manager_sync (void);
 
+/* expose gtk2 internals */
+void
+gtk2_gtk_recent_manager_sync (void);
+
 G_END_DECLS
 
 #endif /* __GTK_RECENT_MANAGER_H__ */

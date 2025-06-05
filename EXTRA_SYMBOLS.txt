@@ -8,3 +8,5 @@ gtk2_gdk_window_ref_cairo_surface
 gtk2_gdk_initialized
 gtk2_do_theme_change
 gtk2_gtk_builder_parser_parse_buffer
+gtk2_gtk_clipboard_store_all
+gtk2_gtk_recent_manager_sync
