@@ -620,6 +620,13 @@ do_theme_change (GtkIconTheme *icon_theme)
 		       reset_styles_idle, icon_theme, NULL);
 }
 
+/* expose gtk2 internals */
+void
+gtk2_do_theme_change (GtkIconTheme *icon_theme)
+{
+  do_theme_change (icon_theme);
+}
+
 static void
 blow_themes (GtkIconTheme *icon_theme)
 {
