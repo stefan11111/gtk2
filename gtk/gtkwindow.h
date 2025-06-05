@@ -437,6 +437,10 @@ void _gtk_window_keys_foreach (GtkWindow               *window,
 			       GtkWindowKeysForeachFunc func,
 			       gpointer                 func_data);
 
+/* expose gtk2 internals */
+void
+gtk2_gtk_window_notify_keys_changed (GtkWindow *window);
+
 /* --- internal (GtkAcceleratable) --- */
 gboolean	_gtk_window_query_nonaccels	(GtkWindow	*window,
 						 guint		 accel_key,

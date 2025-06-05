@@ -1772,6 +1772,13 @@ gtk_window_notify_keys_changed (GtkWindow *window)
     window->keys_changed_handler = gdk_threads_add_idle (handle_keys_changed, window);
 }
 
+/* expose gtk2 internals */
+void
+gtk2_gtk_window_notify_keys_changed (GtkWindow *window)
+{
+  gtk_window_notify_keys_changed (window);
+}
+
 /**
  * gtk_window_add_accel_group:
  * @window: window to attach accelerator group to
