@@ -444,6 +444,11 @@ void gtk2_gtk_window_notify_keys_changed (GtkWindow *window);
 typedef struct _GtkWindowPrivate GtkWindowPrivate;
 GtkWindowPrivate *gtk2_gtk_window_get_private (GtkWindow *window);
 
+/* expose gtk2 internals */
+/* GtkWindowIconInfo* */ void *
+gtk2_ensure_icon_info (GtkWindow *window);
+
+
 /* --- internal (GtkAcceleratable) --- */
 gboolean	_gtk_window_query_nonaccels	(GtkWindow	*window,
 						 guint		 accel_key,

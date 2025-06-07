@@ -3073,6 +3073,13 @@ ensure_icon_info (GtkWindow *window)
   return info;
 }
 
+/* expose gtk2 internals */
+/* GtkWindowIconInfo* */ void *
+gtk2_ensure_icon_info (GtkWindow *window)
+{
+  return ensure_icon_info;
+}
+
 typedef struct {
   guint serial;
   GdkPixmap *pixmap;
