@@ -355,6 +355,13 @@ G_DEFINE_TYPE_WITH_CODE (GtkWindow, gtk_window, GTK_TYPE_BIN,
                          G_IMPLEMENT_INTERFACE (GTK_TYPE_BUILDABLE,
 						gtk_window_buildable_interface_init))
 
+/* expose gtk2 internals */
+GtkWindowPrivate *
+gtk2_gtk_window_get_private (GtkWindow *window)
+{
+  return GTK_WINDOW_GET_PRIVATE(window);
+}
+
 static void
 add_tab_bindings (GtkBindingSet    *binding_set,
 		  GdkModifierType   modifiers,

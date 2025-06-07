@@ -1686,7 +1686,7 @@ gtk_container_child_default_composite_name (GtkContainer *container,
 
 gchar*
 _gtk_container_child_composite_name (GtkContainer *container,
-				    GtkWidget    *child)
+				     GtkWidget    *child)
 {
   gboolean composite_child;
 

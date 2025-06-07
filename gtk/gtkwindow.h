@@ -438,8 +438,11 @@ void _gtk_window_keys_foreach (GtkWindow               *window,
 			       gpointer                 func_data);
 
 /* expose gtk2 internals */
-void
-gtk2_gtk_window_notify_keys_changed (GtkWindow *window);
+void gtk2_gtk_window_notify_keys_changed (GtkWindow *window);
+
+/* expose gtk2 internals */
+typedef struct _GtkWindowPrivate GtkWindowPrivate;
+GtkWindowPrivate *gtk2_gtk_window_get_private (GtkWindow *window);
 
 /* --- internal (GtkAcceleratable) --- */
 gboolean	_gtk_window_query_nonaccels	(GtkWindow	*window,
