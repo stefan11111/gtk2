@@ -356,6 +356,20 @@ G_DEFINE_TYPE_WITH_CODE (GtkWindow, gtk_window, GTK_TYPE_BIN,
 						gtk_window_buildable_interface_init))
 
 /* expose gtk2 internals */
+GList **
+gtk2_default_icon_list (void)
+{
+  return &default_icon_list;
+}
+
+/* expose gtk2 internals */
+gchar **
+gtk2_default_icon_name (void)
+{
+  return &default_icon_name;
+}
+
+/* expose gtk2 internals */
 GtkWindowPrivate *
 gtk2_gtk_window_get_private (GtkWindow *window)
 {

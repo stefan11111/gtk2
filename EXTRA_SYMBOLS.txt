@@ -13,3 +13,5 @@ gtk2_gtk_recent_manager_sync
 gtk2_gtk_window_notify_keys_changed
 gtk2_gtk_window_get_private
 gtk2_ensure_icon_info
+gtk2_default_icon_list
+gtk2_default_icon_name
