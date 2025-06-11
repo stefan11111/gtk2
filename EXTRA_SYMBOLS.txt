@@ -15,3 +15,4 @@ gtk2_gtk_window_get_private
 gtk2_ensure_icon_info
 gtk2_default_icon_list
 gtk2_default_icon_name
+gtk2_gtk_container_focus_sort

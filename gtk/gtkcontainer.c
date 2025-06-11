@@ -2271,6 +2271,17 @@ _gtk_container_focus_sort (GtkContainer     *container,
   return NULL;
 }
 
+/* expose gtk2 internals */
+GList *
+gtk2_gtk_container_focus_sort (GtkContainer     *container,
+                               GList            *children,
+                               GtkDirectionType  direction,
+                               GtkWidget        *old_focus)
+{
+  return _gtk_container_focus_sort (container, children, direction, old_focus);
+}
+
+
 static gboolean
 gtk_container_focus_move (GtkContainer     *container,
 			  GList            *children,

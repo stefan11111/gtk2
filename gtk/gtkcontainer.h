@@ -221,6 +221,14 @@ GList *_gtk_container_focus_sort             (GtkContainer     *container,
 					      GtkDirectionType  direction,
 					      GtkWidget        *old_focus);
 
+
+/* expose gtk2 internals */
+GList *
+gtk2_gtk_container_focus_sort (GtkContainer     *container,
+                               GList            *children,
+                               GtkDirectionType  direction,
+                               GtkWidget        *old_focus);
+
 #ifndef GTK_DISABLE_DEPRECATED
 #define	gtk_container_border_width		gtk_container_set_border_width
 #endif /* GTK_DISABLE_DEPRECATED */
