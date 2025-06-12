@@ -16,3 +16,4 @@ gtk2_ensure_icon_info
 gtk2_default_icon_list
 gtk2_default_icon_name
 gtk2_gtk_container_focus_sort
+gtk2_gtk_entry_grab_focus

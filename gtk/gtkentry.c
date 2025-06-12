@@ -4201,6 +4201,13 @@ gtk_entry_grab_focus (GtkWidget *widget)
     }
 }
 
+/* expose gtk2 internals */
+void
+gtk2_gtk_entry_grab_focus (GtkWidget *widget)
+{
+  gtk_entry_grab_focus (widget);
+}
+
 static void
 gtk_entry_direction_changed (GtkWidget        *widget,
                              GtkTextDirection  previous_dir)
