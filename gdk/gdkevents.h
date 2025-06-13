@@ -552,6 +552,11 @@ GdkScreen *gdk_event_get_screen         (const GdkEvent  *event);
 void	  gdk_set_show_events		(gboolean	 show_events);
 gboolean  gdk_get_show_events		(void);
 
+
+/* expose gtk2 internals */
+gboolean gtk2_gdk_event_is_allocated (const GdkEvent *event);
+
+
 #ifndef GDK_MULTIHEAD_SAFE
 void gdk_add_client_message_filter (GdkAtom       message_type,
 				    GdkFilterFunc func,

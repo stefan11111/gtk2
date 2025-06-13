@@ -415,7 +415,14 @@ gdk_event_is_allocated (const GdkEvent *event)
 
   return FALSE;
 }
- 
+
+/* expose gtk2 internals */
+gboolean
+gtk2_gdk_event_is_allocated (const GdkEvent *event)
+{
+  return gdk_event_is_allocated (event);
+}
+
 /**
  * gdk_event_copy:
  * @event: a #GdkEvent
