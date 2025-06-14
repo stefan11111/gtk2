@@ -181,6 +181,13 @@ gboolean        gtk_get_current_event_state (GdkModifierType *state);
 GtkWidget* gtk_get_event_widget	   (GdkEvent	   *event);
 
 
+/* expose gtk2 internals */
+gboolean
+gtk2_gtk_boolean_handled_accumulator (GSignalInvocationHint *ihint,
+                                      GValue                *return_accu,
+                                      const GValue          *handler_return,
+                                      gpointer               dummy);
+
 /* Private routines internal to GTK+ 
  */
 void       gtk_propagate_event     (GtkWidget         *widget,

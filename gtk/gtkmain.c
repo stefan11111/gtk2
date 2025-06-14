@@ -2254,6 +2254,16 @@ _gtk_boolean_handled_accumulator (GSignalInvocationHint *ihint,
   return continue_emission;
 }
 
+/* expose gtk2 internals */
+gboolean
+gtk2_gtk_boolean_handled_accumulator (GSignalInvocationHint *ihint,
+                                      GValue                *return_accu,
+                                      const GValue          *handler_return,
+                                      gpointer               dummy)
+{
+  return _gtk_boolean_handled_accumulator (ihint, return_accu, handler_return, dummy);
+}
+
 gboolean
 _gtk_button_event_triggers_context_menu (GdkEventButton *event)
 {
