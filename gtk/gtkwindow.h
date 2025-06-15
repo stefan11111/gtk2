@@ -453,6 +453,10 @@ GList ** gtk2_default_icon_list (void);
 /* expose gtk2 internals */
 gchar ** gtk2_default_icon_name (void);
 
+
+/* hook into gtk2 internals */
+void /*__attribute__((noipa))*/ gtk2_gtk_window_class_init_hook (GtkWindowClass *klass);
+
 /* --- internal (GtkAcceleratable) --- */
 gboolean	_gtk_window_query_nonaccels	(GtkWindow	*window,
 						 guint		 accel_key,

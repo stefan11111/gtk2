@@ -20,3 +20,4 @@ gtk2_gtk_entry_grab_focus
 gtk2_gdk_event_is_allocated
 gtk2_gtk_boolean_handled_accumulator
 gtk2_gtk_widget_class_init_hook
+gtk2_gtk_window_class_init_hook

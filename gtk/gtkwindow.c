@@ -439,6 +439,16 @@ startup_id_is_fake (const gchar* startup_id)
   return strncmp (startup_id, "_TIME", 5) == 0;
 }
 
+/* hook into gtk2 internals */
+void __attribute__((noipa))
+gtk2_gtk_window_class_init_hook (GtkWindowClass *klass)
+{
+  /* DO NOT DELETE THIS */
+  /* We use this function to hook into
+     gtk_window_class_init from gtk3-to-gtk2
+     to implement the application property for GtkWindow */
+}
+
 static void
 gtk_window_class_init (GtkWindowClass *klass)
 {
@@ -926,6 +936,9 @@ gtk_window_class_init (GtkWindowClass *klass)
   add_tab_bindings (binding_set, GDK_CONTROL_MASK, GTK_DIR_TAB_FORWARD);
   add_tab_bindings (binding_set, GDK_SHIFT_MASK, GTK_DIR_TAB_BACKWARD);
   add_tab_bindings (binding_set, GDK_CONTROL_MASK | GDK_SHIFT_MASK, GTK_DIR_TAB_BACKWARD);
+
+  /* DO NOT REMOVE THIS CALL */
+  gtk2_gtk_window_class_init_hook (klass);
 }
 
 static void
