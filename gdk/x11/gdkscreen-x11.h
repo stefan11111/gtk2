@@ -43,6 +43,15 @@ typedef struct _GdkScreenX11Class GdkScreenX11Class;
 #define GDK_IS_SCREEN_X11_CLASS(klass)   (G_TYPE_CHECK_CLASS_TYPE ((klass), GDK_TYPE_SCREEN_X11))
 #define GDK_SCREEN_X11_GET_CLASS(obj)    (G_TYPE_INSTANCE_GET_CLASS ((obj), GDK_TYPE_SCREEN_X11, GdkScreenX11Class))
 
+/* expose gtk2 internals */
+GType gtk2_gdk_screen_x11_get_type (void);
+GdkScreenX11 *gtk2_gdk_screen_x11 (void *ptr);
+GdkScreenX11Class *gtk2_gdk_screen_x11_class (void *ptr);
+gboolean gtk2_gdk_is_screen_x11 (void *ptr);
+gboolean gtk2_gdk_is_screen_x11_class (void *ptr);
+GdkScreenX11Class *gtk2_gdk_screen_x11_get_class (void *ptr);
+
+
 typedef struct _GdkX11Monitor GdkX11Monitor;
 
 struct _GdkScreenX11

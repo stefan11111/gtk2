@@ -66,6 +66,48 @@ static guint signals[LAST_SIGNAL] = { 0 };
 
 G_DEFINE_TYPE (GdkScreenX11, _gdk_screen_x11, GDK_TYPE_SCREEN)
 
+/* expose gtk2 internals */
+GType
+gtk2_gdk_screen_x11_get_type (void)
+{
+  return GDK_TYPE_SCREEN_X11;
+}
+
+/* expose gtk2 internals */
+GdkScreenX11 *
+gtk2_gdk_screen_x11 (void *ptr)
+{
+  return GDK_SCREEN_X11 (ptr);
+}
+
+/* expose gtk2 internals */
+GdkScreenX11Class *
+gtk2_gdk_screen_x11_class (void *ptr)
+{
+  return GDK_SCREEN_X11_CLASS (ptr);
+}
+
+/* expose gtk2 internals */
+gboolean
+gtk2_gdk_is_screen_x11 (void *ptr)
+{
+  return GDK_IS_SCREEN_X11 (ptr);
+}
+
+/* expose gtk2 internals */
+gboolean
+gtk2_gdk_is_screen_x11_class (void *ptr)
+{
+  return GDK_IS_SCREEN_X11_CLASS (ptr);
+}
+
+/* expose gtk2 internals */
+GdkScreenX11Class *
+gtk2_gdk_screen_x11_get_class (void *ptr)
+{
+  return GDK_SCREEN_X11_GET_CLASS (ptr);
+}
+
 struct _GdkX11Monitor
 {
   GdkRectangle  geometry;

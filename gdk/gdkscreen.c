@@ -75,7 +75,7 @@ gdk_screen_class_init (GdkScreenClass *klass)
 							 P_("Font options"),
 							 P_("The default font options for the screen"),
 							 G_PARAM_READWRITE|G_PARAM_STATIC_NAME|
-							G_PARAM_STATIC_NICK|G_PARAM_STATIC_BLURB));
+							 G_PARAM_STATIC_NICK|G_PARAM_STATIC_BLURB));
 
   g_object_class_install_property (object_class,
 				   PROP_RESOLUTION,
