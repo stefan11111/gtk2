@@ -416,6 +416,18 @@ child_property_notify_dispatcher (GObject     *object,
   GTK_WIDGET_GET_CLASS (object)->dispatch_child_properties_changed (GTK_WIDGET (object), n_pspecs, pspecs);
 }
 
+
+
+/* hook into gtk2 internals */
+void __attribute__((noipa))
+gtk2_gtk_widget_class_init_hook (GtkWidgetClass *klass)
+{
+  /* DO NOT DELETE THIS */
+  /* We use this function to hook into
+     gtk_widget_class_init from gtk3-to-gtk2
+     to implement the draw signal for GtkWidget */
+}
+
 static void
 gtk_widget_class_init (GtkWidgetClass *klass)
 {
@@ -2586,6 +2598,9 @@ gtk_widget_class_init (GtkWidgetClass *klass)
                                                               P_("The radius to be used when drawing tooltips"),
                                                               0, G_MAXINT, 0,
                                                               GTK_PARAM_READABLE));
+
+  /* DO NOT REMOVE THIS CALL */
+  gtk2_gtk_widget_class_init_hook (klass);
 }
 
 static void

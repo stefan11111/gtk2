@@ -1349,6 +1349,8 @@ void         _gtk_widget_buildable_finish_accelerator (GtkWidget *widget,
 GParamSpecPool **gtk2_gtk_widget_child_property_pool (void);
 /* GObjectNotifyContext */ void **gtk2_gtk_widget_child_property_notify_context (void);
 
+/* hook into gtk2 internals */
+void /*__attribute__((noipa))*/ gtk2_gtk_widget_class_init_hook (GtkWidgetClass *klass);
 
 G_END_DECLS
 
