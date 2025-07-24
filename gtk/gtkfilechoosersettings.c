@@ -39,6 +39,8 @@
 
 #define SETTINGS_GROUP		"Filechooser Settings"
 #define LOCATION_MODE_KEY	"LocationMode"
+#define VIEW_MODE_KEY		  "ViewMode"
+#define ICON_VIEW_SCALE_KEY "IconViewScale"
 #define SHOW_HIDDEN_KEY		"ShowHidden"
 #define SHOW_SIZE_COLUMN_KEY    "ShowSizeColumn"
 #define GEOMETRY_X_KEY		"GeometryX"
@@ -58,8 +60,11 @@
 #define STARTUP_MODE_RECENT_STRING "recent"
 #define STARTUP_MODE_CWD_STRING    "cwd"
 
-#define MODE_PATH_BAR          "path-bar"
-#define MODE_FILENAME_ENTRY    "filename-entry"
+#define MODE_PATH_BAR			"path-bar"
+#define MODE_FILENAME_ENTRY		"filename-entry"
+
+#define MODE_LIST_VIEW			"list-view"
+#define MODE_ICON_VIEW			"icon-view"
 
 #define EQ(a, b) (g_ascii_strcasecmp ((a), (b)) == 0)
 
@@ -114,7 +119,7 @@ ensure_settings_read (GtkFileChooserSettings *settings)
 {
   GError *error;
   GKeyFile *key_file;
-  gchar *location_mode_str, *filename;
+  gchar *location_mode_str, *view_mode_str, *filename;
   gchar *sort_column, *sort_order;
   gchar *startup_mode;
   gboolean value;
@@ -158,6 +163,27 @@ ensure_settings_read (GtkFileChooserSettings *settings)
 
       g_free (location_mode_str);
     }
+
+  /* View mode */
+
+  view_mode_str = g_key_file_get_string (key_file, SETTINGS_GROUP,
+					     VIEW_MODE_KEY, NULL);
+  if (view_mode_str)
+    {
+      if (EQ (view_mode_str, MODE_LIST_VIEW))
+        settings->view_mode = VIEW_MODE_LIST;
+      else if (EQ (view_mode_str, MODE_ICON_VIEW))
+        settings->view_mode = VIEW_MODE_ICON;
+      else
+        g_warning ("Unknown view mode '%s' encountered in filechooser settings",
+		   view_mode_str);
+
+      g_free (view_mode_str);
+    }
+
+  /* Icon view scale */
+
+  get_int_key (key_file, SETTINGS_GROUP, ICON_VIEW_SCALE_KEY, &settings->icon_view_scale);
 
   /* Show hidden */
 
@@ -256,6 +282,8 @@ static void
 _gtk_file_chooser_settings_init (GtkFileChooserSettings *settings)
 {
   settings->location_mode = LOCATION_MODE_PATH_BAR;
+  settings->view_mode = VIEW_MODE_LIST;
+  settings->icon_view_scale = 48;
   settings->sort_order = GTK_SORT_ASCENDING;
   settings->sort_column = FILE_LIST_COL_NAME;
   settings->show_hidden = FALSE;
@@ -285,6 +313,34 @@ _gtk_file_chooser_settings_set_location_mode (GtkFileChooserSettings *settings,
 					      LocationMode location_mode)
 {
   settings->location_mode = location_mode;
+}
+
+ViewMode
+_gtk_file_chooser_settings_get_view_mode (GtkFileChooserSettings *settings)
+{
+  ensure_settings_read (settings);
+  return settings->view_mode;
+}
+
+void
+_gtk_file_chooser_settings_set_view_mode (GtkFileChooserSettings *settings,
+					      ViewMode view_mode)
+{
+  settings->view_mode = view_mode;
+}
+
+gint
+_gtk_file_chooser_settings_get_icon_view_scale (GtkFileChooserSettings *settings)
+{
+  ensure_settings_read (settings);
+  return settings->icon_view_scale;
+}
+
+void
+_gtk_file_chooser_settings_set_icon_view_scale (GtkFileChooserSettings *settings,
+					    gint icon_view_scale)
+{
+  settings->icon_view_scale = icon_view_scale;
 }
 
 gboolean
@@ -389,7 +445,7 @@ gboolean
 _gtk_file_chooser_settings_save (GtkFileChooserSettings *settings,
 				 GError                **error)
 {
-  const gchar *location_mode_str;
+  const gchar *location_mode_str, *view_mode_str;
   gchar *filename;
   gchar *dirname;
   gchar *contents;
@@ -411,6 +467,16 @@ _gtk_file_chooser_settings_save (GtkFileChooserSettings *settings,
     location_mode_str = MODE_PATH_BAR;
   else if (settings->location_mode == LOCATION_MODE_FILENAME_ENTRY)
     location_mode_str = MODE_FILENAME_ENTRY;
+  else
+    {
+      g_assert_not_reached ();
+      return FALSE;
+    }
+
+  if (settings->view_mode == VIEW_MODE_LIST)
+    view_mode_str = MODE_LIST_VIEW;
+  else if (settings->view_mode == VIEW_MODE_ICON)
+    view_mode_str = MODE_ICON_VIEW;
   else
     {
       g_assert_not_reached ();
@@ -473,6 +539,10 @@ _gtk_file_chooser_settings_save (GtkFileChooserSettings *settings,
 
   g_key_file_set_string (key_file, SETTINGS_GROUP,
 			 LOCATION_MODE_KEY, location_mode_str);
+  g_key_file_set_string (key_file, SETTINGS_GROUP,
+			 VIEW_MODE_KEY, view_mode_str);
+  g_key_file_set_integer (key_file, SETTINGS_GROUP,
+			 ICON_VIEW_SCALE_KEY, settings->icon_view_scale);
   g_key_file_set_boolean (key_file, SETTINGS_GROUP,
 			  SHOW_HIDDEN_KEY, settings->show_hidden);
   g_key_file_set_boolean (key_file, SETTINGS_GROUP,

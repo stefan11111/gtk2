@@ -33,6 +33,8 @@
 #include "gtktreestore.h"
 #include "gtktreeview.h"
 #include "gtkvbox.h"
+#include "gtkiconview.h"
+#include "gtkhscale.h"
 
 G_BEGIN_DECLS
 
@@ -136,6 +138,11 @@ typedef enum {
 } LocationMode;
 
 typedef enum {
+  VIEW_MODE_LIST,
+  VIEW_MODE_ICON
+} ViewMode;
+
+typedef enum {
   OPERATION_MODE_BROWSE,
   OPERATION_MODE_SEARCH,
   OPERATION_MODE_RECENT
@@ -170,10 +177,18 @@ struct _GtkFileChooserDefault
   GtkWidget *browse_shortcuts_popup_menu_remove_item;
   GtkWidget *browse_shortcuts_popup_menu_rename_item;
   GtkWidget *browse_files_tree_view;
+  GtkWidget *browse_files_scrolled_window;
+  GtkWidget *browse_files_current_view;
+  GtkWidget *browse_files_icon_view;
   GtkWidget *browse_files_popup_menu;
   GtkWidget *browse_files_popup_menu_add_shortcut_item;
   GtkWidget *browse_files_popup_menu_hidden_files_item;
   GtkWidget *browse_files_popup_menu_size_column_item;
+  GtkWidget *browse_files_popup_menu_sort_by_name_item;
+  GtkWidget *browse_files_popup_menu_sort_by_size_item;
+  GtkWidget *browse_files_popup_menu_sort_by_mtime_item;
+  GtkWidget *browse_files_popup_menu_sort_ascending_item;
+  GtkWidget *browse_files_popup_menu_sort_descending_item;
   GtkWidget *browse_new_folder_button;
   GtkWidget *browse_path_bar_hbox;
   GtkSizeGroup *browse_path_bar_size_group;
@@ -186,6 +201,7 @@ struct _GtkFileChooserDefault
 
   gulong toplevel_unmapped_id;
 
+  GtkTreeModel *current_model;
   GtkFileSystemModel *browse_files_model;
   char *browse_files_last_selected_name;
 
@@ -210,6 +226,13 @@ struct _GtkFileChooserDefault
   GtkWidget *preview_widget;
   GtkWidget *extra_align;
   GtkWidget *extra_widget;
+
+  GtkWidget *view_mode_combo_box;
+  GtkWidget *icon_view_scale_hbox;
+  GtkWidget *icon_view_scale;
+  GtkWidget *icon_view_scale_zoom_in_icon;
+  GtkWidget *icon_view_scale_zoom_out_icon;
+  ViewMode view_mode;
 
   GtkWidget *location_button;
   GtkWidget *location_entry_box;
@@ -259,6 +282,7 @@ struct _GtkFileChooserDefault
 
   GtkTreeViewColumn *list_name_column;
   GtkCellRenderer *list_name_renderer;
+  GtkCellRenderer *list_icon_renderer;
   GtkTreeViewColumn *list_mtime_column;
   GtkTreeViewColumn *list_size_column;
 
@@ -266,9 +290,13 @@ struct _GtkFileChooserDefault
   char *edited_new_text;
 
   gulong settings_signal_id;
-  int icon_size;
+  int list_view_icon_size;
+  int icon_view_icon_size;
 
   GSource *focus_entry_idle;
+
+  GSource *start_editing_icon_view_idle;
+  GtkTreePath *start_editing_icon_view_path;
 
   gulong toplevel_set_focus_id;
   GtkWidget *toplevel_last_focus_widget;

@@ -45,9 +45,10 @@ struct _GtkFileChooserSettings
   GObject object;
 
   LocationMode location_mode;
+  ViewMode view_mode;
 
   GtkSortType sort_order;
-  gint sort_column;
+  gint sort_column, icon_view_scale;
   StartupMode startup_mode;
 
   int geometry_x;
@@ -72,6 +73,14 @@ GtkFileChooserSettings *_gtk_file_chooser_settings_new (void);
 LocationMode _gtk_file_chooser_settings_get_location_mode (GtkFileChooserSettings *settings);
 void         _gtk_file_chooser_settings_set_location_mode (GtkFileChooserSettings *settings,
 							   LocationMode            location_mode);
+
+ViewMode _gtk_file_chooser_settings_get_view_mode (GtkFileChooserSettings *settings);
+void     _gtk_file_chooser_settings_set_view_mode (GtkFileChooserSettings *settings,
+							   ViewMode            view_mode);
+
+gint _gtk_file_chooser_settings_get_icon_view_scale (GtkFileChooserSettings *settings);
+void _gtk_file_chooser_settings_set_icon_view_scale (GtkFileChooserSettings *settings,
+						 gint icon_view_scale);
 
 gboolean _gtk_file_chooser_settings_get_show_hidden (GtkFileChooserSettings *settings);
 void     _gtk_file_chooser_settings_set_show_hidden (GtkFileChooserSettings *settings,
