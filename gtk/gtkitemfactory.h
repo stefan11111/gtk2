@@ -44,7 +44,13 @@ typedef void	(*GtkPrintFunc)		   (gpointer		 func_data,
  * (Note that if we are included from a C++ program () will mean
  * (void) so an explicit cast will be needed.)
  */
+#if defined(__STDC_VERSION__) && __STDC_VERSION__ >= 202311L
+/* vararg with no named arg is only valid in C23 */
+typedef	void	(*GtkItemFactoryCallback)  (...);
+#else
+/* () is turned into (void) in C23 */
 typedef	void	(*GtkItemFactoryCallback)  ();
+#endif
 typedef	void	(*GtkItemFactoryCallback1) (gpointer		 callback_data,
 					    guint		 callback_action,
 					    GtkWidget		*widget);

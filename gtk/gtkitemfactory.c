@@ -1419,7 +1419,7 @@ gtk_item_factory_create_menu_entries (guint              n_entries,
 
       entry.path = path;
       entry.accelerator = entries[i].accelerator;
-      entry.callback = entries[i].callback;
+      entry.callback = (GtkItemFactoryCallback)entries[i].callback;
       entry.callback_action = 0;
       if (g_pattern_spec_match_string (pspec_separator, path))
 	entry.item_type = "<Separator>";

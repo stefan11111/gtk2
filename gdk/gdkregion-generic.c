@@ -935,7 +935,7 @@ miRegionOp(GdkRegion       *newReg,
 	    top = MAX (r1->y1,ybot);
 	    bot = MIN (r1->y2,r2->y1);
 
-	    if ((top != bot) && (nonOverlap1Fn != (void (*)())NULL))
+	    if ((top != bot) && nonOverlap1Fn)
 	      {
 		(* nonOverlap1Fn) (newReg, r1, r1BandEnd, top, bot);
 	      }
@@ -947,7 +947,7 @@ miRegionOp(GdkRegion       *newReg,
 	    top = MAX (r2->y1,ybot);
 	    bot = MIN (r2->y2,r1->y1);
 
-	    if ((top != bot) && (nonOverlap2Fn != (void (*)())NULL))
+	    if ((top != bot) && nonOverlap2Fn)
 	      {
 		(* nonOverlap2Fn) (newReg, r2, r2BandEnd, top, bot);
 	      }
