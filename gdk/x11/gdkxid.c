@@ -58,7 +58,7 @@ _gdk_xid_table_insert (GdkDisplay *display,
 					    (GEqualFunc) gdk_xid_equal);
 
   if (g_hash_table_lookup (display_x11->xid_ht, xid))
-    g_warning ("XID collision, trouble ahead");
+    g_debug ("XID collision, trouble ahead");
 
   g_hash_table_insert (display_x11->xid_ht, xid, data);
 }
