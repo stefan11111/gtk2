@@ -1996,7 +1996,7 @@ gtk_tree_view_update_size (GtkTreeView *tree_view)
   tree_view->priv->width = 0;
 
   /* keep this in sync with size_allocate below */
-  for (GList *list = tree_view->priv->columns; list; list = list->next, i++)
+  for (GList *list = tree_view->priv->columns; list; list = list->next)
     {
       gint real_requested_width = 0;
       GtkTreeViewColumn *column = list->data;
