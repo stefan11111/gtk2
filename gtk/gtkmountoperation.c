@@ -730,7 +730,7 @@ gtk_mount_operation_ask_question (GMountOperation *op,
 
   priv = GTK_MOUNT_OPERATION (op)->priv;
 
-  primary = strstr (message, "\n");
+  primary = (char*)strstr (message, "\n");
   if (primary)
     {
       secondary = primary + 1;
@@ -1202,7 +1202,7 @@ create_show_processes_dialog (GMountOperation *op,
 
   priv = GTK_MOUNT_OPERATION (op)->priv;
 
-  primary = strstr (message, "\n");
+  primary = (char*)strstr (message, "\n");
   if (primary)
     {
       secondary = primary + 1;

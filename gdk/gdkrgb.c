@@ -198,7 +198,6 @@ gdk_rgb_try_colormap (GdkRgbInfo *image_info, gboolean force,
   gulong pixels[256];
   gint i;
   gint d2;
-  gint colors_needed;
   gint idx;
   gint best[256];
   GdkScreen *screen;
@@ -213,7 +212,6 @@ gdk_rgb_try_colormap (GdkRgbInfo *image_info, gboolean force,
   else
     cmap = gdk_screen_get_system_colormap (screen);
 
-  colors_needed = nr * ng * nb;
   for (i = 0; i < 256; i++)
     {
       best[i] = 192;
@@ -243,8 +241,7 @@ gdk_rgb_try_colormap (GdkRgbInfo *image_info, gboolean force,
 		color.pixel = pixels[idx];
 		gdk_colormap_free_colors (cmap, &color, 1);
 	      }
-	    else
-	      colors_needed--;
+
 	    color = cmap->colors[i];
 	    if (!gdk_colormap_alloc_color (cmap, &color, FALSE, FALSE))
 	      return gdk_rgb_cmap_fail ("error allocating system color\n",

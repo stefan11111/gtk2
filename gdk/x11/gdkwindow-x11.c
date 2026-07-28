@@ -4773,7 +4773,6 @@ gdk_window_set_static_bit_gravity (GdkWindow *window,
 {
   XSetWindowAttributes xattributes;
   GdkWindowObject *private;
-  guint xattributes_mask = 0;
   
   g_return_if_fail (GDK_IS_WINDOW (window));
 
@@ -4782,7 +4781,6 @@ gdk_window_set_static_bit_gravity (GdkWindow *window,
     return;
   
   xattributes.bit_gravity = StaticGravity;
-  xattributes_mask |= CWBitGravity;
   xattributes.bit_gravity = on ? StaticGravity : ForgetGravity;
   XChangeWindowAttributes (GDK_WINDOW_XDISPLAY (window),
 			   GDK_WINDOW_XID (window),

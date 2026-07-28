@@ -4519,7 +4519,8 @@ strbreakup (const char *string,
             gint        max_tokens)
 {
   GSList *string_list = NULL, *slist;
-  gchar **str_array, *s;
+  gchar **str_array;
+  const gchar *s;
   guint i, n = 1;
 
   g_return_val_if_fail (string != NULL, NULL);

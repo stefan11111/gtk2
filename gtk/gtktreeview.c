@@ -1984,10 +1984,6 @@ gtk_tree_view_size_request_columns (GtkTreeView *tree_view)
 static void
 gtk_tree_view_update_size (GtkTreeView *tree_view)
 {
-  GList *list;
-  GtkTreeViewColumn *column;
-  gint i;
-
   if (tree_view->priv->model == NULL)
     {
       tree_view->priv->width = 0;
@@ -2000,10 +1996,10 @@ gtk_tree_view_update_size (GtkTreeView *tree_view)
   tree_view->priv->width = 0;
 
   /* keep this in sync with size_allocate below */
-  for (list = tree_view->priv->columns, i = 0; list; list = list->next, i++)
+  for (GList *list = tree_view->priv->columns; list; list = list->next, i++)
     {
       gint real_requested_width = 0;
-      column = list->data;
+      GtkTreeViewColumn *column = list->data;
       if (!column->visible)
 	continue;
 
@@ -6255,7 +6251,6 @@ do_validate_rows (GtkTreeView *tree_view, gboolean queue_resize)
   GtkTreePath *path = NULL;
   GtkTreeIter iter;
   GTimer *timer;
-  gint i = 0;
 
   gint prev_height = -1;
   gboolean fixed_height = TRUE;
@@ -6350,8 +6345,6 @@ do_validate_rows (GtkTreeView *tree_view, gboolean queue_resize)
 	  else if (prev_height != height)
 	    fixed_height = FALSE;
 	}
-
-      i++;
     }
   while (g_timer_elapsed (timer, NULL) < GTK_TREE_VIEW_TIME_MS_PER_IDLE / 1000.);
 

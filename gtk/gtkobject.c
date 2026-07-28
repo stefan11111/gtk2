@@ -233,7 +233,7 @@ gtk_object_add_arg_type (const gchar *arg_name,
     g_return_if_fail (arg_flags & G_PARAM_WRITABLE);
   g_return_if_fail ((arg_flags & ~(G_PARAM_READWRITE | G_PARAM_CONSTRUCT | G_PARAM_CONSTRUCT_ONLY | G_PARAM_STATIC_NAME)) == 0);
 
-  pname = strchr (arg_name, ':');
+  pname = (gchar*)strchr (arg_name, ':');
   g_return_if_fail (pname && pname[1] == ':');
 
   type_name = g_strndup (arg_name, pname - arg_name);

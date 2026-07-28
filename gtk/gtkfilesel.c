@@ -1841,7 +1841,6 @@ gtk_file_selection_populate (GtkFileSelection *fs,
   gchar* rem_path = rel_path;
   gchar* sel_text;
   gint did_recurse = FALSE;
-  gint possible_count = 0;
   
   g_return_if_fail (GTK_IS_FILE_SELECTION (fs));
 
@@ -1873,8 +1872,6 @@ gtk_file_selection_populate (GtkFileSelection *fs,
     {
       if (cmpl_is_a_completion (poss))
         {
-          possible_count += 1;
-
           filename = cmpl_this_completion (poss);
 
           if (cmpl_is_directory (poss))
@@ -2303,15 +2300,12 @@ cmpl_completion_fullname (const gchar     *text,
     }
   else if (text[0] == '~')
     {
-      CompletionDir* dir;
-      char* slash;
-
-      dir = open_user_dir (text, cmpl_state);
+      CompletionDir* dir = open_user_dir (text, cmpl_state);
 
       if (dir)
 	{
-	  slash = strchr (text, G_DIR_SEPARATOR);
-	  
+	  const char* slash = strchr (text, G_DIR_SEPARATOR);
+
 	  /* slash may be NULL, that works too */
 	  return g_strconcat (dir->fullname, slash, NULL);
 	}
@@ -2698,7 +2692,7 @@ open_user_dir (const gchar     *text_to_complete,
 	       CompletionState *cmpl_state)
 {
   CompletionDir *result;
-  gchar *first_slash;
+  const gchar *first_slash;
   gint cmp_len;
 
   g_assert (text_to_complete && text_to_complete[0] == '~');

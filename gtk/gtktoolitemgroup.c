@@ -935,7 +935,7 @@ gtk_tool_item_group_real_size_allocate (GtkWidget     *widget,
   /* when expanded or in transition, place the tool items in a grid like layout */
   if (!priv->collapsed || !priv->animation || priv->animation_timeout)
     {
-      gint col = 0, row = 0;
+      gint col = 0;
 
       for (it = priv->children; it != NULL; it = it->next)
         {
@@ -961,7 +961,6 @@ gtk_tool_item_group_real_size_allocate (GtkWidget     *widget,
           /* select next row if at end of row */
           if (col > 0 && (child->new_row || (col * item_size.width) + MAX (child_requisition.width, item_size.width) > item_area.width))
             {
-              row++;
               col = 0;
               child_allocation.y += child_allocation.height;
             }
