@@ -113,7 +113,7 @@ _gtk_accel_map_init (void)
 gboolean
 _gtk_accel_path_is_valid (const gchar *accel_path)
 {
-  gchar *p;
+  const gchar *p;
 
   if (!accel_path || accel_path[0] != '<' ||
       accel_path[1] == '<' || accel_path[1] == '>' || !accel_path[1])
